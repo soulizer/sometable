@@ -56,10 +56,7 @@ export default {
       return this.$registry.get('field', field.type).isReadOnlyField(field)
     },
     isDeactivated(workspaceId) {
-      return !this.$hasFeature(
-        EnterpriseFeatures.FIELD_LEVEL_PERMISSIONS,
-        workspaceId
-      )
+      return false
     },
     onClick() {
       if (this.deactivated) {

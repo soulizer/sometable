@@ -71,15 +71,6 @@ export class CoreCodeServiceType extends WorkflowActionServiceTypeMixin(
   }
 
   getDeactivatedClickModal({ workspace }) {
-    if (
-      workspace &&
-      !this.app.$hasFeature(EnterpriseFeaturesObject.CODE_RUNNER, workspace.id)
-    ) {
-      return [
-        PaidFeaturesModal,
-        { 'initial-selected-type': CodeRunnerPaidFeature.getType() },
-      ]
-    }
     return null
   }
 
@@ -163,18 +154,6 @@ export class CoreXLSFileReaderServiceType extends DataSourceServiceTypeMixin(
   }
 
   getDeactivatedClickModal({ workspace }) {
-    if (
-      workspace &&
-      !this.app.$hasFeature(
-        EnterpriseFeaturesObject.XLS_FILE_READER,
-        workspace.id
-      )
-    ) {
-      return [
-        PaidFeaturesModal,
-        { 'initial-selected-type': XLSFileReaderPaidFeature.getType() },
-      ]
-    }
     return null
   }
 

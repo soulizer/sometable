@@ -71,7 +71,7 @@
           <Button
             type="primary"
             icon="iconoir-no-lock"
-            @click="$refs.paidFeaturesModal.show()"
+            
           >
             {{ $t('configureDataSyncPeriodicInterval.more') }}
           </Button>

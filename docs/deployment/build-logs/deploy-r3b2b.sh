@@ -32,7 +32,7 @@ fi
 echo "[$(ts)] .env BASEROW_VERSION=$(grep '^BASEROW_VERSION=' .env)" >> "$DEPLOY_LOG"
 
 echo "[$(ts)] docker compose up -d" >> "$DEPLOY_LOG"
-sudo -n docker compose up -d >> "$DEPLOY_LOG" 2>&1
+sudo -n env BASEROW_VERSION="$TAG" docker compose up -d >> "$DEPLOY_LOG" 2>&1
 RC=$?
 echo "[$(ts)] up rc=$RC" >> "$DEPLOY_LOG"
 

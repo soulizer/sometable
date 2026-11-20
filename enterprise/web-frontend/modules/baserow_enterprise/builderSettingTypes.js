@@ -42,17 +42,6 @@ export class CustomCodeBuilderSettingType extends BuilderSettingType {
   }
 
   getDeactivatedModal({ workspace }) {
-    if (
-      !this.app.$hasFeature(
-        EnterpriseFeatures.BUILDER_CUSTOM_CODE,
-        workspace.id
-      )
-    ) {
-      return [
-        PaidFeaturesModal,
-        { 'initial-selected-type': BuilderCustomCodePaidFeature.getType() },
-      ]
-    }
     return null
   }
 }

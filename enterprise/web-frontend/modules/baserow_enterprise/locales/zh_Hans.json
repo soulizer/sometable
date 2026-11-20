@@ -34,7 +34,7 @@
     },
     "coreCodeServiceForm": {
         "codeLabel": "Code",
-        "codeHelperText": "SomeTable calls the main(context) function when the action runs. Use context to read injected values and return an object whose properties can be used by later actions.",
+        "codeHelperText": "本系统 calls the main(context) function when the action runs. Use context to read injected values and return an object whose properties can be used by later actions.",
         "codePlaceholder": "Enter the code to execute",
         "editCode": "Edit code",
         "injectionsLabel": "Data injections",
@@ -151,12 +151,12 @@
         "teamsTabTitle": "Teams"
     },
     "adminType": {
-        "AuditLog": "Audit log",
+        "AuditLog": "审计日志",
         "Authentication": "Authentication",
-        "DataScanner": "Data scanner"
+        "DataScanner": "数据扫描器"
     },
     "dataScanner": {
-        "title": "Data scanner",
+        "title": "数据扫描器",
         "scansTab": "Scans",
         "resultsTab": "Results",
         "createScan": "Create data scanner",
@@ -192,7 +192,7 @@
         "frequencyHourly": "Hourly",
         "frequencyDaily": "Daily",
         "frequencyWeekly": "Weekly",
-        "hourlyWarning": "Hourly scans can put significant load on your SomeTable instance.",
+        "hourlyWarning": "Hourly scans can put significant load on your 本系统 instance.",
         "wholeWordsLabel": "Matching",
         "wholeWordsCheckbox": "Match whole words only",
         "wholeWordsHelp": "When enabled, the scanner only matches complete words or tokens. For example, 'DDDD' matches '1234' but not '12345'.",
@@ -212,7 +212,7 @@
         "addWorkspace": "Add a workspace",
         "scanTypePattern": "Pattern",
         "scanTypeListOfValues": "List of values",
-        "scanTypeListTable": "SomeTable table",
+        "scanTypeListTable": "本系统 table",
         "lastRunColumn": "Last run",
         "resultsCountColumn": "Results",
         "viewResults": "View results",
@@ -249,7 +249,7 @@
         "titleReachedInstance": "This instance has reached the application user limit of {limit}. Once it goes over, no one can sign in to the published apps of any workspace, including {workspaceName}, until the license is upgraded."
     },
     "auditLog": {
-        "adminTitle": "Audit log",
+        "adminTitle": "审计日志",
         "workspaceTitle": "Audit log - {workspaceName}",
         "filterUserTitle": "User",
         "filterActorTitle": "Actor",
@@ -525,30 +525,30 @@
         "firstNameAttrKeyHelper": "The first name of the user or the full name if 'Last name' is not provided.",
         "lastNameAttrKeyHelper": "Last name of the user (optional). Clear this value to provide the full name via 'First name'.",
         "callbackUrl": "Callback URL",
-        "emailVerificationNotice": "Ensure your identity provider requires verified email addresses before authenticating users. SomeTable trusts the email address reported by the provider."
+        "emailVerificationNotice": "Ensure your identity provider requires verified email addresses before authenticating users. 本系统 trusts the email address reported by the provider."
     },
     "loginButton": {
         "continueWith": "Continue with"
     },
     "enterpriseFeatures": {
         "sso": "Single Sign On",
-        "ssoContent": "Enable secure and seamless logins with SAML, Google, Facebook, GitHub, GitLab, or OpenID Connect. Supports multiple providers at once. Note that both SomeTable as a tool, and the application builder authentication system support SSO.",
+        "ssoContent": "Enable secure and seamless logins with SAML, Google, Facebook, GitHub, GitLab, or OpenID Connect. Supports multiple providers at once. Note that both 本系统 as a tool, and the application builder authentication system support SSO.",
         "rbac": "Role-based access control",
         "rbacContent": "Manage permissions with precision. Assign roles like admin, builder, editor, commenter, or viewer at the workspace, database, table, and view level. You can also manage access by team.",
         "auditLogs": "Audit logs",
         "auditLogsContent": "Track everything that happens. View a full history of actions across your instance or workspace, filterable by user, action, and more.",
         "dataSync": "Data sync",
-        "dataSyncContent": "Automatically keep tables up to date by syncing with other SomeTable tables, or external sources like Jira, GitHub, GitLab, or HubSpot. It also allows to sync periodically, and enables two-way data sync for supported data sync types.",
+        "dataSyncContent": "Automatically keep tables up to date by syncing with other 本系统 tables, or external sources like Jira, GitHub, GitLab, or HubSpot. It also allows to sync periodically, and enables two-way data sync for supported data sync types.",
         "coBranding": "Co-branding logo replacement",
-        "coBrandingContent": "Customize the SomeTable interface with your own logo. Note that \"powered by SomeTable\" is added.",
+        "coBrandingContent": "Customize the 本系统 interface with your own logo. Note that \"powered by 本系统\" is added.",
         "support": "Direct support",
-        "supportContent": "Get help when you need it. Reach out to the SomeTable team directly from within the platform.",
+        "supportContent": "Get help when you need it. Reach out to the 本系统 team directly from within the platform.",
         "advancedWebhooks": "Advanced webhooks",
         "advancedWebhooksContent": "Trigger webhooks when a row enters a specific view — great for automating workflows based on filter conditions.",
         "fieldLevelPermissions": "Field-level permissions",
         "fieldLevelPermissionsContent": "Control who can edit specific fields in a table. Set permissions for editors, builders, admins, or completely disable modifications to field values.",
         "builderBranding": "Application branding",
-        "builderBrandingContent": "White label the branding of your application by removing the 'Made with SomeTable' branding in the footer of your application.",
+        "builderBrandingContent": "White label the branding of your application by removing the 'Made with 本系统' branding in the footer of your application.",
         "builderFileInputElement": "File input element",
         "builderFileInputElementContent": "The file input element allows you to add a field to your application pages for uploading files. Give your users the ability to store important documents or images.",
         "builderGraphElement": "Graph element",
@@ -561,8 +561,8 @@
         "xlsFileReaderContent": "Read rows from XLS and XLSX files in automation nodes and application builder workflow actions.",
         "dateDependency": "Date dependency",
         "dateDependencyContent": "You can define a dependency between two dates and a duration as start/end date and duration. With date dependency, if one value change, other values will be adjusted accordingly.",
-        "dataScanner": "Data scanner",
-        "dataScannerContent": "Scan all data in your SomeTable instance for sensitive patterns like IBAN numbers or medical IDs, or match against known value lists. Configure automatic scanning schedules and view detailed results.",
+        "dataScanner": "数据扫描器",
+        "dataScannerContent": "Scan all data in your 本系统 instance for sensitive patterns like IBAN numbers or medical IDs, or match against known value lists. Configure automatic scanning schedules and view detailed results.",
         "semanticSearch": "Semantic search",
         "semanticSearchContent": "Find rows by the meaning of their text instead of exact words, and use the results in automations and applications."
     },
@@ -651,7 +651,7 @@
         "message": "Please be aware that an export will not include any permissions set on the application and its tables."
     },
     "auditLogSidebarWorkspace": {
-        "title": "Audit log"
+        "title": "审计日志"
     },
     "localBaserowUserSourceType": {
         "notConfigured": "Not configured"
@@ -689,7 +689,7 @@
         "branding": "Branding",
         "deactivated": "Available in enterprise",
         "coBrandingLogo": "Logo",
-        "coBrandingLogoDescription": "Replaces the SomeTable logo for a custom co-branded alternative (176x29). If set, it also removes the SomeTable description in the footer of all emails.",
+        "coBrandingLogoDescription": "Replaces the 本系统 logo for a custom co-branded alternative (176x29). If set, it also removes the 本系统 description in the footer of all emails.",
         "uploadFileButton": "Upload image"
     },
     "authFormElementForm": {
@@ -705,7 +705,7 @@
         "selectOrConfigureUserSourceFirst": "Choose a user source to begin using this login element."
     },
     "enterpriseDataSyncType": {
-        "localBaserowTable": "Sync SomeTable table",
+        "localBaserowTable": "Sync 本系统 table",
         "jiraIssues": "Sync Jira issues",
         "githubIssues": "Sync GitHub issues",
         "gitlabIssues": "Sync GitLab issues",
@@ -746,7 +746,7 @@
         "url": "Base URL",
         "urlHelper": "The base URL of your GitLab instance. (e.g. https://gitlab.com)",
         "projectId": "Project ID",
-        "projectIdHelper": "The ID of the project where you want to sync the issues from. Can be found by going to your project page (e.g. https://gitlab.com/sometable/sometable), click on the three dots in the top right corner, and then on 'Copy project ID: 12345678'.",
+        "projectIdHelper": "The ID of the project where you want to sync the issues from. Can be found by going to your project page (e.g. https://gitlab.com/本系统/本系统), click on the three dots in the top right corner, and then on 'Copy project ID: 12345678'.",
         "accessToken": "Access token",
         "accessTokenHelper": "Can be generated here https://gitlab.com/-/user_settings/personal_access_tokens by clicking on `Add new token`, select `read_api`."
     },
@@ -963,7 +963,7 @@
         "label": "Edit field permissions"
     },
     "enterpriseTwoWaySyncStrategyType": {
-        "realtimePushDescription": "Allows editing the cell values directly in SomeTable, and pushes it in real-time to the data sync source. Note that the changes are not pulled in real-time because they rely on the (periodic) sync action to complete. It's highly recommended to create backups of the PostgreSQL database to avoid accidental changes."
+        "realtimePushDescription": "Allows editing the cell values directly in 本系统, and pushes it in real-time to the data sync source. Note that the changes are not pulled in real-time because they rely on the (periodic) sync action to complete. It's highly recommended to create backups of the PostgreSQL database to avoid accidental changes."
     },
     "dateDependencyModal": {
         "errorTitle": "Date dependency",

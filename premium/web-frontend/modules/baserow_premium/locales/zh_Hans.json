@@ -42,12 +42,12 @@
         "titleRegisterLicense": "注册一个许可证",
         "registerLicense": "注册许可证",
         "viewPricing": "查看定价",
-        "licenseDescription": "只能在 baserow.io 上获得许可证。如果你已购买许可证，它将通过电子邮件发送给你，也可以从帐户概览中获取。将许可证密钥复制并粘贴到下面的框中，然后单击按钮将许可证密钥注册到此实例。安装两个不同实例时不可以使用相同的密钥。 如果你还没有密钥可以点此购买：{pricingLink} 。",
+        "licenseDescription": "只能在 本系统.io 上获得许可证。如果你已购买许可证，它将通过电子邮件发送给你，也可以从帐户概览中获取。将许可证密钥复制并粘贴到下面的框中，然后单击按钮将许可证密钥注册到此实例。安装两个不同实例时不可以使用相同的密钥。 如果你还没有密钥可以点此购买：{pricingLink} 。",
         "licenseError": {
             "invalidTitle": "无效的",
             "invalid": "无效的许可证.",
             "unsupportedTitle": "不支持",
-            "unsupported": "当前许可证与您的Baserow版本不兼容.请更新到最新版本,然后重试.",
+            "unsupported": "当前许可证与您的本系统版本不兼容.请更新到最新版本,然后重试.",
             "expiredTitle": "已到期",
             "expired": "当前许可证已过期.",
             "duplicateTitle": "复制",
@@ -96,14 +96,14 @@
     "licenses": {
         "titleNoLicenses": "未找到许可证",
         "titleLicenses": "许可证",
-        "noLicensesDescription": "您的 Baserow 实例未注册任何许可证.高级许可证使您可以立即访问所有附加功能.如果您已经拥有许可证,可以在此处注册.或者,您可以通过单击下面的按钮来获取一个.",
+        "noLicensesDescription": "您的 本系统 实例未注册任何许可证.高级许可证使您可以立即访问所有附加功能.如果您已经拥有许可证,可以在此处注册.或者,您可以通过单击下面的按钮来获取一个.",
         "rowComments": "",
         "kanbanView": "",
         "exports": "",
         "admin": "",
         "rowColoring": "",
         "getLicense": "获取许可证",
-        "baserowInstanceId": "您的Baserow实例ID为:",
+        "baserowInstanceId": "您的本系统实例ID为:",
         "registerLicense": "注册许可证",
         "licenceId": "许可证ID",
         "premium": "高级版",
@@ -174,7 +174,7 @@
         "rowNotifications": "Row notifications",
         "rowNotificationsContent": "Stay in the loop with customizable row comment notifications. Choose between receiving alerts for all comments or only when you're mentioned.",
         "surveyFormContent": "Collect responses one question at a time with survey mode. A simplified version of the form view, optimized for focus and ease of use.",
-        "publicLogoRemovalContent": "Remove the SomeTable logo from public views to give your shared content a cleaner, more branded look.",
+        "publicLogoRemovalContent": "Remove the 本系统 logo from public views to give your shared content a cleaner, more branded look.",
         "personalViews": "Personal views",
         "personalViewsContent": "Create views that only the author can see. This gives you space to experiment, filter, and sort data without affecting the workspace for others.",
         "aiFeatures": "AI features",
@@ -182,7 +182,7 @@
         "chartWidget": "Chart widget",
         "chartWidgetContent": "Visualize your data with charts on dashboards. Use any table as a data source, add multiple series, and group or sort by fields with rich summary options.",
         "groupedAggregateRowsDataSource": "Group and summarize rows",
-        "groupedAggregateRowsDataSourceContent": "Group rows from a SomeTable table and calculate summaries for use in application builder pages."
+        "groupedAggregateRowsDataSourceContent": "Group rows from a 本系统 table and calculate summaries for use in application builder pages."
     },
     "paidFeaturesModal": {
         "unavailable": "当前实例未开放此功能。",
@@ -293,8 +293,8 @@
         "title": "Colors"
     },
     "redirectToBaserowModal": {
-        "title": "Redirecting to https://baserow.io",
-        "content": "You are leaving your self hosted instance and you are being redirected to https://baserow.io."
+        "title": "Redirecting to https://本系统.io",
+        "content": "You are leaving your self hosted instance and you are being redirected to https://本系统.io."
     },
     "premiumTopSidebar": {
         "impersonateDescription": "This account is impersonated. A page refresh will stop it.",
@@ -314,13 +314,13 @@
     },
     "shareLinkOptions": {
         "baserowLogo": {
-            "label": "Hide SomeTable logo on shared view",
+            "label": "Hide 本系统 logo on shared view",
             "premiumModalName": "public logo removal"
         },
         "allowPublicExportLabel": "Allow export on shared view"
     },
     "premiumDashboardShareOptions": {
-        "hideLogo": "Hide SomeTable logo on shared dashboard"
+        "hideLogo": "Hide 本系统 logo on shared dashboard"
     },
     "viewsContext": {
         "personal": "Personal"
@@ -354,7 +354,7 @@
     },
     "fieldAISubForm": {
         "prompt": "Prompt",
-        "promptPlaceholder": "What is SomeTable?",
+        "promptPlaceholder": "What is 本系统?",
         "premiumFeature": "The AI field is a premium feature",
         "emptyFileField": "None",
         "fileFieldHelp": "The first compatible file in the field will be used as the knowledge base for the prompt. The file has to be a text file with the supported file extension like .txt, .md, .pdf, .docx.",
@@ -377,7 +377,7 @@
         "label": "Prompt",
         "labelDescription": "Describe the formula you would like to generate",
         "generate": "Generate",
-        "noModels": "Your SomeTable instance and workspace doesn't have any AI models configured. Navigate to the homepage, click on the name of your workspace, then on settings to configure them."
+        "noModels": "Your 本系统 instance and workspace doesn't have any AI models configured. Navigate to the homepage, click on the name of your workspace, then on settings to configure them."
     },
     "formulaFieldAI": {
         "generateWithAI": "Generate using AI",
@@ -412,7 +412,7 @@
     },
     "serviceType": {
         "localBaserowGroupedAggregateRows": "Group and summarize rows",
-        "localBaserowGroupedAggregateRowsDescription": "Group rows from a SomeTable table and calculate summaries.",
+        "localBaserowGroupedAggregateRowsDescription": "Group rows from a 本系统 table and calculate summaries.",
         "errorNoAggregationSeriesDefined": "No summary series defined.",
         "errorIncompleteAggregationSeries": "One or more summary series are incomplete.",
         "errorTrashedAggregationField": "At least one configured field has been trashed."

@@ -53,10 +53,7 @@ export default {
       }
     },
     deactivated() {
-      return !this.$hasFeature(
-        EnterpriseFeatures.RBAC,
-        this.application.workspace.id
-      )
+      return false
     },
   },
 }

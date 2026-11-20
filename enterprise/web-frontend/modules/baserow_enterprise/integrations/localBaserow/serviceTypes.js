@@ -100,12 +100,6 @@ export class LocalBaserowSemanticSearchServiceType extends LocalBaserowListRowsS
   }
 
   getDeactivatedClickModal({ workspace }) {
-    if (this.isAvailable() && workspace && !this.hasFeature(workspace)) {
-      return [
-        PaidFeaturesModal,
-        { 'initial-selected-type': SemanticSearchPaidFeature.getType() },
-      ]
-    }
     return null
   }
 

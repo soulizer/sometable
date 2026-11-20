@@ -274,20 +274,6 @@ export class FileInputElementType extends FormElementType {
   }
 
   getDeactivatedClickModal({ workspace }) {
-    if (
-      workspace &&
-      !this.app.$hasFeature(
-        EnterpriseFeaturesObject.BUILDER_FILE_INPUT,
-        workspace.id
-      )
-    ) {
-      return [
-        PaidFeaturesModal,
-        {
-          'initial-selected-type': BuilderFileInputElementPaidFeature.getType(),
-        },
-      ]
-    }
     return null
   }
 }
@@ -358,20 +344,6 @@ export class GraphElementType extends ElementType {
   }
 
   getDeactivatedClickModal({ workspace }) {
-    if (
-      workspace &&
-      !this.app.$hasFeature(
-        EnterpriseFeaturesObject.BUILDER_GRAPH_ELEMENT,
-        workspace.id
-      )
-    ) {
-      return [
-        PaidFeaturesModal,
-        {
-          'initial-selected-type': BuilderGraphElementPaidFeature.getType(),
-        },
-      ]
-    }
     return null
   }
 }
@@ -428,20 +400,6 @@ export class HTMLElementType extends ElementType {
   }
 
   getDeactivatedClickModal({ workspace }) {
-    if (
-      workspace &&
-      !this.app.$hasFeature(
-        EnterpriseFeaturesObject.BUILDER_HTML_ELEMENT,
-        workspace.id
-      )
-    ) {
-      return [
-        PaidFeaturesModal,
-        {
-          'initial-selected-type': BuilderHTMLElementPaidFeature.getType(),
-        },
-      ]
-    }
     return null
   }
 }

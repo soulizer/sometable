@@ -49,21 +49,6 @@ export class LocalBaserowGroupedAggregateRowsServiceType extends DataSourceLocal
   }
 
   getDeactivatedClickModal({ workspace }) {
-    if (
-      workspace &&
-      !this.app.$hasFeature(
-        BUILDER_GROUPED_AGGREGATE_ROWS_FEATURE,
-        workspace.id
-      )
-    ) {
-      return [
-        PaidFeaturesModal,
-        {
-          'initial-selected-type':
-            GroupedAggregateRowsDataSourcePaidFeature.getType(),
-        },
-      ]
-    }
     return null
   }
 
