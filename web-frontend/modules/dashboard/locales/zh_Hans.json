@@ -1,151 +1,155 @@
 {
     "dashboardTableSelector": {
-        "confirmTitle": "Change table and reset filters?",
-        "confirmMessage": "Changing the table will clear all filter conditions for widgets using this source, including conditions from dashboard filters.",
-        "confirmAction": "Change and reset"
+        "confirmTitle": "切换数据表并重置筛选条件？",
+        "confirmMessage": "切换数据表会清空使用该数据源的组件上的所有筛选条件，包括仪表盘筛选中的条件。",
+        "confirmAction": "切换并重置"
     },
-    "dashboard": "仪表盘",
+    "dashboard": {
+        "descriptionPlaceholder": "描述",
+        "addWidget": "添加组件",
+        "widgetsLoading": "正在加载仪表盘…"
+    },
     "dashboardHeader": {
-        "doneEditing": "Done editing"
+        "doneEditing": "完成编辑"
     },
     "emptyDashboard": {
-        "title": "This dashboard doesn't have any widgets",
-        "subtitle": "Get started by adding one.",
-        "addWidget": "Add widget"
+        "title": "此仪表盘还没有任何组件",
+        "subtitle": "先添加一个组件开始使用。",
+        "addWidget": "添加组件"
     },
     "dashboardHeaderMenuItems": {
-        "editMode": "Edit mode"
+        "editMode": "编辑模式"
     },
     "shareDashboardLink": {
-        "shareDashboard": "Share dashboard",
-        "notSharedTitle": "You have not yet shared this dashboard",
-        "notSharedText": "Private shareable link allows anyone to see the data in this dashboard.",
-        "createPrivateLink": "Create a private link",
-        "sharedTitle": "This dashboard is currently shared via a private link",
-        "sharedDescription": "People who have the link can see the dashboard.",
-        "copyURL": "Copy URL",
-        "generateNewUrl": "Generate new URL",
-        "disableLink": "Disable shared link",
-        "restrictWithPassword": "Restrict access with a password",
-        "passwordProtected": "Access is password-protected",
-        "changePassword": "Change password"
+        "shareDashboard": "分享仪表盘",
+        "notSharedTitle": "您还没有分享此仪表盘",
+        "notSharedText": "私有分享链接允许任何拿到链接的人查看此仪表盘的数据。",
+        "createPrivateLink": "创建私有链接",
+        "sharedTitle": "此仪表盘当前通过私有链接分享",
+        "sharedDescription": "拥有链接的人可以查看该仪表盘。",
+        "copyURL": "复制链接",
+        "generateNewUrl": "生成新链接",
+        "disableLink": "停用分享链接",
+        "restrictWithPassword": "使用密码限制访问",
+        "passwordProtected": "访问受密码保护",
+        "changePassword": "修改密码"
     },
     "dashboardRotateSlugModal": {
-        "title": "Refresh the URL of {dashboardName}?",
-        "refreshWarning": "After refreshing, a new URL will be generated and it will not be possible to access the dashboard via the old URL. Everyone that you have shared the URL with, won't be able to access the dashboard.",
-        "generateNewUrl": "Generate new URL",
-        "success": "Successfully generated new URL"
+        "title": "刷新 {dashboardName} 的链接？",
+        "refreshWarning": "刷新后将生成新链接，旧链接将无法再访问该仪表盘，此前分享过链接的人也将无法访问。",
+        "generateNewUrl": "生成新链接",
+        "success": "新链接已生成"
     },
     "dashboardEnablePasswordModal": {
-        "title": "Enter a password",
-        "description": "The public link will only be accessible after entering the password. This password must be 8 or more characters and will be saved encrypted.",
-        "setPassword": "Set password",
-        "changeTitle": "Change password",
-        "changeDescription": "By changing the password, the previous one will no longer work. This password must be 8 or more characters and will be saved encrypted.",
-        "changePassword": "Change password",
-        "placeholder": "Password"
+        "title": "输入密码",
+        "description": "输入密码后才能访问该公开链接。密码至少 8 个字符，并以加密形式保存。",
+        "setPassword": "设置密码",
+        "changeTitle": "修改密码",
+        "changeDescription": "修改密码后原密码将失效。密码至少 8 个字符，并以加密形式保存。",
+        "changePassword": "修改密码",
+        "placeholder": "密码"
     },
     "dashboardDisablePasswordModal": {
-        "title": "Disable password protection for this public link?",
-        "description": "By disabling, the password will be deleted and it will not be possible to recover it.",
-        "disable": "Disable"
+        "title": "停用该公开链接的密码保护？",
+        "description": "停用后密码将被删除且无法恢复。",
+        "disable": "停用"
     },
     "publicDashboard": {
-        "noWidgets": "This dashboard doesn't have any widgets yet.",
-        "reportAbuse": "Report abuse"
+        "noWidgets": "此仪表盘还没有任何组件。",
+        "reportAbuse": "举报滥用"
     },
     "publicDashboardAuth": {
-        "title": "Password required",
-        "description": "You need a password to access this site.",
-        "passwordLabel": "Password",
-        "passwordPlaceholder": "Password...",
-        "continue": "Continue",
-        "incorrectPasswordTitle": "Incorrect password",
-        "incorrectPasswordText": "The provided password is incorrect."
+        "title": "需要密码",
+        "description": "访问此站点需要输入密码。",
+        "passwordLabel": "密码",
+        "passwordPlaceholder": "请输入密码…",
+        "continue": "继续",
+        "incorrectPasswordTitle": "密码错误",
+        "incorrectPasswordText": "输入的密码不正确。"
     },
     "createWidgetModal": {
-        "title": "Add new widget",
-        "searchPlaceholder": "Search widgets and filters",
-        "widgets": "Widgets",
-        "filters": "Filters"
+        "title": "添加新组件",
+        "searchPlaceholder": "搜索组件与筛选器",
+        "widgets": "组件",
+        "filters": "筛选器"
     },
     "widget": {
-        "fixConfiguration": "Fix configuration",
-        "filteredResults": "This widget’s results are filtered."
+        "fixConfiguration": "修复配置",
+        "filteredResults": "该组件的结果已被筛选。"
     },
     "summaryWidget": {
-        "name": "Summary"
+        "name": "汇总"
     },
     "emptyDashboardSidebar": {
-        "title": "No element selected",
-        "message": "Click on one of the elements to see details."
+        "title": "未选择元素",
+        "message": "点击任一元素以查看详情。"
     },
     "widgetSettings": {
-        "title": "Title",
-        "description": "Description"
+        "title": "标题",
+        "description": "描述"
     },
     "aggregateRowsDataSourceForm": {
-        "data": "Data",
-        "sourceFieldLabel": "Source",
-        "viewFieldLabel": "View",
-        "notSelected": "Not selected",
-        "aggregationFieldLabel": "Field",
-        "aggregationTypeLabel": "Summary"
+        "data": "数据",
+        "sourceFieldLabel": "数据源",
+        "viewFieldLabel": "视图",
+        "notSelected": "未选择",
+        "aggregationFieldLabel": "字段",
+        "aggregationTypeLabel": "汇总方式"
     },
     "widgetContext": {
-        "delete": "Delete"
+        "delete": "删除"
     },
     "trashType": {
-        "widget": "widget"
+        "widget": "组件"
     },
     "lastViewedItemType": {
-        "dashboard": "Dashboard"
+        "dashboard": "仪表盘"
     },
     "textFilterWidget": {
-        "name": "Text filter",
-        "filterType": "Filter type",
-        "input": "Input",
-        "dropdown": "Dropdown",
-        "selection": "Selection",
-        "singleValue": "Single value",
-        "multipleValues": "Multiple values",
-        "filterValues": "Filter values",
-        "filterValuesHelp": "Choose data source context data or enter values separated by commas.",
-        "optionsError": "Could not load filter values. Check the source or formula.",
-        "clear": "Clear selection",
-        "placeholder": "Placeholder",
-        "defaultValue": "Default value",
-        "targets": "Apply to widgets",
-        "configureFilters": "Edit conditions",
-        "emptyBehavior": "When nothing is selected",
-        "apply_nothing": "Ignore this filter",
-        "apply_alternative": "Use different conditions",
-        "permanentGroup": "Widget settings",
-        "removeLink": "Remove from filter",
-        "incompatibleConditions": "Some input conditions are incompatible with the selected source. Update their fields or operators before using this filter.",
-        "configureSourceFirst": "Choose a data source for this widget first.",
-        "unsupportedTarget": "This widget does not have a filterable data source.",
-        "targetsHelp": "Choose where this filter is used.",
-        "addWidgets": "Add widgets",
-        "noTargets": "No widgets selected. Add a widget, then set up its conditions.",
-        "noAvailableTargets": "No matching widgets available.",
-        "setUpConditions": "Set up conditions",
-        "conditionCount": "1 condition | {count} conditions",
-        "targetDisabled": "Disabled",
-        "applyToWidget": "Apply filter to {widget}",
-        "targetOptions": "Options for {widget}",
-        "filterTarget": "Filter {widget}",
-        "withValue": "With a value",
-        "whenEmpty": "When empty",
-        "otherConditions": "Other conditions",
-        "editFilterConditions": "Edit these conditions in the {filter} filter settings.",
-        "editWidgetConditions": "Edit these conditions in the widget’s data source settings.",
-        "fieldsError": "Could not load the fields. Try again."
+        "name": "文本筛选",
+        "filterType": "筛选类型",
+        "input": "输入框",
+        "dropdown": "下拉框",
+        "selection": "选择",
+        "singleValue": "单值",
+        "multipleValues": "多值",
+        "filterValues": "筛选值",
+        "filterValuesHelp": "选择数据源上下文数据，或输入以逗号分隔的值。",
+        "optionsError": "无法加载筛选值，请检查数据源或公式。",
+        "clear": "清除选择",
+        "placeholder": "占位提示",
+        "defaultValue": "默认值",
+        "targets": "应用到组件",
+        "configureFilters": "编辑条件",
+        "emptyBehavior": "未选择任何值时",
+        "apply_nothing": "忽略此筛选器",
+        "apply_alternative": "使用其他条件",
+        "permanentGroup": "组件设置",
+        "removeLink": "从筛选器中移除",
+        "incompatibleConditions": "部分输入条件与所选数据源不兼容，请先调整字段或运算符。",
+        "configureSourceFirst": "请先为该组件选择数据源。",
+        "unsupportedTarget": "该组件没有可筛选的数据源。",
+        "targetsHelp": "选择此筛选器生效的位置。",
+        "addWidgets": "添加组件",
+        "noTargets": "尚未选择组件。请先添加组件，再设置其条件。",
+        "noAvailableTargets": "没有可匹配的组件。",
+        "setUpConditions": "设置条件",
+        "conditionCount": "1 个条件 | {count} 个条件",
+        "targetDisabled": "已禁用",
+        "applyToWidget": "对 {widget} 应用筛选",
+        "targetOptions": "{widget} 的选项",
+        "filterTarget": "筛选 {widget}",
+        "withValue": "有值时",
+        "whenEmpty": "为空时",
+        "otherConditions": "其他条件",
+        "editFilterConditions": "在 {filter} 筛选器设置中编辑这些条件。",
+        "editWidgetConditions": "在组件的数据源设置中编辑这些条件。",
+        "fieldsError": "无法加载字段，请重试。"
     },
     "dashboardDataProviderType": {
-        "widgetData": "Filter widgets"
+        "widgetData": "筛选组件"
     },
     "dashboardServiceRefinementForms": {
-        "dashboardFilters": "Dashboard filters"
+        "dashboardFilters": "仪表盘筛选"
     }
 }

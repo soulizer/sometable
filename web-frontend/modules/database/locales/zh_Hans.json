@@ -34,7 +34,13 @@
                     "message": "An error occurred while retrieving the adjacent row"
                 }
             }
-        }
+        },
+        "adjacentRow.toast.notFound.next.title": "没有更多行",
+        "adjacentRow.toast.notFound.next.message": "没有下一行",
+        "adjacentRow.toast.notFound.previous.title": "没有更多行",
+        "adjacentRow.toast.notFound.previous.message": "没有上一行",
+        "adjacentRow.toast.error.title": "发生错误",
+        "adjacentRow.toast.error.message": "获取相邻行时发生错误"
     },
     "webhookModal": {
         "title": "{name} Webhooks",
@@ -86,8 +92,8 @@
             "description": "此 webhook 不会一次接收所有更改行的信息。请将其转换为批处理样式的事件类型。这会将 JSON 正文负载更改为包含多行的格式。",
             "convert": "转换"
         },
-        "triggerWhenFieldsHaveChanged": "Trigger when fields have changed",
-        "helpTriggerWhenFieldsHaveChanged": "Will only be triggered if the cell value of the chosen fields changes."
+        "triggerWhenFieldsHaveChanged": "字段值变化时触发",
+        "helpTriggerWhenFieldsHaveChanged": "仅当所选字段的单元格值发生变化时才会触发。"
     },
     "webhook": {
         "details": "详情",
@@ -103,16 +109,16 @@
     "sidebar": {
         "viewAPI": "查看 API 文档",
         "createTable": "创建表",
-        "adminContentCategory": "Content"
+        "adminContentCategory": "内容"
     },
     "sidebarItem": {
         "exportTable": "导出表",
-        "importFile": "Import file",
-        "webhooks": "Webhooks",
-        "lastSynced": "Last synced",
-        "notSynced": "not synced",
-        "sync": "Sync table",
-        "updateSyncConfig": "Update sync configuration"
+        "importFile": "导入文件",
+        "webhooks": "Webhook",
+        "lastSynced": "最近同步",
+        "notSynced": "尚未同步",
+        "sync": "同步数据表",
+        "updateSyncConfig": "更新同步配置"
     },
     "duplicateTableJobType": {
         "duplicating": "副本创建中",
@@ -124,7 +130,7 @@
         "read": "读取",
         "update": "更新",
         "delete": "删除",
-        "tokenPrefix": "Token:",
+        "tokenPrefix": "令牌：",
         "viewAPIDocs": "查看 API 文档",
         "generateNewToken": "生成新Token",
         "showOrHide": "显示或隐藏Token",
@@ -181,7 +187,8 @@
         "id": "ID",
         "name": "名称",
         "type": "类型",
-        "compatibleFilters": "兼容的过滤器"
+        "compatibleFilters": "兼容的过滤器",
+        "descriptionField": "字段描述"
     },
     "apiDocsTableListRows": {
         "description": "要列出 *{name}* 表中的行，必须向 *{name}* 端点发出 `GET` 请求。响应是分页的，默认情况下会返回第一页。正确的页面可以通过提供 `page` 和 `size` 查询参数来获取。",
@@ -197,9 +204,9 @@
         "exclude": "默认情况下所有字段都包含在响应中。您可以通过提供 exclude 查询参数来选择要排除的字段子集。\n\n #### With `user_field_names`:\n\n ` exclude` 应该是要从结果中排除的字段名称的逗号分隔列表。例如，如果您提供以下 GET 参数：`exclude=My Field,-My Field 2`，则将排除这些字段。\n\n包含逗号的字段名称必须用引号括起来：`\"Name ,\"`。如果字段名称包含引号，则必须使用 `\\` 字符对其进行转义。例如：`Name \\\"` .\n\n #### 没有 `user_field_names`:\n\n `exclude` 应该是一个逗号分隔的 `field_` 列表，后跟要从结果中排除的字段的 id。例如：如果您提供以下 GET 参数 `exclude=field_1,field_2`，则 id 为 `1` 和 id `2` 的字段将被排除。",
         "viewId": "默认情况下，不应用查询参数中定义的过滤器和排序。您可以通过在 `view_id` GET 参数中提供视图的`id`来添加视图的过滤器和排序。对于例如，如果您提供以下 GET 参数 `view_id=1`，则将应用在 id 为 `1` 的视图中定义的过滤器和排序。您可以在任何给定视图的上下文菜单中找到 `view_id`。它是视图名称后面括号中的数字。\n\n #### 使用 `filter__{'{'}field{'}'}__{'{'}filter{'}'}` \n\n 查询参数中提供的过滤器和视图中定义的过滤器都将被应用。 \n\n #### 使用 `order_by` \n\n 如果提供了 `order_by`，则视图中定义的排序将被忽略。",
         "test": "`{'{'}\"filter_type\": \"AND\", \"filters\": [{'{'}\"field\": \"Name\", \"type\": \"equal\", \"value\": \"test\"{'}'}]{'}'}",
-        "filters": "Rows can optionally be filtered using the same view filters that are available for the views. This parameter accepts a JSON serialized string containing the filter tree to apply to this view. The filter tree is a nested structure containing the filters that need to be applied. \n\n#### With `user_field_names`:\n\nAn example of a valid filter tree is the following: `{'{'}\"filter_type\": \"AND\", \"filters\": [{'{'}\"field\": \"Name\", \"type\": \"equal\", \"value\": \"test\"{'}'}]{'}'}`.\n\n#### Without `user_field_names`:\n\nFor example, if you optionally provide the following GET parameter: `{'{'}\"filter_type\": \"AND\", \"filters\": [{'{'}\"field\": 1, \"type\": \"equal\", \"value\": \"test\"{'}'}]{'}'}`\n\nPlease note that if this parameter is provided, all other `filter__{'{'}field{'}'}__{'{'}filter{'}'}` will be ignored, as well as the filter_type parameter.",
-        "filtersBuilder": "Open filters parameter builder",
-        "join": "Makes it possible to request a lookup of field values from a target table through existing link row fields. The parameter name has to be the name of an existing link row field, followed by __join. The value should be a list of field names for which we want to lookup additional values. You can provide one or multiple target fields. It is not possible to lookup a value of a link row field in the target table. Read access to the target table is required.\n\n #### With `user_field_names`:\n\n `join` should be a comma separated list of field names to be included in results. For example: If you provide the following GET parameter `LinkRowField__join=MyField,MyField2` then the values of `MyField` and `My Field2` in the table linked by `LinkRowField` will be included in the response .\n\n#### Without `user_field_names`:\n\n `join` should be a comma separated list of `field_` followed by the id of the field to include in the results. For example: If you provide the following GET parameter `field_1__join=field_2,field_3` then the values of `field_2` and `field_3` in the table linked by `field_1` will be included in the response."
+        "filters": "可使用视图中的筛选条件对行进行筛选。该参数接受 JSON 序列化后的筛选条件。",
+        "filtersBuilder": "打开筛选参数构建器",
+        "join": "可通过已有的链接行字段，向目标数据表请求字段值的查找结果。"
     },
     "apiDocsIntro": {
         "intro": "{name} 数据库提供了一种将数据与任何外部系统集成的简便方法。API 遵循 REST 语义，使用 JSON 编码对象并依赖标准 HTTP 代码、机器和人类可读错误来指示操作结果.",
@@ -268,21 +275,21 @@
         "exampleValue": "示例值",
         "example": "完整示例",
         "field": "字段 {name}",
-        "deprecated": "deprecated"
+        "deprecated": "已弃用"
     },
     "fieldTextSubForm": {
         "placeholder": "默认文本"
     },
     "fieldSingleSelectSubForm": {
         "optionsLabel": "选项",
-        "defaultOptionLabel": "Default option"
+        "defaultOptionLabel": "默认选项"
     },
     "fieldSingleSelectDropdown": {
         "notFound": "未找到选项"
     },
     "fieldmultipleCollaboratorsDropdown": {
         "notFound": "未找到合作者",
-        "identities": "Identities"
+        "identities": "身份"
     },
     "fieldDateSubForm": {
         "dateFormatLabel": "日期格式",
@@ -293,21 +300,21 @@
         "timeFormatLabel": "时间格式",
         "24小时": "24 小时",
         "12小时": "12 小时",
-        "showTimezoneLabel": "Show timezone",
-        "forceTimezoneLabel": "Set timezone for all collaborators",
-        "forceTimezoneValue": "Timezone",
-        "addTimezoneOffsetLabel": "Convert values (add {utcOffsetDiff} minutes)",
-        "subTimezoneOffsetLabel": "Convert values (subtract {utcOffsetDiff} minutes)",
-        "24Hour": "24 hour",
-        "12Hour": "12 hour"
+        "showTimezoneLabel": "显示时区",
+        "forceTimezoneLabel": "为所有协作者固定时区",
+        "forceTimezoneValue": "时区",
+        "addTimezoneOffsetLabel": "转换时间值（增加 {utcOffsetDiff} 分钟）",
+        "subTimezoneOffsetLabel": "转换时间值（减少 {utcOffsetDiff} 分钟）",
+        "24Hour": "24 小时制",
+        "12Hour": "12 小时制"
     },
     "fieldLinkRowSubForm": {
         "noTable": "您至少需要在同一个数据库中链接另一个表。",
         "selectTableLabel": "选择要链接的表",
         "hasRelatedFieldLabel": "在链接表中创建相关字段",
-        "limitToView": "Limit selection to view",
-        "limitToViewDescription": "Note that this is only visual. It's still possible to make relationships outside of the view via the related table or API.",
-        "allowMultipleRelations": "Allow multiple relationships"
+        "limitToView": "将选择范围限制在视图内",
+        "limitToViewDescription": "请注意，这仅是显示层面的限制，仍可通过关联数据表在视图之外建立关联关系。",
+        "allowMultipleRelations": "允许多个关联"
     },
     "fieldSelectOptions": {
         "add": "添加一个选项"
@@ -318,38 +325,38 @@
         "decimal": "十进制小数",
         "decimalPlacesLabel": "小数位数",
         "allowNegative": "允许负数",
-        "separatorLabel": "Thousand and decimal separator",
-        "prefixPlaceholder": "Prefix",
-        "suffixPlaceholder": "Suffix",
-        "prefixAndSuffixLabel": "Prefix / suffix",
-        "spaceComma": "Space, comma (1 000 000,00)",
-        "spacePeriod": "Space, period (1 000 000.00)",
-        "commaPeriod": "Comma, period (1,000,000.00)",
-        "periodComma": "Period, comma (1.000.000,00)",
-        "noFormatting": "No formatting",
-        "defaultValueLabel": "Default value",
-        "defaultValuePlaceholder": "Enter a default value"
+        "separatorLabel": "千位与小数分隔符",
+        "prefixPlaceholder": "前缀",
+        "suffixPlaceholder": "后缀",
+        "prefixAndSuffixLabel": "前缀 / 后缀",
+        "spaceComma": "空格、逗号（1 000 000,00）",
+        "spacePeriod": "空格、句点（1 000 000.00）",
+        "commaPeriod": "逗号、句点（1,000,000.00）",
+        "periodComma": "句点、逗号（1.000.000,00）",
+        "noFormatting": "无格式",
+        "defaultValueLabel": "默认值",
+        "defaultValuePlaceholder": "输入默认值"
     },
     "fieldContext": {
         "editField": "编辑字段",
         "deleteField": "删除字段",
         "hideField": "隐藏字段",
         "showField": "显示字段",
-        "changePrimaryField": "Change primary field"
+        "changePrimaryField": "更改主字段"
     },
     "fieldForm": {
         "name": "名称",
         "fieldAlreadyExists": "同名字段已经存在。",
         "nameNotAllowed": "该字段名不允许。",
         "nameTooLong": "这个字段名太长了。",
-        "description": "Description",
-        "addDescription": "Add description",
-        "dbIndex": "Index",
-        "dbIndexError": "This field type cannot have an index. Please remove it before saving or change the field type.",
-        "dbIndexDescription": "Indexing can significantly improve filtering performance, but slows down create, update, and delete operations.",
-        "defaultValueDisabledByConstraint": "Cannot set a default value with a unique constraint",
-        "defaultValueOverriddenByView": "A view-level default value is set for this field and will take precedence over this default value.",
-        "dbIndexDisabledTooltip": "Indexing is not available for this field type."
+        "description": "描述",
+        "addDescription": "添加描述",
+        "dbIndex": "索引",
+        "dbIndexError": "该字段类型不能建立索引，请保存前移除索引或更换字段类型。",
+        "dbIndexDescription": "建立索引可显著提升筛选性能，但会降低新增、更新与删除的速度。",
+        "defaultValueDisabledByConstraint": "设置唯一约束时无法设置默认值。",
+        "defaultValueOverriddenByView": "该字段已在视图级别设置了默认值，将优先于此处设置的默认值。",
+        "dbIndexDisabledTooltip": "该字段类型不支持建立索引。"
     },
     "fieldLookupSubForm": {
         "noTable": "您至少需要一个链接行字段来创建查找的字段。",
@@ -373,7 +380,7 @@
     },
     "selectRowContent": {
         "search": "搜索行",
-        "hideFields": "Hide fields"
+        "hideFields": "隐藏字段"
     },
     "rowEditModal": {
         "addField": "添加字段",
@@ -399,7 +406,7 @@
     },
     "rowEditFieldLinkRow": {
         "addLink": "添加另一个链接",
-        "keepOnlyOneValue": "Keep only one value. This field only supports one relationship. The value is saved if there is only one relationship left."
+        "keepOnlyOneValue": "仅保留一个值。该字段仅支持单个关联，若剩余关联仅一个时会保存该值。"
     },
     "tableCSVImporter": {
         "chooseFileLabel": "选择 CSV 文件",
@@ -415,12 +422,12 @@
         "emptyCSV": "此 CSV 文件为空。"
     },
     "importer": {
-        "fieldDefaultName": "Field {count}",
-        "loading": "Loading file",
-        "decoding": "Decoding data",
-        "parsing": "Parsing data",
-        "preparing": "Preparing data",
-        "inProgress": "In progress..."
+        "fieldDefaultName": "字段 {count}",
+        "loading": "正在加载文件",
+        "decoding": "正在解码数据",
+        "parsing": "正在解析数据",
+        "preparing": "正在准备数据",
+        "inProgress": "进行中…"
     },
     "tableForm": {
         "name": "名称"
@@ -476,10 +483,10 @@
         "selectImportMessage": "请选择要导入的数据。",
         "filePreview": "文件内容预览",
         "importPreview": "导入预览",
-        "defaultName": "Table",
-        "useUpsertField": "Update rows if they already exist",
-        "upsertTooltip": "Match existing rows using a unique field to overwrite data with imported values.",
-        "restoredFile": "Importing file \"{name}\"..."
+        "defaultName": "数据表",
+        "useUpsertField": "若行已存在则更新",
+        "upsertTooltip": "使用唯一字段匹配已有行，并用导入值覆盖其数据。",
+        "restoredFile": "正在导入文件“{name}”…"
     },
     "formulaAdvancedEditContext": {
         "textAreaFormulaInputPlaceholder": "点击编辑公式",
@@ -503,7 +510,7 @@
     "viewsContext": {
         "searchView": "搜索视图",
         "noViews": "未找到视图",
-        "collaborative": "Collaborative"
+        "collaborative": "协作"
     },
     "viewFilterTypeLinkRow": {
         "unnamed": "未命名行 {value}",
@@ -519,10 +526,10 @@
         "or": "或",
         "relatedFieldNotFound": "未找到相关字段。",
         "filterTypeNotFound": "过滤器类型不兼容。",
-        "addFilterGroup": "Add filter group",
-        "noCompatibleFilterTypesErrorTitle": "No compatible filter types",
-        "noCompatibleFilterTypesErrorMessage": "None of your fields have any compatible filter types",
-        "copyFromView": "Copy from another view"
+        "addFilterGroup": "添加筛选条件组",
+        "noCompatibleFilterTypesErrorTitle": "没有兼容的筛选类型",
+        "noCompatibleFilterTypesErrorMessage": "您的字段都没有兼容的筛选类型",
+        "copyFromView": "从其他视图复制"
     },
     "viewFilterTypeFileTypeDropdown": {
         "image": "图片",
@@ -543,10 +550,10 @@
         "EnablePassword": "使用密码限制访问",
         "DisablePassword": "访问受密码保护",
         "ChangePassword": "更改",
-        "shareViewText": "Private shareable link allows anyone to see the data in this view.",
-        "createPrivateLink": "Create a private link",
-        "notSharedYetText": "Allow anyone to see the data in this view or sync events to your external calendar.",
-        "shareViewWarningTitle": "Warning"
+        "shareViewText": "私有分享链接允许任何拿到链接的人查看此视图的数据。",
+        "createPrivateLink": "创建私有链接",
+        "notSharedYetText": "允许任何人查看此视图的数据，或将事件同步到外部日历。",
+        "shareViewWarningTitle": "提示"
     },
     "viewSortContext": {
         "noSortTitle": "你还没有创建排序",
@@ -554,7 +561,7 @@
         "sortBy": "排序依据",
         "thenBy": "然后再依据",
         "addSort": "选择要排序的字段",
-        "hiddenFieldWarning": "One or more sorts reference hidden fields that won't be visible to editors and lower roles."
+        "hiddenFieldWarning": "部分排序字段已隐藏，编辑者及更低角色将无法看到这些排序。"
     },
     "viewSort": {
         "sort": "排序 | 1 次排序 | {count} 次排序"
@@ -602,25 +609,27 @@
     },
     "viewFilter": {
         "filter": "过滤器 | 1 个过滤器 | {count} 个过滤器",
-        "hasAllValuesEqual": "has all values equal",
-        "hasValueHigherThan": "has value higher than",
-        "hasValueHigherThanOrEqual": "has value higher than or equal",
-        "hasValueLowerThan": "has value lower than",
-        "hasValueLowerThanOrEqual": "has value lower than or equal",
-        "hasNotValueHigherThan": "doesn't have value higher than",
-        "hasNotValueHigherThanOrEqual": "doesn't have value higher than or equal",
-        "hasNotValueLowerThan": "doesn't have value lower than",
-        "hasNotValueLowerThanOrEqual": "doesn't have value lower than or equal"
+        "hasAllValuesEqual": "所有值都等于",
+        "hasValueHigherThan": "值大于",
+        "hasValueHigherThanOrEqual": "值大于或等于",
+        "hasValueLowerThan": "值小于",
+        "hasValueLowerThanOrEqual": "值小于或等于",
+        "hasNotValueHigherThan": "值不大于",
+        "hasNotValueHigherThanOrEqual": "值不大于或等于",
+        "hasNotValueLowerThan": "值不小于",
+        "hasNotValueLowerThanOrEqual": "值不小于或等于",
+        "hasEmptyValue": "为空",
+        "hasNotEmptyValue": "不为空"
     },
     "viewContext": {
         "exportView": "导出视图",
         "duplicateView": "创建副本视图",
         "renameView": "重命名视图",
-        "webhooks": "Webhooks",
+        "webhooks": "Webhook",
         "importFile": "导入文件",
         "deleteView": "删除视图",
-        "copyConfiguration": "Copy configuration from view",
-        "defaultRowValues": "Default row values",
+        "copyConfiguration": "从视图复制配置",
+        "defaultRowValues": "默认行值",
         "toPersonal": "转为个人视图",
         "toCollaborative": "转为协作视图"
     },
@@ -631,7 +640,7 @@
     },
     "viewForm": {
         "name": "名称",
-        "whoCanEdit": "Who can edit this view?"
+        "whoCanEdit": "谁可以编辑此视图？"
     },
     "galleryViewHeader": {
         "customizeCards": "自定义卡片"
@@ -646,11 +655,11 @@
         "duplicate": "创建副本字段",
         "sortField": "排序",
         "hideField": "隐藏字段",
-        "groupByField": "Group by",
-        "ungroupByField": "Don't group by",
-        "dataSyncField": "The field is read only and part of the table's data sync.",
-        "dataSyncFieldTwoWaySync": "The field is synchronized with the table's data sync.",
-        "noWriteValues": "Changes to this field are restricted."
+        "groupByField": "分组依据",
+        "ungroupByField": "不分组",
+        "dataSyncField": "该字段为只读，属于数据表的数据同步。",
+        "dataSyncFieldTwoWaySync": "该字段与数据表的数据同步保持同步。",
+        "noWriteValues": "该字段的修改受到限制。"
     },
     "gridViewRow": {
         "rowNotMatchingFilters": "行不匹配过滤器",
@@ -667,19 +676,19 @@
         "deleteRows": "删除行",
         "copyCells": "复制单元格",
         "rowCount": "无行 | 1 行 | {count} 行",
-        "copyRowURL": "Copy Row URL",
-        "copiedRowURL": "Copied Row URL",
-        "copiedRowURLMessage": "Row {id}'s URL has been copied to your clipboard.",
-        "copyCellsWithHeader": "Copy cells with header",
-        "generateCellsValues": "Generate values with AI",
-        "generateAllAiValues": "Generate all AI values",
-        "promptBroken": "The prompt is broken and must be fixed before values can be generated.",
-        "hiddenRowsInsertedTitle": "Rows added",
-        "hiddenRowsInsertedMessage": "{number} newly added rows have been added, but are not visible because of the active filters.",
-        "tooManyItemsTitle": "Too many items",
-        "tooManyItemsDescription": "It's not possible to update more than {limit} rows at once, so we've only updated the first.",
-        "AIValuesGenerationErrorTitle": "AI value generation failed",
-        "AIValuesGenerationErrorMessage": "Please check your API_KEY and verify the selected model."
+        "copyRowURL": "复制行链接",
+        "copiedRowURL": "已复制行链接",
+        "copiedRowURLMessage": "第 {id} 行的链接已复制到剪贴板。",
+        "copyCellsWithHeader": "复制单元格（含表头）",
+        "generateCellsValues": "使用 AI 生成值",
+        "generateAllAiValues": "生成所有 AI 值",
+        "promptBroken": "提示词有误，需先修正后才能生成值。",
+        "hiddenRowsInsertedTitle": "已添加行",
+        "hiddenRowsInsertedMessage": "已新增 {number} 行，但受当前筛选条件影响暂不可见。",
+        "tooManyItemsTitle": "条目过多",
+        "tooManyItemsDescription": "一次最多更新 {limit} 行，因此只更新了前 {limit} 行。",
+        "AIValuesGenerationErrorTitle": "AI 值生成失败",
+        "AIValuesGenerationErrorMessage": "请检查 API_KEY 并确认所选模型可用。"
     },
     "gridViewFieldFile": {
         "dropHere": "放在这里",
@@ -687,7 +696,7 @@
     },
     "gridViewFieldLinkRow": {
         "unnamed": "未命名行 {value}",
-        "keepOnlyOneValue": "Keep only one value"
+        "keepOnlyOneValue": "仅保留一个值"
     },
     "gridViewIdentifierOptions": {
         "id": "行标识符",
@@ -704,7 +713,7 @@
         "failedDescription": "由于服务器错误，导出失败。",
         "cancelledTitle": "导出取消",
         "cancelledDescription": "导出被取消。",
-        "title": "Export {name}"
+        "title": "导出 {name}"
     },
     "exporterTypeChoices": {
         "formatLabel": "您要导出到哪种格式？"
@@ -712,8 +721,8 @@
     "exportTableForm": {
         "viewLabel": "选择要导出的视图：",
         "typeError": "没有可用的导出器类型，请选择其他的视图或整个表。",
-        "includeRowId": "Include row ID",
-        "includePrimaryField": "Include primary field"
+        "includeRowId": "包含行 ID",
+        "includePrimaryField": "包含主字段"
     },
     "exportTableLoadingBar": {
         "export": "导出",
@@ -728,7 +737,7 @@
         "unitSeparator": "单元分隔符",
         "encodingLabel": "编码",
         "firstRowIsHeaderLabel": "第一行是字段名",
-        "includeHeader": "Include field names as header"
+        "includeHeader": "包含字段名作为表头"
     },
     "apiDocsDatabase": {
         "pageTitle": "{name} 数据库 API 文档",
@@ -765,9 +774,9 @@
         "stdDev": "标准差",
         "stdDevShort": "标准差",
         "variance": "方差",
-        "count": "Count",
-        "distribution": "Distribution",
-        "othersCount": "Others"
+        "count": "计数",
+        "distribution": "分布",
+        "othersCount": "其他"
     },
     "databaseForm": {
         "importLabel": "要导入现有数据吗？",
@@ -793,22 +802,22 @@
         "errorJobAlreadyRunningTitle": "已经在运行",
         "errorJobAlreadyRunningDescription": "另一个导入作业已在运行。您需要等待该作业完成后再开始另一个作业。",
         "linkError": "链接应该是这样的：https://airtable.com/shrxxxxxxxxxxxxxx",
-        "errorRequiresAuthenticationTitle": "Authentication required",
-        "errorRequiresAuthenticationDescription": "This base can only be imported with additional authentication. The \"Session authentication\" option below has been enabled for you. Follow the instructions to copy the \"__Host-airtable-session\" and \"__Host-airtable-session.sig\" cookie values into the fields, and try again.",
-        "errorBaseNotPublicTitle": "Base could not be accessed",
-        "errorBaseNotPublicDescription": "Airtable didn't return a publicly shared base for this link. Open the link in your browser to check that it loads the base you want to import and that the full URL was copied correctly, then try again.",
-        "openSharedLink": "Open the shared link",
-        "skipFiles": "Skip importing files",
-        "skipFilesHelper": "An Airtable base with many files can slow down the import. Enabling this skips the import of the files.",
-        "useSession": "Session authentication",
-        "useSessionHelper": "Use this if the publicly shared base requires authentication.",
-        "sessionDescription": "If the import fails because the base requires authentication, then it could be that the organizational settings in Airtable prevent accessing the Airtable base without authenticating first. To do this, the session and signature must be manually extracted. Visit the URL of the publicly shared base in your browser and sign in, if needed. Click on the application menu by clicking in the top right corner -> \"More tools\" -> \"Developer tools\". Open the \"Application\" (in Firefox \"Storage\") tab and click on \"https://airtable.com\". Now find the \"__Host-airtable-session\" and \"__Host-airtable-session.sig\" cookie values, and paste them in the inputs below.",
-        "sessionLabel": "Session cookie (__Host-airtable-session)",
-        "sessionSignatureLabel": "Session signature cookie (__Host-airtable-session.sig)"
+        "errorRequiresAuthenticationTitle": "需要身份验证",
+        "errorRequiresAuthenticationDescription": "该 Base 需要通过额外身份验证才能导入，可尝试下方“会话身份验证”选项。",
+        "errorBaseNotPublicTitle": "无法访问该 Base",
+        "errorBaseNotPublicDescription": "Airtable 未返回该链接的公开 Base，请在浏览器中打开链接确认其已公开分享。",
+        "openSharedLink": "打开分享链接",
+        "skipFiles": "跳过导入文件",
+        "skipFilesHelper": "文件较多的 Airtable Base 会拖慢导入速度，启用后会跳过文件导入。",
+        "useSession": "会话身份验证",
+        "useSessionHelper": "当公开分享的 Base 需要身份验证时使用此项。",
+        "sessionDescription": "如果导入因 Base 需要身份验证而失败，可能是组织设置限制所致。",
+        "sessionLabel": "会话 Cookie（__Host-airtable-session）",
+        "sessionSignatureLabel": "会话签名 Cookie（__Host-airtable-session.sig）"
     },
     "chooseSingleSelectField": {
         "addSelectField": "添加单选字段",
-        "warningWhenNothingToChooseOrCreate": "There are no single select fields to choose from and you do not have permissions to make one."
+        "warningWhenNothingToChooseOrCreate": "没有可选的单选字段，且您没有创建权限。"
     },
     "viewDecoratorContext": {
         "addDecorator": "添加装饰器"
@@ -821,13 +830,13 @@
         "descriptionPlaceholder": "描述",
         "showWhenMatchingConditions": "条件满足时显示",
         "addCondition": "添加条件",
-        "includeAllSelectOptions": "include all select options",
-        "includeAllSelectOptionsHelper": "Choose the select options that must be included in the form using this dropdown",
-        "addConditionGroup": "Add condition group",
-        "showFieldAs": "Show field as",
-        "noSelectOptions": "There are no select options available.",
-        "noCollaboratorsAvailable": "There are no collaborators available.",
-        "cannotSumitValues": "This field is read-only and won't be displayed in the form."
+        "includeAllSelectOptions": "包含所有选项",
+        "includeAllSelectOptionsHelper": "通过此下拉框选择必须包含在表单中的选项。",
+        "addConditionGroup": "添加条件组",
+        "showFieldAs": "字段显示为",
+        "noSelectOptions": "没有可用的选项。",
+        "noCollaboratorsAvailable": "没有可用的协作者。",
+        "cannotSumitValues": "该字段为只读，不会显示在表单中。"
     },
     "duplicateFieldContext": {
         "duplicate": "创建副本字段",
@@ -848,9 +857,9 @@
         "snapshot": "快照",
         "importingState": "正在创建",
         "reset": "创建另一个",
-        "cancel": "Cancel",
-        "noSnapshots": "No snapshots for this application yet.",
-        "nameAlreadyExists": "A snapshot with this name already exists."
+        "cancel": "取消",
+        "noSnapshots": "该应用还没有快照。",
+        "nameAlreadyExists": "已存在同名快照。"
     },
     "deleteSnapshotModal": {
         "title": "删除快照",
@@ -877,12 +886,12 @@
         "titlePlaceholder": "标题",
         "descriptionPlaceholder": "描述",
         "noFields": "此表单没有任何字段。单击左侧边栏中的字段添加一个。",
-        "noFieldsTitle": "This form doesn't have any fields",
-        "noFieldsContent": "Click on a field in the left sidebar to add one."
+        "noFieldsTitle": "该表单还没有任何字段",
+        "noFieldsContent": "点击左侧栏中的字段即可添加。"
     },
     "formViewFooterLinks": {
         "poweredBy": "",
-        "reportAbuse": "Report abuse"
+        "reportAbuse": "举报滥用"
     },
     "gridViewRowHeight": {
         "height": "行高",
@@ -909,14 +918,14 @@
         "group": "分组",
         "chooseField": "选择用于分组的字段",
         "groupBy": "分组",
-        "thenBy": "Then by",
-        "maxGroupBysReached": "You can group by up to {count} fields.",
-        "collapseAllGroups": "Collapse all",
-        "expandAllGroups": "Expand all",
-        "layout": "Group layout",
-        "layoutSection": "Sections",
-        "layoutColumn": "Columns",
-        "hiddenFieldWarning": "One or more group bys reference hidden fields that won't be visible to editors and lower roles.",
+        "thenBy": "然后按",
+        "maxGroupBysReached": "最多可按 {count} 个字段分组。",
+        "collapseAllGroups": "全部折叠",
+        "expandAllGroups": "全部展开",
+        "layout": "分组布局",
+        "layoutSection": "区块",
+        "layoutColumn": "列",
+        "hiddenFieldWarning": "部分分组字段已被隐藏，编辑者及更低角色将无法看到这些分组。",
         "title": "分组"
     },
     "adminType": {
@@ -926,243 +935,243 @@
         "title": "Views"
     },
     "viewsAdminTable": {
-        "allViews": "All views",
-        "onlyPublic": "Only publicly shared views",
-        "name": "View",
-        "type": "Type",
-        "table": "Table",
-        "database": "Database",
-        "workspace": "Workspace",
-        "public": "Publicly shared",
-        "passwordProtected": "Password",
-        "ownedBy": "Owner",
-        "createdOn": "Created on",
-        "allWorkspaces": "All workspaces"
+        "allViews": "全部视图",
+        "onlyPublic": "仅公开分享的视图",
+        "name": "视图",
+        "type": "类型",
+        "table": "数据表",
+        "database": "数据库",
+        "workspace": "工作区",
+        "public": "已公开分享",
+        "passwordProtected": "密码",
+        "ownedBy": "所有者",
+        "createdOn": "创建时间",
+        "allWorkspaces": "全部工作区"
     },
     "viewsAdminRotateSlugModal": {
-        "title": "Refresh URL",
-        "refreshWarning": "Are you sure that you want to refresh the URL of {viewName}? After refreshing, a new URL will be generated and it will not be possible to access the view via the old URL. Everyone that has the old URL, won't be able to access the view anymore.",
-        "generateNewURL": "Generate new URL"
+        "title": "刷新链接",
+        "refreshWarning": "确认要刷新 {viewName} 的链接吗？刷新后将生成新链接，旧链接将无法再访问该视图。",
+        "generateNewURL": "生成新链接"
     },
     "viewsAdminContext": {
-        "copyPublicUrl": "Copy public URL",
-        "openPublicView": "Open public view in new tab",
-        "filterWorkspace": "Filter by workspace",
-        "rotateSlug": "Rotate slug",
-        "makePrivate": "Make private",
-        "makePublic": "Make public",
-        "publicUrlCopiedTitle": "Public URL copied",
-        "publicUrlCopiedMessage": "The public URL of the view has been copied to your clipboard."
+        "copyPublicUrl": "复制公开链接",
+        "openPublicView": "在新标签页打开公开视图",
+        "filterWorkspace": "按工作区筛选",
+        "rotateSlug": "刷新链接",
+        "makePrivate": "设为私有",
+        "makePublic": "设为公开",
+        "publicUrlCopiedTitle": "已复制公开链接",
+        "publicUrlCopiedMessage": "该视图的公开链接已复制到剪贴板。"
     },
     "apiDocsFiltersBuilderModal": {
-        "title": "Filters parameter builder",
-        "userFieldNames": "User field names",
+        "title": "筛选参数构建器",
+        "userFieldNames": "用户字段名",
         "json": "JSON",
-        "queryParameter": "Query parameter"
+        "queryParameter": "查询参数"
     },
     "apiDocsPasswordFieldAuthentication": {
-        "title": "{name} authentication",
-        "description": "Checks if the provided password and row matches what is stored in the cell.",
-        "fieldId": "The field ID where to check the password for.",
-        "rowId": "The row ID where to check the password for.",
-        "password": "The password that must be checked if it's correct."
+        "title": "{name} 身份验证",
+        "description": "校验所提供的密码与该行单元格中存储的内容是否一致。",
+        "fieldId": "用于校验密码的字段 ID。",
+        "rowId": "用于校验密码的行 ID。",
+        "password": "需要校验的密码。"
     },
     "apiDocsListTables": {
-        "listTables": "List all tables",
-        "listTablesDescription": "This endpoint only works in combination with the token authentication. It lists all the tables that the token has either create, read, update or delete access to."
+        "listTables": "列出所有数据表",
+        "listTablesDescription": "此接口需配合令牌身份验证使用，会列出该令牌拥有创建、读取或更新权限的所有数据表。"
     },
     "fieldMultipleSelectSubForm": {
-        "optionsLabel": "Options",
-        "defaultOptionsLabel": "Default options"
+        "optionsLabel": "选项",
+        "defaultOptionsLabel": "默认选项"
     },
     "fieldBooleanSubForm": {
-        "defaultValue": "Default"
+        "defaultValue": "默认值"
     },
     "fieldDurationSubForm": {
-        "durationFormatLabel": "Duration format"
+        "durationFormatLabel": "时长格式"
     },
     "fieldSelectThroughFieldSubForm": {
-        "noTable": "You need at least one link to table field to create this field.",
-        "selectThroughFieldLabel": "Select a link to table field"
+        "noTable": "至少需要一个“链接到数据表”字段才能创建此字段。",
+        "selectThroughFieldLabel": "选择“链接到数据表”字段"
     },
     "fieldRollupSubForm": {
-        "label": "Rollup function",
-        "selectTargetFieldLabel": "Select a field to rollup"
+        "label": "汇总函数",
+        "selectTargetFieldLabel": "选择要汇总的字段"
     },
     "tableExcelImporter": {
-        "chooseFileLabel": "Choose Excel file",
-        "chooseFileDescription": "You can import an existing spreadsheet by uploading a .xlsx, .xls or .ods file. If the file contains multiple sheets you can choose which one to import.",
-        "chooseFile": "Choose Excel file",
-        "sheet": "Sheet",
-        "firstRowHeader": "First row is header",
-        "limitFileSize": "The maximum file size is {limit}MB.",
-        "limitError": "It is not possible to import more than {limit} rows.",
-        "processingError": "An error occurred while processing the Excel file: {error}",
-        "emptyError": "This Excel file does not contain any sheets.",
-        "emptySheetError": "The selected sheet is empty."
+        "chooseFileLabel": "选择 Excel 文件",
+        "chooseFileDescription": "可上传 .xlsx、.xls 或 .ods 文件导入现有表格；若文件包含多个工作表，可指定要导入的工作表。",
+        "chooseFile": "选择 Excel 文件",
+        "sheet": "工作表",
+        "firstRowHeader": "首行为表头",
+        "limitFileSize": "文件大小上限为 {limit}MB。",
+        "limitError": "最多只能导入 {limit} 行。",
+        "processingError": "处理 Excel 文件时出错：{error}",
+        "emptyError": "该 Excel 文件中没有任何工作表。",
+        "emptySheetError": "所选工作表为空。"
     },
     "createTableModal": {
-        "title": "Create new table",
-        "defaultName": "Table",
-        "importLabel": "Would you like to import existing data?",
-        "newTable": "Start with a new table"
+        "title": "创建新数据表",
+        "defaultName": "数据表",
+        "importLabel": "是否需要导入现有数据？",
+        "newTable": "从新数据表开始"
     },
     "createTable": {
-        "showTable": "show table",
-        "addButton": "Add table",
-        "uploading": "Uploading...",
-        "preparing": "Preparing data...",
-        "importError": "Something went wrong during the file import",
-        "stateRowCreation": "Importing...",
-        "statePreValidation": "Validating data...",
-        "stateCreateTable": "Creating table...",
-        "importingTable": "Importing table \"{name}\"..."
+        "showTable": "显示数据表",
+        "addButton": "添加数据表",
+        "uploading": "正在上传…",
+        "preparing": "正在准备数据…",
+        "importError": "导入文件时出现问题",
+        "stateRowCreation": "正在导入…",
+        "statePreValidation": "正在校验数据…",
+        "stateCreateTable": "正在创建数据表…",
+        "importingTable": "正在导入数据表“{name}”…"
     },
     "importErrorReport": {
-        "reportTitleFailure": "Failing rows",
-        "reportTitleSuccess": "Import successful but...",
-        "reportMessage": "The following row indexes couldn't be imported:"
+        "reportTitleFailure": "导入失败的行",
+        "reportTitleSuccess": "导入成功，但……",
+        "reportMessage": "以下行索引无法导入："
     },
     "fieldLongTextSubForm": {
-        "enableRichTextFormatting": "Enable rich text formatting"
+        "enableRichTextFormatting": "启用富文本格式"
     },
     "viewSearch": {
-        "clearSearch": "Clear search"
+        "clearSearch": "清除搜索"
     },
     "viewFieldConditionsForm": {
-        "addCondition": "Add condition",
-        "addConditionGroup": "Add condition group"
+        "addCondition": "添加条件",
+        "addConditionGroup": "添加条件组"
     },
     "viewFieldConditionItem": {
-        "filterMisconfigured": "The field this filter is associated with has been trashed."
+        "filterMisconfigured": "此筛选关联的字段已被移至回收站。"
     },
     "copyViewConfigurationModal": {
-        "title": "Copy configuration to {name}",
-        "sourceView": "Copy from view",
-        "selectAll": "Select all",
-        "clearAll": "Clear all",
-        "copy": "Copy configuration"
+        "title": "将配置复制到 {name}",
+        "sourceView": "从视图复制",
+        "selectAll": "全选",
+        "clearAll": "全部清除",
+        "copy": "复制配置"
     },
     "copyViewConfigurationOption": {
-        "fieldVisibility": "Field visibility",
-        "fieldOrder": "Field order",
-        "fieldWidths": "Field widths",
-        "viewSettings": "Settings ({settings})",
-        "viewSettingsRowHeightSize": "row height",
-        "viewSettingsFrozenColumnCount": "frozen columns",
-        "viewSettingsRowIdentifierType": "row identifier",
-        "viewSettingsGroupByLayout": "group layout",
-        "filters": "Filters",
-        "sorts": "Sorts",
-        "groupBys": "Groups",
-        "decorations": "Decorations",
-        "defaultRowValues": "Default row values"
+        "fieldVisibility": "字段可见性",
+        "fieldOrder": "字段顺序",
+        "fieldWidths": "字段宽度",
+        "viewSettings": "设置（{settings}）",
+        "viewSettingsRowHeightSize": "行高",
+        "viewSettingsFrozenColumnCount": "冻结列数",
+        "viewSettingsRowIdentifierType": "行标识",
+        "viewSettingsGroupByLayout": "分组布局",
+        "filters": "筛选条件",
+        "sorts": "排序",
+        "groupBys": "分组",
+        "decorations": "装饰",
+        "defaultRowValues": "默认行值"
     },
     "createViewLink": {
-        "inCompatibleWithDataSync": "This view type is not compatible with a data sync table."
+        "inCompatibleWithDataSync": "该视图类型与数据同步数据表不兼容。"
     },
     "viewGroupBy": {
         "groupBy": "Group | Group by 1 fields | Group by {count} fields"
     },
     "gridViewGroupByBanner": {
-        "emptyValue": "(Empty)",
-        "expandGroup": "Expand group",
-        "collapseGroup": "Collapse group"
+        "emptyValue": "（空）",
+        "expandGroup": "展开分组",
+        "collapseGroup": "折叠分组"
     },
     "defaultValuesModal": {
-        "title": "Default values for {name}",
-        "setDefaultValue": "Set default value",
-        "removeDefaultValue": "Remove default value",
-        "staticValue": "Static value"
+        "title": "{name} 的默认值",
+        "setDefaultValue": "设置默认值",
+        "removeDefaultValue": "移除默认值",
+        "staticValue": "固定值"
     },
     "viewOwnershipType": {
         "collaborative": "Collaborative",
         "collaborativeDescription": "Everyone can see all the data and change the properties if they have the permissions."
     },
     "hiddenRows": {
-        "title": "Row hidden | Rows hidden",
-        "createdMessage": "The new row doesn't match the filters of this view, so it isn't shown. Ask the view's builder to set default values that match the filters. | {count} new rows don't match the filters of this view, so they aren't shown. Ask the view's builder to set default values that match the filters.",
-        "updatedMessage": "The row no longer matches the filters of this view, so it's hidden. | {count} rows no longer match the filters of this view, so they're hidden."
+        "title": "已隐藏 1 行 | 已隐藏 {count} 行",
+        "createdMessage": "新增行不符合此视图的筛选条件，因此未显示。可请视图的创建者设置默认值。",
+        "updatedMessage": "该行已不符合此视图的筛选条件，因此被隐藏。|{count} 行已不再符合筛选条件，因此被隐藏。"
     },
     "gridViewRowsAddContext": {
-        "title": "Create multiple rows",
-        "choice": "Add {rowAmountChoice} rows"
+        "title": "创建多行",
+        "choice": "添加 {rowAmountChoice} 行"
     },
     "formViewMetaControls": {
-        "whenSubmittedLabel": "When the form is submitted",
-        "showMessage": "Show a message",
-        "urlRedirect": "Redirect to URL",
-        "theMessage": "The message",
-        "theURL": "The URL"
+        "whenSubmittedLabel": "表单提交后",
+        "showMessage": "显示提示信息",
+        "urlRedirect": "跳转到链接",
+        "theMessage": "提示信息",
+        "theURL": "链接"
     },
     "databaseDashboardResourceLinks": {
-        "title": "API documentation",
-        "description": "Learn more about our code"
+        "title": "API 文档",
+        "description": "了解我们的代码"
     },
     "changePrimaryFieldModal": {
-        "title": "Change the primary field",
-        "change": "Change",
-        "primaryFieldLabel": "Primary field",
-        "existingPrimary": "\"{name}\" is currently the primary field."
+        "title": "更改主字段",
+        "change": "更改",
+        "primaryFieldLabel": "主字段",
+        "existingPrimary": "“{name}”当前是主字段。"
     },
     "publicViewMenu": {
-        "reportAbuse": "Report abuse",
-        "moreOptions": "More options"
+        "reportAbuse": "举报滥用",
+        "moreOptions": "更多选项"
     },
     "fileField": {
-        "errorEmptyFileNameTitle": "Invalid file name",
-        "errorEmptyFileNameMessage": "You can't set an empty name for a file."
+        "errorEmptyFileNameTitle": "文件名无效",
+        "errorEmptyFileNameMessage": "文件名不能为空。"
     },
     "fieldCollaboratorSubForm": {
-        "notifyUserWhenAdded": "Notify user when added",
-        "includeIdentities": "Allow assigning identities",
-        "removesIdentities": "Saving removes the identities already assigned in this field."
+        "notifyUserWhenAdded": "添加时通知用户",
+        "includeIdentities": "允许分配身份",
+        "removesIdentities": "保存后会移除此字段中已分配的身份。"
     },
     "collaboratorAddedToRowNotification": {
-        "title": "{sender} assigned you to {fieldName} in row {rowId} in {tableName}",
-        "unknownUser": "An unknown user"
+        "title": "{sender} 将您指派到 {tableName} 中第 {rowId} 行的 {fieldName}",
+        "unknownUser": "未知用户"
     },
     "formSubmittedNotification": {
         "title": "{formName} has been submitted in table {tableName}:",
         "moreValues": "0 | and 1 more field. | and {count} more fields."
     },
     "rowHistorySidebar": {
-        "name": "History",
-        "empty": "No changes yet. You'll be able to track any changes to this row here.",
-        "you": "You",
-        "anonymousUser": "Anonymous user",
-        "created": "created this row",
-        "updated": "updated this row",
-        "submitted": "submitted this row",
-        "deleted": "deleted this row",
-        "restored": "restored this row",
-        "createdUndo": "undo row creation",
-        "updatedUndo": "undo row update",
-        "deletedUndo": "undo row deletion"
+        "name": "历史记录",
+        "empty": "还没有任何更改。之后对该行的修改都会记录在这里。",
+        "you": "您",
+        "anonymousUser": "匿名用户",
+        "created": "创建了该行",
+        "updated": "更新了该行",
+        "submitted": "提交了该行",
+        "deleted": "删除了该行",
+        "restored": "恢复了该行",
+        "createdUndo": "撤销行的创建",
+        "updatedUndo": "撤销行的更新",
+        "deletedUndo": "撤销行的删除"
     },
     "fieldPasswordSubForm": {
-        "allowEndpointAuthentication": "Allow API endpoint authentication",
+        "allowEndpointAuthentication": "允许 API 接口身份验证",
         "allowEndpointAuthenticationHelp": "This exposes an endpoint where the row ID and password can be checked if it's correct. This allows using 本系统 as authentication backend.",
-        "description": "The password field can also be used by the user authentication in the application builder."
+        "description": "密码字段也可用于应用构建器中的用户身份验证。"
     },
     "rowEditFieldPassword": {
-        "setPassword": "Set password"
+        "setPassword": "设置密码"
     },
     "rowHistoryFieldPassword": {
-        "passwordSet": "The password was set",
-        "passwordUpdated": "The password was updated",
-        "passwordDeleted": "The password was deleted"
+        "passwordSet": "密码已设置",
+        "passwordUpdated": "密码已更新",
+        "passwordDeleted": "密码已删除"
     },
     "dataProviderTypes": {
-        "fieldsName": "Fields",
-        "rowName": "Clicked row",
-        "rowId": "Row ID",
-        "previousActionName": "Previous action",
-        "previousActionRowId": "Id"
+        "fieldsName": "字段",
+        "rowName": "点击的行",
+        "rowId": "行 ID",
+        "previousActionName": "上一个操作",
+        "previousActionRowId": "ID"
     },
     "userMentionInRichTextFieldNotification": {
-        "title": "{sender} mentioned you in field {fieldName} of row {rowId} in {tableName}",
-        "deletedUser": "A deleted user"
+        "title": "{sender} 在 {tableName} 中第 {rowId} 行的 {fieldName} 中提到了您",
+        "deletedUser": "已删除的用户"
     },
     "databaseImportStep": {
         "title": "Import your data",
@@ -1256,75 +1265,75 @@
         "continue": "Use this template"
     },
     "ViewFilterTypeDateUpgradeToMultiStep": {
-        "migrateButtonText": "Migrate to multi-step date filter",
-        "migrateButtonTooltip": "New filter available. Click to upgrade. It works the same."
+        "migrateButtonText": "升级为多步日期筛选",
+        "migrateButtonTooltip": "有新的筛选方式可用，点击升级，效果相同。"
     },
     "dataSyncType": {
-        "syncError": "Sync error",
-        "icalCalendar": "Sync iCal feed",
-        "postgresql": "Sync PostgreSQL table"
+        "syncError": "同步出错",
+        "icalCalendar": "同步 iCal 订阅",
+        "postgresql": "同步 PostgreSQL 数据表"
     },
     "iCalCalendarDataSync": {
-        "name": "iCal URL",
-        "description": "The iCal calendar sync, synchronizes automatically with the entries in the calendar file of the URL. It only supports the ICS (Internet Calendar and Scheduling) file type."
+        "name": "iCal 链接",
+        "description": "iCal 日历同步会自动与链接对应日历文件中的条目保持同步。"
     },
     "postgreSQLDataSync": {
         "description": "Synchronizes a PostgreSQL table with a 本系统 table matching the provided details below. Note that when the synchronization starts, it will select all the rows in the provided table. Even though 本系统 only selects data, we strongly recommend limiting the user to a read-only connection.",
-        "host": "Host",
-        "username": "Username",
-        "password": "Password",
-        "database": "Database",
-        "schema": "Schema",
-        "table": "Table",
-        "port": "Port",
-        "sslMode": "SSL Mode"
+        "host": "主机",
+        "username": "用户名",
+        "password": "密码",
+        "database": "数据库",
+        "schema": "模式",
+        "table": "数据表",
+        "port": "端口",
+        "sslMode": "SSL 模式"
     },
     "createDataSync": {
-        "next": "Next",
-        "fields": "Select the fields you would like to sync",
-        "create": "Create and sync table",
-        "error": "Something went wrong during the sync",
-        "autoAddLabel": "Auto add new properties",
+        "next": "下一步",
+        "fields": "选择要同步的字段",
+        "create": "创建并同步数据表",
+        "error": "同步过程中出现问题",
+        "autoAddLabel": "自动添加新属性",
         "autoAddHelper": "Automatically adds and synchronizes newly available properties from the data source into the 本系统 table. Note that in order for this to work, all properties must be synced.",
-        "twoWaySyncLabel": "Two-way sync",
-        "deleteUnmatchedRowsLabel": "Delete rows when they are deleted or hidden in the source",
-        "deleteUnmatchedRowsHelper": "When enabled, rows that are deleted or no longer visible in the source are also deleted from this table on every sync. When disabled, those rows are kept and reused if the source row reappears.",
-        "syncing": "Syncing data..."
+        "twoWaySyncLabel": "双向同步",
+        "deleteUnmatchedRowsLabel": "源端删除或隐藏行时同步删除",
+        "deleteUnmatchedRowsHelper": "启用后，每次同步时源端已删除或不再可见的行也会从本表删除。",
+        "syncing": "正在同步数据…"
     },
     "syncTableModal": {
-        "title": "Sync {name}",
-        "description": "This table is linked to a data sync. When you click the sync button, the data will be synchronized with the source. During this process, a lock is placed on the updated rows, which may temporarily slow down API requests or table modifications.",
-        "sync": "Sync table",
-        "hide": "Hide"
+        "title": "同步 {name}",
+        "description": "该数据表关联了数据同步。点击同步按钮后，数据将与源端保持一致。",
+        "sync": "同步数据表",
+        "hide": "隐藏"
     },
     "gridViewFreezeHandle": {
-        "freeze": "Freeze 0 columns | Freeze 1 column | Freeze {count} columns",
-        "hoverHint": "Drag to freeze columns"
+        "freeze": "冻结 0 列 | 冻结 1 列 | 冻结 {count} 列",
+        "hoverHint": "拖动以冻结列"
     },
     "configureDataSyncModal": {
-        "title": "Data sync",
-        "syncedFields": "Synced fields",
-        "syncSettings": "Sync settings",
-        "syncHistory": "Sync history"
+        "title": "数据同步",
+        "syncedFields": "已同步字段",
+        "syncSettings": "同步设置",
+        "syncHistory": "同步历史"
     },
     "dataSyncRuns": {
-        "title": "Sync history",
-        "description": "The most recent sync runs of this table, no matter who or what started them.",
-        "previousRuns": "Previous runs",
-        "noRuns": "This table hasn't been synced yet.",
-        "triggerManual": "Manual",
-        "triggerPeriodic": "Periodic",
-        "byUser": "by {name}",
-        "duration": "{seconds}s"
+        "title": "同步历史",
+        "description": "该数据表最近的同步记录，无论由谁或何种方式触发。",
+        "previousRuns": "更早的记录",
+        "noRuns": "该数据表还没有同步过。",
+        "triggerManual": "手动",
+        "triggerPeriodic": "定时",
+        "byUser": "由 {name} 触发",
+        "duration": "{seconds} 秒"
     },
     "configureDataSyncVisibleFields": {
-        "title": "Change synced fields",
-        "fields": "Synced fields",
-        "syncTable": "Sync when save"
+        "title": "更改已同步字段",
+        "fields": "已同步字段",
+        "syncTable": "保存时同步"
     },
     "configureDataSyncSettings": {
-        "title": "Change data sync",
-        "syncTable": "Sync when save"
+        "title": "更改数据同步",
+        "syncTable": "保存时同步"
     },
     "webhookDeactivatedNotification": {
         "body": "{name} webhook has been deactivated because it failed too many times consecutively."
@@ -1357,92 +1366,92 @@
         "content": "Click on the three dots next to the view to export, import, duplicate, and configure a webhook."
     },
     "fieldRules": {
-        "errorTitle": "Error during field rule processing",
-        "ruleDoesNotExist": "Rule doesn't exist",
-        "ruleTypeDoesNotExist": "Rule type doesn't exist",
-        "ruleAlreadyExists": "Rule already exists"
+        "errorTitle": "处理字段规则时出错",
+        "ruleDoesNotExist": "规则不存在",
+        "ruleTypeDoesNotExist": "规则类型不存在",
+        "ruleAlreadyExists": "规则已存在"
     },
     "fieldFormViewEditRowSubForm": {
-        "selectFormViewLabel": "Form view",
-        "description": "Each row will get a unique link that opens this form pre-filled with that row's data. Note that everyone with read access to the table and field will be able to edit the row via the form view, also viewers and visitors of a publicly shared view.",
-        "notPublicWarning": "This form view is not publicly shared. The edit link will not work until the form is made public.",
-        "notPublic": "(not public)",
-        "formDoesNotExist": "The selected form does not exist anymore."
+        "selectFormViewLabel": "表单视图",
+        "description": "每一行都会生成一个唯一链接，打开后会以该行数据预填此表单。请注意，任何人都可以通过该链接编辑此行。",
+        "notPublicWarning": "该表单视图尚未公开分享，表单公开前编辑链接将无法使用。",
+        "notPublic": "（未公开）",
+        "formDoesNotExist": "所选表单已不存在。"
     },
     "fieldButtonSubForm": {
-        "label": "Label",
-        "labelPlaceholder": "Open",
-        "unresolvedReferenceTitle": "Action not saved",
-        "unresolvedReferenceMessage": "An action uses a result from an action that does not run before it. Move it back or remove the reference, then save again."
+        "label": "标签",
+        "labelPlaceholder": "打开",
+        "unresolvedReferenceTitle": "操作未保存",
+        "unresolvedReferenceMessage": "某个操作引用了不会在其之前执行的操作的结果。请将其移回或移除该引用后重试。"
     },
     "databaseWorkflowActionWithService": {
-        "nothingCapturedYet": "Click this button on a row to capture what the endpoint answers, so the actions after it can use its fields. The button's other actions run as well.",
-        "payloadModalTitle": "Captured response for {actionLabel}",
-        "payloadModalSubTitle": "JSON payload"
+        "nothingCapturedYet": "在行上点击此按钮即可捕获接口返回的内容，供后续操作使用其字段。",
+        "payloadModalTitle": "{actionLabel} 的捕获响应",
+        "payloadModalSubTitle": "JSON 数据"
     },
     "databaseWorkflowActionType": {
-        "openUrl": "Open URL",
-        "sendEmail": "Send email",
-        "deleteRow": "Delete a row",
-        "noUrl": "Enter a URL to open.",
-        "staleReference": "This action uses a result from an action that no longer runs before it.",
-        "unreadableReference": "This action uses a result from an action that no longer returns one.",
-        "writesToTrashedField": "This action writes to a field that is in the trash. Restore the field to run the action again.",
-        "tableTrashed": "This action uses a table that is in the trash or no longer exists. Restore the table or pick another one.",
-        "requiresReconfiguration": "This action points at a table, field or integration that is in the trash or gone.",
+        "openUrl": "打开链接",
+        "sendEmail": "发送邮件",
+        "deleteRow": "删除行",
+        "noUrl": "请输入要打开的链接。",
+        "staleReference": "此操作引用了某个不再于其之前执行的操作的结果。",
+        "unreadableReference": "此操作引用了某个不再返回结果的操作的结果。",
+        "writesToTrashedField": "此操作会写入回收站中的字段，请先恢复该字段再运行。",
+        "tableTrashed": "此操作使用了回收站中或已不存在的数据表，请恢复或改选其他数据表。",
+        "requiresReconfiguration": "此操作指向的数据表、字段或集成已进入回收站或不存在。",
         "noInstanceSmtp": "This 本系统 instance has no SMTP server configured. Choose an SMTP integration to send this email.",
         "instanceSmtpTurnedOff": "Sending through this 本系统 instance's own SMTP server is turned off. Choose an SMTP integration to send this email.",
-        "slackOk": "OK",
-        "slackChannel": "Channel",
-        "slackTs": "Message timestamp",
-        "smtpIntegrationIncomplete": "This SMTP integration has no server. Fill in its host before the button can send.",
-        "slackTokenMissing": "This bot has no token. Add a new bot with its token, or paste one into this bot, before the button can post.",
-        "slackData": "Data",
-        "startWorkflowMissing": "This action's workflow can't be found. It may have been deleted, or you may not have access to it. Pick another workflow, or ask someone who can see this one.",
-        "startWorkflowUnpublished": "This workflow hasn't been published yet. Publish it before the button can start it.",
-        "startWorkflowNotLive": "This workflow is paused or disabled. Resume it before the button can start it."
+        "slackOk": "确定",
+        "slackChannel": "频道",
+        "slackTs": "消息时间戳",
+        "smtpIntegrationIncomplete": "该 SMTP 集成缺少服务器地址，请先填写主机地址。",
+        "slackTokenMissing": "该机器人没有令牌，请新建一个含令牌的机器人，或将令牌粘贴到此机器人中。",
+        "slackData": "数据",
+        "startWorkflowMissing": "找不到此操作对应的流程，可能已被删除或您无权访问，请另选一个。",
+        "startWorkflowUnpublished": "该流程尚未发布，请先发布。",
+        "startWorkflowNotLive": "该流程已暂停或停用，请先恢复。"
     },
     "openUrlWorkflowActionForm": {
-        "url": "URL",
-        "urlPlaceholder": "URL...",
-        "openIn": "Open in",
-        "sameTab": "Same tab",
-        "newTab": "New tab"
+        "url": "链接",
+        "urlPlaceholder": "链接…",
+        "openIn": "打开方式",
+        "sameTab": "当前标签页",
+        "newTab": "新标签页"
     },
     "openUrlWorkflowAction": {
         "invalidUrlTitle": "Could not open the URL",
         "invalidUrlMessage": "The URL could not be resolved for this row, or it uses a protocol that is not allowed."
     },
     "buttonFieldActionList": {
-        "actions": "Actions",
-        "addAction": "Add action",
-        "chooseAction": "Choose action...",
-        "searchActions": "Search actions",
-        "misconfigured": "At least one action is misconfigured",
-        "toggleAction": "Show or hide this action",
-        "moveAction": "Move action, use the arrow keys to reorder"
+        "actions": "操作",
+        "addAction": "添加操作",
+        "chooseAction": "选择操作…",
+        "searchActions": "搜索操作",
+        "misconfigured": "至少有一个操作配置有误",
+        "toggleAction": "显示或隐藏此操作",
+        "moveAction": "移动操作，可用方向键调整顺序"
     },
     "buttonField": {
-        "dispatchErrorTitle": "Could not run the actions",
-        "dispatchErrorMessage": "Something went wrong while running the button's actions. Please try again.",
-        "rateLimitedTitle": "Too many clicks",
-        "rateLimitedMessage": "This button has been clicked too often. Wait a moment and try again.",
-        "requiresReconfiguration": "This button needs to be reconfigured before it can be clicked.",
-        "noPermission": "You don't have permission to click this button.",
-        "stillRunningTitle": "Still running",
-        "stillRunningMessage": "The button's actions may still be running in the background."
+        "dispatchErrorTitle": "无法执行操作",
+        "dispatchErrorMessage": "执行该按钮的操作时出现问题，请重试。",
+        "rateLimitedTitle": "点击过于频繁",
+        "rateLimitedMessage": "该按钮被点击过于频繁，请稍后再试。",
+        "requiresReconfiguration": "该按钮需重新配置后才能点击。",
+        "noPermission": "您没有点击该按钮的权限。",
+        "stillRunningTitle": "仍在执行",
+        "stillRunningMessage": "按钮的操作可能仍在后台执行。"
     },
     "rowEditFieldButtonField": {
-        "createRowBefore": "The actions can be run after the row has been created."
+        "createRowBefore": "行创建后即可执行这些操作。"
     },
     "editRowLink": {
-        "editRow": "Edit row"
+        "editRow": "编辑行"
     },
     "rowEditFieldFormViewEditRow": {
         "copyLink": "Copy link",
         "noFormView": "No form view configured"
     },
     "lastViewedItemType": {
-        "databaseView": "{name} view"
+        "databaseView": "{name} 视图"
     }
 }

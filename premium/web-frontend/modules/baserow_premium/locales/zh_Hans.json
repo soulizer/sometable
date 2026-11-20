@@ -5,14 +5,14 @@
         },
         "viewType": {
             "kanban": "看板",
-            "timeline": "Timeline",
-            "calendar": "Calendar"
+            "timeline": "时间线",
+            "calendar": "日历"
         },
         "exporterType": {
             "json": "导出为 JSON",
             "xml": "导出为 XML",
-            "excel": "Export to Excel",
-            "file": "Export files"
+            "excel": "导出为 Excel",
+            "file": "导出文件"
         },
         "deactivated": "可用的高级版本"
     },
@@ -27,16 +27,16 @@
     "rowComment": {
         "you": "你",
         "anonymous": "匿名的",
-        "creating": "creating",
-        "updating": "updating",
-        "deleting": "deleting",
-        "created": "created",
-        "edited": "edited",
-        "commentTrashed": "This comment has been deleted.",
-        "errorUserNotCommentAuthorTitle": "Cannot update or delete.",
-        "errorUserNotCommentAuthor": "Only the author of the comment can update or delete it.",
-        "errorInvalidCommentMentionTitle": "Invalid mention",
-        "errorInvalidCommentMention": "The mentioned user does not exist."
+        "creating": "正在创建",
+        "updating": "正在更新",
+        "deleting": "正在删除",
+        "created": "已创建",
+        "edited": "已编辑",
+        "commentTrashed": "该评论已被删除。",
+        "errorUserNotCommentAuthorTitle": "无法更新或删除。",
+        "errorUserNotCommentAuthor": "只有评论作者可以更新或删除该评论。",
+        "errorInvalidCommentMentionTitle": "提及无效",
+        "errorInvalidCommentMention": "所提及的用户不存在。"
     },
     "registerLicenseModal": {
         "titleRegisterLicense": "注册一个许可证",
@@ -111,7 +111,7 @@
         "validity": "有效期从{start}到{end}",
         "seats": "座席",
         "premiumFeatures": "",
-        "applicationUsers": "Application users"
+        "applicationUsers": "应用用户"
     },
     "license": {
         "title": "{name} 计划",
@@ -140,15 +140,15 @@
         "storeUsage": "",
         "disconnectLicense": "",
         "disconnectDescription": "",
-        "applicationUsers": "Application users",
-        "applicationUsersDescription": "The total number of application users in published application builder user sources.",
-        "moreSeatsNeededTitle": "More Seats Needed",
-        "contactSalesMoreSeats": "Contact Sales for more seats",
-        "automaticSeatsProgressBarStatus": "{seats_taken} / {seats} paid seats and {free_users_count} free seats in use",
-        "premiumFeatureName": "Premium",
-        "advancedFeatureName": "Advanced",
-        "enterpriseFeatureName": "Enterprise",
-        "supportFeatureName": "Support"
+        "applicationUsers": "应用用户",
+        "applicationUsersDescription": "已发布应用构建器用户源中的应用用户总数。",
+        "moreSeatsNeededTitle": "需要更多席位",
+        "contactSalesMoreSeats": "联系销售获取更多席位",
+        "automaticSeatsProgressBarStatus": "已使用 {seats_taken} / {seats} 个付费席位与 {free_users_count} 个免费席位",
+        "premiumFeatureName": "高级版",
+        "advancedFeatureName": "进阶版",
+        "enterpriseFeatureName": "企业版",
+        "supportFeatureName": "技术支持"
     },
     "premiumModal": {
         "description": "您的帐户无法访问高级功能.升级到高级版本以开始使用 {name}.您可以通过获取许可证来升级您的帐户.单击下面的按钮以查看定价.",
@@ -163,325 +163,325 @@
         "surveyForm": "调查表格",
         "publicLogoRemoval": "公共标志删除",
         "rowComments": "行注释",
-        "rowCommentsContent": "Collaborate directly in your table. Add comments to individual rows, mention team members, and keep the conversation in context.",
-        "kanbanViewContent": "Organize your data visually on a Kanban board. Cards are grouped into stacks based on a single select field, and you can easily drag and drop them between stacks.",
-        "calendarView": "Calendar view",
-        "calendarViewContent": "Easily see your rows on a calendar, using a date field of your choice. Perfect for keeping track of deadlines, events, and schedules at a glance.",
-        "timelineView": "Timeline view",
-        "timelineViewContent": "Display rows along a horizontal timeline using start and end dates. Ideal for project planning and roadmaps.",
-        "exportsContent": "Easily export your data in additional formats like Excel, JSON, and XML, or bulk-download all files from a table - perfect for backups, reports, and sharing with others.",
-        "rowColoringContent": "Highlight rows with colors based on a single select field or custom conditions. This makes it easier to spot patterns and priorities.",
-        "rowNotifications": "Row notifications",
-        "rowNotificationsContent": "Stay in the loop with customizable row comment notifications. Choose between receiving alerts for all comments or only when you're mentioned.",
-        "surveyFormContent": "Collect responses one question at a time with survey mode. A simplified version of the form view, optimized for focus and ease of use.",
+        "rowCommentsContent": "在数据表中直接协作：为单行添加评论、@ 提及团队成员，让讨论始终与数据保持在一起。",
+        "kanbanViewContent": "用看板直观组织数据：卡片按单选字段分组到不同列中，可随手拖动调整状态。",
+        "calendarView": "日历视图",
+        "calendarViewContent": "选择一个日期字段，即可在日历上查看数据行，适合跟踪截止日期、事件与排期。",
+        "timelineView": "时间线视图",
+        "timelineViewContent": "使用开始与结束日期在横向时间线上展示数据行，适合项目计划与路线图。",
+        "exportsContent": "以 Excel、JSON、XML 等更多格式导出数据，或批量下载数据表中的全部文件。",
+        "rowColoringContent": "根据单选字段或自定义条件为行着色，更易发现规律与异常。",
+        "rowNotifications": "行通知",
+        "rowNotificationsContent": "通过可定制的行评论通知及时掌握动态，可选择接收全部评论或仅接收提及您的评论。",
+        "surveyFormContent": "以问卷模式逐题收集回答，是表单视图的简化版本，更专注、更易填写。",
         "publicLogoRemovalContent": "Remove the 本系统 logo from public views to give your shared content a cleaner, more branded look.",
-        "personalViews": "Personal views",
-        "personalViewsContent": "Create views that only the author can see. This gives you space to experiment, filter, and sort data without affecting the workspace for others.",
-        "aiFeatures": "AI features",
-        "aiFeaturesContent": "Use AI to automate and enhance your workflows. With the AI prompt field type you can generate text, summaries, or insights directly in cells based on a dynamic prompts that can reference other fields. Separately, you can also ask AI to create formulas for you.",
-        "chartWidget": "Chart widget",
-        "chartWidgetContent": "Visualize your data with charts on dashboards. Use any table as a data source, add multiple series, and group or sort by fields with rich summary options.",
-        "groupedAggregateRowsDataSource": "Group and summarize rows",
+        "personalViews": "个人视图",
+        "personalViewsContent": "创建只有作者本人可见的视图，可自由试验、筛选与排序而不影响他人。",
+        "aiFeatures": "AI 功能",
+        "aiFeaturesContent": "使用 AI 自动完成并增强工作流：通过 AI 提示字段生成文本、摘要或洞察。",
+        "chartWidget": "图表组件",
+        "chartWidgetContent": "在仪表盘上用图表呈现数据：任意数据表均可作为数据源，可添加多个系列并分组或排序。",
+        "groupedAggregateRowsDataSource": "分组汇总数据行",
         "groupedAggregateRowsDataSourceContent": "Group rows from a 本系统 table and calculate summaries for use in application builder pages."
     },
     "paidFeaturesModal": {
         "unavailable": "当前实例未开放此功能。",
-        "description": "This feature is available with a {plan} plan. To access it, please upgrade your account by subscribing. Click the button below to view our pricing options.",
-        "viewPricing": "View pricing"
+        "description": "该功能需要订阅{plan}方案才能使用，请升级后访问。",
+        "viewPricing": "查看价格"
     },
     "rowCommentContext": {
-        "edit": "Edit comment",
-        "delete": "Delete comment"
+        "edit": "编辑评论",
+        "delete": "删除评论"
     },
     "rowCommentMentionNotification": {
-        "title": "{sender} mentioned you in row {row} in {table}",
-        "deletedUser": "A deleted user"
+        "title": "{sender} 在 {table} 第 {row} 行中提到了您",
+        "deletedUser": "已删除的用户"
     },
     "rowCommentNotification": {
-        "title": "{sender} posted a comment in row {row} in {table}",
-        "deletedUser": "A deleted user"
+        "title": "{sender} 在 {table} 第 {row} 行中发表了评论",
+        "deletedUser": "已删除的用户"
     },
     "trashType": {
-        "row_comment": "row comment"
+        "row_comment": "行评论"
     },
     "tableExcelExporter": {
-        "includeHeader": "Include field names as header"
+        "includeHeader": "包含字段名作为表头"
     },
     "tableFileExporter": {
-        "organizeFiles": "Group files by row id"
+        "organizeFiles": "按行 ID 分组存放文件"
     },
     "kanbanView": {
-        "addStack": "Add stack"
+        "addStack": "添加分组"
     },
     "calendarViewType": {
-        "sharedViewText": "Allow anyone to see the data in this view or sync events to your external calendar.",
-        "sharedViewEnableSyncToExternalCalendar": "Sync to an external calendar",
-        "sharedViewDisableSyncToExternalCalendar": "Disable external sync",
-        "sharedViewDescription": "Paste this link into your calendar application",
-        "sharedViewTitle": "Sync to an external calendar"
+        "sharedViewText": "允许任何人查看此视图的数据，或将事件同步到外部日历。",
+        "sharedViewEnableSyncToExternalCalendar": "同步到外部日历",
+        "sharedViewDisableSyncToExternalCalendar": "停用外部同步",
+        "sharedViewDescription": "将此链接粘贴到您的日历应用中",
+        "sharedViewTitle": "同步到外部日历"
     },
     "calendarViewHeader": {
-        "displayBy": "Display by",
-        "displayedBy": "Displayed by “{fieldName}” field",
-        "labels": "Labels"
+        "displayBy": "显示依据",
+        "displayedBy": "按“{fieldName}”字段显示",
+        "labels": "标签"
     },
     "timelineViewHeader": {
-        "dateSettings": "Date settings",
-        "labels": "Labels"
+        "dateSettings": "日期设置",
+        "labels": "标签"
     },
     "selectDateFieldContext": {
-        "save": "Save"
+        "save": "保存"
     },
     "timelineDateSettingsForm": {
-        "startDateField": "Start date",
-        "endDateField": "End date",
-        "noCompatibleDateFields": "Date fields are missing in the table. Please create a start and end date field in the table first.",
-        "incompatibleFieldsErrorTitle": "Incompatible fields",
-        "incompatibleFieldsErrorMessage": "Fields are not compatible. Please choose two valid date fields in the table that use the same settings for 'include time' and use the same timezone for all collaborators.",
+        "startDateField": "开始日期",
+        "endDateField": "结束日期",
+        "noCompatibleDateFields": "数据表中缺少日期字段，请先创建开始日期与结束日期字段。",
+        "incompatibleFieldsErrorTitle": "字段不兼容",
+        "incompatibleFieldsErrorMessage": "字段不兼容，请选择两个“包含时间”设置一致的合法日期字段。",
         "forceTimezone": "{timezone}",
-        "includeTime": "date and time",
-        "dateOnly": "date only"
+        "includeTime": "日期与时间",
+        "dateOnly": "仅日期"
     },
     "timelineTimescaleContext": {
-        "hour": "Hour",
-        "day": "Day",
-        "week": "Week",
-        "month": "Month",
-        "quarter": "Quarter",
-        "year": "Year",
-        "disabledTooltip": "This option is available only for date fields with `include time` enabled."
+        "hour": "小时",
+        "day": "日",
+        "week": "周",
+        "month": "月",
+        "quarter": "季度",
+        "year": "年",
+        "disabledTooltip": "仅对启用了“包含时间”的日期字段可用。"
     },
     "initTimelineViewSettings": {
-        "settings": "Date settings"
+        "settings": "日期设置"
     },
     "viewDateSelector": {
-        "today": "Today"
+        "today": "今天"
     },
     "calendarMonthDay": {
-        "hiddenRowsCount": "0 | 1 more... | {hiddenRowsCount} more..."
+        "hiddenRowsCount": "0 条 | 还有 1 条… | 还有 {hiddenRowsCount} 条…"
     },
     "calendarMonthDayExpanded": {
-        "tryAgain": "try again"
+        "tryAgain": "重试"
     },
     "timelineGridRow": {
-        "days": "0 | 1 day | {count} days"
+        "days": "0 天 | 1 天 | {count} 天"
     },
     "viewDecoratorType": {
-        "leftBorderColor": "Left border",
-        "leftBorderColorDescription": "Color the left border of a row",
-        "backgroundColor": "Background color",
-        "backgroundColorDescription": "Color the background of a row",
-        "onlyForPremium": "Available in the premium version",
-        "onlyOneDecoratorPerView": "You can only have one decoration of that type for a view"
+        "leftBorderColor": "左侧边框",
+        "leftBorderColorDescription": "为行的左侧边框着色",
+        "backgroundColor": "背景色",
+        "backgroundColorDescription": "为行的背景着色",
+        "onlyForPremium": "需要高级版才能使用",
+        "onlyOneDecoratorPerView": "同一视图只能使用一个该类型的装饰"
     },
     "decoratorValueProviderType": {
-        "singleSelectColor": "Single select",
-        "singleSelectColorDescription": "Color rows the same as a single select value",
-        "conditionalColor": "Conditions",
-        "conditionalColorDescription": "Color rows when they match the conditions"
+        "singleSelectColor": "单选",
+        "singleSelectColorDescription": "按单选值给行着色",
+        "conditionalColor": "条件",
+        "conditionalColorDescription": "当行满足条件时为其着色"
     },
     "singleSelectColorValueProviderForm": {
-        "chooseAColor": "Which single select field should the row be colored by?"
+        "chooseAColor": "选择用于为行着色的单选字段？"
     },
     "conditionalColorValueProviderForm": {
-        "addCondition": "Add condition",
-        "addConditionGroup": "Add condition group",
-        "colorAlwaysApplyTitle": "This color applies by default.",
-        "colorAlwaysApply": "You can add conditions by clicking on the \"Add condition\" button.",
-        "addColor": "Add color",
-        "deleteColor": "Delete color",
-        "title": "Colors"
+        "addCondition": "添加条件",
+        "addConditionGroup": "添加条件组",
+        "colorAlwaysApplyTitle": "该颜色默认应用于所有行。",
+        "colorAlwaysApply": "点击“添加条件”即可添加条件。",
+        "addColor": "添加颜色",
+        "deleteColor": "删除颜色",
+        "title": "颜色"
     },
     "redirectToBaserowModal": {
         "title": "Redirecting to https://本系统.io",
         "content": "You are leaving your self hosted instance and you are being redirected to https://本系统.io."
     },
     "premiumTopSidebar": {
-        "impersonateDescription": "This account is impersonated. A page refresh will stop it.",
-        "impersonateStop": "Stop",
-        "premium": "Premium",
-        "premiumDescription": "Your account has access to the premium features globally"
+        "impersonateDescription": "当前账号处于代登录状态，刷新页面即可结束。",
+        "impersonateStop": "停止",
+        "premium": "高级版",
+        "premiumDescription": "您的账号可使用全部高级功能"
     },
     "formViewModeType": {
-        "survey": "Survey",
-        "surveyDescription": "One field is visible at the same time.",
-        "onlyForPremium": "Available in the premium version"
+        "survey": "问卷",
+        "surveyDescription": "同一时间仅显示一个字段。",
+        "onlyForPremium": "需要高级版才能使用"
     },
     "formViewModePreviewSurvey": {
-        "orderFields": "Order fields",
-        "deactivated": "Survey form is available in the premium version.",
-        "more": "More information"
+        "orderFields": "字段顺序",
+        "deactivated": "问卷表单为高级版功能。",
+        "more": "了解更多"
     },
     "shareLinkOptions": {
         "baserowLogo": {
             "label": "Hide 本系统 logo on shared view",
-            "premiumModalName": "public logo removal"
+            "premiumModalName": "隐藏公开页标识"
         },
-        "allowPublicExportLabel": "Allow export on shared view"
+        "allowPublicExportLabel": "允许在分享视图中导出"
     },
     "premiumDashboardShareOptions": {
         "hideLogo": "Hide 本系统 logo on shared dashboard"
     },
     "viewsContext": {
-        "personal": "Personal"
+        "personal": "个人"
     },
     "dateFieldSelectForm": {
-        "dateField": "Which field would you like to use for this view?",
-        "noCompatibleDateFields": "There are no date fields in this table, please create one first."
+        "dateField": "该视图要使用哪个日期字段？",
+        "noCompatibleDateFields": "该数据表中没有日期字段，请先创建。"
     },
     "selectDateFieldModal": {
-        "chooseDateField": "Choose date field",
-        "save": "Save"
+        "chooseDateField": "选择日期字段",
+        "save": "保存"
     },
     "RowEditModalCommentNotificationMode": {
-        "modeMentionsTitle": "Only mentions",
-        "modeMentionsDesc": "You will only receive notifications when you are mentioned.",
-        "modeAllTitle": "All comments",
-        "modeAllDesc": "You will receive notifications for all comments in this row."
+        "modeMentionsTitle": "仅提及",
+        "modeMentionsDesc": "仅在有人提及您时接收通知。",
+        "modeAllTitle": "全部评论",
+        "modeAllDesc": "接收该行中全部评论的通知。"
     },
     "premiumFieldType": {
-        "ai": "AI prompt",
-        "aiDescription": "A read-only field that holds AI generated text based on the field prompt.",
-        "aiRichTextDescription": "A read-only field that holds AI generated text based on the field prompt, formatted with markdown."
+        "ai": "AI 提示",
+        "aiDescription": "基于字段提示词保存 AI 生成文本的只读字段。",
+        "aiRichTextDescription": "基于字段提示词保存 AI 生成富文本的只读字段。"
     },
     "functionalGridViewFieldAI": {
-        "generate": "Generate"
+        "generate": "生成"
     },
     "gridViewFieldAI": {
-        "generate": "Generate",
-        "regenerate": "Regenerate",
-        "promptBroken": "The prompt is broken and must be fixed before values can be generated."
+        "generate": "生成",
+        "regenerate": "重新生成",
+        "promptBroken": "提示词有误，需先修正后才能生成值。"
     },
     "fieldAISubForm": {
-        "prompt": "Prompt",
+        "prompt": "提示词",
         "promptPlaceholder": "What is 本系统?",
-        "premiumFeature": "The AI field is a premium feature",
-        "emptyFileField": "None",
-        "fileFieldHelp": "The first compatible file in the field will be used as the knowledge base for the prompt. The file has to be a text file with the supported file extension like .txt, .md, .pdf, .docx.",
-        "outputType": "Output type",
-        "outputTypeTooltip": "Select your desired output format to guide the LLM in generating responses that match your desired options.",
-        "outputTypeChangedWarning": "Clears the generated cell values.",
-        "autoUpdate": "Auto update",
-        "autoUpdateHelp": "When enabled, the AI field value will be automatically regenerated when any of the referenced fields in the prompt are updated.",
-        "autoUpdateDescription": "Regenerate when referenced fields change",
-        "invalidPrompt": "The prompt formula is invalid."
+        "premiumFeature": "AI 字段为高级版功能",
+        "emptyFileField": "无",
+        "fileFieldHelp": "字段中第一个兼容的文件会作为该提示词的知识库，文件需为纯文本。",
+        "outputType": "输出类型",
+        "outputTypeTooltip": "选择期望的输出格式，以引导模型生成符合需求的内容。",
+        "outputTypeChangedWarning": "将清除已生成的单元格值。",
+        "autoUpdate": "自动更新",
+        "autoUpdateHelp": "启用后，当提示词中引用的任一字段发生更新时，将自动重新生成该 AI 字段的值。",
+        "autoUpdateDescription": "引用字段变化时重新生成",
+        "invalidPrompt": "提示词公式无效。"
     },
     "rowEditFieldAI": {
-        "generate": "Generate",
-        "createRowBefore": "The AI value can be generated after the row has been created.",
-        "promptBroken": "The prompt is broken and must be fixed before values can be generated."
+        "generate": "生成",
+        "createRowBefore": "行创建后才能生成 AI 值。",
+        "promptBroken": "提示词有误，需先修正后才能生成值。"
     },
     "aiFormulaModal": {
-        "title": "Generate formula using AI",
-        "description": "Note that the generated formulas might not always work as expected. We're constructing a prompt for the model, and we load the output in the formula input. It works best with a high parameter model like gpt-4-turbo-preview.",
-        "label": "Prompt",
-        "labelDescription": "Describe the formula you would like to generate",
-        "generate": "Generate",
+        "title": "使用 AI 生成公式",
+        "description": "请注意，生成的公式未必完全符合预期；系统会为模型构造提示词，并据此生成公式。",
+        "label": "提示词",
+        "labelDescription": "描述您想要生成的公式",
+        "generate": "生成",
         "noModels": "Your 本系统 instance and workspace doesn't have any AI models configured. Navigate to the homepage, click on the name of your workspace, then on settings to configure them."
     },
     "formulaFieldAI": {
-        "generateWithAI": "Generate using AI",
-        "featureName": "Generate formula using AI"
+        "generateWithAI": "使用 AI 生成",
+        "featureName": "使用 AI 生成公式"
     },
     "aiOutputType": {
-        "text": "Text",
-        "textDescription": "Generates free text based on the prompt.",
-        "choice": "Choice",
-        "choiceDescription": "Chooses only one of the field options."
+        "text": "文本",
+        "textDescription": "基于提示词生成自由文本。",
+        "choice": "选项",
+        "choiceDescription": "仅在字段选项中选择一个。"
     },
     "publicViewExport": {
-        "export": "Export"
+        "export": "导出"
     },
     "chart": {
-        "true": "true",
-        "false": "false",
-        "other": "Other",
-        "empty": "Empty"
+        "true": "是",
+        "false": "否",
+        "other": "其他",
+        "empty": "空"
     },
     "groupedAggregateRowsDataSourceForm": {
-        "series": "Series",
-        "addSeries": "Add series",
-        "data": "Data",
-        "sourceFieldLabel": "Source",
-        "viewFieldLabel": "View",
-        "notSelected": "Not selected"
+        "series": "系列",
+        "addSeries": "添加系列",
+        "data": "数据",
+        "sourceFieldLabel": "数据源",
+        "viewFieldLabel": "视图",
+        "notSelected": "未选择"
     },
     "localBaserowGroupedAggregateRowsForm": {
-        "series": "Series",
-        "addSeries": "Add series"
+        "series": "系列",
+        "addSeries": "添加系列"
     },
     "serviceType": {
-        "localBaserowGroupedAggregateRows": "Group and summarize rows",
+        "localBaserowGroupedAggregateRows": "分组汇总数据行",
         "localBaserowGroupedAggregateRowsDescription": "Group rows from a 本系统 table and calculate summaries.",
-        "errorNoAggregationSeriesDefined": "No summary series defined.",
-        "errorIncompleteAggregationSeries": "One or more summary series are incomplete.",
-        "errorTrashedAggregationField": "At least one configured field has been trashed."
+        "errorNoAggregationSeriesDefined": "未定义汇总系列。",
+        "errorIncompleteAggregationSeries": "一个或多个汇总系列不完整。",
+        "errorTrashedAggregationField": "至少有一个已配置字段已被移至回收站。"
     },
     "aggregationSeriesForm": {
-        "aggregationFieldLabel": "Field",
-        "aggregationTypeLabel": "Summary",
-        "deleteSeries": "Delete series",
-        "chartType": "Chart type",
-        "seriesColor": "Color",
-        "automaticColor": "Use automatic color",
+        "aggregationFieldLabel": "字段",
+        "aggregationTypeLabel": "汇总方式",
+        "deleteSeries": "删除系列",
+        "chartType": "图表类型",
+        "seriesColor": "颜色",
+        "automaticColor": "使用自动颜色",
         "barChart": "柱状图",
         "lineChart": "折线图",
         "pieChart": "饼图",
         "doughnutChart": "环形图",
-        "polarAreaChart": "Polar area"
+        "polarAreaChart": "极区图"
     },
     "aggregationGroupByForm": {
-        "groupByFieldLabel": "Group by",
-        "groupByNone": "None",
-        "groupByRowId": "Row Id",
-        "groupedByField": "Grouped by {field}",
-        "bucketLimit": "Maximum buckets",
-        "bucketLimitHelp": "Includes the Other bucket. Leave empty to use the server maximum ({max}).",
-        "modeLabel": "Group multiple selections",
-        "completeSelection": "Complete selection",
-        "eachOption": "Each selected option"
+        "groupByFieldLabel": "分组依据",
+        "groupByNone": "无",
+        "groupByRowId": "行 ID",
+        "groupedByField": "按 {field} 分组",
+        "bucketLimit": "最大分组数",
+        "bucketLimitHelp": "包含“其他”分组，留空则使用服务器上限（{max}）。",
+        "modeLabel": "多选分组方式",
+        "completeSelection": "完整选择",
+        "eachOption": "每个选中项"
     },
     "aggregationSortByForm": {
-        "sortByFieldLabel": "Sort by",
-        "none": "None",
-        "ascending": "Ascending",
-        "descending": "Descending"
+        "sortByFieldLabel": "排序依据",
+        "none": "无",
+        "ascending": "升序",
+        "descending": "降序"
     },
     "generateAIValuesModal": {
-        "title": "Generate all AI values",
-        "noPreviousJobs": "No previous jobs",
-        "started": "Started",
-        "finished": "Completed",
-        "running": "Running",
-        "failed": "Failed",
-        "cancelled": "Cancelled",
-        "pending": "Pending",
-        "view": "View: {name}",
-        "table": "Table: All rows",
-        "deletedView": "View: ID {viewId} (deleted)",
-        "rows": "Rows: {count} rows",
-        "autoUpdate": "Auto update: referenced fields changed"
+        "title": "生成所有 AI 值",
+        "noPreviousJobs": "没有历史任务",
+        "started": "已开始",
+        "finished": "已完成",
+        "running": "执行中",
+        "failed": "失败",
+        "cancelled": "已取消",
+        "pending": "等待中",
+        "view": "视图：{name}",
+        "table": "数据表：所有行",
+        "deletedView": "视图：ID {viewId}（已删除）",
+        "rows": "行：{count} 行",
+        "autoUpdate": "自动更新：引用字段已变化"
     },
     "generateAIValuesForm": {
-        "scopeLabel": "Scope",
-        "entireTable": "Entire table",
-        "skipPopulated": "Generate only values for empty cells",
-        "warningTitle": "Token Usage Warning",
-        "warningMessage": "Geenerating all AI values will consume API tokens and may take substantial time depending on the number of rows."
+        "scopeLabel": "范围",
+        "entireTable": "整个数据表",
+        "skipPopulated": "仅为空单元格生成值",
+        "warningTitle": "令牌用量提示",
+        "warningMessage": "生成所有 AI 值会消耗 API 令牌，并可能因行数较多而耗时较长。"
     },
     "generateAIValuesFormFooter": {
-        "generate": "Generate with AI",
-        "close": "Close"
+        "generate": "使用 AI 生成",
+        "close": "关闭"
     },
     "jobType": {
-        "generateAIValues": "Regenerate AI field values"
+        "generateAIValues": "重新生成 AI 字段值"
     },
     "viewOwnershipType": {
-        "personal": "Personal",
-        "personalDescription": "Only you can see the view."
+        "personal": "个人",
+        "personalDescription": "仅您本人可以看到该视图。"
     },
     "aiProviderModelFeature": {
-        "aiFields": "AI fields",
-        "aiFieldsDescription": "Generate values in AI fields."
+        "aiFields": "AI 字段",
+        "aiFieldsDescription": "在 AI 字段中生成值。"
     }
 }
