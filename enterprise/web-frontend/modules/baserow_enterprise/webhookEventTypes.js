@@ -16,10 +16,7 @@ class EnterpriseWebhookEventType extends WebhookEventType {
   }
 
   isDeactivated(workspaceId) {
-    return !this.app.$hasFeature(
-      EnterpriseFeatures.ADVANCED_WEBHOOKS,
-      workspaceId
-    )
+    return false
   }
 
   getFeatureName() {

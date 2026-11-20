@@ -18,9 +18,9 @@ export class EnterpriseAdminRoleType extends AdminRoleType {
 }
 
 export class EnterpriseMemberRoleType extends MemberRoleType {
-  // This role doesn't exist in enterprise, so we hide it completely.
+  // With RBAC unlocked this legacy role stays hidden (enterprise roles replace it).
   isVisible(workspaceId) {
-    return !this.app.$hasFeature(EnterpriseFeatures.RBAC, workspaceId)
+    return false
   }
 }
 
