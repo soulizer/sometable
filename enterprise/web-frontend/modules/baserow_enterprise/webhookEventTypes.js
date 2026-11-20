@@ -12,10 +12,7 @@ class EnterpriseWebhookEventType extends WebhookEventType {
   }
 
   getDeactivatedClickModal() {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': AdvancedWebhooksPaidFeature.getType() },
-    ]
+    return null
   }
 
   isDeactivated(workspaceId) {

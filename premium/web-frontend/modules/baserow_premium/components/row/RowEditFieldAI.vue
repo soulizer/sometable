@@ -10,7 +10,7 @@
     ></component>
     <div v-if="!readOnly" class="margin-top-2">
       <Button
-        v-if="isDeactivated && rowIsCreated"
+        v-if="false"
         type="secondary"
         icon="iconoir-lock"
         @click="$refs.clickModal.show()"
@@ -29,7 +29,7 @@
       <div v-else>{{ $t('rowEditFieldAI.createRowBefore') }}</div>
       <component
         :is="deactivatedClickComponent[0]"
-        v-if="isDeactivated"
+        v-if="false"
         ref="clickModal"
         :workspace="workspace"
         name="ai-field"

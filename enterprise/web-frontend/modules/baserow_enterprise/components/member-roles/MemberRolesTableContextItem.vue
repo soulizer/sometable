@@ -6,7 +6,7 @@
         @click="
           () => {
             if (deactivated) {
-              $refs.paidFeaturesModal.show()
+              
             } else {
               $refs.inviteModal.show()
             }
@@ -60,10 +60,7 @@ export default {
       }
     },
     deactivated() {
-      return !this.$hasFeature(
-        EnterpriseFeatures.RBAC,
-        this.database.workspace.id
-      )
+      return false
     },
   },
 }

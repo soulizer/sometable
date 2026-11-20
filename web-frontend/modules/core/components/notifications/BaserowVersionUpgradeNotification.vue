@@ -13,7 +13,7 @@
         tag="span"
       >
         <template #version>
-          <strong>{{ `Baserow ${notification.data.version}` }}</strong>
+          <strong>{{ `${notification.data.version}` }}</strong>
         </template>
       </i18n-t>
     </div>

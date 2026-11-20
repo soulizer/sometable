@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!isDeactivated" class="context__form-container">
+  <div v-if="true" class="context__form-container">
     <SelectAIModelForm
       :default-values="defaultValues"
       :database="database"
@@ -210,9 +210,7 @@ export default {
       return hierarchy
     },
     isDeactivated() {
-      return this.$registry
-        .get('field', this.fieldType)
-        .isDeactivated(this.workspace.id)
+      return false
     },
     fileFields() {
       return this.allFieldsInTable.filter((field) => {

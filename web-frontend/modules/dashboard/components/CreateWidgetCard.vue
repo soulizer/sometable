@@ -3,8 +3,8 @@
     :name="variation.name"
     :image="variation.createWidgetImage"
     :disabled="disabled"
-    :unavailable="!isWidgetAvailable"
-    :locked="!isWidgetAvailable"
+    :unavailable="false"
+    :locked="false"
     framed
     @click="widgetVariationSelected"
   >
@@ -58,12 +58,6 @@ export default {
       if (this.disabled) {
         return
       }
-
-      if (!this.isWidgetAvailable) {
-        this.$refs.deactivatedModal.show()
-        return
-      }
-
       this.$emit('widget-variation-selected', this.variation)
     },
   },

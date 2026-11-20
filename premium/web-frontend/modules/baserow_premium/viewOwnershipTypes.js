@@ -1,7 +1,6 @@
 import { ViewOwnershipType } from '@baserow/modules/database/viewOwnershipTypes'
 import PremiumFeatures from '@baserow_premium/features'
 import ViewOwnershipMenuLink from '@baserow_premium/components/views/ViewOwnershipMenuLink'
-import PaidFeaturesModal from '@baserow_premium/components/PaidFeaturesModal'
 import { PersonalViewsPaidFeature } from '@baserow_premium/paidFeatures'
 
 export class PersonalViewOwnershipType extends ViewOwnershipType {
@@ -29,18 +28,15 @@ export class PersonalViewOwnershipType extends ViewOwnershipType {
   }
 
   isDeactivated(workspaceId) {
-    return !this.app.$hasFeature(PremiumFeatures.PREMIUM, workspaceId)
+    return false
   }
 
   getDeactivatedText() {
-    return this.app.$i18n.t('premium.deactivated')
+    return ''
   }
 
   getDeactivatedModal() {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': PersonalViewsPaidFeature.getType() },
-    ]
+    return null
   }
 
   getListViewTypeSort() {

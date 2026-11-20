@@ -11,7 +11,6 @@ import FieldAISubForm from '@baserow_premium/components/field/FieldAISubForm'
 import FormulaFieldAI from '@baserow_premium/components/field/FormulaFieldAI'
 import GridViewFieldAIGenerateValuesContextItem from '@baserow_premium/components/views/grid/fields/GridViewFieldAIGenerateValuesContextItem'
 import PremiumFeatures from '@baserow_premium/features'
-import PaidFeaturesModal from '@baserow_premium/components/PaidFeaturesModal'
 import { AIPaidFeature } from '@baserow_premium/paidFeatures'
 import _ from 'lodash'
 import WorkspaceSettingsModal from '@baserow/modules/core/components/workspace/WorkspaceSettingsModal.vue'
@@ -244,14 +243,11 @@ export class AIFieldType extends FieldType {
   }
 
   isDeactivated(workspaceId) {
-    return !this.app.$hasFeature(PremiumFeatures.PREMIUM, workspaceId)
+    return false
   }
 
   getDeactivatedClickModal(workspaceId) {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': AIPaidFeature.getType() },
-    ]
+    return null
   }
 
   prepareValueForUpdate(field, value) {

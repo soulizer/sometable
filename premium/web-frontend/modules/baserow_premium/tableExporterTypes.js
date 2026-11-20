@@ -5,19 +5,15 @@ import TableXMLExporter from '@baserow_premium/components/exporter/TableXMLExpor
 import PremiumFeatures from '@baserow_premium/features'
 import TableExcelExporter from '@baserow_premium/components/exporter/TableExcelExporter'
 import TableFileExporter from '@baserow_premium/components/exporter/TableFileExporter'
-import PaidFeaturesModal from '@baserow_premium/components/PaidFeaturesModal'
 import { ExportsPaidFeature } from '@baserow_premium/paidFeatures'
 
 class PremiumTableExporterType extends TableExporterType {
   getDeactivatedText() {
-    return this.app.$i18n.t('premium.deactivated')
+    return ''
   }
 
   getDeactivatedClickModal() {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': ExportsPaidFeature.getType() },
-    ]
+    return null
   }
 
   isDeactivated(workspaceId) {

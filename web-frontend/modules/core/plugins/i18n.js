@@ -1,5 +1,9 @@
 import moment from '@baserow/modules/core/moment'
 
+// Moment ships its Chinese locale as `zh-cn`, while the frontend locale code
+// matches the Django language code (`zh-hans`).
+const toMomentLocale = (locale) => (locale === 'zh-hans' ? 'zh-cn' : locale)
+
 export default defineNuxtPlugin({
   name: 'i18n',
   async setup(nuxtApp) {
@@ -9,7 +13,7 @@ export default defineNuxtPlugin({
     const getLoadingIndicator = () =>
       nuxtApp.runWithContext(() => useLoadingIndicator())
 
-    moment.locale($i18n.locale.value)
+    moment.locale(toMomentLocale($i18n.locale.value))
 
     const loadFallbackIfNeeded = async (locale) => {
       if (locale !== 'en') {
@@ -24,7 +28,7 @@ export default defineNuxtPlugin({
 
     // Use watch to react to client side locale switch
     watch($i18n.locale, (newLocale) => {
-      moment.locale(newLocale)
+      moment.locale(toMomentLocale(newLocale))
     })
 
     // Switching the language downloads the messages of the new locale, which can

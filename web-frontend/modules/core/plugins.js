@@ -18,8 +18,7 @@ export class BaserowPlugin extends Registerable {
   userCreated(user, context) {}
 
   /**
-   * Hook that is called when the initial workspace is created for a user. This happens
-   * when the user cancels the onboarding, for example.
+   * Hook that is called when the initial workspace is created for a user.
    */
   initialWorkspaceCreated(workspace) {}
   /**
@@ -321,15 +320,6 @@ export class BaserowPlugin extends Registerable {
    * Can return components that will be added to the admin instance settings page.
    */
   getSettingsPageComponents() {
-    return []
-  }
-
-  /**
-   * Can overwrite the help component shown on the dashboard page. Note that it can
-   * only show one component, so if any plugin sets one, the original one will be
-   * hidden, and those will be shown.
-   */
-  getDashboardHelpComponents() {
     return []
   }
 

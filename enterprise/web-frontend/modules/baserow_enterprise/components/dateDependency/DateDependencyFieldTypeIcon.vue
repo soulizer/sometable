@@ -65,10 +65,7 @@ export default {
       )
     },
     deactivated() {
-      return !this.$hasFeature(
-        EnterpriseFeatures.DATE_DEPENDENCY,
-        this.workspace.id
-      )
+      return false
     },
     tooltipText() {
       if (this.hasError) {
@@ -145,7 +142,7 @@ export default {
     },
     openModal() {
       if (this.deactivated) {
-        this.$refs.paidFeaturesModal.show()
+        
       } else {
         this.$refs.modal.show()
       }

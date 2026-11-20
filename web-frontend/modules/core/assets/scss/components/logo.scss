@@ -3,6 +3,15 @@
   display: inline;
 }
 
+.logo--wordmark {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: $palette-neutral-700;
+  user-select: none;
+  white-space: nowrap;
+}
+
 .logo__label {
   font-size: 10px;
   line-height: 11px;

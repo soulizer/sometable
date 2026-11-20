@@ -7,7 +7,6 @@ import MemberRolesViewContextItem from '@baserow_enterprise/components/member-ro
 import EnterpriseFeatures from '@baserow_enterprise/features'
 import SnapshotModalWarning from '@baserow_enterprise/components/SnapshotModalWarning'
 import EnterpriseSettings from '@baserow_enterprise/components/EnterpriseSettings'
-import EnterpriseSettingsOverrideDashboardHelp from '@baserow_enterprise/components/EnterpriseSettingsOverrideDashboardHelp'
 import EnterpriseLogo from '@baserow_enterprise/components/EnterpriseLogo'
 import { DatabaseApplicationType } from '@baserow/modules/database/applicationTypes'
 import AssistantSidebarItem from '@baserow_enterprise/components/assistant/AssistantSidebarItem'
@@ -93,19 +92,11 @@ export class EnterprisePlugin extends BaserowPlugin {
   }
 
   getExtraSnapshotModalComponents(workspace) {
-    const rbacSupport = this.app.$hasFeature(
-      EnterpriseFeatures.RBAC,
-      workspace.id
-    )
-    return rbacSupport ? SnapshotModalWarning : null
+    return SnapshotModalWarning
   }
 
   getExtraExportWorkspaceModalComponents(workspace) {
-    const rbacSupport = this.app.$hasFeature(
-      EnterpriseFeatures.RBAC,
-      workspace.id
-    )
-    return rbacSupport ? ExportWorkspaceModalWarning : null
+    return ExportWorkspaceModalWarning
   }
 
   getSettingsPageComponents() {
@@ -118,20 +109,12 @@ export class EnterprisePlugin extends BaserowPlugin {
     return [AssistantDashboardPrompt]
   }
 
-  getDashboardHelpComponents() {
-    if (this.app.$hasFeature(EnterpriseFeatures.ENTERPRISE_SETTINGS)) {
-      return [EnterpriseSettingsOverrideDashboardHelp]
-    } else {
-      return []
-    }
+  hasFeature(feature, forSpecificWorkspace) {
+    return true
   }
 
   getLogoComponent() {
-    if (this.app.$hasFeature(EnterpriseFeatures.ENTERPRISE_SETTINGS)) {
-      return EnterpriseLogo
-    } else {
-      return null
-    }
+    return EnterpriseLogo
   }
 
   getLogoComponentOrder() {

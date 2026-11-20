@@ -60,14 +60,11 @@ export class EnterpriseBuilderRoleType extends MemberRoleType {
   }
 
   isDeactivated(workspaceId) {
-    return !this.app.$hasFeature(EnterpriseFeatures.RBAC, workspaceId)
+    return false
   }
 
   getDeactivatedClickModal() {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': RBACPaidFeature.getType() },
-    ]
+    return null
   }
 
   get allowedScopeTypes() {
@@ -107,14 +104,11 @@ export class EnterpriseEditorRoleType extends MemberRoleType {
   }
 
   isDeactivated(workspaceId) {
-    return !this.app.$hasFeature(EnterpriseFeatures.RBAC, workspaceId)
+    return false
   }
 
   getDeactivatedClickModal(workspaceId) {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': RBACPaidFeature.getType() },
-    ]
+    return null
   }
 }
 
@@ -150,14 +144,11 @@ export class EnterpriseCommenterRoleType extends MemberRoleType {
   }
 
   isDeactivated(workspaceId) {
-    return !this.app.$hasFeature(EnterpriseFeatures.RBAC, workspaceId)
+    return false
   }
 
   getDeactivatedClickModal(workspaceId) {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': RBACPaidFeature.getType() },
-    ]
+    return null
   }
 }
 
@@ -197,14 +188,11 @@ export class EnterpriseViewerRoleType extends MemberRoleType {
   }
 
   isDeactivated(workspaceId) {
-    return !this.app.$hasFeature(EnterpriseFeatures.RBAC, workspaceId)
+    return false
   }
 
   getDeactivatedClickModal(workspaceId) {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': RBACPaidFeature.getType() },
-    ]
+    return null
   }
 }
 
@@ -240,14 +228,11 @@ export class NoAccessRoleType extends MemberRoleType {
   }
 
   isDeactivated(workspaceId) {
-    return !this.app.$hasFeature(EnterpriseFeatures.RBAC, workspaceId)
+    return false
   }
 
   getDeactivatedClickModal(workspaceId) {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': RBACPaidFeature.getType() },
-    ]
+    return null
   }
 }
 
@@ -287,14 +272,11 @@ export class NoRoleLowPriorityRoleType extends MemberRoleType {
   }
 
   isDeactivated(workspaceId) {
-    return !this.app.$hasFeature(EnterpriseFeatures.RBAC, workspaceId)
+    return false
   }
 
   getDeactivatedClickModal(workspaceId) {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': RBACPaidFeature.getType() },
-    ]
+    return null
   }
 
   get allowedScopeTypes() {

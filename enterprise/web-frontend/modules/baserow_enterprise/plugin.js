@@ -20,7 +20,6 @@ import {
   storeOnboardingRunId,
 } from '@baserow_enterprise/utils/assistantTabStorage'
 import { PasswordAuthProviderType as CorePasswordAuthProviderType } from '@baserow/modules/core/authProviderTypes'
-import { MadeWithBaserowBuilderPageDecoratorType } from '@baserow_enterprise/builderPageDecoratorTypes'
 import {
   FacebookAuthProviderType,
   GitHubAuthProviderType,
@@ -119,8 +118,6 @@ import {
 import { CustomCodeBuilderSettingType } from '@baserow_enterprise/builderSettingTypes'
 import { RealtimePushTwoWaySyncStrategyType } from '@baserow_enterprise/twoWaySyncStrategyTypes'
 import { RestrictedViewOwnershipType } from '@baserow_enterprise/viewOwnershipTypes'
-import { AIDatabaseOnboardingStepType } from '@baserow_enterprise/databaseOnboardingStepTypes'
-import { AIPromptOnboardingType } from '@baserow_enterprise/onboardingTypes'
 import {
   CoreCodeServiceType,
   CoreXLSFileReaderServiceType,
@@ -408,18 +405,6 @@ export default defineNuxtPlugin({
       'fieldContextItem',
       new DateDependencyContextItemType(context)
     )
-
-    // Register builder page decorator namespace and types
-    $registry.register(
-      'builderPageDecorator',
-      new MadeWithBaserowBuilderPageDecoratorType(context)
-    )
-
-    $registry.register(
-      'databaseOnboardingStep',
-      new AIDatabaseOnboardingStepType(context)
-    )
-    $registry.register('onboarding', new AIPromptOnboardingType(context))
 
     $registry.register(
       'fieldContextItem',

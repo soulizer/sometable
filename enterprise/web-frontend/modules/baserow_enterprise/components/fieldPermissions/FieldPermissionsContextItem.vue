@@ -63,7 +63,7 @@ export default {
     },
     onClick() {
       if (this.deactivated) {
-        this.$refs.paidFeaturesModal.show()
+        
       } else {
         this.$refs.editFieldPermissionsModal.show()
         this.$emit('hide-context')

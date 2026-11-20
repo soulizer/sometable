@@ -1,7 +1,6 @@
 <template>
   <div>
     <Toasts />
-    <GuidedTour />
 
     <div ref="app" class="layout">
       <div class="layout__col-1" :style="{ width: col1Width + 'px' }">
@@ -84,7 +83,6 @@ import Sidebar from '@baserow/modules/core/components/sidebar/Sidebar.vue'
 import SidebarAllWorkspaces from '@baserow/modules/core/components/sidebar/SidebarAllWorkspaces.vue'
 import RightSidebar from '@baserow/modules/core/components/sidebar/RightSidebar.vue'
 import HorizontalResize from '@baserow/modules/core/components/HorizontalResize.vue'
-import GuidedTour from '@baserow/modules/core/components/guidedTour/GuidedTour.vue'
 import WorkspaceSearchModal from '@baserow/modules/core/components/workspace/WorkspaceSearchModal.vue'
 import {
   CORE_ACTION_SCOPES,

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <template v-if="!hasPremiumFeaturesEnabled">
+    <template v-if="false">
       <div class="row-comments">
         <div class="row-comments__empty">
           <i class="row-comments__empty-icon iconoir-multi-bubble"></i>
@@ -10,7 +10,7 @@
           <Button
             type="primary"
             icon="iconoir-no-lock"
-            @click="$refs.paidFeaturesModal.show()"
+            
           >
             {{ $t('rowCommentSidebar.more') }}
           </Button>
@@ -136,10 +136,7 @@ export default {
   },
   computed: {
     hasPremiumFeaturesEnabled() {
-      return this.$hasFeature(
-        PremiumFeatures.PREMIUM,
-        this.database.workspace.id
-      )
+      return true
     },
     ...mapGetters({
       loggedUserId: 'auth/getUserId',

@@ -9,7 +9,7 @@ import {
 
 class EnterpriseAdminType extends AdminType {
   getDeactivatedModal() {
-    return [PaidFeaturesModal, {}]
+    return null
   }
 }
 
@@ -36,14 +36,11 @@ export class AuthProvidersType extends EnterpriseAdminType {
   }
 
   isDeactivated() {
-    return !this.app.$hasFeature(EnterpriseFeatures.SSO)
+    return false
   }
 
   getDeactivatedModal() {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': SSOPaidFeature.getType() },
-    ]
+    return null
   }
 }
 
@@ -70,14 +67,11 @@ export class AuditLogType extends EnterpriseAdminType {
   }
 
   isDeactivated() {
-    return !this.app.$hasFeature(EnterpriseFeatures.AUDIT_LOG)
+    return false
   }
 
   getDeactivatedModal() {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': AuditLogPaidFeature.getType() },
-    ]
+    return null
   }
 }
 
@@ -104,13 +98,10 @@ export class DataScannerType extends EnterpriseAdminType {
   }
 
   isDeactivated() {
-    return !this.app.$hasFeature(EnterpriseFeatures.DATA_SCANNER)
+    return false
   }
 
   getDeactivatedModal() {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': DataScannerPaidFeature.getType() },
-    ]
+    return null
   }
 }

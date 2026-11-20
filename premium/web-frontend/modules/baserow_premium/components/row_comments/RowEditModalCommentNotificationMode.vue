@@ -24,7 +24,7 @@
                 {{ $t('RowEditModalCommentNotificationMode.modeMentionsDesc') }}
               </div>
               <div
-                v-if="!hasPremiumFeaturesEnabled"
+                v-if="false"
                 class="context__menu-deactivated-icon"
               >
                 <i class="iconoir-lock"></i>
@@ -48,7 +48,7 @@
                 {{ $t('RowEditModalCommentNotificationMode.modeAllDesc') }}
               </div>
               <div
-                v-if="!hasPremiumFeaturesEnabled"
+                v-if="false"
                 class="context__menu-deactivated-icon"
               >
                 <i class="iconoir-lock"></i>
@@ -106,10 +106,7 @@ export default {
   },
   computed: {
     hasPremiumFeaturesEnabled() {
-      return this.$hasFeature(
-        PremiumFeatures.PREMIUM,
-        this.database.workspace.id
-      )
+      return true
     },
     isModeAll() {
       return (
@@ -133,7 +130,7 @@ export default {
     async updateNotificationMode(mode) {
       if (!this.hasPremiumFeaturesEnabled) {
         this.$refs.context.hide()
-        this.$refs.paidFeaturesModal.show()
+        
         return
       }
 

@@ -353,20 +353,11 @@ class UserHandler:
         if not invited_to_workspace and template and workspace:
             core_handler.install_template(user, workspace, template)
 
-        if (
-            # If the user accepted an invitation, then a workspace already exists
-            # making the onboarding redundant.
-            invited_to_workspace
-            # If the user signups up with a template, then we must create a workspace
-            # because making the onboarding redundant.
-            or template
-            # If the user can't create a new workspace then the onboarding is
-            # redundant because it can't create a workspace anyway.
-            or not instance_settings.allow_global_workspace_creation
-        ):
-            profile = user.profile
-            profile.completed_onboarding = True
-            profile.save()
+        # This instance has no onboarding flow, so every new user starts completed
+        # regardless of how the account was created.
+        profile = user.profile
+        profile.completed_onboarding = True
+        profile.save()
 
         # Call the user_created method for each plugin that is in the registry.
         for plugin in plugin_registry.registry.values():

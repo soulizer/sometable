@@ -148,7 +148,6 @@ import {
   TextQueryParamType,
   NumericQueryParamType,
 } from '@baserow/modules/builder/queryParamTypes'
-import { BuilderGuidedTourType } from '@baserow/modules/builder/guidedTourTypes'
 import { BuilderSearchType } from '@baserow/modules/builder/searchTypes'
 import { searchTypeRegistry } from '@baserow/modules/core/search/types/registry'
 
@@ -423,7 +422,6 @@ export default defineNuxtPlugin({
     $registry.register('fontFamily', new CourierNewFontFamilyType(context))
     $registry.register('fontFamily', new BrushScriptMTFontFamilyType(context))
 
-    $registry.register('guidedTour', new BuilderGuidedTourType(context))
 
     searchTypeRegistry.register(new BuilderSearchType(context))
   },

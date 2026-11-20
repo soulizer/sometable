@@ -354,32 +354,10 @@ import {
 } from '@baserow/modules/database/dataProviderTypes'
 
 import {
-  DatabaseOnboardingType,
-  DatabaseScratchTrackOnboardingType,
-  DatabaseImportOnboardingType,
-  DatabaseScratchTrackFieldsOnboardingType,
-} from '@baserow/modules/database/onboardingTypes'
-
-import {
-  ScratchDatabaseOnboardingStepType,
-  ImportDatabaseOnboardingStepType,
-  AirtableDatabaseOnboardingStepType,
-  TemplateDatabaseOnboardingStepType,
-} from '@baserow/modules/database/databaseOnboardingStepTypes'
-
-import {
-  DatabaseScratchTrackCampaignFieldsOnboardingType,
-  DatabaseScratchTrackCustomFieldsOnboardingType,
-  DatabaseScratchTrackProjectFieldsOnboardingType,
-  DatabaseScratchTrackTaskFieldsOnboardingType,
-  DatabaseScratchTrackTeamFieldsOnboardingType,
-} from '@baserow/modules/database/databaseScratchTrackFieldsStepType'
-import {
   SyncedFieldsConfigureDataSyncType,
   SettingsConfigureDataSyncType,
   SyncHistoryConfigureDataSyncType,
 } from '@baserow/modules/database/configureDataSyncTypes'
-import { DatabaseGuidedTourType } from '@baserow/modules/database/guidedTourTypes'
 import {
   DatabaseSearchType,
   DatabaseTableSearchType,
@@ -425,9 +403,7 @@ export default defineNuxtPlugin({
     $registry.registerNamespace('databaseDataProvider')
     $registry.registerNamespace('databaseWorkflowActionType')
     $registry.registerNamespace('rowModalSidebar')
-    $registry.registerNamespace('onboardingTrackFields')
     $registry.registerNamespace('configureDataSync')
-    $registry.registerNamespace('databaseOnboardingStep')
     $registry.registerNamespace('copyViewConfigurationOption')
 
     $registry.register('plugin', new DatabasePlugin(context))
@@ -1094,55 +1070,6 @@ export default defineNuxtPlugin({
       new HistoryRowModalSidebarType(context)
     )
 
-    $registry.register('onboarding', new DatabaseOnboardingType(context))
-    $registry.register(
-      'onboarding',
-      new DatabaseScratchTrackOnboardingType(context)
-    )
-    $registry.register(
-      'onboarding',
-      new DatabaseScratchTrackFieldsOnboardingType(context)
-    )
-    $registry.register('onboarding', new DatabaseImportOnboardingType(context))
-
-    $registry.register(
-      'databaseOnboardingStep',
-      new ScratchDatabaseOnboardingStepType(context)
-    )
-    $registry.register(
-      'databaseOnboardingStep',
-      new ImportDatabaseOnboardingStepType(context)
-    )
-    $registry.register(
-      'databaseOnboardingStep',
-      new AirtableDatabaseOnboardingStepType(context)
-    )
-    $registry.register(
-      'databaseOnboardingStep',
-      new TemplateDatabaseOnboardingStepType(context)
-    )
-
-    $registry.register(
-      'onboardingTrackFields',
-      new DatabaseScratchTrackProjectFieldsOnboardingType(context)
-    )
-    $registry.register(
-      'onboardingTrackFields',
-      new DatabaseScratchTrackTeamFieldsOnboardingType(context)
-    )
-    $registry.register(
-      'onboardingTrackFields',
-      new DatabaseScratchTrackTaskFieldsOnboardingType(context)
-    )
-    $registry.register(
-      'onboardingTrackFields',
-      new DatabaseScratchTrackCampaignFieldsOnboardingType(context)
-    )
-    $registry.register(
-      'onboardingTrackFields',
-      new DatabaseScratchTrackCustomFieldsOnboardingType(context)
-    )
-
     $registry.register(
       'configureDataSync',
       new SyncedFieldsConfigureDataSyncType(context)
@@ -1156,7 +1083,6 @@ export default defineNuxtPlugin({
       new SyncHistoryConfigureDataSyncType(context)
     )
 
-    $registry.register('guidedTour', new DatabaseGuidedTourType(context))
 
     $registry.register(
       'databaseWorkflowActionType',

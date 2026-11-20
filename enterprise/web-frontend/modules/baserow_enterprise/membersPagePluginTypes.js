@@ -82,7 +82,7 @@ export class EnterpriseMembersPagePluginType extends MembersPagePluginType {
   }
 
   isDeactivated(workspaceId) {
-    return !this.app.$hasFeature(EnterpriseFeatures.RBAC, workspaceId)
+    return false
   }
 
   _replaceRoleColumn(columns, FieldComponent, key, { workspace }) {

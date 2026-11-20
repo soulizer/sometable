@@ -109,69 +109,22 @@ class LicenseHandler:
     @classmethod
     def user_has_feature(cls, feature: str, user: AbstractUser, workspace: Workspace):
         """
-        Checks if the user has a particular feature granted by an active license for a
-        workspace. This could be granted by a license specific to that workspace, or an
-        instance level license, or a license which is instance wide.
-
-        :param feature: The feature to check to see if active. Look for features.py
-            files for these constant strings to use.
-        :param user: The user to check.
-        :param workspace: The workspace that the user is attempting to
-            use the feature in.
-        :return: True if the user is allowed to use that feature, False otherwise.
+        All premium/enterprise features are unlocked in this deployment.
         """
 
-        license_plugin = cls._get_license_plugin()
-        if is_identity(user):
-            return license_plugin.workspace_has_feature(feature, workspace)
-        return license_plugin.user_has_feature(feature, user, workspace)
+        return True
 
     @classmethod
     def instance_has_feature(cls, feature: str):
-        """
-        Checks if the Baserow instance has a particular feature granted by an active
-        instance wide license
-
-        :param feature: The feature to check to see if active. Look for features.py
-            files for these constant strings to use.
-        :return: True if the feature is enabled globally for all users.
-        """
-
-        license_plugin = cls._get_license_plugin()
-        return license_plugin.instance_has_feature(feature)
+        return True
 
     @classmethod
     def workspace_has_feature(cls, feature: str, workspace: Workspace):
-        """
-        Checks if the Baserow workspace has a particular feature granted to the
-        workspace itself.
-
-        :param feature: The feature to check to see if active. Look for features.py
-            files for these constant strings to use.
-        :param workspace: The workspace to check to see if the feature is active for
-            everyone in that workspace.
-        :return: True if the feature is enabled for a particular workspace.
-        """
-
-        license_plugin = cls._get_license_plugin()
-        return license_plugin.workspace_has_feature(feature, workspace)
+        return True
 
     @classmethod
     def user_has_feature_instance_wide(cls, feature: str, user: AbstractUser):
-        """
-        Checks if the Baserow instance has a particular feature granted by an active
-        instance wide license
-
-        :param feature: The feature to check to see if active. Look for features.py
-            files for these constant strings to use.
-        :param user: The user to check.
-        :return: True if the feature is enabled globally for all users.
-        """
-
-        license_plugin = cls._get_license_plugin()
-        if is_identity(user):
-            return license_plugin.instance_has_feature(feature)
-        return license_plugin.user_has_feature_instance_wide(feature, user)
+        return True
 
     @classmethod
     def _get_license_plugin(cls):

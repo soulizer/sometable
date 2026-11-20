@@ -96,7 +96,7 @@ def test_create_user(data_fixture):
         assert user.email == "test@test.nl"
         assert user.username == "test@test.nl"
         assert user.profile.language == "en"
-        assert user.profile.completed_onboarding is False
+        assert user.profile.completed_onboarding is True
 
         assert Workspace.objects.all().count() == 0
 

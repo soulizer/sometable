@@ -8,10 +8,7 @@
   >
     <div class="tree__action">
       <a
-        v-if="deactivated"
-        href="#"
-        class="tree__link"
-        @click.prevent="$refs.paidFeaturesModal.show()"
+        v-if="false"
       >
         <i class="tree__icon iconoir-lock"></i>
         <span class="tree__link-text">{{
@@ -58,7 +55,7 @@ export default {
   },
   computed: {
     deactivated() {
-      return !this.$hasFeature(EnterpriseFeatures.SUPPORT, this.workspace.id)
+      return false
     },
   },
   mounted() {

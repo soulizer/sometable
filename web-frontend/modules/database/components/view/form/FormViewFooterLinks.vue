@@ -15,19 +15,7 @@
         :request-config="requestConfig"
       ></ReportAbuseModal>
     </template>
-    <div v-if="showLogo" class="form-view__powered-by-baserow">
-      Powered by
-      <a
-        href="https://baserow.io"
-        target="_blank"
-        title="Baserow - open source no-code platform and Airtable alternative"
-      >
-        <Logo
-          class="form-view__powered-by-logo"
-          alt="Baserow - open source no-code platform and Airtable alternative"
-        />
-      </a>
-    </div>
+
   </div>
 </template>
 

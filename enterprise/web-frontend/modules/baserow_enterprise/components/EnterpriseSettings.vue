@@ -6,33 +6,6 @@
     <div class="admin-settings__item">
       <div class="admin-settings__label">
         <div class="admin-settings__name">
-          {{ $t('enterpriseSettings.showBaserowHelpMessage') }}
-        </div>
-        <div class="admin-settings__description">
-          {{ $t('enterpriseSettings.showBaserowHelpMessageDescription') }}
-        </div>
-      </div>
-      <div class="admin-settings__control">
-        <SwitchInput
-          v-tooltip="
-            !$hasFeature(ENTERPRISE_SETTINGS)
-              ? $t('enterpriseSettings.deactivated')
-              : null
-          "
-          :value="
-            $hasFeature(ENTERPRISE_SETTINGS)
-              ? settings.show_baserow_help_request
-              : true
-          "
-          :disabled="!$hasFeature(ENTERPRISE_SETTINGS)"
-          @input="updateSettings({ show_baserow_help_request: $event })"
-          >{{ $t('settings.enabled') }}</SwitchInput
-        >
-      </div>
-    </div>
-    <div class="admin-settings__item">
-      <div class="admin-settings__label">
-        <div class="admin-settings__name">
           {{ $t('enterpriseSettings.coBrandingLogo') }}
         </div>
         <div class="admin-settings__description">

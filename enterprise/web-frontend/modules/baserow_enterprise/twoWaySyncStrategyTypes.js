@@ -14,13 +14,10 @@ export class RealtimePushTwoWaySyncStrategyType extends TwoWaySyncStrategyType {
   }
 
   isDeactivated(workspaceId) {
-    return !this.app.$hasFeature(EnterpriseFeatures.DATA_SYNC, workspaceId)
+    return false
   }
 
   getDeactivatedClickModal() {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': DataSyncPaidFeature.getType() },
-    ]
+    return null
   }
 }

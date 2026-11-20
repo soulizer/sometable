@@ -165,8 +165,8 @@ export default {
           this.showError(
             'Backend URL mis-configuration detected',
             `Cannot connect to the backend at ${publicBackendUrlWithProto}.` +
-              ` You visited Baserow at ${browserWindowUrl} ` +
-              ' which indicates you have mis-configured the Baserow ' +
+              ` You visited this instance at ${browserWindowUrl} ` +
+              ' which indicates you have mis-configured this ' +
               ' BASEROW_PUBLIC_URL or PUBLIC_BACKEND_URL environment variables. ' +
               ' Please visit https://baserow.io/docs/tutorials/debugging-connection-issues ' +
               ' on how to fix this error.'

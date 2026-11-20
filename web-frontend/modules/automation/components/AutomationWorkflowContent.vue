@@ -33,7 +33,6 @@
       <div v-if="activeSidePanel" class="automation-workflow__side-panel">
         <EditorSidePanels
           :active-side-panel="activeSidePanel"
-          :data-highlight="activeSidePanelType?.guidedTourAttr"
         />
       </div>
     </div>

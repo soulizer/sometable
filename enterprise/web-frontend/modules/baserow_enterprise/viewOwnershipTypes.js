@@ -34,7 +34,7 @@ export class RestrictedViewOwnershipType extends ViewOwnershipType {
   }
 
   isDeactivated(workspaceId) {
-    return !this.app.$hasFeature(EnterpriseFeatures.RBAC, workspaceId)
+    return false
   }
 
   getDeactivatedText() {
@@ -42,10 +42,7 @@ export class RestrictedViewOwnershipType extends ViewOwnershipType {
   }
 
   getDeactivatedModal() {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': RBACPaidFeature.getType() },
-    ]
+    return null
   }
 
   getListViewTypeSort() {

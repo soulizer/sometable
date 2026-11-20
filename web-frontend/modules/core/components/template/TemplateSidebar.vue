@@ -22,9 +22,6 @@
     </div>
     <div class="sidebar__section sidebar__section--bottom">
       <div class="sidebar__foot">
-        <div class="sidebar__logo">
-          <Logo height="14" alt="Baserow logo" />
-        </div>
         <a class="sidebar__collapse-link" @click="$emit('collapse-toggled')">
           <i
             :class="{

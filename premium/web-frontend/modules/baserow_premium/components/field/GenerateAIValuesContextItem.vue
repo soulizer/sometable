@@ -100,7 +100,7 @@ export default {
   methods: {
     openModal() {
       if (!this.hasPremium) {
-        this.$refs.paidFeaturesModal.show()
+        
       } else if (this.modelAvailable && !this.fieldHasError) {
         this.$emit('hide-context')
         this.$refs.generateAIValuesModal.show()

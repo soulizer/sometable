@@ -32,14 +32,11 @@ export class LocalBaserowTableDataSyncType extends DataSyncType {
   }
 
   isDeactivated(workspaceId) {
-    return !this.app.$hasFeature(EnterpriseFeatures.DATA_SYNC, workspaceId)
+    return false
   }
 
   getDeactivatedClickModal() {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': DataSyncPaidFeature.getType() },
-    ]
+    return null
   }
 }
 
@@ -62,14 +59,11 @@ export class JiraIssuesDataSyncType extends DataSyncType {
   }
 
   isDeactivated(workspaceId) {
-    return !this.app.$hasFeature(EnterpriseFeatures.DATA_SYNC, workspaceId)
+    return false
   }
 
   getDeactivatedClickModal() {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': DataSyncPaidFeature.getType() },
-    ]
+    return null
   }
 }
 
@@ -92,14 +86,11 @@ export class GitHubIssuesDataSyncType extends DataSyncType {
   }
 
   isDeactivated(workspaceId) {
-    return !this.app.$hasFeature(EnterpriseFeatures.DATA_SYNC, workspaceId)
+    return false
   }
 
   getDeactivatedClickModal() {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': DataSyncPaidFeature.getType() },
-    ]
+    return null
   }
 }
 
@@ -122,14 +113,11 @@ export class GitLabIssuesDataSyncType extends DataSyncType {
   }
 
   isDeactivated(workspaceId) {
-    return !this.app.$hasFeature(EnterpriseFeatures.DATA_SYNC, workspaceId)
+    return false
   }
 
   getDeactivatedClickModal() {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': DataSyncPaidFeature.getType() },
-    ]
+    return null
   }
 }
 
@@ -152,14 +140,11 @@ export class HubspotContactsDataSyncType extends DataSyncType {
   }
 
   isDeactivated(workspaceId) {
-    return !this.app.$hasFeature(EnterpriseFeatures.DATA_SYNC, workspaceId)
+    return false
   }
 
   getDeactivatedClickModal() {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': DataSyncPaidFeature.getType() },
-    ]
+    return null
   }
 }
 

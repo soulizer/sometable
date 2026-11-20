@@ -84,8 +84,7 @@ const { data, error } = await useAsyncData(`template-${slug}`, async () => {
         .fetchAll()
         .catch(() => ({ data: [] })),
       // The workspaces of a logged in user, so that they can choose where to
-      // install the template. Not left to the `workspacesAndApplications`
-      // middleware, because it sends a user without workspaces to the onboarding.
+      // install the template.
       $store.getters['auth/isAuthenticated']
         ? fetchWorkspacesAndApplications(nuxtApp, null)
         : null,

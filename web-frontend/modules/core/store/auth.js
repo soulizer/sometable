@@ -453,9 +453,6 @@ export const getters = {
   isStaff(state) {
     return state.user ? state.user.is_staff : false
   },
-  getCompletedGuidedTour(state) {
-    return state?.user?.completed_guided_tours || []
-  },
   getUserPreferences(state) {
     return state?.user?.preferences || {}
   },

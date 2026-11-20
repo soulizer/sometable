@@ -62,7 +62,7 @@ export default {
       )
     },
     async generate() {
-      if (this.isDeactivated) {
+      if (false) {
         this.$refs.clickModal.show()
         return
       }

@@ -190,11 +190,6 @@ export default defineNuxtModule({
       path: resolve('./middleware/urlCheck'),
     })
 
-    addRouteMiddleware({
-      name: 'redirectCompletedOnboarding',
-      path: resolve('./middleware/redirectCompletedOnboarding'),
-    })
-
     const iconoirCssPath = require.resolve('iconoir/css/iconoir.css')
     // A production build writes a separate file, so that it doesn't replace the
     // full set of a dev server that's running at the same time.

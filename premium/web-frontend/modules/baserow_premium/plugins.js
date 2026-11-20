@@ -31,7 +31,7 @@ export class PremiumPlugin extends BaserowPlugin {
   }
 
   hasFeature(feature, forSpecificWorkspace) {
-    return this.app.$licenseHandler.hasFeature(feature, forSpecificWorkspace)
+    return true
   }
 
   /**

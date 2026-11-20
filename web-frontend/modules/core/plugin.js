@@ -70,8 +70,6 @@ import {
   BaserowVersionUpgradeNotificationType,
   AbuseReportCreatedNotificationType,
 } from '@baserow/modules/core/notificationTypes'
-import { MoreOnboardingType } from '@baserow/modules/core/onboardingTypes'
-import { SidebarGuidedTourType } from '@baserow/modules/core/guidedTourTypes'
 import { TOTPAuthType } from '@baserow/modules/core/twoFactorAuthTypes'
 import { CloudflareTurnstileCaptchaProviderType } from '@baserow/modules/core/captchaProviderTypes'
 
@@ -184,8 +182,6 @@ export default defineNuxtPlugin({
     registry.registerNamespace('roles')
     registry.registerNamespace('generativeAIModel')
     registry.registerNamespace('aiProviderModelFeature')
-    registry.registerNamespace('onboarding')
-    registry.registerNamespace('guidedTour')
     registry.registerNamespace('admin')
     registry.registerNamespace('workspaceSettingsPage')
     registry.registerNamespace('identityExtension')
@@ -462,8 +458,5 @@ export default defineNuxtPlugin({
       new CloudflareTurnstileCaptchaProviderType(context)
     )
 
-    registry.register('onboarding', new MoreOnboardingType(context))
-
-    registry.register('guidedTour', new SidebarGuidedTourType(context))
   },
 })

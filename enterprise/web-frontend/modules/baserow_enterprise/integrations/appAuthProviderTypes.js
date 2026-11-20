@@ -151,7 +151,7 @@ export class SamlAppAuthProviderType extends SamlAuthProviderTypeMixin(
    * @returns {Boolean} True if the provider is disabled, false otherwise.
    */
   isDeactivated(workspaceId) {
-    return !this.app.$hasFeature(EnterpriseFeatures.BUILDER_SSO, workspaceId)
+    return false
   }
 }
 
@@ -255,6 +255,6 @@ export class OpenIdConnectAppAuthProviderType extends OAuth2AuthProviderTypeMixi
    * @returns {Boolean} True if the provider is disabled, false otherwise.
    */
   isDeactivated(workspaceId) {
-    return !this.app.$hasFeature(EnterpriseFeatures.BUILDER_SSO, workspaceId)
+    return false
   }
 }

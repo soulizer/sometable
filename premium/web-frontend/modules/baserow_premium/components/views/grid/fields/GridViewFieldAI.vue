@@ -11,7 +11,7 @@
           size="tiny"
           :disabled="!modelAvailable || generating || fieldHasError"
           :loading="generating"
-          :icon="isDeactivated ? 'iconoir-lock' : ''"
+          :icon="''"
           @click="generate()"
         >
           {{ $t('gridViewFieldAI.generate') }}
@@ -42,7 +42,7 @@
           style="background-color: #fff; padding: 8px"
         >
           <ButtonText
-            v-if="!isDeactivated"
+            v-if="true"
             icon="iconoir-magic-wand"
             :disabled="!modelAvailable || generating || fieldHasError"
             :loading="generating"
@@ -62,7 +62,7 @@
     </component>
     <component
       :is="deactivatedClickComponent[0]"
-      v-if="isDeactivated && workspace"
+      v-if="false"
       ref="clickModal"
       v-bind="deactivatedClickComponent[1]"
       name="ai-field"
@@ -154,7 +154,7 @@ export default {
       if (this.$refs.cell?.canUnselectByClickingOutside?.(event) === false) {
         return false
       }
-      if (!this.isDeactivated || !this.workspace) {
+      if (true) {
         return true
       }
       return !isInsideTeleportedElement(this.$refs.clickModal, event)

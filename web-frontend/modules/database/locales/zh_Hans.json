@@ -17,6 +17,22 @@
                     "title": "发生错误",
                     "message": "检索相邻行时出错"
                 }
+            },
+            "toast": {
+                "notFound": {
+                    "next": {
+                        "title": "No more rows",
+                        "message": "There is no next row"
+                    },
+                    "previous": {
+                        "title": "No more rows",
+                        "message": "There is no previous row"
+                    }
+                },
+                "error": {
+                    "title": "Error occurred",
+                    "message": "An error occurred while retrieving the adjacent row"
+                }
             }
         }
     },
@@ -69,7 +85,9 @@
             "title": "不推荐使用的事件类型",
             "description": "此 webhook 不会一次接收所有更改行的信息。请将其转换为批处理样式的事件类型。这会将 JSON 正文负载更改为包含多行的格式。",
             "convert": "转换"
-        }
+        },
+        "triggerWhenFieldsHaveChanged": "Trigger when fields have changed",
+        "helpTriggerWhenFieldsHaveChanged": "Will only be triggered if the cell value of the chosen fields changes."
     },
     "webhook": {
         "details": "详情",
@@ -84,20 +102,28 @@
     },
     "sidebar": {
         "viewAPI": "查看 API 文档",
-        "createTable": "创建表"
+        "createTable": "创建表",
+        "adminContentCategory": "Content"
     },
     "sidebarItem": {
-        "exportTable": "导出表"
+        "exportTable": "导出表",
+        "importFile": "Import file",
+        "webhooks": "Webhooks",
+        "lastSynced": "Last synced",
+        "notSynced": "not synced",
+        "sync": "Sync table",
+        "updateSyncConfig": "Update sync configuration"
     },
     "duplicateTableJobType": {
         "duplicating": "副本创建中",
-        "duplicatedTitle": "表副本已创建"
+        "duplicatedTitle": "表副本已创建",
+        "name": "Duplicate table"
     },
     "apiToken": {
-        "create": "create",
-        "read": "read",
-        "update": "update",
-        "delete": "delete",
+        "create": "创建",
+        "read": "读取",
+        "update": "更新",
+        "delete": "删除",
         "tokenPrefix": "Token:",
         "viewAPIDocs": "查看 API 文档",
         "generateNewToken": "生成新Token",
@@ -169,7 +195,11 @@
         "filterType": "- `AND`: 表示行必须匹配所有提供的过滤器。\n- `OR`: 表示行只需要匹配其中一个过滤器。\n\n 这仅适用于两个提供或更多过滤器。",
         "include": "默认情况下，所有字段都包含在响应中。 您可以通过提供 include 查询参数来选择要包含的字段子集。\n\n #### 使用 `user_field_names`：\n\n `include` 应该是要包含在结果中的字段名称的逗号分隔列表 . 例如，如果您提供以下 GET 参数：`include=My Field,-My Field 2`，则仅包含这些字段（除非明确排除）。\n\n 包含逗号的字段名称必须用 引号：`\"名称，\"`。 如果字段名称包含引号，则必须使用 `\\` 字符对其进行转义。 例如：`Name \\\"`。\n\n #### 没有 `user_field_names`：\n\n `include` 应该是逗号分隔的 `field_` 列表，后跟要包含的字段的 id 结果。例如：如果您提供以下 GET 参数 `exclude=field_1,field_2` 则 ID 为 1 和 ID 为 2 的字段将仅包含这些字段（除非它们被明确排除）",
         "exclude": "默认情况下所有字段都包含在响应中。您可以通过提供 exclude 查询参数来选择要排除的字段子集。\n\n #### With `user_field_names`:\n\n ` exclude` 应该是要从结果中排除的字段名称的逗号分隔列表。例如，如果您提供以下 GET 参数：`exclude=My Field,-My Field 2`，则将排除这些字段。\n\n包含逗号的字段名称必须用引号括起来：`\"Name ,\"`。如果字段名称包含引号，则必须使用 `\\` 字符对其进行转义。例如：`Name \\\"` .\n\n #### 没有 `user_field_names`:\n\n `exclude` 应该是一个逗号分隔的 `field_` 列表，后跟要从结果中排除的字段的 id。例如：如果您提供以下 GET 参数 `exclude=field_1,field_2`，则 id 为 `1` 和 id `2` 的字段将被排除。",
-        "viewId": "默认情况下，不应用查询参数中定义的过滤器和排序。您可以通过在 `view_id` GET 参数中提供视图的`id`来添加视图的过滤器和排序。对于例如，如果您提供以下 GET 参数 `view_id=1`，则将应用在 id 为 `1` 的视图中定义的过滤器和排序。您可以在任何给定视图的上下文菜单中找到 `view_id`。它是视图名称后面括号中的数字。\n\n #### 使用 `filter__{'{'}field{'}'}__{'{'}filter{'}'}` \n\n 查询参数中提供的过滤器和视图中定义的过滤器都将被应用。 \n\n #### 使用 `order_by` \n\n 如果提供了 `order_by`，则视图中定义的排序将被忽略。"
+        "viewId": "默认情况下，不应用查询参数中定义的过滤器和排序。您可以通过在 `view_id` GET 参数中提供视图的`id`来添加视图的过滤器和排序。对于例如，如果您提供以下 GET 参数 `view_id=1`，则将应用在 id 为 `1` 的视图中定义的过滤器和排序。您可以在任何给定视图的上下文菜单中找到 `view_id`。它是视图名称后面括号中的数字。\n\n #### 使用 `filter__{'{'}field{'}'}__{'{'}filter{'}'}` \n\n 查询参数中提供的过滤器和视图中定义的过滤器都将被应用。 \n\n #### 使用 `order_by` \n\n 如果提供了 `order_by`，则视图中定义的排序将被忽略。",
+        "test": "`{'{'}\"filter_type\": \"AND\", \"filters\": [{'{'}\"field\": \"Name\", \"type\": \"equal\", \"value\": \"test\"{'}'}]{'}'}",
+        "filters": "Rows can optionally be filtered using the same view filters that are available for the views. This parameter accepts a JSON serialized string containing the filter tree to apply to this view. The filter tree is a nested structure containing the filters that need to be applied. \n\n#### With `user_field_names`:\n\nAn example of a valid filter tree is the following: `{'{'}\"filter_type\": \"AND\", \"filters\": [{'{'}\"field\": \"Name\", \"type\": \"equal\", \"value\": \"test\"{'}'}]{'}'}`.\n\n#### Without `user_field_names`:\n\nFor example, if you optionally provide the following GET parameter: `{'{'}\"filter_type\": \"AND\", \"filters\": [{'{'}\"field\": 1, \"type\": \"equal\", \"value\": \"test\"{'}'}]{'}'}`\n\nPlease note that if this parameter is provided, all other `filter__{'{'}field{'}'}__{'{'}filter{'}'}` will be ignored, as well as the filter_type parameter.",
+        "filtersBuilder": "Open filters parameter builder",
+        "join": "Makes it possible to request a lookup of field values from a target table through existing link row fields. The parameter name has to be the name of an existing link row field, followed by __join. The value should be a list of field names for which we want to lookup additional values. You can provide one or multiple target fields. It is not possible to lookup a value of a link row field in the target table. Read access to the target table is required.\n\n #### With `user_field_names`:\n\n `join` should be a comma separated list of field names to be included in results. For example: If you provide the following GET parameter `LinkRowField__join=MyField,MyField2` then the values of `MyField` and `My Field2` in the table linked by `LinkRowField` will be included in the response .\n\n#### Without `user_field_names`:\n\n `join` should be a comma separated list of `field_` followed by the id of the field to include in the results. For example: If you provide the following GET parameter `field_1__join=field_2,field_3` then the values of `field_2` and `field_3` in the table linked by `field_1` will be included in the response."
     },
     "apiDocsIntro": {
         "intro": "{name} 数据库提供了一种将数据与任何外部系统集成的简便方法。API 遵循 REST 语义，使用 JSON 编码对象并依赖标准 HTTP 代码、机器和人类可读错误来指示操作结果.",
@@ -188,7 +218,8 @@
         "primary": "表示该字段是否为主字段。如果为 `true`，则该字段不能被删除，该值应代表整行。",
         "type": "为该字段定义的类型。",
         "extraProps": "一些额外的属性在这里没有描述，因为它们是特定于类型的。",
-        "readOnly": "表示该字段是否为只读字段。如果为true，则无法更新单元格值。"
+        "readOnly": "表示该字段是否为只读字段。如果为true，则无法更新单元格值。",
+        "descriptionField": "Field description"
     },
     "apiDocsTableDeleteRow": {
         "description": "删除现有的 {name} 行。",
@@ -236,19 +267,22 @@
         "filter": "过滤器",
         "exampleValue": "示例值",
         "example": "完整示例",
-        "field": "字段 {name}"
+        "field": "字段 {name}",
+        "deprecated": "deprecated"
     },
     "fieldTextSubForm": {
         "placeholder": "默认文本"
     },
     "fieldSingleSelectSubForm": {
-        "optionsLabel": "选项"
+        "optionsLabel": "选项",
+        "defaultOptionLabel": "Default option"
     },
     "fieldSingleSelectDropdown": {
         "notFound": "未找到选项"
     },
     "fieldmultipleCollaboratorsDropdown": {
-        "notFound": "未找到合作者"
+        "notFound": "未找到合作者",
+        "identities": "Identities"
     },
     "fieldDateSubForm": {
         "dateFormatLabel": "日期格式",
@@ -258,12 +292,22 @@
         "includeTimeLabel": "包括时间",
         "timeFormatLabel": "时间格式",
         "24小时": "24 小时",
-        "12小时": "12 小时"
+        "12小时": "12 小时",
+        "showTimezoneLabel": "Show timezone",
+        "forceTimezoneLabel": "Set timezone for all collaborators",
+        "forceTimezoneValue": "Timezone",
+        "addTimezoneOffsetLabel": "Convert values (add {utcOffsetDiff} minutes)",
+        "subTimezoneOffsetLabel": "Convert values (subtract {utcOffsetDiff} minutes)",
+        "24Hour": "24 hour",
+        "12Hour": "12 hour"
     },
     "fieldLinkRowSubForm": {
         "noTable": "您至少需要在同一个数据库中链接另一个表。",
         "selectTableLabel": "选择要链接的表",
-        "hasRelatedFieldLabel": "在链接表中创建相关字段"
+        "hasRelatedFieldLabel": "在链接表中创建相关字段",
+        "limitToView": "Limit selection to view",
+        "limitToViewDescription": "Note that this is only visual. It's still possible to make relationships outside of the view via the related table or API.",
+        "allowMultipleRelations": "Allow multiple relationships"
     },
     "fieldSelectOptions": {
         "add": "添加一个选项"
@@ -273,19 +317,39 @@
         "integer": "整型",
         "decimal": "十进制小数",
         "decimalPlacesLabel": "小数位数",
-        "allowNegative": "允许负数"
+        "allowNegative": "允许负数",
+        "separatorLabel": "Thousand and decimal separator",
+        "prefixPlaceholder": "Prefix",
+        "suffixPlaceholder": "Suffix",
+        "prefixAndSuffixLabel": "Prefix / suffix",
+        "spaceComma": "Space, comma (1 000 000,00)",
+        "spacePeriod": "Space, period (1 000 000.00)",
+        "commaPeriod": "Comma, period (1,000,000.00)",
+        "periodComma": "Period, comma (1.000.000,00)",
+        "noFormatting": "No formatting",
+        "defaultValueLabel": "Default value",
+        "defaultValuePlaceholder": "Enter a default value"
     },
     "fieldContext": {
         "editField": "编辑字段",
         "deleteField": "删除字段",
         "hideField": "隐藏字段",
-        "showField": "显示字段"
+        "showField": "显示字段",
+        "changePrimaryField": "Change primary field"
     },
     "fieldForm": {
         "name": "名称",
         "fieldAlreadyExists": "同名字段已经存在。",
         "nameNotAllowed": "该字段名不允许。",
-        "nameTooLong": "这个字段名太长了。"
+        "nameTooLong": "这个字段名太长了。",
+        "description": "Description",
+        "addDescription": "Add description",
+        "dbIndex": "Index",
+        "dbIndexError": "This field type cannot have an index. Please remove it before saving or change the field type.",
+        "dbIndexDescription": "Indexing can significantly improve filtering performance, but slows down create, update, and delete operations.",
+        "defaultValueDisabledByConstraint": "Cannot set a default value with a unique constraint",
+        "defaultValueOverriddenByView": "A view-level default value is set for this field and will take precedence over this default value.",
+        "dbIndexDisabledTooltip": "Indexing is not available for this field type."
     },
     "fieldLookupSubForm": {
         "noTable": "您至少需要一个链接行字段来创建查找的字段。",
@@ -308,7 +372,8 @@
         "addField": "添加字段"
     },
     "selectRowContent": {
-        "search": "搜索行"
+        "search": "搜索行",
+        "hideFields": "Hide fields"
     },
     "rowEditModal": {
         "addField": "添加字段",
@@ -333,7 +398,8 @@
         }
     },
     "rowEditFieldLinkRow": {
-        "addLink": "添加另一个链接"
+        "addLink": "添加另一个链接",
+        "keepOnlyOneValue": "Keep only one value. This field only supports one relationship. The value is saved if there is only one relationship left."
     },
     "tableCSVImporter": {
         "chooseFileLabel": "选择 CSV 文件",
@@ -409,7 +475,11 @@
         "fieldMappingDescription": "我们已经自动映射了您表格中 Baserow 字段的列。您可以在下面更改它们。任何不兼容的单元格在导入后将保持为空。",
         "selectImportMessage": "请选择要导入的数据。",
         "filePreview": "文件内容预览",
-        "importPreview": "导入预览"
+        "importPreview": "导入预览",
+        "defaultName": "Table",
+        "useUpsertField": "Update rows if they already exist",
+        "upsertTooltip": "Match existing rows using a unique field to overwrite data with imported values.",
+        "restoredFile": "Importing file \"{name}\"..."
     },
     "formulaAdvancedEditContext": {
         "textAreaFormulaInputPlaceholder": "点击编辑公式",
@@ -432,7 +502,8 @@
     },
     "viewsContext": {
         "searchView": "搜索视图",
-        "noViews": "未找到视图"
+        "noViews": "未找到视图",
+        "collaborative": "Collaborative"
     },
     "viewFilterTypeLinkRow": {
         "unnamed": "未命名行 {value}",
@@ -447,7 +518,11 @@
         "and": "与",
         "or": "或",
         "relatedFieldNotFound": "未找到相关字段。",
-        "filterTypeNotFound": "过滤器类型不兼容。"
+        "filterTypeNotFound": "过滤器类型不兼容。",
+        "addFilterGroup": "Add filter group",
+        "noCompatibleFilterTypesErrorTitle": "No compatible filter types",
+        "noCompatibleFilterTypesErrorMessage": "None of your fields have any compatible filter types",
+        "copyFromView": "Copy from another view"
     },
     "viewFilterTypeFileTypeDropdown": {
         "image": "图片",
@@ -467,20 +542,26 @@
         "copyURL": "复制 URL",
         "EnablePassword": "使用密码限制访问",
         "DisablePassword": "访问受密码保护",
-        "ChangePassword": "更改"
+        "ChangePassword": "更改",
+        "shareViewText": "Private shareable link allows anyone to see the data in this view.",
+        "createPrivateLink": "Create a private link",
+        "notSharedYetText": "Allow anyone to see the data in this view or sync events to your external calendar.",
+        "shareViewWarningTitle": "Warning"
     },
     "viewSortContext": {
         "noSortTitle": "你还没有创建排序",
         "noSortText": "排序允许您按字段对行进行排序。",
         "sortBy": "排序依据",
         "thenBy": "然后再依据",
-        "addSort": "选择要排序的字段"
+        "addSort": "选择要排序的字段",
+        "hiddenFieldWarning": "One or more sorts reference hidden fields that won't be visible to editors and lower roles."
     },
     "viewSort": {
         "sort": "排序 | 1 次排序 | {count} 次排序"
     },
     "viewDecorator": {
-        "decorator": "颜色 | 1 种颜色 | {count} 种颜色"
+        "decorator": "颜色 | 1 种颜色 | {count} 种颜色",
+        "hiddenFieldWarning": "Decorations are removed for editors and lower roles because they may reference hidden fields."
     },
     "viewRotateSlugModal": {
         "title": "刷新网址",
@@ -520,7 +601,16 @@
         "selected": "已选中"
     },
     "viewFilter": {
-        "filter": "过滤器 | 1 个过滤器 | {count} 个过滤器"
+        "filter": "过滤器 | 1 个过滤器 | {count} 个过滤器",
+        "hasAllValuesEqual": "has all values equal",
+        "hasValueHigherThan": "has value higher than",
+        "hasValueHigherThanOrEqual": "has value higher than or equal",
+        "hasValueLowerThan": "has value lower than",
+        "hasValueLowerThanOrEqual": "has value lower than or equal",
+        "hasNotValueHigherThan": "doesn't have value higher than",
+        "hasNotValueHigherThanOrEqual": "doesn't have value higher than or equal",
+        "hasNotValueLowerThan": "doesn't have value lower than",
+        "hasNotValueLowerThanOrEqual": "doesn't have value lower than or equal"
     },
     "viewContext": {
         "exportView": "导出视图",
@@ -528,7 +618,11 @@
         "renameView": "重命名视图",
         "webhooks": "Webhooks",
         "importFile": "导入文件",
-        "deleteView": "删除视图"
+        "deleteView": "删除视图",
+        "copyConfiguration": "Copy configuration from view",
+        "defaultRowValues": "Default row values",
+        "toPersonal": "转为个人视图",
+        "toCollaborative": "转为协作视图"
     },
     "deleteViewModal": {
         "title": "删除 {name}",
@@ -536,7 +630,8 @@
         "delete": "删除视图"
     },
     "viewForm": {
-        "name": "名称"
+        "name": "名称",
+        "whoCanEdit": "Who can edit this view?"
     },
     "galleryViewHeader": {
         "customizeCards": "自定义卡片"
@@ -550,7 +645,12 @@
         "createFilter": "创建过滤器",
         "duplicate": "创建副本字段",
         "sortField": "排序",
-        "hideField": "隐藏字段"
+        "hideField": "隐藏字段",
+        "groupByField": "Group by",
+        "ungroupByField": "Don't group by",
+        "dataSyncField": "The field is read only and part of the table's data sync.",
+        "dataSyncFieldTwoWaySync": "The field is synchronized with the table's data sync.",
+        "noWriteValues": "Changes to this field are restricted."
     },
     "gridViewRow": {
         "rowNotMatchingFilters": "行不匹配过滤器",
@@ -566,14 +666,28 @@
         "deleteRow": "删除行",
         "deleteRows": "删除行",
         "copyCells": "复制单元格",
-        "rowCount": "无行 | 1 行 | {count} 行"
+        "rowCount": "无行 | 1 行 | {count} 行",
+        "copyRowURL": "Copy Row URL",
+        "copiedRowURL": "Copied Row URL",
+        "copiedRowURLMessage": "Row {id}'s URL has been copied to your clipboard.",
+        "copyCellsWithHeader": "Copy cells with header",
+        "generateCellsValues": "Generate values with AI",
+        "generateAllAiValues": "Generate all AI values",
+        "promptBroken": "The prompt is broken and must be fixed before values can be generated.",
+        "hiddenRowsInsertedTitle": "Rows added",
+        "hiddenRowsInsertedMessage": "{number} newly added rows have been added, but are not visible because of the active filters.",
+        "tooManyItemsTitle": "Too many items",
+        "tooManyItemsDescription": "It's not possible to update more than {limit} rows at once, so we've only updated the first.",
+        "AIValuesGenerationErrorTitle": "AI value generation failed",
+        "AIValuesGenerationErrorMessage": "Please check your API_KEY and verify the selected model."
     },
     "gridViewFieldFile": {
         "dropHere": "放在这里",
         "dropFileHere": "把文件放到这里"
     },
     "gridViewFieldLinkRow": {
-        "unnamed": "未命名行 {value}"
+        "unnamed": "未命名行 {value}",
+        "keepOnlyOneValue": "Keep only one value"
     },
     "gridViewIdentifierOptions": {
         "id": "行标识符",
@@ -589,14 +703,17 @@
         "failedTitle": "导出失败",
         "failedDescription": "由于服务器错误，导出失败。",
         "cancelledTitle": "导出取消",
-        "cancelledDescription": "导出被取消。"
+        "cancelledDescription": "导出被取消。",
+        "title": "Export {name}"
     },
     "exporterTypeChoices": {
         "formatLabel": "您要导出到哪种格式？"
     },
     "exportTableForm": {
         "viewLabel": "选择要导出的视图：",
-        "typeError": "没有可用的导出器类型，请选择其他的视图或整个表。"
+        "typeError": "没有可用的导出器类型，请选择其他的视图或整个表。",
+        "includeRowId": "Include row ID",
+        "includePrimaryField": "Include primary field"
     },
     "exportTableLoadingBar": {
         "export": "导出",
@@ -610,7 +727,8 @@
         "recordSeparator": "记录分隔符",
         "unitSeparator": "单元分隔符",
         "encodingLabel": "编码",
-        "firstRowIsHeaderLabel": "第一行是字段名"
+        "firstRowIsHeaderLabel": "第一行是字段名",
+        "includeHeader": "Include field names as header"
     },
     "apiDocsDatabase": {
         "pageTitle": "{name} 数据库 API 文档",
@@ -646,7 +764,10 @@
         "median": "中位数",
         "stdDev": "标准差",
         "stdDevShort": "标准差",
-        "variance": "方差"
+        "variance": "方差",
+        "count": "Count",
+        "distribution": "Distribution",
+        "othersCount": "Others"
     },
     "databaseForm": {
         "importLabel": "要导入现有数据吗？",
@@ -671,10 +792,23 @@
         "stateImportingTable": "正在导入表 {table}",
         "errorJobAlreadyRunningTitle": "已经在运行",
         "errorJobAlreadyRunningDescription": "另一个导入作业已在运行。您需要等待该作业完成后再开始另一个作业。",
-        "linkError": "链接应该是这样的：https://airtable.com/shrxxxxxxxxxxxxxx"
+        "linkError": "链接应该是这样的：https://airtable.com/shrxxxxxxxxxxxxxx",
+        "errorRequiresAuthenticationTitle": "Authentication required",
+        "errorRequiresAuthenticationDescription": "This base can only be imported with additional authentication. The \"Session authentication\" option below has been enabled for you. Follow the instructions to copy the \"__Host-airtable-session\" and \"__Host-airtable-session.sig\" cookie values into the fields, and try again.",
+        "errorBaseNotPublicTitle": "Base could not be accessed",
+        "errorBaseNotPublicDescription": "Airtable didn't return a publicly shared base for this link. Open the link in your browser to check that it loads the base you want to import and that the full URL was copied correctly, then try again.",
+        "openSharedLink": "Open the shared link",
+        "skipFiles": "Skip importing files",
+        "skipFilesHelper": "An Airtable base with many files can slow down the import. Enabling this skips the import of the files.",
+        "useSession": "Session authentication",
+        "useSessionHelper": "Use this if the publicly shared base requires authentication.",
+        "sessionDescription": "If the import fails because the base requires authentication, then it could be that the organizational settings in Airtable prevent accessing the Airtable base without authenticating first. To do this, the session and signature must be manually extracted. Visit the URL of the publicly shared base in your browser and sign in, if needed. Click on the application menu by clicking in the top right corner -> \"More tools\" -> \"Developer tools\". Open the \"Application\" (in Firefox \"Storage\") tab and click on \"https://airtable.com\". Now find the \"__Host-airtable-session\" and \"__Host-airtable-session.sig\" cookie values, and paste them in the inputs below.",
+        "sessionLabel": "Session cookie (__Host-airtable-session)",
+        "sessionSignatureLabel": "Session signature cookie (__Host-airtable-session.sig)"
     },
     "chooseSingleSelectField": {
-        "addSelectField": "添加单选字段"
+        "addSelectField": "添加单选字段",
+        "warningWhenNothingToChooseOrCreate": "There are no single select fields to choose from and you do not have permissions to make one."
     },
     "viewDecoratorContext": {
         "addDecorator": "添加装饰器"
@@ -686,7 +820,14 @@
         "required": "必填",
         "descriptionPlaceholder": "描述",
         "showWhenMatchingConditions": "条件满足时显示",
-        "addCondition": "添加条件"
+        "addCondition": "添加条件",
+        "includeAllSelectOptions": "include all select options",
+        "includeAllSelectOptionsHelper": "Choose the select options that must be included in the form using this dropdown",
+        "addConditionGroup": "Add condition group",
+        "showFieldAs": "Show field as",
+        "noSelectOptions": "There are no select options available.",
+        "noCollaboratorsAvailable": "There are no collaborators available.",
+        "cannotSumitValues": "This field is read-only and won't be displayed in the form."
     },
     "duplicateFieldContext": {
         "duplicate": "创建副本字段",
@@ -706,7 +847,10 @@
         "limitReached": "已达到最大快照数限制。",
         "snapshot": "快照",
         "importingState": "正在创建",
-        "reset": "创建另一个"
+        "reset": "创建另一个",
+        "cancel": "Cancel",
+        "noSnapshots": "No snapshots for this application yet.",
+        "nameAlreadyExists": "A snapshot with this name already exists."
     },
     "deleteSnapshotModal": {
         "title": "删除快照",
@@ -732,6 +876,568 @@
         "addLogo": "添加Logo",
         "titlePlaceholder": "标题",
         "descriptionPlaceholder": "描述",
-        "noFields": "此表单没有任何字段。单击左侧边栏中的字段添加一个。"
+        "noFields": "此表单没有任何字段。单击左侧边栏中的字段添加一个。",
+        "noFieldsTitle": "This form doesn't have any fields",
+        "noFieldsContent": "Click on a field in the left sidebar to add one."
+    },
+    "formViewFooterLinks": {
+        "poweredBy": "",
+        "reportAbuse": "Report abuse"
+    },
+    "gridViewRowHeight": {
+        "height": "行高",
+        "small": "紧凑",
+        "medium": "适中",
+        "large": "宽松",
+        "name": "行高"
+    },
+    "gridViewGroupBy": {
+        "group": "分组",
+        "allItems": "全部条目",
+        "noGroupByTitle": "尚未创建分组",
+        "noGroupByText": "按字段将行分组。",
+        "addGroupBy": "选择用于分组的字段"
+    },
+    "viewGroupByContext": {
+        "noGroupByTitle": "尚未创建分组",
+        "noGroupByText": "按字段将行分组。",
+        "addGroupBy": "选择用于分组的字段",
+        "group": "分组",
+        "chooseField": "选择字段",
+        "groupBy": "Group by",
+        "thenBy": "Then by",
+        "maxGroupBysReached": "You can group by up to {count} fields.",
+        "collapseAllGroups": "Collapse all",
+        "expandAllGroups": "Expand all",
+        "layout": "Group layout",
+        "layoutSection": "Sections",
+        "layoutColumn": "Columns",
+        "hiddenFieldWarning": "One or more group bys reference hidden fields that won't be visible to editors and lower roles."
+    },
+    "adminType": {
+        "databaseViews": "Views"
+    },
+    "viewsAdmin": {
+        "title": "Views"
+    },
+    "viewsAdminTable": {
+        "allViews": "All views",
+        "onlyPublic": "Only publicly shared views",
+        "name": "View",
+        "type": "Type",
+        "table": "Table",
+        "database": "Database",
+        "workspace": "Workspace",
+        "public": "Publicly shared",
+        "passwordProtected": "Password",
+        "ownedBy": "Owner",
+        "createdOn": "Created on",
+        "allWorkspaces": "All workspaces"
+    },
+    "viewsAdminRotateSlugModal": {
+        "title": "Refresh URL",
+        "refreshWarning": "Are you sure that you want to refresh the URL of {viewName}? After refreshing, a new URL will be generated and it will not be possible to access the view via the old URL. Everyone that has the old URL, won't be able to access the view anymore.",
+        "generateNewURL": "Generate new URL"
+    },
+    "viewsAdminContext": {
+        "copyPublicUrl": "Copy public URL",
+        "openPublicView": "Open public view in new tab",
+        "filterWorkspace": "Filter by workspace",
+        "rotateSlug": "Rotate slug",
+        "makePrivate": "Make private",
+        "makePublic": "Make public",
+        "publicUrlCopiedTitle": "Public URL copied",
+        "publicUrlCopiedMessage": "The public URL of the view has been copied to your clipboard."
+    },
+    "apiDocsFiltersBuilderModal": {
+        "title": "Filters parameter builder",
+        "userFieldNames": "User field names",
+        "json": "JSON",
+        "queryParameter": "Query parameter"
+    },
+    "apiDocsPasswordFieldAuthentication": {
+        "title": "{name} authentication",
+        "description": "Checks if the provided password and row matches what is stored in the cell.",
+        "fieldId": "The field ID where to check the password for.",
+        "rowId": "The row ID where to check the password for.",
+        "password": "The password that must be checked if it's correct."
+    },
+    "apiDocsListTables": {
+        "listTables": "List all tables",
+        "listTablesDescription": "This endpoint only works in combination with the token authentication. It lists all the tables that the token has either create, read, update or delete access to."
+    },
+    "fieldMultipleSelectSubForm": {
+        "optionsLabel": "Options",
+        "defaultOptionsLabel": "Default options"
+    },
+    "fieldBooleanSubForm": {
+        "defaultValue": "Default"
+    },
+    "fieldDurationSubForm": {
+        "durationFormatLabel": "Duration format"
+    },
+    "fieldSelectThroughFieldSubForm": {
+        "noTable": "You need at least one link to table field to create this field.",
+        "selectThroughFieldLabel": "Select a link to table field"
+    },
+    "fieldRollupSubForm": {
+        "label": "Rollup function",
+        "selectTargetFieldLabel": "Select a field to rollup"
+    },
+    "tableExcelImporter": {
+        "chooseFileLabel": "Choose Excel file",
+        "chooseFileDescription": "You can import an existing spreadsheet by uploading a .xlsx, .xls or .ods file. If the file contains multiple sheets you can choose which one to import.",
+        "chooseFile": "Choose Excel file",
+        "sheet": "Sheet",
+        "firstRowHeader": "First row is header",
+        "limitFileSize": "The maximum file size is {limit}MB.",
+        "limitError": "It is not possible to import more than {limit} rows.",
+        "processingError": "An error occurred while processing the Excel file: {error}",
+        "emptyError": "This Excel file does not contain any sheets.",
+        "emptySheetError": "The selected sheet is empty."
+    },
+    "createTableModal": {
+        "title": "Create new table",
+        "defaultName": "Table",
+        "importLabel": "Would you like to import existing data?",
+        "newTable": "Start with a new table"
+    },
+    "createTable": {
+        "showTable": "show table",
+        "addButton": "Add table",
+        "uploading": "Uploading...",
+        "preparing": "Preparing data...",
+        "importError": "Something went wrong during the file import",
+        "stateRowCreation": "Importing...",
+        "statePreValidation": "Validating data...",
+        "stateCreateTable": "Creating table...",
+        "importingTable": "Importing table \"{name}\"..."
+    },
+    "importErrorReport": {
+        "reportTitleFailure": "Failing rows",
+        "reportTitleSuccess": "Import successful but...",
+        "reportMessage": "The following row indexes couldn't be imported:"
+    },
+    "fieldLongTextSubForm": {
+        "enableRichTextFormatting": "Enable rich text formatting"
+    },
+    "viewSearch": {
+        "clearSearch": "Clear search"
+    },
+    "viewFieldConditionsForm": {
+        "addCondition": "Add condition",
+        "addConditionGroup": "Add condition group"
+    },
+    "viewFieldConditionItem": {
+        "filterMisconfigured": "The field this filter is associated with has been trashed."
+    },
+    "copyViewConfigurationModal": {
+        "title": "Copy configuration to {name}",
+        "sourceView": "Copy from view",
+        "selectAll": "Select all",
+        "clearAll": "Clear all",
+        "copy": "Copy configuration"
+    },
+    "copyViewConfigurationOption": {
+        "fieldVisibility": "Field visibility",
+        "fieldOrder": "Field order",
+        "fieldWidths": "Field widths",
+        "viewSettings": "Settings ({settings})",
+        "viewSettingsRowHeightSize": "row height",
+        "viewSettingsFrozenColumnCount": "frozen columns",
+        "viewSettingsRowIdentifierType": "row identifier",
+        "viewSettingsGroupByLayout": "group layout",
+        "filters": "Filters",
+        "sorts": "Sorts",
+        "groupBys": "Groups",
+        "decorations": "Decorations",
+        "defaultRowValues": "Default row values"
+    },
+    "createViewLink": {
+        "inCompatibleWithDataSync": "This view type is not compatible with a data sync table."
+    },
+    "viewGroupBy": {
+        "groupBy": "Group | Group by 1 fields | Group by {count} fields"
+    },
+    "gridViewGroupByBanner": {
+        "emptyValue": "(Empty)",
+        "expandGroup": "Expand group",
+        "collapseGroup": "Collapse group"
+    },
+    "defaultValuesModal": {
+        "title": "Default values for {name}",
+        "setDefaultValue": "Set default value",
+        "removeDefaultValue": "Remove default value",
+        "staticValue": "Static value"
+    },
+    "viewOwnershipType": {
+        "collaborative": "Collaborative",
+        "collaborativeDescription": "Everyone can see all the data and change the properties if they have the permissions."
+    },
+    "hiddenRows": {
+        "title": "Row hidden | Rows hidden",
+        "createdMessage": "The new row doesn't match the filters of this view, so it isn't shown. Ask the view's builder to set default values that match the filters. | {count} new rows don't match the filters of this view, so they aren't shown. Ask the view's builder to set default values that match the filters.",
+        "updatedMessage": "The row no longer matches the filters of this view, so it's hidden. | {count} rows no longer match the filters of this view, so they're hidden."
+    },
+    "gridViewRowsAddContext": {
+        "title": "Create multiple rows",
+        "choice": "Add {rowAmountChoice} rows"
+    },
+    "formViewMetaControls": {
+        "whenSubmittedLabel": "When the form is submitted",
+        "showMessage": "Show a message",
+        "urlRedirect": "Redirect to URL",
+        "theMessage": "The message",
+        "theURL": "The URL"
+    },
+    "databaseDashboardResourceLinks": {
+        "title": "API documentation",
+        "description": "Learn more about our code"
+    },
+    "changePrimaryFieldModal": {
+        "title": "Change the primary field",
+        "change": "Change",
+        "primaryFieldLabel": "Primary field",
+        "existingPrimary": "\"{name}\" is currently the primary field."
+    },
+    "publicViewMenu": {
+        "reportAbuse": "Report abuse",
+        "moreOptions": "More options"
+    },
+    "fileField": {
+        "errorEmptyFileNameTitle": "Invalid file name",
+        "errorEmptyFileNameMessage": "You can't set an empty name for a file."
+    },
+    "fieldCollaboratorSubForm": {
+        "notifyUserWhenAdded": "Notify user when added",
+        "includeIdentities": "Allow assigning identities",
+        "removesIdentities": "Saving removes the identities already assigned in this field."
+    },
+    "collaboratorAddedToRowNotification": {
+        "title": "{sender} assigned you to {fieldName} in row {rowId} in {tableName}",
+        "unknownUser": "An unknown user"
+    },
+    "formSubmittedNotification": {
+        "title": "{formName} has been submitted in table {tableName}:",
+        "moreValues": "0 | and 1 more field. | and {count} more fields."
+    },
+    "rowHistorySidebar": {
+        "name": "History",
+        "empty": "No changes yet. You'll be able to track any changes to this row here.",
+        "you": "You",
+        "anonymousUser": "Anonymous user",
+        "created": "created this row",
+        "updated": "updated this row",
+        "submitted": "submitted this row",
+        "deleted": "deleted this row",
+        "restored": "restored this row",
+        "createdUndo": "undo row creation",
+        "updatedUndo": "undo row update",
+        "deletedUndo": "undo row deletion"
+    },
+    "fieldPasswordSubForm": {
+        "allowEndpointAuthentication": "Allow API endpoint authentication",
+        "allowEndpointAuthenticationHelp": "This exposes an endpoint where the row ID and password can be checked if it's correct. This allows using SomeTable as authentication backend.",
+        "description": "The password field can also be used by the user authentication in the application builder."
+    },
+    "rowEditFieldPassword": {
+        "setPassword": "Set password"
+    },
+    "rowHistoryFieldPassword": {
+        "passwordSet": "The password was set",
+        "passwordUpdated": "The password was updated",
+        "passwordDeleted": "The password was deleted"
+    },
+    "dataProviderTypes": {
+        "fieldsName": "Fields",
+        "rowName": "Clicked row",
+        "rowId": "Row ID",
+        "previousActionName": "Previous action",
+        "previousActionRowId": "Id"
+    },
+    "userMentionInRichTextFieldNotification": {
+        "title": "{sender} mentioned you in field {fieldName} of row {rowId} in {tableName}",
+        "deletedUser": "A deleted user"
+    },
+    "databaseImportStep": {
+        "title": "Import your data",
+        "description": "Move your data to SomeTable, in just a few clicks.",
+        "tableNameLabel": "Table name",
+        "tableNamePrefill": "{name}'s table"
+    },
+    "databaseScratchTrackFieldsStep": {
+        "title": "Choose fields for every row",
+        "description": "Pick up to {selectedFieldsLimitCount} fields. You can add more later.",
+        "fieldName": "Name",
+        "fieldType": "Field type",
+        "fieldDescription": "Description",
+        "fieldDetails": "Details",
+        "fieldNumber": "Number",
+        "fieldDate": "Date",
+        "fieldBoolean": "Finished",
+        "fieldDuration": "Duration",
+        "fieldUrl": "URL",
+        "fieldEmail": "Email",
+        "fieldRating": "Rating",
+        "fieldCategory": "Category",
+        "fieldKickoffDate": "Kickoff date",
+        "fieldDueDate": "Due date",
+        "fieldBudget": "Budget",
+        "fieldCompleted": "Completed",
+        "fieldNotes": "Notes",
+        "fieldRole": "Role",
+        "fieldPhone": "Phone",
+        "fieldActive": "Active",
+        "fieldEstimatedDays": "Estimated days",
+        "fieldStartDate": "Start date",
+        "fieldEndDate": "End date",
+        "projectsCategoryDesign": "Design",
+        "projectsCategoryDevelopment": "Development",
+        "projectsCategoryMarketing": "Marketing",
+        "projectsNotesRow1": "Acme is looking for a complete rebranding of their website with the following guidelines.",
+        "projectsNotesRow2": "Research if the current users of Soylent are interested into a new user portal.",
+        "projectsNotesRow3": "Wondering if this is worth doing after the Facebook ad boycott. Studies are showing that paid ad campaigns have become increasingly less effective.",
+        "teamsRoleDesigner": "Designer",
+        "teamsRoleDeveloper": "Developer",
+        "teamsRoleMarketer": "Marketer",
+        "tasksDetailsRow1": "The logo needs to be improved to make the CTA clearer.",
+        "tasksDetailsRow2": "The structure is a little off, so we may need to adjust the sitemap here as well.",
+        "tasksDetailsRow3": "The new footer should include our contact information and also a small (but clear) CTA.",
+        "campaignsDetailsRow1": "Heat up your savings with our sizzling summer sale, featuring unbeatable discounts on all your favorite products!",
+        "campaignsDetailsRow2": "Boost customer retention and engagement with our enticing loyalty rewards program, designed to reward your most dedicated customers.",
+        "campaignsDetailsRow3": "Revitalize your business and captivate your audience with a dynamic brand relaunch that aligns perfectly with today's market trends and customer desires.",
+        "customFieldsDescriptionRow1": "Turpis massa tincidunt dui ut ornare lectus sit amet est.",
+        "customFieldsDescriptionRow2": "Vitae justo eget magna fermentum iaculis eu non diam.",
+        "customFieldsDescriptionRow3": "Convallis tellus id interdum velit laoreet id donec ultrices tincidunt."
+    },
+    "databaseScratchTrackStep": {
+        "title": "What would you like to track?",
+        "description": "Choose from popular use cases, or create your own.",
+        "addYourOwn": "Add your own",
+        "tableName": "Table name",
+        "rowName": "Row name",
+        "thisIncludes": "This includes:",
+        "projects": "Projects",
+        "productsRow1": "Rebranding website",
+        "productsRow2": "Customer research",
+        "productsRow3": "Paid ad campaign",
+        "teams": "Teams",
+        "teamsRow1": "Sales",
+        "teamsRow2": "HR",
+        "teamsRow3": "Marketing",
+        "tasks": "Tasks",
+        "tasksRow1": "Logo redesign",
+        "tasksRow2": "Send email",
+        "tasksRow3": "Write blog post",
+        "campaigns": "Campaigns",
+        "campaignsRow1": "Summer Sale",
+        "campaignsRow2": "Loyalty Rewards",
+        "campaignsRow3": "Brand Relaunch"
+    },
+    "databaseStep": {
+        "title": "Create your first database",
+        "description": "Select where you'd like to start from:",
+        "databaseNameLabel": "Database name",
+        "databaseNamePrefill": "{name}'s database",
+        "scratch": "Scratch",
+        "import": "File",
+        "airtable": "Airtable",
+        "template": "Template",
+        "workspaceName": "{name}'s workspace"
+    },
+    "templateOnboardingCancelModal": {
+        "title": "Select a template to get started",
+        "description": "To skip the onboarding, select one of the templates below. Starting with a template is the best way to get to know SomeTable because it sets up tables, fields and example data for you. You can always change or delete it later.",
+        "continue": "Use this template"
+    },
+    "ViewFilterTypeDateUpgradeToMultiStep": {
+        "migrateButtonText": "Migrate to multi-step date filter",
+        "migrateButtonTooltip": "New filter available. Click to upgrade. It works the same."
+    },
+    "dataSyncType": {
+        "syncError": "Sync error",
+        "icalCalendar": "Sync iCal feed",
+        "postgresql": "Sync PostgreSQL table"
+    },
+    "iCalCalendarDataSync": {
+        "name": "iCal URL",
+        "description": "The iCal calendar sync, synchronizes automatically with the entries in the calendar file of the URL. It only supports the ICS (Internet Calendar and Scheduling) file type."
+    },
+    "postgreSQLDataSync": {
+        "description": "Synchronizes a PostgreSQL table with a SomeTable table matching the provided details below. Note that when the synchronization starts, it will select all the rows in the provided table. Even though SomeTable only selects data, we strongly recommend limiting the user to a read-only connection.",
+        "host": "Host",
+        "username": "Username",
+        "password": "Password",
+        "database": "Database",
+        "schema": "Schema",
+        "table": "Table",
+        "port": "Port",
+        "sslMode": "SSL Mode"
+    },
+    "createDataSync": {
+        "next": "Next",
+        "fields": "Select the fields you would like to sync",
+        "create": "Create and sync table",
+        "error": "Something went wrong during the sync",
+        "autoAddLabel": "Auto add new properties",
+        "autoAddHelper": "Automatically adds and synchronizes newly available properties from the data source into the SomeTable table. Note that in order for this to work, all properties must be synced.",
+        "twoWaySyncLabel": "Two-way sync",
+        "deleteUnmatchedRowsLabel": "Delete rows when they are deleted or hidden in the source",
+        "deleteUnmatchedRowsHelper": "When enabled, rows that are deleted or no longer visible in the source are also deleted from this table on every sync. When disabled, those rows are kept and reused if the source row reappears.",
+        "syncing": "Syncing data..."
+    },
+    "syncTableModal": {
+        "title": "Sync {name}",
+        "description": "This table is linked to a data sync. When you click the sync button, the data will be synchronized with the source. During this process, a lock is placed on the updated rows, which may temporarily slow down API requests or table modifications.",
+        "sync": "Sync table",
+        "hide": "Hide"
+    },
+    "gridViewFreezeHandle": {
+        "freeze": "Freeze 0 columns | Freeze 1 column | Freeze {count} columns",
+        "hoverHint": "Drag to freeze columns"
+    },
+    "configureDataSyncModal": {
+        "title": "Data sync",
+        "syncedFields": "Synced fields",
+        "syncSettings": "Sync settings",
+        "syncHistory": "Sync history"
+    },
+    "dataSyncRuns": {
+        "title": "Sync history",
+        "description": "The most recent sync runs of this table, no matter who or what started them.",
+        "previousRuns": "Previous runs",
+        "noRuns": "This table hasn't been synced yet.",
+        "triggerManual": "Manual",
+        "triggerPeriodic": "Periodic",
+        "byUser": "by {name}",
+        "duration": "{seconds}s"
+    },
+    "configureDataSyncVisibleFields": {
+        "title": "Change synced fields",
+        "fields": "Synced fields",
+        "syncTable": "Sync when save"
+    },
+    "configureDataSyncSettings": {
+        "title": "Change data sync",
+        "syncTable": "Sync when save"
+    },
+    "webhookDeactivatedNotification": {
+        "body": "{name} webhook has been deactivated because it failed too many times consecutively."
+    },
+    "webhookPayloadTooLargeNotification": {
+        "body": "The payload for the {name} webhook with event ID {event_id} was too large. The content has been split into multiple batches, but data above the batch limit of {batch_limit} was discarded."
+    },
+    "tablesGuidedTourStep": {
+        "title": "Setup tables",
+        "content": "Tables store your information neatly. Create a new table within your database to start structuring your data."
+    },
+    "filterSortGroupGuidedTourStep": {
+        "title": "Find and Organize Your Data",
+        "content": "Quickly locate information by filtering and sorting on your rows. Instantly group by any of the fields to clearly visualize patterns and simplify your workflows."
+    },
+    "addFieldGuidedTourStep": {
+        "title": "Customize Your Data",
+        "content": "Click “+” to add new fields (columns). Choose from various field types to capture exactly what matters most to your project."
+    },
+    "createViewGuidedTourStep": {
+        "title": "Personalize Your Views",
+        "content": "Create custom views like grid, calendar, kanban, or gallery to visualize your data exactly how you want it."
+    },
+    "createFormViewGuidedTourStep": {
+        "title": "Create a Form",
+        "content": "Quickly build forms from your tables to collect responses directly into your table, streamlining data collection."
+    },
+    "viewOptionsGuidedTourStep": {
+        "title": "View Options",
+        "content": "Click on the three dots next to the view to export, import, duplicate, and configure a webhook."
+    },
+    "fieldRules": {
+        "errorTitle": "Error during field rule processing",
+        "ruleDoesNotExist": "Rule doesn't exist",
+        "ruleTypeDoesNotExist": "Rule type doesn't exist",
+        "ruleAlreadyExists": "Rule already exists"
+    },
+    "fieldFormViewEditRowSubForm": {
+        "selectFormViewLabel": "Form view",
+        "description": "Each row will get a unique link that opens this form pre-filled with that row's data. Note that everyone with read access to the table and field will be able to edit the row via the form view, also viewers and visitors of a publicly shared view.",
+        "notPublicWarning": "This form view is not publicly shared. The edit link will not work until the form is made public.",
+        "notPublic": "(not public)",
+        "formDoesNotExist": "The selected form does not exist anymore."
+    },
+    "fieldButtonSubForm": {
+        "label": "Label",
+        "labelPlaceholder": "Open",
+        "unresolvedReferenceTitle": "Action not saved",
+        "unresolvedReferenceMessage": "An action uses a result from an action that does not run before it. Move it back or remove the reference, then save again."
+    },
+    "databaseWorkflowActionWithService": {
+        "nothingCapturedYet": "Click this button on a row to capture what the endpoint answers, so the actions after it can use its fields. The button's other actions run as well.",
+        "payloadModalTitle": "Captured response for {actionLabel}",
+        "payloadModalSubTitle": "JSON payload"
+    },
+    "databaseWorkflowActionType": {
+        "openUrl": "Open URL",
+        "sendEmail": "Send email",
+        "deleteRow": "Delete a row",
+        "noUrl": "Enter a URL to open.",
+        "staleReference": "This action uses a result from an action that no longer runs before it.",
+        "unreadableReference": "This action uses a result from an action that no longer returns one.",
+        "writesToTrashedField": "This action writes to a field that is in the trash. Restore the field to run the action again.",
+        "tableTrashed": "This action uses a table that is in the trash or no longer exists. Restore the table or pick another one.",
+        "requiresReconfiguration": "This action points at a table, field or integration that is in the trash or gone.",
+        "noInstanceSmtp": "This SomeTable instance has no SMTP server configured. Choose an SMTP integration to send this email.",
+        "instanceSmtpTurnedOff": "Sending through this SomeTable instance's own SMTP server is turned off. Choose an SMTP integration to send this email.",
+        "slackOk": "OK",
+        "slackChannel": "Channel",
+        "slackTs": "Message timestamp",
+        "smtpIntegrationIncomplete": "This SMTP integration has no server. Fill in its host before the button can send.",
+        "slackTokenMissing": "This bot has no token. Add a new bot with its token, or paste one into this bot, before the button can post.",
+        "slackData": "Data",
+        "startWorkflowMissing": "This action's workflow can't be found. It may have been deleted, or you may not have access to it. Pick another workflow, or ask someone who can see this one.",
+        "startWorkflowUnpublished": "This workflow hasn't been published yet. Publish it before the button can start it.",
+        "startWorkflowNotLive": "This workflow is paused or disabled. Resume it before the button can start it."
+    },
+    "openUrlWorkflowActionForm": {
+        "url": "URL",
+        "urlPlaceholder": "URL...",
+        "openIn": "Open in",
+        "sameTab": "Same tab",
+        "newTab": "New tab"
+    },
+    "openUrlWorkflowAction": {
+        "invalidUrlTitle": "Could not open the URL",
+        "invalidUrlMessage": "The URL could not be resolved for this row, or it uses a protocol that is not allowed."
+    },
+    "buttonFieldActionList": {
+        "actions": "Actions",
+        "addAction": "Add action",
+        "chooseAction": "Choose action...",
+        "searchActions": "Search actions",
+        "misconfigured": "At least one action is misconfigured",
+        "toggleAction": "Show or hide this action",
+        "moveAction": "Move action, use the arrow keys to reorder"
+    },
+    "buttonField": {
+        "dispatchErrorTitle": "Could not run the actions",
+        "dispatchErrorMessage": "Something went wrong while running the button's actions. Please try again.",
+        "rateLimitedTitle": "Too many clicks",
+        "rateLimitedMessage": "This button has been clicked too often. Wait a moment and try again.",
+        "requiresReconfiguration": "This button needs to be reconfigured before it can be clicked.",
+        "noPermission": "You don't have permission to click this button.",
+        "stillRunningTitle": "Still running",
+        "stillRunningMessage": "The button's actions may still be running in the background."
+    },
+    "rowEditFieldButtonField": {
+        "createRowBefore": "The actions can be run after the row has been created."
+    },
+    "editRowLink": {
+        "editRow": "Edit row"
+    },
+    "rowEditFieldFormViewEditRow": {
+        "copyLink": "Copy link",
+        "noFormView": "No form view configured"
+    },
+    "lastViewedItemType": {
+        "databaseView": "{name} view"
     }
 }

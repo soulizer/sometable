@@ -4,7 +4,8 @@
         "of": "总{pages}页"
     },
     "copied": {
-        "label": "已复制！"
+        "label": "已复制！",
+        "linkFailed": "The link couldn't be copied to the clipboard."
     },
     "sidebarApplication": {
         "renameApplication": "重命名{type}",
@@ -20,15 +21,29 @@
         "duplicatedTitle": "应用副本已创建"
     },
     "sidebar": {
-        "createWorkspace": "创建群组",
+        "createWorkspace": "创建工作区",
         "inviteOthers": "邀请他人",
-        "logoff": "注销",
+        "logoff": "退出登录",
         "errorNoWorkspace": "你没有任何群组。",
-        "admin": "管理员",
-        "dashboard": "仪表板",
+        "admin": "管理后台",
+        "dashboard": "仪表盘",
         "trash": "回收站",
         "settings": "设置",
-        "members": "成员"
+        "members": "成员",
+        "addNewWorkspace": "新建工作区",
+        "adminTools": "管理工具",
+        "recents": "最近",
+        "allWorkspaces": "全部工作区",
+        "recentlyViewed": "最近查看",
+        "backToHome": "返回首页",
+        "templates": "模板",
+        "replayGuidedTour": "重播引导",
+        "notifications": "通知",
+        "adminSettings": "管理员设置",
+        "general": "常规",
+        "people": "成员",
+        "licenses": "许可证",
+        "adminContentCategory": "内容"
     },
     "accountForm": {
         "nameLabel": "你的名字",
@@ -87,7 +102,9 @@
         "incorrectCredentialMessage": "提供的电子邮件地址或密码不正确。",
         "inputRequired": "需要输入。",
         "disabledPasswordProviderTitle": "密码验证被禁用.",
-        "disabledPasswordProviderMessage": "请使用其它认证方式."
+        "disabledPasswordProviderMessage": "请使用其它认证方式.",
+        "captchaVerificationFailedTitle": "Captcha verification failed",
+        "captchaVerificationFailedMessage": "The captcha verification failed. Please try again."
     },
     "field": {
         "language": "语言",
@@ -114,7 +131,9 @@
         "title": "邀请函",
         "message": "{by} 邀请您加入 {workspace}。",
         "reject": "拒绝",
-        "accept": "接受"
+        "accept": "接受",
+        "emailNotVerified": "Verify your email address to accept this invitation, or open the link in the invitation email.",
+        "sendVerificationEmail": "Send verification email"
     },
     "workspaceMemberModal": {
         "membersModalTitle": "{group}成员",
@@ -141,7 +160,11 @@
         "members": "成员",
         "viewTrash": "查看回收站",
         "leaveWorkspace": "离开群组",
-        "deleteWorkspace": "删除群组"
+        "deleteWorkspace": "删除群组",
+        "exportWorkspace": "Export data",
+        "importWorkspace": "Import data",
+        "settings": "设置",
+        "auditLog": "审计日志"
     },
     "createWorkspaceModal": {
         "createNew": "创建新群组",
@@ -152,14 +175,18 @@
     },
     "templateCategories": {
         "search": "搜索模板",
-        "title": "模板"
+        "title": "模板",
+        "allTemplates": "All templates",
+        "noResults": "No templates found"
     },
     "templateHeader": {
-        "use": "使用这个模板"
+        "use": "使用这个模板",
+        "selectWorkspace": "Choose workspace"
     },
     "trashSidebar": {
         "title": "回收站",
-        "unnamedWorkspace": "未命名群组 {id}"
+        "unnamedWorkspace": "未命名群组 {id}",
+        "workspaces": "Workspaces"
     },
     "trashContents": {
         "message": "恢复过去 {duration} 删除的项目",
@@ -204,10 +231,16 @@
         "retry": "重试"
     },
     "createApplicationContext": {
-        "fromTemplate": "来自模板"
+        "fromTemplate": "来自模板",
+        "fromTemplateDesc": "Quickly start with one of our recommended templates",
+        "table": "Table",
+        "tableDesc": "Create a new place to manage data in your database.",
+        "importWorkspace": "Import data",
+        "importWorkspaceDesc": "Add existing data from a SomeTable instance."
     },
     "applicationForm": {
-        "nameLabel": "名称"
+        "nameLabel": "名称",
+        "namePlaceholder": "Enter the name..."
     },
     "connectingNotification": {
         "title": "重新连接中",
@@ -259,7 +292,8 @@
         "backDashboard": "返回仪表板",
         "backLogin": "返回登录",
         "wrong": "出了点问题",
-        "refresh": "刷新页面"
+        "refresh": "刷新页面",
+        "pageNotFoundTitle": "Page not found"
     },
     "dashboard": {
         "title": "仪表盘",
@@ -276,16 +310,25 @@
         "shareOnReddit": "在 Reddit 上分享",
         "shareOnFacebook": "在 Facebook 上分享",
         "shareOnLinkedIn": "在 LinkedIn 上分享",
-        "noWorkspaceTextWithoutCreatePermission": "您不是任何组的成员.像数据库这样的应用程序应属于一个组，因此为了创建它们，您需要首先由管理员邀请您加入一个组."
+        "noWorkspaceTextWithoutCreatePermission": "您不是任何组的成员.像数据库这样的应用程序应属于一个组，因此为了创建它们，您需要首先由管理员邀请您加入一个组.",
+        "templates": "模板",
+        "templatesMessage": "从现成的方案开始",
+        "emptyWorkspace": "此工作区为空",
+        "emptyWorkspaceMessage": "创建一个新的数据库或应用来开始。",
+        "addNew": "新建…",
+        "noWorkspace": "无工作区",
+        "apiDocumentation": "API documentation",
+        "apiDocumentationMessage": "Learn more about our code",
+        "noWorkspaceDescription": "Get started by creating a new workspace"
     },
     "dashboardSidebar": {
-        "workspaces": "群组",
+        "workspaces": "工作区",
         "links": "链接",
         "knowledgeBase": "知识库",
         "tutorials": "教程",
         "userSettings": "用户设置",
         "trash": "回收站",
-        "logoff": "注销"
+        "logoff": "退出登录"
     },
     "login": {
         "title": "登录",
@@ -308,7 +351,11 @@
         "errorLinkExpiredTitle": "链接已过期",
         "errorLinkExpiredMessage": "密码重置链接已过期，请重新申请。",
         "disabled": "重置密码被禁用",
-        "disabledMessage": "无法重置密码，因为它已被禁用。"
+        "disabledMessage": "无法重置密码，因为它已被禁用。",
+        "repeatPasswordPlaceholder": "Repeat your new password",
+        "message": "You can now login to SomeTable using your new password.",
+        "errorLinkAlreadyUsedTitle": "Link already used",
+        "errorLinkAlreadyUsedMessage": "This password reset link has already been used. Please request a new one."
     },
     "signup": {
         "headTitle": "创建新帐户",
@@ -331,7 +378,9 @@
         "confirmation": "我们已向 {email} 发送了一封电子邮件，其中包含重置您的 Baserow 密码的链接。",
         "disabled": "忘记密码被禁用",
         "disabledMessage": "无法重置密码，因为该功能已被禁用。",
-        "loginText": "已经存在用户和密码?"
+        "loginText": "已经存在用户和密码?",
+        "confirmationTitle": "Check your email",
+        "goBack": "Go back"
     },
     "settings": {
         "settingsTitle": "管理员设置",
@@ -352,7 +401,25 @@
         "enabled": "启用",
         "settingAllowNonStaffCreateWorkspaceOperationDescription": "默认情况下，每个人都可以创建新组.禁用此选项仅允许员工创建新组.",
         "settingAllowNonStaffCreateWorkspaceOperationWarning": "启用此设置后，新用户将在他们是管理员的身份时自动创建一个组，因此出于计费目的，他们将被通知给管理员.若要防止出现这种情况，请禁用此设置，新邀请的用户将仅以他们被邀请的角色开始.",
-        "settingAllowNonStaffCreateWorkspaceOperation": "允许任何人创建一个新组"
+        "settingAllowNonStaffCreateWorkspaceOperation": "允许任何人创建一个新组",
+        "baserowVersion": "SomeTable version",
+        "baserowVersionDescription": "The version number of this instance.",
+        "settingAllowSignupsViaWorkspaceInvitationOrLinkDescription": "Even if the creation of new accounts is disabled, this option permits directly invited users, and anyone who opens a workspace invite link, to still create an account.",
+        "settingTrackWorkspaceUsage": "Track workspace usage",
+        "settingTrackWorkspaceUsageDescription": "Enables a nightly job that counts row and file usage per workspace, displayed on the premium workspace admin page.",
+        "userSettings": "User",
+        "maintenance": "Maintenance",
+        "emailVerification": "Email verification",
+        "emailVerificationDescription": "Controls whether email addresses have to be verified.",
+        "emailVerificationNoVerification": "No verification",
+        "emailVerificationRecommended": "Recommended",
+        "emailVerificationEnforced": "Enforced",
+        "settingsVerifyImportSignature": "Verify import signature",
+        "settingsVerifyImportSignatureDescription": "When enabled, the signature of the imported data is verified to ensure the data has not been tampered with.",
+        "settingAllowReportingAbuseName": "Allow reporting abuse",
+        "settingAllowReportingAbuseDescription": "When enabled, visitors of publicly shared views, forms, dashboards and published applications can report them for abuse, and all instance admins are notified about the report.",
+        "settingUserTemplatesRequireApprovalName": "Templates need approval",
+        "settingUserTemplatesRequireApprovalDescription": "When enabled, a template made public is listed in the template browser only after an instance admin approves it, and so is every change to a listed template. Turning it off approves the templates in review that an admin can approve, except the ones rejected since their last approval."
     },
     "formSidebar": {
         "actions": {
@@ -419,7 +486,11 @@
                 "description": "如果您想动态隐藏字段,可以通过从url添加到公共的查询参数来实现.这些查询参数前缀为“hide_”，以避免与未来可能的查询参数冲突."
             }
         },
-        "prefillOrHideInfoLink": "动态填充或隐藏"
+        "prefillOrHideInfoLink": "动态填充或隐藏",
+        "fields": "Fields",
+        "rowEditableBy": "Update rows via fields",
+        "rowEditableByDescription": "The rows in this table can be updated using this form via the following row edit fields:",
+        "notifyUserOnSubmit": "Receive notification on submit"
     },
     "job": {
         "statePending": "等待开始...",
@@ -427,7 +498,11 @@
         "stateFinished": "完成",
         "stateFailed": "失败",
         "errorJobAlreadyRunningTitle": "已经在运行",
-        "errorJobAlreadyRunningDescription": "另一个导入作业已经在运行。您需要等待该作业完成后再开始另一个作业。"
+        "errorJobAlreadyRunningDescription": "另一个导入作业已经在运行。您需要等待该作业完成后再开始另一个作业。",
+        "stateCanceled": "Canceled",
+        "errorJobCannotBeCancelledTitle": "Could not cancel",
+        "errorJobCannotBeCancelledDescription": "It’s not possible to cancel the job as it has already been completed.\nPlease delete the first snapshot in the list below to remove it.",
+        "errorJobCannotBeCancelledGenericDescription": "It’s not possible to cancel the job as it has already been completed."
     },
     "datetime": {
         "daysAgo": "0 天前 | 1 天前 | {n} 天前",
@@ -435,7 +510,9 @@
         "yearsAgo": "0 年前 | 1 年前 | {n} 年前",
         "secondsAgo": "刚刚 |1秒前| {n} 秒前",
         "minutesAgo": "0 分钟前 | 1 分钟前 | {n} 分钟前",
-        "hoursAgo": "0 小时前 | 1 小时前 | {n} 小时前"
+        "hoursAgo": "0 小时前 | 1 小时前 | {n} 小时前",
+        "lessThanMinuteAgo": "less than a minute ago",
+        "justNow": "just now"
     },
     "membersSettings": {
         "membersInviteModal": {
@@ -445,6 +522,10 @@
                 "userAlreadyInWorkspace": {
                     "title": "用户已在组中存在.",
                     "text": "当用户已成为组中成员时，无法发送邀请."
+                },
+                "tooManyInvitations": {
+                    "title": "Too many invitations sent.",
+                    "text": "You have sent too many invitations. Please try again later."
                 }
             },
             "helpIconText": "所选角色将是此组中的用户的默认角色."
@@ -455,14 +536,22 @@
                 "teams": "团队",
                 "email": "电子邮箱",
                 "role": "默认角色",
-                "name": "名字"
+                "name": "名字",
+                "highestRole": "Highest role",
+                "highestRoleHelpText": "The highest role this user assigned to them directly or from a team, on anything in this workspace",
+                "highestRoleInstanceHelpText": "The highest role this user has in the instance",
+                "2fa": "2FA"
             },
             "actions": {
                 "remove": "从组中移除",
                 "copyEmail": "复制电子邮件"
             },
             "title": "{userAmount} 成员在 {workspaceName}",
-            "inviteMember": "邀请为成员"
+            "inviteMember": "邀请为成员",
+            "pendingInvitations": "Pending invitations ({count})",
+            "emptyTitle": "No members yet",
+            "emptyDescription": "Invite people to collaborate in this workspace. Choose a role for each person to control what they can view and edit.",
+            "search": "Search members"
         },
         "invitesTable": {
             "columns": {
@@ -492,7 +581,11 @@
     },
     "InstallTemplateJobType": {
         "installing": "安装",
-        "installedTitle": "已安装模板"
+        "installedTitle": "已安装模板",
+        "installingTitle": "Installing {name}",
+        "installedMessage": "Successfully installed {name}",
+        "failedTitle": "{name} couldn't be installed",
+        "dismiss": "Dismiss"
     },
     "permissionsUpdatedNotification": {
         "title": "权限已更新",
@@ -509,7 +602,8 @@
         "selectAll": "全选"
     },
     "editRoleContext": {
-        "billableRolesLink": "计费角色文档"
+        "billableRolesLink": "计费角色文档",
+        "additionalRoles": "Additional roles"
     },
     "user": {
         "isStaff": "工作人员与否",
@@ -518,9 +612,11 @@
         "deactivated": "停用的"
     },
     "adminType": {
-        "dashboard": "仪表板",
+        "dashboard": "仪表盘",
         "users": "用户",
-        "workspaces": "团队"
+        "workspaces": "团队",
+        "templates": "Templates",
+        "aiProviders": "AI providers"
     },
     "workspacesAdminTable": {
         "allWorkspaces": "所有集体",
@@ -528,7 +624,12 @@
         "name": "名字",
         "members": "成员",
         "applications": "应用",
-        "created": "创建"
+        "created": "创建",
+        "rowCount": "Row count",
+        "freeUsers": "Free users",
+        "seatsTaken": "Seats taken",
+        "storageUsage": "Storage Used (MB)",
+        "usageHelpText": "Calculated nightly when the track workspace usage setting is enabled"
     },
     "editWorkspaceContext": {
         "delete": "永久删除"
@@ -551,7 +652,8 @@
         "workspaces": "集体",
         "lastLogin": "上次登录",
         "dateJoined": "注册",
-        "active": "活跃的"
+        "active": "活跃的",
+        "twoFactorAuth": "2FA"
     },
     "editUserContext": {
         "changePassword": "更改密码",
@@ -578,7 +680,9 @@
         "error": {
             "invalidName": "请输入有效的全名,其长度必须大于2个字符,小于150个字符.",
             "invalidEmail": "请输入有效的电子邮件地址."
-        }
+        },
+        "twoFactorAuth": "Two-factor authentication",
+        "removeTwoFactorAuth": "Remove two-factor authentication"
     },
     "changeUserPasswordModal": {
         "changePassword": "为{username}更改密码"
@@ -609,5 +713,1417 @@
         "activeUsers7days": "活跃用户最近 7 天",
         "activeUsers30days": "活跃用户最近 30 天",
         "viewAll": "查看全部"
+    },
+    "allWorkspaces": {
+        "title": "全部工作区",
+        "allItems": "全部条目",
+        "searchResults": "Search results",
+        "searchPlaceholder": "Search",
+        "itemsSelected": "{count} item type | {count} item types",
+        "createWorkspace": "创建工作区",
+        "expandedView": "Expanded view",
+        "compactView": "Compact view",
+        "collapseAll": "Collapse all",
+        "expandAll": "Expand all",
+        "workspacesSection": "Workspaces",
+        "itemsSection": "Items",
+        "noResultsTitle": "No results found",
+        "noResultsDescription": "We couldn't find anything for \"{search}\". Check your spelling or use different keywords.",
+        "clearSearch": "Clear search",
+        "membersCount": "0 members | 1 member | {count} members",
+        "itemsCount": "0 items | 1 item | {count} items",
+        "moreElements": "{count} more element | {count} more elements",
+        "noApplications": "No builders yet",
+        "noFilterMatches": "No items match the selected types.",
+        "create": "创建",
+        "members": "成员",
+        "settings": "设置"
+    },
+    "accountFormEmail": {},
+    "recentlyViewed": {
+        "allItems": "全部条目",
+        "title": "Recently viewed",
+        "yourItems": "Your items",
+        "name": "Name",
+        "lastViewed": "Last viewed",
+        "workspace": "Workspace",
+        "allWorkspaces": "All workspaces",
+        "workspacesSelected": "{count} workspace | {count} workspaces",
+        "itemTypesSelected": "{count} item type | {count} item types",
+        "tableView": "Table",
+        "cardsView": "Cards",
+        "loadMore": "Load more",
+        "emptyTitle": "Nothing viewed recently",
+        "emptyDescription": "The views, pages, dashboards and workflows you open show up here.",
+        "noFilterMatchesTitle": "No items match the selected filters",
+        "noFilterMatchesDescription": "Try selecting other workspaces or item types.",
+        "clearFilters": "Clear filters",
+        "goToWorkspaces": "Go to your workspaces"
+    },
+    "untrustedContentReviewModal": {
+        "title": "Review imported content",
+        "publishBlocked": "Review and trust the imported content before publishing.",
+        "description": "Imported content is blocked to protect your data and visitors. Only enable it if you trust its source and have reviewed what it does.",
+        "contents": "Content found during import",
+        "typeHtml": "HTML element",
+        "riskHtml": "Inserts markup directly into the page. It may load external resources or collect information from visitors.",
+        "riskIframe": "Embeds another page or HTML that may display misleading content or collect information entered by visitors.",
+        "riskCode": "Runs code that may read, change, or send data to external services using the workflow’s configured access.",
+        "riskScript": "Runs JavaScript in visitors’ browsers that may access page data or send information to external services.",
+        "riskStyles": "Changes the page’s appearance and may hide or disguise content. External stylesheets also contact a third-party server.",
+        "riskUnknown": "May run code or load external resources. Review its configuration before enabling it.",
+        "confirmation": "This list is a snapshot from import and may have changed. Trusting enables all current custom content. Publish again to enable it in the published version.",
+        "trust": "Trust content",
+        "empty": "No active content was recorded at import. Review the current content in the editor before trusting it.",
+        "page": "Page: {name}",
+        "typeIframe": "Iframe",
+        "typeCodeAction": "Code action",
+        "typeCodeNode": "Code node",
+        "typeCss": "Custom CSS",
+        "typeJs": "Custom JavaScript",
+        "typeScript": "External script",
+        "typeStylesheet": "External stylesheet",
+        "typeUnknown": "Active content",
+        "errorTitle": "Could not trust content",
+        "errorMessage": "The content is still blocked. Check your permissions and try again."
+    },
+    "applicationUntrustedContentAlert": {
+        "title": "Untrusted content blocked",
+        "review": "Review and trust"
+    },
+    "mcpAuthorize": {
+        "title": "Connect {client}",
+        "titleFrom": "Connect {client} from {host}",
+        "subtitle": "It will act as you in the workspace you choose.",
+        "unverified": "Not verified · sends you back to {host}",
+        "returns": "Returns to {host}",
+        "workspace": "Workspace",
+        "databases": "{count} database | {count} databases",
+        "noWorkspaces": "You can't connect apps in any of your workspaces. Ask a workspace admin for access.",
+        "loopbackWarning": "This app signs in through your own computer. Any program on it could use this name, so only continue if you just started the sign-in yourself.",
+        "signedIn": "Signed in as {email}",
+        "allow": "Allow",
+        "deny": "Deny",
+        "invalid": "This authorization request is not valid.",
+        "invalidMessage": "Try connecting again from the app. If it keeps happening, remove the SomeTable server from the app and add it again.",
+        "unknownClient": "This app's sign-in registration is unknown or has expired. Remove the SomeTable server from the app and add it again.",
+        "clientRejected": "This app can't sign in to this SomeTable server. A SomeTable administrator can find the reason in the server log.",
+        "loadFailed": "Couldn't load this sign-in request.",
+        "loadFailedMessage": "Check your connection and reload the page to try again.",
+        "failed": "Could not complete the connection.",
+        "framed": "For your security, this page can't be shown inside another site. Open it in its own browser window to continue."
+    },
+    "mcpToolPicker": {
+        "tools": "What it can do",
+        "readOnly": "Read only",
+        "fullAccess": "Full access",
+        "none": "None",
+        "noTools": "There are no tools available.",
+        "deletes": "Deletes",
+        "overwrites": "Overwrites",
+        "areaWorkspace": "Workspace",
+        "workspaceRead": "Search the workspace",
+        "areaDatabase": "Databases",
+        "databaseRead": "Read tables and rows",
+        "databaseEdit": "Create and change",
+        "databaseDelete": "Delete",
+        "areaAutomation": "Automations",
+        "automationRead": "Read workflows and nodes",
+        "automationEdit": "Create and change",
+        "automationDelete": "Delete",
+        "areaDashboard": "Dashboards",
+        "dashboardRead": "Read dashboards and widgets",
+        "dashboardEdit": "Create and change",
+        "dashboardDelete": "Delete",
+        "areaAuditLog": "Audit log",
+        "auditLogRead": "Read the audit log",
+        "areaBuilder": "Application builder",
+        "builderRead": "Read application builders",
+        "builderEdit": "Create and change",
+        "builderDelete": "Delete"
+    },
+    "workspaceSearch": {
+        "title": "Search",
+        "searchEverything": "Search...",
+        "searching": "Searching...",
+        "noResults": "No results found",
+        "noResultsSubtitle": "We couldn't find anything matching \"{searchTerm}\"",
+        "welcome": "Search everything in your workspace",
+        "welcomeSubtitle": "Use the search box above to find applications, tables, fields, and more",
+        "navigate": "Navigate",
+        "select": "Select",
+        "close": "Close",
+        "empty": "(empty)",
+        "types": {
+            "applications": "Applications",
+            "tables": "Tables",
+            "fields": "Fields",
+            "rows": "Rows"
+        }
+    },
+    "sampleDataViewer": {
+        "payloadLabel": "Output",
+        "errorLabel": "An error occurred...",
+        "showPayloadLabel": "Show payload",
+        "showErrorLabel": "Show error",
+        "downloadFullPayload": "Download full payload",
+        "truncatedLabel": "[Output truncated]",
+        "truncatedPayloadWarning": "Only the first {size} characters are shown. Download the full payload to inspect it on your computer.",
+        "noHtmlContent": "This email has no HTML body."
+    },
+    "noteField": {
+        "label": "Note",
+        "help": "Shown to everyone who can open this and included in exports. Markdown is supported."
+    },
+    "noteIndicator": {
+        "title": "Note",
+        "show": "Show note"
+    },
+    "action": {
+        "cancel": "Cancel",
+        "submit": "Submit"
+    },
+    "createUserTemplateJobType": {
+        "name": "Create template"
+    },
+    "downloadTemplateToast": {
+        "preparingTitle": "Preparing download…",
+        "preparingMessage": "Exporting \"{name}\" as a workspace file",
+        "readyTitle": "Download ready",
+        "readyMessage": "\"{name}\" is ready to download",
+        "failedTitle": "Download failed",
+        "download": "Download",
+        "dismiss": "Dismiss"
+    },
+    "twoFactorAuthSettings": {
+        "title": "Two-factor authentication",
+        "loadingError": "Could not load two-factor configuration."
+    },
+    "disableTwoFactorAuth": {
+        "title": "Are you sure you want to disable 2FA?",
+        "description": "Your account will lose an extra layer of security. If someone finds out your password, they might be able to log in to your account.",
+        "cancel": "Leave it on",
+        "disable": "Disable",
+        "successTitle": "Two-factor authentication has been disabled",
+        "errorWrongPasswordTitle": "Wrong password",
+        "errorWrongPasswordMessage": "The password entered doesn't match your password."
+    },
+    "enableTwoFactorOptions": {
+        "cancel": "Cancel",
+        "continue": "Continue"
+    },
+    "saveBackupCode": {
+        "description": "If you lose access to your authenticator app or phone and can’t receive or generate authentication codes, you can use this backup. You can only use it once. Make sure you write it down or copy it into a safe place so that you can access it without logging in.",
+        "backupCodes": "Backup codes",
+        "copy": "Copy",
+        "continue": "Continue",
+        "backupCodesCopiedTitle": "Copied!",
+        "backupCodesCopiedMessage": "Backup codes copied to clipboard."
+    },
+    "totpAuthType": {
+        "name": "Authenticator app",
+        "description": "Use an app to get two-factor authentication codes. We recommend using apps such as Google Authenticator, Authy and Microsoft Authenticator.",
+        "enabledDescription": "You'll receive verification codes via an authenticator app. To set up different app or method, simply disable 2FA and setup again.",
+        "sideLabel": "Recommended"
+    },
+    "twoFactorEnabled": {
+        "enabled": "Enabled",
+        "disable": "Disable 2FA"
+    },
+    "totpLogin": {
+        "backupCodesTitle": "Enter backup code",
+        "backupCodesDescription": "Log in with your single-use backup code.",
+        "authenticate": "Authenticate",
+        "goBack": "Go back",
+        "totpTitle": "Two-factor authentication",
+        "totpDescription": "Enter the code from your authenticator app.",
+        "verify": "Verify",
+        "useBackupCode": "Use backup code",
+        "verificationFailed": "Verification failed",
+        "verificationFailedDescription": "The entered code is not correct.",
+        "loginExpired": "Login expired",
+        "loginExpiredDescription": "Please provide your password again.",
+        "rateLimit": "Too many attempts."
+    },
+    "notificationPanel": {
+        "title": "Notifications",
+        "markAllAsRead": "Mark all as read",
+        "clearAll": "Clear all",
+        "noNotificationTitle": "You don't have any notifications",
+        "noNotification": "We'll notify you about important updates and any time you're mentioned on SomeTable.",
+        "newNotificationsAvailable": "New notifications available",
+        "refresh": "Refresh"
+    },
+    "clearAllNotificationsConfirmModal": {
+        "title": "Are you sure you want to clear all notifications?",
+        "message": "All the notifications will be permanently deleted and you won't be able to see them again."
+    },
+    "emailSettings": {
+        "title": "Change email address",
+        "successTitle": "Confirmation email sent",
+        "successDescription": "We've sent a confirmation email to your new address. Please check your inbox and click the link to complete the email change.",
+        "currentEmailLabel": "Current email address",
+        "newEmailLabel": "New email address",
+        "passwordLabel": "Current password",
+        "submitButton": "Send confirmation email",
+        "errorInvalidPasswordTitle": "Invalid password",
+        "errorInvalidPasswordMessage": "Could not request email change because your password is incorrect.",
+        "errorEmailExistsTitle": "Email already exists",
+        "errorEmailExistsMessage": "Could not request email change because an account with this email address already exists.",
+        "errorNotAllowedTitle": "Email change not allowed",
+        "errorNotAllowedMessage": "You cannot change your email address because your account uses single sign-on (SSO) authentication."
+    },
+    "invitationLinkMessage": "You have been invited to join {workspace}.",
+    "invitationLinkJoin": {
+        "title": "Join {workspace}",
+        "joinAs": "You will join as {email}. The members of the workspace will be able to see your name and email address.",
+        "join": "Join workspace",
+        "upgradeTitle": "Change your role in {workspace}",
+        "upgradeRole": "You're already a member of this workspace. Your role will change from {from} to {to}.",
+        "upgrade": "Change my role",
+        "scopeIn": "{name} in {workspace}",
+        "upgradeScopeTitle": "Change your role on {name}",
+        "upgradeScopeRole": "You're already a member of {workspace}. Your role on {name} will change from {from} to {to}.",
+        "failed": "Could not join the workspace",
+        "failedMessage": "Something went wrong while joining the workspace. Please try again.",
+        "invalidLinkMessage": "This invite link is no longer valid. Ask the person who shared it for a new one.",
+        "addMemberTitle": "Join {name}",
+        "addMember": "You're already a member of {workspace}. You will be added to {name}.",
+        "addMemberButton": "Join"
+    },
+    "editWorkspace": {
+        "invalidNameTitle": "Workspace name not allowed"
+    },
+    "exportWorkspaceModal": {
+        "title": "Export",
+        "description": "Your data will be exported as a ZIP file, which can be imported into other SomeTable instance.",
+        "exportSettings": "Export settings",
+        "export": "Export data",
+        "reset": "Start new",
+        "cancel": "Cancel",
+        "download": "Download",
+        "exportingState": "Exporting...",
+        "exportingTableState": "Exporting: {table}",
+        "exportingCreateArchiveState": "Creating archive",
+        "noExports": "No exports for this workspace yet.",
+        "created": "created"
+    },
+    "exportWorkspaceForm": {
+        "exportSettingsLabel": "Export settings",
+        "selectDataToExport": "Select data to export",
+        "selectAll": "Select all",
+        "deselectAll": "Deselect all",
+        "onlyStructureLabel": "Export structure only",
+        "onlyStructureDescription": "If enabled, only the structure of the applications will be exported. The data will not be included."
+    },
+    "importWorkspaceModal": {
+        "title": "Import SomeTable data",
+        "description": "You can import an existing SomeTable data by uploading the .zip file from other SomeTable instance.",
+        "import": "Import data",
+        "upload": "Upload",
+        "uploadAndImport": "Upload & Import",
+        "cancel": "Cancel",
+        "done": "Done",
+        "close": "Close",
+        "retry": "Retry",
+        "uploading": "uploading...",
+        "chooseFile": "Choose file",
+        "selectApplications": "Select data to import",
+        "deselectAll": "Deselect all",
+        "selectAll": "Select all",
+        "databases": "Databases",
+        "applications": "Applications",
+        "successTitle": "Successfully imported the SomeTable data",
+        "successMessage": "Imported {count} applications",
+        "signatureVerificationNote": "It's not possible to import a zip file from an untrusted source.",
+        "invalidResourceTitle": "Invalid resource",
+        "invalidResourceMessage": "The provided file is not a valid SomeTable export.",
+        "untrustedPublicKeyTitle": "Untrusted signature",
+        "untrustedPublicKeyMessage": "The provided file is signed with an untrusted public key. Ask your administrator to add the public key to the list of trusted keys or disable the signature verification to be able to import this file.",
+        "importingState": "Importing...",
+        "importingTableStructure": "Creating: {table}",
+        "importingTableData": "Importing data: {table}"
+    },
+    "importWorkspaceForm": {
+        "selectApplicationsToImport": "Select applications to import"
+    },
+    "dashboardVerifyEmail": {
+        "title": "Please check your mailbox and click on the link to verify your email.",
+        "resendConfirmationEmail": "Resend confirmation email"
+    },
+    "resendEmailVerification": {
+        "confirmationEmailSentTitle": "Confirmation email sent",
+        "confirmationEmailSentDescription": "The confirmation email has been sent."
+    },
+    "verifyEmailAddress": {
+        "confirmation": "Your email address has been verified.",
+        "goToDashboard": "Go to dashboard",
+        "invalidToken": "Not a valid confirmation token.",
+        "disabledPasswordProvider": "The password authentication provider has been disabled.",
+        "emailMismatchWarning": "Please note that the verified email doesn't belong to the account that you are currently using."
+    },
+    "emailNotVerified": {
+        "title": "Email verification required",
+        "description": "Please check your mailbox and click on the link to verify. Once verified, your account will be activated.",
+        "resend": "Resend confirmation email"
+    },
+    "inviteModal": {
+        "backTo": "Back to {level}: {title}",
+        "emailRoute": "Email invite",
+        "linkRoute": "Invite links",
+        "emailTitle": "Invite members by email",
+        "linkTitle": "Invite members with a link",
+        "linkEmptyTitle": "You have not yet created an invite link",
+        "linkEmptyDescription": "You can create multiple links with different roles.",
+        "linkEmptyDescriptionNoRole": "Anyone you share a link with can join. You can create as many links as you need.",
+        "linkColumn": "Link",
+        "linkName": "Name",
+        "linkNamePlaceholder": "E.g. Sales team",
+        "linkAdd": "Add link",
+        "linkInviteAs": "Invite as",
+        "linkNoRole": "No role",
+        "linkCopy": "Copy link",
+        "linkDelete": "Delete link",
+        "linkAddPassword": "Protect with a password",
+        "linkPasswordProtected": "Password protected",
+        "pendingTitle": "Pending invitations",
+        "pendingEmptyTitle": "No invitations are pending.",
+        "pendingEmptyDescription": "Invitations show up here until they are accepted."
+    },
+    "invitationLinkPasswordModal": {
+        "newTitle": "Protect link with a password",
+        "changeTitle": "Change link password",
+        "description": "People who open the link must enter this password before they can see or join it. Changing it locks out everyone who only knows the previous one.",
+        "save": "Save password",
+        "remove": "Remove password"
+    },
+    "invitationLinkPassword": {
+        "title": "This invite link is password protected",
+        "description": "Enter the password you were given to continue.",
+        "passwordLabel": "Password",
+        "continue": "Continue",
+        "incorrectTitle": "Incorrect password",
+        "incorrectMessage": "The password is not correct. Ask the person who shared the link for the right one."
+    },
+    "invitationLinkDeleteModal": {
+        "title": "Delete link",
+        "deleteWarning": "Are you sure that you want to delete this invite link to {workspaceName}? After deleting, it will not be possible to join the workspace via this link. Everyone that you have shared the link with won't be able to use it anymore. People who already joined through it keep their access.",
+        "delete": "Delete link"
+    },
+    "invitationLinkAdminConfirmModal": {
+        "title": "Invite as admin through a link?",
+        "message": "Anyone with this link can join the workspace as an admin, and admins can manage everything in it, including its members and invite links. Only share it with people you trust.",
+        "confirm": "Invite as admin"
+    },
+    "scopeAccessList": {
+        "remove": "Remove"
+    },
+    "inviteInput": {
+        "batchLimitExceeded": "You can invite up to {limit} email addresses at once. Remove extra addresses to continue.",
+        "placeholder": "Type or paste email addresses",
+        "invite": "Invite",
+        "inviteAs": "Invite {count} as {role}",
+        "tabAll": "All",
+        "inviteEmail": "Invite {email}",
+        "inviteEmailDescription": "Joins the workspace as {role}",
+        "alreadyInvited": "An invitation is already pending.\nYou can change its role on the Invites page instead of inviting again.",
+        "alreadyMember": "Already a member of this workspace",
+        "invitedHint": "Invited",
+        "memberHint": "Member",
+        "roleNotForEmails": "Someone new can't be invited with the {role} role",
+        "noResults": "Type a full email address to invite someone."
+    },
+    "workspaceSettingsModal": {
+        "title": "Workspace Settings"
+    },
+    "workspaceSettingType": {
+        "aiProviders": "AI providers"
+    },
+    "generativeAIModelType": {
+        "openai": "OpenAI",
+        "openaiApiKeyLabel": "API Key",
+        "openaiApiKeyDescription": "Enter an OpenAI API key. [Instructions on getting an API key](https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key).",
+        "openaiOrganization": "Organization (optional)",
+        "openaiModelsLabel": "Enabled Models",
+        "openaiModelsDescription": "Provide a comma-separated list of [OpenAI model identifiers](https://developers.openai.com/api/docs/models) that can be used in SomeTable. For example: `gpt-5.6,gpt-5.6-terra,gpt-5.6-luna`.",
+        "openaiModelIdentifierDescription": "Enter an [OpenAI model identifier](https://developers.openai.com/api/docs/models). For example: `gpt-5.6`, `gpt-5.6-terra`, or `gpt-5.6-luna`.",
+        "openaiBaseUrl": "Base URL",
+        "openaiBaseUrlDescription": "Uses the default OpenAI base URL by default if empty. Can optionally be changed to https://eu.api.openai.com/v1, https://&#60;your-resource-name&#62;.openai.azure.com, or any other OpenAI compatible API.",
+        "anthropic": "Anthropic",
+        "anthropicApiKeyLabel": "API Key",
+        "anthropicApiKeyDescription": "Enter an Anthropic API key. [Instructions on getting an API key](https://docs.anthropic.com/en/api/getting-started).",
+        "anthropicModelsLabel": "Enabled Models",
+        "anthropicModelsDescription": "Provide a comma-separated list of [Anthropic model identifiers](https://platform.claude.com/docs/en/about-claude/models/overview) that can be used in SomeTable. For example: `claude-sonnet-5,claude-opus-4-8,claude-haiku-4-5`.",
+        "anthropicModelIdentifierDescription": "Enter an [Anthropic model identifier](https://platform.claude.com/docs/en/about-claude/models/overview). For example: `claude-sonnet-5`, `claude-opus-4-8`, or `claude-haiku-4-5`.",
+        "bedrock": "Amazon Bedrock",
+        "bedrockSecretLabel": "API key or secret access key",
+        "bedrockSecretDescription": "Enter an [Amazon Bedrock API key](https://docs.aws.amazon.com/bedrock/latest/userguide/api-keys.html), or the secret access key of the access key ID.",
+        "bedrockChangeSecret": "Change API key or secret access key",
+        "bedrockSecretUpdateHint": "Enter a new API key or secret access key. Enter it again whenever you add or remove the access key ID.",
+        "bedrockAccessKeyIdLabel": "Access key ID",
+        "bedrockAccessKeyIdDescription": "The [IAM access key ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) that belongs to the secret access key. Leave it empty to use a Bedrock API key.",
+        "bedrockRegionLabel": "Region",
+        "bedrockRegionDescription": "The AWS region to call Bedrock in, for example `eu-central-1`.",
+        "bedrockModelsLabel": "Enabled Models",
+        "bedrockModelsDescription": "Provide a comma-separated list of [Bedrock inference profile or model IDs](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-support.html) that can be used in SomeTable. For example: `eu.anthropic.claude-sonnet-4-5-20250929-v1:0,eu.amazon.nova-pro-v1:0`.",
+        "bedrockModelIdentifierDescription": "Enter a [Bedrock inference profile ID](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-support.html) such as `eu.anthropic.claude-sonnet-4-5-20250929-v1:0`. Newer models reject their base model ID.",
+        "mistral": "Mistral",
+        "mistralApiKeyLabel": "API Key",
+        "mistralApiKeyDescription": "Enter a Mistral API key. [Instructions on getting an API key](https://docs.mistral.ai/getting-started/quickstart/).",
+        "mistralModelsLabel": "Enabled Models",
+        "mistralModelsDescription": "Provide a comma-separated list of [Mistral model identifiers](https://docs.mistral.ai/models/) that can be used in SomeTable. For example: `mistral-large-latest,mistral-medium-latest,mistral-small-latest`.",
+        "mistralModelIdentifierDescription": "Enter a [Mistral model identifier](https://docs.mistral.ai/models/). For example: `mistral-large-latest`, `mistral-medium-latest`, or `mistral-small-latest`.",
+        "ollama": "Ollama",
+        "ollamaHostLabel": "Host",
+        "ollamaHostDescription": "Provide the hostname to your [Ollama](https://ollama.com/) server. This typically runs locally on your own device.",
+        "ollamaModelsLabel": "Enabled Models",
+        "ollamaModelsDescription": "Provide a comma-separated list of [models installed in Ollama](https://ollama.com/library). A model must be downloaded and installed before SomeTable can use it. For example: `gemma3,qwen3,llama3.3`.",
+        "ollamaModelIdentifierDescription": "Enter the identifier of a [model installed in Ollama](https://ollama.com/library). For example: `gemma3`, `qwen3`, or `llama3.3`.",
+        "openRouter": "OpenRouter",
+        "openRouterApiKeyLabel": "API Key",
+        "openRouterApiKeyDescription": "Enter an OpenRouter API key. [Get an API key](https://openrouter.ai/settings/keys).",
+        "openRouterOrganization": "Organization (optional)",
+        "openRouterModelsLabel": "Enabled Models",
+        "openRouterModelsDescription": "Provide a comma-separated list of [OpenRouter model identifiers](https://openrouter.ai/models) that can be used in SomeTable. For example: `openai/gpt-5.6,anthropic/claude-sonnet-5`.",
+        "openRouterModelIdentifierDescription": "Enter an [OpenRouter model identifier](https://openrouter.ai/models). For example: `openai/gpt-5.6` or `anthropic/claude-sonnet-5`.",
+        "google": "Google Gemini",
+        "googleApiKeyLabel": "API Key",
+        "googleApiKeyDescription": "Enter a Google AI Studio API key. [Create or view an API key](https://aistudio.google.com/apikey).",
+        "googleModelsLabel": "Enabled Models",
+        "googleModelsDescription": "Provide a comma-separated list of [Gemini model identifiers](https://ai.google.dev/gemini-api/docs/models) that can be used in SomeTable. For example: `gemini-3.6-flash,gemini-3.5-flash`.",
+        "googleModelIdentifierDescription": "Enter a [Gemini model identifier](https://ai.google.dev/gemini-api/docs/models). For example: `gemini-3.6-flash` or `gemini-3.5-flash`.",
+        "groq": "Groq",
+        "groqApiKeyLabel": "API Key",
+        "groqApiKeyDescription": "Enter a Groq API key. [Create or view an API key](https://console.groq.com/keys).",
+        "groqModelsLabel": "Enabled Models",
+        "groqModelsDescription": "Provide a comma-separated list of [Groq model identifiers](https://console.groq.com/docs/models) that can be used in SomeTable. For example: `openai/gpt-oss-120b,openai/gpt-oss-20b`.",
+        "groqModelIdentifierDescription": "Enter a [Groq model identifier](https://console.groq.com/docs/models). For example: `openai/gpt-oss-120b` or `openai/gpt-oss-20b`.",
+        "xai": "xAI",
+        "xaiApiKeyLabel": "API Key",
+        "xaiApiKeyDescription": "Enter an xAI API key. [Create or view an API key](https://console.x.ai).",
+        "xaiModelsLabel": "Enabled Models",
+        "xaiModelsDescription": "Provide a comma-separated list of [xAI model identifiers](https://docs.x.ai/developers/models) that can be used in SomeTable. For example: `grok-4.3,grok-4.20-non-reasoning`.",
+        "xaiModelIdentifierDescription": "Enter an [xAI model identifier](https://docs.x.ai/developers/models). For example: `grok-4.3` or `grok-4.20-non-reasoning`.",
+        "zai": "Z.ai",
+        "zaiApiKeyLabel": "API Key",
+        "zaiApiKeyDescription": "Enter a Z.ai API key. [Create or view an API key](https://z.ai/manage-apikey/apikey-list).",
+        "zaiModelsLabel": "Enabled Models",
+        "zaiModelsDescription": "Provide a comma-separated list of [Z.ai model identifiers](https://docs.z.ai/guides/overview/pricing) that can be used in SomeTable. For example: `glm-5.2,glm-4.6v`.",
+        "zaiModelIdentifierDescription": "Enter a [Z.ai model identifier](https://docs.z.ai/guides/overview/pricing). For example: `glm-5.2` or `glm-4.6v`."
+    },
+    "generativeAIWorkspaceSettings": {
+        "providerTitle": "AI providers",
+        "providerDescription": "Manage providers owned by this workspace or enable and disable providers inherited from the instance.",
+        "sharedModelsTitle": "Shared across workspaces",
+        "addWorkspaceConfiguration": "Add workspace configuration",
+        "overridden": "Overridden",
+        "overriddenByWorkspace": "Overridden by workspace",
+        "disabledInWorkspace": "Disabled in workspace",
+        "noProviders": "No AI providers are available",
+        "noProvidersDescription": "Add a provider for this workspace, or ask an instance administrator to configure one.",
+        "openSettings": "Open settings",
+        "hideSettings": "Hide settings"
+    },
+    "templateEmptyState": {
+        "noResultsTitle": "No templates found",
+        "noResultsDescription": "No templates match “{query}”. Try a different search."
+    },
+    "templateInstall": {
+        "use": "Use this template",
+        "selectWorkspace": "Choose workspace",
+        "workspaceNoPermission": "You don't have permission to add applications to this workspace.",
+        "more": "More",
+        "copyLink": "Copy sharing link",
+        "download": "Download",
+        "noWorkspace": "A template is installed into a workspace. Create a workspace first, then install the template into it.",
+        "noWorkspaceAskInvite": "You aren't a member of any workspace. A template is installed into a workspace, so you will need to be invited to a workspace by an administrator first.",
+        "createWorkspace": "Create workspace"
+    },
+    "templateDetails": {
+        "back": "Back to Templates",
+        "contents": "What’s inside",
+        "editDetails": "Edit details",
+        "updateContent": "Update template content",
+        "delete": "Delete",
+        "you": "You",
+        "private": "Only you can see this template",
+        "makePublic": "Make public",
+        "submitForReviewAgain": "Submit for review again",
+        "makePrivate": "Make private",
+        "blockedTitle": "“{name}” is blocked",
+        "blockedDescription": "It's on the Blocked tab of the admin Templates page.",
+        "blockReasonChangedTitle": "Block reason of “{name}” changed",
+        "changeBlockReason": "Change block reason"
+    },
+    "templateModal": {
+        "officialTemplates": "Official templates",
+        "publicTemplates": "Shared templates",
+        "yourTemplates": "Your templates",
+        "unavailableTitle": "Template not available",
+        "unavailableDescription": "This template is no longer shared. The list shows the shared templates as they are now."
+    },
+    "createUserTemplateModal": {
+        "detailsTitle": "New template",
+        "detailsDescription": "Publish a reusable copy of your work for other people in this instance.",
+        "continue": "Continue",
+        "contentTitle": "Choose template content",
+        "contentDescription": "Choose the workspace to take the content from, then pick what the template should include.",
+        "create": "Create template",
+        "cannotBeCancelled": "It’s not possible to cancel, because the template has already been created.",
+        "failedAfterCreated": "The template was created, but something went wrong afterwards.",
+        "failedPublicAfterCreated": "The template was created, but it couldn’t be made public, so it stays private. You can make it public from “Your templates”."
+    },
+    "userTemplateVisibilityForm": {
+        "visibility": "Visibility",
+        "private": "Private",
+        "privateDescription": "Hidden from the template browser. Only you can see and install it.",
+        "public": "Public",
+        "publicDescription": "This instance does not review templates, so it appears in the browser straight away.",
+        "publicReviewDescription": "A public template is reviewed by an admin before it appears in the browser.",
+        "listedDescription": "Listed in the template browser. You can make it private again later.",
+        "consent": "Listed in the template browser for everyone on this instance. You also acknowledge that your account name {author} is shared as author."
+    },
+    "updateUserTemplateModal": {
+        "detailsTitle": "Edit template",
+        "detailsDescription": "Change how your template is presented. The template content stays as it is.",
+        "contentTitle": "Update content",
+        "save": "Save changes",
+        "update": "Update template",
+        "updated": "Template updated",
+        "failedAfterUpdated": "The template was updated, but something went wrong afterwards.",
+        "failedPublicAfterUpdated": "The template was updated, but it couldn’t be made public, so it stays private. You can make it public from “Your templates”.",
+        "blockedAfterUpdated": "The template was updated, but an administrator blocked it, so it can’t be made public until they unblock it.",
+        "cannotBeCancelled": "It’s not possible to cancel, because the template has already been updated.",
+        "invalidKeptDetails": "The icon or a category of the template can’t be used anymore. Change them with “Edit details” first, then update the content.",
+        "reviewTitle": "Saving sends this template back to review",
+        "reviewText": "The approved version stays listed in the template browser until an admin approves the changes.",
+        "inReviewTitle": "This template is in review",
+        "inReviewText": "Saving replaces the version in review, so an admin reviews your changes instead.",
+        "rejectedTitle": "Saving doesn’t send this template back to review",
+        "rejectedText": "It stays rejected. Make it public once your changes are ready.",
+        "blockedTitle": "An admin will be notified of your changes",
+        "blockedText": "This template is blocked, so only an admin can put it back."
+    },
+    "deleteUserTemplateModal": {
+        "title": "Are you sure you want to delete “{name}”?",
+        "description": "The template is removed for everyone in this instance. Copies people already installed in their workspaces are not affected.",
+        "delete": "Delete template"
+    },
+    "makeTemplatePublicModal": {
+        "title": "Make “{name}” public?",
+        "description": "“{name}” will be listed in the template browser for everyone on this instance, and your account name, {author}, is shared as author. You can make it private again later.",
+        "makePublic": "Make public",
+        "reviewDescription": "“{name}” will be listed in the template browser for everyone on this instance once an instance admin approves it, and your account name, {author}, is shared as author. You can make it private again later.",
+        "resubmitListedDescription": "The approved version of “{name}” stays listed in the template browser until an instance admin approves this one, which then replaces it.",
+        "resubmitTitle": "Submit “{name}” for review again?",
+        "submitForReviewAgain": "Submit for review again"
+    },
+    "userTemplatePrivateLink": {
+        "emptyTitle": "This template has no private link",
+        "emptyDescription": "Anyone with the link can preview this template. To install or download it, they need to sign in.",
+        "create": "Create a sharing link",
+        "sharedTitle": "This template is shared via a private link",
+        "sharedDescription": "Anyone with the link can preview this template. To install or download it, they need to sign in.",
+        "copy": "Copy link",
+        "regenerate": "Generate a new link",
+        "regenerateHint": "Regenerating creates a new link and breaks the old one.",
+        "remove": "Disable shared link",
+        "createdTitle": "Sharing link created",
+        "createdDescription": "Anyone with the link can preview this template. To install or download it, they need to sign in.",
+        "regeneratedTitle": "New sharing link generated",
+        "regeneratedDescription": "The old link no longer works.",
+        "removedTitle": "Sharing link disabled",
+        "removedDescription": "The link no longer works. If the template is public, it stays public.",
+        "blocked": "This template is blocked, so its private link can't be changed."
+    },
+    "userTemplateDetailsForm": {
+        "name": "Name",
+        "namePlaceholder": "Template name",
+        "nameRequired": "A name is required.",
+        "chooseIcon": "Choose an icon",
+        "description": "Description",
+        "descriptionPlaceholder": "What is this template for?",
+        "categories": "Categories",
+        "categoriesRequired": "Choose at least one category."
+    },
+    "userTemplateContentForm": {
+        "workspace": "Workspace",
+        "workspaceEmpty": "There is nothing to copy in this workspace.",
+        "workspaceNoPermission": "You don't have permission to copy this workspace.",
+        "applications": "Content",
+        "noticeTitle": "What is not copied",
+        "noticeSecrets": "Most passwords, tokens and API keys of integrations and data syncs.",
+        "noticePasswords": "Values of password fields in your tables, including the passwords of your application users.",
+        "noticePeople": "People: collaborator field values, role assignments and the user that automatic AI field updates run as.",
+        "noticePersonalViews": "Personal views.",
+        "noticeReferences": "Connections to databases that are not included. Data sources, filters and triggers using them need to be set up again.",
+        "noticeRest": "Everything else is shared as it is.",
+        "selectedApplications": "Nothing selected yet | 1 application selected | {count} applications selected"
+    },
+    "templateIconSelectContext": {
+        "search": "Search icons",
+        "noResults": "No icons found"
+    },
+    "userTemplateList": {
+        "title": "Your templates",
+        "count": "0 templates | 1 template | {count} templates",
+        "search": "Search templates",
+        "newTemplate": "New template",
+        "name": "Name",
+        "visibility": "Visibility",
+        "lastUpdated": "Last updated",
+        "used": "Used",
+        "usedTimes": "{count} time | {count} times",
+        "emptyTitle": "You have not shared any template yet",
+        "emptyDescription": "Turn your work into a template anyone in this instance can install with one click.",
+        "noWorkspace": "A template is created from a workspace. Create or join a workspace first.",
+        "noContent": "A template is created from the content of a workspace. Add a database, an application or an automation first.",
+        "statePrivate": "Private",
+        "stateInReview": "In review",
+        "stateRejected": "Rejected",
+        "stateBlocked": "Blocked",
+        "statePublic": "Public",
+        "stateListed": "Listed",
+        "errorTitle": "Your templates couldn't be loaded",
+        "errorDescription": "Something went wrong while loading your templates.",
+        "retry": "Retry",
+        "actions": "Actions",
+        "editDetails": "Edit details",
+        "updateContent": "Update template content",
+        "download": "Download",
+        "makePublic": "Make public",
+        "submitForReviewAgain": "Submit for review again",
+        "makePrivate": "Make private",
+        "privateLink": "Sharing link",
+        "copyLink": "Copy sharing link",
+        "delete": "Delete"
+    },
+    "publicTemplateList": {
+        "title": "Shared templates",
+        "you": "You",
+        "updated": "Updated {ago}",
+        "emptyTitle": "No shared templates yet",
+        "emptyCategoryTitle": "No shared templates in this category",
+        "emptyDescription": "Templates that people on this instance make public are listed here.",
+        "errorTitle": "Shared templates couldn't be loaded",
+        "errorDescription": "Something went wrong while loading the shared templates.",
+        "retry": "Retry"
+    },
+    "trashType": {
+        "integration": "integration",
+        "user_source": "user source"
+    },
+    "uploadFileDropzone": {
+        "drop": "Drop here",
+        "clickOrDrop": "Click or drop your files here",
+        "errorTooManyFilesTitle": "Too many files",
+        "errorTooManyFilesMessage": "You can only upload a single file",
+        "errorWrongFileTypeTitle": "Wrong file type",
+        "errorWrongFileTypeMessage": "You can't upload a file of type {type}"
+    },
+    "connectingToast": {
+        "title": "Reconnecting",
+        "content": "Trying to reestablish real-time updates."
+    },
+    "failedConnectingToast": {
+        "title": "Failed",
+        "content": "Real-time updates could not be reestablished. Please refresh to continue.",
+        "action": "Refresh page"
+    },
+    "workspaceOutdatedToast": {
+        "title": "Too many changes",
+        "content": "Too many changes occurred while you were away. Refresh to see the latest data.",
+        "action": "Refresh data",
+        "dismiss": "Dismiss"
+    },
+    "authorizationErrorToast": {
+        "title": "Authorization error",
+        "content": "It looks like you do not have the permissions to see this resource.",
+        "action": "Refresh page"
+    },
+    "userSessionExpiredToast": {
+        "title": "Session expired",
+        "content": "You were logged out because your authentication token has expired. Please login again."
+    },
+    "userPasswordChangedToast": {
+        "title": "Password changed",
+        "content": "Your password has been changed. Please login again."
+    },
+    "restoreToast": {
+        "restore": "Restore deleted {type}"
+    },
+    "copyingToast": {
+        "title": "Copying...",
+        "content": "Preparing your data"
+    },
+    "PastingToast": {
+        "title": "Pasting...",
+        "content": "Preparing your data"
+    },
+    "clearingToast": {
+        "title": "Clearing...",
+        "content": "Preparing your data"
+    },
+    "undoRedoToast": {
+        "undoingTitle": "Undoing...",
+        "undoingText": "Undoing your action",
+        "undoneTitle": "Undone",
+        "undoneText": "Action is undone",
+        "noMoreUndo": "No more actions to undo",
+        "skippingUndoDueToError": "Undo failed due to unknown error, skipping it.",
+        "redoingTitle": "Redoing...",
+        "redoingText": "Redoing your action",
+        "redoneTitle": "Redone",
+        "redoneText": "Action is redone",
+        "noMoreRedo": "No more actions to redo",
+        "skippingRedoDueToError": "Redo failed due to unknown error, skipping it.",
+        "failed": "Failed"
+    },
+    "permissionsUpdatedToast": {
+        "title": "Permissions updated",
+        "content": "This might affect what you have access to, please reload the page.",
+        "action": "Reload"
+    },
+    "changeEmail": {
+        "title": "Confirm email change",
+        "submit": "Confirm email change",
+        "changed": "Email address changed",
+        "message": "Your email address has been successfully changed. You can now login to SomeTable using your new email address.",
+        "errorInvalidLinkTitle": "Invalid link",
+        "errorInvalidLinkMessage": "Could not change the email address because the link is invalid.",
+        "errorLinkExpiredTitle": "Link expired",
+        "errorLinkExpiredMessage": "The email change link has expired. Please request a new one from your account settings.",
+        "errorEmailExistsTitle": "Email already exists",
+        "errorEmailExistsMessage": "Could not change the email address because an account with this email address already exists.",
+        "errorEmailAlreadyChangedTitle": "Email already changed",
+        "errorEmailAlreadyChangedMessage": "The email address has already been changed to the requested address."
+    },
+    "crudTable": {
+        "empty": "No items yet",
+        "emptyPage": "No results on this page.",
+        "noResults": "No results found. Try adjusting your search or filters.",
+        "rowActions": "Row actions",
+        "expandRow": "Expand row details",
+        "collapseRow": "Collapse row details"
+    },
+    "highestPaidRoleField": {
+        "billable": "Billable"
+    },
+    "integrationCreateEditModal": {
+        "createTitle": "New integration",
+        "editTitle": "Edit integration",
+        "warningTitle": "Warning",
+        "credentialRequiredTitle": "Credential required",
+        "credentialRequiredMessage": "Enter the credential again to change where this integration connects."
+    },
+    "integrationEditForm": {
+        "name": "Name",
+        "namePlaceholder": "Enter integration name..."
+    },
+    "integrationDropdown": {
+        "addIntegration": "Add new integration",
+        "noIntegrations": "No integrations found.",
+        "selectTypeFirst": "Choose the type first",
+        "integrationPlaceholder": "Select an integration",
+        "editIntegration": "Edit integration"
+    },
+    "dropdown": {
+        "empty": "No items available",
+        "clearSearch": "Clear search"
+    },
+    "groupedMenu": {
+        "core": "Core",
+        "files": "Files",
+        "http": "HTTP",
+        "workflow": "Workflow"
+    },
+    "richTextEditorMentionsList": {
+        "notFound": "No users found"
+    },
+    "workspaceInvitationAcceptedNotification": {
+        "title": "{sender} has accepted your invitation to join {workspaceName}",
+        "deletedUser": "A deleted user"
+    },
+    "workspaceInvitationRejectedNotification": {
+        "title": "{sender} has rejected your invitation to join {workspaceName}",
+        "deletedUser": "A deleted user"
+    },
+    "workspaceInvitationCreatedNotification": {
+        "title": "{sender} has invited you to join {workspaceName}",
+        "deletedUser": "A deleted user"
+    },
+    "versionUpgradeNotification": {
+        "title": "{version} is here! Check out what's new."
+    },
+    "abuseReportCreatedNotification": {
+        "title": "{resourceName} has been reported for abuse by {reporterEmail}",
+        "openResource": "Open the reported page",
+        "showMore": "Show more",
+        "detailsTitle": "Abuse report",
+        "reportedBy": "Reported by {reporterName} ({reporterEmail})."
+    },
+    "reportAbuseModal": {
+        "title": "Report abuse",
+        "description": "Do you believe this page is being used for phishing, impersonation, scams or other abusive purposes? Let the administrators of this SomeTable instance know by submitting the form below.",
+        "submit": "Submit report",
+        "close": "Close",
+        "successTitle": "Thank you for your report",
+        "successDescription": "The report has been submitted and the administrators of this SomeTable instance have been notified so that they can take action.",
+        "reportingDisabledTitle": "Reporting is disabled",
+        "reportingDisabledDescription": "Reporting abuse has been disabled by the administrator of this SomeTable instance."
+    },
+    "reportAbuseForm": {
+        "nameLabel": "Your name",
+        "emailLabel": "Your email address",
+        "descriptionLabel": "Why are you reporting this page?",
+        "descriptionHelper": "Please describe in detail why you believe this page is abusive.",
+        "descriptionPlaceholder": "For example: this page pretends to be a login page of another company and asks visitors for their password."
+    },
+    "emailNotifications": {
+        "title": "Email notifications",
+        "label": "Mentions, comments and other notifications",
+        "description": "Configure the frequency in which emails are sent to your inbox.",
+        "instant": "Instant",
+        "daily": "Daily",
+        "weekly": "Weekly",
+        "never": "Never",
+        "submitButton": "Update frequency"
+    },
+    "formulaInputField": {
+        "errorInvalidFormula": "The formula is invalid.",
+        "advancedFormulaMode": "Advanced formula mode",
+        "invalidFormulaTitle": "Invalid formula",
+        "invalidSyntax": "Not a valid expert formula, please check the syntax.",
+        "useFormulaMode": "Use formula mode",
+        "useRawMode": "Use raw mode",
+        "formatPlain": "Plain text",
+        "formatMarkdown": "Markdown",
+        "formatBadgeTitle": "Format: {format}. Click to change it."
+    },
+    "formulaInputErrorContext": {
+        "viewFullError": "View full error"
+    },
+    "formulaInputExplorerContext": {
+        "formatLabel": "Format",
+        "variables": "Variables",
+        "functions": "Functions",
+        "operators": "Operators",
+        "search": "Search",
+        "useRegularInputModalTitle": "Use regular input for this field?",
+        "useSimpleInput": "Switch to basic mode",
+        "useSimpleInputModalTitle": "Switch to basic mode?",
+        "useAdvancedInput": "Switch to expert mode",
+        "useAdvancedInputModalTitle": "Switch to expert mode?",
+        "modalMessage": "Switching to a different mode will clear the current formula. Are you sure you want to continue?"
+    },
+    "formulaParserErrors": {
+        "invalidArgCountMin": "The '{funcType}' function expects a minimum of {minArgs} arguments.",
+        "invalidArgCountExact": "The '{funcType}' function expects exactly {minArgs} arguments.",
+        "invalidArgCountRange": "The '{funcType}' function expects between {minArgs} and {maxArgs} arguments.",
+        "invalidArgumentType": "'{value}' is not a valid argument for the '{funcType}' function."
+    },
+    "nodeExplorer": {
+        "noDataAvailable": "No data is available for this formula."
+    },
+    "dataExplorer": {
+        "noMatchingNodesText": "No matching results were found.",
+        "noProvidersText": "No data providers were found. To get started you can, for example, add a data source or page parameter."
+    },
+    "dataExplorerNode": {
+        "showMore": "Show more repetitions",
+        "selectNode": "Select",
+        "emptyValue": "empty",
+        "itemCount": "{count} item | {count} items",
+        "fieldCount": "{count} field | {count} fields"
+    },
+    "richTextEditor": {
+        "errorUnsupportedImageTitle": "Image can't be embedded",
+        "errorUnsupportedImageMessage": "{name} is not a supported image and was not added."
+    },
+    "richTextEditorBubbleMenu": {
+        "bold": "Bold",
+        "italic": "Italic",
+        "underline": "Underline",
+        "strikethrough": "Strike",
+        "link": "Link",
+        "linkEditPlaceholder": "Link URL...",
+        "linkEditDone": "Done"
+    },
+    "richTextEditorFloatingMenu": {
+        "hierarchy": "Hierarchy",
+        "lists": "Lists",
+        "paragraph": "Paragraph",
+        "heading1": "Heading 1",
+        "heading2": "Heading 2",
+        "heading3": "Heading 3",
+        "orderedList": "Numbered list",
+        "unorderedList": "Bullet list",
+        "code": "Code",
+        "taskList": "Task list"
+    },
+    "selectAIModelForm": {
+        "AIType": "AI Type",
+        "AIModel": "AI Model",
+        "modelUnavailable": "This model is disabled or no longer available.",
+        "fileField": "File field",
+        "temperatureLabel": "Temperature",
+        "temperatureDescription": "The temperature of an LLM, a parameter set between 0 and {max}, adjusts response randomness—lower values yield focused answers, while higher values increase creativity."
+    },
+    "moreStep": {
+        "title": "Tell us a bit more",
+        "how": "How did you hear about us?",
+        "howSearchEngine": "Search engine (Google/Bing)",
+        "howSocialMedia": "Social media",
+        "howOnlineAds": "Online ads",
+        "howContent": "Content (blog/newsletter/video)",
+        "howReviewSite": "Review site / marketplace",
+        "howFriend": "From a friend",
+        "howColleague": "From a colleague",
+        "howEvent": "Event or webinar",
+        "howSales": "Sales outreach",
+        "howOther": "Other",
+        "country": "Country",
+        "share": "I'm okay with sharing this with the SomeTable team"
+    },
+    "teamStep": {
+        "description": "Which team are you on?",
+        "marketingTeam": "Marketing",
+        "productAndDesignTeam": "Product & Design",
+        "engineeringTeam": "Engineering",
+        "operationsTeam": "Operations",
+        "itAndSupportTeam": "IT & Support",
+        "hrAndLegalTeam": "HR & Legal",
+        "financeTeam": "Finance",
+        "creativeProductionTeam": "Creative Production",
+        "salesAndAccountManagementTeam": "Sales & Account Management",
+        "customerServiceTeam": "Customer Service",
+        "manufacturingTeam": "Manufacturing",
+        "otherPersonalTeam": "Other / Personal"
+    },
+    "colorInput": {
+        "default": "Default"
+    },
+    "colorPickerContext": {
+        "pickColorPlaceholder": "Or pick a pre-defined color"
+    },
+    "imageInput": {
+        "labelDescription": "Select an image to upload...",
+        "labelButton": "Upload"
+    },
+    "aiProviderAdmin": {
+        "title": "AI providers",
+        "description": "Manage the instance-level providers and models available to workspaces and automations.",
+        "addProvider": "Add provider",
+        "editProvider": "Edit provider",
+        "providerType": "Provider type",
+        "excludedWorkspaces": "Excluded workspaces",
+        "excludedWorkspacesHelp": "These workspaces cannot use this instance provider. Workspace providers are unaffected.",
+        "addExcludedWorkspace": "Exclude a workspace",
+        "removeExcludedWorkspace": "Remove {name} from excluded workspaces",
+        "apiKey": "API key",
+        "changeApiKey": "Change API key",
+        "apiKeyUpdateHint": "Enter a new API key to replace the existing key.",
+        "extraField_organization": "Organization",
+        "extraField_base_url": "Base URL",
+        "extraField_host": "Host",
+        "extraField_region": "Region",
+        "extraField_access_key_id": "Access key ID",
+        "models": "Models",
+        "addModel": "Add model",
+        "removeModel": "Remove model",
+        "editModel": "Edit model",
+        "modelIdentifier": "Model identifier",
+        "availableFor": "Available for",
+        "availableForDescription": "Choose which listed AI features may use this model.",
+        "availableForList": "Available for: {features}",
+        "availableForNone": "Not available to any listed feature",
+        "featureSettingsTitle": "AI features",
+        "featureSettingsDescription": "Choose a configured provider model for each feature. Environment models are deprecated.",
+        "kumaDisabled": "Disabled",
+        "kumaInvalidFallback": "Selected model unavailable — using deprecated environment model: {model}",
+        "kumaInvalidNoFallback": "Selected model unavailable — no environment model configured",
+        "modelUnavailableInWorkspace": "Selected model unavailable in this workspace",
+        "kumaDisabledInWorkspace": "Disabled in this workspace",
+        "kumaUseInstance": "Use instance setting — {model}",
+        "kumaInheritedUnavailable": "selected instance model unavailable",
+        "kumaUseLegacy": "Use environment model (deprecated): {model}",
+        "kumaLegacyFallback": "environment model (deprecated): {model}",
+        "kumaLegacyEmpty": "empty",
+        "kumaNotConfigured": "not configured",
+        "featureModelLabel": "Model for {feature}",
+        "modelScopeInstance": "Instance",
+        "modelScopeWorkspace": "Workspace",
+        "noFeatureModels": "No eligible models are available. Edit a model and choose which features may use it.",
+        "featureSettingError": "The AI feature setting could not be saved.",
+        "featureSettingErrorDescription": "Refresh the page and choose an available model.",
+        "modelDiscoveryHelp": "Choose a model from the list or enter any custom identifier.",
+        "modelDiscoveryUnavailable": "Known model suggestions are unavailable. Enter an identifier manually.",
+        "modelDiscoveryEmpty": "No known models for this provider. Enter an identifier manually.",
+        "modelDiscoveryNoMatch": "No known model matches. You can use the identifier you entered.",
+        "noProviders": "No instance AI providers configured",
+        "noProvidersDescription": "Add a provider to configure the models available to your workspaces.",
+        "noModels": "No models are configured for this provider.",
+        "active": "Active",
+        "inactive": "Inactive",
+        "inherited": "Inherited",
+        "enable": "Enable",
+        "disable": "Disable",
+        "modelDisabled": "Disabled",
+        "moreActions": "More actions",
+        "testAllModels": "Test all models",
+        "testModel": "Test model",
+        "testPassed": "Test passed",
+        "testFailed": "Test failed",
+        "someTestsFailed": "Some tests failed",
+        "featureTestPassed": "{feature}: Passed",
+        "featureTestFailed": "{feature}: {error}",
+        "testing": "Testing…",
+        "notTested": "Not tested",
+        "deleteProviderTitle": "Delete {name}?",
+        "deleteProviderDescription": "This permanently removes the provider and its models.",
+        "deleteModelTitle": "Delete {name}?",
+        "deleteModelDescription": "This permanently removes the model.",
+        "disableModelTitle": "Disable {name}?",
+        "disableModelDescription": "The model stays selected where it is configured, but it cannot be used until it is enabled again.",
+        "modelFeaturesRemovedTitle": "Change what {name} is available for?",
+        "modelFeaturesRemovedDescription": "The features you unchecked can no longer use this model.",
+        "modelInUse": "{features} uses this model. | {features} use this model.",
+        "modelUsageUnknown": "SomeTable could not check what still uses this model.",
+        "modelUsageFeature": "{feature} ({count})",
+        "modelIdentifierRenamedTitle": "Rename {name}?",
+        "modelIdentifierRenamedDescription": "They keep pointing at the old identifier and stop working until they are repointed.",
+        "loadError": "The AI provider settings could not be loaded.",
+        "loadErrorDescription": "Check the connection and try again.",
+        "retry": "Retry",
+        "saveError": "The AI provider could not be saved.",
+        "saveModelError": "The AI provider model could not be saved.",
+        "actionError": "The AI provider change could not be completed."
+    },
+    "templatesAdmin": {
+        "title": "Templates",
+        "subtitle": "Every public template on this instance, and every one submitted for review.",
+        "inReview": "In review",
+        "public": "Public",
+        "rejectedTab": "Rejected",
+        "tabCount": "{name} · {count}",
+        "inReviewEmpty": "No templates in review.",
+        "publicEmpty": "No public templates.",
+        "rejectedEmpty": "No rejected templates.",
+        "blockedTab": "Blocked",
+        "blockedEmpty": "No blocked templates.",
+        "template": "Template",
+        "author": "Author",
+        "reason": "Reason",
+        "submitted": "Submitted",
+        "used": "Used",
+        "usedTimes": "{count} time | {count} times",
+        "searchPlaceholder": "Search by name or author",
+        "viewInTemplates": "View in Templates",
+        "preview": "Preview",
+        "unlistFromBrowser": "Unlist from the browser",
+        "approveAfterAll": "Approve after all",
+        "block": "Block",
+        "unblock": "Unblock",
+        "updatedSinceBlocked": "Updated since blocked",
+        "delete": "Delete",
+        "deletedAuthor": "A deleted user",
+        "review": "Review",
+        "approve": "Approve",
+        "editedSinceSubmitted": "Its author edited it since submitting it. It can be approved once they make it public again.",
+        "noContent": "Its content is no longer available, so it can't be approved.",
+        "reject": "Reject",
+        "unlist": "Unlist",
+        "changedTitle": "The template changed",
+        "changedDescription": "The template changed since the page was loaded. The list shows it as it is now.",
+        "alreadyApprovedTitle": "“{name}” already approved",
+        "alreadyApprovedDescription": "It was approved since the page was loaded, most likely by another admin. The list shows it as it is now.",
+        "alreadyRejectedTitle": "“{name}” already rejected",
+        "alreadyRejectedDescription": "It was rejected since the page was loaded, most likely by another admin. The list shows it as it is now.",
+        "alreadyUnlistedTitle": "“{name}” already unlisted",
+        "alreadyUnlistedDescription": "It was unlisted since the page was loaded, most likely by another admin. The list shows it as it is now."
+    },
+    "rejectTemplateModal": {
+        "title": "Reject “{name}”?",
+        "description": "The author sees this reason on their template. It stays out of the browser until you approve it.",
+        "editDescription": "Only the latest change is rejected. The approved version stays listed in the template browser, and its author sees the reason.",
+        "reasonLabel": "Reason",
+        "reasonPlaceholder": "Why this version can't be listed",
+        "reject": "Reject template",
+        "unlistTitle": "Unlist “{name}”?",
+        "unlistDescription": "The author sees this reason on their template. It comes out of the browser until you approve it again.",
+        "unlist": "Unlist template",
+        "blockTitle": "Block “{name}”?",
+        "blockDescription": "It's hidden from everyone except its author and instance admins, and its private link stops working. The author sees this reason.",
+        "blockPlaceholder": "Why the template is blocked",
+        "block": "Block template",
+        "changeBlockReasonTitle": "Change why “{name}” is blocked",
+        "changeBlockReasonDescription": "It stays blocked. The author sees the new reason.",
+        "changeBlockReason": "Change reason"
+    },
+    "disableTwoFactorAuthModal": {
+        "title": "Remove two-factor authentication",
+        "confirmation": "Are you sure you want to remove two-factor authentication for {name}?",
+        "comment": "They will be able to sign in with just their password and can set up two-factor authentication again afterwards.",
+        "remove": "Remove two-factor authentication"
+    },
+    "twoFactorAuthField": {
+        "enabled": "Enabled",
+        "disabled": "Disabled"
+    },
+    "formGroup": {
+        "protectedField": "This field is protected. Click to change.",
+        "cancelProtectedField": "Cancel change"
+    },
+    "userSourceType": {
+        "userCountSummary": "{count} users ({lastUpdated})"
+    },
+    "academy": {
+        "learnMore": "Learn more at the SomeTable academy"
+    },
+    "guidedTourStep": {
+        "step": "{step} of {totalSteps}",
+        "gotIt": "Got it",
+        "next": "Next",
+        "back": "Back",
+        "watchVideo": "Watch video",
+        "stopTour": "Stop tour"
+    },
+    "guidedTourVideoModal": {
+        "previous": "Previous video",
+        "next": "Next video",
+        "close": "Close"
+    },
+    "welcomeGuidedTourStep": {
+        "title": "Welcome to SomeTable",
+        "content": "Let’s take a quick tour to get you familiar with the basics. In just a few clicks, you’ll learn how to organize and visualize your data effortlessly",
+        "buttonText": "Start the tour"
+    },
+    "controlCenterGuidedTourStep": {
+        "title": "Your SomeTable Control Center",
+        "content": "The left sidebar helps you manage your workspace:\n\n- Home – Access your main dashboard.\n- Notifications – Stay updated on changes and mentions.\n- Invite Members – Collaborate by adding team members.\n- Trash – List and recover all your deleted items."
+    },
+    "createNewGuidedTourStep": {
+        "title": "Create a new database or application",
+        "content": "Click “Add new…” to set up a new database, application or dashboard for your project, department, or team."
+    },
+    "mcpEndpointSettings": {
+        "title": "MCP server",
+        "createEndpoint": "Create endpoint",
+        "createNewTitle": "Create MCP server endpoint",
+        "backToOverview": "Back",
+        "noEndpointsMessage": "No MCP (Model Context Protocol) server endpoints have been added. These can be used to directly integrate with an LLM like Claude, and let the LLM perform actions directly in SomeTable. Create a server endpoint to get started.",
+        "oauthTab": "OAuth",
+        "endpointTab": "Endpoint"
+    },
+    "mcpOAuthConnections": {
+        "title": "Connect an AI tool",
+        "description": "One URL for every tool. You sign in and choose the workspace and tools when you connect.",
+        "copyURL": "Copy URL",
+        "setupSteps": "Steps for Claude, ChatGPT and other apps, and what the agent can do, are in the {link}.",
+        "setupStepsLink": "SomeTable docs",
+        "claudeCodePluginInstructions": "Install the SomeTable plugin. It adds the server and skills that teach Claude how to use SomeTable. When it asks for the URL, paste the one above. Then run `/mcp` to sign in.",
+        "claudeCodeServerInstructions": "Or add only the server:",
+        "addToCursor": "Add to Cursor",
+        "cursorInstructions": "Or add this to `~/.cursor/mcp.json`. Cursor asks you to sign in when it connects.",
+        "addToVsCode": "Add to VS Code",
+        "vsCodeInstructions": "Or add this to `.vscode/mcp.json`. VS Code asks you to sign in when it starts the server.",
+        "otherApps": "Other apps",
+        "codexInstructions": "**Codex**. The second command signs you in.",
+        "geminiInstructions": "**Gemini CLI**, then run `/mcp auth sometable` to sign in.",
+        "otherAppsInstructions": "**Any other agent.** `add-mcp` asks which of your installed agents to add SomeTable to, and `skills add` copies the skills that teach them how to use it.",
+        "connectedApps": "Connected apps",
+        "noConnections": "No apps connected yet.",
+        "publishedBy": "{host}",
+        "expired": "Signed out",
+        "expiredTooltip": "This app's sign-in has ended. Sign in again from the app to use it.",
+        "tools": "{count} tool | {count} tools",
+        "connectedOn": "Connected {date}",
+        "toolsOff": "{count} tool turned off | {count} tools turned off",
+        "editTools": "Edit tools",
+        "editToolsTitle": "Tools for {client}",
+        "editToolsDescription": "Choose what it can do in {workspace}. The app gets the change on its next request, without signing in again.",
+        "saveTools": "Save",
+        "disconnect": "Disconnect",
+        "confirmDisconnect": "Click again to disconnect"
+    },
+    "mcpEndpointForm": {
+        "nameLabel": "Name",
+        "workspaceLabel": "Workspace"
+    },
+    "mcpEndpoint": {
+        "detailLabel": "More details",
+        "endpointURLIntro": "The MCP (Model Context Protocol) server URL can be added to any client that supports MCP servers. It's a unique endpoint that gives the LLM direct access to perform actions in the workspace on your behalf.",
+        "reveal": "Reveal full URL",
+        "warning": "Treat your MCP URL like a password, as it has the ability to modify data in SomeTable.",
+        "claudeInstructions": "Three simple steps to get started with Claude Desktop and the SomeTable MCP.\n\n1. Open the Claude Desktop settings from the navigation bar. (⌘+,)\n1. Go to the \"Develop\" tab, and click on \"Edit Config\".\n1. Include the following JSON configuration in `claude_desktop_config.json`.",
+        "cursorInstructions": "Three simple steps to get started with Cursor and the SomeTable MCP.\n\n1. Open Cursor settings (⇧+⌘+J)\n1. Navigate to the \"MCP\" tab and click \"Add MCP Server\"\n1. Add the following JSON configuration.",
+        "windsurfInstructions": "Two easy steps to set up MCP with Cascase in Windsurf.\n\n1. Navigate to Windsurf - Settings -> Advanced Settings or Command Palette -> Open Windsurf settings page.\n1. Scroll down to the Cascade section and you will find the option to add a new server, view existing servers, and a button to view the raw JSON config file at `mcp_config.json`. Add the following to it:"
+    },
+    "coreHTTPTriggerServiceForm": {
+        "title": "Webhook URL",
+        "urlVersion": "Version",
+        "urlVersionPublished": "Published",
+        "urlVersionTest": "Test",
+        "copyUrl": "Copy Webhook URL",
+        "urlCopied": "Webhook URL copied to clipboard",
+        "description": "This webhook receives HTTP requests and starts a run with the request data.",
+        "methodsOptionLabel": "Allowed HTTP methods",
+        "methodsOptionDescription": "Controls which HTTP methods are allowed for this webhook. Excluding GET reduces the chance of the webhook being triggered accidentally.",
+        "methodsOptionAll": "All",
+        "methodsOptionExcludeGet": "Exclude GET",
+        "responseOptionsLabel": "Response",
+        "waitForResponse": "Wait for workflow response",
+        "waitForResponseDescription": "Wait until a Response node is reached. If none is reached, wait for the workflow to finish and return the default response.",
+        "responseTimeout": "Response timeout",
+        "seconds": "seconds"
+    },
+    "coreManualTriggerServiceForm": {
+        "responseOptionsLabel": "Response",
+        "waitForResponse": "Wait for workflow response",
+        "waitForResponseDescription": "Wait until a Response node is reached. If none is reached, wait for the workflow to finish and return the default response.",
+        "responseTimeout": "Response timeout",
+        "seconds": "seconds"
+    },
+    "coreResponseServiceForm": {
+        "statusCode": "Status code",
+        "statusCode200": "200 - OK",
+        "statusCode201": "201 - Created",
+        "statusCode202": "202 - Accepted",
+        "statusCode204": "204 - No Content",
+        "statusCode400": "400 - Bad Request",
+        "statusCode401": "401 - Unauthorized",
+        "statusCode403": "403 - Forbidden",
+        "statusCode404": "404 - Not Found",
+        "statusCode405": "405 - Method Not Allowed",
+        "statusCode409": "409 - Conflict",
+        "statusCode422": "422 - Unprocessable Content",
+        "statusCode429": "429 - Too Many Requests",
+        "bodyType": "Body type",
+        "bodyTypeEmpty": "Empty",
+        "bodyTypeJson": "JSON",
+        "bodyTypeText": "Text",
+        "body": "Body",
+        "bodyPlaceholder": "Response body",
+        "headers": "Headers",
+        "name": "Name",
+        "value": "Value",
+        "namePlaceholder": "Header name",
+        "valuePlaceholder": "Header value",
+        "addHeader": "Add header",
+        "nameFieldRequired": "A header name is required.",
+        "nameFieldInvalid": "Header names can only contain letters, numbers, dashes, and underscores, and cannot start with a dash or underscore."
+    },
+    "inboundEmailTriggerServiceForm": {
+        "title": "Email address",
+        "addressVersionTest": "Test",
+        "addressVersionPublished": "Published",
+        "copyAddress": "Copy email address",
+        "description": "Any email sent to this address will start the workflow with the email's sender, subject, body and attachment details as the payload.",
+        "limits": "Emails up to {size} MB are accepted, and the text and HTML bodies are passed on up to 1 MB each. Attachments are not stored: only their name, type and size are included in the payload.",
+        "autoForwardTip": "Tip: you can also add this address as an auto-forward rule in your own inbox, so the workflow runs whenever you receive an email.",
+        "secretWarning": "Treat this address as a secret: anyone who knows it can start this workflow.",
+        "regenerate": "Regenerate address",
+        "infoDescription": "After you send an email, it may take up to several minutes to be received, depending on the provider."
+    },
+    "twoFactorAuthEmpty": {
+        "title": "You have not yet enabled 2FA",
+        "description": "Add an extra layer of security to your account.",
+        "enable": "Enable 2FA",
+        "notAllowedTitle": "2FA not enabled",
+        "notAllowedDescription": "Adding 2FA is only possible to password-based accounts."
+    },
+    "nodeHelpTooltip": {
+        "exampleLabel": "Example | Examples",
+        "result": "Result: {result}",
+        "clickToInsert": "Click an example to insert it"
+    },
+    "enableWithQRCode": {
+        "scanQRCode": "Scan QR code",
+        "scanQRCodeDescription": "Scan the code with an app like Google Authenticator, Authy or Microsoft Authenticator.",
+        "clickToCopy": "Alternatively, click here to copy the code.",
+        "secretCopiedTitle": "Secret copied",
+        "secretCopiedMessage": "TOTP secret copied to clipboard.",
+        "enterCode": "Enter the code shown",
+        "enterCodeDescription": "Enter a 6-digit code shown by the app to confirm that you have set it up correctly.",
+        "verificationFailed": "Verification failed",
+        "verificationFailedDescription": "The entered code is not valid.",
+        "provisioningFailed": "Provisioning failed",
+        "checkSuccess": "Successfully enabled two-factor authentication"
+    },
+    "adminUsers": {
+        "title": "Users"
+    },
+    "adminWorkspaces": {
+        "title": "Workspaces"
+    },
+    "subjectType": {
+        "user": "User",
+        "users": "Users",
+        "anonymousUser": "Anonymous user",
+        "identity": "Identity",
+        "identities": "Identities",
+        "members": "Members"
+    },
+    "identities": {
+        "saved": "Changes saved",
+        "tabTitle": "Identities",
+        "title": "{count} identities in {workspace}",
+        "create": "Create identity",
+        "createTitle": "Create identity",
+        "updateTitle": "Edit identity",
+        "save": "Save changes",
+        "edit": "Edit identity",
+        "delete": "Delete identity",
+        "general": "General",
+        "mcpServerPlaceholder": "MCP server settings will be available here.",
+        "name": "Name",
+        "invalidNameTitle": "Identity name not allowed",
+        "lastActive": "Last active",
+        "workspaceRole": "Workspace role",
+        "search": "Search identities",
+        "emptyTitle": "No identities yet",
+        "emptyDescription": "Create an identity to connect AI tools to your workspace. Choose its role and teams to control what it can access.",
+        "new": "New",
+        "roleHelpText": "Start with No access, then grant access to specific databases, tables or views as needed."
+    },
+    "managementPages": {
+        "you": "You"
+    },
+    "toolPresentation": {
+        "tool": "Tool",
+        "running": "Using a tool",
+        "waiting": "Tool waiting for approval",
+        "done": "Tool completed",
+        "failed": "Tool failed",
+        "rejected": "Tool rejected",
+        "stopped": "Tool interrupted",
+        "statusRunning": "Running",
+        "statusWaiting": "Waiting for approval",
+        "statusDone": "Completed",
+        "statusPartial": "Completed with errors",
+        "statusFailed": "Failed",
+        "statusRejected": "Rejected",
+        "statusStopped": "Interrupted; changes may have completed",
+        "statusInterrupted": "Interrupted",
+        "stepAnnouncement": "{title}: {status}",
+        "failureNotFound": "Not found or not accessible to the agent.",
+        "failurePermissionDenied": "Permission denied for this operation.",
+        "failureInvalidInput": "The tool received invalid input.",
+        "failureInvalidFormula": "The formula isn't valid.",
+        "failureConflict": "It clashes with something that already exists.",
+        "failureFailed": "This tool call failed.",
+        "failureNotRun": "It didn't run.",
+        "input": "Input",
+        "inputTruncated": "This is a shortened preview of the input.",
+        "itemErrors": "Not done",
+        "workspaceRunning": "Looking at your workspace",
+        "workspaceDone": "Looked at your workspace",
+        "workspace": "Workspace activity"
+    },
+    "serviceType": {
+        "eventCount": "Count"
+    },
+    "itemPickerModal": {
+        "noResults": "No results found"
     }
 }

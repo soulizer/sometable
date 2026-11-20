@@ -506,14 +506,9 @@ LANGUAGE_CODE = "en"
 
 LANGUAGES = [
     ("en", "English"),
-    ("fr", "French"),
-    ("nl", "Dutch"),
-    ("de", "German"),
-    ("es", "Spanish"),
-    ("it", "Italian"),
-    ("pl", "Polish"),
-    ("ko", "Korean"),
-    ("uk", "Ukrainian"),
+    # Django language codes use a hyphen; the matching locale directory is
+    # `zh_Hans` (see django.utils.translation.to_locale).
+    ("zh-hans", "简体中文"),
 ]
 
 TIME_ZONE = "UTC"
@@ -688,7 +683,7 @@ BASEROW_ENCRYPTION_KEY_FALLBACKS = [
 ]
 
 SPECTACULAR_SETTINGS = {
-    "TITLE": "Baserow API spec",
+    "TITLE": "SomeTable API spec",
     "DESCRIPTION": "For more information about our REST API, please visit "
     "[this page](https://baserow.io/docs/apis%2Frest-api).\n\n"
     "For more information about our deprecation policy, please visit "

@@ -97,13 +97,6 @@
           <SettingsModal ref="settingsModal"></SettingsModal>
         </li>
 
-        <li v-if="anyGuidedTourActive" class="context__menu-item">
-          <a class="context__menu-item-link" @click="replayGuidedTour()">
-            <i class="context__menu-item-icon iconoir-help-circle"></i>
-            {{ $t('sidebar.replayGuidedTour') }}
-          </a>
-        </li>
-
         <component
           :is="component"
           v-for="(component, index) in sidebarUserContextComponents"
@@ -190,17 +183,6 @@ export default {
         )
         .filter((component) => component !== null)
     },
-    /**
-     * Replaying only makes sense when a guided tour can actually show on the
-     * current page. On the all workspaces homepage, for example, no tour is
-     * active, and forcing a start there would show nothing while blocking a later
-     * natural start.
-     */
-    anyGuidedTourActive() {
-      return Object.values(this.$registry.getAll('guidedTour')).some((tour) =>
-        tour.isActive(this.$route)
-      )
-    },
     filteredWorkspaces() {
       let workspaces = this.workspaces
       const regex = new RegExp('(' + escapeRegExp(this.query) + ')', 'i')
@@ -247,11 +229,6 @@ export default {
         await pageFinished(this.nuxtApp)
         await nextTick()
       } catch {}
-    },
-    async replayGuidedTour() {
-      this.hide()
-      await this.$nextTick()
-      await this.$store.dispatch('guidedTour/forceStart')
     },
     hasUnreadNotifications(workspaceId) {
       return this.$store.getters['notification/workspaceHasUnread'](workspaceId)

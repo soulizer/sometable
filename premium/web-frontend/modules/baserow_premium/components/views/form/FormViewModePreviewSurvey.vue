@@ -1,6 +1,6 @@
 <template>
   <div class="form-view-survey">
-    <div v-if="isDeactivated" class="form-view-survey__deactivated">
+    <div v-if="false" class="form-view-survey__deactivated">
       <div>
         <div class="form-view-survey__deactivated-content">
           <div class="margin-bottom-2">
@@ -9,7 +9,7 @@
           <Button
             type="primary"
             icon="iconoir-no-lock"
-            @click="$refs.paidFeaturesModal.show()"
+            
           >
             {{ $t('formViewModePreviewSurvey.more') }}
           </Button>
@@ -227,12 +227,7 @@ export default {
       return this.$registry.get('formViewMode', this.view.mode)
     },
     isDeactivated() {
-      return (
-        // If we're in read only mode, then it doesn't matter whether the mode is
-        // disabled because we then always want to demo the survey.
-        !this.readOnly &&
-        this.modeType.isDeactivated(this.database.workspace.id)
-      )
+      return false
     },
   },
   methods: {

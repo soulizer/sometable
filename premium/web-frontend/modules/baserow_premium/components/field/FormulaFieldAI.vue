@@ -4,7 +4,7 @@
       <i class="iconoir-magic-wand"></i>
       {{ $t('formulaFieldAI.generateWithAI') }}
     </a>
-    <a v-else @click="$refs.paidFeaturesModal.show()">
+    <a v-else @click="openAIModal()">
       <i class="iconoir-lock"></i>
       {{ $t('formulaFieldAI.generateWithAI') }}
     </a>

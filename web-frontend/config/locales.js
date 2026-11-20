@@ -1,5 +1,5 @@
 /**
- * Shared locales configuration for all Baserow modules.
+ * Shared locales configuration for all modules.
  * This is the single source of truth for supported languages.
  *
  * To add a new language:
@@ -8,12 +8,5 @@
  */
 export const locales = [
   { code: 'en', name: 'English', file: 'en.json' },
-  { code: 'fr', name: 'Français', file: 'fr.json' },
-  { code: 'nl', name: 'Nederlands', file: 'nl.json' },
-  { code: 'de', name: 'Deutsch', file: 'de.json' },
-  { code: 'es', name: 'Español', file: 'es.json' },
-  { code: 'it', name: 'Italiano', file: 'it.json' },
-  { code: 'pl', name: 'Polski (Beta)', file: 'pl.json' },
-  { code: 'ko', name: '한국어', file: 'ko.json' },
-  { code: 'uk', name: 'Українська', file: 'uk.json' },
+  { code: 'zh-hans', name: '简体中文', file: 'zh_Hans.json' },
 ]

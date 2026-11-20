@@ -5,7 +5,7 @@
       @click="
         () => {
           if (deactivated) {
-            $refs.paidFeaturesModal.show()
+ 
           } else {
             $refs.inviteModal.show()
           }

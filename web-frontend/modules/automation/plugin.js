@@ -54,7 +54,6 @@ import {
 } from '@baserow/modules/automation/editorSidePanelTypes'
 import { AutomationSearchType } from '@baserow/modules/automation/searchTypes'
 import { searchTypeRegistry } from '@baserow/modules/core/search/types/registry'
-import { AutomationGuidedTourType } from '@baserow/modules/automation/guidedTourTypes'
 import {
   PreviousNodeDataProviderType,
   CurrentIterationDataProviderType,
@@ -199,6 +198,5 @@ export default defineNuxtPlugin({
     searchTypeRegistry.register(new AutomationSearchType(context))
 
     // Automation guided tour
-    $registry.register('guidedTour', new AutomationGuidedTourType(context))
   },
 })

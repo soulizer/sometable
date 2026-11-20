@@ -6,7 +6,6 @@ import ChartLineWidgetSvg from '@baserow_premium/assets/images/dashboard/widgets
 import ChartPieWidgetSvg from '@baserow_premium/assets/images/dashboard/widgets/chart_widget_pie.svg?url'
 import ChartDonutWidgetSvg from '@baserow_premium/assets/images/dashboard/widgets/chart_widget_donut.svg?url'
 import PremiumFeatures from '@baserow_premium/features'
-import PaidFeaturesModal from '@baserow_premium/components/PaidFeaturesModal'
 import { ChartPaidFeature } from '@baserow_premium/paidFeatures'
 
 export class ChartWidgetType extends DataSourceWidgetType {
@@ -83,14 +82,11 @@ export class ChartWidgetType extends DataSourceWidgetType {
   }
 
   isAvailable(workspaceId) {
-    return this.app.$hasFeature(PremiumFeatures.PREMIUM, workspaceId)
+    return true
   }
 
   getDeactivatedModal() {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': ChartPaidFeature.getType() },
-    ]
+    return null
   }
 }
 

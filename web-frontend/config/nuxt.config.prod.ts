@@ -13,6 +13,8 @@
  */
 
 import baseConfig from './nuxt.config.base.ts'
+const buildSourcemaps = process.env.NUXT_BUILD_SOURCEMAP === 'true'
+
 export default {
   ...baseConfig,
   nitro: {
@@ -21,8 +23,11 @@ export default {
     // brotli or gzip even when no compressing reverse proxy is in front.
     compressPublicAssets: { gzip: true, brotli: true },
   },
+  // Sourcemap generation roughly doubles bundler memory usage and is only
+  // useful when uploading maps to an error tracker (e.g. Sentry). Enable it
+  // explicitly with NUXT_BUILD_SOURCEMAP=true on machines that can afford it.
   sourcemap: {
-    server: true,
-    client: true,
+    server: buildSourcemaps,
+    client: buildSourcemaps,
   },
 }

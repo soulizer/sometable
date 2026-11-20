@@ -116,7 +116,7 @@ export default {
     handleMadeWithBaserowClick(event) {
       if (this.showPaidFeaturesModal) {
         event.preventDefault()
-        this.$refs.paidFeaturesModal.show()
+        
       }
     },
   },

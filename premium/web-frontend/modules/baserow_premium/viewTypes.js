@@ -10,7 +10,6 @@ import KanbanViewHeader from '@baserow_premium/components/views/kanban/KanbanVie
 import CalendarViewHeader from '@baserow_premium/components/views/calendar/CalendarViewHeader'
 import TimelineViewHeader from '@baserow_premium/components/views/timeline/TimelineViewHeader'
 import PremiumFeatures from '@baserow_premium/features'
-import PaidFeaturesModal from '@baserow_premium/components/PaidFeaturesModal'
 import {
   isAdhocFiltering,
   isAdhocSorting,
@@ -31,15 +30,15 @@ import { waitFor } from '@baserow/modules/core/utils/queue'
 
 class PremiumViewType extends ViewType {
   getDeactivatedText() {
-    return this.app.$i18n.t('premium.deactivated')
+    return ''
   }
 
   getDeactivatedClickModal() {
-    return [PaidFeaturesModal, {}]
+    return null
   }
 
   isDeactivated(workspaceId) {
-    return !this.app.$hasFeature(PremiumFeatures.PREMIUM, workspaceId)
+    return false
   }
 
   getAdditionalShareLinkOptions() {
@@ -53,10 +52,7 @@ export class KanbanViewType extends PremiumViewType {
   }
 
   getDeactivatedClickModal() {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': KanbanViewPaidFeature.getType() },
-    ]
+    return null
   }
 
   getIconClass() {
@@ -298,10 +294,7 @@ export class CalendarViewType extends PremiumViewType {
   }
 
   getDeactivatedClickModal() {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': CalendarViewPaidFeature.getType() },
-    ]
+    return null
   }
 
   getIconClass() {
@@ -583,10 +576,7 @@ export class TimelineViewType extends BaseBufferedRowViewTypeMixin(
   }
 
   getDeactivatedClickModal() {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': TimelineViewPaidFeature.getType() },
-    ]
+    return null
   }
 
   canFetch({ app }, databse, view, fields) {

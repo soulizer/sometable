@@ -179,10 +179,11 @@ class Settings(models.Model):
         "and file storage usage, displayed on the admin workspace page.",
     )
     show_baserow_help_request = models.BooleanField(
-        default=True,
+        default=False,
+        db_default=False,
         help_text=(
-            "Indicates whether the `We need your help!` message will be shown on the "
-            "dashboard"
+            "Deprecated: the help request banner has been removed from the UI. Kept "
+            "for backwards compatibility of existing API clients."
         ),
     )
     co_branding_logo = models.ForeignKey(

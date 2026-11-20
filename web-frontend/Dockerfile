@@ -55,12 +55,13 @@ RUN --mount=type=cache,target=$YARN_CACHE_FOLDER,uid=$UID,gid=$GID,sharing=locke
 FROM ${NODE_BASE_IMAGE} AS builder-prod
 ARG UID
 ARG GID
+ARG NODE_MAX_OLD_SPACE_MB="4096"
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 ENV YARN_CACHE_FOLDER=/tmp/.yarn-cache \
     NUXT_TELEMETRY_DISABLED=1 \
-    NODE_OPTIONS="--max-old-space-size=4096" \
+    NODE_OPTIONS="--max-old-space-size=${NODE_MAX_OLD_SPACE_MB}" \
     NODE_ENV=production
 
 RUN mkdir -p /baserow/web-frontend /baserow/premium/web-frontend /baserow/enterprise/web-frontend && \

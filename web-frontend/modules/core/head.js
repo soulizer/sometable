@@ -1,8 +1,8 @@
 import { usedBeforeHydrationScript } from './directives/preHydrationInput'
 
 export default {
-  title: 'Baserow',
-  titleTemplate: '%s | Baserow',
+  title: '工作台',
+  titleTemplate: '%s | 工作台',
   meta: [
     { charset: 'utf-8' },
     {

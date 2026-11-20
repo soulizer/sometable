@@ -152,7 +152,7 @@ export default {
     toggle(enabled) {
       // Disabling is always possible, also without a license.
       if (enabled && !this.hasFeature) {
-        this.$refs.paidFeaturesModal.show()
+        
         return
       }
       this.error = null

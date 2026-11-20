@@ -131,72 +131,11 @@
                   </div>
                 </div>
               </a>
-              <a
-                href="https://baserow.io/user-docs"
-                target="_new"
-                class="dashboard__resource"
-              >
-                <div class="dashboard__resource-inner">
-                  <span class="dashboard__resource-icon">
-                    <i class="iconoir-message-text"></i
-                  ></span>
-
-                  <div class="dashboard__resource-content">
-                    <h4 class="dashboard__resource-title">
-                      {{ $t('dashboard.knowledgeBase') }}
-                    </h4>
-                    <p class="dashboard__resource-text">
-                      {{ $t('dashboard.knowledgeBaseMessage') }}
-                    </p>
-                  </div>
-                </div>
-              </a>
               <component
                 :is="component"
                 v-for="(component, index) in resourceLinksComponents"
                 :key="index"
               ></component>
-              <a
-                href="https://academy.baserow.io/"
-                target="_new"
-                rel="noopener noreferrer"
-                class="dashboard__resource"
-              >
-                <div class="dashboard__resource-inner">
-                  <span class="dashboard__resource-icon">
-                    <i class="iconoir-graduation-cap"></i
-                  ></span>
-
-                  <div class="dashboard__resource-content">
-                    <h4 class="dashboard__resource-title">
-                      {{ $t('dashboard.academy') }}
-                    </h4>
-                    <p class="dashboard__resource-text">
-                      {{ $t('dashboard.academyMessage') }}
-                    </p>
-                  </div>
-                </div>
-              </a>
-              <a
-                href="https://baserow.io/blog/category/tutorials"
-                target="_new"
-                class="dashboard__resource"
-              >
-                <div class="dashboard__resource-inner">
-                  <span class="dashboard__resource-icon">
-                    <i class="iconoir-light-bulb"></i
-                  ></span>
-
-                  <div class="dashboard__resource-content">
-                    <h4 class="dashboard__resource-title">
-                      {{ $t('dashboard.tutorials') }}
-                    </h4>
-                    <p class="dashboard__resource-text">
-                      {{ $t('dashboard.tutorialsMessage') }}
-                    </p>
-                  </div>
-                </div>
-              </a>
             </div>
           </div>
         </div>
@@ -265,14 +204,6 @@
       >
       </CreateApplicationContext>
     </div>
-    <DashboardHelp v-if="dashboardHelpComponents.length === 0"></DashboardHelp>
-    <template v-else>
-      <component
-        :is="component"
-        v-for="(component, index) in dashboardHelpComponents"
-        :key="index"
-      ></component>
-    </template>
     <TemplateModal
       ref="templateModal"
       :workspace="selectedWorkspace"
@@ -294,7 +225,6 @@ import CreateApplicationContext from '@baserow/modules/core/components/applicati
 import RecentlyViewed from '@baserow/modules/core/components/recentlyViewed/RecentlyViewed'
 import editWorkspace from '@baserow/modules/core/mixins/editWorkspace'
 import TemplateModal from '@baserow/modules/core/components/template/TemplateModalSwitch'
-import DashboardHelp from '@baserow/modules/core/components/dashboard/DashboardHelp'
 
 definePageMeta({
   layout: 'app',
@@ -427,16 +357,6 @@ const getAllOfWorkspace = (ws) =>
     nuxtApp,
     $store.getters['application/getAllOfWorkspace'](ws)
   )
-
-const dashboardHelpComponents = computed(() =>
-  Object.values($registry.getAll('plugin'))
-    .reduce(
-      (components, plugin) =>
-        components.concat(plugin.getDashboardHelpComponents()),
-      []
-    )
-    .filter((c) => c !== null)
-)
 
 const dashboardWorkspaceRowUsageComponent = computed(() =>
   Object.values($registry.getAll('plugin'))

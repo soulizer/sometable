@@ -1,27 +1,17 @@
 <template>
-  <div
-    v-if="showEntry && (hasPermission || !hasFeature)"
-    class="context__menu-item"
-  >
+  <div v-if="showEntry && hasPermission" class="context__menu-item">
     <div>
       <a
         class="context__menu-item-link"
         @click="
           () => {
-            if (hasFeature) {
-              $refs.dateDependencyModal.show()
-            } else {
-              $refs.paidFeaturesModal.show()
-            }
+            $refs.dateDependencyModal.show()
             $emit('hide-context')
           }
         "
       >
         <i class="context__menu-item-icon baserow-icon-dependency"></i>
         {{ $t('dateDependencyModal.contextMenuItemLabel') }}
-        <div v-if="!hasFeature" class="deactivated-label">
-          <i class="iconoir-lock"></i>
-        </div>
       </a>
     </div>
     <DateDependencyModal
@@ -31,23 +21,17 @@
       :workspace-id="database.workspace.id"
     >
     </DateDependencyModal>
-    <PaidFeaturesModal
-      ref="paidFeaturesModal"
-      initial-selected-type="date_dependency"
-      :workspace="database.workspace"
-    ></PaidFeaturesModal>
   </div>
 </template>
 
 <script>
 import EnterpriseFeatures from '@baserow_enterprise/features'
-import PaidFeaturesModal from '@baserow_premium/components/PaidFeaturesModal'
 import DateDependencyModal from '@baserow_enterprise/components/dateDependency/DateDependencyModal'
 
 export default {
   name: 'DateDependencyMenuItem',
   emits: ['hide-context'],
-  components: { DateDependencyModal, PaidFeaturesModal },
+  components: { DateDependencyModal },
   props: {
     table: {
       type: Object,

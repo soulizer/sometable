@@ -16,7 +16,6 @@ import routeMountedStoreModule from '../store/routeMounted'
 import integrationStoreModule from '../store/integration'
 import presenceStoreModule from '../store/presence'
 import aiProviderStoreModule from '../store/aiProvider'
-import guidedTourStoreModule from '../store/guidedTour'
 import identityStoreModule from '../store/identity'
 import chatRunsStoreModule from '../store/chatRuns'
 import templatesAdminStoreModule from '../store/templatesAdmin'
@@ -42,7 +41,6 @@ export default defineNuxtPlugin({
         integration: integrationStoreModule,
         presence: presenceStoreModule,
         aiProvider: aiProviderStoreModule,
-        guidedTour: guidedTourStoreModule,
         identity: identityStoreModule,
         chatRuns: chatRunsStoreModule,
         templatesAdmin: templatesAdminStoreModule,

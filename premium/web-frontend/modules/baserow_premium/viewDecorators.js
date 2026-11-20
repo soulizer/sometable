@@ -13,7 +13,6 @@ import backgroundDecoratorImage from '@baserow_premium/assets/images/backgroundD
 import LeftBorderColorViewDecorator from '@baserow_premium/components/views/LeftBorderColorViewDecorator'
 import BackgroundColorViewDecorator from '@baserow_premium/components/views/BackgroundColorViewDecorator'
 import PremiumFeatures from '@baserow_premium/features'
-import PaidFeaturesModal from '@baserow_premium/components/PaidFeaturesModal'
 import { RowColoringPaidFeature } from '@baserow_premium/paidFeatures'
 
 export class LeftBorderColorViewDecoratorType extends ViewDecoratorType {
@@ -45,14 +44,11 @@ export class LeftBorderColorViewDecoratorType extends ViewDecoratorType {
   }
 
   getDeactivatedClickModal() {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': RowColoringPaidFeature.getType() },
-    ]
+    return null
   }
 
   isDeactivated(workspaceId) {
-    return !this.app.$hasFeature(PremiumFeatures.PREMIUM, workspaceId)
+    return false
   }
 
   canAdd({ view }) {
@@ -138,14 +134,11 @@ export class BackgroundColorViewDecoratorType extends ViewDecoratorType {
   }
 
   getDeactivatedClickModal() {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': RowColoringPaidFeature.getType() },
-    ]
+    return null
   }
 
   isDeactivated(workspaceId) {
-    return !this.app.$hasFeature(PremiumFeatures.PREMIUM, workspaceId)
+    return false
   }
 
   canAdd({ view }) {

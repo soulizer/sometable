@@ -2,7 +2,6 @@ import { FormViewModeType } from '@baserow/modules/database/formViewModeTypes'
 import FormViewModeSurvey from '@baserow_premium/components/views/form/FormViewModeSurvey'
 import FormViewModePreviewSurvey from '@baserow_premium/components/views/form/FormViewModePreviewSurvey'
 import PremiumFeatures from '@baserow_premium/features'
-import PaidFeaturesModal from '@baserow_premium/components/PaidFeaturesModal'
 import { FormSurveyModePaidFeature } from '@baserow_premium/paidFeatures'
 
 export class FormViewSurveyModeType extends FormViewModeType {
@@ -30,14 +29,11 @@ export class FormViewSurveyModeType extends FormViewModeType {
   }
 
   getDeactivatedClickModal() {
-    return [
-      PaidFeaturesModal,
-      { 'initial-selected-type': FormSurveyModePaidFeature.getType() },
-    ]
+    return null
   }
 
   isDeactivated(workspaceId) {
-    return !this.app.$hasFeature(PremiumFeatures.PREMIUM, workspaceId)
+    return false
   }
 
   getFormComponent() {
