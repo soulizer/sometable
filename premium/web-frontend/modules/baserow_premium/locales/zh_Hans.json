@@ -424,10 +424,10 @@
         "chartType": "Chart type",
         "seriesColor": "Color",
         "automaticColor": "Use automatic color",
-        "barChart": "Bar",
-        "lineChart": "Line",
-        "pieChart": "Pie",
-        "doughnutChart": "Doughnut",
+        "barChart": "柱状图",
+        "lineChart": "折线图",
+        "pieChart": "饼图",
+        "doughnutChart": "环形图",
         "polarAreaChart": "Polar area"
     },
     "aggregationGroupByForm": {
