@@ -128,12 +128,6 @@ export default {
   },
   methods: {
     async updateNotificationMode(mode) {
-      if (!this.hasPremiumFeaturesEnabled) {
-        this.$refs.context.hide()
-        
-        return
-      }
-
       if (
         (mode === MODE_ALL && this.isModeAll) ||
         (mode === MODE_MENTIONS && this.isModeMentions)

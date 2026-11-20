@@ -96,7 +96,7 @@
     "licenses": {
         "titleNoLicenses": "未找到许可证",
         "titleLicenses": "许可证",
-        "noLicensesDescription": "您的 本系统 实例未注册任何许可证.高级许可证使您可以立即访问所有附加功能.如果您已经拥有许可证,可以在此处注册.或者,您可以通过单击下面的按钮来获取一个.",
+        "noLicensesDescription": "您的 平台实例未注册任何许可证.高级许可证使您可以立即访问所有附加功能.如果您已经拥有许可证,可以在此处注册.或者,您可以通过单击下面的按钮来获取一个.",
         "rowComments": "",
         "kanbanView": "",
         "exports": "",

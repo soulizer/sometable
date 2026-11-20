@@ -211,10 +211,6 @@ export default {
   },
   methods: {
     async initialLoad() {
-      if (!this.hasPremiumFeaturesEnabled) {
-        return
-      }
-
       try {
         const tableId = this.table.id
         const rowId = this.row.id

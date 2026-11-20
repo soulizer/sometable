@@ -53,7 +53,7 @@
         "body": "您确定要删除这个 Webhook 吗？以后您将无法恢复它。"
     },
     "webhookList": {
-        "noWebhooksMessage": "您还没有创建任何 Webhook。当 本系统 中的行创建、更新或删除时，可以使用 Webhook 通知第三方系统。"
+        "noWebhooksMessage": "您还没有创建任何 Webhook。当 平台中的行创建、更新或删除时，可以使用 Webhook 通知第三方系统。"
     },
     "testWebhookModal": {
         "title": "测试 Webhook",
@@ -267,7 +267,7 @@
         "before": "如果提供，那么新创建的行将被定位在具有提供的 id 的行之前。"
     },
     "apiDocsAuth": {
-        "description": "本系统 使用简单的基于令牌的身份验证。您需要在 {settingsLink} 中生成至少一个 API 令牌才能使用下面描述的端点。可以授予创建、读取、更新和删除权限直到表每个令牌的级别。您可以通过在 HTTP 授权承载令牌标头中提供您的 API 令牌来对 API 进行身份验证。所有 API 请求都必须经过身份验证并通过 HTTPS 发出。",
+        "description": "平台使用简单的基于令牌的身份验证。您需要在 {settingsLink} 中生成至少一个 API 令牌才能使用下面描述的端点。可以授予创建、读取、更新和删除权限直到表每个令牌的级别。您可以通过在 HTTP 授权承载令牌标头中提供您的 API 令牌来对 API 进行身份验证。所有 API 请求都必须经过身份验证并通过 HTTPS 发出。",
         "settingsLink": "设置"
     },
     "apiDocsFilters": {
@@ -568,7 +568,7 @@
     },
     "viewDecorator": {
         "decorator": "颜色 | 1 种颜色 | {count} 种颜色",
-        "hiddenFieldWarning": "Decorations are removed for editors and lower roles because they may reference hidden fields."
+        "hiddenFieldWarning": "由于装饰可能暴露隐藏字段，编辑者及更低角色不会看到装饰效果。"
     },
     "viewRotateSlugModal": {
         "title": "刷新网址",
@@ -746,7 +746,7 @@
     },
     "apiDocsComponent": {
         "title": "REST API",
-        "intro": "在 {settingsLink} 创建数据库架构和 API 密钥后，本系统 数据库会提供他自己的 REST API 端点来创建、读取、更新和删除行。",
+        "intro": "在 {settingsLink} 创建数据库架构和 API 密钥后，平台数据库会提供他自己的 REST API 端点来创建、读取、更新和删除行。",
         "settings": "设置",
         "selectApplicationTitle": "您想查看哪个数据库的文档？",
         "signIn": "登录开始使用",
@@ -1071,7 +1071,7 @@
         "inCompatibleWithDataSync": "该视图类型与数据同步数据表不兼容。"
     },
     "viewGroupBy": {
-        "groupBy": "Group | Group by 1 fields | Group by {count} fields"
+        "groupBy": "分组 | 按 1 个字段分组 | 按 {count} 个字段分组"
     },
     "gridViewGroupByBanner": {
         "emptyValue": "（空）",
@@ -1086,7 +1086,7 @@
     },
     "viewOwnershipType": {
         "collaborative": "Collaborative",
-        "collaborativeDescription": "Everyone can see all the data and change the properties if they have the permissions."
+        "collaborativeDescription": "拥有相应权限的所有人都可以查看全部数据并修改属性。"
     },
     "hiddenRows": {
         "title": "已隐藏 1 行 | 已隐藏 {count} 行",
@@ -1132,8 +1132,8 @@
         "unknownUser": "未知用户"
     },
     "formSubmittedNotification": {
-        "title": "{formName} has been submitted in table {tableName}:",
-        "moreValues": "0 | and 1 more field. | and {count} more fields."
+        "title": "{formName} 已在数据表 {tableName} 中提交：",
+        "moreValues": "0 | 以及另外 1 个字段。| 以及另外 {count} 个字段。"
     },
     "rowHistorySidebar": {
         "name": "历史记录",
