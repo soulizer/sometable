@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "OOO Management",
-    "description": "Handle out-of-office requests with approvals and an absence calendar.",
+    "name": "休假申请管理",
+    "description": "处理休假申请，支持审批并展示休假日历。",
     "icon": "iconoir-sea-and-sun",
     "keywords": [
         "ooo",
@@ -22,7 +22,7 @@
         "leave"
     ],
     "categories": [
-        "Business Continuity"
+        "业务连续性"
     ],
     "export": [
         {

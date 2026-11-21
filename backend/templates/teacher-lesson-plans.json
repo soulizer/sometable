@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Teacher Lesson Plans",
-    "description": "Plan lessons by unit and subject, with assignments and resources.",
+    "name": "教师教案",
+    "description": "按单元和学科规划课程，管理作业和教学资源。",
     "icon": "iconoir-calendar",
     "keywords": [
         "teacher",
@@ -13,8 +13,8 @@
         "teacher tools"
     ],
     "categories": [
-        "Project Management",
-        "Teachers"
+        "项目管理",
+        "教师"
     ],
     "export": [
         {

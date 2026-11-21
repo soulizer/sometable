@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Risk Assessment and Management",
-    "description": "Register risks, assess impact and likelihood, and plan mitigations.",
+    "name": "风险评估与管理",
+    "description": "登记风险，评估影响和可能性，并制定缓解措施。",
     "icon": "iconoir-check-circle",
     "keywords": [
         "risk assessment",
@@ -12,8 +12,8 @@
         "generic assessment"
     ],
     "categories": [
-        "Business Continuity",
-        "🔥 Most Popular"
+        "业务连续性",
+        "🔥 热门"
     ],
     "export": [
         {

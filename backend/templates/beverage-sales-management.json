@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Beverage Sales Management",
-    "description": "Manage a drinks menu, ingredients, orders and customer loyalty points.",
+    "name": "饮品销售管理",
+    "description": "管理饮品菜单、原料、订单和客户积分。",
     "icon": "iconoir-coffee-cup",
     "keywords": [
         "beverage",
@@ -16,7 +16,7 @@
         "order forms"
     ],
     "categories": [
-        "Food and Restaurants"
+        "餐饮"
     ],
     "export": [
         {

@@ -58,24 +58,6 @@
   "trashType": {
     "row_comment": "row comment"
   },
-  "registerLicenseModal": {
-    "titleRegisterLicense": "Register a license",
-    "registerLicense": "Register license",
-    "viewPricing": "View pricing",
-    "licenseDescription": "A license can only be obtained on baserow.io. If you have already purchased a license, it will be delivered to you by email and you can get in from the overview in your account. Copy and paste the license key in the box below and click on the button to register the license key to this instance. It’s not possible to use the same key on two different installations. {pricingLink} if you don’t have a key yet.",
-    "licenseError": {
-      "invalidTitle": "Invalid",
-      "invalid": "The provided license is invalid.",
-      "unsupportedTitle": "Unsupported",
-      "unsupported": "The provided license is incompatible with your SomeTable version. Please update to the latest version and try again.",
-      "expiredTitle": "Expired",
-      "expired": "The provided license has expired.",
-      "duplicateTitle": "Duplicate",
-      "duplicate": "The provided license is already registered to this instance.",
-      "instanceMismatchTitle": "Instance mismatch",
-      "instanceMismatch": "The provided license does not belong to this instance."
-    }
-  },
   "disconnectLicenseModal": {
     "disconnectLicense": "Disconnect license"
   },
@@ -202,12 +184,6 @@
     "groupedAggregateRowsDataSourceContent": "Group rows from a SomeTable table and calculate summaries for use in application builder pages."
   },
   "licenses": {
-    "titleNoLicenses": "No licenses found",
-    "titleLicenses": "Licenses",
-    "noLicensesDescription": "Your SomeTable instance doesn’t have any licenses registered. A premium license gives you immediate access to all of the additional features. If you already have a license, you can register it here. Alternatively you can get one by clicking on the button below.",
-    "getLicense": "Get a license",
-    "baserowInstanceId": "Your SomeTable instance ID is:",
-    "registerLicense": "Register license",
     "licenceId": "License ID",
     "premium": "Premium",
     "expired": "Expired",
@@ -276,10 +252,6 @@
     "addColor": "Add color",
     "deleteColor": "Delete color",
     "title": "Colors"
-  },
-  "redirectToBaserowModal": {
-    "title": "Redirecting to https://baserow.io",
-    "content": "You are leaving your self hosted instance and you are being redirected to https://baserow.io."
   },
   "premiumTopSidebar": {
     "impersonateDescription": "This account is impersonated. A page refresh will stop it.",

@@ -1,7 +1,7 @@
 {
   "baserow_template_version": 1,
-  "name": "All fields",
-  "description": "Reference database with an example of every field type.",
+  "name": "全部字段类型",
+  "description": "包含每种字段类型示例的参考数据表。",
   "icon": "iconoir-input-field",
   "keywords": [
     "All",
@@ -9,7 +9,7 @@
     "Baserow"
   ],
   "categories": [
-    "Baserow"
+    "示例"
   ],
   "export": [
     {

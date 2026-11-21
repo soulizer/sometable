@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Supply Chain & Procurement Management",
-    "description": "Manage suppliers, contracts, inventory and purchase requests.",
+    "name": "供应链与采购管理",
+    "description": "管理供应商、合同、库存和采购申请。",
     "icon": "iconoir-link",
     "keywords": [
         "supply chain management",
@@ -14,7 +14,7 @@
         "consumption orders"
     ],
     "categories": [
-        "Business Operations"
+        "业务运营"
     ],
     "export": [
         {

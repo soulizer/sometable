@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Agile Product Roadmap",
-    "description": "Plan epics, features, user stories, sprints and releases in one roadmap.",
+    "name": "敏捷产品路线图",
+    "description": "在同一路线图中规划史诗、功能、用户故事、冲刺和版本。",
     "icon": "iconoir-agile",
     "keywords": [
         "agile",
@@ -21,7 +21,7 @@
         "releases"
     ],
     "categories": [
-        "Product Management"
+        "产品管理"
     ],
     "export": [
         {

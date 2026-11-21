@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Office Guest Log",
-    "description": "Log office visitors, their purpose and the employee they are visiting.",
+    "name": "访客登记",
+    "description": "记录来访客人、来访事由和被访员工。",
     "icon": "iconoir-system-restart",
     "keywords": [
         "office guest",
@@ -13,7 +13,7 @@
         "visitor security"
     ],
     "categories": [
-        "Business Operations"
+        "业务运营"
     ],
     "export": [
         {

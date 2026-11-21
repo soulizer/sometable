@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Team Check-ins",
-    "description": "Collect team check-ins with mood ratings, linked to projects and tasks.",
+    "name": "团队签到",
+    "description": "收集团队签到和心情评分，并关联项目与任务。",
     "icon": "iconoir-double-check",
     "keywords": [
         "team check-ins",
@@ -18,8 +18,8 @@
         "scrum"
     ],
     "categories": [
-        "Business Operations",
-        "Business Continuity"
+        "业务运营",
+        "业务连续性"
     ],
     "export": [
         {

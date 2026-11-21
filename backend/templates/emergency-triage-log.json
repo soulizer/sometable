@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Emergency Triage Log",
-    "description": "Log emergency admissions by ESI level with vitals and staff on duty.",
+    "name": "急诊分诊记录",
+    "description": "按 ESI 等级记录急诊接诊，包含生命体征和值班人员。",
     "icon": "iconoir-hospital",
     "keywords": [
         "emergencies",
@@ -18,8 +18,8 @@
         "clinics"
     ],
     "categories": [
-        "Health and Wellness",
-        "Business Operations"
+        "健康与养生",
+        "业务运营"
     ],
     "export": [
         {

@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Meeting Minutes",
-    "description": "Record minutes and action items, linked to rooms and attendees.",
+    "name": "会议纪要",
+    "description": "记录会议纪要和行动项，并关联会议室和参会人。",
     "icon": "iconoir-timer",
     "keywords": [
         "meeting minutes",
@@ -12,7 +12,7 @@
         "meeting documentation"
     ],
     "categories": [
-        "Business Operations"
+        "业务运营"
     ],
     "export": [
         {

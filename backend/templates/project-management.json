@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Project Management",
-    "description": "Manage phased projects with tasks, subtasks and automations.",
+    "name": "项目管理",
+    "description": "通过任务、子任务和自动化管理分阶段项目。",
     "icon": "iconoir-strategy",
     "keywords": [
         "project tracker",
@@ -15,8 +15,8 @@
         "tasks"
     ],
     "categories": [
-        "Project Management",
-        "🔥 Most Popular"
+        "项目管理",
+        "🔥 热门"
     ],
     "open_application": 343,
     "export": [

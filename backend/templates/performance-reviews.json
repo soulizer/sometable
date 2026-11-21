@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Performance Reviews",
-    "description": "Run employee performance reviews with reviewers and rating averages.",
+    "name": "绩效评估",
+    "description": "组织员工绩效评估，管理评估人和评分均值。",
     "icon": "iconoir-profile-circle",
     "keywords": [
         "employee review",
@@ -16,7 +16,7 @@
         "employees"
     ],
     "categories": [
-        "HR and Recruiting"
+        "人力资源与招聘"
     ],
     "export": [
         {

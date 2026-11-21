@@ -1,7 +1,7 @@
 {
   "baserow_template_version": 1,
-  "name": "Startup Theme",
-  "description": "Light application theme in violet and pink.",
+  "name": "创业主题",
+  "description": "浅色应用主题，采用紫罗兰色和粉色。",
   "icon": "",
   "keywords": [
     "application",
@@ -12,7 +12,7 @@
     "modern"
   ],
   "categories": [
-    "Application Themes"
+    "应用主题"
   ],
   "open_application": 177,
   "export": [

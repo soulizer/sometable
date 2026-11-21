@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Net Promoter Score",
-    "description": "Collect NPS surveys per product to see who promotes you.",
+    "name": "净推荐值",
+    "description": "按产品收集 NPS 调研，了解哪些客户愿意推荐你。",
     "icon": "iconoir-clipboard-check",
     "keywords": [
         "Customer satisfaction",
@@ -17,7 +17,7 @@
         "customer engagement"
     ],
     "categories": [
-        "Marketing"
+        "市场营销"
     ],
     "export": [
         {

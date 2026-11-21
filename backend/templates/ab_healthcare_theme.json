@@ -1,7 +1,7 @@
 {
   "baserow_template_version": 1,
-  "name": "Healthcare Theme",
-  "description": "Calm light application theme in cyan and green.",
+  "name": "医疗主题",
+  "description": "沉静的浅色应用主题，采用青色和绿色。",
   "icon": "",
   "keywords": [
     "application",
@@ -12,7 +12,7 @@
     "health"
   ],
   "categories": [
-    "Application Themes"
+    "应用主题"
   ],
   "open_application": 177,
   "export": [

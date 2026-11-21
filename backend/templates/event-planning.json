@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Event Planning",
-    "description": "Plan events with venues, schedules, speakers, registrations and vendors.",
+    "name": "活动策划",
+    "description": "策划活动，管理场地、日程、嘉宾、报名和供应商。",
     "icon": "iconoir-calendar",
     "keywords": [
         "events",
@@ -14,8 +14,8 @@
         "sessions"
     ],
     "categories": [
-        "Marketing",
-        "Business Operations"
+        "市场营销",
+        "业务运营"
     ],
     "export": [
         {

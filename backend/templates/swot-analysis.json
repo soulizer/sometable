@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "SWOT Analysis",
-    "description": "Run a SWOT analysis and turn each factor into actions with owners.",
+    "name": "SWOT 分析",
+    "description": "开展 SWOT 分析，并把每个因素转化为有负责人的行动。",
     "icon": "iconoir-light-bulb-on",
     "keywords": [
         "swot",
@@ -15,8 +15,8 @@
         "tasks"
     ],
     "categories": [
-        "Marketing",
-        "Business Strategy"
+        "市场营销",
+        "商业策略"
     ],
     "export": [
         {

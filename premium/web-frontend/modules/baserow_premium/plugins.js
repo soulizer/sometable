@@ -1,6 +1,5 @@
 import { BaserowPlugin } from '@baserow/modules/core/plugins'
 import Impersonate from '@baserow_premium/components/sidebar/Impersonate'
-import HighestLicenseTypeBadge from '@baserow_premium/components/sidebar/HighestLicenseTypeBadge'
 import PremiumViewOptions from '@baserow_premium/components/views/PremiumViewOptions'
 import PublicViewExportMenuItem from '@baserow_premium/components/views/PublicViewExportMenuItem'
 import PremiumDashboardShareOptions from '@baserow_premium/components/dashboard/PremiumDashboardShareOptions'
@@ -12,10 +11,6 @@ export class PremiumPlugin extends BaserowPlugin {
 
   getImpersonateComponent() {
     return Impersonate
-  }
-
-  getHighestLicenseTypeBadge() {
-    return HighestLicenseTypeBadge
   }
 
   getAdditionalShareLinkOptions() {

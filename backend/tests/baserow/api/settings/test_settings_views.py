@@ -171,42 +171,6 @@ def test_require_first_admin_user_is_false_after_admin_creation(
 
 
 @pytest.mark.django_db
-def test_get_instance_id(api_client, data_fixture):
-    user, token = data_fixture.create_user_and_token(is_staff=True)
-    user_2, token_2 = data_fixture.create_user_and_token()
-
-    response = api_client.get(reverse("api:settings:instance_id"))
-    assert response.status_code == HTTP_401_UNAUTHORIZED
-
-    response = api_client.get(
-        reverse("api:settings:instance_id"),
-        HTTP_AUTHORIZATION=f"JWT {token_2}",
-    )
-    assert response.status_code == HTTP_403_FORBIDDEN
-    assert CoreHandler().get_settings().allow_new_signups is True
-
-    response = api_client.get(
-        reverse("api:settings:instance_id"),
-        HTTP_AUTHORIZATION=f"JWT {token}",
-    )
-    assert response.status_code == HTTP_200_OK
-    response_json = response.json()
-    assert len(response_json["instance_id"]) > 32
-
-    settings = Settings.objects.first()
-    settings.allow_new_signups = False
-    settings.save()
-
-    response = api_client.get(
-        reverse("api:settings:instance_id"),
-        HTTP_AUTHORIZATION=f"JWT {token}",
-    )
-    assert response.status_code == HTTP_200_OK
-    response_json = response.json()
-    assert response_json["instance_id"] == settings.instance_id
-
-
-@pytest.mark.django_db
 def test_update_settings(api_client, data_fixture):
     user, token = data_fixture.create_user_and_token(is_staff=True)
     user_2, token_2 = data_fixture.create_user_and_token()

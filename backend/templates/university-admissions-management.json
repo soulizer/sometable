@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "University Admissions Management",
-    "description": "Manage university applicants, test scores and reviewers.",
+    "name": "大学招生管理",
+    "description": "管理大学申请人、考试成绩和审核人。",
     "icon": "iconoir-graduation-cap",
     "keywords": [
         "university",
@@ -17,7 +17,7 @@
         "higher education"
     ],
     "categories": [
-        "Teachers"
+        "教师"
     ],
     "export": [
         {

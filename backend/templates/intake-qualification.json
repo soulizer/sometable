@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 2,
-    "name": "Intake & Qualification Engine",
-    "description": "Qualify leads, route them by workload and log interactions.",
+    "name": "线索接收与筛选",
+    "description": "筛选线索，按工作负载分配并记录沟通情况。",
     "icon": "iconoir-check",
     "keywords": [
         "lead",
@@ -11,8 +11,8 @@
         "sales"
     ],
     "categories": [
-        "Business Operations",
-        "Business Continuity"
+        "业务运营",
+        "业务连续性"
     ],
     "open_application": 2164,
     "export": [

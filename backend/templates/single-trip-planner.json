@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Single Trip Planner",
-    "description": "Plan a trip day by day with transport, lodging and expenses.",
+    "name": "单次旅行规划",
+    "description": "按天规划行程，管理交通、住宿和花费。",
     "icon": "iconoir-airplane",
     "keywords": [
         "travel",
@@ -13,7 +13,7 @@
         "traveling"
     ],
     "categories": [
-        "Personal and Hobbies"
+        "个人与爱好"
     ],
     "export": [
         {

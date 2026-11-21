@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "City Tours",
-    "description": "Publish city tours with highlights and map locations on a website.",
+    "name": "城市导览",
+    "description": "发布城市导览，在网站上展示亮点和地图位置。",
     "icon": "iconoir-city",
     "keywords": [
         "city trip",
@@ -14,7 +14,7 @@
         "geocoordinates"
     ],
     "categories": [
-        "Travel and Outdoors"
+        "旅行与户外"
     ],
     "export": [
         {

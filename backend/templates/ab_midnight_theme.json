@@ -1,7 +1,7 @@
 {
   "baserow_template_version": 1,
-  "name": "Midnight Theme",
-  "description": "Dark application theme with gold and blue accents.",
+  "name": "午夜主题",
+  "description": "深色应用主题，搭配金色和蓝色点缀。",
   "icon": "",
   "keywords": [
     "application",
@@ -13,7 +13,7 @@
     "luxury"
   ],
   "categories": [
-    "Application Themes"
+    "应用主题"
   ],
   "open_application": 177,
   "export": [

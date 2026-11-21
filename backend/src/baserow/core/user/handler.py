@@ -14,11 +14,9 @@ from django.db.utils import IntegrityError
 from django.utils import translation
 from django.utils.translation import gettext as _
 
-import requests
 from itsdangerous import BadSignature, URLSafeSerializer, URLSafeTimedSerializer
 from loguru import logger
 from opentelemetry import trace
-from requests.exceptions import RequestException
 from rest_framework_simplejwt.settings import api_settings as jwt_settings
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.utils import datetime_from_epoch
@@ -52,7 +50,6 @@ from baserow.core.signals import (
 from baserow.core.trash.handler import TrashHandler
 from baserow.core.utils import (
     generate_hash,
-    get_baserow_saas_base_url,
     get_embedded_share_url,
 )
 from baserow.throttling.handler import consume_rate_limit
@@ -86,7 +83,6 @@ from .exceptions import (
 from .identity import is_human
 from .registries import user_preference_type_registry
 from .signals import user_password_changed
-from .tasks import share_onboarding_details_with_baserow
 from .utils import (
     SESSION_ID_CLAIM,
     get_refresh_token_session_hash,
@@ -1193,77 +1189,3 @@ class UserHandler:
             email.send(fail_silently=False)
 
         return True
-
-    def start_share_onboarding_details_with_baserow(
-        self,
-        user,
-        team: str,
-        role: str,
-        size: str,
-        country: str,
-        how: str,
-    ):
-        """
-        Starts a celery task that shares some user information with baserow.io. Note
-        that this is only triggered if the user given permission during the onboarding
-        in the web-frontend.
-
-        :param user: The user on whose behalf the information is shared.
-        :param team: The team type that the user shared.
-        :param role: The role that the user shared.
-        :param size: The company size that the user shared.
-        :param country: The country name that the user shared.
-        """
-
-        email = user.email
-
-        share_onboarding_details_with_baserow.delay(
-            email=email,
-            team=team,
-            role=role,
-            size=size,
-            country=country,
-            how=how,
-        )
-
-    @baserow_trace(tracer)
-    def share_onboarding_details_with_baserow(
-        self, email, team, role, size, country, how
-    ):
-        """
-        Makes an API request to baserow.io that shares the additional information. Note
-        that this is only triggered if the user given permission during the onboarding
-        in the web-frontend.
-
-        :param team: The team type that the user shared.
-        :param role: The role that the user shared.
-        :param size: The company size that the user shared.
-        :param country: The country name that the user shared.
-        :param how: How the user found Baserow.
-        """
-
-        settings_object = CoreHandler().get_settings()
-        base_url, headers = get_baserow_saas_base_url()
-        authority_url = f"{base_url}/api/saas/onboarding/additional-details/"
-
-        try:
-            response = requests.post(
-                authority_url,
-                json={
-                    "team": team,
-                    "role": role,
-                    "size": size,
-                    "country": country,
-                    "email": email,
-                    "how": how,
-                    "instance_id": settings_object.instance_id,
-                },
-                timeout=settings.ADDITIONAL_INFORMATION_TIMEOUT_SECONDS,
-                headers=headers,
-            )
-            response.raise_for_status()
-        except RequestException:
-            logger.warning(
-                "The onboarding details could not be shared with the Baserow team "
-                "because the SaaS environment could not be reached."
-            )

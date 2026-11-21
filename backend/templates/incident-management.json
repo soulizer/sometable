@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Incident Management",
-    "description": "Report incidents, investigate causes and plan responses.",
+    "name": "事件管理",
+    "description": "上报事件、调查原因并制定响应计划。",
     "icon": "iconoir-shield-alert",
     "keywords": [
         "incidents",
@@ -12,8 +12,8 @@
         "incident causes"
     ],
     "categories": [
-        "Business Continuity",
-        "🔥 Most Popular"
+        "业务连续性",
+        "🔥 热门"
     ],
     "export": [
         {

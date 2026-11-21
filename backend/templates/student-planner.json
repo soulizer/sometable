@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Student Planner",
-    "description": "Plan your studies with semesters, classes, assignments and due dates.",
+    "name": "学生规划",
+    "description": "按学期、课程和作业规划学习，管理截止日期。",
     "icon": "iconoir-math-book",
     "keywords": [
         "student planner",
@@ -14,7 +14,7 @@
         "courses"
     ],
     "categories": [
-        "Students"
+        "学生"
     ],
     "export": [
         {

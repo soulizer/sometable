@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Applicant Tracker",
-    "description": "Track applicants by hiring stage, with interviewers and scores.",
+    "name": "应聘者跟踪",
+    "description": "按招聘阶段跟踪应聘者，记录面试官和评分。",
     "icon": "iconoir-add-user",
     "keywords": [
         "applicants",
@@ -15,7 +15,7 @@
         "candidates"
     ],
     "categories": [
-        "HR and Recruiting"
+        "人力资源与招聘"
     ],
     "export": [
         {

@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Skill Discovery Management",
-    "description": "Assess employees' performance, potential and abilities.",
+    "name": "能力发现管理",
+    "description": "评估员工的绩效、潜力和能力。",
     "icon": "iconoir-people-tag",
     "keywords": [
         "assessments",
@@ -16,7 +16,7 @@
         "talent"
     ],
     "categories": [
-        "HR and Recruiting"
+        "人力资源与招聘"
     ],
     "export":[
         {

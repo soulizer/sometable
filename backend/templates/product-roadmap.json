@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Product Roadmap",
-    "description": "Plan product features by priority, team and release.",
+    "name": "产品路线图",
+    "description": "按优先级、团队和版本规划产品功能。",
     "icon": "iconoir-pc-check",
     "keywords": [
         "product roadmap",
@@ -19,7 +19,7 @@
         "launch"
     ],
     "categories": [
-        "Product Management"
+        "产品管理"
     ],
     "export": [
         {

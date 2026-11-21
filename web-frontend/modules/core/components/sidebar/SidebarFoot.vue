@@ -20,18 +20,21 @@
         >
           <i class="sidebar__foot-link-icon iconoir-redo"></i>
         </a>
-        <template v-if="!collapsed && width > 224">
-          <div class="sidebar__foot-separator"></div>
-          <a class="sidebar__foot-link" @click="$emit('set-col1-width', 52)">
-            <i class="sidebar__foot-link-icon baserow-icon-sidebar"></i>
-          </a>
-        </template>
         <template v-if="collapsed">
           <div class="sidebar__foot-separator"></div>
           <a class="sidebar__foot-link" @click="$emit('set-col1-width', 240)">
             <i class="sidebar__foot-link-icon baserow-icon-sidebar"></i>
           </a>
         </template>
+      </div>
+      <div
+        v-if="!collapsed && width > 224"
+        class="sidebar__foot-links sidebar__foot-links--end"
+      >
+        <div class="sidebar__foot-separator"></div>
+        <a class="sidebar__foot-link" @click="$emit('set-col1-width', 52)">
+          <i class="sidebar__foot-link-icon baserow-icon-sidebar"></i>
+        </a>
       </div>
     </div>
   </div>

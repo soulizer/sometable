@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Household Chores",
-    "description": "Share chores among family members and log what got done.",
+    "name": "家务分工",
+    "description": "在家庭成员间分配家务，记录完成情况。",
     "icon": "iconoir-numbered-list-left",
     "keywords": [
         "household chores",
@@ -12,7 +12,7 @@
         "home cleaning"
     ],
     "categories": [
-        "Personal and Hobbies"
+        "个人与爱好"
     ],
     "export": [
         {

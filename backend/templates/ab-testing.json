@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "A/B Testing",
-    "description": "Plan A/B tests by brand and market, with hypotheses, KPIs and variants.",
+    "name": "A/B 测试",
+    "description": "按品牌和市场规划 A/B 测试，包含假设、指标和变体。",
     "icon": "iconoir-test-tube",
     "keywords": [
         "experiments",
@@ -14,7 +14,7 @@
         "opportunity index"
     ],
     "categories": [
-        "Marketing"
+        "市场营销"
     ],
     "open_application": 343,
     "export": [

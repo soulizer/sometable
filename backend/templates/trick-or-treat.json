@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Trick or Treat Management",
-    "description": "Playful Halloween template: plan a trick-or-treat candy route.",
+    "name": "万圣节讨糖管理",
+    "description": "趣味万圣节模板：规划讨糖路线。",
     "icon": "iconoir-potion",
     "keywords": [
         "trick or treat",
@@ -14,7 +14,7 @@
         "goals"
     ],
     "categories": [
-        "Business Operations"
+        "业务运营"
     ],
     "export": [
         {

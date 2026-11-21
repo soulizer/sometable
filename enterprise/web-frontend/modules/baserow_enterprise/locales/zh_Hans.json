@@ -34,7 +34,7 @@
     },
     "coreCodeServiceForm": {
         "codeLabel": "代码",
-        "codeHelperText": "本系统 calls the main(context) function when the action runs. Use context to read injected values and return an object whose properties can be used by later actions.",
+        "codeHelperText": "操作运行时会调用 main(context) 函数。可通过 context 读取注入的值，并返回一个对象供后续操作使用。",
         "codePlaceholder": "输入要执行的代码",
         "editCode": "编辑代码",
         "injectionsLabel": "数据注入",
@@ -192,7 +192,7 @@
         "frequencyHourly": "每小时",
         "frequencyDaily": "每天",
         "frequencyWeekly": "每周",
-        "hourlyWarning": "Hourly scans can put significant load on your 本系统 instance.",
+        "hourlyWarning": "每小时扫描会给实例带来较大负载。",
         "wholeWordsLabel": "匹配方式",
         "wholeWordsCheckbox": "仅匹配完整单词",
         "wholeWordsHelp": "启用后，扫描器只匹配完整单词或标记。例如 'DDDD' 只匹配 '1234'，不匹配 '12345'。",
@@ -212,7 +212,7 @@
         "addWorkspace": "添加工作区",
         "scanTypePattern": "匹配模式",
         "scanTypeListOfValues": "值列表",
-        "scanTypeListTable": "本系统 table",
+        "scanTypeListTable": "数据表",
         "lastRunColumn": "上次运行",
         "resultsCountColumn": "结果数",
         "viewResults": "查看结果",
@@ -527,30 +527,30 @@
         "firstNameAttrKeyHelper": "用户的名；若未提供“姓”，则作为全名。",
         "lastNameAttrKeyHelper": "用户的姓（可选）。清空此项则通过“名”提供全名。",
         "callbackUrl": "回调链接",
-        "emailVerificationNotice": "Ensure your identity provider requires verified email addresses before authenticating users. 本系统 trusts the email address reported by the provider."
+        "emailVerificationNotice": "请确保身份提供者要求邮箱已验证后再认证用户。系统会信任提供者返回的邮箱地址。"
     },
     "loginButton": {
         "continueWith": "使用以下方式继续"
     },
     "enterpriseFeatures": {
         "sso": "单点登录",
-        "ssoContent": "Enable secure and seamless logins with SAML, Google, Facebook, GitHub, GitLab, or OpenID Connect. Supports multiple providers at once. Note that both 本系统 as a tool, and the application builder authentication system support SSO.",
+        "ssoContent": "使用 SAML、Google、Facebook、GitHub、GitLab 或 OpenID Connect 实现安全便捷的登录，支持同时配置多个提供者。应用构建器的认证系统同样支持单点登录。",
         "rbac": "基于角色的访问控制",
         "rbacContent": "精细管理权限：可在工作区、数据库、数据表和视图级别分配管理员、构建者、编辑者、评论者或查看者等角色，也可按团队管理访问权限。",
         "auditLogs": "审计日志",
         "auditLogsContent": "完整追踪所有操作：可按用户、操作等条件筛选，查看整个实例或工作区的完整操作历史。",
         "dataSync": "数据同步",
-        "dataSyncContent": "Automatically keep tables up to date by syncing with other 本系统 tables, or external sources like Jira, GitHub, GitLab, or HubSpot. It also allows to sync periodically, and enables two-way data sync for supported data sync types.",
+        "dataSyncContent": "与其他数据表或 Jira、GitHub、GitLab、HubSpot 等外部来源同步，让数据表保持最新；支持定时同步，并为支持的类型启用双向同步。",
         "coBranding": "联合品牌标识替换",
-        "coBrandingContent": "Customize the 本系统 interface with your own logo. Note that \"powered by 本系统\" is added.",
+        "coBrandingContent": "使用自己的标志自定义界面。",
         "support": "专属技术支持",
-        "supportContent": "Get help when you need it. Reach out to the 本系统 team directly from within the platform.",
+        "supportContent": "需要时可在平台内向支持团队寻求帮助。",
         "advancedWebhooks": "高级 Webhook",
         "advancedWebhooksContent": "当行进入指定视图时触发 Webhook，非常适合基于筛选条件自动执行流程。",
         "fieldLevelPermissions": "字段级权限",
         "fieldLevelPermissionsContent": "控制谁可以编辑数据表中的特定字段：可为编辑者、构建者、管理员设置权限，或完全禁止修改字段值。",
         "builderBranding": "应用品牌定制",
-        "builderBrandingContent": "White label the branding of your application by removing the 'Made with 本系统' branding in the footer of your application.",
+        "builderBrandingContent": "移除应用页脚的品牌标识，实现白标。",
         "builderFileInputElement": "文件上传元素",
         "builderFileInputElementContent": "文件上传元素可在应用页面中添加字段，供用户上传重要文档或图片。",
         "builderGraphElement": "图表元素",
@@ -564,7 +564,7 @@
         "dateDependency": "日期依赖",
         "dateDependencyContent": "可在两个日期与一个时长之间建立依赖关系（开始日期/结束日期与时长）。启用日期依赖后，当某个值发生变化，其他相关值会自动调整。",
         "dataScanner": "数据扫描器",
-        "dataScannerContent": "Scan all data in your 本系统 instance for sensitive patterns like IBAN numbers or medical IDs, or match against known value lists. Configure automatic scanning schedules and view detailed results.",
+        "dataScannerContent": "扫描实例中的数据，查找 IBAN、医疗编号等敏感模式或匹配已知值列表，支持定时扫描并查看详细结果。",
         "semanticSearch": "语义搜索",
         "semanticSearchContent": "按文本含义而非精确词语查找行，并在自动化与应用中使用这些结果。"
     },
@@ -688,7 +688,7 @@
         "branding": "品牌定制",
         "deactivated": "企业版功能",
         "coBrandingLogo": "标识",
-        "coBrandingLogoDescription": "Replaces the 本系统 logo for a custom co-branded alternative (176x29). If set, it also removes the 本系统 description in the footer of all emails.",
+        "coBrandingLogoDescription": "用自定义标志（176x29）替换系统标志。设置后，所有邮件页脚中的说明文字也会一并移除。",
         "uploadFileButton": "上传图片"
     },
     "authFormElementForm": {
@@ -704,7 +704,7 @@
         "selectOrConfigureUserSourceFirst": "请先选择用户源，再使用此登录元素。"
     },
     "enterpriseDataSyncType": {
-        "localBaserowTable": "Sync 本系统 table",
+        "localBaserowTable": "同步数据表",
         "jiraIssues": "同步 Jira 问题",
         "githubIssues": "同步 GitHub 问题",
         "gitlabIssues": "同步 GitLab 问题",
@@ -745,7 +745,7 @@
         "url": "基础链接",
         "urlHelper": "GitLab 实例的基础链接（例如 https://gitlab.com）。",
         "projectId": "项目 ID",
-        "projectIdHelper": "The ID of the project where you want to sync the issues from. Can be found by going to your project page (e.g. https://gitlab.com/本系统/本系统), click on the three dots in the top right corner, and then on 'Copy project ID: 12345678'.",
+        "projectIdHelper": "要同步问题的项目 ID。可在项目页面（例如 https://gitlab.com/group/project）右上角的三个点菜单中点击“复制项目 ID：12345678”获取。",
         "accessToken": "访问令牌",
         "accessTokenHelper": "可在 https://gitlab.com/-/user_settings/personal_access_tokens 点击“添加新令牌”并选择相应权限后生成。"
     },
@@ -962,7 +962,7 @@
         "label": "编辑字段权限"
     },
     "enterpriseTwoWaySyncStrategyType": {
-        "realtimePushDescription": "Allows editing the cell values directly in 本系统, and pushes it in real-time to the data sync source. Note that the changes are not pulled in real-time because they rely on the (periodic) sync action to complete. It's highly recommended to create backups of the PostgreSQL database to avoid accidental changes."
+        "realtimePushDescription": "允许直接在此工具中编辑单元格，并实时推送到数据同步来源。注意：更改不会实时拉取，因为需要等待（定时）同步操作完成。强烈建议定期备份 PostgreSQL 数据库，以免意外修改造成损失。"
     },
     "dateDependencyModal": {
         "errorTitle": "日期依赖",

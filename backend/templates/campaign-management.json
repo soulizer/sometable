@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Campaign Management",
-    "description": "Run marketing campaigns with activities, assets and metrics.",
+    "name": "营销活动管理",
+    "description": "管理营销活动，跟踪活动项、素材和指标。",
     "icon": "iconoir-stats-report",
     "keywords": [
         "campaign",
@@ -14,8 +14,8 @@
         "marketing"
     ],
     "categories": [
-        "Marketing",
-        "🔥 Most Popular"
+        "市场营销",
+        "🔥 热门"
     ],
     "export": [
         {

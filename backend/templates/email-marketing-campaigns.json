@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Email Marketing Campaigns",
-    "description": "Plan email campaigns with subject lines, lists, brands and the team.",
+    "name": "邮件营销活动",
+    "description": "规划邮件活动，管理主题、名单、品牌和团队。",
     "icon": "iconoir-mail-out",
     "keywords": [
         "email copy structure",
@@ -15,7 +15,7 @@
         "email copy"
     ],
     "categories": [
-        "Marketing"
+        "市场营销"
     ],
     "export": [
         {

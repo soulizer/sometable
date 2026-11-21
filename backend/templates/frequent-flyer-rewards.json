@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Frequent Flyer Rewards",
-    "description": "Track flights, airlines, airports and reward points.",
+    "name": "常旅客奖励",
+    "description": "记录航班、航空公司、机场和奖励积分。",
     "icon": "iconoir-airplane",
     "keywords": [
         "travel",
@@ -13,7 +13,7 @@
         "points"
     ],
     "categories": [
-        "Personal and Hobbies"
+        "个人与爱好"
     ],
     "export": [
         {

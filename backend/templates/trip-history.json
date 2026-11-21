@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Trip History",
-    "description": "Keep a history of past trips, stays, attractions and transport by city.",
+    "name": "旅行记录",
+    "description": "按城市保存过往旅行、住宿、景点和交通记录。",
     "icon": "iconoir-large-suitcase",
     "keywords": [
         "trip",
@@ -15,7 +15,7 @@
         "vacation"
     ],
     "categories": [
-        "Personal and Hobbies"
+        "个人与爱好"
     ],
     "export": [
         {

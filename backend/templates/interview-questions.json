@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Interview Questions",
-    "description": "Build a bank of interview questions with sample answers per role.",
+    "name": "面试问题库",
+    "description": "建立面试问题库，按岗位提供参考答案。",
     "icon": "iconoir-chat-bubble-question",
     "keywords": [
         "interviews",
@@ -11,7 +11,7 @@
         "interview sessions"
     ],
     "categories": [
-        "HR and Recruiting"
+        "人力资源与招聘"
     ],
     "export": [
         {

@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Wedding Client Planner",
-    "description": "Plan client weddings with venues, vendors and supplies.",
+    "name": "婚礼客户规划",
+    "description": "为客户规划婚礼，管理场地、供应商和用品。",
     "icon": "iconoir-heart",
     "keywords": [
         "wedding",
@@ -14,7 +14,7 @@
         "clients"
     ],
     "categories": [
-        "Personal and Hobbies"
+        "个人与爱好"
     ],
     "export": [
         {

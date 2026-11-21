@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Home Remodeling",
-    "description": "Plan a home remodel room by room, with tasks, budgets and vendors.",
+    "name": "家庭装修",
+    "description": "按房间规划装修，管理任务、预算和供应商。",
     "icon": "iconoir-bathroom",
     "keywords": [
         "home remodeling",
@@ -13,7 +13,7 @@
         "reparations"
     ],
     "categories": [
-        "Personal and Hobbies"
+        "个人与爱好"
     ],
     "export": [
         {

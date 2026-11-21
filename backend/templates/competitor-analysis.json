@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Competitor Analysis",
-    "description": "Compare your product with competitors feature by feature.",
+    "name": "竞品分析",
+    "description": "逐项对比你的产品与竞品的功能。",
     "icon": "iconoir-git-compare",
     "keywords": [
         "competitors",
@@ -13,7 +13,8 @@
         "comparing"
     ],
     "categories": [
-        "Marketing", "Business Strategy"
+        "市场营销",
+        "商业策略"
     ],
     "export": [
         {

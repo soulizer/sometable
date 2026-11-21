@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Commercial Property Management",
-    "description": "Manage commercial units, leases, tenants and service requests.",
+    "name": "商业物业管理",
+    "description": "管理商业单元、租约、租户和服务请求。",
     "icon": "iconoir-city",
     "keywords": [
         "property management",
@@ -11,8 +11,8 @@
         "tenants"
     ],
     "categories": [
-        "Real Estate",
-        "🔥 Most Popular"
+        "房地产",
+        "🔥 热门"
     ],
     "export": [
         {

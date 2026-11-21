@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Web App UAT",
-    "description": "Run user acceptance testing for web apps with test cases and results.",
+    "name": "Web 应用验收测试",
+    "description": "通过测试用例和结果对 Web 应用进行用户验收测试。",
     "icon": "iconoir-app-window",
     "keywords": [
         "user acceptance testing",
@@ -12,8 +12,8 @@
         "client testing"
     ],
     "categories": [
-        "Software Development",
-        "Product Management"
+        "软件开发",
+        "产品管理"
     ],
     "export": [
         {

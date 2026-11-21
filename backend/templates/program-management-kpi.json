@@ -1,7 +1,7 @@
 {
   "baserow_template_version": 1,
-  "name": "Program Management & KPI Tracker",
-  "description": "Manage donor-funded programs, track KPIs and report to donors.",
+  "name": "项目管理与 KPI 跟踪",
+  "description": "管理资助项目，跟踪 KPI 并向资助方汇报。",
   "icon": "iconoir-dashboard",
   "keywords": [
     "donations",
@@ -12,7 +12,7 @@
     "performance monitoring"
   ],
   "categories": [
-    "Project Management"
+    "项目管理"
   ],
   "open_application": 2377,
   "export": [

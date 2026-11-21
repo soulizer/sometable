@@ -1,7 +1,7 @@
 {
   "baserow_template_version": 1,
-  "name": "Ivory Theme",
-  "description": "Soft ivory application theme with plum accents and serif headings.",
+  "name": "象牙主题",
+  "description": "柔和的象牙色应用主题，搭配梅子色点缀和衬线标题。",
   "icon": "",
   "keywords": [
     "application",
@@ -10,7 +10,7 @@
     "eclipse"
   ],
   "categories": [
-    "Application Themes"
+    "应用主题"
   ],
   "open_application": 181,
   "export": [

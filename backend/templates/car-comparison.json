@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Car Comparison",
-    "description": "Compare cars on price, horsepower and fuel economy.",
+    "name": "车型对比",
+    "description": "按价格、马力和油耗比较汽车。",
     "icon": "iconoir-car",
     "keywords": [
         "car",
@@ -15,7 +15,7 @@
         "vehicle"
     ],
     "categories": [
-        "Personal and Hobbies"
+        "个人与爱好"
     ],
     "export": [
         {

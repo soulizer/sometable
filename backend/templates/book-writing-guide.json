@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Book Writing Guide",
-    "description": "Plan a book chapter by chapter, with characters, locations and editors.",
+    "name": "写书指南",
+    "description": "按章节规划一本书，管理人物、地点和编辑。",
     "icon": "iconoir-open-book",
     "keywords": [
         "book writing template",
@@ -10,8 +10,8 @@
         "book writing format"
     ],
     "categories": [
-        "Marketing",
-        "Personal and Hobbies"
+        "市场营销",
+        "个人与爱好"
     ],
     "export": [
         {

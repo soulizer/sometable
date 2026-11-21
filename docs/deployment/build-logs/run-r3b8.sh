@@ -13,9 +13,9 @@ mkdir -p docs/deployment/build-logs
 logb "r3b8 build start tag=$TAG"
 logb "pre: $(free -h | tr '\n' ';') swapon=$(swapon --show --noheadings 2>/dev/null | tr '\n' ';') df=$(df -h /www / | tr '\n' ';')"
 
-# 前置资源门槛
+# 前置资源门槛（本批临时 swap 已扩至 8G，实际可用 swap 约 6G，门槛相应下调）
 avail_kb=$(awk '/MemAvailable/{print $2}' /proc/meminfo)
-if [ "$avail_kb" -lt 2500000 ]; then logb "ABORT: available memory ${avail_kb}kB < 2.5GB"; exit 1; fi
+if [ "$avail_kb" -lt 1800000 ]; then logb "ABORT: available memory ${avail_kb}kB < 1.8GB"; exit 1; fi
 
 build_guarded() {
   local svc="$1"; shift

@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Business Goal Tracker (OKRs)",
-    "description": "Set objectives per department, with key results and progress updates.",
+    "name": "业务目标跟踪（OKR）",
+    "description": "按部门设定目标，跟踪关键结果和进展更新。",
     "icon": "iconoir-okrs",
     "keywords": [
         "OKR",
@@ -12,8 +12,8 @@
         "progress tracker"
     ],
     "categories": [
-        "Business Strategy",
-        "🔥 Most Popular"
+        "商业策略",
+        "🔥 热门"
     ],
     "export": [
         {

@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Apartment Hunt",
-    "description": "Compare apartments by neighborhood, rent and amenities.",
+    "name": "找公寓",
+    "description": "按社区、房租和配套设施比较公寓。",
     "icon": "iconoir-neighbourhood",
     "keywords": [
         "apartment",
@@ -14,8 +14,8 @@
         "apt"
     ],
     "categories": [
-        "Personal and Hobbies",
-        "Real Estate"
+        "个人与爱好",
+        "房地产"
     ],
     "export": [
         {

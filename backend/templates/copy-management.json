@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Copy Management",
-    "description": "Manage marketing copy by platform, with writers and ratings.",
+    "name": "文案管理",
+    "description": "按平台管理营销文案，记录撰稿人和评分。",
     "icon": "iconoir-pen-tablet",
     "keywords": [
         "company copy management",
@@ -11,7 +11,7 @@
         "publishing"
     ],
     "categories": [
-        "Marketing"
+        "市场营销"
     ],
     "export": [
         {

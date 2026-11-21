@@ -1,7 +1,7 @@
 {
   "baserow_template_version": 1,
-  "name": "Luxury Theme",
-  "description": "Dark application theme with gold accents and serif headings.",
+  "name": "奢华主题",
+  "description": "深色应用主题，搭配金色点缀和衬线标题。",
   "icon": "",
   "keywords": [
     "application",
@@ -12,7 +12,7 @@
     "premium"
   ],
   "categories": [
-    "Application Themes"
+    "应用主题"
   ],
   "open_application": 177,
   "export": [

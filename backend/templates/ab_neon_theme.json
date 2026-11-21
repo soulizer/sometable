@@ -1,7 +1,7 @@
 {
   "baserow_template_version": 1,
-  "name": "Neon Theme",
-  "description": "Dark application theme with bright cyan and pink accents.",
+  "name": "霓虹主题",
+  "description": "深色应用主题，搭配明亮的青色和粉色点缀。",
   "icon": "",
   "keywords": [
     "application",
@@ -12,7 +12,7 @@
     "cyberpunk"
   ],
   "categories": [
-    "Application Themes"
+    "应用主题"
   ],
   "open_application": 177,
   "export": [

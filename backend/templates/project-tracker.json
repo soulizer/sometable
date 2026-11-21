@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Project Tracker",
-    "description": "Track client projects, tasks, deadlines and team members.",
+    "name": "项目跟踪",
+    "description": "跟踪客户项目、任务、截止日期和团队成员。",
     "icon": "iconoir-strategy",
     "keywords": [
         "project tracker",
@@ -13,7 +13,7 @@
         "pm"
     ],
     "categories": [
-        "Project Management"
+        "项目管理"
     ],
     "export": [
         {

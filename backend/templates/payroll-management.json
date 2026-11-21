@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Payroll Management",
-    "description": "Plan recurring payroll tasks for clients and balance staff workload.",
+    "name": "薪资管理",
+    "description": "为客户规划周期性薪资任务，平衡员工工作量。",
     "icon": "iconoir-coins",
     "keywords": [
         "payroll",
@@ -12,7 +12,7 @@
         "scheduling"
     ],
     "categories": [
-        "Finance and Accounting"
+        "财务与会计"
     ],
     "export":[
         {

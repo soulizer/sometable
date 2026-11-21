@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Sales Pipeline Management",
-    "description": "Track sales opportunities against revenue goals per account.",
+    "name": "销售漏斗管理",
+    "description": "按客户跟踪销售机会，对照营收目标。",
     "icon": "iconoir-money-square",
     "keywords": [
         "prospects",
@@ -14,7 +14,7 @@
         "account"
     ],
     "categories": [
-        "Sales and CRM"
+        "销售与客户管理"
     ],
     "export": [
         {

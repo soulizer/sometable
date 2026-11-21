@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Moving Company Manager",
-    "description": "Plan moving jobs with customers, locations, staff, vehicles and shifts.",
+    "name": "搬家公司管理",
+    "description": "规划搬家订单，管理客户、地点、员工、车辆和班次。",
     "icon": "iconoir-delivery-truck",
     "keywords": [
         "moving",
@@ -15,8 +15,8 @@
         "trucking"
     ],
     "categories": [
-        "Business Operations",
-        "Personal and Hobbies"
+        "业务运营",
+        "个人与爱好"
     ],
     "export": [
         {

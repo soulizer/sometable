@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Political Campaign Contributions",
-    "description": "Track political campaign donations, donors and fund allocation.",
+    "name": "政治竞选捐款",
+    "description": "跟踪政治竞选捐款、捐赠者和资金分配。",
     "icon": "iconoir-privacy-policy",
     "keywords": [
         "politics",
@@ -20,7 +20,7 @@
         "transactional"
     ],
     "categories": [
-        "Public Sector"
+        "公共部门"
     ],
     "export": [
         {

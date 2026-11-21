@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Job Interviews",
-    "description": "Run job interviews with prepared questions, answers and ratings.",
+    "name": "求职面试",
+    "description": "组织求职面试，管理预设问题、回答和评分。",
     "icon": "iconoir-shield-question",
     "keywords": [
         "job interviews",
@@ -11,7 +11,7 @@
         "interview sessions"
     ],
     "categories": [
-        "HR and Recruiting"
+        "人力资源与招聘"
     ],
     "export": [
         {

@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Employee Directory",
-    "description": "Look up employees by department, unit and office location.",
+    "name": "员工名录",
+    "description": "按部门、单位和办公地点查询员工。",
     "icon": "iconoir-user-square",
     "keywords": [
         "employees",
@@ -15,7 +15,7 @@
         "onboarding"
     ],
     "categories": [
-        "HR and Recruiting"
+        "人力资源与招聘"
     ],
     "export": [
         {

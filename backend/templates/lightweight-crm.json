@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Lightweight CRM",
-    "description": "Simple CRM for companies, contacts, pipelines and activities.",
+    "name": "轻量 CRM",
+    "description": "面向公司、联系人、销售管道和活动的简易 CRM。",
     "icon": "iconoir-verified-user",
     "keywords": [
         "CRM",
@@ -10,7 +10,7 @@
         "onboarding"
     ],
     "categories": [
-        "Sales and CRM"
+        "销售与客户管理"
     ],
     "export": [
         {

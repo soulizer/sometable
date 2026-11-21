@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Non-profit Organization Management",
-    "description": "Run a non-profit's events, fundraising, grants and contacts.",
+    "name": "非营利组织管理",
+    "description": "管理非营利组织的活动、筹款、资助和联系人。",
     "icon": "iconoir-spock-hand-gesture",
     "keywords": [
         "nonprofit",
@@ -14,7 +14,7 @@
         "not-for-profit"
     ],
     "categories": [
-        "Nonprofits"
+        "非营利组织"
     ],
     "export": [
         {

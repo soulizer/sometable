@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Recipe Book",
-    "description": "Collect recipes with ingredients, quantities and cost per serving.",
+    "name": "食谱簿",
+    "description": "收集食谱，记录食材、用量和每份成本。",
     "icon": "iconoir-clutery",
     "keywords": [
         "recipe book",
@@ -11,7 +11,7 @@
         "cooking"
     ],
     "categories": [
-        "Personal and Hobbies"
+        "个人与爱好"
     ],
     "export": [
         {

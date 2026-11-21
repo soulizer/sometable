@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "SQCDP - Safety, Quality, Cost, Delivery, People",
-    "description": "Track daily Safety, Quality, Cost, Delivery and People metrics.",
+    "name": "SQCDP：安全、质量、成本、交付、人员",
+    "description": "跟踪每日的安全、质量、成本、交付和人员指标。",
     "icon": "iconoir-industry",
     "keywords": [
         "sqcdp",
@@ -17,8 +17,8 @@
         "daily operations"
     ],
     "categories": [
-        "Business Operations",
-        "🔥 Most Popular"
+        "业务运营",
+        "🔥 热门"
     ],
     "export": [
         {

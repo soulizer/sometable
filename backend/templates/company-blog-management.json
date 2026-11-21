@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Company Blog Management",
-    "description": "Plan and approve company blog posts with authors and categories.",
+    "name": "公司博客管理",
+    "description": "与作者一起规划和审核公司博客文章，管理分类。",
     "icon": "iconoir-orthogonal-view",
     "keywords": [
         "blog post management",
@@ -11,7 +11,7 @@
         "content tracker"
     ],
     "categories": [
-        "Marketing"
+        "市场营销"
     ],
     "export": [
         {

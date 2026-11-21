@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Software Application Bug Tracker",
-    "description": "Track software bugs by severity and status, linked to code and features.",
+    "name": "软件缺陷跟踪",
+    "description": "按严重程度和状态跟踪软件缺陷，关联代码和功能。",
     "icon": "iconoir-data-transfer-check",
     "keywords": [
         "software",
@@ -20,7 +20,7 @@
         "issues ticketing"
     ],
     "categories": [
-        "Software Development"
+        "软件开发"
     ],
     "export": [
         {

@@ -1,7 +1,7 @@
 {
   "baserow_template_version": 1,
-  "name": "Legal Theme",
-  "description": "Formal light application theme in navy and brown with serif headings.",
+  "name": "法律主题",
+  "description": "正式的浅色应用主题，采用藏蓝和棕色，配衬线标题。",
   "icon": "",
   "keywords": [
     "application",
@@ -12,7 +12,7 @@
     "attorney"
   ],
   "categories": [
-    "Application Themes"
+    "应用主题"
   ],
   "open_application": 177,
   "export": [

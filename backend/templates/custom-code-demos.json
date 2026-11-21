@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Custom code demos",
-    "description": "Ten small applications showing what custom code can do in Baserow.",
+    "name": "自定义代码演示",
+    "description": "十个小应用，展示自定义代码能实现的效果。",
     "icon": "iconoir-code",
     "keywords": [
         "application",
@@ -13,8 +13,8 @@
         "baserow"
     ],
     "categories": [
-        "Baserow",
-        "🔥 Most Popular"
+        "示例",
+        "🔥 热门"
     ],
     "open_application": 1568,
     "export": [

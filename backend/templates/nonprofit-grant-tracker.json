@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Nonprofit Grant Tracker",
-    "description": "Track grant applications, funders, programs and the team.",
+    "name": "非营利资助跟踪",
+    "description": "跟踪资助申请、资助方、项目和团队。",
     "icon": "iconoir-receive-dollars",
     "keywords": [
         "grants",
@@ -15,7 +15,7 @@
         "donation"
     ],
     "categories": [
-        "Nonprofits"
+        "非营利组织"
     ],
     "export": [
         {

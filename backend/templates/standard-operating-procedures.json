@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Standard Operating Procedures",
-    "description": "Document procedures step by step and collect suggestions.",
+    "name": "标准作业程序",
+    "description": "分步记录作业流程，并收集改进建议。",
     "icon": "iconoir-cpu",
     "keywords": [
         "SOP",
@@ -14,8 +14,8 @@
         "Process Documentation"
     ],
     "categories": [
-        "Business Operations",
-        "🔥 Most Popular"
+        "业务运营",
+        "🔥 热门"
     ],
     "open_application": 1566,
     "export": [

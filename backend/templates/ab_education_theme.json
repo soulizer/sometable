@@ -1,7 +1,7 @@
 {
   "baserow_template_version": 1,
-  "name": "Education Theme",
-  "description": "Bright light application theme in blue and orange.",
+  "name": "教育主题",
+  "description": "明亮的浅色应用主题，采用蓝色和橙色。",
   "icon": "",
   "keywords": [
     "application",
@@ -12,7 +12,7 @@
     "learning"
   ],
   "categories": [
-    "Application Themes"
+    "应用主题"
   ],
   "open_application": 177,
   "export": [

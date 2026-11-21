@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "ANDON Calls",
-    "description": "Report shop floor issues per station and track how managers respond.",
+    "name": "安灯呼叫",
+    "description": "按工位上报车间问题，并跟踪管理者的响应。",
     "icon": "iconoir-phone-income",
     "keywords": [
         "andon calls",
@@ -18,7 +18,7 @@
         "manufacturing"
     ],
     "categories": [
-        "Business Operations"
+        "业务运营"
     ],
     "export": [
         {

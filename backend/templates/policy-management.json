@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Policy Management",
-    "description": "Write, version and approve policies and share them with employees.",
+    "name": "制度管理",
+    "description": "编写、版本化并审批制度，并分享给员工。",
     "icon": "iconoir-open-book",
     "keywords": [
         "policies",
@@ -13,8 +13,8 @@
         "policy guidelines"
     ],
     "categories": [
-        "Business Continuity",
-        "🔥 Most Popular"
+        "业务连续性",
+        "🔥 热门"
     ],
     "export": [
         {

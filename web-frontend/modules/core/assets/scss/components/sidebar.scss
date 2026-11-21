@@ -170,14 +170,19 @@
   }
 }
 
-// Without the brand logo on the left, keep the footer actions aligned to the
-// right as they were when the logo was still present.
+// The brand logo used to keep the left side occupied. Without it the footer
+// links must stay on the left and the collapse toggle on the right, matching
+// the original layout.
 .sidebar__foot--no-logo {
-  justify-content: flex-end;
+  justify-content: space-between;
 
   .sidebar--collapsed & {
     justify-content: center;
   }
+}
+
+.sidebar__foot-links--end {
+  margin-left: auto;
 }
 
 .sidebar__foot-links {

@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Santa's Logistics",
-    "description": "Playful holiday template: run Santa's workshop from letters to deliveries.",
+    "name": "圣诞老人物流",
+    "description": "趣味节日模板：从信件到派送，管理圣诞老人的工作坊。",
     "icon": "iconoir-pine-tree",
     "keywords": [
         "Santa",
@@ -12,8 +12,8 @@
         "logistics"
     ],
     "categories": [
-        "Business Operations",
-        "Product Management"
+        "业务运营",
+        "产品管理"
     ],
     "export": [
         {

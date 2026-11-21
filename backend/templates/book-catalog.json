@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Book Catalog",
-    "description": "Catalog your books with authors, publishers and reading status.",
+    "name": "图书目录",
+    "description": "整理你的藏书，记录作者、出版社和阅读状态。",
     "icon": "iconoir-book",
     "keywords": [
         "book catalog",
@@ -15,8 +15,8 @@
         "book catalogue"
     ],
     "categories": [
-        "Personal and Hobbies",
-        "Marketing"
+        "个人与爱好",
+        "市场营销"
     ],
     "export": [
         {

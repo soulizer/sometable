@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Staff Development",
-    "description": "Plan staff development with goals, commitments, trainings and reviews.",
+    "name": "员工发展",
+    "description": "通过目标、承诺、培训和评估规划员工发展。",
     "icon": "baserow-icon-team",
     "keywords": [
         "HR",
@@ -21,7 +21,7 @@
         "employees"
     ],
     "categories": [
-        "HR and Recruiting"
+        "人力资源与招聘"
     ],
     "export": [
         {

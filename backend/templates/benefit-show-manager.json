@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Benefit Show Manager",
-    "description": "Organize benefit shows with talent, venues, beneficiaries and expenses.",
+    "name": "义演管理",
+    "description": "组织义演活动，管理演职人员、场地、受益方和费用。",
     "icon": "iconoir-heart",
     "keywords": [
         "nonprofit show",
@@ -11,7 +11,7 @@
         "event manager"
     ],
     "categories": [
-        "Nonprofits"
+        "非营利组织"
     ],
     "export": [
         {

@@ -93,12 +93,3 @@ class SettingsSerializer(serializers.ModelSerializer):
             )
 
         return super().to_internal_value(data)
-
-
-class InstanceIdSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Settings
-        fields = ("instance_id",)
-        extra_kwargs = {
-            "instance_id": {"read_only": True},
-        }

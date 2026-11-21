@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Company Advertising Campaigns",
-    "description": "Plan ad campaigns across platforms and measure clicks and conversions.",
+    "name": "公司广告活动",
+    "description": "跨平台规划广告活动，并统计点击和转化。",
     "icon": "iconoir-send-dollars",
     "keywords": [
         "ads",
@@ -15,7 +15,7 @@
         "campaigns"
     ],
     "categories": [
-        "Marketing"
+        "市场营销"
     ],
     "export": [
         {

@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "User Feedback",
-    "description": "Collect user feedback and see which features are most requested.",
+    "name": "用户反馈",
+    "description": "收集用户反馈，了解哪些功能最受期待。",
     "icon": "iconoir-chat-lines",
     "keywords": [
         "user feedback",
@@ -21,8 +21,8 @@
         "onboarding"
     ],
     "categories": [
-        "Product Management",
-        "Marketing"
+        "产品管理",
+        "市场营销"
     ],
     "export": [
         {

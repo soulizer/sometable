@@ -1,7 +1,7 @@
 {
   "baserow_template_version": 1,
-  "name": "Tech Theme",
-  "description": "Light application theme in indigo and cyan.",
+  "name": "科技主题",
+  "description": "浅色应用主题，采用靛蓝和青色。",
   "icon": "",
   "keywords": [
     "application",
@@ -12,7 +12,7 @@
     "modern"
   ],
   "categories": [
-    "Application Themes"
+    "应用主题"
   ],
   "open_application": 177,
   "export": [

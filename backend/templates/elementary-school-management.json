@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Elementary School Management",
-    "description": "Run an elementary school's staff, students, classes and rooms.",
+    "name": "小学管理",
+    "description": "管理小学的教职工、学生、班级和教室。",
     "icon": "iconoir-graduation-cap",
     "keywords": [
         "school",
@@ -15,7 +15,7 @@
         "education"
     ],
     "categories": [
-        "Teachers"
+        "教师"
     ],
     "export": [
         {

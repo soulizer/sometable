@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Tourism Agency Manager",
-    "description": "Run a tour agency with tours, guides, excursions and bookings.",
+    "name": "旅行社管理",
+    "description": "管理旅游线路、导游、行程和预订。",
     "icon": "iconoir-airplane-rotation",
     "keywords": [
         "City trips",
@@ -15,7 +15,7 @@
         "tour guides"
     ],
     "categories": [
-        "Travel and Outdoors"
+        "旅行与户外"
     ],
     "export": [
         {

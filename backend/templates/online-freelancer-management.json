@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Online Freelancer Management",
-    "description": "Match freelancers to client projects by skill and track their progress.",
+    "name": "自由职业者管理",
+    "description": "按技能为自由职业者匹配客户项目并跟踪进度。",
     "icon": "iconoir-numbered-list-left",
     "keywords": [
         "talent",
@@ -16,7 +16,7 @@
         "contracting"
     ],
     "categories": [
-        "Business Operations"
+        "业务运营"
     ],
     "export": [
         {

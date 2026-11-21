@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Healthcare Facility Management",
-    "description": "Manage patients, doctors and appointments across specialties.",
+    "name": "医疗机构管理",
+    "description": "按科室管理患者、医生和预约。",
     "icon": "iconoir-ecology-book",
     "keywords": [
         "medical record",
@@ -10,7 +10,7 @@
         "personal health record"
     ],
     "categories": [
-        "Health and Wellness"
+        "健康与养生"
     ],
     "export": [
         {

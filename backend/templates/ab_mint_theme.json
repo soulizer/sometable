@@ -1,7 +1,7 @@
 {
   "baserow_template_version": 1,
-  "name": "Mint Theme",
-  "description": "Fresh light application theme in mint and indigo.",
+  "name": "薄荷主题",
+  "description": "清新的浅色应用主题，采用薄荷绿和靛蓝色。",
   "icon": "",
   "keywords": [
     "application",
@@ -13,7 +13,7 @@
     "green"
   ],
   "categories": [
-    "Application Themes"
+    "应用主题"
   ],
   "open_application": 177,
   "export": [

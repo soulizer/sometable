@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Car Dealership Inventory",
-    "description": "Manage dealership stock, offers, branches, staff and customers.",
+    "name": "汽车经销商库存",
+    "description": "管理经销商库存、报价、门店、员工和客户。",
     "icon": "iconoir-car",
     "keywords": [
         "inventory",
@@ -15,8 +15,8 @@
         "cars"
     ],
     "categories": [
-        "Business Operations",
-        "Sales and CRM"
+        "业务运营",
+        "销售与客户管理"
     ],
     "export": [
         {

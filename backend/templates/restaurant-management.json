@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Restaurant Management",
-    "description": "Run a restaurant's staff, shifts, suppliers, inventory and menu.",
+    "name": "餐厅管理",
+    "description": "管理餐厅员工、班次、供应商、库存和菜单。",
     "icon": "iconoir-clutery",
     "keywords": [
         "restaurant",
@@ -15,7 +15,7 @@
         "cuisine"
     ],
     "categories": [
-        "Food and Restaurants"
+        "餐饮"
     ],
     "export": [
         {

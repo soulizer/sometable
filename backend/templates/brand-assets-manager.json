@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Brand Assets Manager",
-    "description": "Organize brand assets, messaging and style guides, with approvals.",
+    "name": "品牌资产管理",
+    "description": "整理品牌素材、宣传语和样式指南，并支持审批。",
     "icon": "iconoir-bookmark-empty",
     "keywords": [
         "branding",
@@ -15,7 +15,7 @@
         "digital assets"
     ],
     "categories": [
-        "Marketing"
+        "市场营销"
     ],
     "export": [
         {

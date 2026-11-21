@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Asset Management",
-    "description": "Track company assets, assignments, issues and maintenance.",
+    "name": "资产管理",
+    "description": "跟踪公司资产、领用情况、问题和维护记录。",
     "icon": "iconoir-sleeper-chair",
     "keywords": [
         "assets",
@@ -13,8 +13,8 @@
         "equipment"
     ],
     "categories": [
-        "Business Operations",
-        "🔥 Most Popular"
+        "业务运营",
+        "🔥 热门"
     ],
     "export": [
         {

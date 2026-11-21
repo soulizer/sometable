@@ -1,7 +1,7 @@
 {
   "baserow_template_version": 1,
-  "name": "Agency Theme",
-  "description": "Dark application theme with bold red accents.",
+  "name": "代理机构主题",
+  "description": "深色应用主题，搭配醒目的红色点缀。",
   "icon": "",
   "keywords": [
     "application",
@@ -12,7 +12,7 @@
     "design"
   ],
   "categories": [
-    "Application Themes"
+    "应用主题"
   ],
   "open_application": 177,
   "export": [

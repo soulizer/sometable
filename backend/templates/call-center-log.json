@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Call Center Log",
-    "description": "Log support calls with issue codes, solutions, customers and agents.",
+    "name": "呼叫中心日志",
+    "description": "记录支持来电，包含问题代码、解决方案、客户和客服人员。",
     "icon": "iconoir-phone-add",
     "keywords": [
         "calls",
@@ -18,7 +18,7 @@
         "call rep"
     ],
     "categories": [
-        "Business Operations"
+        "业务运营"
     ],
     "export": [
         {

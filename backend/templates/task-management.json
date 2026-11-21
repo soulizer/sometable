@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Task Management",
-    "description": "Manage projects and tasks across departments, staff and equipment.",
+    "name": "任务管理",
+    "description": "跨部门、员工和设备管理项目与任务。",
     "icon": "iconoir-task-list",
     "keywords": [
         "task management",
@@ -15,8 +15,8 @@
         "tasks"
     ],
     "categories": [
-        "Project Management",
-        "🔥 Most Popular"
+        "项目管理",
+        "🔥 热门"
     ],
     "export": [
         {

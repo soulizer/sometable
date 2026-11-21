@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Advertising Campaigns",
-    "description": "Organize ad campaigns by target group, platform, budget and owner.",
+    "name": "广告活动",
+    "description": "按目标人群、平台、预算和负责人组织广告活动。",
     "icon": "iconoir-playlist-play",
     "keywords": [
         "marketing play",
@@ -17,7 +17,7 @@
         "social media planner"
     ],
     "categories": [
-        "Marketing"
+        "市场营销"
     ],
     "export": [
         {

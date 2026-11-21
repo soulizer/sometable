@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Property Showings",
-    "description": "Schedule property showings and match properties to clients' needs.",
+    "name": "房源带看",
+    "description": "安排房源带看，并按客户需求匹配房源。",
     "icon": "iconoir-balcony",
     "keywords": [
         "real estate",
@@ -16,7 +16,7 @@
         "property planner"
     ],
     "categories": [
-        "Real Estate"
+        "房地产"
     ],
     "export": [
         {

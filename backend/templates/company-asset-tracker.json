@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Company Asset Tracker",
-    "description": "Track company equipment, who uses it and its repair history.",
+    "name": "公司资产跟踪",
+    "description": "跟踪公司设备、使用人和维修记录。",
     "icon": "iconoir-barcode",
     "keywords": [
         "asset tracker",
@@ -10,7 +10,7 @@
         "company item tracker"
     ],
     "categories": [
-        "Business Operations"
+        "业务运营"
     ],
     "export": [
         {

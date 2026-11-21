@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Purchase Order Management",
-    "description": "Request parts from suppliers and approve purchase requests.",
+    "name": "采购订单管理",
+    "description": "向供应商申请配件并审批采购申请。",
     "icon": "iconoir-cart",
     "keywords": [
         "purchase order",
@@ -14,8 +14,8 @@
         "part numbers"
     ],
     "categories": [
-        "Finance and Accounting",
-        "Business Operations"
+        "财务与会计",
+        "业务运营"
     ],
     "export":[
         {

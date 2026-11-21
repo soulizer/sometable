@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "GEMBA Walks",
-    "description": "Plan GEMBA walks, log findings and follow up on actions.",
+    "name": "现场走访（GEMBA）",
+    "description": "规划现场走访，记录发现并跟进改进事项。",
     "icon": "iconoir-walking",
     "keywords": [
         "gemba walks",
@@ -16,8 +16,8 @@
         "action management"
     ],
     "categories": [
-        "Business Operations",
-        "🔥 Most Popular"
+        "业务运营",
+        "🔥 热门"
     ],
     "export": [
         {

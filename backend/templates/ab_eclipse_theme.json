@@ -1,7 +1,7 @@
 {
   "baserow_template_version": 1,
-  "name": "Eclipse Theme",
-  "description": "Dark application theme with blue and aqua accents.",
+  "name": "日蚀主题",
+  "description": "深色应用主题，搭配蓝色和水绿色点缀。",
   "icon": "",
   "keywords": [
     "application",
@@ -10,7 +10,7 @@
     "eclipse"
   ],
   "categories": [
-    "Application Themes"
+    "应用主题"
   ],
   "open_application": 178,
   "export": [

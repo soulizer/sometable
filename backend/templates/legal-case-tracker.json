@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Legal Case Tracker",
-    "description": "Track legal cases, staff hours, billing entries and invoices.",
+    "name": "法律案件跟踪",
+    "description": "跟踪法律案件、员工工时、计费条目和发票。",
     "icon": "iconoir-locked-book",
     "keywords": [
         "legal case tracker",
@@ -12,7 +12,7 @@
         "lawyer case tracking"
     ],
     "categories": [
-        "Legal"
+        "法律"
     ],
     "export": [
         {

@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Podcast Content Manager",
-    "description": "Plan podcast episodes with guests, sponsors and ad placements.",
+    "name": "播客内容管理",
+    "description": "规划播客节目，管理嘉宾、赞助商和广告位。",
     "icon": "iconoir-album-open",
     "keywords": [
         "podcast content",
@@ -13,7 +13,7 @@
         "podcast content manager"
     ],
     "categories": [
-        "Marketing"
+        "市场营销"
     ],
     "export": [
         {

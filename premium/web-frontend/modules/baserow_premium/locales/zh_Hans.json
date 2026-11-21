@@ -38,24 +38,6 @@
         "errorInvalidCommentMentionTitle": "提及无效",
         "errorInvalidCommentMention": "所提及的用户不存在。"
     },
-    "registerLicenseModal": {
-        "titleRegisterLicense": "注册一个许可证",
-        "registerLicense": "注册许可证",
-        "viewPricing": "查看定价",
-        "licenseDescription": "只能在 本系统.io 上获得许可证。如果你已购买许可证，它将通过电子邮件发送给你，也可以从帐户概览中获取。将许可证密钥复制并粘贴到下面的框中，然后单击按钮将许可证密钥注册到此实例。安装两个不同实例时不可以使用相同的密钥。 如果你还没有密钥可以点此购买：{pricingLink} 。",
-        "licenseError": {
-            "invalidTitle": "无效的",
-            "invalid": "无效的许可证.",
-            "unsupportedTitle": "不支持",
-            "unsupported": "当前许可证与您的本系统版本不兼容.请更新到最新版本,然后重试.",
-            "expiredTitle": "已到期",
-            "expired": "当前许可证已过期.",
-            "duplicateTitle": "复制",
-            "duplicate": "当前许可证已注册到此实例.",
-            "instanceMismatchTitle": "实例不匹配",
-            "instanceMismatch": "当前许可证不属于此实例."
-        }
-    },
     "disconnectLicenseModal": {
         "disconnectLicense": "断开许可证",
         "disconnectDescription": "您确定要断开此许可吗? 如果您在该许可证处于活动状态时断开连接,相关用户将无法访问该计划. 它将有效地删除许可证, 如果您想在另一个自托管实例中使用此许可证,请通过 {contact} 联系我们的技术团队."
@@ -94,17 +76,11 @@
         "new": "新"
     },
     "licenses": {
-        "titleNoLicenses": "未找到许可证",
-        "titleLicenses": "许可证",
-        "noLicensesDescription": "您的 平台实例未注册任何许可证.高级许可证使您可以立即访问所有附加功能.如果您已经拥有许可证,可以在此处注册.或者,您可以通过单击下面的按钮来获取一个.",
         "rowComments": "",
         "kanbanView": "",
         "exports": "",
         "admin": "",
         "rowColoring": "",
-        "getLicense": "获取许可证",
-        "baserowInstanceId": "您的本系统实例ID为:",
-        "registerLicense": "注册许可证",
         "licenceId": "许可证ID",
         "premium": "高级版",
         "expired": "过期",
@@ -174,7 +150,7 @@
         "rowNotifications": "行通知",
         "rowNotificationsContent": "通过可定制的行评论通知及时掌握动态，可选择接收全部评论或仅接收提及您的评论。",
         "surveyFormContent": "以问卷模式逐题收集回答，是表单视图的简化版本，更专注、更易填写。",
-        "publicLogoRemovalContent": "Remove the 本系统 logo from public views to give your shared content a cleaner, more branded look.",
+        "publicLogoRemovalContent": "在公开视图中隐藏标志，让分享内容更简洁。",
         "personalViews": "个人视图",
         "personalViewsContent": "创建只有作者本人可见的视图，可自由试验、筛选与排序而不影响他人。",
         "aiFeatures": "AI 功能",
@@ -182,7 +158,7 @@
         "chartWidget": "图表组件",
         "chartWidgetContent": "在仪表盘上用图表呈现数据：任意数据表均可作为数据源，可添加多个系列并分组或排序。",
         "groupedAggregateRowsDataSource": "分组汇总数据行",
-        "groupedAggregateRowsDataSourceContent": "Group rows from a 本系统 table and calculate summaries for use in application builder pages."
+        "groupedAggregateRowsDataSourceContent": "对数据表的行进行分组并计算汇总值，供应用构建器页面使用。"
     },
     "paidFeaturesModal": {
         "unavailable": "当前实例未开放此功能。",
@@ -292,10 +268,6 @@
         "deleteColor": "删除颜色",
         "title": "颜色"
     },
-    "redirectToBaserowModal": {
-        "title": "Redirecting to https://本系统.io",
-        "content": "You are leaving your self hosted instance and you are being redirected to https://本系统.io."
-    },
     "premiumTopSidebar": {
         "impersonateDescription": "当前账号处于代登录状态，刷新页面即可结束。",
         "impersonateStop": "停止",
@@ -314,13 +286,13 @@
     },
     "shareLinkOptions": {
         "baserowLogo": {
-            "label": "Hide 本系统 logo on shared view",
+            "label": "在分享视图中隐藏标志",
             "premiumModalName": "隐藏公开页标识"
         },
         "allowPublicExportLabel": "允许在分享视图中导出"
     },
     "premiumDashboardShareOptions": {
-        "hideLogo": "Hide 本系统 logo on shared dashboard"
+        "hideLogo": "在分享仪表盘中隐藏标志"
     },
     "viewsContext": {
         "personal": "个人"
@@ -354,7 +326,7 @@
     },
     "fieldAISubForm": {
         "prompt": "提示词",
-        "promptPlaceholder": "What is 本系统?",
+        "promptPlaceholder": "请输入提示内容…",
         "premiumFeature": "AI 字段为高级版功能",
         "emptyFileField": "无",
         "fileFieldHelp": "字段中第一个兼容的文件会作为该提示词的知识库，文件需为纯文本。",
@@ -377,7 +349,7 @@
         "label": "提示词",
         "labelDescription": "描述您想要生成的公式",
         "generate": "生成",
-        "noModels": "Your 本系统 instance and workspace doesn't have any AI models configured. Navigate to the homepage, click on the name of your workspace, then on settings to configure them."
+        "noModels": "当前实例和工作区还没有配置 AI 模型。请前往工作区设置进行配置。"
     },
     "formulaFieldAI": {
         "generateWithAI": "使用 AI 生成",
@@ -412,7 +384,7 @@
     },
     "serviceType": {
         "localBaserowGroupedAggregateRows": "分组汇总数据行",
-        "localBaserowGroupedAggregateRowsDescription": "Group rows from a 本系统 table and calculate summaries.",
+        "localBaserowGroupedAggregateRowsDescription": "对数据表的行进行分组并计算汇总值。",
         "errorNoAggregationSeriesDefined": "未定义汇总系列。",
         "errorIncompleteAggregationSeries": "一个或多个汇总系列不完整。",
         "errorTrashedAggregationField": "至少有一个已配置字段已被移至回收站。"

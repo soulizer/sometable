@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Workshops and Trainings",
-    "description": "Schedule workshops and trainings with facilitators and rooms.",
+    "name": "工作坊与培训",
+    "description": "安排工作坊和培训，管理讲师和场地。",
     "icon": "iconoir-tools",
     "keywords": [
         "training",
@@ -13,7 +13,7 @@
         "small trainings"
     ],
     "categories": [
-        "HR and Recruiting"
+        "人力资源与招聘"
     ],
     "export": [
         {

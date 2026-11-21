@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Business Conference Event",
-    "description": "Plan a conference with talks, speakers, sponsors and rooms.",
+    "name": "商业会议活动",
+    "description": "规划会议，管理演讲、嘉宾、赞助商和会议室。",
     "icon": "iconoir-large-suitcase",
     "keywords": [
         "business",
@@ -14,7 +14,7 @@
         "business workshop"
     ],
     "categories": [
-        "Business Operations"
+        "业务运营"
     ],
     "export": [
         {

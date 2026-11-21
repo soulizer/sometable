@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "SMB Business Plan",
-    "description": "Build a small business plan with markets, costs and forecasts.",
+    "name": "中小企业商业计划",
+    "description": "制定包含市场、成本和预测的小型商业计划。",
     "icon": "iconoir-shop-alt",
     "keywords": [
         "smb",
@@ -14,7 +14,7 @@
         "strategy"
     ],
     "categories": [
-        "Business Strategy"
+        "商业策略"
     ],
     "export": [
         {

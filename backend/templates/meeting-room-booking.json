@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Meeting Room Booking",
-    "description": "Book meeting rooms and see who booked what and when.",
+    "name": "会议室预订",
+    "description": "预订会议室，查看谁在何时预订了什么。",
     "icon": "iconoir-timer-off",
     "keywords": [
         "bookings",
@@ -13,7 +13,7 @@
         "meeting schedule"
     ],
     "categories": [
-        "Business Operations"
+        "业务运营"
     ],
     "export": [
         {

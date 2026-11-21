@@ -15,7 +15,7 @@ from baserow.core.exceptions import DeadlockException
 from baserow.core.feature_flags import FF_USER_TEMPLATES, feature_flag_is_enabled
 from baserow.core.handler import CoreHandler
 
-from .serializers import InstanceIdSerializer, SettingsSerializer
+from .serializers import SettingsSerializer
 
 
 class SettingsView(RealtimeRecoveryPrimaryReadMixin, APIView):
@@ -37,25 +37,6 @@ class SettingsView(RealtimeRecoveryPrimaryReadMixin, APIView):
         data = SettingsSerializer(settings).data
         data.update(**settings_data_registry.get_all_settings_data(request))
         return Response(data)
-
-
-class InstanceIdView(APIView):
-    permission_classes = (IsAdminUser,)
-
-    @extend_schema(
-        tags=["Settings"],
-        operation_id="get_instance_id",
-        description="Responds with the self hosted instance id. Only a user with "
-        "staff permissions can request it.",
-        responses={
-            200: InstanceIdSerializer,
-        },
-    )
-    def get(self, request):
-        """Responds with the instance id."""
-
-        settings = CoreHandler().get_settings()
-        return Response(InstanceIdSerializer(settings).data)
 
 
 class UpdateSettingsView(APIView):

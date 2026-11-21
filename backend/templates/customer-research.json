@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Customer Research",
-    "description": "Turn customer interviews into insights and themes per product.",
+    "name": "客户调研",
+    "description": "把客户访谈整理为按产品划分的洞察和主题。",
     "icon": "iconoir-search",
     "keywords": [
         "research",
@@ -16,7 +16,7 @@
         "transcripts"
     ],
     "categories": [
-        "Marketing"
+        "市场营销"
     ],
     "export": [
         {

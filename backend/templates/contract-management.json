@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Contract Management",
-    "description": "Track contracts from signing to expiration, with parties and owners.",
+    "name": "合同管理",
+    "description": "跟踪合同从签署到到期，管理签约方和负责人。",
     "icon": "iconoir-edit-pencil",
     "keywords": [
         "contract",
@@ -15,7 +15,7 @@
         "lawyer"
     ],
     "categories": [
-        "Business Operations"
+        "业务运营"
     ],
     "export": [
         {

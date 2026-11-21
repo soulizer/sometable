@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Car Dealership Services",
-    "description": "Run dealership services with service logs, parts and labor.",
+    "name": "汽车经销商服务",
+    "description": "管理经销商服务，记录服务日志、配件和工时。",
     "icon": "iconoir-wrench",
     "keywords": [
         "repairs",
@@ -16,7 +16,7 @@
         "fix"
     ],
     "categories": [
-        "Business Operations"
+        "业务运营"
     ],
     "export": [
         {

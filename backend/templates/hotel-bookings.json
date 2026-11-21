@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Hotel Bookings",
-    "description": "Manage hotel rooms, reservations, customers and booking platforms.",
+    "name": "酒店预订",
+    "description": "管理酒店客房、预订、客户和预订平台。",
     "icon": "iconoir-small-shop",
     "keywords": [
         "hotel",
@@ -14,7 +14,7 @@
         "traveling"
     ],
     "categories": [
-        "Business Operations"
+        "业务运营"
     ],
     "export": [
         {

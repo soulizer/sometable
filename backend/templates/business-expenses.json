@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Business Expenses",
-    "description": "Record business expenses by type and supplier, with tax deductions.",
+    "name": "企业开支",
+    "description": "按类型和供应商记录企业开支，并管理税前扣除。",
     "icon": "iconoir-dollar",
     "keywords": [
         "expense",
@@ -15,7 +15,7 @@
         "bookkeeping"
     ],
     "categories": [
-        "Finance and Accounting"
+        "财务与会计"
     ],
     "export": [
         {

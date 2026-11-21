@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "House Search",
-    "description": "Compare houses for sale and open houses, and track your applications.",
+    "name": "找房",
+    "description": "比较在售房源和开放看房，跟踪你的申请进度。",
     "icon": "iconoir-neighbourhood",
     "keywords": [
         "house hunt",
@@ -13,8 +13,8 @@
         "house application"
     ],
     "categories": [
-        "Personal and Hobbies",
-        "Real Estate"
+        "个人与爱好",
+        "房地产"
     ],
     "export": [
         {

@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Media Tracking",
-    "description": "Track media publications, contacts and SEO ratings.",
+    "name": "媒体跟踪",
+    "description": "跟踪媒体发布、联系人和 SEO 评分。",
     "icon": "iconoir-media-image-list",
     "keywords": [
         "publications",
@@ -16,7 +16,7 @@
         "seo rating"
     ],
     "categories": [
-        "Marketing"
+        "市场营销"
     ],
     "export": [
         {

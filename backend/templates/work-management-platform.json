@@ -1,7 +1,7 @@
 {
   "baserow_template_version": 1,
-  "name": "Work Management Platform",
-  "description": "Manage teams, projects, tasks, messages and files in one place.",
+  "name": "工作管理平台",
+  "description": "在一处管理团队、项目、任务、消息和文件。",
   "icon": "iconoir-network",
   "keywords": [
     "Project Management",
@@ -13,8 +13,8 @@
     "Collaboration Tools"
   ],
   "categories": [
-    "Project Management",
-    "🔥 Most Popular"
+    "项目管理",
+    "🔥 热门"
   ],
   "open_application": 199,
   "export": [

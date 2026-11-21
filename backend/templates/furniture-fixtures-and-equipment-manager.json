@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Furniture, Fixtures, and Equipment Manager",
-    "description": "Track furniture and equipment with costs and replacement dates.",
+    "name": "家具与设备管理",
+    "description": "跟踪家具和设备，记录成本和更换日期。",
     "icon": "iconoir-sleeper-chair",
     "keywords": [
         "asset management",
@@ -12,7 +12,7 @@
         "asset lifecycle"
     ],
     "categories": [
-        "Business Operations"
+        "业务运营"
     ],
     "export": [
         {

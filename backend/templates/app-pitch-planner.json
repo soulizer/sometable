@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "App Pitch Planner",
-    "description": "Outline an app pitch section by section, with timing and key points.",
+    "name": "应用路演规划",
+    "description": "逐段规划应用路演内容，包含时间安排和要点。",
     "icon": "iconoir-learning",
     "keywords": [
         "keynote",
@@ -14,7 +14,7 @@
         "outline"
     ],
     "categories": [
-        "Marketing"
+        "市场营销"
     ],
     "export": [
         {

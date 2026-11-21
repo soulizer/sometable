@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Grocery Planner",
-    "description": "Plan grocery runs around meals, with items, shops and costs.",
+    "name": "买菜计划",
+    "description": "围绕餐食规划采购，管理食材、商店和花费。",
     "icon": "iconoir-apple",
     "keywords": [
         "groceries",
@@ -15,7 +15,7 @@
         "store"
     ],
     "categories": [
-        "Personal and Hobbies"
+        "个人与爱好"
     ],
     "export": [
         {

@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Wedding Planning",
-    "description": "Plan your wedding with venues, guests, seating and vendors.",
+    "name": "婚礼策划",
+    "description": "规划你的婚礼，管理场地、宾客、座位和供应商。",
     "icon": "iconoir-list-select",
     "keywords": [
         "wedding",
@@ -14,7 +14,7 @@
         "reception"
     ],
     "categories": [
-        "Personal and Hobbies"
+        "个人与爱好"
     ],
     "export": [
         {

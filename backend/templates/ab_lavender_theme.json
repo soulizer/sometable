@@ -1,7 +1,7 @@
 {
   "baserow_template_version": 1,
-  "name": "Lavender Theme",
-  "description": "Light application theme in purple and lavender.",
+  "name": "薰衣草主题",
+  "description": "浅色应用主题，采用紫色和薰衣草色。",
   "icon": "",
   "keywords": [
     "application",
@@ -12,7 +12,7 @@
     "soft"
   ],
   "categories": [
-    "Application Themes"
+    "应用主题"
   ],
   "open_application": 177,
   "export": [

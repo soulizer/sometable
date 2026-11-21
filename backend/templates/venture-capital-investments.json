@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Venture Capital Investments",
-    "description": "Track VC funds, investments, portfolio companies and partners.",
+    "name": "风险投资管理",
+    "description": "跟踪 VC 基金、投资、被投企业和合伙人。",
     "icon": "iconoir-coin",
     "keywords": [
         "money",
@@ -17,7 +17,7 @@
         "investment"
     ],
     "categories": [
-        "Finance and Accounting"
+        "财务与会计"
     ],
     "export": [
         {

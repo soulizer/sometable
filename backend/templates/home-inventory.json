@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Home Inventory",
-    "description": "Keep an inventory of household items and insurance policies.",
+    "name": "家庭物品清单",
+    "description": "记录家庭物品和保险保单。",
     "icon": "iconoir-house-rooms",
     "keywords": [
         "home",
@@ -15,7 +15,7 @@
         "insurance"
     ],
     "categories": [
-        "Personal and Hobbies"
+        "个人与爱好"
     ],
     "export": [
         {

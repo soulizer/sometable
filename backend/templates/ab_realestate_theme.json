@@ -1,7 +1,7 @@
 {
   "baserow_template_version": 1,
-  "name": "Real Estate Theme",
-  "description": "Warm application theme in brown and dark teal with serif headings.",
+  "name": "房产主题",
+  "description": "暖色应用主题，采用棕色和深青绿色，配衬线标题。",
   "icon": "",
   "keywords": [
     "application",
@@ -12,7 +12,7 @@
     "housing"
   ],
   "categories": [
-    "Application Themes"
+    "应用主题"
   ],
   "open_application": 177,
   "export": [

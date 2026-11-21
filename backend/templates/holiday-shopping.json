@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Holiday Shopping",
-    "description": "Plan holiday gifts per person, with prices, shops and order status.",
+    "name": "节日购物",
+    "description": "按人规划节日礼物，记录价格、商店和订单状态。",
     "icon": "iconoir-cart-alt",
     "keywords": [
         "holiday",
@@ -19,7 +19,7 @@
         "gift"
     ],
     "categories": [
-        "Personal and Hobbies"
+        "个人与爱好"
     ],
     "export": [
         {

@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "ESG Management",
-    "description": "Track ESG targets, initiatives and actions against the UN SDGs.",
+    "name": "ESG 管理",
+    "description": "对照联合国可持续发展目标跟踪 ESG 目标、举措和行动。",
     "icon": "iconoir-globe",
     "keywords": [
         "ESG",
@@ -24,8 +24,8 @@
         "environment sustainability governance"
     ],
     "categories": [
-        "Governance",
-        "🔥 Most Popular"
+        "治理",
+        "🔥 热门"
     ],
     "export": [
         {

@@ -1,7 +1,7 @@
 {
   "baserow_template_version": 1,
-  "name": "Slate Theme",
-  "description": "Minimal light application theme in charcoal and grey.",
+  "name": "石板主题",
+  "description": "简约的浅色应用主题，采用炭灰和灰色。",
   "icon": "",
   "keywords": [
     "application",
@@ -12,7 +12,7 @@
     "grayscale"
   ],
   "categories": [
-    "Application Themes"
+    "应用主题"
   ],
   "open_application": 177,
   "export": [

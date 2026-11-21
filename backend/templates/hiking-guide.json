@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Hiking Guide",
-    "description": "Collect hiking trails with length, difficulty and elevation by park.",
+    "name": "徒步指南",
+    "description": "按公园收集徒步路线，记录长度、难度和海拔。",
     "icon": "iconoir-walking",
     "keywords": [
         "hiking guide",
@@ -13,8 +13,8 @@
         "hiking planner"
     ],
     "categories": [
-        "Personal and Hobbies",
-        "Travel and Outdoors"
+        "个人与爱好",
+        "旅行与户外"
     ],
     "export": [
         {

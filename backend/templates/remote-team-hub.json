@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Remote Team Hub",
-    "description": "Run a remote team's projects and meetings across time zones.",
+    "name": "远程团队中心",
+    "description": "跨时区管理远程团队的项目和会议。",
     "icon": "iconoir-computer",
     "keywords": [
         "remote",
@@ -16,7 +16,7 @@
         "teams"
     ],
     "categories": [
-        "Business Operations"
+        "业务运营"
     ],
     "export": [
         {

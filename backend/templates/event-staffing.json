@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Event Staffing",
-    "description": "Schedule staff and volunteers for events and see where you are short.",
+    "name": "活动人员安排",
+    "description": "为活动安排员工和志愿者，查看人员缺口。",
     "icon": "baserow-icon-team",
     "keywords": [
         "event",
@@ -12,7 +12,7 @@
         "organization"
     ],
     "categories": [
-        "Business Operations"
+        "业务运营"
     ],
     "export": [
         {

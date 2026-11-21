@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Public Library Inventory",
-    "description": "Manage a library's books, eBooks, DVDs and games across branches.",
+    "name": "公共图书馆馆藏",
+    "description": "管理图书馆各分馆的图书、电子书、DVD 和游戏。",
     "icon": "iconoir-book-stack",
     "keywords": [
         "library",
@@ -15,8 +15,8 @@
         "library inventory"
     ],
     "categories": [
-        "Nonprofits",
-        "Business Operations"
+        "非营利组织",
+        "业务运营"
     ],
     "export": [
         {

@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Car Hunt",
-    "description": "Shortlist cars for sale with prices, history reports and features.",
+    "name": "找车",
+    "description": "筛选在售车辆，比较价格、历史报告和配置。",
     "icon": "iconoir-car",
     "keywords": [
         "car",
@@ -13,7 +13,7 @@
         "new car"
     ],
     "categories": [
-        "Personal and Hobbies"
+        "个人与爱好"
     ],
     "export": [
         {

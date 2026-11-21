@@ -944,62 +944,6 @@ def test_send_email_pending_verification_already_verified(data_fixture):
         UserHandler().send_email_pending_verification(user)
 
 
-@pytest.mark.django_db
-@patch("baserow.core.user.handler.share_onboarding_details_with_baserow")
-def test_start_share_onboarding_details_with_baserow(mock_task, data_fixture):
-    user = data_fixture.create_user()
-
-    UserHandler().start_share_onboarding_details_with_baserow(
-        user, "Marketing", "CEO", "11 - 50", "The Netherlands", "Google"
-    )
-
-    mock_task.delay.assert_called_with(
-        email=user.email,
-        team="Marketing",
-        role="CEO",
-        size="11 - 50",
-        country="The Netherlands",
-        how="Google",
-    )
-
-
-@pytest.mark.django_db
-@override_settings(DEBUG=True)
-@responses.activate
-def test_share_onboarding_details_with_baserow_valid_response(data_fixture):
-    data_fixture.update_settings(instance_id="1")
-
-    response1 = responses.add(
-        responses.POST,
-        "http://baserow-saas-backend:8000/api/saas/onboarding/additional-details/",
-        status=204,
-        match=[
-            json_params_matcher(
-                {
-                    "email": "test@test.nl",
-                    "team": "Marketing",
-                    "role": "CEO",
-                    "size": "11 - 50",
-                    "country": "The Netherlands",
-                    "how": "Google",
-                    "instance_id": "1",
-                }
-            )
-        ],
-    )
-
-    UserHandler().share_onboarding_details_with_baserow(
-        email="test@test.nl",
-        team="Marketing",
-        role="CEO",
-        size="11 - 50",
-        country="The Netherlands",
-        how="Google",
-    )
-
-    assert response1.call_count == 1
-
-
 @pytest.mark.django_db(transaction=True)
 @override_settings(
     PUBLIC_WEB_FRONTEND_URL="https://baserow.example",

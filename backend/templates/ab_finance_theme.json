@@ -1,7 +1,7 @@
 {
   "baserow_template_version": 1,
-  "name": "Finance Theme",
-  "description": "Light application theme in deep green and gold.",
+  "name": "金融主题",
+  "description": "浅色应用主题，采用深绿和金色。",
   "icon": "",
   "keywords": [
     "application",
@@ -12,7 +12,7 @@
     "money"
   ],
   "categories": [
-    "Application Themes"
+    "应用主题"
   ],
   "open_application": 177,
   "export": [

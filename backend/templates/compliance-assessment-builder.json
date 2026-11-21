@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Compliance Assessment Builder",
-    "description": "Build compliance questionnaires and review the responses.",
+    "name": "合规评估构建器",
+    "description": "构建合规问卷并审核回答。",
     "icon": "iconoir-clipboard-check",
     "keywords": [
         "compliance assessments",
@@ -15,9 +15,9 @@
         "ChartJS reporting"
     ],
     "categories": [
-        "Governance",
-        "Legal",
-        "🔥 Most Popular"
+        "治理",
+        "法律",
+        "🔥 热门"
     ],
     "export": [
         {

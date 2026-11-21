@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Content Scheduling Manager",
-    "description": "Schedule ads across channels, target groups and creators.",
+    "name": "内容排期管理",
+    "description": "跨渠道、目标人群和创作者安排广告内容。",
     "icon": "iconoir-calendar",
     "keywords": [
         "Content",
@@ -17,7 +17,7 @@
         "onboarding"
     ],
     "categories": [
-        "Marketing"
+        "市场营销"
     ],
     "export": [
         {

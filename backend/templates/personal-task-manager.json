@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Personal Task Manager",
-    "description": "Organize personal tasks, shopping lists and contacts.",
+    "name": "个人任务管理",
+    "description": "管理个人任务、购物清单和联系人。",
     "icon": "iconoir-paste-clipboard",
     "keywords": [
         "todo",
@@ -20,8 +20,8 @@
         "personal task management"
     ],
     "categories": [
-        "Personal and Hobbies",
-        "Project Management"
+        "个人与爱好",
+        "项目管理"
     ],
     "export": [
         {

@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Job Search",
-    "description": "Organize a job search with applications, contacts and resumes.",
+    "name": "求职管理",
+    "description": "整理求职过程，管理申请、联系人和简历。",
     "icon": "iconoir-large-suitcase",
     "keywords": [
         "job",
@@ -16,7 +16,7 @@
         "careers"
     ],
     "categories": [
-        "Personal and Hobbies"
+        "个人与爱好"
     ],
     "export": [
         {

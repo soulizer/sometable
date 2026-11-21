@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Lead Management",
-    "description": "Manage leads by source and target group and log every interaction.",
+    "name": "线索管理",
+    "description": "按来源和目标人群管理线索，记录每次沟通。",
     "icon": "iconoir-verified-user",
     "keywords": [
         "leads",
@@ -15,7 +15,7 @@
         "events"
     ],
     "categories": [
-        "Marketing"
+        "市场营销"
     ],
     "export": [
         {

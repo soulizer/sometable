@@ -1,7 +1,7 @@
 {
   "baserow_template_version": 1,
-  "name": "EU Packaging and Packaging Waste Regulation (PPWR)",
-  "description": "Assess packaging against EU PPWR rules and track corrective actions.",
+  "name": "欧盟包装与包装废弃物法规（PPWR）",
+  "description": "对照欧盟 PPWR 规则评估包装，并跟踪整改措施。",
   "icon": "iconoir-box-iso",
   "keywords": [
     "governance",
@@ -9,8 +9,8 @@
     "EU laws"
   ],
   "categories": [
-    "Governance",
-    "Business Operations"
+    "治理",
+    "业务运营"
   ],
   "export": [
     {

@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "New Hire Onboarding",
-    "description": "Onboard new hires with task checklists per department.",
+    "name": "新员工入职",
+    "description": "按部门用任务清单安排新员工入职。",
     "icon": "iconoir-home-user",
     "keywords": [
         "employee onboarding",
@@ -17,7 +17,7 @@
         "onboarding"
     ],
     "categories": [
-        "HR and Recruiting"
+        "人力资源与招聘"
     ],
     "export": [
         {

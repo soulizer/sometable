@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Personal Finance Manager",
-    "description": "Compare estimated and actual income and expenses per period.",
+    "name": "个人财务管理",
+    "description": "按周期比较预计与实际收支。",
     "icon": "iconoir-bank",
     "keywords": [
         "personal finance manager",
@@ -16,7 +16,7 @@
         "income"
     ],
     "categories": [
-        "Finance and Accounting"
+        "财务与会计"
     ],
     "export": [
         {

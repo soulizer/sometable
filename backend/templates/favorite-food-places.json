@@ -1,7 +1,7 @@
 {
     "baserow_template_version": 1,
-    "name": "Favorite Food Places",
-    "description": "Keep track of favorite restaurants, dishes and delivery orders.",
+    "name": "常去餐厅",
+    "description": "记录常去的餐厅、菜品和外卖订单。",
     "icon": "iconoir-pizza-slice",
     "keywords": [
         "food",
@@ -13,7 +13,7 @@
         "foodie"
     ],
     "categories": [
-        "Food and Restaurants"
+        "餐饮"
     ],
     "export": [
         {
