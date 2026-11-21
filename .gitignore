@@ -177,3 +177,7 @@ web-frontend/storybook-static
 .agent
 MEMORY.md
 .commandcode/
+
+# Temporary output of build/deploy helper scripts
+docs/deployment/build-logs/*-chain.out
+docs/deployment/build-logs/*-curl.out
