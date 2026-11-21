@@ -1,1 +1,262 @@
-{}
+{
+  "automationWorkflow": {
+    "title": "工作流"
+  },
+  "automationWelcomeGuidedTourStep": {
+    "title": "欢迎使用自动化！",
+    "content": "我们来快速了解一下。你将看到如何设置触发器、添加操作、测试并发布工作流——全程无需写代码。"
+  },
+  "automationGraphGuidedTourStep": {
+    "title": "在这里管理工作流结构",
+    "content": "在这里创建触发器和操作，定义工作流要做的事情。选中某个触发器或操作，即可在侧边面板中配置它。"
+  },
+  "automationTestRunGuidedTourStep": {
+    "title": "测试你的工作流",
+    "content": "准备就绪后，启动一次测试运行，查看工作流的实际效果。触发器会运行一次，模拟完整执行过程。"
+  },
+  "automationHistoryGuidedTourStep": {
+    "title": "查看工作流历史",
+    "content": "使用历史面板回顾过往的测试运行和已发布执行记录。这是排查问题或确认结果的好方法，你也可以在这里取消正在进行的运行。"
+  },
+  "automationPublishGuidedTourStep": {
+    "title": "发布你的工作流",
+    "content": "测试并调整好设置后，发布工作流即可正式启用。此后触发器会按计划自动运行。"
+  },
+  "automationWorkflowStateGuidedTourStep": {
+    "title": "控制工作流状态",
+    "content": "你可以随时在这里暂停或恢复工作流，始终掌控它是启用还是停用。"
+  },
+  "automationDocsGuidedTourStep": {
+    "title": "浏览文档",
+    "content": "如果遇到问题或想了解更多，点击高亮的按钮，查看构建自动化的详细指南和常见问题。"
+  },
+  "sidebarComponentAutomation": {
+    "createAutomationWorkflow": "新建工作流"
+  },
+  "createAutomationWorkflowModal": {
+    "header": "创建工作流",
+    "submit": "添加工作流"
+  },
+  "automationWorkflowForm": {
+    "defaultName": "工作流",
+    "nameTitle": "名称",
+    "nameSubtitle": "工作流的唯一名称",
+    "namePlaceholder": "输入名称…"
+  },
+  "duplicateAutomationWorkflowJobType": {
+    "name": "复制自动化工作流",
+    "duplicating": "正在复制",
+    "duplicatedTitle": "工作流已复制"
+  },
+  "trashType": {
+    "workflow": "工作流",
+    "automation": "自动化"
+  },
+  "generalSettings": {
+    "titleOverview": "常规",
+    "nameLabel": "自动化名称",
+    "notificationLabel": "通知",
+    "notificationCheckboxLabel": "此自动化失败时通知我",
+    "cantUpdateAutomationTitle": "无法更新自动化",
+    "cantUpdateAutomationDescription": "抱歉，无法更新该自动化。"
+  },
+  "workflowGeneralSettings": {
+    "titleOverview": "工作流设置",
+    "nameLabel": "工作流名称",
+    "descriptionLabel": "描述",
+    "descriptionPlaceholder": "这个工作流用于什么？",
+    "descriptionHelp": "所有能打开此工作流的人都会看到。支持 Markdown。",
+    "workflowDisabledRecipientsLabel": "通知接收人",
+    "workflowDisabledRecipientsHelp": "如果此工作流被自动停用，这些工作区成员会收到站内通知。",
+    "selectWorkflowDisabledRecipients": "选择接收人",
+    "noWorkflowDisabledRecipients": "未选择接收人。",
+    "cantUpdateWorkflowTitle": "无法更新工作流",
+    "cantUpdateWorkflowDescription": "抱歉，无法更新该工作流。"
+  },
+  "workflowDisabledNotification": {
+    "body": "工作流“{name}”已被停用。"
+  },
+  "integrationSettings": {
+    "title": "集成",
+    "noIntegrationMessage": "尚未创建任何集成。添加数据源、操作或用户认证即可创建集成。",
+    "integrationMessage": "你可以通过添加数据源、操作或用户认证来创建新的集成。"
+  },
+  "automationHeader": {
+    "untrustedContentWarning": "自定义代码节点已被阻止。请在信任此工作流的内容前先查看导入报告。",
+    "startTestRun": "开始测试运行",
+    "stopTestRun": "停止测试运行",
+    "publishBtn": "发布",
+    "settingsBtn": "设置",
+    "historyBtn": "历史",
+    "docsBtn": "文档",
+    "descriptionBtn": "描述",
+    "switchLabelDraft": "草稿",
+    "switchLabelDisabled": "已停用",
+    "switchLabelPaused": "已暂停",
+    "switchLabelLive": "运行中",
+    "lastPublished": "上次发布"
+  },
+  "dataProviderType": {
+    "currentIteration": "当前迭代",
+    "currentNode": "此节点",
+    "item": "条目",
+    "previousNode": "上一个节点",
+    "requiresTesting": "需要测试"
+  },
+  "nodeSidePanel": {
+    "labelTitle": "标签",
+    "notePlaceholder": "这一步用于什么？"
+  },
+  "nodeErrorHandlingForm": {
+    "title": "错误处理",
+    "onFailureLabel": "失败时",
+    "stop": "停止",
+    "retry": "重试",
+    "conditionLabel": "条件",
+    "conditionHelp": "每次尝试后会以此节点的结果进行判断。条件为真时视为本次尝试失败并重试该节点，例如 HTTP 请求返回特定状态码时。",
+    "conditionPlaceholder": "get('current_node.status_code') = 429",
+    "retriesLabel": "重试次数"
+  },
+  "historySidePanel": {
+    "title": "历史",
+    "noRunsTitle": "暂无运行记录",
+    "noRunsDescription": "此工作流运行后，结果会显示在这里。",
+    "statusStarted": "进行中…",
+    "statusSuccess": "运行成功",
+    "statusError": "运行失败",
+    "statusCancelled": "已取消",
+    "statusSuccessBadge": "已完成",
+    "statusErrorBadge": "失败",
+    "statusSkippedBadge": "已跳过",
+    "statusRetriedBadge": "已重试",
+    "statusWaitingBadge": "等待中",
+    "statusRunningBadge": "运行中",
+    "statusCancelledBadge": "已取消",
+    "waitingUntil": "等待至 {time}",
+    "statusDisabled": "已被系统停用",
+    "startedBy": "由 {name} 发起",
+    "successfulRuns": "成功运行",
+    "completedInSeconds": "在 {s} 秒内完成。",
+    "completedInLessThanSecond": "在 1 秒内完成。",
+    "running": "已运行 {at} 秒",
+    "cancelRun": "取消此次工作流运行",
+    "cancelling": "正在取消此次运行。当前节点执行完毕后就会停止。",
+    "cancellationAlreadyRequestedTitle": "已请求取消",
+    "cancellationAlreadyRequested": "已有其他人请求取消此次运行。当前节点执行完毕后就会停止。",
+    "failedRuns": "失败运行",
+    "errorHideDetails": "隐藏详情",
+    "errorShowDetails": "显示详情",
+    "runNumber": "运行 {n}",
+    "retryNumber": "重试 {n}",
+    "runCount": "{n} 次运行",
+    "testRun": "测试",
+    "showResult": "显示结果"
+  },
+  "nodeType": {
+    "triggerDeletionError": "触发器无法删除，只能替换。",
+    "localBaserowFieldsUpdatedLabel": "{tableName} 中的 {fieldName} 已更新",
+    "localBaserowFieldsUpdatedMultipleLabel": "{tableName} 中有 {count} 个字段的值已更新",
+    "localBaserowFieldsUpdatedNoFieldLabel": "数据表中有特定字段的值已更新",
+    "localBaserowCreateRowLabel": "在 {tableName} 中创建一行",
+    "localBaserowCreateRowsLabel": "在 {tableName} 中批量创建行",
+    "localBaserowUpdateRowLabel": "更新 {tableName} 中的一行",
+    "localBaserowUpdateRowsLabel": "批量更新 {tableName} 中的行",
+    "localBaserowDeleteRowLabel": "删除 {tableName} 中的行",
+    "localBaserowGetRowLabel": "读取 {tableName} 中的一行",
+    "localBaserowListRowsLabel": "列出 {tableName} 中的行",
+    "localBaserowAggregateRowsLabel": "汇总 {tableName} 中的行",
+    "httpRequestLabel": "发送 HTTP 请求",
+    "csvFileReaderLabel": "读取 CSV 文件",
+    "startWorkflowLabel": "启动 {workflowName}",
+    "smtpEmailLabel": "发送邮件",
+    "routerLabel": "进入 {edgeCount} 个分支之一",
+    "routerHistoryLabel": "{label}（{edge}）",
+    "gotoNodeLabel": "转到节点",
+    "gotoNodeLabelWithDestination": "转到节点 → {destination}",
+    "gotoHistoryLabel": "{label} → {destination}",
+    "responseLabel": "响应",
+    "iterationLabel": "遍历条目",
+    "iteratorAliases": "循环, for 循环, 逐项处理, 重复, 迭代",
+    "gotoAliases": "while 循环, 重复直到, 循环, 重试, 跳转, 返回",
+    "waitNodeLabel": "等待",
+    "waitAliases": "延迟, 休眠, 暂停, 定时器",
+    "defaultEdgeLabelFallback": "默认",
+    "routerWithOutputNodesDeleteError": "必须先移除其 {outputCount} 个输出节点才能删除。",
+    "routerWithOutputNodesReplaceError": "必须先移除其 {outputCount} 个输出节点才能替换。",
+    "iteratorWithChildrenNodesDeleteError": "必须先移除其子节点才能删除。",
+    "iteratorWithChildrenNodesReplaceError": "必须先移除其子节点才能替换。",
+    "periodicTriggerLabel": "定时触发器",
+    "aiAgent": "AI 提示",
+    "slackWriteMessageName": "发送 Slack 消息",
+    "slackWriteMessageLabel": "向 #{channel} 发送消息"
+  },
+  "workflowNode": {
+    "actionDelete": "删除",
+    "actionReplace": "替换",
+    "actionDuplicate": "复制",
+    "actionConfigure": "配置",
+    "beforeLabelTrigger": "启动时机",
+    "beforeLabelAction": "然后",
+    "beforeLabelCondition": "如果满足条件",
+    "beforeLabelConditionDefault": "如果未满足任何条件",
+    "beforeLabelRepeat": "对每个条目",
+    "moreEdit": "编辑",
+    "moreReplace": "替换",
+    "nodeOptions": "节点选项",
+    "displayLabelDebug": "ID：{id} | 上一个：{previousNodeId} | {outputUid}",
+    "moreDuplicate": "复制",
+    "gotoMarkerSource": "跳转到标记 {marker}",
+    "gotoMarkerDestination": "标记 {marker} 的目标位置"
+  },
+  "workflowAddNode": {
+    "displayTitle": "创建自动化节点"
+  },
+  "workflowNodeContext": {
+    "searchPlaceholderTrigger": "搜索事件…",
+    "searchPlaceholderActions": "搜索操作…",
+    "noResults": "未找到结果"
+  },
+  "nodeRecipe": {
+    "groupLabel": "预设方案",
+    "forLoopName": "For 循环",
+    "forLoopDescription": "添加一个迭代节点，将其子节点运行 5 次。修改范围即可增加或减少循环次数。",
+    "forLoopAliases": "循环, 逐项处理, 重复, 迭代",
+    "forLoopIteratorLabel": "重复 5 次",
+    "whileLoopName": "While 循环",
+    "whileLoopDescription": "添加一个“列出数据行”节点和一个“转到节点”，只要找到数据行就跳回。请在两者之间添加能修改这些数据行的节点，否则循环不会结束。",
+    "whileLoopAliases": "循环, 重复直到, 直到, 重试",
+    "whileLoopListRowsLabel": "查找要处理的数据行",
+    "whileLoopGotoLabel": "只要找到数据行就重复",
+    "nodesLeftTitle": "预设方案仅部分添加",
+    "nodesLeftMessage": "“{recipe}”预设方案未能完整添加，且其已添加的节点无法移除。撤销操作可移除它们，或从工作流中手动删除。"
+  },
+  "serviceType": {
+    "periodicTrigger": "定时触发器",
+    "periodicTriggerDescription": "按指定的时间间隔定期触发工作流",
+    "periodicTriggerTriggeredAt": "触发时间",
+    "errorIntervalMissing": "必须设置时间间隔。",
+    "coreHTTPTrigger": "HTTP 触发器",
+    "coreHTTPTriggerDescription": "接收 HTTP 请求以触发工作流",
+    "coreManualTrigger": "手动触发器",
+    "coreManualTriggerDescription": "仅当其他工作流操作启动此工作流时运行",
+    "responseLabel": "响应"
+  },
+  "workflowEditor": {
+    "chooseEvent": "选择事件…"
+  },
+  "simulateDispatch": {
+    "triggerNodeAwaitingEvent": "该节点正在等待。请手动触发事件以填充数据并完成测试。",
+    "simulationInProgress": "节点测试正在进行…",
+    "errorNodeNotConfigured": "节点必须先配置才能测试。",
+    "errorPreviousNodeNotConfigured": "上一个节点“{node}”必须先配置。",
+    "errorPreviousNodesNotTested": "上一个节点“{node}”必须先测试。",
+    "buttonLabelTest": "测试节点",
+    "buttonLabelTestAgain": "再次测试节点",
+    "testNodeDescription": "测试此节点以确认配置正确。测试数据可在后续步骤中使用。",
+    "sampleDataModalTitle": "{nodeLabel} 的返回数据",
+    "sampleDataModalSubTitle": "JSON 数据"
+  },
+  "lastViewedItemType": {
+    "automationWorkflow": "工作流"
+  }
+}
