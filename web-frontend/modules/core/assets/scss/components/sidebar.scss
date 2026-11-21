@@ -170,6 +170,16 @@
   }
 }
 
+// Without the brand logo on the left, keep the footer actions aligned to the
+// right as they were when the logo was still present.
+.sidebar__foot--no-logo {
+  justify-content: flex-end;
+
+  .sidebar--collapsed & {
+    justify-content: center;
+  }
+}
+
 .sidebar__foot-links {
   display: flex;
   gap: 16px;

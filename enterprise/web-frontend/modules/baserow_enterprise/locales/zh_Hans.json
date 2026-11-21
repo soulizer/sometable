@@ -1,36 +1,36 @@
 {
     "enterprise": {
         "license": "",
-        "sidebarTooltip": "Your account has access to the enterprise features globally",
-        "rbac": "RBAC",
-        "sso": "SSO",
-        "licenseDescription": "Viewers and commenters free in this plan. If a user has any other role, in any workspace then they will use a paid seat automatically.",
-        "overflowWarning": "You have too many non-viewer/commenter users and have used up all of your paid seats. Change users to become viewers on each workspaces members page.",
-        "deactivated": "Available in the advanced/enterprise version",
-        "enterpriseOnlyDeactivated": "Available in the enterprise version"
+        "sidebarTooltip": "你的账户可全局使用企业版功能",
+        "rbac": "角色权限（RBAC）",
+        "sso": "单点登录（SSO）",
+        "licenseDescription": "本方案中查看者和评论者免费。如果用户在任意工作区拥有其他角色，将自动占用付费席位。",
+        "overflowWarning": "非查看者/评论者用户过多，付费席位已用完。请在各工作区的成员页面将用户改为查看者。",
+        "deactivated": "高级版/企业版中可用",
+        "enterpriseOnlyDeactivated": "企业版中可用"
     },
     "clientHandler": {
-        "cannotDisableAllAuthProvidersTitle": "Last enabled provider",
-        "cannotDisableAllAuthProvidersDescription": "It is not possible to disable or delete last enabled provider."
+        "cannotDisableAllAuthProvidersTitle": "最后一个启用的提供者",
+        "cannotDisableAllAuthProvidersDescription": "无法停用或删除最后一个启用的提供者。"
     },
     "advanced": {
-        "license": "Advanced",
-        "openSubscriptions": "Open subscriptions for more seats"
+        "license": "高级版",
+        "openSubscriptions": "打开订阅页面以增加席位"
     },
     "trashType": {
-        "team": "team"
+        "team": "团队"
     },
     "serviceType": {
-        "coreCode": "Execute code",
-        "coreCodeDescription": "Runs arbitrary JavaScript code.",
-        "coreXLSFileReader": "Read an XLS file",
-        "coreXLSFileReaderDescription": "Reads rows from an XLS or XLSX file.",
-        "errorCodeMissing": "Missing code property",
-        "errorXLSFileMissing": "Missing XLS file property",
-        "errorSearchQueryMissing": "Missing search query property",
-        "localBaserowSemanticSearch": "Semantic search",
-        "localBaserowSemanticSearchDescription": "Finds the rows that best match the meaning of a search query.",
-        "semanticSearchUnavailable": "Semantic search isn't configured on this instance"
+        "coreCode": "执行代码",
+        "coreCodeDescription": "运行任意 JavaScript 代码。",
+        "coreXLSFileReader": "读取 XLS 文件",
+        "coreXLSFileReaderDescription": "从 XLS 或 XLSX 文件中读取数据行。",
+        "errorCodeMissing": "缺少代码属性",
+        "errorXLSFileMissing": "缺少 XLS 文件属性",
+        "errorSearchQueryMissing": "缺少搜索关键词属性",
+        "localBaserowSemanticSearch": "语义搜索",
+        "localBaserowSemanticSearchDescription": "查找与搜索语句含义最匹配的数据行。",
+        "semanticSearchUnavailable": "此实例未配置语义搜索"
     },
     "coreCodeServiceForm": {
         "codeLabel": "代码",
@@ -55,9 +55,9 @@
         "firstLineIsHeader": "首行为表头"
     },
     "nodeType": {
-        "codeLabel": "Execute code",
-        "xlsFileReaderLabel": "Read an XLS file",
-        "localBaserowSemanticSearchLabel": "Semantic search in {tableName}"
+        "codeLabel": "执行代码",
+        "xlsFileReaderLabel": "读取 XLS 文件",
+        "localBaserowSemanticSearchLabel": "在 {tableName} 中语义搜索"
     },
     "semanticSearchFieldSetting": {
         "label": "语义搜索",
@@ -148,11 +148,11 @@
         "retry": "重试"
     },
     "teamsSettings": {
-        "teamsTabTitle": "Teams"
+        "teamsTabTitle": "团队"
     },
     "adminType": {
         "AuditLog": "审计日志",
-        "Authentication": "Authentication",
+        "Authentication": "认证",
         "DataScanner": "数据扫描器"
     },
     "dataScanner": {
@@ -243,10 +243,10 @@
         "description": "请在管理后台的数据扫描器中查看结果。"
     },
     "applicationUserLimitNotification": {
-        "titleWarning": "{workspaceName} has used {usage} of the {limit} available application users.",
-        "titleReached": "{workspaceName} has reached the application user limit of {limit}. Once it goes over, no one can sign in to its published apps until you upgrade.",
-        "titleWarningInstance": "This instance has used {usage} of the {limit} available application users. The limit is shared by all workspaces, including {workspaceName}.",
-        "titleReachedInstance": "This instance has reached the application user limit of {limit}. Once it goes over, no one can sign in to the published apps of any workspace, including {workspaceName}, until the license is upgraded."
+        "titleWarning": "{workspaceName} 已使用 {usage}/{limit} 个可用应用用户。",
+        "titleReached": "{workspaceName} 已达到 {limit} 个应用用户上限。一旦超出，在你升级前任何人都无法登录其已发布的应用。",
+        "titleWarningInstance": "此实例已使用 {usage}/{limit} 个可用应用用户。该上限由所有工作区共享，包括 {workspaceName}。",
+        "titleReachedInstance": "此实例已达到 {limit} 个应用用户上限。一旦超出，在许可证升级前，任何人都无法登录任何工作区（包括 {workspaceName}）的已发布应用。"
     },
     "auditLog": {
         "adminTitle": "审计日志",
@@ -290,11 +290,11 @@
         "addProvider": "添加提供者"
     },
     "authProviderTypes": {
-        "password": "Email and password authentication",
-        "saml": "SSO SAML provider",
-        "ssoSamlProviderName": "SSO SAML: {domain}",
-        "ssoSamlProviderNameUnconfigured": "Unconfigured SSO SAML",
-        "ssoOIDCProviderNameUnconfigured": "Unconfigured OpenId connect"
+        "password": "邮箱和密码认证",
+        "saml": "SSO SAML 提供者",
+        "ssoSamlProviderName": "SSO SAML：{domain}",
+        "ssoSamlProviderNameUnconfigured": "未配置的 SSO SAML",
+        "ssoOIDCProviderNameUnconfigured": "未配置的 OpenID Connect"
     },
     "editAuthProviderMenuContext": {
         "edit": "编辑",
@@ -323,14 +323,14 @@
         "emailVerificationNotice": "请确保身份提供者要求验证邮箱地址后再进行身份验证。SAML 签名仅确认域名归属。"
     },
     "createSettingsAuthProviderModal": {
-        "title": "Add a new {type}"
+        "title": "添加新的{type}"
     },
     "updateSettingsAuthProviderModal": {
-        "title": "Edit {name}"
+        "title": "编辑 {name}"
     },
     "deleteAuthProviderModal": {
-        "title": "Delete {name}",
-        "comment": "Do you really want to delete this {type}?"
+        "title": "删除 {name}",
+        "comment": "确定要删除此{type}吗？"
     },
     "loginWithSaml": {
         "signInWithSaml": "使用 SAML 单点登录",
@@ -359,32 +359,32 @@
     },
     "roles": {
         "admin": {
-            "name": "Admin",
-            "description": "Can fully configure and edit workspaces and applications."
+            "name": "管理员",
+            "description": "可完整配置和编辑工作区及应用。"
         },
         "builder": {
-            "name": "Builder",
-            "description": "Can fully configure and edit applications."
+            "name": "构建者",
+            "description": "可完整配置和编辑应用。"
         },
         "editor": {
-            "name": "Editor",
-            "description": "Can fully edit data but not configure applications or workspaces."
+            "name": "编辑者",
+            "description": "可完整编辑数据，但不能配置应用或工作区。"
         },
         "commenter": {
-            "name": "Commenter",
-            "description": "Can only read and comment on data."
+            "name": "评论者",
+            "description": "只能读取和评论数据。"
         },
         "viewer": {
-            "name": "Viewer",
-            "description": "Can only read data."
+            "name": "查看者",
+            "description": "只能读取数据。"
         },
         "noAccess": {
-            "name": "No access",
-            "description": "Can't access anything."
+            "name": "无权限",
+            "description": "无法访问任何内容。"
         },
         "noRoleLowPriority": {
-            "name": "No role",
-            "description": "Get default workspace role from their teams."
+            "name": "无角色",
+            "description": "从所属团队获取默认工作区角色。"
         }
     },
     "inviteModal": {
@@ -482,8 +482,8 @@
         "additionalRoles": "附加角色"
     },
     "memberRolesTableContexItem": {
-        "label": "Manage members",
-        "additionalRoles": "Additional roles"
+        "label": "管理成员",
+        "additionalRoles": "附加角色"
     },
     "subjectRoleAssignments": {
         "location": "{path} 中的{type}",
@@ -503,7 +503,7 @@
         "adminFullAccessHelpText": "管理员拥有此工作区内所有内容的完整访问权限，其数据库、数据表或视图角色无法降低。如需限制，请先调整其工作区角色。"
     },
     "membersPagePlugin": {
-        "roleHelpText": "Can be overriden with roles on databases and tables."
+        "roleHelpText": "可通过数据库和数据表上的角色覆盖。"
     },
     "oauthSettingsForm": {
         "providerName": "名称",
@@ -569,7 +569,7 @@
         "semanticSearchContent": "按文本含义而非精确词语查找行，并在自动化与应用中使用这些结果。"
     },
     "assistantSidebarItem": {
-        "title": "Kuma AI"
+        "title": "AI 助手"
     },
     "assistantPanel": {
         "title": "AI 助手",
@@ -626,7 +626,7 @@
         "loading": "正在加载对话历史…"
     },
     "assistantMessageSources": {
-        "sources": "{count} source | {count} sources"
+        "sources": "{count} 个来源"
     },
     "assistantMessageList": {
         "expandReasoning": "展开推理过程",
@@ -639,9 +639,6 @@
         "helpful": "标记为有帮助",
         "notHelpful": "标记为无帮助",
         "copyFailed": "复制到剪贴板失败"
-    },
-    "chatwootSupportSidebarWorkspace": {
-        "directSupport": "专属技术支持"
     },
     "userTeamsField": {
         "no_records": "没有团队"
@@ -656,7 +653,7 @@
         "title": "审计日志"
     },
     "localBaserowUserSourceType": {
-        "notConfigured": "Not configured"
+        "notConfigured": "未配置"
     },
     "localBaserowUserSourceForm": {
         "description": "数据表中的每一行代表一个用户账号，请选择对应的字段。邮箱字段将作为登录名。",
@@ -669,8 +666,8 @@
         "roleFieldPlaceholder": "选择字段…"
     },
     "appAuthProviderType": {
-        "localBaserowPassword": "Email/Password",
-        "commonSaml": "Saml SSO",
+        "localBaserowPassword": "邮箱/密码",
+        "commonSaml": "SAML 单点登录",
         "openIdConnect": "OpenID Connect"
     },
     "localBaserowPasswordAppAuthProviderForm": {
@@ -708,10 +705,10 @@
     },
     "enterpriseDataSyncType": {
         "localBaserowTable": "Sync 本系统 table",
-        "jiraIssues": "Sync Jira issues",
-        "githubIssues": "Sync GitHub issues",
-        "gitlabIssues": "Sync GitLab issues",
-        "hubspotContacts": "Sync HubSpot contacts"
+        "jiraIssues": "同步 Jira 问题",
+        "githubIssues": "同步 GitHub 问题",
+        "gitlabIssues": "同步 GitLab 问题",
+        "hubspotContacts": "同步 HubSpot 联系人"
     },
     "localBaserowTableDataSync": {
         "name": "源数据表 ID",
@@ -762,7 +759,7 @@
         "emailPlaceholder": "请输入邮箱…"
     },
     "configureDataSyncModal": {
-        "periodicInterval": "Periodic settings"
+        "periodicInterval": "定时设置"
     },
     "configureDataSyncPeriodicInterval": {
         "title": "定时设置",
@@ -786,65 +783,65 @@
         "second": "秒"
     },
     "oidcAuthLink": {
-        "placeholderWithOIDC": "{login} with {provider}"
+        "placeholderWithOIDC": "使用 {provider} {login}"
     },
     "chartWidget": {
-        "name": "Chart",
-        "bar": "Bar chart",
-        "line": "Line chart"
+        "name": "图表",
+        "bar": "柱状图",
+        "line": "折线图"
     },
     "pieChartWidget": {
-        "name": "Pie chart",
-        "pie": "Pie chart",
-        "doughnut": "Doughnut chart",
-        "polarArea": "Polar area chart"
+        "name": "饼图",
+        "pie": "饼图",
+        "doughnut": "环形图",
+        "polarArea": "极区图"
     },
     "groupedAggregateRowsDataSourceForm": {
-        "series": "Series",
-        "addSeries": "Add series",
-        "data": "Data",
-        "sourceFieldLabel": "Source",
-        "viewFieldLabel": "View",
-        "notSelected": "Not selected"
+        "series": "数据系列",
+        "addSeries": "添加数据系列",
+        "data": "数据",
+        "sourceFieldLabel": "来源",
+        "viewFieldLabel": "视图",
+        "notSelected": "未选择"
     },
     "aggregationSeriesForm": {
-        "aggregationFieldLabel": "Field",
-        "aggregationTypeLabel": "Summary",
-        "deleteSeries": "Delete series",
-        "chartType": "Chart type",
-        "barChart": "Bar",
-        "lineChart": "Line",
-        "pieChart": "Pie",
-        "doughnutChart": "Doughnut",
-        "polarAreaChart": "Polar area"
+        "aggregationFieldLabel": "字段",
+        "aggregationTypeLabel": "汇总方式",
+        "deleteSeries": "删除数据系列",
+        "chartType": "图表类型",
+        "barChart": "柱状图",
+        "lineChart": "折线图",
+        "pieChart": "饼图",
+        "doughnutChart": "环形图",
+        "polarAreaChart": "极区图"
     },
     "aggregationGroupByForm": {
-        "groupByFieldLabel": "Group by",
-        "groupByNone": "None",
-        "groupByRowId": "Row Id"
+        "groupByFieldLabel": "分组依据",
+        "groupByNone": "无",
+        "groupByRowId": "行 ID"
     },
     "aggregationSortByForm": {
-        "sortByFieldLabel": "Sort by",
-        "none": "None",
-        "ascending": "Ascending",
-        "descending": "Descending"
+        "sortByFieldLabel": "排序依据",
+        "none": "无",
+        "ascending": "升序",
+        "descending": "降序"
     },
     "periodicDataSyncDeactivatedNotification": {
-        "failure": "{name} periodic data sync has been deactivated because it failed too many times consecutively.",
-        "licenseUnavailable": "{name} periodic data sync has been disabled because the workspace no longer has a valid license. Please update your license to restore automatic syncing."
+        "failure": "{name} 定时数据同步因连续失败次数过多已被停用。",
+        "licenseUnavailable": "{name} 定时数据同步已停用，因为工作区不再拥有有效许可证。请更新许可证以恢复自动同步。"
     },
     "twoWaySyncUpdateFailed": {
-        "title": "{name} two-way sync update failed: {error}"
+        "title": "{name} 双向同步更新失败：{error}"
     },
     "twoWaySyncDeactivated": {
-        "title": "{name} two-way sync deactivated because an update failed too many times consecutively. Please manually sync, and reactivate when the problem is resolved."
+        "title": "{name} 双向同步因更新连续失败次数过多已停用。请手动同步，并在问题解决后重新启用。"
     },
     "webhook": {
-        "rowsEnterVieweventType": "Rows enter view"
+        "rowsEnterVieweventType": "数据行进入视图"
     },
     "webhookForm": {
-        "triggerWhenRowsEnterView": "Triggered when rows enter the view.",
-        "helpTriggerWhenRowsEnterView": "Triggers only when `Rows enter view` is selected and rows that now match the filters enter the view."
+        "triggerWhenRowsEnterView": "当数据行进入视图时触发。",
+        "helpTriggerWhenRowsEnterView": "仅在选择“数据行进入视图”且现在符合筛选条件的数据行进入视图时触发。"
     },
     "fileInputElementForm": {
         "defaultNameTitle": "初始文件名 | 初始文件名",
@@ -896,7 +893,7 @@
         "remove": "移除 {subject}"
     },
     "builderSettingTypes": {
-        "customCode": "Custom CSS/JS"
+        "customCode": "自定义 CSS/JS"
     },
     "customCodeSettingForm": {
         "customCSS": "自定义 CSS",
@@ -943,12 +940,12 @@
     "graphElementForm": {
         "labels": "标签",
         "labelsHelper": "公式必须返回数组，每一项将作为图表的一个标签。",
-        "labelsPlaceholder": "to_array('Jan,Feb,Mar')",
+        "labelsPlaceholder": "to_array('一月,二月,三月')",
         "seriesList": "系列",
         "series": "系列 {number}",
         "addSeries": "添加系列",
         "seriesLabel": "系列名称",
-        "seriesLabelPlaceholder": "'Revenue'",
+        "seriesLabelPlaceholder": "'收入'",
         "seriesValues": "值",
         "seriesValuesHelper": "公式必须为每个标签返回一个数值。",
         "seriesValuesPlaceholder": "to_array('10,20,30')",
@@ -992,19 +989,19 @@
         "linkRowFieldTitle": "父级"
     },
     "dateDependency": {
-        "invalidChildRow": "Successor row is invalid",
-        "invalidParentRow": "Predecessor row is invalid",
-        "invalidParentEndDateAfterChildStartDate": "Predecessor row end date is after successor start date",
-        "invalidStartDateEmpty": "Start date is empty",
-        "invalidEndDateEmpty": "End date is empty",
-        "invalidEndDateBeforeStartDate": "End date is before start date",
-        "invalidDurationEmpty": "Duration is empty",
-        "invalidDurationValue": "Duration value is not valid",
-        "invalidDurationMismatch": "Duration value mismatch"
+        "invalidChildRow": "后继行无效",
+        "invalidParentRow": "前置行无效",
+        "invalidParentEndDateAfterChildStartDate": "前置行的结束日期晚于后继行的开始日期",
+        "invalidStartDateEmpty": "开始日期为空",
+        "invalidEndDateEmpty": "结束日期为空",
+        "invalidEndDateBeforeStartDate": "结束日期早于开始日期",
+        "invalidDurationEmpty": "工期为空",
+        "invalidDurationValue": "工期值无效",
+        "invalidDurationMismatch": "工期值不匹配"
     },
     "viewOwnershipType": {
-        "restricted": "Restricted",
-        "restrictedDescription": "Editors and lower can only see the filtered data and visible fields. It's possible to manage the members."
+        "restricted": "受限",
+        "restrictedDescription": "编辑者及更低权限者只能看到筛选后的数据和可见字段。可管理成员。"
     },
     "restrictedViewFilterContext": {
         "matchTitle": "默认视图值与筛选条件匹配",
@@ -1052,7 +1049,7 @@
         "instructing": "正在指示 Kuma 创建您的数据库。"
     },
     "aiProviderModelFeature": {
-        "kuma": "Kuma",
+        "kuma": "AI 助手",
         "kumaDescription": "为 Kuma AI 助手提供支持。"
     },
     "assistantDashboardPrompt": {

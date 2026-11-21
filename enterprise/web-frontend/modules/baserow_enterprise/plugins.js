@@ -1,5 +1,4 @@
 import { BaserowPlugin } from '@baserow/modules/core/plugins'
-import ChatwootSupportSidebarWorkspace from '@baserow_enterprise/components/ChatwootSupportSidebarWorkspace'
 import AuditLogSidebarWorkspace from '@baserow_enterprise/components/AuditLogSidebarWorkspace'
 import MemberRolesApplicationContextItem from '@baserow_enterprise/components/member-roles/MemberRolesApplicationContextItem'
 import MemberRolesTableContextItem from '@baserow_enterprise/components/member-roles/MemberRolesTableContextItem'
@@ -26,9 +25,6 @@ export class EnterprisePlugin extends BaserowPlugin {
   getSidebarWorkspaceComponents(workspace) {
     const sidebarItems = []
     sidebarItems.push(AssistantSidebarItem)
-    if (!this.app.$config.public.baserowDisableSupport) {
-      sidebarItems.push(ChatwootSupportSidebarWorkspace)
-    }
     sidebarItems.push(AuditLogSidebarWorkspace)
     return sidebarItems
   }

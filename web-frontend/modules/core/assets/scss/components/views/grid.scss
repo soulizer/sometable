@@ -1026,7 +1026,6 @@
       background: transparent;
       pointer-events: none;
       border: 2px solid $color-primary-400;
-      border-radius: $rounded-md;
 
       @include absolute(-1px, -2px, -2px, -1px);
     }
@@ -1037,7 +1036,6 @@
 
     &.invalid::before {
       border-color: $color-error-400;
-      border-bottom-left-radius: 0;
     }
   }
 

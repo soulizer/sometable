@@ -123,7 +123,7 @@
     "duplicateTableJobType": {
         "duplicating": "副本创建中",
         "duplicatedTitle": "表副本已创建",
-        "name": "Duplicate table"
+        "name": "复制数据表"
     },
     "apiToken": {
         "create": "创建",
@@ -929,10 +929,10 @@
         "title": "分组"
     },
     "adminType": {
-        "databaseViews": "Views"
+        "databaseViews": "视图"
     },
     "viewsAdmin": {
-        "title": "Views"
+        "title": "视图"
     },
     "viewsAdminTable": {
         "allViews": "全部视图",
@@ -1085,7 +1085,7 @@
         "staticValue": "固定值"
     },
     "viewOwnershipType": {
-        "collaborative": "Collaborative",
+        "collaborative": "协作",
         "collaborativeDescription": "拥有相应权限的所有人都可以查看全部数据并修改属性。"
     },
     "hiddenRows": {
@@ -1336,10 +1336,10 @@
         "syncTable": "保存时同步"
     },
     "webhookDeactivatedNotification": {
-        "body": "{name} webhook has been deactivated because it failed too many times consecutively."
+        "body": "{name} Webhook 因连续失败次数过多已被停用。"
     },
     "webhookPayloadTooLargeNotification": {
-        "body": "The payload for the {name} webhook with event ID {event_id} was too large. The content has been split into multiple batches, but data above the batch limit of {batch_limit} was discarded."
+        "body": "{name} Webhook（事件 ID {event_id}）的请求内容过大，内容已被截断或丢弃。"
     },
     "tablesGuidedTourStep": {
         "title": "Setup tables",
@@ -1419,8 +1419,8 @@
         "newTab": "新标签页"
     },
     "openUrlWorkflowAction": {
-        "invalidUrlTitle": "Could not open the URL",
-        "invalidUrlMessage": "The URL could not be resolved for this row, or it uses a protocol that is not allowed."
+        "invalidUrlTitle": "无法打开网址",
+        "invalidUrlMessage": "无法为此行解析该网址，或它使用了不被允许的协议。"
     },
     "buttonFieldActionList": {
         "actions": "操作",
@@ -1448,8 +1448,8 @@
         "editRow": "编辑行"
     },
     "rowEditFieldFormViewEditRow": {
-        "copyLink": "Copy link",
-        "noFormView": "No form view configured"
+        "copyLink": "复制链接",
+        "noFormView": "未配置表单视图"
     },
     "lastViewedItemType": {
         "databaseView": "{name} 视图"

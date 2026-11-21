@@ -638,9 +638,6 @@
     "notHelpful": "Mark response as not helpful",
     "copyFailed": "Failed to copy to clipboard"
   },
-  "chatwootSupportSidebarWorkspace": {
-    "directSupport": "Direct support"
-  },
   "userTeamsField": {
     "no_records": "No teams"
   },
