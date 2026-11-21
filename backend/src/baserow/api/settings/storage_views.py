@@ -101,7 +101,9 @@ class StorageSettingsTestView(APIView):
 
         try:
             storage = build_storage(config)
-            storage.connection.list_objects_v2(
+            # `connection` is a boto3 *resource*, the low-level client lives on
+            # `meta.client`.
+            storage.connection.meta.client.list_objects_v2(
                 Bucket=config["bucket_name"],
                 Prefix=config["location"] or "",
                 MaxKeys=1,
