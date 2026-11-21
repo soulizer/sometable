@@ -19,8 +19,14 @@
 
   @extend %mb-24;
 
-  // Nothing is rendered when no custom logo is configured.
-  &:empty {
+  // Nothing is rendered when no custom logo is configured. The logo is wrapped
+  // in a link on the authentication pages, so hide the wrapper as well.
+  &:empty,
+  &:has(> a:empty) {
+    display: none;
+  }
+
+  & > a:empty {
     display: none;
   }
 
