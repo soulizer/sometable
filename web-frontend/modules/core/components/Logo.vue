@@ -1,15 +1,6 @@
 <template>
   <!-- must be in sync with modules/baserow_enterprise/components/EnterpriseLogo.vue -->
   <component :is="getComponent()" v-if="getComponent()"></component>
-  <template v-else>
-    <div class="logo">
-      <img
-        src="@baserow/modules/core/static/img/logo.svg?url"
-        v-bind="$attrs"
-        :class="[$attrs.class]"
-      />
-    </div>
-  </template>
 </template>
 
 <script>

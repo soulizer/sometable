@@ -978,6 +978,17 @@ if AZURE_STORAGE_ENABLED:
         ],
     )
 
+# Admin-managed storage settings. When neither Google nor Azure storage is
+# configured through the environment, the storage backend can be configured at
+# runtime from the admin settings page. Deployments that only set the AWS_*
+# environment variables keep working unchanged: those values are the fallback
+# when no settings file has been saved yet.
+STORAGE_SETTINGS_FILE = os.getenv(
+    "STORAGE_SETTINGS_FILE", "/baserow/config/storage.json"
+)
+if not GOOGLE_STORAGE_ENABLED and not AZURE_STORAGE_ENABLED:
+    BASE_FILE_STORAGE = "baserow.core.storage_config.ConfigurableStorage"
+
 STORAGES = {
     "default": {
         "BACKEND": BASE_FILE_STORAGE,

@@ -245,6 +245,7 @@
           </div>
         </div>
       </div>
+      <StorageSettings></StorageSettings>
       <component
         :is="component"
         v-for="(component, index) in additionalSettingsComponents"
@@ -268,6 +269,7 @@ import { required, integer, between, helpers } from '@vuelidate/validators'
 
 import { notifyIf } from '@baserow/modules/core/utils/error'
 import { EMAIL_VERIFICATION_OPTIONS } from '@baserow/modules/core/enums'
+import StorageSettings from '@baserow/modules/core/components/settings/StorageSettings'
 import {
   FF_RBAC_IMPROVEMENTS,
   FF_USER_TEMPLATES,

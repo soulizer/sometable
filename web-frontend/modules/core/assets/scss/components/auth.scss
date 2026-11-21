@@ -19,6 +19,11 @@
 
   @extend %mb-24;
 
+  // Nothing is rendered when no custom logo is configured.
+  &:empty {
+    display: none;
+  }
+
   & img {
     height: 100%;
   }

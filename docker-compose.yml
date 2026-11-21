@@ -396,6 +396,7 @@ services:
       - redis
     volumes:
       - media:/baserow/media
+      - app_config:/baserow/config
     networks:
       local:
 
@@ -496,6 +497,7 @@ services:
       - redis
     volumes:
       - media:/baserow/media
+      - app_config:/baserow/config
     networks:
       local:
 
@@ -520,6 +522,7 @@ services:
       - redis
     volumes:
       - media:/baserow/media
+      - app_config:/baserow/config
     networks:
       local:
 
@@ -545,6 +548,7 @@ services:
       - redis
     volumes:
       - media:/baserow/media
+      - app_config:/baserow/config
     networks:
       local:
 
@@ -632,15 +636,17 @@ services:
   # the same user that django is running as, so it can write user files.
   volume-permissions-fixer:
     image: bash:4.4
-    command: chown 9999:9999 -R /baserow/media
+    command: chown 9999:9999 -R /baserow/media /baserow/config
     volumes:
       - media:/baserow/media
+      - app_config:/baserow/config
     networks:
       local:
 
 volumes:
   pgdata:
   media:
+  app_config:
   mox_data:
   caddy_data:
   caddy_config:

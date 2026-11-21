@@ -1,0 +1,22 @@
+.storage-settings {
+  .admin-settings__control {
+    min-width: 320px;
+    max-width: 460px;
+  }
+
+  .form-input {
+    width: 100%;
+  }
+}
+
+.storage-settings__status {
+  word-break: break-all;
+  color: $palette-neutral-900;
+}
+
+.storage-settings__actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
