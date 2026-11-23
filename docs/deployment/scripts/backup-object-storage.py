@@ -31,7 +31,7 @@ def client():
         aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY or None,
         config=Config(
             signature_version="s3v4",
-            addressing_style=settings.AWS_S3_ADDRESSING_STYLE or "auto",
+            s3={"addressing_style": settings.AWS_S3_ADDRESSING_STYLE or "auto"},
         ),
     )
 
@@ -39,7 +39,7 @@ def client():
 def list_keys(s3):
     keys = []
     paginator = s3.get_paginator("list_objects_v2")
-    for page in paginator.list_objects_v2(
+    for page in paginator.paginate(
         Bucket=settings.AWS_STORAGE_BUCKET_NAME, Prefix=PREFIX
     ):
         for obj in page.get("Contents", []):
