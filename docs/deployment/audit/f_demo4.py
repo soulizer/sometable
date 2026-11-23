@@ -42,7 +42,7 @@ def main():
         )
 
     ids = ["110101199001010015", "11010119900101004X", "110101199001010023"]
-    codes = ["91350100M000100Y43", "91110108MA01ABCDB", "91310000MA1K1234XB"]
+    codes = ["91350100M000100Y43", "91110108MA01ABCDEN", "91310000MA1K1234XB"]
     model = table.get_model()
     for index, row in enumerate(model.objects.all()):
         RowHandler().update_row(
