@@ -76,6 +76,12 @@ def main():
     def field_by_name(table, name):
         return table.field_set.get(name=name)
 
+    amount_field = field_by_name(orders, "金额")
+    if type(amount_field.specific).__name__ != "NumberField":
+        FieldHandler().update_field(
+            admin, amount_field.specific, "number", number_decimal_places=2
+        )
+
     status_field = field_by_name(orders, "状态")
     if type(status_field.specific).__name__ != "SingleSelectField":
         FieldHandler().update_field(

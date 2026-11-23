@@ -1,5 +1,6 @@
 # 批次 F2：演示仪表盘与自动化
 from django.contrib.auth import get_user_model
+from django.db import transaction
 
 from baserow.contrib.automation.nodes.handler import AutomationNodeHandler
 from baserow.contrib.automation.nodes.registries import automation_node_type_registry
@@ -30,6 +31,29 @@ def check(name, fn):
         RESULTS.append(("FAIL", name, f"{type(e).__name__}: {e}"))
 
 
+def get_or_create_integration(application):
+    from baserow.core.integrations.handler import IntegrationHandler
+    from baserow.core.integrations.models import Integration
+    from baserow.core.integrations.registries import integration_type_registry
+
+    integration = Integration.objects.filter(application=application).first()
+    if integration is None:
+        integration = IntegrationHandler().create_integration(
+            integration_type_registry.get("local_baserow"),
+            application,
+            name="本地数据",
+        )
+    if not integration.specific.authorized_subject_id:
+        integration.specific.authorized_subject_type = "auth.User"
+        integration.specific.authorized_subject_id = User.objects.filter(
+            is_staff=True
+        ).first().id
+        integration.specific.save(
+            update_fields=["authorized_subject_type", "authorized_subject_id"]
+        )
+    return integration
+
+
 def main():
     admin = User.objects.filter(is_staff=True).first()
     handler = CoreHandler()
@@ -50,36 +74,47 @@ def main():
         )
     dashboard = Dashboard.objects.get(id=dashboard_app.id)
     service_type = service_type_registry.get("local_baserow_grouped_aggregate_rows")
-    data_source = DashboardDataSource.objects.filter(
-        dashboard=dashboard, name="订单金额按状态"
-    ).first()
-    if data_source is None:
-        data_source = DashboardDataSourceHandler().create_data_source(
-            dashboard,
-            "订单金额按状态",
-            service_type,
-            table_id=orders.id,
-            aggregation_series=[
-                {"field_id": amount.id, "aggregation_type": "sum"}
-            ],
-            aggregation_group_bys=[{"field_id": status.id, "mode": "asc"}],
-        )
+    # 重建数据源与组件，确保配置正确（此前用 table_id/aggregation_series 未生效）
+    for old_widget in Widget.objects.filter(dashboard=dashboard):
+        WidgetHandler().delete_widget(old_widget.specific)
+    for old_ds in DashboardDataSource.objects.filter(dashboard=dashboard):
+        DashboardDataSourceHandler().delete_data_source(old_ds)
+    get_or_create_integration(dashboard)
     chart_type = widget_type_registry.get("chart")
-    widget = Widget.objects.filter(dashboard=dashboard, title="订单金额").first()
-    if widget is None:
-        widget = WidgetHandler().create_widget(
-            chart_type,
-            dashboard,
-            data_source_id=data_source.id,
-            default_series_chart_type="BAR",
-            title="订单金额",
-        )
+    chart = WidgetHandler().create_widget(
+        chart_type,
+        dashboard,
+        default_series_chart_type="BAR",
+        title="订单金额",
+    )
+    chart_ds = DashboardDataSource.objects.get(id=chart.data_source_id)
+    DashboardDataSourceHandler().update_data_source(
+        chart_ds,
+        service_type,
+        name="订单金额按状态",
+        table=orders,
+        service_aggregation_series=[
+            {"field_id": amount.id, "aggregation_type": "sum"}
+        ],
+        service_aggregation_group_bys=[{"field_id": status.id, "mode": "asc"}],
+    )
     summary_type = widget_type_registry.get("summary")
-    summary = Widget.objects.filter(dashboard=dashboard, title="订单总数").first()
-    if summary is None:
-        summary = WidgetHandler().create_widget(
-            summary_type, dashboard, title="订单总数"
-        )
+    summary = WidgetHandler().create_widget(
+        summary_type,
+        dashboard,
+        title="订单金额合计",
+    )
+    summary_ds = DashboardDataSource.objects.get(id=summary.data_source_id)
+    DashboardDataSourceHandler().update_data_source(
+        summary_ds,
+        service_type_registry.get("local_baserow_aggregate_rows"),
+        name="订单总数",
+        table=orders,
+        field=amount,
+        aggregation_type="sum",
+    )
+    data_source = chart_ds
+    widget = chart
     print("DASHBOARD", dashboard.id, data_source.id, widget.id, summary.id)
 
     # --- 自动化 ---
@@ -96,10 +131,22 @@ def main():
     workflow = AutomationWorkflow.objects.filter(automation=automation).first()
     if workflow is None:
         workflow = AutomationWorkflowHandler().create_workflow(automation, "新订单记录")
+    # 清理旧节点，避免重复与旧的错误配置
+    for old_node in workflow.automation_workflow_nodes.all():
+        if old_node.service_id:
+            try:
+                ServiceHandler().delete_service(
+                    old_node.service.get_type(), old_node.service.specific
+                )
+            except Exception:
+                pass
+        old_node.delete()
+
     trigger_type = automation_node_type_registry.get("local_baserow_rows_created")
     trigger_service = ServiceHandler().create_service(
         service_type_registry.get("local_baserow_rows_created"),
-        table_id=orders.id,
+        integration=get_or_create_integration(automation),
+        table=orders,
     )
     trigger = AutomationNodeHandler().create_node(
         trigger_type, workflow, service=trigger_service
@@ -123,7 +170,8 @@ def main():
         )
     service = ServiceHandler().create_service(
         service_type_registry.get("local_baserow_upsert_row"),
-        table_id=log_table.id,
+        integration=get_or_create_integration(automation),
+        table=log_table,
         values={},
     )
     action_type = automation_node_type_registry.get("local_baserow_create_row")
@@ -143,4 +191,5 @@ def main():
     print("F_DEMO2_DONE")
 
 
-main()
+with transaction.atomic():
+    main()
