@@ -641,6 +641,14 @@ class PhoneNumberField(Field):
     pass
 
 
+class IdCardField(Field):
+    pass
+
+
+class UnifiedSocialCreditCodeField(Field):
+    pass
+
+
 class FormulaField(Field):
     formula = models.TextField()
     internal_formula = models.TextField()

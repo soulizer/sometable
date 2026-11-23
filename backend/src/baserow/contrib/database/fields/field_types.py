@@ -112,6 +112,12 @@ from baserow.contrib.database.api.views.errors import (
 )
 from baserow.contrib.database.db.functions import RandomUUID
 from baserow.contrib.database.export_serialized import DatabaseExportSerializedStructure
+from baserow.contrib.database.fields.chinese_validators import (
+    generate_id_card,
+    generate_unified_social_credit_code,
+    validate_id_card,
+    validate_unified_social_credit_code,
+)
 from baserow.contrib.database.fields.exceptions import SelectOptionDoesNotBelongToField
 from baserow.contrib.database.fields.filter_support.formula import (
     FormulaFieldTypeArrayFilterSupport,
@@ -280,6 +286,7 @@ from .models import (
     FileField,
     FormulaField,
     FormViewEditRowField,
+    IdCardField,
     LastModifiedByField,
     LastModifiedField,
     LinkRowField,
@@ -297,6 +304,7 @@ from .models import (
     TextField,
     URLField,
     UUIDField,
+    UnifiedSocialCreditCodeField,
 )
 from .operations import CreateFieldOperationType, DeleteRelatedLinkRowFieldOperationType
 from .registries import (
@@ -6674,6 +6682,71 @@ class PhoneNumberFieldType(CollationSortMixin, CharFieldMatchingRegexFieldType):
 
     def random_value(self, instance, fake, cache):
         return fake.phone_number()
+
+    def get_value_for_filter(self, row: "GeneratedTableModel", field: Field) -> any:
+        value = getattr(row, field.db_column)
+        return collate_expression(Value(value))
+
+
+class IdCardFieldType(CollationSortMixin, CharFieldMatchingRegexFieldType):
+    """A Chinese resident ID card number validated against GB 11643."""
+
+    type = "id_card"
+    model_class = IdCardField
+    can_upsert = True
+
+    @property
+    def regex(self):
+        # Duplicated in web-frontend/modules/core/utils/string.js#isValidIdCard
+        return r"^[0-9]{17}[0-9Xx]$"
+
+    @property
+    def max_length(self):
+        return 18
+
+    @property
+    def validator(self):
+        def validate(value):
+            validate_id_card(value)
+
+        return validate
+
+    def random_value(self, instance, fake, cache):
+        return generate_id_card()
+
+    def get_value_for_filter(self, row: "GeneratedTableModel", field: Field) -> any:
+        value = getattr(row, field.db_column)
+        return collate_expression(Value(value))
+
+
+class UnifiedSocialCreditCodeFieldType(
+    CollationSortMixin, CharFieldMatchingRegexFieldType
+):
+    """A Chinese unified social credit code validated against GB 32100."""
+
+    type = "unified_social_credit_code"
+    model_class = UnifiedSocialCreditCodeField
+    can_upsert = True
+
+    @property
+    def regex(self):
+        # Duplicated in
+        # web-frontend/modules/core/utils/string.js#isValidUnifiedSocialCreditCode
+        return r"^[0-9A-HJ-NP-RTUWXY]{18}$"
+
+    @property
+    def max_length(self):
+        return 18
+
+    @property
+    def validator(self):
+        def validate(value):
+            validate_unified_social_credit_code(value)
+
+        return validate
+
+    def random_value(self, instance, fake, cache):
+        return generate_unified_social_credit_code()
 
     def get_value_for_filter(self, row: "GeneratedTableModel", field: Field) -> any:
         value = getattr(row, field.db_column)

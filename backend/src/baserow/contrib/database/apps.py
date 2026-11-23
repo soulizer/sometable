@@ -220,6 +220,7 @@ class DatabaseConfig(AppConfig):
             FileFieldType,
             FormulaFieldType,
             FormViewEditRowFieldType,
+            IdCardFieldType,
             LastModifiedByFieldType,
             LastModifiedFieldType,
             LinkRowFieldType,
@@ -236,6 +237,7 @@ class DatabaseConfig(AppConfig):
             TextFieldType,
             URLFieldType,
             UUIDFieldType,
+            UnifiedSocialCreditCodeFieldType,
         )
 
         field_type_registry.register(TextFieldType())
@@ -256,6 +258,8 @@ class DatabaseConfig(AppConfig):
         field_type_registry.register(SingleSelectFieldType())
         field_type_registry.register(MultipleSelectFieldType())
         field_type_registry.register(PhoneNumberFieldType())
+        field_type_registry.register(IdCardFieldType())
+        field_type_registry.register(UnifiedSocialCreditCodeFieldType())
         field_type_registry.register(FormulaFieldType())
         field_type_registry.register(CountFieldType())
         field_type_registry.register(RollupFieldType())

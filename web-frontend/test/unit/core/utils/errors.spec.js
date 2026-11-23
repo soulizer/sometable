@@ -477,4 +477,74 @@ describe('test error handling', () => {
       }
     )
   })
+
+  test('an internal server error shows the reported detail as the message', async () => {
+    try {
+      await errorInterceptorWithStubAppAndStore()({
+        response: {
+          data: {
+            error: 'ERROR_INTERNAL_SERVER_ERROR',
+            detail: 'RuntimeError: disk is full',
+          },
+          status: 500,
+        },
+      })
+    } catch (error) {
+      const message = error.handler.getMessage('name')
+      expect(message.title).toBe('clientHandler.notCompletedTitle')
+      expect(message.message).toBe('RuntimeError: disk is full')
+    }
+  })
+
+  test('an error keeps the technical details needed for troubleshooting', async () => {
+    try {
+      await errorInterceptorWithStubAppAndStore()({
+        response: {
+          data: { error: 'ERROR_TEST', detail: 'Something broke' },
+          status: 500,
+          config: { method: 'post', url: '/api/settings/backups/' },
+        },
+      })
+    } catch (error) {
+      const message = error.handler.getMessage('name')
+      expect(message.details).toEqual({
+        code: 'ERROR_TEST',
+        status: 500,
+        method: 'POST',
+        url: '/api/settings/backups/',
+        detail: 'Something broke',
+      })
+    }
+  })
+
+  test('notifyIf passes the technical details to the toast', async () => {
+    const actualStoreDispatches = []
+    try {
+      await errorInterceptorWithStubAppAndStore(actualStoreDispatches)({
+        response: {
+          data: { error: 'ERROR_TEST', detail: 'Something broke' },
+          status: 500,
+        },
+      })
+    } catch (error) {
+      error.handler.notifyIf()
+      expect(actualStoreDispatches[0]).toEqual({
+        action: 'toast/error',
+        args: [
+          {
+            title: 'clientHandler.notCompletedTitle',
+            message: 'clientHandler.notCompletedDescription',
+            data: {
+              details: {
+                code: 'ERROR_TEST',
+                status: 500,
+                detail: 'Something broke',
+              },
+            },
+          },
+          { root: true },
+        ],
+      })
+    }
+  })
 })

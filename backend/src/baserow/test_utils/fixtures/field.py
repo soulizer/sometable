@@ -15,6 +15,7 @@ from baserow.contrib.database.fields.models import (
     EmailField,
     FileField,
     FormulaField,
+    IdCardField,
     LastModifiedByField,
     LastModifiedField,
     LinkRowField,
@@ -31,6 +32,7 @@ from baserow.contrib.database.fields.models import (
     TextField,
     URLField,
     UUIDField,
+    UnifiedSocialCreditCodeField,
 )
 from baserow.contrib.database.formula import FormulaHandler
 
@@ -262,6 +264,22 @@ class FieldFixtures:
         if create_field:
             self.create_model_field(kwargs["table"], field)
 
+        return field
+
+    def create_id_card_field(self, user=None, create_field=True, **kwargs):
+        self.set_test_field_kwarg_defaults(user, kwargs)
+        field = IdCardField.objects.create(**kwargs)
+        if create_field:
+            self.create_model_field(kwargs["table"], field)
+        return field
+
+    def create_unified_social_credit_code_field(
+        self, user=None, create_field=True, **kwargs
+    ):
+        self.set_test_field_kwarg_defaults(user, kwargs)
+        field = UnifiedSocialCreditCodeField.objects.create(**kwargs)
+        if create_field:
+            self.create_model_field(kwargs["table"], field)
         return field
 
     def create_last_modified_field(self, user=None, create_field=True, **kwargs):

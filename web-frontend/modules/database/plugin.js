@@ -32,6 +32,7 @@ import {
   URLFieldType,
   EmailFieldType,
   LinkRowFieldType,
+  IdCardFieldType,
   NumberFieldType,
   RatingFieldType,
   BooleanFieldType,
@@ -51,6 +52,7 @@ import {
   LookupFieldType,
   MultipleCollaboratorsFieldType,
   UUIDFieldType,
+  UnifiedSocialCreditCodeFieldType,
   AutonumberFieldType,
   PasswordFieldType,
   FormViewEditRowFieldType,
@@ -743,6 +745,8 @@ export default defineNuxtPlugin({
     $registry.register('field', new SingleSelectFieldType(context))
     $registry.register('field', new MultipleSelectFieldType(context))
     $registry.register('field', new PhoneNumberFieldType(context))
+    $registry.register('field', new IdCardFieldType(context))
+    $registry.register('field', new UnifiedSocialCreditCodeFieldType(context))
     $registry.register('field', new FormulaFieldType(context))
     $registry.register('field', new CountFieldType(context))
     $registry.register('field', new RollupFieldType(context))

@@ -9,6 +9,8 @@ import {
   EmailFieldType,
   DurationFieldType,
   SingleSelectFieldType,
+  IdCardFieldType,
+  UnifiedSocialCreditCodeFieldType,
 } from '@baserow/modules/database/fieldTypes'
 import { UNIQUE_WITH_EMPTY_CONSTRAINT_NAME } from '@baserow/modules/database/constants'
 
@@ -199,6 +201,8 @@ export class TextTypeUniqueWithEmptyConstraintType extends UniqueWithEmptyConstr
       LongTextFieldType.getType(),
       URLFieldType.getType(),
       EmailFieldType.getType(),
+      IdCardFieldType.getType(),
+      UnifiedSocialCreditCodeFieldType.getType(),
     ]
   }
 }

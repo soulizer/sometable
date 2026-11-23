@@ -8,6 +8,7 @@ export default {
         visible: false,
         title: '',
         message: '',
+        details: null,
       },
     }
   },
@@ -49,9 +50,11 @@ export default {
       if (message === null) {
         this.error.title = title.title
         this.error.message = title.message
+        this.error.details = title.details || null
       } else {
         this.error.title = title
         this.error.message = message
+        this.error.details = null
       }
 
       this.$nextTick(() => this.focusOnError())

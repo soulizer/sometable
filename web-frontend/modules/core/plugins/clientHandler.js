@@ -6,9 +6,12 @@ import { addPrivateLinkTokenHeader } from '@baserow/modules/core/utils/templateP
 import { makeRefreshAuthInterceptor } from '@baserow/modules/core/plugins/clientAuthRefresh'
 
 export class ResponseErrorMessage {
-  constructor(title, message) {
+  constructor(title, message, details = null) {
     this.title = title
     this.message = message
+    // Optional technical details (error code, HTTP status, request path, ...)
+    // that the UI shows in a collapsible section so failures can be diagnosed.
+    this.details = details
   }
 }
 
@@ -308,6 +311,19 @@ export class ErrorHandler {
     }
 
     const status = this.response?.status || 500
+    // Server-side exceptions are reported with a detail by our API handler.
+    // Show it directly instead of falling back to the generic "unknown error".
+    if (
+      status >= 500 &&
+      this.code === 'ERROR_INTERNAL_SERVER_ERROR' &&
+      typeof this.detail === 'string'
+    ) {
+      return new ResponseErrorMessage(
+        this.app.$i18n.t('clientHandler.notCompletedTitle'),
+        this.detail
+      )
+    }
+
     if (
       this.detail &&
       typeof this.detail === 'string' &&
@@ -442,10 +458,71 @@ export class ErrorHandler {
   }
 
   /**
+   * Builds the technical details of the failed request. The generic error
+   * message alone doesn't tell users what went wrong or how to report it, so
+   * the original status, error code and response detail are kept available for
+   * the collapsible "technical details" section in the UI.
+   */
+  getTechnicalDetails() {
+    const response = this.response
+    if (!response) {
+      return null
+    }
+
+    const data = response.data
+    let detail = null
+    const truncate = (value) => value.slice(0, 2000)
+    if (typeof data === 'string') {
+      detail = truncate(data)
+    } else if (data && typeof data === 'object') {
+      detail = data.detail ?? data.error ?? truncate(JSON.stringify(data))
+    }
+
+    const details = {}
+    if (this.code !== null && this.code !== undefined) {
+      details.code = this.code
+    } else if (data && typeof data === 'object' && data.error) {
+      details.code = data.error
+    }
+    if (response.status) {
+      details.status = response.status
+    }
+    if (response.config?.method) {
+      details.method = String(response.config.method).toUpperCase()
+    }
+    if (response.config?.url) {
+      // Query strings can contain private-link tokens or other secrets.
+      details.url = response.config.url.split('?')[0]
+    }
+    if (detail) {
+      details.detail = detail
+    }
+
+    return Object.keys(details).length > 0 ? details : null
+  }
+
+  attachTechnicalDetails(message) {
+    if (message instanceof ResponseErrorMessage && !message.details) {
+      message.details = this.getTechnicalDetails()
+    }
+    return message
+  }
+
+  /**
    * If there is an error or the requested detail is not found an error
    * message related to the problem is returned.
    */
   getMessage(name = null, specificErrorMap = null, requestBodyErrorMap = null) {
+    return this.attachTechnicalDetails(
+      this.getMessageWithoutDetails(name, specificErrorMap, requestBodyErrorMap)
+    )
+  }
+
+  getMessageWithoutDetails(
+    name = null,
+    specificErrorMap = null,
+    requestBodyErrorMap = null
+  ) {
     if (this.isTooManyRequests()) {
       return this.getTooManyRequestsError()
     }
@@ -501,6 +578,7 @@ export class ErrorHandler {
       {
         title: message.title,
         message: message.message,
+        data: message.details ? { details: message.details } : null,
       },
       { root: true }
     )

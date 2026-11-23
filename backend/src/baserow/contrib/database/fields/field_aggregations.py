@@ -8,6 +8,7 @@ from baserow.contrib.database.fields.field_types import (
     EmailFieldType,
     FileFieldType,
     FormulaFieldType,
+    IdCardFieldType,
     LastModifiedByFieldType,
     LastModifiedFieldType,
     LinkRowFieldType,
@@ -20,6 +21,7 @@ from baserow.contrib.database.fields.field_types import (
     SingleSelectFieldType,
     TextFieldType,
     URLFieldType,
+    UnifiedSocialCreditCodeFieldType,
 )
 from baserow.contrib.database.fields.registries import FieldAggregationType
 from baserow.contrib.database.formula import (
@@ -137,6 +139,8 @@ class EmptyPercentageFieldAggregationType(FieldAggregationType):
         EmailFieldType.type,
         FileFieldType.type,
         PhoneNumberFieldType.type,
+        IdCardFieldType.type,
+        UnifiedSocialCreditCodeFieldType.type,
         SingleSelectFieldType.type,
         MultipleSelectFieldType.type,
         PasswordFieldType.type,
@@ -175,6 +179,8 @@ class NotEmptyPercentageFieldAggregationType(FieldAggregationType):
         EmailFieldType.type,
         FileFieldType.type,
         PhoneNumberFieldType.type,
+        IdCardFieldType.type,
+        UnifiedSocialCreditCodeFieldType.type,
         SingleSelectFieldType.type,
         MultipleSelectFieldType.type,
         PasswordFieldType.type,

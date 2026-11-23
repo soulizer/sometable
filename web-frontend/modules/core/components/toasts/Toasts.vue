@@ -32,6 +32,11 @@
       >
         <template #title>{{ toast.title }}</template>
         <span>{{ toast.message }}</span>
+        <template v-if="toast.data && toast.data.details" #actions>
+          <div class="toast__details">
+            <ErrorDetails :details="toast.data.details" />
+          </div>
+        </template>
       </Toast>
     </div>
 
@@ -56,6 +61,7 @@
 import { mapGetters, mapState } from 'vuex'
 
 import Toast from '@baserow/modules/core/components/toasts/Toast'
+import ErrorDetails from '@baserow/modules/core/components/ErrorDetails.vue'
 import ConnectingToast from '@baserow/modules/core/components/toasts/ConnectingToast'
 import FailedConnectingToast from '@baserow/modules/core/components/toasts/FailedConnectingToast'
 import RestoreToast from '@baserow/modules/core/components/toasts/RestoreToast'
@@ -75,6 +81,7 @@ import DownloadTemplateToast from '@baserow/modules/core/components/toasts/Downl
 export default {
   name: 'Toasts',
   components: {
+    ErrorDetails,
     PermissionsUpdatedToast,
     WorkspaceOutdatedToast,
     InstallTemplateToast,

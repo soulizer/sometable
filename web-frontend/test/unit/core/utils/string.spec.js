@@ -5,6 +5,8 @@ import {
   slugify,
   isValidURL,
   isValidEmail,
+  isValidIdCard,
+  isValidUnifiedSocialCreditCode,
   isValidStrictEmail,
   isSecureURL,
   isNumeric,
@@ -15,6 +17,21 @@ import {
 } from '@baserow/modules/core/utils/string'
 
 describe('test string utils', () => {
+  test('validates Chinese ID card numbers', () => {
+    expect(isValidIdCard('110101199001010015')).toBe(true)
+    expect(isValidIdCard('11010119900101004x')).toBe(true)
+    expect(isValidIdCard('110101199001010014')).toBe(false)
+    expect(isValidIdCard('110101199013010015')).toBe(false)
+    expect(isValidIdCard('11010119900101001')).toBe(false)
+  })
+
+  test('validates unified social credit codes', () => {
+    expect(isValidUnifiedSocialCreditCode('91350100M000100Y43')).toBe(true)
+    expect(isValidUnifiedSocialCreditCode('91350100m000100y43')).toBe(true)
+    expect(isValidUnifiedSocialCreditCode('91350100M000100Y44')).toBe(false)
+    expect(isValidUnifiedSocialCreditCode('91350100M000100Y4I')).toBe(false)
+  })
+
   const originalCrypto = globalThis.crypto
   const uuidV4Pattern =
     /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i

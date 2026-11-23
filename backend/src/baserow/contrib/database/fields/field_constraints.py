@@ -88,6 +88,8 @@ class TextTypeUniqueWithEmptyConstraint(FieldValueConstraint):
             LongTextFieldType.type,
             URLFieldType.type,
             EmailFieldType.type,
+            IdCardFieldType.type,
+            UnifiedSocialCreditCodeFieldType.type,
         ]
 
 

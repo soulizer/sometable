@@ -230,6 +230,8 @@ def construct_all_possible_field_kwargs(
             }
         ],
         "phone_number": [{"name": "phone_number"}],
+        "id_card": [{"name": "id_card"}],
+        "unified_social_credit_code": [{"name": "unified_social_credit_code"}],
         "formula": [
             # Make one for each Baserow formula type!
             {"name": "formula_text", "formula": "CONCAT('test ', UPPER('formula'))"},

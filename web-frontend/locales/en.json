@@ -193,7 +193,9 @@
     "multipleCollaboratorsDropdown": "Dropdown",
     "multipleCollaboratorsCheckboxes": "Checkboxes",
     "defaultValueFunctionNow": "Current date",
-    "button": "Button"
+    "button": "Button",
+    "idCard": "ID card number",
+    "unifiedSocialCreditCode": "Unified social credit code"
   },
   "fieldErrors": {
     "invalidNumber": "Invalid number",
@@ -208,7 +210,9 @@
     "maxChars": "Max {max} chars.",
     "maxCharsExceeded": "Max {max} chars (-{over}).",
     "maxImagesExceeded": "Max {max} images (remove {over}).",
-    "minChars": "Min {min} chars."
+    "minChars": "Min {min} chars.",
+    "invalidIdCard": "Invalid ID card number",
+    "invalidUnifiedSocialCreditCode": "Invalid unified social credit code"
   },
   "fieldDocs": {
     "readOnly": "This is a read only field.",
@@ -246,7 +250,9 @@
     "autonumber": "A read-only field that automatically increments a number for each new row.",
     "password": "A write-only field that holds a hashed password. The value will be `null` if not set, or `true` if it has been set. It accepts a string to set it.",
     "formViewEditRow": "A read-only field that generates a unique, signed URL allowing the row to be edited through the linked form view.",
-    "button": "A button field. Clicking the button opens a URL built from the row's values. The cell stores no data and writes are rejected."
+    "button": "A button field. Clicking the button opens a URL built from the row's values. The cell stores no data and writes are rejected.",
+    "idCard": "Accepts a mainland Chinese resident ID card number (18 digits, including a checksum).",
+    "unifiedSocialCreditCode": "Accepts a Chinese unified social credit code (18 characters, including a checksum)."
   },
   "fieldConstraint": {
     "uniqueWithEmpty": "Unique with empty"
@@ -514,7 +520,15 @@
     "templateHasNoContentTitle": "Template has no content",
     "templateHasNoContentDescription": "The template has no content.",
     "templateUpdatedTitle": "This template was updated",
-    "templateUpdatedDescription": "The template changed since you opened it. Try again with its latest version."
+    "templateUpdatedDescription": "The template changed since you opened it. Try again with its latest version.",
+    "errorDetails": "Technical details",
+    "errorCode": "Error code",
+    "httpStatus": "HTTP status",
+    "method": "Request method",
+    "request": "Request URL",
+    "serverResponse": "Server response",
+    "copyDetails": "Copy details",
+    "copyDetailsDone": "Copied"
   },
   "importerType": {
     "csv": "Import a CSV file",

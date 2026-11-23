@@ -240,6 +240,57 @@ export const isSimplePhoneNumber = (str) => {
   return pattern.test(str)
 }
 
+const ID_CARD_WEIGHTS = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2]
+const ID_CARD_CHECK_DIGITS = '10X98765432'
+const USCC_CHARSET = '0123456789ABCDEFGHJKLMNPQRTUWXY'
+const USCC_WEIGHTS = [1, 3, 9, 27, 19, 26, 16, 17, 20, 29, 25, 13, 8, 24, 10, 30, 28]
+
+// Kept in sync with
+// backend/src/baserow/contrib/database/fields/chinese_validators.py#validate_id_card
+export const isValidIdCard = (value) => {
+  const card = String(value ?? '')
+    .trim()
+    .toUpperCase()
+  if (!/^[0-9]{17}[0-9X]$/.test(card)) {
+    return false
+  }
+
+  const year = Number(card.slice(6, 10))
+  const month = Number(card.slice(10, 12))
+  const day = Number(card.slice(12, 14))
+  const date = new Date(Date.UTC(year, month - 1, day))
+  if (
+    date.getUTCFullYear() !== year ||
+    date.getUTCMonth() !== month - 1 ||
+    date.getUTCDate() !== day
+  ) {
+    return false
+  }
+
+  let sum = 0
+  for (let index = 0; index < 17; index++) {
+    sum += Number(card[index]) * ID_CARD_WEIGHTS[index]
+  }
+  return card[17] === ID_CARD_CHECK_DIGITS[sum % 11]
+}
+
+// Kept in sync with
+// backend/src/baserow/contrib/database/fields/chinese_validators.py#validate_unified_social_credit_code
+export const isValidUnifiedSocialCreditCode = (value) => {
+  const code = String(value ?? '')
+    .trim()
+    .toUpperCase()
+  if (!/^[0-9A-HJ-NP-RTUWXY]{18}$/.test(code)) {
+    return false
+  }
+
+  let sum = 0
+  for (let index = 0; index < 17; index++) {
+    sum += USCC_CHARSET.indexOf(code[index]) * USCC_WEIGHTS[index]
+  }
+  return code[17] === USCC_CHARSET[(31 - (sum % 31)) % 31]
+}
+
 export const isSecureURL = (str) => {
   return str.toLowerCase().substr(0, 5) === 'https'
 }

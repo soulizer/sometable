@@ -539,6 +539,9 @@ REST_FRAMEWORK = {
     ),
     "DEFAULT_RENDERER_CLASSES": ("baserow.api.renderers.BaserowJSONRenderer",),
     "DEFAULT_SCHEMA_CLASS": "baserow.api.openapi.AutoSchema",
+    # Always return JSON for API failures (including unhandled 500s) so the
+    # client can show an error code and detail instead of a generic message.
+    "EXCEPTION_HANDLER": "baserow.api.handler.baserow_exception_handler",
     # Preserve positional list-validation errors in the public API. DRF 3.18
     # defaults to dictionaries; migrate this contract before upgrading to 3.20.
     "LIST_SERIALIZER_ERRORS_AS_DICT": False,
@@ -769,6 +772,8 @@ SPECTACULAR_SETTINGS = {
             "single_select",
             "multiple_select",
             "phone_number",
+            "id_card",
+            "unified_social_credit_code",
             "formula",
             "count",
             "lookup",

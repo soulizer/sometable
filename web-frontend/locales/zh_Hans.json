@@ -201,7 +201,9 @@
         "multipleCollaboratorsDropdown": "下拉框",
         "multipleCollaboratorsCheckboxes": "复选框",
         "defaultValueFunctionNow": "当前日期",
-        "button": "按钮"
+        "button": "按钮",
+        "idCard": "身份证号",
+        "unifiedSocialCreditCode": "统一社会信用代码"
     },
     "fieldErrors": {
         "invalidNumber": "数值无效",
@@ -216,7 +218,9 @@
         "maxChars": "最多 {max} 个字符。",
         "maxCharsExceeded": "最多 {max} 个字符（超出 {over} 个）。",
         "maxImagesExceeded": "最多 {max} 张图片（请移除 {over} 张）。",
-        "minChars": "至少 {min} 个字符。"
+        "minChars": "至少 {min} 个字符。",
+        "invalidIdCard": "身份证号码无效",
+        "invalidUnifiedSocialCreditCode": "统一社会信用代码无效"
     },
     "fieldDocs": {
         "readOnly": "此字段只读。",
@@ -254,7 +258,9 @@
         "autonumber": "只读字段，每新增一行自动递增一个数字。",
         "password": "只写字段，用于保存加密后的密码。未设置时值为 `null`，已设置时为 `true`。设置时接受字符串。",
         "formViewEditRow": "只读字段，生成可签名的唯一链接，通过关联的表单视图即可编辑该行。",
-        "button": "按钮字段。点击按钮会打开由该行数据拼成的链接。该单元格不存储任何数据，写入操作会被拒绝。"
+        "button": "按钮字段。点击按钮会打开由该行数据拼成的链接。该单元格不存储任何数据，写入操作会被拒绝。",
+        "idCard": "接受 18 位中国大陆居民身份证号码，包含校验码校验。",
+        "unifiedSocialCreditCode": "接受 18 位统一社会信用代码，包含校验码校验。"
     },
     "viewFilter": {
         "contains": "包含",
@@ -507,7 +513,15 @@
         "templateHasNoContentTitle": "模板没有内容",
         "templateHasNoContentDescription": "该模板没有内容。",
         "templateUpdatedTitle": "该模板已更新",
-        "templateUpdatedDescription": "自您打开后模板已发生变更，请使用最新版本重试。"
+        "templateUpdatedDescription": "自您打开后模板已发生变更，请使用最新版本重试。",
+        "errorDetails": "技术详情",
+        "errorCode": "错误代码",
+        "httpStatus": "HTTP 状态码",
+        "method": "请求方法",
+        "request": "请求地址",
+        "serverResponse": "服务器返回",
+        "copyDetails": "复制详情",
+        "copyDetailsDone": "已复制"
     },
     "importerType": {
         "csv": "导入 CSV 文件",

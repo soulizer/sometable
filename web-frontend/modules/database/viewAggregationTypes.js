@@ -149,6 +149,8 @@ export class CountViewAggregationType extends ViewAggregationType {
       'single_select',
       'multiple_select',
       'phone_number',
+      'id_card',
+      'unified_social_credit_code',
       'duration',
       'password',
       FormulaFieldType.compatibleWithFormulaTypes(
@@ -198,6 +200,8 @@ export class EmptyCountViewAggregationType extends ViewAggregationType {
       'single_select',
       'multiple_select',
       'phone_number',
+      'id_card',
+      'unified_social_credit_code',
       'duration',
       'password',
       FormulaFieldType.compatibleWithFormulaTypes(
@@ -244,6 +248,8 @@ export class NotEmptyCountViewAggregationType extends ViewAggregationType {
       'single_select',
       'multiple_select',
       'phone_number',
+      'id_card',
+      'unified_social_credit_code',
       'duration',
       'password',
       FormulaFieldType.compatibleWithFormulaTypes(
@@ -357,6 +363,8 @@ export class EmptyPercentageViewAggregationType extends ViewAggregationType {
       'single_select',
       'multiple_select',
       'phone_number',
+      'id_card',
+      'unified_social_credit_code',
       'duration',
       'password',
       FormulaFieldType.compatibleWithFormulaTypes(
@@ -424,6 +432,8 @@ export class NotEmptyPercentageViewAggregationType extends ViewAggregationType {
       'single_select',
       'multiple_select',
       'phone_number',
+      'id_card',
+      'unified_social_credit_code',
       'duration',
       'password',
       FormulaFieldType.compatibleWithFormulaTypes(
@@ -559,6 +569,8 @@ export class UniqueCountViewAggregationType extends ViewAggregationType {
       'date',
       'single_select',
       'phone_number',
+      'id_card',
+      'unified_social_credit_code',
       'duration',
       'last_modified_by',
       'created_by',
@@ -907,6 +919,8 @@ export class DistributionViewAggregationType extends ViewAggregationType {
       'created_by',
       'email',
       'phone_number',
+      'id_card',
+      'unified_social_credit_code',
       'single_select',
       'duration',
       'boolean',

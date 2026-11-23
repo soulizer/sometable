@@ -277,6 +277,8 @@ def setup_interesting_test_table(
             {"id": user3.id, "name": user3.first_name},
         ],
         "phone_number": "+4412345678",
+        "id_card": "110101199001010015",
+        "unified_social_credit_code": "91350100M000100Y43",
         "password": "test",
         "ai": "I'm an AI.",
         "ai_choice": SelectOption.objects.get(

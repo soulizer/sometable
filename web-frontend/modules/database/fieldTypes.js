@@ -14,6 +14,8 @@ import {
   isInteger,
   isSimplePhoneNumber,
   isValidEmail,
+  isValidIdCard,
+  isValidUnifiedSocialCreditCode,
   isValidURL,
 } from '@baserow/modules/core/utils/string'
 import {
@@ -4652,6 +4654,230 @@ export class PhoneNumberFieldType extends FieldType {
   }
 
   getCanGroupByInView(field) {
+    return true
+  }
+}
+
+export class IdCardFieldType extends FieldType {
+  static getType() {
+    return 'id_card'
+  }
+
+  static getIconClass() {
+    return 'iconoir-fingerprint'
+  }
+
+  getName() {
+    return this.app.$i18n.t('fieldType.idCard')
+  }
+
+  getGridViewFieldComponent() {
+    return GridViewFieldText
+  }
+
+  getFunctionalGridViewFieldComponent() {
+    return FunctionalGridViewFieldText
+  }
+
+  getRowEditFieldComponent() {
+    return RowEditFieldText
+  }
+
+  getCardComponent() {
+    return RowCardFieldText
+  }
+
+  getRowHistoryEntryComponent() {
+    return RowHistoryFieldText
+  }
+
+  getEmptyValue() {
+    return ''
+  }
+
+  getDefaultValue() {
+    return ''
+  }
+
+  prepareValueForPaste(field, clipboardData) {
+    return isValidIdCard(clipboardData) ? clipboardData : ''
+  }
+
+  canUpsert() {
+    return true
+  }
+
+  getValidationError(field, value) {
+    if (value === null || value === undefined || value === '') {
+      return null
+    }
+    if (!isValidIdCard(value)) {
+      return this.app.$i18n.t('fieldErrors.invalidIdCard')
+    }
+    return null
+  }
+
+  getSort(name, order) {
+    return (a, b) => {
+      const stringA = a[name] === null ? '' : '' + a[name]
+      const stringB = b[name] === null ? '' : '' + b[name]
+      return collatedStringCompare(stringA, stringB, order)
+    }
+  }
+
+  getSortIndicator() {
+    return ['text', '0', '9']
+  }
+
+  getDocsDataType() {
+    return 'string'
+  }
+
+  getDocsDescription() {
+    return this.app.$i18n.t('fieldDocs.idCard')
+  }
+
+  getDocsRequestExample() {
+    return '110101199001010015'
+  }
+
+  getContainsFilterFunction() {
+    return genericContainsFilter
+  }
+
+  getStartsWithFilterFunction() {
+    return genericStartsWithFilter
+  }
+
+  canBeReferencedByFormulaField() {
+    return true
+  }
+
+  canParseQueryParameter() {
+    return true
+  }
+
+  parseQueryParameter(field, value) {
+    return value
+  }
+
+  getCanImport() {
+    return true
+  }
+
+  getCanGroupByInView() {
+    return true
+  }
+}
+
+export class UnifiedSocialCreditCodeFieldType extends FieldType {
+  static getType() {
+    return 'unified_social_credit_code'
+  }
+
+  static getIconClass() {
+    return 'iconoir-bank'
+  }
+
+  getName() {
+    return this.app.$i18n.t('fieldType.unifiedSocialCreditCode')
+  }
+
+  getGridViewFieldComponent() {
+    return GridViewFieldText
+  }
+
+  getFunctionalGridViewFieldComponent() {
+    return FunctionalGridViewFieldText
+  }
+
+  getRowEditFieldComponent() {
+    return RowEditFieldText
+  }
+
+  getCardComponent() {
+    return RowCardFieldText
+  }
+
+  getRowHistoryEntryComponent() {
+    return RowHistoryFieldText
+  }
+
+  getEmptyValue() {
+    return ''
+  }
+
+  getDefaultValue() {
+    return ''
+  }
+
+  prepareValueForPaste(field, clipboardData) {
+    return isValidUnifiedSocialCreditCode(clipboardData) ? clipboardData : ''
+  }
+
+  canUpsert() {
+    return true
+  }
+
+  getValidationError(field, value) {
+    if (value === null || value === undefined || value === '') {
+      return null
+    }
+    if (!isValidUnifiedSocialCreditCode(value)) {
+      return this.app.$i18n.t('fieldErrors.invalidUnifiedSocialCreditCode')
+    }
+    return null
+  }
+
+  getSort(name, order) {
+    return (a, b) => {
+      const stringA = a[name] === null ? '' : '' + a[name]
+      const stringB = b[name] === null ? '' : '' + b[name]
+      return collatedStringCompare(stringA, stringB, order)
+    }
+  }
+
+  getSortIndicator() {
+    return ['text', '0', '9']
+  }
+
+  getDocsDataType() {
+    return 'string'
+  }
+
+  getDocsDescription() {
+    return this.app.$i18n.t('fieldDocs.unifiedSocialCreditCode')
+  }
+
+  getDocsRequestExample() {
+    return '91350100M000100Y43'
+  }
+
+  getContainsFilterFunction() {
+    return genericContainsFilter
+  }
+
+  getStartsWithFilterFunction() {
+    return genericStartsWithFilter
+  }
+
+  canBeReferencedByFormulaField() {
+    return true
+  }
+
+  canParseQueryParameter() {
+    return true
+  }
+
+  parseQueryParameter(field, value) {
+    return value
+  }
+
+  getCanImport() {
+    return true
+  }
+
+  getCanGroupByInView() {
     return true
   }
 }

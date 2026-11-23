@@ -31,6 +31,7 @@ from baserow.contrib.database.fields.field_types import (
     EmailFieldType,
     FileFieldType,
     FormulaFieldType,
+    IdCardFieldType,
     LastModifiedByFieldType,
     LastModifiedFieldType,
     LinkRowFieldType,
@@ -43,6 +44,7 @@ from baserow.contrib.database.fields.field_types import (
     SingleSelectFieldType,
     TextFieldType,
     URLFieldType,
+    UnifiedSocialCreditCodeFieldType,
 )
 from baserow.contrib.database.fields.registries import field_type_registry
 from baserow.contrib.database.formula import (
@@ -118,6 +120,8 @@ class CountViewAggregationType(ViewAggregationType):
         EmailFieldType.type,
         FileFieldType.type,
         PhoneNumberFieldType.type,
+        IdCardFieldType.type,
+        UnifiedSocialCreditCodeFieldType.type,
         SingleSelectFieldType.type,
         MultipleSelectFieldType.type,
         PasswordFieldType.type,
@@ -163,6 +167,8 @@ class EmptyCountViewAggregationType(ViewAggregationType):
         EmailFieldType.type,
         FileFieldType.type,
         PhoneNumberFieldType.type,
+        IdCardFieldType.type,
+        UnifiedSocialCreditCodeFieldType.type,
         SingleSelectFieldType.type,
         MultipleSelectFieldType.type,
         PasswordFieldType.type,
@@ -242,6 +248,8 @@ class UniqueCountViewAggregationType(ViewAggregationType):
         CreatedByFieldType.type,
         EmailFieldType.type,
         PhoneNumberFieldType.type,
+        IdCardFieldType.type,
+        UnifiedSocialCreditCodeFieldType.type,
         SingleSelectFieldType.type,
         DurationFieldType.type,
         FormulaFieldType.compatible_with_formula_types(
@@ -475,6 +483,8 @@ class DistributionViewAggregationType(ViewAggregationType):
         CreatedByFieldType.type,
         EmailFieldType.type,
         PhoneNumberFieldType.type,
+        IdCardFieldType.type,
+        UnifiedSocialCreditCodeFieldType.type,
         SingleSelectFieldType.type,
         DurationFieldType.type,
         BooleanFieldType.type,
