@@ -25,8 +25,8 @@
       v-model="timeInputValue"
       class="ab-datetime-picker__input ab-datetime-picker__input--time"
       :placeholder="timeFormat"
-      @click="$refs.timeContext.show($refs.timeWrapper.$el, 'bottom', 'left')"
-      @focus="$refs.timeContext.show($refs.timeWrapper.$el, 'bottom', 'left')"
+      @click="$refs.timeContext.show($refs.timeWrapper?.$el, 'bottom', 'left')"
+      @focus="$refs.timeContext.show($refs.timeWrapper?.$el, 'bottom', 'left')"
       @keydown.enter.prevent="$event.target.blur()"
       @blur="handleTimeBlur($event)"
     />

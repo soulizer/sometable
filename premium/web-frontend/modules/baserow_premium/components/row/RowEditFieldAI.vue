@@ -13,7 +13,7 @@
         v-if="false"
         type="secondary"
         icon="iconoir-lock"
-        @click="$refs.clickModal.show()"
+        @click="$refs.clickModal?.show()"
       >
         {{ $t('rowEditFieldAI.generate') }}
       </Button>

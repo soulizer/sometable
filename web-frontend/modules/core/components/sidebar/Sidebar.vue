@@ -36,15 +36,7 @@
         </nuxt-link>
         <a
           class="sidebar__workspaces-selector-link"
-          @click="
-            $refs.workspacesContext.toggle(
-              $refs.workspaceContextAnchor,
-              'bottom',
-              'left',
-              4,
-              16
-            )
-          "
+          @click="openUserContext"
         >
           <Avatar
             :initials="
@@ -190,6 +182,14 @@ export default {
     )
   },
   methods: {
+    openUserContext() {
+      const context = this.$refs.workspacesContext
+      const anchor = this.$refs.workspaceContextAnchor
+      if (!context || !anchor) {
+        return
+      }
+      context.toggle(anchor, 'bottom', 'left', 4, 16)
+    },
     setShowAdmin(value) {
       this.showAdmin = value
       this.$forceUpdate()

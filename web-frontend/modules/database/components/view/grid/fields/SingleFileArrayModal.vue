@@ -21,7 +21,7 @@ export default {
   },
   computed: {
     open() {
-      return this.$refs.fileModal.open
+      return this.$refs.fileModal?.open
     },
   },
   methods: {
@@ -31,7 +31,7 @@ export default {
       return fileModal ? fileModal.getTeleportedElement() : null
     },
     show(index) {
-      this.$refs.fileModal.show(index)
+      this.$refs.fileModal?.show(index)
     },
   },
 }

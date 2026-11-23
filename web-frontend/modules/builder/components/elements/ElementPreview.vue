@@ -430,7 +430,7 @@ export default {
           ? this.element.id
           : null
 
-      this.$refs.addElementModal.show({
+      this.$refs.addElementModal?.show({
         placeInContainer: this.element.place_in_container,
         parentElementId: this.parentElement?.id ?? null,
         beforeId,

@@ -58,7 +58,7 @@
           :class="{
             'margin-top-1': !elementsVisible,
           }"
-          @click="$refs.addElementModal.show()"
+          @click="$refs.addElementModal?.show()"
         />
       </div>
     </div>

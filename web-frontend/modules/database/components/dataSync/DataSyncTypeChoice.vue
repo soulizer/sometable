@@ -58,7 +58,7 @@ export default {
   methods: {
     select(dataSyncType) {
       if (dataSyncType.isDeactivated(this.database.workspace.id)) {
-        this.$refs.deactivatedClickModal.show()
+        this.$refs.deactivatedClickModal?.show()
       } else {
         this.$emit('selected')
       }

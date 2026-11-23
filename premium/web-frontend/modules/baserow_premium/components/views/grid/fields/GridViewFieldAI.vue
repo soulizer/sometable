@@ -53,7 +53,7 @@
           <ButtonText
             v-else
             icon="iconoir-lock"
-            @mousedown.prevent.stop="$refs.clickModal.show()"
+            @mousedown.prevent.stop="$refs.clickModal?.show()"
           >
             {{ $t('gridViewFieldAI.regenerate') }}
           </ButtonText>
@@ -133,8 +133,8 @@ export default {
       document.body.removeEventListener('keydown', this.keydownEventListener)
     },
     canKeyDown() {
-      if (this.$refs.cell && typeof this.$refs.cell.canKeyDown === 'function') {
-        return this.$refs.cell.canKeyDown()
+      if (this.$refs.cell && typeof this.$refs.cell?.canKeyDown === 'function') {
+        return this.$refs.cell?.canKeyDown()
       }
       return true
     },
@@ -144,9 +144,9 @@ export default {
       // restricted only to non-editing mode
       if (
         this.$refs.cell &&
-        typeof this.$refs.cell.canKeyboardShortcut === 'function'
+        typeof this.$refs.cell?.canKeyboardShortcut === 'function'
       ) {
-        return this.$refs.cell.canKeyboardShortcut()
+        return this.$refs.cell?.canKeyboardShortcut()
       }
       return true
     },
@@ -162,9 +162,9 @@ export default {
     canSelectNext(event) {
       if (
         this.$refs.cell &&
-        typeof this.$refs.cell.canSelectNext === 'function'
+        typeof this.$refs.cell?.canSelectNext === 'function'
       ) {
-        return this.$refs.cell.canSelectNext(event)
+        return this.$refs.cell?.canSelectNext(event)
       }
       return true
     },

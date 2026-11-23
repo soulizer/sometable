@@ -98,7 +98,7 @@ export default {
       this.dirty = false
       this.editing = true
       this.$nextTick(() => {
-        this.$refs.editor.focus()
+        this.$refs.editor?.focus()
       })
     },
     stopEditing() {
@@ -106,7 +106,7 @@ export default {
       // content actually changed, so opening and closing a legacy description
       // doesn't rewrite it (markdown serialization can escape stray characters).
       if (this.dirty) {
-        const markdown = this.$refs.editor.serializeToMarkdown()
+        const markdown = this.$refs.editor?.serializeToMarkdown()
         if (markdown !== (this.value || '')) {
           this.$emit('change', markdown)
         }

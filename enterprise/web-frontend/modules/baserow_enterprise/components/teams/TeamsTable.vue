@@ -262,7 +262,7 @@ export default {
     async showMembersModal(team) {
       this.membersTeam = team
       await this.$nextTick()
-      this.$refs.membersModal.show()
+      this.$refs.membersModal?.show()
     },
     /**
      * Fetches a team again after its members changed, so that its member count
@@ -281,7 +281,7 @@ export default {
     },
     handleEditTeam(team) {
       this.focusedTeam = team
-      this.$refs.updateModal.show()
+      this.$refs.updateModal?.show()
     },
     onRowContext({ row, event, target }) {
       if (!this.canViewEditTeamContext) {

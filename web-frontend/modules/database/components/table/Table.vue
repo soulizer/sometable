@@ -645,7 +645,7 @@ export default {
           notifyIf(error)
         }
         if (typeof this.$refs.view?.refresh === 'function') {
-          await this.$refs.view.refresh()
+          await this.$refs.view?.refresh()
         }
         await callCallback()
       })
@@ -658,7 +658,7 @@ export default {
       )
     },
     openTableViewsContext() {
-      this.$refs.viewsContext.toggle(
+      this.$refs.viewsContext?.toggle(
         this.$refs.viewsSelectToggle,
         'bottom',
         'left',
@@ -666,7 +666,7 @@ export default {
       )
     },
     closeTableViewsContext() {
-      this.$refs.viewsContext.hide()
+      this.$refs.viewsContext?.hide()
     },
     openTableViewContext() {
       this.$refs.viewContext.toggle(

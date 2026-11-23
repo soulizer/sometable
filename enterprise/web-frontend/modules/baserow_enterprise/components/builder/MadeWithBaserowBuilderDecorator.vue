@@ -19,7 +19,7 @@
         v-if="showReportLink"
         class="made-with-baserow__link made-with-baserow__report-abuse"
         href="#"
-        @click.prevent="$refs.reportAbuseModal.show()"
+        @click.prevent="$refs.reportAbuseModal?.show()"
       >
         {{ $t('madeWithBaserow.reportAbuse') }}
       </a>

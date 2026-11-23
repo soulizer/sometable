@@ -221,7 +221,7 @@ export default {
       await this.update({ role, allowInForms: this.allowInForms })
     },
     async saveCustomSubjects() {
-      const subjects = this.$refs.subjectsSelector.getSelectedSubjects()
+      const subjects = this.$refs.subjectsSelector?.getSelectedSubjects()
       const data = await this.update({
         role: this.customRole,
         allowInForms: this.allowInForms,

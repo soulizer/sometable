@@ -352,18 +352,18 @@ export default {
             subject_type: item.type,
           })
           this.teamSubjects.push(data)
-          this.$refs.input.remove(item)
+          this.$refs.input?.remove(item)
         }
         sendingInvitations = true
         await this.sendInvitations(emails, null, (item, teamInvitation) => {
-          this.$refs.input.remove(item)
+          this.$refs.input?.remove(item)
           if (
             !this.teamInvitations.some(({ id }) => id === teamInvitation.id)
           ) {
             this.teamInvitations.push(teamInvitation)
           }
         })
-        this.$refs.input.reset()
+        this.$refs.input?.reset()
       } catch (error) {
         if (sendingInvitations) {
           this.handleInvitationError(error)

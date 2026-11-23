@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     async onDataSourceValuesChanged(changedDataSourceValues) {
-      if (this.$refs.dataSourceForm.isFormValid()) {
+      if (this.$refs.dataSourceForm?.isFormValid()) {
         try {
           await this.$store.dispatch(
             `${this.storePrefix}dashboardApplication/updateDataSource`,
@@ -64,8 +64,8 @@ export default {
             }
           )
         } catch (error) {
-          this.$refs.dataSourceForm.reset()
-          this.$refs.dataSourceForm.touch()
+          this.$refs.dataSourceForm?.reset()
+          this.$refs.dataSourceForm?.touch()
           notifyIf(error, 'dashboard')
         }
       }

@@ -73,7 +73,7 @@
               :full-width="true"
               @click="
                 $refs.addOptionContext.toggle(
-                  $refs.addOptionContextLink.$el,
+                  $refs.addOptionContextLink?.$el,
                   'bottom',
                   'right'
                 )

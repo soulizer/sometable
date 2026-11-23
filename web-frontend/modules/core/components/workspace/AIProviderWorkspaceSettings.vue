@@ -306,14 +306,14 @@ export default {
       this.editingProvider = provider
       this.creatingProviderType = providerType
       this.providerFormOpen = true
-      this.$nextTick(() => this.$refs.providerForm.show())
+      this.$nextTick(() => this.$refs.providerForm?.show())
     },
     openModelForm(provider, model = null) {
       if (provider.read_only) return
       this.editingModelProvider = provider
       this.editingModel = model
       this.modelFormOpen = true
-      this.$nextTick(() => this.$refs.modelForm.show())
+      this.$nextTick(() => this.$refs.modelForm?.show())
     },
     async toggleProvider(provider) {
       const enabled = provider.read_only
@@ -404,14 +404,14 @@ export default {
     },
     openConfirmation(action) {
       this.pendingAction = action
-      this.$nextTick(() => this.$refs.confirmModal.show())
+      this.$nextTick(() => this.$refs.confirmModal?.show())
     },
     async confirmPendingAction() {
       const action = this.pendingAction
       this.actionLoading = true
       try {
         const succeeded = await this.runAction(action.kind, action.resource)
-        if (succeeded) this.$refs.confirmModal.hide()
+        if (succeeded) this.$refs.confirmModal?.hide()
       } finally {
         this.actionLoading = false
       }

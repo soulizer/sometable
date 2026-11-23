@@ -28,7 +28,7 @@
           :icon-class="getIconClass(file.mime_type)"
           @delete="removeFile(value, index)"
           @rename="(name) => renameFile(value, index, name)"
-          @click="$refs.fileModal.show(index)"
+          @click="$refs.fileModal?.show(index)"
         />
       </li>
     </ul>
@@ -116,7 +116,7 @@ export default {
   },
   methods: {
     showModal() {
-      this.$refs.uploadModal.show(UploadFileUserFileUploadType.getType())
+      this.$refs.uploadModal?.show(UploadFileUserFileUploadType.getType())
     },
     async filesAdded(event) {
       const files = event.target.files || event.dataTransfer?.files

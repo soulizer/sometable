@@ -385,7 +385,7 @@ export default {
     async update() {
       if (this.activeMode === 'details') {
         this.submitted = true
-        if (!this.$refs.detailsForm.isValid()) {
+        if (!this.$refs.detailsForm?.isValid()) {
           return
         }
       }

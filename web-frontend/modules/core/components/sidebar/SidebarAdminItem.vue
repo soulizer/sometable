@@ -16,7 +16,7 @@
         v-if="deactivated"
         href="#"
         class="tree__link"
-        @click="deactivatedModal ? $refs.deactivatedModal.show() : null"
+        @click="deactivatedModal ? $refs.deactivatedModal?.show() : null"
       >
         <i class="tree__icon iconoir-lock"></i>
         <span class="tree__link-text">

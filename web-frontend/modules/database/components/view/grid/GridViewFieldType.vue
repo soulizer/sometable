@@ -76,7 +76,7 @@
           v-if="!readOnly && showFieldContext"
           ref="contextLink"
           class="grid-view__description-icon-trigger"
-          @click="$refs.context.toggle($refs.contextLink, 'bottom', 'right', 0)"
+          @click="$refs.context?.toggle($refs.contextLink, 'bottom', 'right', 0)"
           @mousedown.stop
         >
           <i class="iconoir-nav-arrow-down"></i>
@@ -163,7 +163,7 @@
         >
           <a
             class="context__menu-item-link"
-            @click=";[$refs.duplicateFieldModal.toggle(), $refs.context.hide()]"
+            @click=";[$refs.duplicateFieldModal.toggle(), $refs.context?.hide()]"
           >
             <i class="context__menu-item-icon iconoir-copy"></i>
             {{ $t('gridViewFieldType.duplicate') }}
@@ -479,24 +479,24 @@ export default {
   methods: {
     moveField($event) {
       this.$emit('move-field', $event)
-      this.$refs.context.hide()
+      this.$refs.context?.hide()
     },
     async handleQuickEdit() {
       if (this.readOnly || !this.canUpdateField || !this.$refs.context) {
         return false
       }
 
-      await this.$refs.context.toggle(
+      await this.$refs.context?.toggle(
         this.$refs.quickEditLink,
         'bottom',
         'left',
         0
       )
-      this.$refs.context.showUpdateFieldContext()
+      this.$refs.context?.showUpdateFieldContext()
     },
     quickEditField($event) {
       this.$emit('updated', $event)
-      this.$refs.context.hide()
+      this.$refs.context?.hide()
     },
     async createFilter(event, view, field) {
       // Prevent the event from propagating to the body so that it does not close the
@@ -504,7 +504,7 @@ export default {
       // click outside event that is fired there.
       event.stopPropagation()
       event.preventDefault()
-      this.$refs.context.hide()
+      this.$refs.context?.hide()
 
       try {
         await this.$store.dispatch('view/createFilter', {
@@ -525,7 +525,7 @@ export default {
       // click outside event that is fired there.
       event.stopPropagation()
       event.preventDefault()
-      this.$refs.context.hide()
+      this.$refs.context?.hide()
 
       const sort = view.sortings.find((sort) => sort.field === this.field.id)
       const values = {
@@ -556,7 +556,7 @@ export default {
       // stops the body click-outside handler from also acting on this click
       event.stopPropagation()
       event.preventDefault()
-      this.$refs.context.hide()
+      this.$refs.context?.hide()
 
       const groupBy = view.group_bys.find((g) => g.field === field.id)
 

@@ -264,7 +264,7 @@
       class="grid-view__add-row-button"
       icon="iconoir-plus"
       position="absolute"
-      @click="$refs.rowCreateModal.show()"
+      @click="$refs.rowCreateModal?.show()"
     ></ButtonFloating>
     <RowCreateModal
       v-if="canCreateRow"

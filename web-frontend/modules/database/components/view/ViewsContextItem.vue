@@ -166,7 +166,7 @@ export default {
     },
     select(view) {
       if (this.deactivated || this.viewOwnershipDeactivated) {
-        this.$refs.deactivatedClickModal.show()
+        this.$refs.deactivatedClickModal?.show()
         return
       }
       this.$emit('selected', view)

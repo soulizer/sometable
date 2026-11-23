@@ -53,7 +53,7 @@
         :identity="focusedIdentity"
         :can-update="canUpdate"
         :can-delete="canDelete"
-        @edit="$refs.updateModal.show()"
+        @edit="$refs.updateModal?.show()"
       />
     </template>
   </CrudTable>
@@ -228,7 +228,7 @@ export default {
       event?.preventDefault()
       this.focusedIdentityId = row.id
       this.$nextTick(() =>
-        this.$refs.context.show(
+        this.$refs.context?.show(
           target || event.currentTarget,
           'bottom',
           'left',

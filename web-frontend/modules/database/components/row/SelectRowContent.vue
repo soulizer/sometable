@@ -55,7 +55,7 @@
         :selected-rows="selectedRows"
         :multiple="multiple"
         :show-row-id="true"
-        @add-row="$refs.rowCreateModal.show()"
+        @add-row="$refs.rowCreateModal?.show()"
         @row-click="select($event)"
         @update-field-width="updateFieldWidth"
       >

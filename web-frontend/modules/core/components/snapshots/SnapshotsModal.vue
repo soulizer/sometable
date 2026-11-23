@@ -169,7 +169,7 @@ export default {
       ) {
         this.snapshots.unshift(this.job.snapshot)
       }
-      this.$refs.form.v$.$reset()
+      this.$refs.form?.v$.$reset()
     },
     onJobFailed() {
       this.createLoading = false
@@ -222,7 +222,7 @@ export default {
       this.job = null
       this.createFinished = false
       this.createLoading = false
-      this.$refs.form.resetName()
+      this.$refs.form?.resetName()
     },
     getCustomHumanReadableJobState(jobState) {
       if (jobState.startsWith('importing')) {

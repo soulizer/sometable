@@ -133,7 +133,7 @@ export default {
     },
     focus() {
       if (this.multiline === true) {
-        this.$refs.textarea.focus()
+        this.$refs.textarea?.focus()
       } else {
         this.$refs.input.focus()
       }

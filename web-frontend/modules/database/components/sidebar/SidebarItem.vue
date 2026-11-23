@@ -351,7 +351,7 @@ export default {
     },
     openSyncModal() {
       if (this.dataSyncDeactivated) {
-        this.$refs.deactivatedDataSyncClickModal.show()
+        this.$refs.deactivatedDataSyncClickModal?.show()
       } else {
         this.$refs.context.hide()
         this.$refs.syncModal.show()
@@ -359,7 +359,7 @@ export default {
     },
     openConfigureDataSyncModal() {
       if (this.dataSyncDeactivated) {
-        this.$refs.deactivatedDataSyncClickModal.show()
+        this.$refs.deactivatedDataSyncClickModal?.show()
       } else {
         this.$refs.context.hide()
         this.$refs.configureDataSyncModal.show()

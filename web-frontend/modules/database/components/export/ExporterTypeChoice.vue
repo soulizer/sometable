@@ -69,7 +69,7 @@ export default {
   methods: {
     select(exporterType) {
       if (this.deactivated && this.deactivatedClickModal) {
-        this.$refs.deactivatedClickModal.show()
+        this.$refs.deactivatedClickModal?.show()
       } else if (!this.disabled && !this.deactivated) {
         this.$emit('selected', exporterType)
       }

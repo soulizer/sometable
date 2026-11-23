@@ -197,7 +197,7 @@ export default {
       }
 
       this.modalOpen = true
-      this.$refs.selectModal.show()
+      this.$refs.selectModal?.show()
     },
     hideModal() {
       this.modalOpen = false
@@ -224,7 +224,7 @@ export default {
 
       this.itemLoadingId = item.id
       try {
-        await this.$refs.rowEditModal.show(item.id)
+        await this.$refs.rowEditModal?.show(item.id)
         this.modalOpen = true
       } catch (error) {
         notifyIf(error)

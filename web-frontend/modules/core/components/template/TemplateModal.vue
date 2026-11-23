@@ -380,7 +380,7 @@ export default {
     },
     openCreateModal() {
       this.creating = true
-      this.$refs.createUserTemplateModal.show()
+      this.$refs.createUserTemplateModal?.show()
     },
     templateCreated() {
       this.$refs.userTemplateList?.refresh()
@@ -407,7 +407,7 @@ export default {
       this.updating = true
       // Mounts the modal of another template first.
       await this.$nextTick()
-      this.$refs.updateUserTemplateModal.show()
+      this.$refs.updateUserTemplateModal?.show()
     },
     /**
      * The list and the opened preview show the new revision. The updated template
@@ -459,7 +459,7 @@ export default {
       this.deleting = true
       // Mounts the modal the first time.
       await this.$nextTick()
-      this.$refs.deleteUserTemplateModal.show()
+      this.$refs.deleteUserTemplateModal?.show()
     },
     async makePrivate({ id, slug }) {
       if (this.madePrivate.has(id)) {
@@ -502,7 +502,7 @@ export default {
       this.makingPublic = true
       // Mounts the modal the first time.
       await this.$nextTick()
-      this.$refs.makeTemplatePublicModal.show()
+      this.$refs.makeTemplatePublicModal?.show()
     },
     /**
      * The deleted template disappears from the list, its preview and its update

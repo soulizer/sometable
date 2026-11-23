@@ -8,15 +8,7 @@
     <a
       ref="userContextAnchor"
       class="sidebar__workspaces-selector"
-      @click="
-        $refs.userContext.toggle(
-          $refs.userContextAnchor,
-          'bottom',
-          'left',
-          4,
-          16
-        )
-      "
+      @click="openUserContext"
     >
       <Avatar :initials="$filters.nameAbbreviation(name)"></Avatar>
       <span
@@ -95,6 +87,20 @@ export default {
       name: 'auth/getName',
       unreadNotificationsInAnyWorkspace: 'notification/anyWorkspaceWithUnread',
     }),
+  },
+  methods: {
+    /**
+     * The click can land while the sidebar is (re)mounting, for example during
+     * a route change, in which case the child refs are not available yet.
+     */
+    openUserContext() {
+      const context = this.$refs.userContext
+      const anchor = this.$refs.userContextAnchor
+      if (!context || !anchor) {
+        return
+      }
+      context.toggle(anchor, 'bottom', 'left', 4, 16)
+    },
   },
 }
 </script>

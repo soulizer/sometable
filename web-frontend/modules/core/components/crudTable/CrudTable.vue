@@ -462,7 +462,7 @@ export default {
     },
     setSearch(searchQuery) {
       if (this.$refs.crudTableSearch) {
-        this.$refs.crudTableSearch.setSearchTerm(searchQuery)
+        this.$refs.crudTableSearch?.setSearchTerm(searchQuery)
       } else {
         this.doSearch(searchQuery)
       }

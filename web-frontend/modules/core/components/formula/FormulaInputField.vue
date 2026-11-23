@@ -803,7 +803,7 @@ export default {
       }
 
       if (!this.isRawMode && this.value) {
-        this.$refs.rawModeModal.show()
+        this.$refs.rawModeModal?.show()
         return
       }
 

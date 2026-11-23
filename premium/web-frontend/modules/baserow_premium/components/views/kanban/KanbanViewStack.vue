@@ -41,7 +41,7 @@
           ref="editContextLink"
           class="kanban-view__options"
           @click="
-            $refs.editContext.toggle(
+            $refs.editContext?.toggle(
               $refs.editContextLink,
               'bottom',
               'right',

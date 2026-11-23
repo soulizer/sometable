@@ -233,7 +233,7 @@ export default {
         const confirmation = await this.requiredSaveConfirmation()
         if (confirmation) {
           this.saveConfirmation = confirmation
-          this.$nextTick(() => this.$refs.confirmModal.show())
+          this.$nextTick(() => this.$refs.confirmModal?.show())
           return
         }
         await this.save()

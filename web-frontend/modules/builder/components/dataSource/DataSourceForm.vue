@@ -360,7 +360,7 @@ export default {
       this.deactivatedClickModal = deactivatedClickModal
       this.deactivatedServiceTypeName = serviceType.name
       this.$nextTick(() => {
-        this.$refs.deactivatedClickModal.show()
+        this.$refs.deactivatedClickModal?.show()
       })
     },
   },

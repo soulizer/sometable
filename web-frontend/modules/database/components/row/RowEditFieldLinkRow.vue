@@ -43,7 +43,7 @@
     <a
       v-if="!shouldFetchRow && !readOnly && canAddValue && canAccessLinkedTable"
       class="add"
-      @click.prevent="$refs.selectModal.show()"
+      @click.prevent="$refs.selectModal?.show()"
     >
       <i class="iconoir-plus add__icon"></i>
       {{ $t('rowEditFieldLinkRow.addLink') }}
@@ -137,7 +137,7 @@ export default {
 
       this.itemLoadingId = item.id
       try {
-        await this.$refs.rowEditModal.show(item.id)
+        await this.$refs.rowEditModal?.show(item.id)
       } catch (error) {
         notifyIf(error)
       }

@@ -98,7 +98,7 @@ export default {
   methods: {
     onClick(event) {
       if (this.disallowedClickModal !== null) {
-        this.$refs.deactivatedClickModal.show()
+        this.$refs.deactivatedClickModal?.show()
       } else if (!this.disabled) {
         this.$emit('click', event)
       }

@@ -66,7 +66,7 @@
       >
         <a
           class="context__menu-item-link context__menu-item-link--delete"
-          @click="$refs.deleteModal.show()"
+          @click="$refs.deleteModal?.show()"
         >
           <i class="context__menu-item-icon iconoir-bin"></i>
           {{ $t('kanbanViewStackContext.deleteStack') }}

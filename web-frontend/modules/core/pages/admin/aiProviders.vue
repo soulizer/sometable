@@ -205,13 +205,13 @@ export default {
     openProviderForm(provider) {
       this.editingProvider = provider
       this.providerFormOpen = true
-      this.$nextTick(() => this.$refs.providerForm.show())
+      this.$nextTick(() => this.$refs.providerForm?.show())
     },
     openModelForm(provider, model = null) {
       this.editingModelProvider = provider
       this.editingModel = model
       this.modelFormOpen = true
-      this.$nextTick(() => this.$refs.modelForm.show())
+      this.$nextTick(() => this.$refs.modelForm?.show())
     },
     async toggleProvider(provider) {
       this.togglingProviderIds = [...this.togglingProviderIds, provider.id]
@@ -299,14 +299,14 @@ export default {
     },
     openConfirmation(action) {
       this.pendingAction = action
-      this.$nextTick(() => this.$refs.confirmModal.show())
+      this.$nextTick(() => this.$refs.confirmModal?.show())
     },
     async confirmPendingAction() {
       const action = this.pendingAction
       this.actionLoading = true
       try {
         const succeeded = await this.runAction(action.kind, action.resource)
-        if (succeeded) this.$refs.confirmModal.hide()
+        if (succeeded) this.$refs.confirmModal?.hide()
       } finally {
         this.actionLoading = false
       }

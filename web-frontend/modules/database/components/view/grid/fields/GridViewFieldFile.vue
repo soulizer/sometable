@@ -205,11 +205,11 @@ export default {
       }
 
       this.modalOpen = true
-      this.$refs.uploadModal.show(UploadFileUserFileUploadType.getType())
+      this.$refs.uploadModal?.show(UploadFileUserFileUploadType.getType())
     },
     showFileModal(index) {
       this.modalOpen = true
-      this.$refs.fileModal.show(index)
+      this.$refs.fileModal?.show(index)
     },
     hideModal() {
       this.modalOpen = false

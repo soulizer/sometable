@@ -57,13 +57,13 @@ export default {
       this.$refs.modal?.show(index)
     },
     canSelectNext() {
-      return !this.needsModal || !this.$refs.modal.open
+      return !this.needsModal || !this.$refs.modal?.open
     },
     canKeyDown() {
-      return !this.needsModal || !this.$refs.modal.open
+      return !this.needsModal || !this.$refs.modal?.open
     },
     canKeyboardShortcut() {
-      return !this.needsModal || !this.$refs.modal.open
+      return !this.needsModal || !this.$refs.modal?.open
     },
     canUnselectByClickingOutside(event) {
       if (!this.needsModal) {

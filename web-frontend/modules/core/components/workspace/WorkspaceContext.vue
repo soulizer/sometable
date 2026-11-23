@@ -47,7 +47,7 @@
       >
         <a
           class="context__menu-item-link"
-          @click="($refs.workspaceSettingsModal.show(), hide())"
+          @click="($refs.workspaceSettingsModal?.show(), hide())"
         >
           <i class="context__menu-item-icon iconoir-settings"></i>
           {{ $t('workspaceContext.settings') }}
@@ -183,15 +183,15 @@ export default {
     },
     showWorkspaceTrashModal() {
       this.$refs.context.hide()
-      this.$refs.workspaceTrashModal.show()
+      this.$refs.workspaceTrashModal?.show()
     },
     openExportData() {
       this.$refs.context.hide()
-      this.$refs.exportWorkspaceModal.show()
+      this.$refs.exportWorkspaceModal?.show()
     },
     openImportData() {
       this.$refs.context.hide()
-      this.$refs.importWorkspaceModal.show()
+      this.$refs.importWorkspaceModal?.show()
     },
     async deleteWorkspace() {
       this.loading = true

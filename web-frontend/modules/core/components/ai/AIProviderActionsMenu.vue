@@ -72,7 +72,7 @@ export default {
   methods: {
     open() {
       if (this.disabled || !this.$refs.context) return
-      return this.$refs.context.toggle(
+      return this.$refs.context?.toggle(
         this.$refs.trigger.$el,
         'bottom',
         'right',

@@ -26,14 +26,14 @@
         ref="updateSettingsModal"
         :auth-provider="authProvider"
         @settings-updated="onSettingsUpdated"
-        @cancel="$refs.updateSettingsModal.hide()"
+        @cancel="$refs.updateSettingsModal?.hide()"
       />
       <DeleteAuthProviderModal
         v-if="canBeDeleted(authProvider.type)"
         ref="deleteModal"
         :auth-provider="authProvider"
         @delete-confirmed="onDeleteConfirmed"
-        @cancel="$refs.deleteModal.hide()"
+        @cancel="$refs.deleteModal?.hide()"
       />
     </div>
     <SwitchInput
@@ -87,26 +87,26 @@ export default {
         .getProviderName(this.authProvider)
     },
     openContext() {
-      this.$refs.editMenuContext.toggle(
+      this.$refs.editMenuContext?.toggle(
         this.$refs.editMenuContextLink,
         'bottom',
         'right'
       )
     },
     showUpdateSettingsModal() {
-      this.$refs.editMenuContext.hide()
-      this.$refs.updateSettingsModal.show()
+      this.$refs.editMenuContext?.hide()
+      this.$refs.updateSettingsModal?.show()
     },
     showDeleteModal() {
-      this.$refs.deleteModal.show()
-      this.$refs.editMenuContext.hide()
+      this.$refs.deleteModal?.show()
+      this.$refs.editMenuContext?.hide()
     },
     onDeleteConfirmed() {
       this.$store.dispatch('authProviderAdmin/delete', this.authProvider)
-      this.$refs.deleteModal.hide()
+      this.$refs.deleteModal?.hide()
     },
     onSettingsUpdated() {
-      this.$refs.updateSettingsModal.hide()
+      this.$refs.updateSettingsModal?.hide()
     },
     async setEnabled(enabled) {
       await this.$store.dispatch('authProviderAdmin/setEnabled', {

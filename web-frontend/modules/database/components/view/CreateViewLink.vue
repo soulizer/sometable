@@ -84,7 +84,7 @@ export default {
       } else if (!this.deactivated) {
         this.$refs.createModal.show(this.$refs.createViewLink)
       } else if (this.deactivated && this.deactivatedClickModal) {
-        this.$refs.deactivatedClickModal.show()
+        this.$refs.deactivatedClickModal?.show()
       }
     },
   },

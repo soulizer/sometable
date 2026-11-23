@@ -358,7 +358,7 @@ export default {
     },
     clickTwoWaySync() {
       if (this.isTwoWaySyncDeactivated) {
-        this.$refs.twoWaySyncDeactivatedModal.show()
+        this.$refs.twoWaySyncDeactivatedModal?.show()
       }
     },
   },

@@ -28,7 +28,7 @@
         v-if="allowEditing && selectedIntegration"
         type="button"
         class="select__footer-button"
-        @click="$refs.IntegrationEditModal.show()"
+        @click="$refs.IntegrationEditModal?.show()"
       >
         <i class="iconoir-edit-pencil"></i>
         {{ $t('integrationDropdown.editIntegration') }}
@@ -36,7 +36,7 @@
       <button
         type="button"
         class="select__footer-button"
-        @click="$refs.IntegrationCreateEditModal.show()"
+        @click="$refs.IntegrationCreateEditModal?.show()"
       >
         <i class="iconoir-plus"></i>
         {{ $t('integrationDropdown.addIntegration') }}

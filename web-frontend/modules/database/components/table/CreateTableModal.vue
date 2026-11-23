@@ -170,7 +170,7 @@ export default {
       return null
     },
     callCreateComponentHide() {
-      this.$refs.createComponent.hide()
+      this.$refs.createComponent?.hide()
     },
     setChosenType(type) {
       if (type === this.chosenType && type !== '') {

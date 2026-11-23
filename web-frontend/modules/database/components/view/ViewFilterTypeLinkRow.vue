@@ -16,7 +16,7 @@
       'filters__value-link-row--disabled': disabled,
       'filters__value-link-row--loading': loading,
     }"
-    @click.prevent="!disabled && $refs.selectModal.show()"
+    @click.prevent="!disabled && $refs.selectModal?.show()"
   >
     <template v-if="!loading">
       <template v-if="valid">
