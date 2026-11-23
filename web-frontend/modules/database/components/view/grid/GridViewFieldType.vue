@@ -110,7 +110,7 @@
             ref="insertLeftLink"
             class="context__menu-item-link"
             @click="
-              $refs.insertFieldContext.toggle($refs.insertLeftLink, 'left')
+              $refs.insertFieldContext?.toggle($refs.insertLeftLink, 'left')
             "
           >
             <i class="context__menu-item-icon iconoir-arrow-left"></i>
@@ -133,7 +133,7 @@
             ref="insertRightLink"
             class="context__menu-item-link"
             @click="
-              $refs.insertFieldContext.toggle($refs.insertRightLink, 'right')
+              $refs.insertFieldContext?.toggle($refs.insertRightLink, 'right')
             "
           >
             <i class="context__menu-item-icon iconoir-arrow-right"></i>
@@ -163,7 +163,7 @@
         >
           <a
             class="context__menu-item-link"
-            @click=";[$refs.duplicateFieldModal.toggle(), $refs.context?.hide()]"
+            @click=";[$refs.duplicateFieldModal?.toggle(), $refs.context?.hide()]"
           >
             <i class="context__menu-item-icon iconoir-copy"></i>
             {{ $t('gridViewFieldType.duplicate') }}

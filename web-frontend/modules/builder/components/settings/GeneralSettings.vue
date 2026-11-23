@@ -54,7 +54,7 @@ export default {
           message = this.$t('generalSettings.cantUploadFaviconDescription')
         }
         this.$store.dispatch('toast/error', { title, message })
-        this.$refs.settingsForm.reset()
+        this.$refs.settingsForm?.reset()
       }
     },
   },

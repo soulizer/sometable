@@ -34,7 +34,7 @@
       <a
         v-if="descriptionIsTruncated"
         href="#"
-        @click.prevent.stop="$refs.detailsModal.show()"
+        @click.prevent.stop="$refs.detailsModal?.show()"
       >
         {{ $t('abuseReportCreatedNotification.showMore') }}
       </a>

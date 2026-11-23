@@ -52,7 +52,7 @@ export default {
       })
     },
     async updateApplication(values) {
-      if (!this.$refs.settingsForm.isFormValid(true)) {
+      if (!this.$refs.settingsForm?.isFormValid(true)) {
         return
       }
 
@@ -72,7 +72,7 @@ export default {
           'generalSettings.cantUpdateApplicationDescription'
         )
         this.$store.dispatch('toast/error', { title, message })
-        this.$refs.settingsForm.reset()
+        this.$refs.settingsForm?.reset()
       }
     },
     debouncedUpdate(val) {

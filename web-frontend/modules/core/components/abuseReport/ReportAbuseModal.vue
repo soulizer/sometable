@@ -100,7 +100,7 @@ export default {
         this.success = true
       } catch (error) {
         if (this.$refs.captchaWidget) {
-          this.$refs.captchaWidget.reset()
+          this.$refs.captchaWidget?.reset()
         }
         this.handleError(error, 'abuseReport', {
           ERROR_ABUSE_REPORTING_DISABLED: new ResponseErrorMessage(

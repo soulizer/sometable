@@ -12,7 +12,7 @@
       ref="opener"
       class="color-input__input"
       tabindex="0"
-      @click="$refs.colorPicker.toggle($refs.opener)"
+      @click="$refs.colorPicker?.toggle($refs.opener)"
     >
       <span
         class="color-input__preview"

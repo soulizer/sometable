@@ -45,7 +45,7 @@
         <div class="tree__action tree__action--has-counter">
           <a
             class="tree__link"
-            @click="$refs.notificationPanel.toggle($event.currentTarget)"
+            @click="$refs.notificationPanel?.toggle($event.currentTarget)"
           >
             <i class="tree__icon tree__icon--type iconoir-bell"></i>
             <span class="tree__link-text">{{
@@ -121,7 +121,7 @@
         class="tree__item"
       >
         <div class="tree__action sidebar__action">
-          <a class="tree__link" @click="$refs.inviteModal.show()">
+          <a class="tree__link" @click="$refs.inviteModal?.show()">
             <i class="tree__icon iconoir-add-user"></i>
             <span class="tree__link-text">
               <span class="sidebar__item-name">{{
@@ -142,7 +142,7 @@
       ></component>
       <li class="tree__item">
         <div class="tree__action sidebar__action">
-          <a class="tree__link" @click="$refs.trashModal.show()">
+          <a class="tree__link" @click="$refs.trashModal?.show()">
             <i class="tree__icon iconoir-bin"></i>
             <span class="tree__link-text">
               <span class="sidebar__item-name">{{ $t('sidebar.trash') }}</span>

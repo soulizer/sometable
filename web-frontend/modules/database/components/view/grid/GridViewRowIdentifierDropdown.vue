@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     toggle() {
-      this.$refs.context.toggle(
+      this.$refs.context?.toggle(
         this.$refs.contextAnchor,
         'bottom',
         'left',
@@ -57,7 +57,7 @@ export default {
       )
     },
     setRowIdentifierTypes(rowIdentifierType) {
-      this.$refs.context.hide()
+      this.$refs.context?.hide()
       this.$emit('change', rowIdentifierType)
     },
   },

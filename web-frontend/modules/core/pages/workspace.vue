@@ -6,7 +6,7 @@
           ref="contextLink"
           class="dashboard__workspace-name"
           @click="
-            $refs.context.toggle($refs.contextLink, 'bottom', 'left', -14)
+            $refs.context?.toggle($refs.contextLink, 'bottom', 'left', -14)
           "
         >
           <div class="dashboard__workspace-name-text">
@@ -67,7 +67,7 @@
               icon="iconoir-plus"
               tag="a"
               @click="
-                $refs.createApplicationContext.toggle(
+                $refs.createApplicationContext?.toggle(
                   $refs.createApplicationContextLink
                 )
               "
@@ -77,7 +77,7 @@
           <span
             ref="workspaceContextLink"
             @click="
-              $refs.context.toggle(
+              $refs.context?.toggle(
                 $refs.workspaceContextLink,
                 'bottom',
                 'right',
@@ -112,9 +112,9 @@
                 class="dashboard__resource"
                 role="button"
                 tabindex="0"
-                @click="$refs.templateModal.show()"
-                @keydown.enter.prevent="$refs.templateModal.show()"
-                @keydown.space.prevent="$refs.templateModal.show()"
+                @click="$refs.templateModal?.show()"
+                @keydown.enter.prevent="$refs.templateModal?.show()"
+                @keydown.space.prevent="$refs.templateModal?.show()"
               >
                 <div class="dashboard__resource-inner">
                   <span class="dashboard__resource-icon">
@@ -155,7 +155,7 @@
                   icon="iconoir-plus"
                   tag="a"
                   @click="
-                    $refs.createApplicationContext.toggle(
+                    $refs.createApplicationContext?.toggle(
                       $refs.createApplicationContextLink2
                     )
                   "
@@ -188,7 +188,7 @@
                 icon="iconoir-plus"
                 tag="a"
                 @click="
-                  $refs.createApplicationContext.toggle(
+                  $refs.createApplicationContext?.toggle(
                     $refs.createApplicationContextLink2
                   )
                 "

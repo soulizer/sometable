@@ -16,7 +16,7 @@
             size="large"
             :loading="submitLoading"
             :disabled="submitLoading"
-            @click="$refs.form.submit()"
+            @click="$refs.form?.submit()"
           >
             {{ isEdit ? $t('action.save') : $t('action.create') }}
           </Button>

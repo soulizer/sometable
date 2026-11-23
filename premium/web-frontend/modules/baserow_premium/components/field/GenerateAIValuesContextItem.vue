@@ -103,7 +103,7 @@ export default {
         
       } else if (this.modelAvailable && !this.fieldHasError) {
         this.$emit('hide-context')
-        this.$refs.generateAIValuesModal.show()
+        this.$refs.generateAIValuesModal?.show()
       }
     },
   },

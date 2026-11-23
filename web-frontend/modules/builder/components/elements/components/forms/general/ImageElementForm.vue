@@ -127,11 +127,11 @@ export default {
   },
   methods: {
     openFileUploadModal() {
-      this.$refs.userFilesModal.show(UploadFileUserFileUploadType.getType())
+      this.$refs.userFilesModal?.show(UploadFileUserFileUploadType.getType())
     },
     fileUploaded([file]) {
       this.values.image_file = file
-      this.$refs.userFilesModal.hide()
+      this.$refs.userFilesModal?.hide()
     },
   },
 }

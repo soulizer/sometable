@@ -92,7 +92,7 @@
         <ButtonText
           ref="addDropdownToggle"
           icon="iconoir-plus"
-          @click="$refs.addDropdown.toggle($refs.addDropdownToggle.$el)"
+          @click="$refs.addDropdown?.toggle($refs.addDropdownToggle?.$el)"
         >
           {{ $t('viewSortContext.addSort') }}
         </ButtonText>
@@ -195,7 +195,7 @@ export default {
       return this.getCanSortInView(field) && !allFieldIds.includes(field.id)
     },
     async addSort(fieldId) {
-      this.$refs.addDropdown.hide()
+      this.$refs.addDropdown?.hide()
 
       try {
         await this.$store.dispatch('view/createSort', {

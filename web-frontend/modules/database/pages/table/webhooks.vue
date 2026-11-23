@@ -30,7 +30,7 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      this.$refs.webhookModal.show()
+      this.$refs.webhookModal?.show()
     })
   },
 }

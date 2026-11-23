@@ -337,7 +337,7 @@ export default {
       ) {
         this.tooltipTimer = setTimeout(() => {
           if (this.$refs.nodeHelpTooltip) {
-            this.$refs.nodeHelpTooltip.show(
+            this.$refs.nodeHelpTooltip?.show(
               $event.target,
               'bottom',
               'right',
@@ -384,7 +384,7 @@ export default {
     },
     hideTooltip() {
       if (this.$refs.nodeHelpTooltip) {
-        this.$refs.nodeHelpTooltip.hide()
+        this.$refs.nodeHelpTooltip?.hide()
       }
     },
   },

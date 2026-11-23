@@ -23,7 +23,7 @@ export default {
       this.$store.dispatch('view/setItemLoading', { view, value })
     },
     edit() {
-      this.$refs.rename.edit()
+      this.$refs.rename?.edit()
     },
     async renameView(view, event) {
       this.setLoading(view, true)

@@ -7,7 +7,7 @@
       type="tel"
       :error="touched && !valid"
       :disabled="readOnly"
-      @keyup.enter="$refs.input.blur()"
+      @keyup.enter="$refs.input?.blur()"
       @focus="select()"
       @blur="unselect()"
     >

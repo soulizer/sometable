@@ -101,10 +101,10 @@ export default {
   },
   methods: {
     openFileUploadModal() {
-      this.$refs.userFilesModal.show(UploadFileUserFileUploadType.getType())
+      this.$refs.userFilesModal?.show(UploadFileUserFileUploadType.getType())
     },
     fileUploaded([file]) {
-      this.$refs.userFilesModal.hide()
+      this.$refs.userFilesModal?.hide()
       if (file?.name) {
         this.$emit('update:modelValue', file)
       }

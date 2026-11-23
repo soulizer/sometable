@@ -324,7 +324,7 @@ export default {
       } catch (error) {
         this.loading = false
         if (this.$refs.captchaWidget) {
-          this.$refs.captchaWidget.reset()
+          this.$refs.captchaWidget?.reset()
         }
         this.handleError(error, 'signup', {
           ERROR_EMAIL_ALREADY_EXISTS: new ResponseErrorMessage(

@@ -3,7 +3,7 @@
     <a
       ref="dropdownLink"
       class="header__filter-link"
-      @click="$refs.dropdown.toggle($refs.dropdownLink)"
+      @click="$refs.dropdown?.toggle($refs.dropdownLink)"
     >
       <i class="header__filter-icon iconoir-table-rows"></i>
       <span class="header__filter-name">{{

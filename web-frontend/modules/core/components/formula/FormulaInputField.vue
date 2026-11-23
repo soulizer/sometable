@@ -923,7 +923,7 @@ export default {
       }
 
       this.$refs.formulaInputExplorerContext?.show(
-        this.$refs.editor.$el,
+        this.$refs.editor?.$el,
         vertical,
         horizontal,
         verticalOffset,

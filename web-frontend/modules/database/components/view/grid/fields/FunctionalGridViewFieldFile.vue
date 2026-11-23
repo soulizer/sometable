@@ -81,7 +81,7 @@ export default {
       parent?.setState({})
       parent?.$nextTick(() => {
         // Pass the extracted files directly instead of the stale event
-        parent?.$refs.selectedField.uploadFiles(files)
+        parent?.$refs.selectedField?.uploadFiles(files)
       })
     },
     onDragEnter(event) {

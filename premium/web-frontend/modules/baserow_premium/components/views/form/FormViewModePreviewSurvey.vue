@@ -119,7 +119,7 @@
             ref="customizeContextLink"
             class="form-view-survey__order-fields"
             @click="
-              $refs.customizeContext.toggle(
+              $refs.customizeContext?.toggle(
                 $refs.customizeContextLink,
                 'top',
                 'left',

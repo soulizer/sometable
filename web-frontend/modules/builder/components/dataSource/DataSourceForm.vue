@@ -297,14 +297,14 @@ export default {
         this.getChildFormsValues(deep)
       )
       if (this.$refs.subForm?.getFormValues) {
-        return { ...values, ...this.$refs.subForm.getFormValues(deep) }
+        return { ...values, ...this.$refs.subForm?.getFormValues(deep) }
       }
       return values
     },
     isFormValid(deep = false) {
       const thisFormInvalid = 'v$' in this && this.v$.$invalid
       const subFormValid = this.$refs.subForm?.isFormValid
-        ? this.$refs.subForm.isFormValid(deep)
+        ? this.$refs.subForm?.isFormValid(deep)
         : true
       return !thisFormInvalid && this.areChildFormsValid(deep) && subFormValid
     },

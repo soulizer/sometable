@@ -28,7 +28,7 @@
         tag="a"
         size="small"
         icon="iconoir-edit-pencil"
-        @click="$refs.nameEditable.edit()"
+        @click="$refs.nameEditable?.edit()"
       ></ButtonIcon>
       <DownloadLink
         :filename="file.visible_name"
@@ -77,7 +77,7 @@ export default {
   emits: ['delete', 'click', 'rename'],
   methods: {
     resetName() {
-      this.$refs.nameEditable.set()
+      this.$refs.nameEditable?.set()
     },
     getDate(value) {
       return moment.utc(value).format('MMM Do YYYY [at] H:mm')

@@ -80,7 +80,7 @@
           icon="iconoir-plus"
           class="choose-select-field__link margin-right-auto"
           @click="
-            $refs.selectDecoratorContext.toggle(
+            $refs.selectDecoratorContext?.toggle(
               $refs.addDecoratorLink,
               'bottom',
               'left',
@@ -95,7 +95,7 @@
           :database="database"
           :view="view"
           @select="
-            ;[$refs.selectDecoratorContext.hide(), addDecoration($event)]
+            ;[$refs.selectDecoratorContext?.hide(), addDecoration($event)]
           "
         />
       </div>

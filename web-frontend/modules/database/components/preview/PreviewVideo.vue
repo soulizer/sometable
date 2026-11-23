@@ -36,7 +36,7 @@ export default {
     }
   },
   mounted() {
-    if (this.$refs.videoRef.canPlayType(this.mimeType) !== '') {
+    if (this.$refs.videoRef?.canPlayType(this.mimeType) !== '') {
       // This format should be playable
       this.canRead = true
     }

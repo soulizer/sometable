@@ -26,7 +26,7 @@
             :disabled="disabled"
             icon="iconoir-cloud-upload"
             class="file-upload__button"
-            @click.prevent="!disabled && $refs.file.click($event)"
+            @click.prevent="!disabled && $refs.file?.click($event)"
           >
             {{ $t('tableExcelImporter.chooseFile') }}
           </Button>

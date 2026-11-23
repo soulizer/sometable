@@ -215,7 +215,7 @@ export default {
     },
     openRowCommentContext() {
       if (!this.operationPending) {
-        this.$refs.commentContext.toggle(
+        this.$refs.commentContext?.toggle(
           this.$refs.commentContextLink,
           'bottom',
           'right',
@@ -228,11 +228,11 @@ export default {
       return clone(this.comment.message)
     },
     startEdit() {
-      this.$refs.commentContext.hide()
+      this.$refs.commentContext?.hide()
       this.editing = true
 
       this.onClickOutsideHandler = (evt) => {
-        const contextRoot = this.$refs.commentContext.getTeleportedElement()
+        const contextRoot = this.$refs.commentContext?.getTeleportedElement()
         if (
           !this.$el.contains(evt.target) &&
           (!contextRoot || !contextRoot.contains(evt.target)) &&
@@ -279,7 +279,7 @@ export default {
     },
     async deleteComment() {
       this.deleting = true
-      this.$refs.commentContext.hide()
+      this.$refs.commentContext?.hide()
 
       try {
         await this.$store.dispatch('row_comments/deleteComment', {

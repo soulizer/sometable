@@ -5,7 +5,7 @@
         ref="stackedContextLink"
         class="header__filter-link"
         @click="
-          $refs.stackedContext.toggle(
+          $refs.stackedContext?.toggle(
             $refs.stackedContextLink,
             'bottom',
             'left',
@@ -53,7 +53,7 @@
         ref="customizeContextLink"
         class="header__filter-link"
         @click="
-          $refs.customizeContext.toggle(
+          $refs.customizeContext?.toggle(
             $refs.customizeContextLink,
             'bottom',
             'left',

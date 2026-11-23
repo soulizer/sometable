@@ -3,7 +3,7 @@
     <a
       class="row-edit-modal-comments-notification-mode"
       @click.prevent="
-        $refs.context.toggle($event.currentTarget, 'bottom', 'right', 2)
+        $refs.context?.toggle($event.currentTarget, 'bottom', 'right', 2)
       "
     >
       <i class="iconoir-bell"></i>

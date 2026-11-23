@@ -4,7 +4,7 @@
       :icon="selectedRole?.icon"
       :role-name="selectedRole?.name || row.role_uid"
       :read-only="isReadOnly"
-      @click="$refs.editRoleContext.toggle($event.currentTarget)"
+      @click="$refs.editRoleContext?.toggle($event.currentTarget)"
     />
     <EditRoleContext
       ref="editRoleContext"

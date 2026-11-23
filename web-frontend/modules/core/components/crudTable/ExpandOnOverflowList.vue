@@ -94,7 +94,7 @@ export default {
   },
   methods: {
     showHiddenContext(event) {
-      this.$refs.hiddenContext.show(event.currentTarget, 'bottom', 'left', 4)
+      this.$refs.hiddenContext?.show(event.currentTarget, 'bottom', 'left', 4)
     },
     /**
      * Calculates how many records fit into the records cell, if any are overflowing and
@@ -133,11 +133,11 @@ export default {
               to maintain code that matches the browser calculation in every possible
               situation.
           */
-        const emptyElementTop = this.$refs.empty.getBoundingClientRect().top
+        const emptyElementTop = this.$refs.empty?.getBoundingClientRect().top
 
         // The records will be null when the user has no records.
         if (this.$refs.records) {
-          for (let i = 0; i < this.$refs.records.length; i++) {
+          for (let i = 0; i < this.$refs.records?.length; i++) {
             const recordEl = this.$refs.records[i]
             const recordTop = recordEl.getBoundingClientRect().top
             if (recordTop > emptyElementTop) {
@@ -176,8 +176,8 @@ export default {
              than attempting to do the calculation CSS/DOM will do for us ourselves!
             */
           this.$nextTick(() => {
-            const emptyElementTop = this.$refs.empty.getBoundingClientRect().top
-            const expandTop = this.$refs.expand.getBoundingClientRect().top
+            const emptyElementTop = this.$refs.empty?.getBoundingClientRect().top
+            const expandTop = this.$refs.expand?.getBoundingClientRect().top
             if (expandTop > emptyElementTop) {
               this.expandOrder--
               // By moving the button back one we will make the last record overflow,

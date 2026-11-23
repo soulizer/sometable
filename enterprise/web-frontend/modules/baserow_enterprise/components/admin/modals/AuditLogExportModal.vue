@@ -149,7 +149,7 @@ export default {
       }
     },
     async submitted(values) {
-      if (!this.$refs.form.isFormValid()) {
+      if (!this.$refs.form?.isFormValid()) {
         return
       }
 
@@ -201,7 +201,7 @@ export default {
       )
     },
     valuesChanged() {
-      this.isValid = this.$refs.form.isFormValid()
+      this.isValid = this.$refs.form?.isFormValid()
     },
     localDate(date) {
       return moment.utc(date).local().format('L LT')

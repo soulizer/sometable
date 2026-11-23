@@ -54,7 +54,7 @@ export default {
           { name: values.name, default_role: values.default_role }
         )
         this.loading = false
-        this.$refs.manageForm.reset()
+        this.$refs.manageForm?.reset()
         this.$emit('created', data)
         this.hide()
       } catch (error) {

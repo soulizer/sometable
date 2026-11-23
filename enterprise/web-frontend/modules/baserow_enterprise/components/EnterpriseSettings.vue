@@ -86,11 +86,11 @@ export default {
       }
     },
     openLogoUploadModal() {
-      this.$refs.userFilesModal.show(UploadFileUserFileUploadType.getType())
+      this.$refs.userFilesModal?.show(UploadFileUserFileUploadType.getType())
     },
     fileUploaded([file]) {
       this.updateSettings({ co_branding_logo: file })
-      this.$refs.userFilesModal.hide()
+      this.$refs.userFilesModal?.hide()
     },
   },
 }

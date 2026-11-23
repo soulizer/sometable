@@ -185,7 +185,7 @@ export default {
       this.isDragOver = false
     },
     triggerFileInput() {
-      this.$refs.fileInputRef.click()
+      this.$refs.fileInputRef?.click()
     },
     removeFile(index) {
       this.files.splice(index, 1)

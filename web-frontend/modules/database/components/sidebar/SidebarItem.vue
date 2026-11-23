@@ -26,7 +26,7 @@
       v-if="showOptions"
       v-show="!database._.loading"
       class="tree__options"
-      @click="$refs.context.toggle($event.currentTarget, 'bottom', 'right', 0)"
+      @click="$refs.context?.toggle($event.currentTarget, 'bottom', 'right', 0)"
       @mousedown.stop
     >
       <i class="baserow-icon-more-vertical"></i>
@@ -39,7 +39,7 @@
           v-for="(component, index) in additionalContextComponents"
           :key="index"
           class="context__menu-item"
-          @click="$refs.context.hide()"
+          @click="$refs.context?.hide()"
         >
           <component
             :is="component"
@@ -76,7 +76,7 @@
             :database="database"
             :table="table"
             :disabled="deleteLoading"
-            @click="$refs.context.hide()"
+            @click="$refs.context?.hide()"
           ></SidebarImportTableContextItem>
         </li>
         <li
@@ -182,7 +182,7 @@
             :database="database"
             :table="table"
             :disabled="deleteLoading"
-            @click="$refs.context.hide()"
+            @click="$refs.context?.hide()"
           ></SidebarDuplicateTableContextItem>
         </li>
         <li
@@ -342,32 +342,32 @@ export default {
       })
     },
     exportTable() {
-      this.$refs.context.hide()
-      this.$refs.exportTableModal.show()
+      this.$refs.context?.hide()
+      this.$refs.exportTableModal?.show()
     },
     openWebhookModal() {
-      this.$refs.context.hide()
-      this.$refs.webhookModal.show()
+      this.$refs.context?.hide()
+      this.$refs.webhookModal?.show()
     },
     openSyncModal() {
       if (this.dataSyncDeactivated) {
         this.$refs.deactivatedDataSyncClickModal?.show()
       } else {
-        this.$refs.context.hide()
-        this.$refs.syncModal.show()
+        this.$refs.context?.hide()
+        this.$refs.syncModal?.show()
       }
     },
     openConfigureDataSyncModal() {
       if (this.dataSyncDeactivated) {
         this.$refs.deactivatedDataSyncClickModal?.show()
       } else {
-        this.$refs.context.hide()
-        this.$refs.configureDataSyncModal.show()
+        this.$refs.context?.hide()
+        this.$refs.configureDataSyncModal?.show()
       }
     },
     enableRename() {
-      this.$refs.context.hide()
-      this.$refs.rename.edit()
+      this.$refs.context?.hide()
+      this.$refs.rename?.edit()
     },
     async renameTable(database, table, event) {
       this.setLoading(database, true)
@@ -381,7 +381,7 @@ export default {
           },
         })
       } catch (error) {
-        this.$refs.rename.set(event.oldValue)
+        this.$refs.rename?.set(event.oldValue)
         notifyIf(error, 'table')
       }
 

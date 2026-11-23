@@ -190,8 +190,8 @@ export default {
       this.workspaceId = id
       this.workspaceName = name
       await this.$nextTick()
-      this.$refs.workspaceFilter.clear()
-      this.$refs.crudTable.setSearch('')
+      this.$refs.workspaceFilter?.clear()
+      this.$refs.crudTable?.setSearch('')
     },
   },
 }

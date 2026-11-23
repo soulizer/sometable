@@ -29,7 +29,7 @@
         v-if="!readOnly"
         v-tooltip="$t('shareViewLink.generateNewUrl')"
         class="view-sharing__shared-link-action"
-        @click.prevent="$refs.rotateSlugModal.show()"
+        @click.prevent="$refs.rotateSlugModal?.show()"
       >
         <i class="iconoir-refresh-double"></i>
         <ViewRotateSlugModal
@@ -88,7 +88,7 @@ export default {
   methods: {
     copyShareUrlToClipboard() {
       copyToClipboard(this.shareUrl)
-      this.$refs.copied.show()
+      this.$refs.copied?.show()
     },
   },
 }

@@ -39,7 +39,7 @@
         <a
           ref="updateContextLink"
           class="context__menu-item-link"
-          @click="$refs.updateContext.toggle($refs.updateContextLink)"
+          @click="$refs.updateContext?.toggle($refs.updateContextLink)"
         >
           <i class="context__menu-item-icon iconoir-edit-pencil"></i>
           {{ $t('kanbanViewStackContext.editStack') }}

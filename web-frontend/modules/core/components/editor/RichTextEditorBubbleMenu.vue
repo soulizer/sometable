@@ -292,7 +292,7 @@ export default {
       this.editLinkValue =
         this.editor.getAttributes('link').href || selectedText
       this.editLink = true
-      this.$nextTick(() => this.$refs.linkInput.select())
+      this.$nextTick(() => this.$refs.linkInput?.select())
     },
     prependDefaultProtocolIfNeeded(href) {
       if (href.startsWith('http://') || href.startsWith('https://')) {

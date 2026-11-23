@@ -15,7 +15,7 @@
         ref="modeContextLink"
         class="header__filter-link"
         @click="
-          $refs.modeContext.toggle($refs.modeContextLink, 'bottom', 'left', 4)
+          $refs.modeContext?.toggle($refs.modeContextLink, 'bottom', 'left', 4)
         "
       >
         <i class="header__filter-icon iconoir-palette"></i>

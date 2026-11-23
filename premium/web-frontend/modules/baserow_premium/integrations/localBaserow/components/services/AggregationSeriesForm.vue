@@ -311,8 +311,8 @@ export default {
       const name = Object.keys(paletteColors).find(
         (key) => paletteColors[key].toLowerCase() === color.toLowerCase()
       )
-      this.$refs.seriesColorContext.setActive(name || '')
-      this.$refs.seriesColorContext.toggle(this.$refs.seriesColorSelect)
+      this.$refs.seriesColorContext?.setActive(name || '')
+      this.$refs.seriesColorContext?.toggle(this.$refs.seriesColorSelect)
     },
     paletteColorChanged(name) {
       this.seriesColorChanged(paletteColors[name])

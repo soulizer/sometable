@@ -23,7 +23,7 @@
       v-show="!builder._.loading"
       v-if="showOptions"
       class="tree__options"
-      @click="$refs.context.toggle($event.currentTarget, 'bottom', 'right', 0)"
+      @click="$refs.context?.toggle($event.currentTarget, 'bottom', 'right', 0)"
       @mousedown.stop
     >
       <i class="baserow-icon-more-vertical"></i>
@@ -36,7 +36,7 @@
           v-for="(component, index) in additionalContextComponents"
           :key="index"
           class="context__menu-item"
-          @click="$refs.context.hide()"
+          @click="$refs.context?.hide()"
         >
           <component
             :is="component"
@@ -207,8 +207,8 @@ export default {
       return props.href
     },
     enableRename() {
-      this.$refs.context.hide()
-      this.$refs.rename.edit()
+      this.$refs.context?.hide()
+      this.$refs.rename?.edit()
     },
     async renamePage(builder, page, event) {
       this.setLoading(builder, true)
@@ -221,7 +221,7 @@ export default {
           },
         })
       } catch (error) {
-        this.$refs.rename.set(event.oldValue)
+        this.$refs.rename?.set(event.oldValue)
         notifyIf(error, 'page')
       }
 
@@ -254,7 +254,7 @@ export default {
         notifyIf(error, 'page')
       }
 
-      this.$refs.context.hide()
+      this.$refs.context?.hide()
     },
   },
 }

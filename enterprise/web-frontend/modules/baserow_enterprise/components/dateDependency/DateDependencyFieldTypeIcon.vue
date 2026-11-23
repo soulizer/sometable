@@ -144,7 +144,7 @@ export default {
       if (this.deactivated) {
         
       } else {
-        this.$refs.modal.show()
+        this.$refs.modal?.show()
       }
     },
   },

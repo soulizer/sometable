@@ -52,7 +52,7 @@ export default {
             value: values.value,
           }
         )
-        this.$refs.form.reset()
+        this.$refs.form?.reset()
         this.hide()
       } catch (error) {
         notifyIf(error, 'field')

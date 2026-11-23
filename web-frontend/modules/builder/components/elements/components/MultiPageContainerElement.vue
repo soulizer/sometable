@@ -77,7 +77,7 @@ export default {
   },
   methods: {
     showAddElementModal() {
-      this.$refs.addElementModal.show({
+      this.$refs.addElementModal?.show({
         placeInContainer: null,
         parentElementId: this.element.id,
       })

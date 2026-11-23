@@ -545,7 +545,7 @@ export default {
       }
 
       const values = this.getFormValues()
-      this.$refs.testModal.show(
+      this.$refs.testModal?.show(
         this.table.id,
         this.exampleWebhookEventType,
         values

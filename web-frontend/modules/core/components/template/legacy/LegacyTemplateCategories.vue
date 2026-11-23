@@ -83,7 +83,7 @@ export default {
   methods: {
     searchStarted({ event }) {
       event.preventDefault()
-      this.$refs.searchInput.focus()
+      this.$refs.searchInput?.focus()
     },
   },
 }

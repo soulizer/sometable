@@ -389,7 +389,7 @@
                 <template #footer>
                   <a
                     class="select__footer-button"
-                    @click="$refs.IntegrationCreateEditModal.show()"
+                    @click="$refs.IntegrationCreateEditModal?.show()"
                   >
                     <i class="iconoir-plus"></i>
                     Add item
@@ -403,7 +403,7 @@
             <div style="width: 200px">
               <a
                 ref="dropdownLink"
-                @click="$refs.dropdown1.toggle($refs.dropdownLink)"
+                @click="$refs.dropdown1?.toggle($refs.dropdownLink)"
                 >Open dropdown</a
               >
               <Dropdown ref="dropdown1" v-model="dropdown" :show-input="false">
@@ -1231,7 +1231,7 @@
         <div class="margin-bottom-3">
           <Button
             append-icon="iconoir-edit-pencil"
-            @click="$refs.context1.toggle($event.target)"
+            @click="$refs.context1?.toggle($event.target)"
           >
             Toggle context
           </Button>
@@ -1247,7 +1247,7 @@
               <li class="context__menu-item">
                 <a
                   class="context__menu-item-link"
-                  @click="$refs.context2.toggle($event.target)"
+                  @click="$refs.context2?.toggle($event.target)"
                 >
                   Open another context
                 </a>
@@ -1257,7 +1257,7 @@
                     <li class="context__menu-item">
                       <a
                         class="context__menu-item-link"
-                        @click="$refs.modal1.show()"
+                        @click="$refs.modal1?.show()"
                       >
                         <i
                           class="context__menu-item-icon iconoir-edit-pencil"
@@ -1269,7 +1269,7 @@
                       <h2 class="box__title">Modal inside a context</h2>
                       <Button
                         icon="iconoir-edit-pencil"
-                        @click="$refs.context3.toggle($event.target)"
+                        @click="$refs.context3?.toggle($event.target)"
                         >Toggle context</Button
                       >
                       <Context ref="context3">
@@ -1286,7 +1286,7 @@
                           <li class="context__menu-item">
                             <a
                               class="context__menu-item-link"
-                              @click="$refs.context4.toggle($event.target)"
+                              @click="$refs.context4?.toggle($event.target)"
                             >
                               Open another context
                             </a>
@@ -1316,7 +1316,7 @@
               </li>
             </ul>
           </Context>
-          <Button @click="$refs.modal2.show()">show modal</Button>
+          <Button @click="$refs.modal2?.show()">show modal</Button>
           <Modal ref="modal2">
             <h2 class="box__title">An example modal</h2>
             <p>
@@ -1924,7 +1924,7 @@
           <br /><br />
           <a
             ref="colorPickerLink"
-            @click="$refs.colorPickerContext.toggle($refs.colorPickerLink)"
+            @click="$refs.colorPickerContext?.toggle($refs.colorPickerLink)"
           >
             Open color picker context
           </a>

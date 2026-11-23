@@ -39,7 +39,7 @@
     <i
       v-if="editing && !isModalOpen()"
       class="baserow-icon-enlarge grid-field-rich-text__textarea-expand-icon"
-      @click="($refs.expandedModal.toggle(), resetCellSize())"
+      @click="($refs.expandedModal?.toggle(), resetCellSize())"
     />
     <div
       v-show="editing && !isModalOpen() && !isValid()"
@@ -155,8 +155,8 @@ export default {
         e.preventDefault()
       }
     }
-    this.$refs.cell.addEventListener('dragover', this.cellDragoverHandler)
-    this.$refs.cell.addEventListener('drop', this.cellDropHandler)
+    this.$refs.cell?.addEventListener('dragover', this.cellDragoverHandler)
+    this.$refs.cell?.addEventListener('drop', this.cellDropHandler)
   },
   beforeUnmount() {
     this.$refs.cell?.removeEventListener('dragover', this.cellDragoverHandler)
@@ -178,8 +178,8 @@ export default {
     },
     scrollHeight() {
       return {
-        sh: this.$refs.container.scrollHeight,
-        st: this.$refs.container.scrollTop,
+        sh: this.$refs.container?.scrollHeight,
+        st: this.$refs.container?.scrollTop,
       }
     },
     cancel() {
@@ -226,7 +226,7 @@ export default {
     },
     afterEdit() {
       this.$nextTick(() => {
-        this.$refs.input.focus()
+        this.$refs.input?.focus()
       })
     },
     onExpandedModalHidden() {

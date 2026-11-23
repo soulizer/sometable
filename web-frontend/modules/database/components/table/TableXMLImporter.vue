@@ -39,7 +39,7 @@
             class="file-upload__button"
             :loading="state !== null"
             icon="iconoir-cloud-upload"
-            @click.prevent="$refs.file.click($event)"
+            @click.prevent="$refs.file?.click($event)"
           >
             {{ $t('tableXMLImporter.chooseButton') }}
           </Button>

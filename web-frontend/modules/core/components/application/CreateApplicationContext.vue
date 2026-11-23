@@ -156,7 +156,7 @@ export default {
         return
       }
 
-      this.$refs.templateModal.show()
+      this.$refs.templateModal?.show()
       this.hide()
     },
     openImportWorkspaceModal() {
@@ -164,7 +164,7 @@ export default {
         return
       }
 
-      this.$refs.importWorkspaceModal.show()
+      this.$refs.importWorkspaceModal?.show()
       this.hide()
     },
     toggleCreateApplicationModal(type) {

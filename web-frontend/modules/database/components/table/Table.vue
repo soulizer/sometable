@@ -75,7 +75,7 @@
             :table="table"
             :views="views"
             :store-prefix="storePrefix"
-            @enable-rename="$refs.rename.edit()"
+            @enable-rename="$refs.rename?.edit()"
           >
           </ViewContext>
         </li>
@@ -669,7 +669,7 @@ export default {
       this.$refs.viewsContext?.hide()
     },
     openTableViewContext() {
-      this.$refs.viewContext.toggle(
+      this.$refs.viewContext?.toggle(
         this.$refs.viewSelectToggle,
         'bottom',
         'left',

@@ -27,7 +27,7 @@
         ref="customizeContextLink"
         class="header__filter-link"
         @click="
-          $refs.customizeContext.toggle(
+          $refs.customizeContext?.toggle(
             $refs.customizeContextLink,
             'bottom',
             'left',
@@ -177,7 +177,7 @@ export default {
   methods: {
     showChooseDateFieldModal() {
       if (this.canChooseDateField && this.$refs.selectDateFieldModal) {
-        this.$refs.selectDateFieldModal.show()
+        this.$refs.selectDateFieldModal?.show()
       }
     },
     async updateAllFieldOptions({ newFieldOptions, oldFieldOptions }) {

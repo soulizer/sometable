@@ -27,7 +27,7 @@
                 v-if="!readOnly"
                 v-show="!renaming"
                 class="file-field-modal__rename"
-                @click="$refs.rename.edit()"
+                @click="$refs.rename?.edit()"
               >
                 <i class="iconoir-edit-pencil"></i>
               </a>
@@ -210,8 +210,8 @@ export default {
         )
 
       const protectedElements = [
-        this.$refs.rename.$el,
-        ...this.$refs.modalPreview.$el.children,
+        this.$refs.rename?.$el,
+        ...this.$refs.modalPreview?.$el.children,
       ]
       const isProtectedElement = () =>
         protectedElements.some((element) => isElement(element, event.target))

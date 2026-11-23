@@ -11,7 +11,7 @@
           class="select-row-modal__search-input"
           @input="doSearch(visibleSearch, false)"
           @keydown.enter="doSearch(visibleSearch, true)"
-          @keydown.up.down="$refs.search.blur()"
+          @keydown.up.down="$refs.search?.blur()"
         />
       </div>
       <div class="select-row-modal__fields">
@@ -485,7 +485,7 @@ export default {
       }
     },
     toggleFieldsContext() {
-      this.$refs.fieldsContext.toggle(this.$refs.fieldsButton.$el)
+      this.$refs.fieldsContext?.toggle(this.$refs.fieldsButton?.$el)
     },
     updateAllFieldOptions({ newFieldOptions, oldFieldOptions }) {
       const override = clone(this.fieldOptionsOverride)

@@ -78,12 +78,12 @@ export default {
       )
     },
     editName() {
-      this.$refs.dashboardNameEditable.edit()
+      this.$refs.dashboardNameEditable?.edit()
       this.editingDashboardName = true
       this.selectWidget(null)
     },
     editDescription() {
-      this.$refs.dashboardDescriptionEditable.edit()
+      this.$refs.dashboardDescriptionEditable?.edit()
       this.editingDashboardDescription = true
       this.selectWidget(null)
     },
@@ -96,7 +96,7 @@ export default {
           },
         })
       } catch (error) {
-        this.$refs.dashboardNameEditable.set(event.oldValue)
+        this.$refs.dashboardNameEditable?.set(event.oldValue)
         notifyIf(error, 'application')
       } finally {
         this.editingDashboardName = false
@@ -111,7 +111,7 @@ export default {
           },
         })
       } catch (error) {
-        this.$refs.dashboardDescriptionEditable.set(event.oldValue)
+        this.$refs.dashboardDescriptionEditable?.set(event.oldValue)
         notifyIf(error, 'application')
       } finally {
         this.editingDashboardDescription = false

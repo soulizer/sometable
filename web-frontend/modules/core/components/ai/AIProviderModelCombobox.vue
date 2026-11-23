@@ -133,7 +133,7 @@ export default {
       }
       const anchor = event?.currentTarget || this.$refs.input?.$el
       if (anchor) {
-        this.$refs.suggestions.show(anchor, 'bottom', 'left', 0, 0)
+        this.$refs.suggestions?.show(anchor, 'bottom', 'left', 0, 0)
       }
       this.highlightedIndex =
         this.trimmedValue === '' && this.filteredSuggestions.length ? 0 : -1

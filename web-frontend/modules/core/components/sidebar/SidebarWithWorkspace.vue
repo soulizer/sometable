@@ -108,7 +108,7 @@
         ref="createApplicationContextLink"
         class="sidebar__new"
         @click="
-          $refs.createApplicationContext.toggle(
+          $refs.createApplicationContext?.toggle(
             $refs.createApplicationContextLink
           )
         "

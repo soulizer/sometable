@@ -102,7 +102,7 @@ export default {
   methods: {
     async hideDropdown() {
       await this.$nextTick()
-      this.$refs.dropdown.hide()
+      this.$refs.dropdown?.hide()
     },
   },
 }

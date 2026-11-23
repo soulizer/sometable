@@ -126,20 +126,20 @@ export default {
   },
   methods: {
     showChangePasswordModal() {
-      this.$refs.changePasswordModal.show()
+      this.$refs.changePasswordModal?.show()
       this.hide()
     },
     showDeleteModal() {
-      this.$refs.deleteUserModal.show()
+      this.$refs.deleteUserModal?.show()
       this.hide()
     },
     showEditModal() {
-      this.$refs.editUserModal.show()
+      this.$refs.editUserModal?.show()
       this.hide()
     },
     onDeleteUser(event) {
       this.$emit('delete-user', event)
-      this.$refs.editUserModal.hide()
+      this.$refs.editUserModal?.hide()
     },
     async changeIsActive(isActive) {
       try {

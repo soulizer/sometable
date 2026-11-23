@@ -487,7 +487,7 @@ export default {
       if (
         subjects.length > 0 &&
         roleUid === 'NO_ACCESS' &&
-        !(await this.$refs.noAccessModal.ask(
+        !(await this.$refs.noAccessModal?.ask(
           this.$t(
             'shareScope.noAccessSelectionDescription',
             { count: subjects.length, type: this.scopeTypeName },
@@ -516,14 +516,14 @@ export default {
           this.roleAssignments = this.roleAssignments.concat(
             roleAssignments.filter(Boolean)
           )
-          subjects.forEach((item) => this.$refs.input.remove(item))
+          subjects.forEach((item) => this.$refs.input?.remove(item))
           this.fetchEffectiveAccess()
         }
         await this.sendInvitations(
           emails,
           roleUid,
           (item, scopedInvitation) => {
-            this.$refs.input.remove(item)
+            this.$refs.input?.remove(item)
             const index = this.scopedInvitations.findIndex(
               ({ id }) => id === scopedInvitation.id
             )
@@ -534,7 +534,7 @@ export default {
             }
           }
         )
-        this.$refs.input.reset()
+        this.$refs.input?.reset()
       } catch (error) {
         this.handleInvitationError(error)
       } finally {
@@ -548,7 +548,7 @@ export default {
       if (
         roleUid === 'NO_ACCESS' &&
         item.roleUid !== 'NO_ACCESS' &&
-        !(await this.$refs.noAccessModal.ask(
+        !(await this.$refs.noAccessModal?.ask(
           this.$t('shareScope.noAccessDescription', {
             name: item.name,
             type: this.scopeTypeName,

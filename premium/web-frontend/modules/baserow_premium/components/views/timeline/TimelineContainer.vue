@@ -42,7 +42,7 @@
       ref="gridBody"
       v-auto-scroll="{
         enabled: () =>
-          enableAutoScroll && $refs.gridBody.scrollLeft < scrollLeftLimit,
+          enableAutoScroll && $refs.gridBody?.scrollLeft < scrollLeftLimit,
         orientation: 'horizontal',
         speed: 5,
         padding: 20,
@@ -400,7 +400,7 @@ export default {
             // Pass emit=false as argument into the hide function because that will
             // prevent emitting another `hidden` event of the `RowEditModal` which can
             // result in the route changing twice.
-            this.$refs.rowEditModal.hide(false)
+            this.$refs.rowEditModal?.hide(false)
           }
         }
       },
@@ -792,7 +792,7 @@ export default {
      * Opens the row edit modal for the given row.
      */
     openRowEditModal(row) {
-      this.$refs.rowEditModal.show(row.id)
+      this.$refs.rowEditModal?.show(row.id)
       this.$emit('selected-row', row)
     },
     /**
@@ -801,13 +801,13 @@ export default {
      */
     populateAndEditRow(row) {
       const rowClone = populateRow(clone(row))
-      this.$refs.rowEditModal.show(row.id, rowClone)
+      this.$refs.rowEditModal?.show(row.id, rowClone)
     },
     /**
      * Toggles the visibility of a field in the row edit modal.
      */
     toggleTimescaleContext(event) {
-      this.$refs.timescaleContext.toggle(
+      this.$refs.timescaleContext?.toggle(
         event.currentTarget,
         'bottom',
         'right',
@@ -820,7 +820,7 @@ export default {
      * can use the optimistic update there and immediately update the view.
      */
     async updateTimescale(value) {
-      this.$refs.timescaleContext.hide()
+      this.$refs.timescaleContext?.hide()
 
       const payload = {
         view: this.view,

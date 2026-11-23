@@ -52,7 +52,7 @@
             v-if="!readOnly"
             class="form-view__edit"
             :class="{ 'form-view__edit--hidden': editingTitle }"
-            @click="$refs.title.edit()"
+            @click="$refs.title?.edit()"
           >
             <i class="form-view__edit-icon iconoir-edit-pencil"></i
           ></a>
@@ -119,7 +119,7 @@
             v-if="!readOnly"
             class="form-view__edit"
             :class="{ 'form-view__edit--hidden': editingSubmitText }"
-            @click="$refs.submit_text.edit()"
+            @click="$refs.submit_text?.edit()"
           >
             <i class="form-view__edit-icon iconoir-edit-pencil"></i
           ></a>

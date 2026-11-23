@@ -45,10 +45,10 @@ export default {
   emits: ['values-changed'],
   methods: {
     reset() {
-      this.$refs.themeConfigBlockForm.reset()
+      this.$refs.themeConfigBlockForm?.reset()
     },
     isFormValid() {
-      return this.$refs.themeConfigBlockForm.isFormValid()
+      return this.$refs.themeConfigBlockForm?.isFormValid()
     },
   },
 }

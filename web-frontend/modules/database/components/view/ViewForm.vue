@@ -133,7 +133,7 @@ export default {
     this.values.name = this.defaultName
   },
   mounted() {
-    this.$refs.name.focus()
+    this.$refs.name?.focus()
     const firstAndHenceDefaultOwnershipType =
       this.availableViewOwnershipTypesForCreation[0]?.getType()
     this.values.ownershipType =

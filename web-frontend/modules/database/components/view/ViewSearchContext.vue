@@ -83,7 +83,7 @@ export default {
   methods: {
     focus() {
       this.$nextTick(function () {
-        this.$refs.activeSearchTermInput.focus()
+        this.$refs.activeSearchTermInput?.focus()
       })
     },
     setActiveSearchTerm(value) {

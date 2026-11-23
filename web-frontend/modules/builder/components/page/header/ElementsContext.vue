@@ -260,7 +260,7 @@ export default {
     shown() {
       this.search = null
       this.$nextTick(() => {
-        this.$refs.search.focus()
+        this.$refs.search?.focus()
       })
     },
   },

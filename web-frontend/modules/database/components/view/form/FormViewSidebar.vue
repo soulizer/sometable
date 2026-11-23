@@ -62,7 +62,7 @@
           <ButtonText
             icon="iconoir-plus"
             @click="
-              $refs.createFieldContext.toggle($refs.createFieldContextLink)
+              $refs.createFieldContext?.toggle($refs.createFieldContextLink)
             "
           >
             {{ $t('formSidebar.actions.addField') }}
@@ -184,7 +184,7 @@ export default {
       this.$emit('ordered-fields', order)
     },
     showFormPrefillOrHideModal() {
-      this.$refs.formPrefillOrHideModal.show()
+      this.$refs.formPrefillOrHideModal?.show()
     },
   },
 }

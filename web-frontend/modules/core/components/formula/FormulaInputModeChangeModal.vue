@@ -33,10 +33,10 @@ export default {
   emits: ['confirm'],
   methods: {
     show() {
-      this.$refs.modal.show()
+      this.$refs.modal?.show()
     },
     hide() {
-      this.$refs.modal.hide()
+      this.$refs.modal?.hide()
     },
     confirm() {
       this.hide()

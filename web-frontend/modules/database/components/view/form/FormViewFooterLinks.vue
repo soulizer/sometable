@@ -4,7 +4,7 @@
       <a
         class="form-view__report-abuse"
         href="#"
-        @click.prevent="$refs.reportAbuseModal.show()"
+        @click.prevent="$refs.reportAbuseModal?.show()"
       >
         {{ $t('formViewFooterLinks.reportAbuse') }}
       </a>

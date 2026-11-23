@@ -134,7 +134,7 @@ export default {
     },
     searchStarted({ event }) {
       event.preventDefault()
-      this.$refs.searchInput.focus()
+      this.$refs.searchInput?.focus()
     },
     search(value) {
       if (value === null || value === '' || this.members.length === 0) {

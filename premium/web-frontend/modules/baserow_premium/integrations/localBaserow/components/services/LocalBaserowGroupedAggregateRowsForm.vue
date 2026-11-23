@@ -238,7 +238,7 @@ export default {
       this.removeInvalidSorts()
       await this.$nextTick()
       if (this.$refs.aggregationSeriesForms) {
-        this.$refs.aggregationSeriesForms.forEach((form) => form.reset())
+        this.$refs.aggregationSeriesForms?.forEach((form) => form.reset())
       }
     },
     onAggregationSeriesUpdated(index, aggregationSeriesValues) {

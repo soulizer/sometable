@@ -64,13 +64,13 @@ export default {
     },
     toggle(ref, position) {
       // avoid changing the position in the middle of a fields creation
-      if (this.$refs.createFieldContext.loading) {
+      if (this.$refs.createFieldContext?.loading) {
         return
       }
 
       this.position = position
       const toastAnchor = position === 'left' ? 'right' : 'left'
-      this.$refs.createFieldContext.toggle(ref, 'bottom', toastAnchor, 0)
+      this.$refs.createFieldContext?.toggle(ref, 'bottom', toastAnchor, 0)
     },
   },
 }

@@ -14,7 +14,7 @@
       <a
         v-if="$hasPermission('create_workspace')"
         class="sidebar__new"
-        @click="$refs.createWorkspaceModal.show()"
+        @click="$refs.createWorkspaceModal?.show()"
       >
         <i class="sidebar__new-icon iconoir-plus"></i>
         {{ $t('sidebar.createWorkspace') }}

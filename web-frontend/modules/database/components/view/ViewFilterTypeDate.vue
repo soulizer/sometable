@@ -6,8 +6,8 @@
         :disabled="disabled"
         :error="v$.dateString.$error"
         :placeholder="getDatePlaceholder(field)"
-        @focus="$refs.dateContext.toggle($refs.date, 'bottom', 'left', 0)"
-        @blur="$refs.dateContext.hide()"
+        @focus="$refs.dateContext?.toggle($refs.date, 'bottom', 'left', 0)"
+        @blur="$refs.dateContext?.hide()"
         @input="setCopyFromDateString($event, 'dateString')"
         @keydown.enter="delayedUpdate(copy, true)"
       >
@@ -145,7 +145,7 @@ export default {
       )
     },
     focus() {
-      this.$refs.date.focus()
+      this.$refs.date?.focus()
     },
   },
   validations() {

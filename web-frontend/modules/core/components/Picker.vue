@@ -3,7 +3,7 @@
     <a
       ref="pickerLink"
       class="dropdown__selected"
-      @click="$refs.pickerContext.toggle($refs.pickerLink, 'bottom', 'left', 2)"
+      @click="$refs.pickerContext?.toggle($refs.pickerLink, 'bottom', 'left', 2)"
     >
       <i class="dropdown__selected-icon" :class="icon" />
       <span class="dropdown__selected-text">{{ name }}</span>
@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     hide() {
-      this.$refs.pickerContext.hide()
+      this.$refs.pickerContext?.hide()
     },
   },
 }

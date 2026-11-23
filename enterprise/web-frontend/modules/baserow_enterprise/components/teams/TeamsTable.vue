@@ -57,7 +57,7 @@
           type="primary"
           size="large"
           icon="iconoir-plus"
-          @click="$refs.createModal.show()"
+          @click="$refs.createModal?.show()"
         >
           {{ $t('teamsTable.createNew') }}
         </Button>
@@ -269,12 +269,12 @@ export default {
      * and sample stay correct.
      */
     async refreshTeam(teamId) {
-      if (!this.$refs.crudTable.rows.some(({ id }) => id === teamId)) {
+      if (!this.$refs.crudTable?.rows.some(({ id }) => id === teamId)) {
         return
       }
       try {
         const { data } = await TeamService(this.$client).get(teamId)
-        this.$refs.crudTable.updateRow(data)
+        this.$refs.crudTable?.updateRow(data)
       } catch (error) {
         notifyIf(error, 'team')
       }
@@ -309,11 +309,11 @@ export default {
       this.$refs.editRoleContext[action](target, 'bottom', 'left', 4)
     },
     teamCreated(data) {
-      this.$refs.crudTable.rows.push(data)
+      this.$refs.crudTable?.rows.push(data)
       this.showMembersModal(data)
     },
     teamUpdated(data) {
-      this.$refs.crudTable.updateRow(data)
+      this.$refs.crudTable?.updateRow(data)
     },
   },
 }

@@ -13,8 +13,8 @@
         :loading="loading"
         :placeholder="$t('fieldFormulaInitialSubForm.formulaInputPlaceholder')"
         :focus-on-click="false"
-        @click="$emit('open-advanced-context', $refs.formInput.$refs.input)"
-        @input="$emit('open-advanced-context', $refs.formInput.$refs.input)"
+        @click="$emit('open-advanced-context', $refs.formInput?.$refs.input)"
+        @input="$emit('open-advanced-context', $refs.formInput?.$refs.input)"
       ></FormInput>
 
       <component

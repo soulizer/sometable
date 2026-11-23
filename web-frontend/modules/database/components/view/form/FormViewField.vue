@@ -43,7 +43,7 @@
             v-if="!readOnly"
             class="form-view__edit form-view-field-edit"
             :class="{ 'form-view__edit--hidden': editingName }"
-            @click="$refs.name.edit()"
+            @click="$refs.name?.edit()"
           >
             <i class="form-view__edit-icon iconoir-edit-pencil"></i>
           </a>

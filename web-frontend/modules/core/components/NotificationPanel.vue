@@ -21,7 +21,7 @@
           </a>
           <a
             class="notification-panel__action"
-            @click="$refs.clearAllConfirmModal.show()"
+            @click="$refs.clearAllConfirmModal?.show()"
           >
             {{ $t('notificationPanel.clearAll') }}
           </a>

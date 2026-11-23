@@ -122,7 +122,7 @@
           size="small"
           icon="iconoir-plus"
           @click="
-            $refs.context.toggle($refs.addContextToggle, 'bottom', 'left', 2)
+            $refs.context?.toggle($refs.addContextToggle, 'bottom', 'left', 2)
           "
         >
           {{ $t('localBaserowTableServiceSortForm.addSort') }}
@@ -218,7 +218,7 @@ export default {
       return this.getCanSortInView(field) && !allFieldIds.includes(field.id)
     },
     addSort(field) {
-      this.$refs.context.hide()
+      this.$refs.context?.hide()
       const newSortings = [...this.modelValue]
       newSortings.push({
         field: field.id,

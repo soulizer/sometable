@@ -8,7 +8,7 @@
             if (deactivated) {
               
             } else {
-              $refs.inviteModal.show()
+              $refs.inviteModal?.show()
             }
           }
         "

@@ -6,7 +6,7 @@
     >
       <a
         class="api-docs__copy"
-        @click.prevent=";[copyToClipboard(url), $refs.urlCopied.show()]"
+        @click.prevent=";[copyToClipboard(url), $refs.urlCopied?.show()]"
       >
         {{ $t('action.copy') }}
         <Copied ref="urlCopied"></Copied>
@@ -41,7 +41,7 @@
         @click.prevent="
           ;[
             copyToClipboard(getFormattedRequest().example),
-            $refs.requestCopied.show(),
+            $refs.requestCopied?.show(),
           ]
         "
       >
@@ -109,7 +109,7 @@
           @click.prevent="
             ;[
               copyToClipboard(getFormattedResponse().example),
-              $refs.responseCopied.show(),
+              $refs.responseCopied?.show(),
             ]
           "
         >

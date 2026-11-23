@@ -64,7 +64,7 @@ export default {
           )
         )
       } catch (error) {
-        this.$refs.themeConfigBlocks.forEach((themeConfigBlock) =>
+        this.$refs.themeConfigBlocks?.forEach((themeConfigBlock) =>
           themeConfigBlock.reset()
         )
         notifyIf(error, 'application')

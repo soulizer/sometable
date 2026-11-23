@@ -5,7 +5,7 @@
         class="context__menu-item-link"
         @click="
           () => {
-            $refs.dateDependencyModal.show()
+            $refs.dateDependencyModal?.show()
             $emit('hide-context')
           }
         "

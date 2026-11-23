@@ -15,7 +15,7 @@
                 'select-options__color' + ' background-color--' + values.color
               "
               @click="
-                $refs.colorContext.toggle(
+                $refs.colorContext?.toggle(
                   $refs.colorSelect,
                   'bottom',
                   'left',

@@ -216,13 +216,13 @@ export default {
       )
     },
     focus() {
-      this.$refs.input.focus()
+      this.$refs.input?.focus()
     },
     remove(item) {
-      this.$refs.input.remove(item)
+      this.$refs.input?.remove(item)
     },
     reset() {
-      this.$refs.input.reset()
+      this.$refs.input?.reset()
     },
   },
 }

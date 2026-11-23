@@ -10,7 +10,7 @@
         :database="database"
         :table="table"
         :view="view"
-        @hide-context="$refs.context.hide()"
+        @hide-context="$refs.context?.hide()"
       />
       <li
         v-if="
@@ -300,7 +300,7 @@ export default {
   },
   methods: {
     enableRename() {
-      this.$refs.context.hide()
+      this.$refs.context?.hide()
       this.$emit('enable-rename')
     },
     async deleteView() {
@@ -324,7 +324,7 @@ export default {
         notifyIf(error, 'view')
       }
 
-      this.$refs.context.hide()
+      this.$refs.context?.hide()
       this.duplicateLoading = false
 
       // Redirect to the newly created view.
@@ -338,24 +338,24 @@ export default {
       })
     },
     exportView() {
-      this.$refs.context.hide()
-      this.$refs.exportViewModal.show()
+      this.$refs.context?.hide()
+      this.$refs.exportViewModal?.show()
     },
     importFile() {
-      this.$refs.context.hide()
-      this.$refs.importFileModal.show()
+      this.$refs.context?.hide()
+      this.$refs.importFileModal?.show()
     },
     openWebhookModal() {
-      this.$refs.context.hide()
-      this.$refs.webhookModal.show()
+      this.$refs.context?.hide()
+      this.$refs.webhookModal?.show()
     },
     openDefaultValuesModal() {
-      this.$refs.context.hide()
-      this.$refs.defaultValuesModal.show()
+      this.$refs.context?.hide()
+      this.$refs.defaultValuesModal?.show()
     },
     openCopyConfigurationModal() {
-      this.$refs.context.hide()
-      this.$refs.copyViewConfigurationModal.show()
+      this.$refs.context?.hide()
+      this.$refs.copyViewConfigurationModal?.show()
     },
   },
 }

@@ -214,7 +214,7 @@ export default {
     async createDataSource() {
       this.currentDataSourceId = null
       await this.$nextTick()
-      this.$refs.dataSourceCreateEditModal.show()
+      this.$refs.dataSourceCreateEditModal?.show()
     },
     async deleteDataSource(dataSource) {
       const page =
@@ -242,7 +242,7 @@ export default {
     async editDataSource(dataSource) {
       this.currentDataSourceId = dataSource.id
       await this.$nextTick()
-      this.$refs.dataSourceCreateEditModal.show()
+      this.$refs.dataSourceCreateEditModal?.show()
     },
     async moveDataSourceToPage(dataSource, pageSource, pageDest) {
       try {

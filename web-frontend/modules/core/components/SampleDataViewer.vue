@@ -100,7 +100,7 @@ export default {
   },
   methods: {
     showSampleDataModal() {
-      this.$refs.sampleDataModalRef.show()
+      this.$refs.sampleDataModalRef?.show()
     },
   },
 }

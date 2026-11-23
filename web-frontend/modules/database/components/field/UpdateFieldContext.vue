@@ -42,7 +42,7 @@
           <Button
             :loading="loading"
             :disabled="loading || fieldTypeDisabled"
-            @click="$refs.form.submit()"
+            @click="$refs.form?.submit()"
           >
             {{ $t('action.save') }}
           </Button>
@@ -147,7 +147,7 @@ export default {
         const fieldId = this.field.id
         let actionsSaved = true
         try {
-          await this.$refs.form.afterFieldSaved(fieldId, {
+          await this.$refs.form?.afterFieldSaved(fieldId, {
             undoRedoActionGroupId,
           })
         } catch (error) {
@@ -156,7 +156,7 @@ export default {
         }
         this.actionsFailed = !actionsSaved
         // Read after the save, so it reflects what actually persisted.
-        const valuesAfterSave = this.$refs.form.fieldValuesAfterSave()
+        const valuesAfterSave = this.$refs.form?.fieldValuesAfterSave()
 
         // The callback must be called as soon the parent page has refreshed the rows.
         // This is to prevent incompatible values when the field changes before the
@@ -187,7 +187,7 @@ export default {
         this.loading = false
         let handledByForm = false
         if (this.$refs.form) {
-          handledByForm = this.$refs.form.handleErrorByForm(error)
+          handledByForm = this.$refs.form?.handleErrorByForm(error)
         }
         if (!handledByForm) {
           notifyIf(error, 'field')
@@ -200,7 +200,7 @@ export default {
       this.hide()
     },
     onShow() {
-      this.showDescription = this.$refs.form.isDescriptionFieldNotEmpty()
+      this.showDescription = this.$refs.form?.isDescriptionFieldNotEmpty()
       // Skipped while a failed save is still holding the user's edits.
       if (!this.actionsFailed) {
         this.$refs.form?.onShow?.()
@@ -209,7 +209,7 @@ export default {
 
     showDescriptionField(evt) {
       this.hideDescriptionLink()
-      this.$refs.form.showDescriptionField()
+      this.$refs.form?.showDescriptionField()
       evt.stopPropagation()
       evt.preventDefault()
     },

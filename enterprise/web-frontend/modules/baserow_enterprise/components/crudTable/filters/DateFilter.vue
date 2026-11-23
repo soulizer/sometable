@@ -6,9 +6,9 @@
         :error="v$.copy?.$error"
         :disabled="disabled"
         :placeholder="placeholder"
-        @focus="$refs.dateContext.toggle($refs.date, 'bottom', 'left', 0)"
-        @click="$refs.dateContext.show($refs.date, 'bottom', 'left', 0)"
-        @blur="$refs.dateContext.hide()"
+        @focus="$refs.dateContext?.toggle($refs.date, 'bottom', 'left', 0)"
+        @click="$refs.dateContext?.show($refs.date, 'bottom', 'left', 0)"
+        @blur="$refs.dateContext?.hide()"
         @input="
           ;[
             setCopyFromDateString(dateString, 'dateString'),
@@ -37,7 +37,7 @@
             ;[
               setCopy($event, 'dateObject'),
               $emit('input', copy),
-              $refs.dateContext.hide(),
+              $refs.dateContext?.hide(),
             ]
           "
         ></date-picker>
@@ -146,7 +146,7 @@ export default {
       return this.$t('humanDateFormat.' + getDateHumanReadableFormat('US'))
     },
     focus() {
-      this.$refs.date.focus()
+      this.$refs.date?.focus()
     },
   },
   validations() {

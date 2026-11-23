@@ -332,9 +332,9 @@ export default {
      * surface.
      */
     scroll(pixelY, pixelX) {
-      const left = this.$refs.right.scrollLeft + pixelX
+      const left = this.$refs.right?.scrollLeft + pixelX
       this.horizontalScroll(left)
-      this.$refs.scrollbars.update()
+      this.$refs.scrollbars?.update()
       return pixelY !== 0
     },
     horizontalScroll(left) {

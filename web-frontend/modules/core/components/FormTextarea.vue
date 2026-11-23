@@ -179,10 +179,10 @@ export default {
 
   methods: {
     focus() {
-      this.$refs.textarea.focus()
+      this.$refs.textarea?.focus()
     },
     blur() {
-      this.$refs.textarea.blur()
+      this.$refs.textarea?.blur()
     },
     input(event) {
       const value = this.toValue(event.target.value)

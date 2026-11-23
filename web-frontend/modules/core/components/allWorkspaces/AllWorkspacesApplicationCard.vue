@@ -32,7 +32,7 @@
         class="item-card__more"
         icon="baserow-icon-more-vertical"
         @click.stop="
-          $refs.context.toggle($event.currentTarget, 'bottom', 'right', 0)
+          $refs.context?.toggle($event.currentTarget, 'bottom', 'right', 0)
         "
       ></ButtonIcon>
 
@@ -124,7 +124,7 @@ export default {
       this.$emit('click')
     },
     handleRenameApplication() {
-      this.$refs.rename.edit()
+      this.$refs.rename?.edit()
     },
     async rename(event) {
       this.saving = true

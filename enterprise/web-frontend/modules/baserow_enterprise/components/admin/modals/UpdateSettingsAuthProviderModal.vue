@@ -86,7 +86,7 @@ export default {
         })
         this.$emit('settings-updated')
       } catch (error) {
-        if (!this.$refs.providerSettingsForm.handleServerError(error)) {
+        if (!this.$refs.providerSettingsForm?.handleServerError(error)) {
           notifyIf(error, 'settings')
         }
       } finally {

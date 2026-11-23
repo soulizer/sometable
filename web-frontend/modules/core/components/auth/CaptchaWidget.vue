@@ -48,7 +48,7 @@ export default {
     },
     reset() {
       if (this.$refs.providerWidget) {
-        this.$refs.providerWidget.reset()
+        this.$refs.providerWidget?.reset()
       }
       this.$emit('token', '')
     },

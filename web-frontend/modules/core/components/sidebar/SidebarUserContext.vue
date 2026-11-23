@@ -50,7 +50,7 @@
         </a>
       </li>
       <li v-if="$hasPermission('create_workspace')" class="select__item">
-        <a class="select__item-link" @click="$refs.createWorkspaceModal.show()">
+        <a class="select__item-link" @click="$refs.createWorkspaceModal?.show()">
           <div class="select__item-name">
             <ButtonIcon
               tag="a"
@@ -82,7 +82,7 @@
         <li class="context__menu-item">
           <a
             class="context__menu-item-link"
-            @click="$refs.settingsModal.show()"
+            @click="$refs.settingsModal?.show()"
           >
             <i class="context__menu-item-icon iconoir-user-circle"></i>
             {{ $t('sidebar.settings') }}
@@ -191,7 +191,7 @@ export default {
     onShow() {
       this.query = ''
       this.$nextTick(() => {
-        this.$refs.search.focus()
+        this.$refs.search?.focus()
       })
     },
     async logoff() {

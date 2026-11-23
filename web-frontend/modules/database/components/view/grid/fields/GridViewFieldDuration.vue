@@ -50,7 +50,7 @@ export default {
         this.updateFormattedValue(this.field, this.copy)
       }
       this.$nextTick(() => {
-        this.$refs.input.focus()
+        this.$refs.input?.focus()
         this.$refs.input.selectionStart = this.$refs.input.selectionEnd = 100000
       })
     },

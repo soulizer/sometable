@@ -40,7 +40,7 @@
       <a
         ref="contextLink"
         class="tree__options"
-        @click="$refs.context.toggle($refs.contextLink, 'bottom', 'right', 0)"
+        @click="$refs.context?.toggle($refs.contextLink, 'bottom', 'right', 0)"
         @mousedown.stop
       >
         <i class="baserow-icon-more-vertical"></i>

@@ -51,7 +51,7 @@
 
       <li class="tree__item">
         <div class="tree__action sidebar__action">
-          <a class="tree__link" @click="$refs.templateModal.show()">
+          <a class="tree__link" @click="$refs.templateModal?.show()">
             <i class="tree__icon iconoir-page"></i>
             <span class="tree__link-text">
               <span class="sidebar__item-name">{{
@@ -71,7 +71,7 @@
 
       <li class="tree__item">
         <div class="tree__action sidebar__action">
-          <a class="tree__link" @click="$refs.trashModal.show()">
+          <a class="tree__link" @click="$refs.trashModal?.show()">
             <i class="tree__icon iconoir-bin"></i>
             <span class="tree__link-text">
               <span class="sidebar__item-name">{{ $t('sidebar.trash') }}</span>

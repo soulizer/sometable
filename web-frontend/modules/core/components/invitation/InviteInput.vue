@@ -463,7 +463,7 @@ export default {
       if (show) {
         this.showResultsContext()
       } else {
-        this.$refs.results.hide(false)
+        this.$refs.results?.hide(false)
       }
     },
     // Picking chips can wrap the input onto another line.
@@ -496,12 +496,12 @@ export default {
       )
     },
     focus() {
-      this.$refs.input.focus()
+      this.$refs.input?.focus()
     },
     showResultsContext() {
       const row = this.$refs.row
       this.resultsWidth = `${row.offsetWidth}px`
-      this.$refs.results.show(row, 'bottom', 'left', 8)
+      this.$refs.results?.show(row, 'bottom', 'left', 8)
     },
     /**
      * Escape closes the results when they are open, and only them: the modal
@@ -520,7 +520,7 @@ export default {
      * search open.
      */
     close() {
-      this.$refs.input.blur()
+      this.$refs.input?.blur()
       this.open = false
     },
     /**

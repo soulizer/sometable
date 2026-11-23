@@ -74,7 +74,7 @@ export default {
       this.$emit('focussed')
     },
     isValid() {
-      return this.$refs.field.isValid()
+      return this.$refs.field?.isValid()
     },
   },
 }

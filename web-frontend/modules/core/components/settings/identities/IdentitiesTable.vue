@@ -41,7 +41,7 @@
         type="primary"
         size="large"
         icon="iconoir-plus"
-        @click="$refs.createModal.show()"
+        @click="$refs.createModal?.show()"
       >
         {{ $t('identities.create') }}
       </Button>
@@ -219,7 +219,7 @@ export default {
   },
   watch: {
     identitiesRevision() {
-      this.$refs.table.refresh()
+      this.$refs.table?.refresh()
     },
   },
   methods: {

@@ -6,7 +6,7 @@
       :class="{
         'active active--warning': view.sortings.length > 0,
       }"
-      @click="$refs.context.toggle($refs.contextLink, 'bottom', 'left', 4)"
+      @click="$refs.context?.toggle($refs.contextLink, 'bottom', 'left', 4)"
     >
       <i class="header__filter-icon iconoir-sort"></i>
       <span class="header__filter-name">{{

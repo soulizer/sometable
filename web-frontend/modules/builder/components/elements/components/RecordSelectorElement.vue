@@ -19,7 +19,7 @@
       @hide="onFormElementTouch"
       @update:model-value="onSelectionChange"
       @query-change="adhocSearch = $event"
-      @scroll="$refs.infiniteScroll.handleScroll($event)"
+      @scroll="$refs.infiniteScroll?.handleScroll($event)"
     >
       <template #value>
         <template v-if="loading">

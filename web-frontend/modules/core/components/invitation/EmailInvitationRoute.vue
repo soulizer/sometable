@@ -215,7 +215,7 @@ export default {
 
       try {
         await this.sendInvitations(picks, roleUid, (pick, invitation) => {
-          this.$refs.input.remove(pick)
+          this.$refs.input?.remove(pick)
           const index = this.invitations.findIndex(
             ({ id }) => id === invitation.id
           )
@@ -225,7 +225,7 @@ export default {
             this.invitations[index] = invitation
           }
         })
-        this.$refs.input.reset()
+        this.$refs.input?.reset()
       } catch (error) {
         this.handleInvitationError(error)
       } finally {

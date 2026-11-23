@@ -14,7 +14,7 @@
         :fixed-items="true"
         :show-search="false"
         @hide="v$.values.ai_generative_ai_type.$touch"
-        @change="$refs.aiModel.select(baseAvailableModels[0])"
+        @change="$refs.aiModel?.select(baseAvailableModels[0])"
       >
         <DropdownItem
           v-for="provider in availableProviders"

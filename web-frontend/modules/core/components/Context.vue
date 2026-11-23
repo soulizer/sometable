@@ -489,7 +489,7 @@ export default {
       if (this.horizontalViewportMargin !== null) {
         const margin = this.horizontalViewportMargin
         const availableWidth =
-          window.innerWidth - this.$refs.contextEl.offsetWidth
+          window.innerWidth - this.$refs.contextEl?.offsetWidth
         const left = positions.left ?? availableWidth - positions.right
         positions.left =
           window.scrollX + clamp(left, margin, availableWidth - margin)

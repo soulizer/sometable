@@ -333,7 +333,7 @@ export default {
     addExcludedWorkspace({ item }) {
       this.excludedWorkspaces.push({ id: item.id, name: item.value })
       // The dropdown stores the picked name after emitting, so reset it later.
-      this.$nextTick(() => this.$refs.excludedWorkspaceDropdown.clear())
+      this.$nextTick(() => this.$refs.excludedWorkspaceDropdown?.clear())
     },
     emptyModel() {
       return {

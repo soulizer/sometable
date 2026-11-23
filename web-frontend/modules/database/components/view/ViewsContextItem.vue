@@ -41,7 +41,7 @@
       <a
         ref="contextLink"
         class="select__item-options"
-        @click="$refs.context.toggle($refs.contextLink, 'bottom', 'right', 0)"
+        @click="$refs.context?.toggle($refs.contextLink, 'bottom', 'right', 0)"
         @mousedown.stop
       >
         <i class="baserow-icon-more-vertical"></i>
@@ -162,7 +162,7 @@ export default {
   },
   methods: {
     enableRename() {
-      this.$refs.rename.edit()
+      this.$refs.rename?.edit()
     },
     select(view) {
       if (this.deactivated || this.viewOwnershipDeactivated) {

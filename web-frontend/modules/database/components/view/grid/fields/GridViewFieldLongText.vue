@@ -37,7 +37,7 @@ export default {
         event.preventDefault()
       }
       this.$nextTick(() => {
-        this.$refs.input.focus()
+        this.$refs.input?.focus()
         this.$refs.input.selectionStart = this.$refs.input.selectionEnd = 100000
       })
     },

@@ -18,8 +18,8 @@
         icon="iconoir-plus"
         :loading="addingAction"
         @click="
-          $refs.workflowActionAddContext.show(
-            $refs.addWorkflowActionButton.$el,
+          $refs.workflowActionAddContext?.show(
+            $refs.addWorkflowActionButton?.$el,
             'bottom',
             'right'
           )
@@ -39,7 +39,7 @@
           :empty-text="$t('event.noActionsFound')"
           @select="onWorkflowActionMenuItemSelected"
           @disabled-click="onWorkflowActionMenuItemSelected"
-          @close="$refs.workflowActionAddContext.hide()"
+          @close="$refs.workflowActionAddContext?.hide()"
         />
         <template
           v-for="workflowActionType in availableWorkflowActionTypes"
@@ -207,7 +207,7 @@ export default {
       }
 
       this.addingAction = true
-      this.$refs.workflowActionAddContext.hide()
+      this.$refs.workflowActionAddContext?.hide()
       try {
         await this.actionCreateWorkflowAction({
           page: this.elementPage,

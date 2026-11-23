@@ -32,7 +32,7 @@
           v-if="tester.error || tester.hasSampleData"
           icon="iconoir-expand"
           size="small"
-          @click="$refs.sampleDataModal.show()"
+          @click="$refs.sampleDataModal?.show()"
         >
           {{ $t('dataSourceTestForm.openInFull') }}
         </ButtonText>

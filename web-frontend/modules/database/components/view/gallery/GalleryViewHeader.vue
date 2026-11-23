@@ -5,7 +5,7 @@
         ref="customizeContextLink"
         class="header__filter-link"
         @click="
-          $refs.customizeContext.toggle(
+          $refs.customizeContext?.toggle(
             $refs.customizeContextLink,
             'bottom',
             'left',

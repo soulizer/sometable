@@ -85,7 +85,7 @@
       <li class="context__menu-item">
         <a
           class="context__menu-item-link"
-          @click="$refs.leaveWorkspaceModal.show()"
+          @click="$refs.leaveWorkspaceModal?.show()"
         >
           <i class="context__menu-item-icon iconoir-log-out"></i>
           {{ $t('workspaceContext.leaveWorkspace') }}
@@ -177,20 +177,20 @@ export default {
         await this.$store.dispatch('workspace/fetchPermissions', this.workspace)
         await this.$store.dispatch('workspace/fetchRoles', this.workspace)
       } catch (error) {
-        this.$refs.context.hide()
+        this.$refs.context?.hide()
         notifyIf(error, 'workspace')
       }
     },
     showWorkspaceTrashModal() {
-      this.$refs.context.hide()
+      this.$refs.context?.hide()
       this.$refs.workspaceTrashModal?.show()
     },
     openExportData() {
-      this.$refs.context.hide()
+      this.$refs.context?.hide()
       this.$refs.exportWorkspaceModal?.show()
     },
     openImportData() {
-      this.$refs.context.hide()
+      this.$refs.context?.hide()
       this.$refs.importWorkspaceModal?.show()
     },
     async deleteWorkspace() {

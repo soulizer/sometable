@@ -133,7 +133,7 @@ export default {
       this.loadingViews = false
     },
     async submitted(values) {
-      if (!this.$refs.form.isFormValid()) {
+      if (!this.$refs.form?.isFormValid()) {
         return
       }
 

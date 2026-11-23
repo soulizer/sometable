@@ -73,7 +73,7 @@ export default {
   },
 
   async mounted() {
-    this.$refs.name.focus()
+    this.$refs.name?.focus()
   },
 }
 </script>

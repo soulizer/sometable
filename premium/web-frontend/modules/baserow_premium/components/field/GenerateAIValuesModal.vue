@@ -187,7 +187,7 @@ export default {
       }
     },
     async submitted(values) {
-      if (!this.$refs.form.isFormValid() || this.field.error) {
+      if (!this.$refs.form?.isFormValid() || this.field.error) {
         return
       }
 
@@ -234,7 +234,7 @@ export default {
     },
     valuesChanged() {
       if (this.$refs.form) {
-        this.isValid = this.$refs.form.isFormValid()
+        this.isValid = this.$refs.form?.isFormValid()
       }
     },
   },

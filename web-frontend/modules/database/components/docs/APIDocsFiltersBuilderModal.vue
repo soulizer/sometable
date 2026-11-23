@@ -16,7 +16,7 @@
         <span class="position-relative">
           <a
             @click.prevent="
-              ;[copyToClipboard(JSONFilters), $refs.copiedJSON.show()]
+              ;[copyToClipboard(JSONFilters), $refs.copiedJSON?.show()]
             "
             >{{ $t('action.copyToClipboard') }}</a
           >
@@ -39,7 +39,7 @@
             @click.prevent="
               ;[
                 copyToClipboard(encodedJSONFilters),
-                $refs.copiedEncodedJSON.show(),
+                $refs.copiedEncodedJSON?.show(),
               ]
             "
             >{{ $t('action.copyToClipboard') }}</a

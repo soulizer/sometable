@@ -33,7 +33,7 @@
               :page="currentPage"
               :target-page-place="PAGE_PLACES.CONTENT"
               :label="$t('pagePreview.emptyMessage')"
-              @add-element="$refs.addElementModal.show()"
+              @add-element="$refs.addElementModal?.show()"
             />
             <component
               :is="section.tag"
@@ -294,7 +294,7 @@ export default {
     },
     elementSelectedId(newValue) {
       if (newValue && this.$refs.previewScaled) {
-        this.$refs.previewScaled.focus()
+        this.$refs.previewScaled?.focus()
       }
     },
   },
@@ -383,7 +383,7 @@ export default {
 
       // Also update page top
       this.pageTop.value =
-        this.$refs.preview.getBoundingClientRect().top + 30 * scale
+        this.$refs.preview?.getBoundingClientRect().top + 30 * scale
     },
     async moveElement({ element, direction }) {
       if (

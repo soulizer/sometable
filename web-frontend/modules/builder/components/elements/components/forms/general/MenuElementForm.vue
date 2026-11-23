@@ -97,7 +97,7 @@
           icon="iconoir-plus"
           size="small"
           @click="
-            $refs.menuItemAddContext.show(
+            $refs.menuItemAddContext?.show(
               $refs.menuItemAddContainer,
               'bottom',
               'right'
@@ -308,7 +308,7 @@ export default {
           parent_menu_item: null, // This is the root menu item.
         },
       ]
-      this.$refs.menuItemAddContext.hide()
+      this.$refs.menuItemAddContext?.hide()
     },
     /**
      * When a menu item is removed, this method is responsible for removing it

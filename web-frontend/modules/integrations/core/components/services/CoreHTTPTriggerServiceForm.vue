@@ -14,7 +14,7 @@
       v-tooltip="$t('coreHTTPTriggerServiceForm.copyUrl')"
       class="webhook-service-form__copy-url"
       tooltip-position="top"
-      @click.stop=";[copyToClipboard(), $refs.webhookCopied.show()]"
+      @click.stop=";[copyToClipboard(), $refs.webhookCopied?.show()]"
     >
       <pre><code class="webhook-service-form__webhook-url">{{ webhookUrl }}</code></pre>
       <Copied ref="webhookCopied" />

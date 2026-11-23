@@ -234,7 +234,7 @@ export default {
       // Open the builder settings modal, which is instructed to select the domain
       // settings instance first, and pass `DomainsBuilderSettingsType.getType()` into
       // `show` so that the create domain form is immediately presented.
-      this.$refs.domainSettingsModal.show(
+      this.$refs.domainSettingsModal?.show(
         DomainsBuilderSettingsType.getType(),
         true
       )

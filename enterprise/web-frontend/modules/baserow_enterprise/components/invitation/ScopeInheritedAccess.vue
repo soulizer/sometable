@@ -256,14 +256,14 @@ export default {
     },
     toggleContext(row, element) {
       this.openRowKey = row.key
-      this.$refs.context.toggle(element, 'bottom', 'right', 4)
+      this.$refs.context?.toggle(element, 'bottom', 'right', 4)
     },
     leave() {
-      this.$refs.context.hide()
+      this.$refs.context?.hide()
       this.$emit('close')
     },
     manage(row) {
-      this.$refs.context.hide()
+      this.$refs.context?.hide()
       this.$emit('navigate', row.manageTarget)
     },
   },

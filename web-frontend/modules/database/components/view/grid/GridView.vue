@@ -197,12 +197,12 @@
           :get-rows="getSelectedRowsFunction"
           :store-prefix="storePrefix"
           :database="database"
-          @click=";[$refs.rowContext.hide()]"
+          @click=";[$refs.rowContext?.hide()]"
         ></component>
         <li class="context__menu-item">
           <a
             class="context__menu-item-link"
-            @click=";[copySelection($event, false), $refs.rowContext.hide()]"
+            @click=";[copySelection($event, false), $refs.rowContext?.hide()]"
           >
             <i class="context__menu-item-icon iconoir-copy"></i>
             {{ $t('gridView.copyCells') }}
@@ -211,7 +211,7 @@
         <li class="context__menu-item">
           <a
             class="context__menu-item-link"
-            @click=";[copySelection($event, true), $refs.rowContext.hide()]"
+            @click=";[copySelection($event, true), $refs.rowContext?.hide()]"
           >
             <i class="context__menu-item-icon iconoir-copy"></i>
             {{ $t('gridView.copyCellsWithHeader') }}
@@ -714,12 +714,12 @@ export default {
             // hide(false) suppresses the `hidden` event, which is the modal's
             // only presence cleanup path, so the remote focus entry must be
             // cleared explicitly first.
-            this.$refs.rowEditModal.clearPresenceFocus()
+            this.$refs.rowEditModal?.clearPresenceFocus()
             this._restorePresenceFocusAfterRowModal()
             // Pass emit=false as argument into the hide function because that will
             // prevent emitting another `hidden` event of the `RowEditModal` which can
             // result in the route changing twice.
-            this.$refs.rowEditModal.hide(false)
+            this.$refs.rowEditModal?.hide(false)
           }
         }
         // `refreshRow` doesn't immediately hide a row not matching filters if a
@@ -733,7 +733,7 @@ export default {
             grid: this.view,
             fields: this.fields,
             rowId: prevRowId,
-            getScrollTop: () => this.$refs.left.$refs.body.scrollTop,
+            getScrollTop: () => this.$refs.left?.$refs.body?.scrollTop,
           })
         }
       },
@@ -840,7 +840,7 @@ export default {
       return this.$refs.gridView
     },
     getCrossSectionScrollableElement() {
-      return this.$refs.right.$el
+      return this.$refs.right?.$el
     },
     /**
      * Called when a non-primary field header is dragged in either section.
@@ -848,7 +848,7 @@ export default {
      */
     startCrossSectionFieldDrag(field, event) {
       if (this.$refs.crossSectionFieldDragging && !field.primary) {
-        this.$refs.crossSectionFieldDragging.start(field, event)
+        this.$refs.crossSectionFieldDragging?.start(field, event)
       }
     },
     /**
@@ -856,8 +856,8 @@ export default {
      * Scroll direction can be limited to only one axis (both, vertical, horizontal)
      */
     scrollToCellElement(element, scrollDirection = 'both', field) {
-      const verticalContainer = this.$refs.right.$refs.body
-      const horizontalContainer = this.$refs.right.$el
+      const verticalContainer = this.$refs.right?.$refs.body
+      const horizontalContainer = this.$refs.right?.$el
       const verticalContainerRect = verticalContainer.getBoundingClientRect()
       const horizontalContainerRect =
         horizontalContainer.getBoundingClientRect()
@@ -881,8 +881,8 @@ export default {
       scrollDirection = 'both',
       field
     ) {
-      const verticalContainer = this.$refs.right.$refs.body
-      const horizontalContainer = this.$refs.right.$el
+      const verticalContainer = this.$refs.right?.$refs.body
+      const horizontalContainer = this.$refs.right?.$el
       const verticalContainerHeight = verticalContainer.clientHeight
       const horizontalContainerWidth = horizontalContainer.clientWidth
 
@@ -891,7 +891,7 @@ export default {
           // If the field isn't visible in the viewport we need to scroll up in order
           // to show it.
           this.verticalScroll(elementTop + verticalContainer.scrollTop - 20)
-          this.$refs.scrollbars.updateVertical()
+          this.$refs.scrollbars?.updateVertical()
         } else if (elementBottom > verticalContainerHeight) {
           // If the field isn't visible in the viewport we need to scroll down in order
           // to show it.
@@ -901,7 +901,7 @@ export default {
               verticalContainer.clientHeight +
               20
           )
-          this.$refs.scrollbars.updateVertical()
+          this.$refs.scrollbars?.updateVertical()
         }
       }
 
@@ -913,7 +913,7 @@ export default {
           this.horizontalScroll(
             elementLeft + horizontalContainer.scrollLeft - 20
           )
-          this.$refs.scrollbars.updateHorizontal()
+          this.$refs.scrollbars?.updateHorizontal()
         } else if (
           elementRight > horizontalContainerWidth &&
           (!this.hasFrozenColumns || !fieldPrimary)
@@ -926,13 +926,13 @@ export default {
               horizontalContainer.clientWidth +
               20
           )
-          this.$refs.scrollbars.updateHorizontal()
+          this.$refs.scrollbars?.updateHorizontal()
         }
       }
     },
     onContextSelectRow(row) {
       this.selectRow(this.stubMenuEvent(), row)
-      this.$refs.rowContext.hide()
+      this.$refs.rowContext?.hide()
     },
     onContextInsertAbove(row) {
       this.addRowAboveSelectedRow(this.stubMenuEvent(), row)
@@ -945,7 +945,7 @@ export default {
     },
     onContextOpenRowModal(row) {
       this.openRowEditModal(row)
-      this.$refs.rowContext.hide()
+      this.$refs.rowContext?.hide()
     },
     stubMenuEvent() {
       return { preventFieldCellUnselect: true, stopPropagation: () => {} }
@@ -964,7 +964,7 @@ export default {
         }
       })
       this.addRowAfter(selectedRow, duplicatedRow)
-      this.$refs.rowContext.hide()
+      this.$refs.rowContext?.hide()
     },
     copyLinkToSelectedRow(event, selectedRow) {
       const url =
@@ -980,17 +980,17 @@ export default {
           id: selectedRow.id,
         }),
       })
-      this.$refs.rowContext.hide()
+      this.$refs.rowContext?.hide()
     },
     addRowAboveSelectedRow(event, selectedRow) {
       event.preventFieldCellUnselect = true
       this.addRow(selectedRow)
-      this.$refs.rowContext.hide()
+      this.$refs.rowContext?.hide()
     },
     addRowBelowSelectedRow(event, selectedRow) {
       event.preventFieldCellUnselect = true
       this.addRowAfter(selectedRow)
-      this.$refs.rowContext.hide()
+      this.$refs.rowContext?.hide()
     },
     /**
      * When a field is deleted we need to check if that field was related to any
@@ -1103,21 +1103,21 @@ export default {
      * that handles the horizontal scrolling.
      */
     getHorizontalScrollbarElement() {
-      return this.$refs.right.$el
+      return this.$refs.right?.$el
     },
     /**
      * This method is called by the Scrollbars component and should return the element
      * that handles the vertical scrolling.
      */
     getVerticalScrollbarElement() {
-      return this.$refs.right.$refs.body
+      return this.$refs.right?.$refs.body
     },
     /**
      * Called when a user scrolls without using the scrollbar.
      */
     scroll(pixelY, pixelX) {
-      const $rightBody = this.$refs.right.$refs.body
-      const $right = this.$refs.right.$el
+      const $rightBody = this.$refs.right?.$refs.body
+      const $right = this.$refs.right?.$el
 
       const top = $rightBody.scrollTop + pixelY
       const left = $right.scrollLeft + pixelX
@@ -1125,7 +1125,7 @@ export default {
       this.verticalScroll(top)
       this.horizontalScroll(left)
 
-      this.$refs.scrollbars.update()
+      this.$refs.scrollbars?.update()
     },
     /**
      * Called when the user scrolls vertically. The scroll offset of both the left and
@@ -1139,7 +1139,7 @@ export default {
       this.$store.dispatch(
         this.storePrefix + 'view/grid/fetchByScrollTopDelayed',
         {
-          scrollTop: this.$refs.left.$refs.body.scrollTop,
+          scrollTop: this.$refs.left?.$refs.body?.scrollTop,
           fields: this.fields,
         }
       )
@@ -1149,7 +1149,7 @@ export default {
      * show a shadow next to the left section because that one has a fixed position.
      */
     horizontalScroll(left) {
-      const $right = this.$refs.right.$el
+      const $right = this.$refs.right?.$el
       const $divider = this.$refs.divider
       const canScroll = $right.scrollWidth > $right.clientWidth
 
@@ -1267,12 +1267,12 @@ export default {
         typeof payload === 'object' &&
         'groupPath' in payload
       this.addRowsGroupPath = isGroupedPayload ? payload.groupPath : null
-      this.$refs.rowsAddContext.toggleNextToMouse(
+      this.$refs.rowsAddContext?.toggleNextToMouse(
         isGroupedPayload ? payload.event : payload
       )
     },
     async addRows(rowsAmount) {
-      this.$refs.rowsAddContext.hide()
+      this.$refs.rowsAddContext?.hide()
       const groupPath = this.addRowsGroupPath
       this.addRowsGroupPath = null
       // We need a list of all fields including the primary one here.
@@ -1333,10 +1333,10 @@ export default {
     },
     async deleteRow(row) {
       try {
-        this.$refs.rowContext.hide()
+        this.$refs.rowContext?.hide()
         // We need a small helper function that calculates the current scrollTop because
         // the delete action will recalculate the visible scroll range and buffer.
-        const getScrollTop = () => this.$refs.left.$refs.body.scrollTop
+        const getScrollTop = () => this.$refs.left?.$refs.body?.scrollTop
         await this.$store.dispatch(
           this.storePrefix + 'view/grid/deleteExistingRow',
           {
@@ -1396,21 +1396,21 @@ export default {
             row,
             field: this.fields[0],
             fields: this.fields,
-            getScrollTop: () => this.$refs.left.$refs.body.scrollTop,
+            getScrollTop: () => this.$refs.left?.$refs.body?.scrollTop,
           }
         )
       }
     },
     showRowContext(event, row) {
       this.selectedRow = row
-      this.$refs.rowContext.toggleNextToMouse(event)
+      this.$refs.rowContext?.toggleNextToMouse(event)
     },
     /**
      * Called when the user starts dragging the row. This will initiate the dragging
      * effect and allows the user to move it to another position.
      */
     rowDragStart({ event, row }) {
-      this.$refs.rowDragging.start(row, event)
+      this.$refs.rowDragging?.start(row, event)
     },
     /**
      * When the modal hides and the related row does not match the filters anymore it
@@ -1433,7 +1433,7 @@ export default {
         grid: this.view,
         fields: this.fields,
         rowId: row.id,
-        getScrollTop: () => this.$refs.left.$refs.body.scrollTop,
+        getScrollTop: () => this.$refs.left?.$refs.body?.scrollTop,
       })
     },
     /**
@@ -1448,7 +1448,7 @@ export default {
         return
       }
 
-      this.$refs.rowEditModal.show(row.id)
+      this.$refs.rowEditModal?.show(row.id)
       this.$emit('selected-row', row)
     },
     /**
@@ -1457,7 +1457,7 @@ export default {
      */
     populateAndEditRow(row) {
       const rowClone = populateRow(clone(row))
-      this.$refs.rowEditModal.show(row.id, rowClone)
+      this.$refs.rowEditModal?.show(row.id, rowClone)
     },
     /**
      * When a cell is selected we want to make sure it is visible in the viewport, so
@@ -1511,7 +1511,7 @@ export default {
         // the escape key which destroys the modal. We need to make sure, the lookup
         // doesn't fail hard when that happens, so we can return the last scroll top
         // value stored in the grid view store.
-        let getScrollTop = () => this.$refs.left.$refs.body.scrollTop
+        let getScrollTop = () => this.$refs.left?.$refs.body?.scrollTop
         if (!this.$refs.left) {
           getScrollTop = () =>
             this.$store.getters[this.storePrefix + 'view/grid/getScrollTop']
@@ -1614,7 +1614,7 @@ export default {
       if (range === null) {
         return
       }
-      const scrollTop = this.$refs.right.$refs.body.scrollTop
+      const scrollTop = this.$refs.right?.$refs.body?.scrollTop
       this.scrollToElementRect(
         {
           elementTop: range.top - scrollTop,
@@ -1639,7 +1639,7 @@ export default {
      * or wants to sort on a field.
      */
     async refresh() {
-      const scrollTop = this.$refs.right.$refs.body.scrollTop
+      const scrollTop = this.$refs.right?.$refs.body?.scrollTop
       const handledGroupByRefresh = await this.$store.dispatch(
         this.storePrefix + 'view/grid/refreshActiveGroupBys',
         {
@@ -1685,7 +1685,7 @@ export default {
         rowId: row.id,
         fieldIndex,
       })
-      this.$refs.rowContext.hide()
+      this.$refs.rowContext?.hide()
     },
     /**
      * Called when mouse hovers over a GridViewCell component.
@@ -1817,8 +1817,8 @@ export default {
           return
         }
         const field = this.$store.getters['field/get'](fieldId)
-        const verticalContainer = this.$refs.right.$refs.body
-        const horizontalContainer = this.$refs.right.$el
+        const verticalContainer = this.$refs.right?.$refs.body
+        const horizontalContainer = this.$refs.right?.$el
         const visibleFieldOptions = this.$store.getters[
           this.storePrefix + 'view/grid/getOrderedVisibleFieldOptions'
         ](this.fields)
@@ -1980,7 +1980,7 @@ export default {
             view: this.view,
             allVisibleFields: this.allVisibleFields,
             allFieldsInTable: this.fields,
-            getScrollTop: () => this.$refs.left.$refs.body.scrollTop,
+            getScrollTop: () => this.$refs.left?.$refs.body?.scrollTop,
             textData,
             jsonData,
             rowIndex,
@@ -2008,10 +2008,10 @@ export default {
             table: this.table,
             view: this.view,
             fields: this.fields,
-            getScrollTop: () => this.$refs.left.$refs.body.scrollTop,
+            getScrollTop: () => this.$refs.left?.$refs.body?.scrollTop,
           }
         )
-        this.$refs.rowContext.hide()
+        this.$refs.rowContext?.hide()
       } catch (error) {
         notifyIf(error)
       }
@@ -2033,7 +2033,7 @@ export default {
             view: this.view,
             allVisibleFields: this.allVisibleFields,
             allFieldsInTable: this.fields,
-            getScrollTop: () => this.$refs.left.$refs.body.scrollTop,
+            getScrollTop: () => this.$refs.left?.$refs.body?.scrollTop,
           }
         )
       } catch (error) {
@@ -2064,7 +2064,7 @@ export default {
         this.groupColumnsWidth +
         frozenWidth +
         GRID_VIEW_MIN_DATA_SECTION_WIDTH
-      this.canFitFrozenColumns = this.$refs.gridView.clientWidth > maxWidth
+      this.canFitFrozenColumns = this.$refs.gridView?.clientWidth > maxWidth
     },
     /**
      * Event called when the grid view element window resizes.
@@ -2074,7 +2074,7 @@ export default {
       this.checkCanFitFrozenColumns()
 
       // Update the window height to dynamically show the right amount of rows.
-      const height = this.$refs.left.$refs.body.clientHeight
+      const height = this.$refs.left?.$refs.body?.clientHeight
       this.$store.dispatch(
         this.storePrefix + 'view/grid/setWindowHeight',
         height

@@ -46,7 +46,7 @@ export default {
       this.editing = true
       this.copy = ''
       this.$nextTick(() => {
-        this.$refs.input.focus()
+        this.$refs.input?.focus()
       })
     },
     cancel() {

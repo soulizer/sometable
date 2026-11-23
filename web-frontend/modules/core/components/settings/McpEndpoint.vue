@@ -19,7 +19,7 @@
           ref="contextLink"
           class="mcp-endpoint__more"
           @click.prevent="
-            $refs.context.toggle($refs.contextLink, 'bottom', 'right', 4)
+            $refs.context?.toggle($refs.contextLink, 'bottom', 'right', 4)
           "
         >
           <i class="baserow-icon-more-horizontal"></i>
@@ -179,11 +179,11 @@ export default {
     },
     copyShareUrlToClipboard() {
       copyToClipboard(this.getEndpointUrl(this.endpoint.key))
-      this.$refs.copied.show()
+      this.$refs.copied?.show()
     },
     enableRename() {
-      this.$refs.context.hide()
-      this.$refs.rename.edit()
+      this.$refs.context?.hide()
+      this.$refs.rename?.edit()
     },
     async updateEndpoint(endpoint, values, old) {
       Object.assign(endpoint, values)

@@ -1,5 +1,5 @@
 <template>
-  <Modal ref="modal" @hidden="$refs.form && $refs.form.reset()">
+  <Modal ref="modal" @hidden="$refs.form && $refs.form?.reset()">
     <h2 class="box__title">
       {{ $t('editUserModal.edit', { username: user.username }) }}
     </h2>
@@ -10,12 +10,12 @@
       :loading="loading"
       :default-values="user"
       @submitted="editUser"
-      @remove-two-factor-auth="$refs.disableTwoFactorAuthModal.show()"
+      @remove-two-factor-auth="$refs.disableTwoFactorAuthModal?.show()"
     >
       <div class="align-left">
         <a
           class="user-admin-edit__delete"
-          @click="$refs.deleteUserModal.show()"
+          @click="$refs.deleteUserModal?.show()"
         >
           {{ $t('editUserModal.delete') }}
         </a>

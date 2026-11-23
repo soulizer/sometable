@@ -23,7 +23,7 @@
       class="grid-view-aggregation__empty"
       :class="{
         'grid-view-aggregation__empty--active':
-          $refs.fieldContext && $refs.fieldContext.isOpen(),
+          $refs.fieldContext && $refs.fieldContext?.isOpen(),
       }"
     >
       <i class="grid-view-aggregation__empty-icon iconoir-plus"></i>
@@ -212,7 +212,7 @@ export default {
   },*/
   methods: {
     async selectAggregation(newType) {
-      this.$refs.fieldContext.hide()
+      this.$refs.fieldContext?.hide()
 
       const values = {
         aggregation_type: '',

@@ -6,7 +6,7 @@
       :class="{
         'active active--success': view.filters.length > 0,
       }"
-      @click="$refs.context.toggle($refs.contextLink, 'bottom', 'left', 4)"
+      @click="$refs.context?.toggle($refs.contextLink, 'bottom', 'left', 4)"
     >
       <i class="header__filter-icon iconoir-filter"></i>
       <span class="header__filter-name">{{
@@ -79,7 +79,7 @@ export default {
      * When a filter is created via an outside source we want to show the context menu.
      */
     filterCreated() {
-      this.$refs.context.show(this.$refs.contextLink, 'bottom', 'left', 4)
+      this.$refs.context?.show(this.$refs.contextLink, 'bottom', 'left', 4)
     },
   },
 }

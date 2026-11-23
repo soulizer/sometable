@@ -25,7 +25,7 @@
         ref="customizeContextLink"
         class="header__filter-link"
         @click="
-          $refs.customizeContext.toggle(
+          $refs.customizeContext?.toggle(
             $refs.customizeContextLink,
             'bottom',
             'left',
@@ -98,7 +98,7 @@ export default {
   },
   methods: {
     showChooseDatesFieldContext() {
-      this.$refs.dateSettingsContext.toggle(
+      this.$refs.dateSettingsContext?.toggle(
         this.$refs.dateSettingsLink,
         'bottom',
         'left',

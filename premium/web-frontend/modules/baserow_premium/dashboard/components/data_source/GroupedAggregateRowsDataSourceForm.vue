@@ -401,7 +401,7 @@ export default {
       // Update series
       this.values.aggregation_series.splice(index, 1)
       await this.$nextTick()
-      this.$refs.aggregationSeriesForms.forEach((form) => form.reset())
+      this.$refs.aggregationSeriesForms?.forEach((form) => form.reset())
       this.$emit('values-changed', {
         aggregation_series: this.values.aggregation_series,
       })

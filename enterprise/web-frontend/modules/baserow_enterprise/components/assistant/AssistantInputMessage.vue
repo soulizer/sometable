@@ -96,7 +96,7 @@ export default {
       })
     },
     focus() {
-      this.$refs.textarea.focus()
+      this.$refs.textarea?.focus()
     },
     handleEnter(event) {
       // If shift key is pressed, allow the default behavior (new line)

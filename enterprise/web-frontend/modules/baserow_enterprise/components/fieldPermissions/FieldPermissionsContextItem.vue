@@ -62,7 +62,7 @@ export default {
       if (this.deactivated) {
         
       } else {
-        this.$refs.editFieldPermissionsModal.show()
+        this.$refs.editFieldPermissionsModal?.show()
         this.$emit('hide-context')
       }
     },

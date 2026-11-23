@@ -42,7 +42,7 @@ export default {
   methods: {
     showDeleteModal() {
       this.hide()
-      this.$refs.deleteWorkspaceModal.show()
+      this.$refs.deleteWorkspaceModal?.show()
     },
   },
 }

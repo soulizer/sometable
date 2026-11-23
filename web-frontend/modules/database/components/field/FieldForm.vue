@@ -435,7 +435,7 @@ export default {
       }
     },
     showFieldTypesDropdown(target) {
-      this.$refs.fieldTypesDropdown.show(target)
+      this.$refs.fieldTypesDropdown?.show(target)
     },
     handleSuggestedFieldName(event) {
       if (this.isNameFieldEmptyOrPrefilled) {
@@ -470,7 +470,7 @@ export default {
       this.showDescription = true
       this.selectedTabIndex = 0
       this.$nextTick(() => {
-        this.$refs.description.focus()
+        this.$refs.description?.focus()
       })
     },
     /**
@@ -488,7 +488,7 @@ export default {
      */
     async afterFieldSaved(fieldId, options = {}) {
       if (typeof this.$refs.childForm?.afterFieldSaved === 'function') {
-        await this.$refs.childForm.afterFieldSaved(fieldId, options)
+        await this.$refs.childForm?.afterFieldSaved(fieldId, options)
       }
     },
     /**
@@ -497,7 +497,7 @@ export default {
      */
     fieldValuesAfterSave() {
       if (typeof this.$refs.childForm?.fieldValuesAfterSave === 'function') {
-        return this.$refs.childForm.fieldValuesAfterSave()
+        return this.$refs.childForm?.fieldValuesAfterSave()
       }
       return null
     },

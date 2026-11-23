@@ -64,7 +64,7 @@ export default {
         const { width } = el.getBoundingClientRect()
         contextEl.style.width = `${width}px`
       }
-      return this.$refs.context.show(
+      return this.$refs.context?.show(
         el,
         verticalPosition,
         horizontalPosition,
@@ -73,7 +73,7 @@ export default {
       )
     },
     hide() {
-      this.$refs.context.hide()
+      this.$refs.context?.hide()
     },
   },
 }

@@ -50,7 +50,7 @@
           type="secondary"
           size="large"
           icon="iconoir-mail"
-          @click="$refs.inviteModal.show()"
+          @click="$refs.inviteModal?.show()"
         >
           {{
             $t('membersSettings.membersTable.pendingInvitations', {
@@ -65,7 +65,7 @@
           type="primary"
           size="large"
           icon="iconoir-plus"
-          @click="$refs.inviteModal.show()"
+          @click="$refs.inviteModal?.show()"
         >
           {{ $t('membersSettings.membersTable.inviteMember') }}
         </Button>
@@ -312,7 +312,7 @@ export default {
       const oldMember = clone(member)
       const newMember = clone(member)
       newMember.permissions = permissionsNew
-      this.$refs.crudTable.updateRow(newMember)
+      this.$refs.crudTable?.updateRow(newMember)
 
       try {
         await WorkspaceService(this.$client).updateUser(oldMember.id, {
@@ -324,7 +324,7 @@ export default {
           values: { permissions: newMember.permissions },
         })
       } catch (error) {
-        this.$refs.crudTable.updateRow(oldMember)
+        this.$refs.crudTable?.updateRow(oldMember)
         notifyIf(error, 'workspace')
       }
     },

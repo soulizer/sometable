@@ -266,7 +266,7 @@ export default {
     onShow() {
       this.$nextTick(() => {
         if (this.$refs.searchInput) {
-          this.$refs.searchInput.focus()
+          this.$refs.searchInput?.focus()
         }
       })
     },

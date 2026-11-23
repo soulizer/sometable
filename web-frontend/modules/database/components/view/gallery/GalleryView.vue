@@ -300,7 +300,7 @@ export default {
             // Pass emit=false as argument into the hide function because that will
             // prevent emitting another `hidden` event of the `RowEditModal` which can
             // result in the route changing twice.
-            this.$refs.rowEditModal.hide(false)
+            this.$refs.rowEditModal?.hide(false)
           }
         }
       },
@@ -365,7 +365,7 @@ export default {
         this.updateBuffer(false, false)
       }
     }
-    this.$refs.scroll.addEventListener('scroll', this.scrollEvent)
+    this.$refs.scroll?.addEventListener('scroll', this.scrollEvent)
 
     if (this.row !== null) {
       this.populateAndEditRow(this.row)
@@ -376,7 +376,7 @@ export default {
       this.resizeObserver.disconnect()
     }
     if (this.$refs.scroll) {
-      this.$refs.scroll.removeEventListener('scroll', this.scrollEvent)
+      this.$refs.scroll?.removeEventListener('scroll', this.scrollEvent)
     }
   },
   methods: {
@@ -493,7 +493,7 @@ export default {
      * position.
      */
     rowClick(row) {
-      this.$refs.rowEditModal.show(row.id)
+      this.$refs.rowEditModal?.show(row.id)
       this.$emit('selected-row', row)
     },
     /**
@@ -534,7 +534,7 @@ export default {
      */
     populateAndEditRow(row) {
       const rowClone = populateRow(clone(row))
-      this.$refs.rowEditModal.show(row.id, rowClone)
+      this.$refs.rowEditModal?.show(row.id, rowClone)
     },
   },
 }

@@ -48,7 +48,7 @@
         v-else
         :name="user.first_name"
         :ui-context="uiContext"
-        @prompt="$refs.message.setCurrentMessage($event)"
+        @prompt="$refs.message?.setCurrentMessage($event)"
       ></AssistantWelcomeMessage>
     </div>
     <div class="assistant__footer">
@@ -262,7 +262,7 @@ export default {
       await this.setPendingPrompt(null)
       if (this.workspace.id !== workspace.id) return
       await this.clearChat()
-      this.$refs.message.focus()
+      this.$refs.message?.focus()
       await this.sendMessage({ message: prompt, workspace })
     },
 
@@ -287,7 +287,7 @@ export default {
     },
 
     toggleChatHistoryContext() {
-      this.$refs.chatHistory.toggle(
+      this.$refs.chatHistory?.toggle(
         this.$refs.chatHistoryButton,
         'bottom',
         'left',
@@ -297,7 +297,7 @@ export default {
     },
     async selectAndCloseChat(chat) {
       await this.selectChat(chat)
-      this.$refs.chatHistory.hide()
+      this.$refs.chatHistory?.hide()
     },
   },
 }

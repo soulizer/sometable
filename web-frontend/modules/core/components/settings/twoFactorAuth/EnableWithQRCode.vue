@@ -111,7 +111,7 @@ export default {
         this.$emit('verified', data.backup_codes)
       } catch (error) {
         this.checkCodeLoading = false
-        this.$refs.authCodeInput.reset()
+        this.$refs.authCodeInput?.reset()
         const title = this.$t('enableWithQRCode.verificationFailed')
         const description = this.$t(
           'enableWithQRCode.verificationFailedDescription'

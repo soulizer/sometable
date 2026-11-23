@@ -70,7 +70,7 @@
         :disabled="actionInProgress || invalidForm"
         :loading="actionInProgress"
         size="large"
-        @click="$refs.userSourceForm.submit(true)"
+        @click="$refs.userSourceForm?.submit(true)"
       >
         {{ $t('action.save') }}
       </Button>
@@ -101,7 +101,7 @@
         :disabled="actionInProgress || invalidForm"
         :loading="actionInProgress"
         size="large"
-        @click="$refs.userSourceForm.submit()"
+        @click="$refs.userSourceForm?.submit()"
       >
         {{ $t('action.create') }}
       </Button>
@@ -200,7 +200,7 @@ export default {
       this.actionInProgress = false
     },
     async updateUserSource(newValues) {
-      if (!this.$refs.userSourceForm.isFormValid(true)) {
+      if (!this.$refs.userSourceForm?.isFormValid(true)) {
         return
       }
 
@@ -219,8 +219,8 @@ export default {
         this.hideForm()
       } catch (error) {
         // Restore the previously saved values from the store
-        if (!this.$refs.userSourceForm.handleServerError(error)) {
-          this.$refs.userSourceForm.reset()
+        if (!this.$refs.userSourceForm?.handleServerError(error)) {
+          this.$refs.userSourceForm?.reset()
           this.handleError(error)
         }
       }

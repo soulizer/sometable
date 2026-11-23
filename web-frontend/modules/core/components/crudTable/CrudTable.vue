@@ -398,8 +398,8 @@ export default {
   },
   methods: {
     focus() {
-      this.$refs.table.setAttribute('tabindex', '-1')
-      this.$refs.table.focus()
+      this.$refs.table?.setAttribute('tabindex', '-1')
+      this.$refs.table?.focus()
     },
     canExpandRow(row) {
       return (

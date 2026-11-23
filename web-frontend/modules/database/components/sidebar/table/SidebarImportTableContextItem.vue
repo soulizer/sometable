@@ -62,7 +62,7 @@ export default {
           this.table.id
         )
         this.fields = data.map((field) => populateField(field, this.$registry))
-        this.$refs.importFileModal.show()
+        this.$refs.importFileModal?.show()
       } catch (error) {
         notifyIf(error, 'table')
       } finally {

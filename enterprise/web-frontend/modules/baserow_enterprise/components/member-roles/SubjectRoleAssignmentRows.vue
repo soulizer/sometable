@@ -398,13 +398,13 @@ export default {
     },
     openRoleContext(item, event) {
       this.editing = { ...item, role: item.roleUid }
-      this.$refs.roleContext.toggle(event.currentTarget, 'bottom', 'left', 4)
+      this.$refs.roleContext?.toggle(event.currentTarget, 'bottom', 'left', 4)
     },
     async changeRole(item, roleUid) {
-      this.$refs.roleContext.hide()
+      this.$refs.roleContext?.hide()
       if (
         roleUid === 'NO_ACCESS' &&
-        !(await this.$refs.noAccessModal.ask(
+        !(await this.$refs.noAccessModal?.ask(
           this.$t('shareScope.noAccessDescription', {
             name: item.name,
             type: this.getScopeTypeName(

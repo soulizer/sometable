@@ -91,7 +91,7 @@ export default {
       if (this.scan.is_running) return
 
       this.hide()
-      this.$refs.deleteDataScanModal.show()
+      this.$refs.deleteDataScanModal?.show()
     },
     onDeleted(scanId) {
       this.$emit('deleted', scanId)

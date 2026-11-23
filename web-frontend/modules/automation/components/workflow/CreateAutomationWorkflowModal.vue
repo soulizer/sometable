@@ -60,7 +60,7 @@ export default {
             name,
           }
         )
-        this.$refs.automationWorkflowForm.v$.$reset()
+        this.$refs.automationWorkflowForm?.v$.$reset()
         this.hide()
         this.$router.push(
           {

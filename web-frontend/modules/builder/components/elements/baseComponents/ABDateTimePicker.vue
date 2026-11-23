@@ -7,14 +7,14 @@
     <ABIcon
       class="ab-datetime-picker__icon"
       icon="iconoir-calendar"
-      @click="$refs.dateContext.show($refs.wrapper, 'bottom', 'left', 0)"
+      @click="$refs.dateContext?.show($refs.wrapper, 'bottom', 'left', 0)"
     />
     <ABInput
       v-model="dateInputValue"
       class="ab-datetime-picker__input ab-datetime-picker__input--date"
       :placeholder="dateFormat"
-      @focus="$refs.dateContext.toggle($refs.wrapper, 'bottom', 'left', 0)"
-      @click="$refs.dateContext.show($refs.wrapper, 'bottom', 'left', 0)"
+      @focus="$refs.dateContext?.toggle($refs.wrapper, 'bottom', 'left', 0)"
+      @click="$refs.dateContext?.show($refs.wrapper, 'bottom', 'left', 0)"
       @input="updateCalendar"
       @keydown.enter.prevent="$event.target.blur()"
       @blur="handleDateBlur($event)"
@@ -25,8 +25,8 @@
       v-model="timeInputValue"
       class="ab-datetime-picker__input ab-datetime-picker__input--time"
       :placeholder="timeFormat"
-      @click="$refs.timeContext.show($refs.timeWrapper?.$el, 'bottom', 'left')"
-      @focus="$refs.timeContext.show($refs.timeWrapper?.$el, 'bottom', 'left')"
+      @click="$refs.timeContext?.show($refs.timeWrapper?.$el, 'bottom', 'left')"
+      @focus="$refs.timeContext?.show($refs.timeWrapper?.$el, 'bottom', 'left')"
       @keydown.enter.prevent="$event.target.blur()"
       @blur="handleTimeBlur($event)"
     />
@@ -232,7 +232,7 @@ export default {
         )
       )
 
-      this.$refs.timeContext.hide()
+      this.$refs.timeContext?.hide()
     },
     /**
      * Update the calendar value based on a string date value.
@@ -255,12 +255,12 @@ export default {
      */
     handleTimeBlur(event) {
       this.updateTime(event.target.value)
-      this.$refs.timeContext.hide()
+      this.$refs.timeContext?.hide()
     },
     clearValue() {
-      this.$refs.dateContext.hide()
+      this.$refs.dateContext?.hide()
       if (this.includeTime) {
-        this.$refs.timeContext.hide()
+        this.$refs.timeContext?.hide()
       }
       this.$emit('update:modelValue', null)
     },

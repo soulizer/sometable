@@ -42,7 +42,7 @@
         "
         class="tree__sub-add"
         data-highlight="create-table"
-        @click="$refs.createTableModal.show()"
+        @click="$refs.createTableModal?.show()"
       >
         <i class="tree__sub-add-icon iconoir-plus"></i>
         {{ $t('sidebar.createTable') }}

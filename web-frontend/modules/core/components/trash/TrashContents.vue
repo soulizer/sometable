@@ -175,7 +175,7 @@ export default {
   methods: {
     showEmptyModalIfNotLoading() {
       if (!this.loadingContents) {
-        this.$refs.emptyModal.show()
+        this.$refs.emptyModal?.show()
       }
     },
     /**

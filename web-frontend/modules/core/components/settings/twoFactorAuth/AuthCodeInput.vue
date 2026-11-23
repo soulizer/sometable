@@ -191,7 +191,7 @@ export default {
       this.values.number4 = ''
       this.values.number5 = ''
       this.values.number6 = ''
-      this.$refs.input1.focus()
+      this.$refs.input1?.focus()
       this.hasEmitted = false
     },
     sanitizeInput(value) {

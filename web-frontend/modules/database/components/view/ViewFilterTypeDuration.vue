@@ -40,7 +40,7 @@ export default {
       return !this.v$.formattedValue.$error
     },
     focus() {
-      this.$refs.input.focus()
+      this.$refs.input?.focus()
     },
     afterValueChanged(value, oldValue) {
       this.updateFormattedValue(this.field, value)

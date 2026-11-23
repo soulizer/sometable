@@ -528,7 +528,7 @@ export default {
         }
         this.$refs.floatingMenu?.collapse()
       }
-      this.$refs.root.addEventListener('mousedown', this.mousedownEvent)
+      this.$refs.root?.addEventListener('mousedown', this.mousedownEvent)
     },
     unregisterAutoCollapseFloatingMenuHandler() {
       if (this.mousedownEvent !== null) {

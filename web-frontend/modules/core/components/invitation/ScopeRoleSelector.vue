@@ -6,7 +6,7 @@
     <a
       v-else
       ref="editRoleContextLink"
-      @click="$refs.editRoleContext.toggle($refs.editRoleContextLink)"
+      @click="$refs.editRoleContext?.toggle($refs.editRoleContextLink)"
     >
       {{ currentValue.name }}
       <i class="iconoir-nav-arrow-down"></i>
@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     remove() {
-      this.$refs.editRoleContext.hide()
+      this.$refs.editRoleContext?.hide()
       this.$emit('delete')
     },
     roleUpdated({ uid }) {

@@ -179,7 +179,7 @@ export default {
         this.$emit('success')
       } catch (error) {
         this.loadingVerifyCode = false
-        this.$refs.authCodeInput.reset()
+        this.$refs.authCodeInput?.reset()
         this.handleError(error)
       }
     },

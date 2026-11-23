@@ -4,7 +4,7 @@
     <template v-if="isAuthenticated">
       <i18n-t scope="global" keypath="apiDocsComponent.intro" tag="p">
         <template #settingsLink>
-          <a @click.prevent="$refs.settingsModal.show('tokens')">{{
+          <a @click.prevent="$refs.settingsModal?.show('tokens')">{{
             $t('apiDocsComponent.settings')
           }}</a
           >,

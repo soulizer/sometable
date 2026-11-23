@@ -155,7 +155,7 @@ export default {
       actionUpdateWorkflowAction: 'builderWorkflowAction/updateDebounced',
     }),
     async updateWorkflowAction(values) {
-      if (this.$refs.actionForm && !this.$refs.actionForm.isFormValid()) {
+      if (this.$refs.actionForm && !this.$refs.actionForm?.isFormValid()) {
         return
       }
 

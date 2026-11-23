@@ -60,8 +60,8 @@ export default {
   },
   methods: {
     async baseFormValuesChanged(values) {
-      if (this.$refs.form.isFormValid()) {
-        const defaultValues = this.$refs.form.defaultValues
+      if (this.$refs.form?.isFormValid()) {
+        const defaultValues = this.$refs.form?.defaultValues
         const originalValues = JSON.parse(JSON.stringify(defaultValues))
         const defaultWithUpdatedValues = { ...defaultValues, ...values }
 

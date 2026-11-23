@@ -36,8 +36,8 @@
           type="secondary"
           icon="iconoir-more-vert"
           @click="
-            $refs.dataSourceItemContext.toggle(
-              $refs.contextOpener.$el,
+            $refs.dataSourceItemContext?.toggle(
+              $refs.contextOpener?.$el,
               'bottom',
               'right',
               4

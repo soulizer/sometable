@@ -147,7 +147,7 @@ export default {
       }
     },
     openContext() {
-      this.$refs.fieldMappingContext.toggle(
+      this.$refs.fieldMappingContext?.toggle(
         this.$refs.editFieldMappingOpener,
         'bottom',
         'left',

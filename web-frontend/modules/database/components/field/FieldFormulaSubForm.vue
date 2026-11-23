@@ -13,7 +13,7 @@
       :all-fields-in-table="allFieldsInTable"
       :database="database"
       @open-advanced-context="
-        $refs.advancedFormulaEditContext.openContext($event)
+        $refs.advancedFormulaEditContext?.openContext($event)
       "
       @refresh-formula-type="refreshFormulaType"
       @update-formula="values.formula = $event"

@@ -18,7 +18,7 @@
       v-tooltip="$t('inboundEmailTriggerServiceForm.copyAddress')"
       class="inbound-email-trigger-service-form__copy-address"
       tooltip-position="top"
-      @click.stop=";[copyAddressToClipboard(), $refs.addressCopied.show()]"
+      @click.stop=";[copyAddressToClipboard(), $refs.addressCopied?.show()]"
     >
       <pre><code class="inbound-email-trigger-service-form__email-address">{{ emailAddress }}</code></pre>
       <Copied ref="addressCopied" />

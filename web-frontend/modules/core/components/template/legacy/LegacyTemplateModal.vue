@@ -97,7 +97,7 @@ export default {
               (template.id === templateId || template.slug === templateId))
           ) {
             this.$nextTick(() => {
-              this.$refs.categories.selectCategory(category.id)
+              this.$refs.categories?.selectCategory(category.id)
               this.selectTemplate({ template, category })
             })
             return

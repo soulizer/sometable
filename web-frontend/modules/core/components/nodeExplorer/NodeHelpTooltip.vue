@@ -140,7 +140,7 @@ export default {
       verticalOffset = 0,
       horizontalOffset = 10
     ) {
-      return this.$refs.context.show(
+      return this.$refs.context?.show(
         targetElement,
         verticalPosition,
         horizontalPosition,
@@ -149,7 +149,7 @@ export default {
       )
     },
     hide() {
-      this.$refs.context.hide()
+      this.$refs.context?.hide()
     },
   },
 }

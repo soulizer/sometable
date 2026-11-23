@@ -61,7 +61,7 @@ export default {
   emits: ['update:modelValue'],
   methods: {
     openUserSettings() {
-      this.$refs.userSourcesSettingsModal.show(
+      this.$refs.userSourcesSettingsModal?.show(
         UserSourcesBuilderSettingsType.getType(),
         true
       )

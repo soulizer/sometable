@@ -65,7 +65,7 @@
       :parent-height="height"
       :decorations-by-place="decorationsByPlace"
       @edit-row="
-        ($refs.calendarMonthDayExpanded.hide(), $emit('edit-row', $event))
+        ($refs.calendarMonthDayExpanded?.hide(), $emit('edit-row', $event))
       "
       @row-context="$emit('row-context', $event)"
     >
@@ -160,14 +160,14 @@ export default {
   },
   methods: {
     getClientHeight() {
-      return this.$refs.calendarMonthDay.clientHeight || 0
+      return this.$refs.calendarMonthDay?.clientHeight || 0
     },
     updateVisibleRowsCount() {
       if (!this.$refs.calendarMonthDay) {
         return
       }
       const itemHeight = 28
-      this.width = this.$refs.calendarMonthDay.clientWidth
+      this.width = this.$refs.calendarMonthDay?.clientWidth
       this.height = this.getClientHeight()
       let currentHeightWithItems = 30 + 8
       let count = 0
@@ -179,7 +179,7 @@ export default {
       this.visibleRowsCalculated = true
     },
     expand() {
-      this.$refs.calendarMonthDayExpanded.show(
+      this.$refs.calendarMonthDayExpanded?.show(
         this.$refs.calendarMonthDay,
         'bottom',
         'left',

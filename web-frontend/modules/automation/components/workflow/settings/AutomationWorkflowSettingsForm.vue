@@ -93,7 +93,7 @@ export default {
   },
   mounted() {
     if (this.isCreation) {
-      this.$refs.name.$refs.input.focus()
+      this.$refs.name?.$refs.input?.focus()
     }
   },
   methods: {

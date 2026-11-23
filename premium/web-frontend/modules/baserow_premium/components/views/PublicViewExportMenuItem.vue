@@ -1,6 +1,6 @@
 <template>
   <li v-if="view.allow_public_export" class="context__menu-item">
-    <a class="context__menu-item-link" @click="$refs.exportModal.show()">
+    <a class="context__menu-item-link" @click="$refs.exportModal?.show()">
       <i class="context__menu-item-icon iconoir-share-ios"></i>
       {{ $t('publicViewExport.export') }}
     </a>

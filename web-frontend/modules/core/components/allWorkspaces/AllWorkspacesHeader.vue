@@ -70,7 +70,7 @@
       <ButtonIcon
         type="secondary"
         icon="baserow-icon-more-vertical"
-        @click="$refs.viewContext.toggle($refs.viewContextLink)"
+        @click="$refs.viewContext?.toggle($refs.viewContextLink)"
       ></ButtonIcon>
     </span>
     <Context ref="viewContext">
@@ -104,7 +104,7 @@
         <li class="context__menu-item context__menu-item--with-separator">
           <a
             class="context__menu-item-link"
-            @click="($emit('collapse-all'), $refs.viewContext.hide())"
+            @click="($emit('collapse-all'), $refs.viewContext?.hide())"
           >
             {{ $t('allWorkspaces.collapseAll') }}
           </a>
@@ -112,7 +112,7 @@
         <li class="context__menu-item">
           <a
             class="context__menu-item-link"
-            @click="($emit('expand-all'), $refs.viewContext.hide())"
+            @click="($emit('expand-all'), $refs.viewContext?.hide())"
           >
             {{ $t('allWorkspaces.expandAll') }}
           </a>
@@ -127,7 +127,7 @@
         type="primary"
         icon="iconoir-plus"
         tag="a"
-        @click="$refs.createWorkspaceModal.show()"
+        @click="$refs.createWorkspaceModal?.show()"
         >{{ $t('allWorkspaces.createWorkspace') }}</Button
       >
       <CreateWorkspaceModal ref="createWorkspaceModal"></CreateWorkspaceModal>
@@ -207,11 +207,11 @@ export default {
   },
   methods: {
     focusSearch() {
-      this.$refs.searchInput.focus()
+      this.$refs.searchInput?.focus()
     },
     setViewMode(viewMode) {
       this.$emit('update:viewMode', viewMode)
-      this.$refs.viewContext.hide()
+      this.$refs.viewContext?.hide()
     },
   },
 }

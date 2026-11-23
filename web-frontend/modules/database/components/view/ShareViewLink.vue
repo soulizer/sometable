@@ -5,7 +5,7 @@
       ref="contextLink"
       class="header__filter-link"
       :class="{ 'active active--primary': view.isShared }"
-      @click="$refs.context.toggle($refs.contextLink, 'bottom', 'left', 4)"
+      @click="$refs.context?.toggle($refs.contextLink, 'bottom', 'left', 4)"
     >
       <i class="header__filter-icon iconoir-share-android"></i>
       <span class="header__filter-name">
@@ -91,7 +91,7 @@
                   v-if="!readOnly"
                   v-tooltip="$t('shareViewLink.generateNewUrl')"
                   class="view-sharing__shared-link-action"
-                  @click.prevent="$refs.rotateSlugModal.show()"
+                  @click.prevent="$refs.rotateSlugModal?.show()"
                 >
                   <i class="iconoir-refresh-double" />
                   <ViewRotateSlugModal
@@ -122,7 +122,7 @@
                   <a
                     v-if="view.public_view_has_password"
                     class="view-sharing__option-change-password"
-                    @click.stop="$refs.enablePasswordModal.show"
+                    @click.stop="$refs.enablePasswordModal?.show"
                   >
                     {{ $t('shareViewLink.ChangePassword') }}
                     <i class="iconoir-edit-pencil" />
@@ -317,7 +317,7 @@ export default {
   methods: {
     copyShareUrlToClipboard() {
       copyToClipboard(this.shareUrl)
-      this.$refs.copied.show()
+      this.$refs.copied?.show()
     },
     async updateView(values) {
       const view = this.view
@@ -343,9 +343,9 @@ export default {
     },
     toggleShareViewPassword() {
       if (this.view.public_view_has_password) {
-        this.$refs.disablePasswordModal.show()
+        this.$refs.disablePasswordModal?.show()
       } else {
-        this.$refs.enablePasswordModal.show()
+        this.$refs.enablePasswordModal?.show()
       }
     },
   },

@@ -36,7 +36,7 @@
                 class="common-oidc-setting-form__url-dest"
                 :title="callback.url"
                 @click.prevent="
-                  ;[copyToClipboard(callback.url), $refs.copiedACS.show()]
+                  ;[copyToClipboard(callback.url), $refs.copiedACS?.show()]
                 "
               >
                 {{ callback.previewUrl }}
@@ -125,8 +125,8 @@ export default {
     checkValidity() {
       if (
         this.$refs.form &&
-        !this.$refs.form.isFormValid() &&
-        this.$refs.form.v$.$anyDirty
+        !this.$refs.form?.isFormValid() &&
+        this.$refs.form?.v$.$anyDirty
       ) {
         this.inError = true
       } else {
@@ -134,7 +134,7 @@ export default {
       }
     },
     handleServerError(error) {
-      if (this.$refs.form.handleServerError(error)) {
+      if (this.$refs.form?.handleServerError(error)) {
         this.inError = true
         return true
       }

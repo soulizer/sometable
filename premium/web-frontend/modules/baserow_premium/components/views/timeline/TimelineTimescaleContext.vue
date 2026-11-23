@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     isOpen() {
-      return this.$refs.context.isOpen()
+      return this.$refs.context?.isOpen()
     },
   },
 }

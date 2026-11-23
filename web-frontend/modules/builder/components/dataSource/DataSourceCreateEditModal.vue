@@ -43,7 +43,7 @@
           size="large"
           :loading="loading"
           :disabled="submitIsDisabled"
-          @click.prevent="$refs.dataSourceForm.submit()"
+          @click.prevent="$refs.dataSourceForm?.submit()"
         >
           {{ create ? $t('action.create') : $t('action.save') }}
         </Button>

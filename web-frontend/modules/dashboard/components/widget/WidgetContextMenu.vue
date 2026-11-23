@@ -6,7 +6,7 @@
       type="secondary"
       size="small"
       @click.stop="
-        $refs.context.toggle($refs.contextButton, 'bottom', 'right', 8, -8)
+        $refs.context?.toggle($refs.contextButton, 'bottom', 'right', 8, -8)
       "
     ></ButtonIcon>
     <WidgetContext

@@ -35,7 +35,7 @@
         size="large"
         :disabled="loadingProperties"
         :loading="loadingProperties"
-        @click="$refs.tableForm.submit()"
+        @click="$refs.tableForm?.submit()"
       >
         {{ $t('createDataSync.next') }}
       </Button>

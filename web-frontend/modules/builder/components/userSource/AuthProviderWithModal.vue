@@ -35,7 +35,7 @@
       <div>
         <slot name="default"></slot>
         <div class="actions actions--right">
-          <Button size="large" @click.prevent="$refs.modal.hide()">
+          <Button size="large" @click.prevent="$refs.modal?.hide()">
             {{ $t('action.close') }}
           </Button>
         </div>
@@ -65,7 +65,7 @@ export default {
   emits: ['delete', 'hidden'],
   methods: {
     onEdit() {
-      this.$refs.modal.show()
+      this.$refs.modal?.show()
     },
     onDelete() {
       this.$emit('delete')

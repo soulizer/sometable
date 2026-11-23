@@ -76,7 +76,7 @@ export default {
   },
   methods: {
     clear() {
-      this.$refs.dropdown.clear()
+      this.$refs.dropdown?.clear()
     },
     resultsForGroup(results, group) {
       return results.filter(

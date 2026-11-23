@@ -40,7 +40,7 @@
             icon="iconoir-cloud-upload"
             class="file-upload__button"
             :loading="state !== null"
-            @click.prevent="$refs.file.click($event)"
+            @click.prevent="$refs.file?.click($event)"
           >
             {{ $t('tableJSONImporter.chooseButton') }}
           </Button>

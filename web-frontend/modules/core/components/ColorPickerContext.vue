@@ -189,7 +189,7 @@ export default {
         this.fakeHexExcludingAlpha = this.value
       }
       await this.$nextTick()
-      if (this.type === 'hex') this.$refs.hexInput.focus()
+      if (this.type === 'hex') this.$refs.hexInput?.focus()
     },
     setColorFromPicker(value) {
       if (this.selectedVariable) {

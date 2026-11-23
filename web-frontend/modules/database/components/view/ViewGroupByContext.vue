@@ -121,7 +121,7 @@
             ref="addDropdownToggle"
             icon="iconoir-plus"
             :disabled="atGroupByLimit"
-            @click="$refs.addDropdown.toggle($refs.addDropdownToggle.$el)"
+            @click="$refs.addDropdown?.toggle($refs.addDropdownToggle?.$el)"
           >
             {{ $t('viewGroupByContext.addGroupBy') }}</ButtonText
           >
@@ -274,7 +274,7 @@ export default {
       return this.getCanGroupByInView(field) && !allFieldIds.includes(field.id)
     },
     async addGroupBy(fieldId) {
-      this.$refs.addDropdown.hide()
+      this.$refs.addDropdown?.hide()
 
       try {
         await this.$store.dispatch('view/createGroupBy', {
@@ -382,7 +382,7 @@ export default {
             collapse,
           }
         )
-        this.$refs.context.hide()
+        this.$refs.context?.hide()
       } catch (error) {
         notifyIf(error, 'view')
       }

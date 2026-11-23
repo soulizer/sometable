@@ -23,7 +23,7 @@
         v-if="!readOnly && canModifyFields"
         ref="contextLink"
         class="control__context baserow-icon-more-vertical"
-        @click="$refs.context.toggle($refs.contextLink, 'bottom', 'left', 0)"
+        @click="$refs.context?.toggle($refs.contextLink, 'bottom', 'left', 0)"
       ></i>
     </label>
     <FieldContext

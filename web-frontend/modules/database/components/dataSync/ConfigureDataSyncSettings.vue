@@ -47,7 +47,7 @@
                 size="large"
                 :loading="updateLoading || jobIsRunning"
                 :disabled="updateLoading || jobIsRunning"
-                @click="$refs.form.submit()"
+                @click="$refs.form?.submit()"
               >
                 {{ $t('action.save') }}
               </Button>

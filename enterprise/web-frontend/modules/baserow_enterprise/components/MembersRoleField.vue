@@ -12,7 +12,7 @@
           column.additionalProps.workspaceId
         )
       "
-      @click="$refs.editRoleContext.toggle($event.currentTarget)"
+      @click="$refs.editRoleContext?.toggle($event.currentTarget)"
     />
     <EditRoleContext
       ref="editRoleContext"

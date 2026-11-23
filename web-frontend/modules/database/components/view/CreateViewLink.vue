@@ -82,7 +82,7 @@ export default {
         // Don't do anything in case the view type not compatible with a data sync
         // table.
       } else if (!this.deactivated) {
-        this.$refs.createModal.show(this.$refs.createViewLink)
+        this.$refs.createModal?.show(this.$refs.createViewLink)
       } else if (this.deactivated && this.deactivatedClickModal) {
         this.$refs.deactivatedClickModal?.show()
       }

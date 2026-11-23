@@ -28,7 +28,7 @@
               v-for="url in relayStateUrls"
               :key="url"
               class="common-saml-setting-form__url"
-              @click.prevent=";[copyToClipboard(url), $refs.copiedRelay.show()]"
+              @click.prevent=";[copyToClipboard(url), $refs.copiedRelay?.show()]"
             >
               <span class="common-saml-setting-form__url-dest" :title="url">
                 {{ url }}
@@ -51,7 +51,7 @@
             <div
               class="common-saml-setting-form__url"
               @click.prevent="
-                ;[copyToClipboard(acsUrl), $refs.copiedACS.show()]
+                ;[copyToClipboard(acsUrl), $refs.copiedACS?.show()]
               "
             >
               <span class="common-saml-setting-form__url-dest" :title="acsUrl">
@@ -120,8 +120,8 @@ export default {
     checkValidity() {
       if (
         this.$refs.form &&
-        !this.$refs.form.isFormValid() &&
-        this.$refs.form.v$.$anyDirty
+        !this.$refs.form?.isFormValid() &&
+        this.$refs.form?.v$.$anyDirty
       ) {
         this.inError = true
       } else {
@@ -129,7 +129,7 @@ export default {
       }
     },
     handleServerError(error) {
-      if (this.$refs.form.handleServerError(error)) {
+      if (this.$refs.form?.handleServerError(error)) {
         this.inError = true
         return true
       }

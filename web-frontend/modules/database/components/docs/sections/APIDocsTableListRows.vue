@@ -64,7 +64,7 @@
           <Button
             type="secondary"
             size="small"
-            @click.prevent="$refs.filtersModal.show()"
+            @click.prevent="$refs.filtersModal?.show()"
           >
             {{ $t('apiDocsTableListRows.filtersBuilder') }}</Button
           >

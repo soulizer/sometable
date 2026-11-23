@@ -91,7 +91,7 @@ export default {
   },
   methods: {
     remove(index) {
-      this.$refs.colorContext.hide()
+      this.$refs.colorContext?.hide()
       this.options.splice(index, 1)
       this.$emit('update:modelValue', this.options)
     },
@@ -104,16 +104,16 @@ export default {
       this.$emit('update:modelValue', this.options)
       this.lastSeenId -= 1
       this.$nextTick(() => {
-        this.$refs.options.scrollTop = this.$refs.options.scrollHeight
-        const lastIndex = this.$refs.inputs.length - 1
+        this.$refs.options.scrollTop = this.$refs.options?.scrollHeight
+        const lastIndex = this.$refs.inputs?.length - 1
         const bottomInput = this.$refs.inputs[lastIndex]
         bottomInput.focus()
       })
     },
     openColor(index) {
       this.colorContextSelected = index
-      this.$refs.colorContext.setActive(this.options[index].color)
-      this.$refs.colorContext.toggle(
+      this.$refs.colorContext?.setActive(this.options[index].color)
+      this.$refs.colorContext?.toggle(
         this.$refs['color-select-' + index][0],
         'bottom',
         'left',

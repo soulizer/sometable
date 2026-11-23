@@ -137,7 +137,7 @@ export default {
       this.updatePublicLoading = false
     },
     showRotateSlugModal() {
-      this.$refs.rotateSlugModal.show()
+      this.$refs.rotateSlugModal?.show()
       this.hide()
     },
   },

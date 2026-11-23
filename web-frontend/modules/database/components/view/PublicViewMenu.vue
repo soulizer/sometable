@@ -8,12 +8,12 @@
       class="header__filter-link"
       href="#"
       :title="$t('publicViewMenu.moreOptions')"
-      @click.prevent="$refs.context.toggle($event.target, 'bottom', 'left', 4)"
+      @click.prevent="$refs.context?.toggle($event.target, 'bottom', 'left', 4)"
     >
       <i class="header__filter-icon baserow-icon-more-vertical"></i>
     </a>
     <Context ref="context">
-      <ul class="context__menu" @click="$refs.context.hide()">
+      <ul class="context__menu" @click="$refs.context?.hide()">
         <component
           :is="component"
           v-for="(component, index) in additionalMenuItems"
@@ -27,7 +27,7 @@
         <li v-if="reportingEnabled" class="context__menu-item">
           <a
             class="context__menu-item-link"
-            @click="$refs.reportAbuseModal.show()"
+            @click="$refs.reportAbuseModal?.show()"
           >
             <i class="context__menu-item-icon iconoir-warning-triangle"></i>
             {{ $t('publicViewMenu.reportAbuse') }}

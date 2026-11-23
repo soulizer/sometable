@@ -100,7 +100,7 @@ export default {
   methods: {
     async onClick() {
       if (this.hasMultipleSamlProvider) {
-        this.$refs.modal.show()
+        this.$refs.modal?.show()
       } else {
         await this.login()
       }

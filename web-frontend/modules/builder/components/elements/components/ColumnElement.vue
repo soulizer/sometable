@@ -197,7 +197,7 @@ export default {
       return parsedWeight === 0 ? 'auto' : `${parsedWeight}fr`
     },
     showAddElementModal(columnIndex) {
-      this.$refs.addElementModal.show({
+      this.$refs.addElementModal?.show({
         placeInContainer: `${columnIndex}`,
         parentElementId: this.element.id,
       })

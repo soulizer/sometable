@@ -65,11 +65,11 @@ export default {
   methods: {
     showRemoveModal() {
       this.hide()
-      this.$refs.removeFromWorkspaceModal.show()
+      this.$refs.removeFromWorkspaceModal?.show()
     },
     async copyEmail({ email }) {
       await navigator.clipboard.writeText(email)
-      this.$refs.emailCopied.show()
+      this.$refs.emailCopied?.show()
     },
   },
 }

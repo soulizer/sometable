@@ -134,7 +134,7 @@ export default {
       modal.methods.show.bind(this)(...args)
     },
     submitForm() {
-      this.$refs.form.submit()
+      this.$refs.form?.submit()
     },
     updateSelectedApplications(applicationIds) {
       this.selectedApplicationIds = [...applicationIds]

@@ -72,7 +72,7 @@
               icon="iconoir-plus"
               :full-width="true"
               @click="
-                $refs.addOptionContext.toggle(
+                $refs.addOptionContext?.toggle(
                   $refs.addOptionContextLink?.$el,
                   'bottom',
                   'right'
@@ -314,7 +314,7 @@ export default {
             // Pass emit=false as argument into the hide function because that will
             // prevent emitting another `hidden` event of the `RowEditModal` which can
             // result in the route changing twice.
-            this.$refs.rowEditModal.hide(false)
+            this.$refs.rowEditModal?.hide(false)
           }
         }
       },
@@ -332,7 +332,7 @@ export default {
      * such that we can update the path to include the row id.
      */
     openRowEditModal(row) {
-      this.$refs.rowEditModal.show(row.id)
+      this.$refs.rowEditModal?.show(row.id)
       this.$emit('selected-row', row)
     },
     openCreateRowModal(event) {
@@ -344,7 +344,7 @@ export default {
         defaults[name] = null
       }
 
-      this.$refs.rowCreateModal.show(defaults)
+      this.$refs.rowCreateModal?.show(defaults)
     },
     async createRow({ row, callback }) {
       try {
@@ -409,17 +409,17 @@ export default {
      */
     populateAndEditRow(row) {
       const rowClone = populateRow(clone(row))
-      this.$refs.rowEditModal.show(row.id, rowClone)
+      this.$refs.rowEditModal?.show(row.id, rowClone)
     },
 
     showRowContext(event, row) {
       this.selectedRow = row
-      this.$refs.cardContext.toggleNextToMouse(event)
+      this.$refs.cardContext?.toggleNextToMouse(event)
     },
 
     async deleteRow(row) {
       try {
-        this.$refs.cardContext.hide()
+        this.$refs.cardContext?.hide()
         await this.$store.dispatch(
           this.storePrefix + 'view/kanban/deleteExistingRow',
           {

@@ -20,7 +20,7 @@ export default {
   setup: filterTypeInput.setup,
   methods: {
     focus() {
-      this.$refs.input.focus()
+      this.$refs.input?.focus()
     },
   },
 }

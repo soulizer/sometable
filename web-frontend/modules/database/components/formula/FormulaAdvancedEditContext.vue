@@ -15,7 +15,7 @@
         @keyup="recalcAutoComplete"
         @keydown.tab="doAutoCompleteAfterTab"
         @keydown.enter.exact.prevent="
-          ($refs.context.hide(), $emit('hidden', $event))
+          ($refs.context?.hide(), $emit('hidden', $event))
         "
       />
     </div>
@@ -176,7 +176,7 @@ export default {
       }
       const cursorLocation =
         this.$refs.textAreaFormulaInput !== undefined
-          ? this.$refs.textAreaFormulaInput.$refs.textarea.selectionStart
+          ? this.$refs.textAreaFormulaInput?.$refs.textarea?.selectionStart
           : 0
 
       const { filteredFields, filteredFunctions, filtered } =
@@ -208,7 +208,7 @@ export default {
     },
     doAutoComplete(functionCandidate, fieldCandidate) {
       const startingCursorLocation =
-        this.$refs.textAreaFormulaInput.$refs.textarea.selectionStart
+        this.$refs.textAreaFormulaInput?.$refs.textarea?.selectionStart
 
       const { autocompletedFormula, newCursorPosition } = autocompleteFormula(
         this.formula,
@@ -219,8 +219,8 @@ export default {
       this.formula = autocompletedFormula
 
       this.$nextTick(() => {
-        this.$refs.textAreaFormulaInput.$refs.textarea.focus()
-        this.$refs.textAreaFormulaInput.$refs.textarea.setSelectionRange(
+        this.$refs.textAreaFormulaInput?.$refs.textarea?.focus()
+        this.$refs.textAreaFormulaInput?.$refs.textarea?.setSelectionRange(
           newCursorPosition,
           newCursorPosition
         )
@@ -228,7 +228,7 @@ export default {
       })
     },
     async openContext(triggeringEl) {
-      await this.$refs.context.show(
+      await this.$refs.context?.show(
         triggeringEl,
         'top',
         'left',
@@ -236,8 +236,8 @@ export default {
         -1
       )
       this.$nextTick(() => {
-        this.$refs.textAreaFormulaInput.$refs.textarea.focus()
-        this.$refs.textAreaFormulaInput.$refs.textarea.setSelectionRange(
+        this.$refs.textAreaFormulaInput?.$refs.textarea?.focus()
+        this.$refs.textAreaFormulaInput?.$refs.textarea?.setSelectionRange(
           triggeringEl.selectionStart,
           triggeringEl.selectionEnd
         )

@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     isFormValid() {
-      return this.$refs.form.isFormValid()
+      return this.$refs.form?.isFormValid()
     },
   },
 }

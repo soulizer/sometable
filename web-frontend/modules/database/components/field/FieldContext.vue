@@ -16,7 +16,7 @@
           ref="updateFieldContextLink"
           class="context__menu-item-link grid-view__description-options"
           @click="
-            $refs.updateFieldContext.toggle(
+            $refs.updateFieldContext?.toggle(
               $refs.updateFieldContextLink,
               'bottom',
               'left',
@@ -35,7 +35,7 @@
           :all-fields-in-table="allFieldsInTable"
           :database="database"
           @update="$emit('update', $event)"
-          @updated="$refs.context.hide()"
+          @updated="$refs.context?.hide()"
         ></UpdateFieldContext>
       </li>
       <li
@@ -51,7 +51,7 @@
       >
         <a
           class="context__menu-item-link"
-          @click="$refs.changePrimaryFieldModal.show()"
+          @click="$refs.changePrimaryFieldModal?.show()"
         >
           <i class="context__menu-item-icon iconoir-coins-swap"></i>
           {{ $t('fieldContext.changePrimaryField') }}
@@ -75,7 +75,7 @@
           :view="view"
           :table="table"
           :database="database"
-          @hide-context="$refs.context.hide()"
+          @hide-context="$refs.context?.hide()"
         ></component>
       </li>
       <slot></slot>
@@ -170,7 +170,7 @@ export default {
     // and then, once visible, immediately show the
     // `UpdateFieldContext` at the same time.
     showUpdateFieldContext() {
-      this.$refs.updateFieldContext.toggle(
+      this.$refs.updateFieldContext?.toggle(
         this.$refs.updateFieldContextLink,
         'bottom',
         'left'

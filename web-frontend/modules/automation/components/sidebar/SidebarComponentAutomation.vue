@@ -37,7 +37,7 @@
                 )
               "
               class="tree__sub-add"
-              @click="$refs.createAutomationWorkflowModal.show()"
+              @click="$refs.createAutomationWorkflowModal?.show()"
             >
               <i class="tree__sub-add-icon iconoir-plus"></i>
               {{ $t('sidebarComponentAutomation.createAutomationWorkflow') }}

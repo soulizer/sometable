@@ -136,21 +136,21 @@ export default {
   },
   methods: {
     openCreateModal() {
-      this.$refs.createModal.show()
+      this.$refs.createModal?.show()
     },
     handleEdit(scan) {
       this.focusedScan = scan
-      this.$refs.editModal.show()
+      this.$refs.editModal?.show()
     },
     handleSaved(scan) {
-      this.$refs.crudTable.rows.push(scan)
+      this.$refs.crudTable?.rows.push(scan)
     },
     handleUpdated(scan) {
-      this.$refs.crudTable.updateRow(scan)
-      this.$refs.crudTable.refresh()
+      this.$refs.crudTable?.updateRow(scan)
+      this.$refs.crudTable?.refresh()
     },
     handleTriggered(scan) {
-      this.$refs.crudTable.updateRow({
+      this.$refs.crudTable?.updateRow({
         ...scan,
         is_running: true,
         last_run_started_at: moment.utc().format(),

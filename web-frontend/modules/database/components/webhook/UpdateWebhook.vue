@@ -12,7 +12,7 @@
       @formchange="handleFormChange"
     >
       <div class="actions">
-        <Button tag="a" type="danger" @click="$refs.deleteWebhookModal.show()">
+        <Button tag="a" type="danger" @click="$refs.deleteWebhookModal?.show()">
           {{ $t('action.delete') }}
         </Button>
         <div class="align-right">

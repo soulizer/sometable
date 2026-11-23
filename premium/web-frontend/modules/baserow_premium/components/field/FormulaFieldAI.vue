@@ -1,6 +1,6 @@
 <template>
   <div class="margin-top-1">
-    <a v-if="hasPremium" @click="$refs.aiModal.show()">
+    <a v-if="hasPremium" @click="$refs.aiModal?.show()">
       <i class="iconoir-magic-wand"></i>
       {{ $t('formulaFieldAI.generateWithAI') }}
     </a>

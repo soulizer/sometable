@@ -34,7 +34,7 @@ export default {
     }
 
     this.$nextTick(() => {
-      this.$refs.configureDataSyncModal.show(
+      this.$refs.configureDataSyncModal?.show(
         this.$route.params.selectedPage || undefined
       )
     })

@@ -14,7 +14,7 @@
       </Button>
       <a
         class="margin-left-1 position-relative"
-        @click.prevent=";[copyToClipboard(value), $refs.copied.show()]"
+        @click.prevent=";[copyToClipboard(value), $refs.copied?.show()]"
       >
         {{ $t('action.copy') }}
         <Copied ref="copied"></Copied>

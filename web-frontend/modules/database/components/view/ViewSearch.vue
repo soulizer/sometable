@@ -93,7 +93,7 @@ export default {
   },
   methods: {
     onClick() {
-      this.$refs.context.toggle(this.$refs.contextLink, 'bottom', 'right', 4)
+      this.$refs.context?.toggle(this.$refs.contextLink, 'bottom', 'right', 4)
     },
     searchChanged(newSearch) {
       this.headerSearchTerm = newSearch
@@ -101,7 +101,7 @@ export default {
     searchStarted({ event }) {
       event.preventDefault()
       this.$bus.$emit('close-modals')
-      this.$refs.contextLink.click()
+      this.$refs.contextLink?.click()
     },
     clear() {
       const ref = this.$refs.context

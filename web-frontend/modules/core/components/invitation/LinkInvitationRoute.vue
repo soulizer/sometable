@@ -95,7 +95,7 @@
               :class="{
                 'invitation-links__action--active': invitationLink.has_password,
               }"
-              @click="$refs.passwordModal.show(invitationLink)"
+              @click="$refs.passwordModal?.show(invitationLink)"
             >
               <i
                 :class="
@@ -108,7 +108,7 @@
             <a
               v-tooltip="$t('inviteModal.linkDelete')"
               class="invitation-links__action"
-              @click="$refs.deleteModal.show(invitationLink)"
+              @click="$refs.deleteModal?.show(invitationLink)"
             >
               <i class="iconoir-bin"></i>
             </a>
@@ -284,7 +284,7 @@ export default {
         )
       ) {
         this.pendingChange = change
-        this.$refs.adminConfirmModal.show()
+        this.$refs.adminConfirmModal?.show()
       } else {
         change()
       }
@@ -292,7 +292,7 @@ export default {
     confirmPendingChange() {
       const change = this.pendingChange
       this.pendingChange = null
-      this.$refs.adminConfirmModal.hide()
+      this.$refs.adminConfirmModal?.hide()
       change?.()
     },
     create() {

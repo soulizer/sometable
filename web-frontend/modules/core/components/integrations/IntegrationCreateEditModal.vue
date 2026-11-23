@@ -30,7 +30,7 @@
           size="large"
           :loading="loading"
           :disabled="loading"
-          @click.prevent="$refs.form.submit()"
+          @click.prevent="$refs.form?.submit()"
         >
           {{ create ? $t('action.create') : $t('action.save') }}
         </Button>
@@ -97,7 +97,7 @@ export default {
     async shown() {
       this.hideError()
       await this.$nextTick()
-      this.initialValues = this.$refs.form.getFormValues()
+      this.initialValues = this.$refs.form?.getFormValues()
     },
     getDefaultIntegrationValues() {
       const name = getNextAvailableNameInSequence(

@@ -84,7 +84,7 @@ export default {
             (item) => item.value === aggregationSorts[0].direction
           )
           if (this.$refs.sortDirectionSegment) {
-            this.$refs.sortDirectionSegment.reset()
+            this.$refs.sortDirectionSegment?.reset()
           }
         } else {
           this.sortReference = null

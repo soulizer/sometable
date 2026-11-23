@@ -40,7 +40,7 @@ export default {
         return
       }
 
-      this.$refs.createWidgetModal.show()
+      this.$refs.createWidgetModal?.show()
     },
   },
 }

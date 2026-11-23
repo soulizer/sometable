@@ -266,7 +266,7 @@ export default {
     },
     goToContent() {
       this.detailsSubmitted = true
-      if (!this.$refs.detailsForm.isValid() || !this.visibilityValid) {
+      if (!this.$refs.detailsForm?.isValid() || !this.visibilityValid) {
         return
       }
       this.step = 'content'

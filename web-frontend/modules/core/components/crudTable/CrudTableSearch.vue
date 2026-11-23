@@ -68,7 +68,7 @@ export default {
     searchStarted({ event }) {
       event.preventDefault()
       this.$bus.$emit('close-modals')
-      this.$refs.searchInput.focus()
+      this.$refs.searchInput?.focus()
     },
     setSearchTerm(term) {
       this.headerSearchTerm = term

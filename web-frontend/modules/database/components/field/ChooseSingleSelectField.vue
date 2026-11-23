@@ -21,7 +21,7 @@
         <ButtonText
           icon="iconoir-plus"
           class="choose-select-field__link margin-right-auto"
-          @click="$refs.createFieldContext.toggle($refs.createFieldContextLink)"
+          @click="$refs.createFieldContext?.toggle($refs.createFieldContextLink)"
         >
           {{ $t('chooseSingleSelectField.addSelectField') }}
         </ButtonText></span

@@ -205,7 +205,7 @@ export default {
       if (this.useInlineSubLinks) {
         this.isExpanded = !this.isExpanded
       } else {
-        this.$refs.subLinkContext.toggle(
+        this.$refs.subLinkContext?.toggle(
           this.$refs.menuSubLinkContainer,
           'bottom',
           'left',

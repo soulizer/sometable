@@ -36,7 +36,7 @@ export default {
     }
   },
   mounted() {
-    if (this.$refs.audioRef.canPlayType(this.mimeType) !== '') {
+    if (this.$refs.audioRef?.canPlayType(this.mimeType) !== '') {
       // This format should be playable
       this.canRead = true
     }

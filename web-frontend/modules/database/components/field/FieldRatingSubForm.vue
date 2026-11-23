@@ -96,8 +96,8 @@ export default {
 
   methods: {
     openColor() {
-      this.$refs.colorContext.setActive(this.values.color)
-      this.$refs.colorContext.toggle(
+      this.$refs.colorContext?.setActive(this.values.color)
+      this.$refs.colorContext?.toggle(
         this.$refs['color-select'],
         'bottom',
         'left',

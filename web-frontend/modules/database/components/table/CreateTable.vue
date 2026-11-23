@@ -76,7 +76,7 @@
         class="modal-progress__primary-button"
         :loading="importInProgress || jobIsFinished"
         :disabled="importInProgress || jobIsFinished"
-        @click="$refs.tableForm.submit()"
+        @click="$refs.tableForm?.submit()"
       >
         {{ $t('createTable.addButton') }}
       </Button>

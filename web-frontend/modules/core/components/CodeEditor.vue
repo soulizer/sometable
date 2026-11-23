@@ -178,7 +178,7 @@ export default {
       }
     },
     showModal() {
-      this.$refs.modal.show()
+      this.$refs.modal?.show()
     },
     focusModalEditor() {
       this.$nextTick(() => {

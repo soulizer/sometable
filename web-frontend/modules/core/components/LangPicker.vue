@@ -3,7 +3,7 @@
     <a
       ref="dropdownLink"
       class="lang-picker__link"
-      @click="$refs.dropdown.toggle($refs.dropdownLink)"
+      @click="$refs.dropdown?.toggle($refs.dropdownLink)"
     >
       {{ visibleLanguageName }}
       <i class="iconoir-nav-arrow-down lang-picker__icon"></i>

@@ -66,7 +66,7 @@ export default {
       this.prompt = ''
       // The conversation carries on in the panel, so the cursor shouldn't stay
       // here.
-      this.$refs.input.blur()
+      this.$refs.input?.blur()
       await this.setPendingPrompt(message)
       this.$bus.$emit('toggle-right-sidebar', true)
     },

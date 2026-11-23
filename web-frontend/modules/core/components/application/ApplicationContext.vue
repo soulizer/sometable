@@ -17,7 +17,7 @@
         v-for="(component, index) in additionalContextComponents"
         :key="index"
         class="context__menu-item"
-        @click="$refs.context.hide()"
+        @click="$refs.context?.hide()"
       >
         <component :is="component" :application="application"></component>
       </li>
@@ -56,7 +56,7 @@
         <SidebarDuplicateApplicationContextItem
           :application="application"
           :disabled="deleting"
-          @click="$refs.context.hide()"
+          @click="$refs.context?.hide()"
         ></SidebarDuplicateApplicationContextItem>
       </li>
       <li
@@ -184,7 +184,7 @@ export default {
         await this.$store.dispatch('workspace/fetchPermissions', this.workspace)
         await this.$store.dispatch('workspace/fetchRoles', this.workspace)
       } catch (error) {
-        this.$refs.context.hide()
+        this.$refs.context?.hide()
         notifyIf(error, 'workspace')
       }
     },
@@ -214,15 +214,15 @@ export default {
       this.deleting = false
     },
     showApplicationTrashModal() {
-      this.$refs.context.hide()
-      this.$refs.applicationTrashModal.show()
+      this.$refs.context?.hide()
+      this.$refs.applicationTrashModal?.show()
     },
     openSnapshots() {
-      this.$refs.context.hide()
-      this.$refs.snapshotsModal.show()
+      this.$refs.context?.hide()
+      this.$refs.snapshotsModal?.show()
     },
     handleRename() {
-      this.$refs.context.hide()
+      this.$refs.context?.hide()
       this.$parent.$emit('rename')
     },
   },

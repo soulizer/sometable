@@ -258,7 +258,7 @@ export default {
 
             this.values.password = ''
             this.v$.$reset()
-            this.$refs.password.focus()
+            this.$refs.password?.focus()
           } else {
             const message = error.handler.getMessage('login')
             this.showError(message)

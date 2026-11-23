@@ -11,7 +11,7 @@
     <div
       class="upload-files__dropzone"
       :class="{ 'upload-files__dropzone--dragging': dragging }"
-      @click.prevent="$refs.file.click($event)"
+      @click.prevent="$refs.file?.click($event)"
       @drop.prevent="onDrop($event)"
       @dragover.prevent
       @dragenter.prevent="dragging = true"

@@ -136,7 +136,7 @@ export default {
         this.tableId,
         rowId
       )
-      this.$refs.modal.show(rowData.id, rowData)
+      this.$refs.modal?.show(rowData.id, rowData)
     },
     /**
      * A method which listens for `update` event emitted by other components

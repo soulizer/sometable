@@ -17,7 +17,7 @@
         :default-values="defaultValues"
         :database="database"
         @submitted="submit"
-        @keydown-enter="$refs.submitButton.focus()"
+        @keydown-enter="$refs.submitButton?.focus()"
         @field-type-changed="handleFileTypeChanged"
       />
 
@@ -42,7 +42,7 @@
           type="primary"
           :loading="loading"
           :disabled="loading"
-          @click="$refs.form.submit()"
+          @click="$refs.form?.submit()"
         >
           {{ $t('action.create') }}
         </Button>
@@ -131,7 +131,7 @@ export default {
         // must not roll the field back, so it is only surfaced.
         let actionsSaved = true
         try {
-          await this.$refs.form.afterFieldSaved(newField.id, {
+          await this.$refs.form?.afterFieldSaved(newField.id, {
             undoRedoActionGroupId,
           })
         } catch (error) {
@@ -146,7 +146,7 @@ export default {
           this.defaultValues.id = newField.id
         }
         // Read after the save, so it reflects what actually persisted.
-        const valuesAfterSave = this.$refs.form.fieldValuesAfterSave()
+        const valuesAfterSave = this.$refs.form?.fieldValuesAfterSave()
 
         const callback = async () => {
           await forceCreateCallback()
@@ -167,7 +167,7 @@ export default {
             return
           }
           this.hidePending = false
-          this.$refs.form.reset()
+          this.$refs.form?.reset()
           this.hide()
           this.$emit('field-created-callback-done', {
             newField,
@@ -178,7 +178,7 @@ export default {
       } catch (error) {
         this.loading = false
         this.flushPendingHide()
-        const handledByForm = this.$refs.form.handleErrorByForm(error)
+        const handledByForm = this.$refs.form?.handleErrorByForm(error)
         if (!handledByForm) {
           notifyIf(error, 'field')
         }
@@ -209,7 +209,7 @@ export default {
 
         let actionsSaved = true
         try {
-          await this.$refs.form.afterFieldSaved(field.id, {
+          await this.$refs.form?.afterFieldSaved(field.id, {
             undoRedoActionGroupId,
           })
         } catch (error) {
@@ -217,7 +217,7 @@ export default {
           notifyIf(error, 'field')
         }
         // Read after the save, so it reflects what actually persisted.
-        const valuesAfterSave = this.$refs.form.fieldValuesAfterSave()
+        const valuesAfterSave = this.$refs.form?.fieldValuesAfterSave()
 
         const callback = async () => {
           await forceUpdateCallback()
@@ -238,7 +238,7 @@ export default {
           this.createdField = null
           this.createdActionGroupId = null
           delete this.defaultValues.id
-          this.$refs.form.reset()
+          this.$refs.form?.reset()
           this.hide()
           this.$emit('field-created-callback-done', {
             newField: this.$store.getters['field/get'](field.id) ?? field,
@@ -258,7 +258,7 @@ export default {
       } catch (error) {
         this.loading = false
         this.flushPendingHide()
-        if (!this.$refs.form.handleErrorByForm(error)) {
+        if (!this.$refs.form?.handleErrorByForm(error)) {
           notifyIf(error, 'field')
         }
       }
@@ -294,7 +294,7 @@ export default {
       this.createdField = null
       this.createdActionGroupId = null
       delete this.defaultValues.id
-      this.$refs.form.reset()
+      this.$refs.form?.reset()
       this.$emit('field-created-callback-done', {
         newField,
         undoRedoActionGroupId,
@@ -310,11 +310,11 @@ export default {
       this.hidePending = false
     },
     showFieldTypesDropdown(target) {
-      this.$refs.form.showFieldTypesDropdown(target)
+      this.$refs.form?.showFieldTypesDropdown(target)
     },
     showDescriptionField(evt) {
       this.hideDescriptionLink()
-      this.$refs.form.showDescriptionField()
+      this.$refs.form?.showDescriptionField()
       evt.stopPropagation()
       evt.preventDefault()
     },
@@ -324,7 +324,7 @@ export default {
     onShow() {
       // Opened again, so a close held from an earlier save no longer applies.
       this.hidePending = false
-      this.showDescription = this.$refs.form.isDescriptionFieldNotEmpty()
+      this.showDescription = this.$refs.form?.isDescriptionFieldNotEmpty()
     },
     onClick($event) {
       this.onShow()

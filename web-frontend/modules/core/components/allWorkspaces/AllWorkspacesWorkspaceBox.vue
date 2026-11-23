@@ -104,7 +104,7 @@
           type="secondary"
           size="tiny"
           tag="a"
-          @click="$refs.workspaceSettingsModal.show()"
+          @click="$refs.workspaceSettingsModal?.show()"
           >{{ $t('allWorkspaces.settings') }}</Button
         >
         <ButtonIcon
@@ -113,7 +113,7 @@
           size="small"
           icon="baserow-icon-more-vertical"
           @click="
-            $refs.context.toggle($event.currentTarget, 'bottom', 'right', 4)
+            $refs.context?.toggle($event.currentTarget, 'bottom', 'right', 4)
           "
         ></ButtonIcon>
         <a
@@ -367,11 +367,11 @@ export default {
     // The context must be anchored to the element that was clicked, otherwise
     // the bubbling click counts as an outside click and immediately hides it.
     toggleCreateApplication(event) {
-      this.$refs.createApplicationContext.toggle(event.currentTarget)
+      this.$refs.createApplicationContext?.toggle(event.currentTarget)
     },
     enableRename() {
-      this.$refs.context.hide()
-      this.$refs.rename.edit()
+      this.$refs.context?.hide()
+      this.$refs.rename?.edit()
     },
     async rename(event) {
       this.saving = true

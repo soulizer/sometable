@@ -77,7 +77,7 @@ export default {
         })
         this.$emit('created')
       } catch (error) {
-        if (!this.$refs.providerSettingsForm.handleServerError(error)) {
+        if (!this.$refs.providerSettingsForm?.handleServerError(error)) {
           notifyIf(error, 'settings')
         }
       } finally {

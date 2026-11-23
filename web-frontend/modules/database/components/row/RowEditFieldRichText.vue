@@ -116,7 +116,7 @@ export default {
       if (!this.$refs.input?.isDirty()) {
         return this.value
       }
-      return this.$refs.input.serializeToMarkdown()
+      return this.$refs.input?.serializeToMarkdown()
     },
   },
 }

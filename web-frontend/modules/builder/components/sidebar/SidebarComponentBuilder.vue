@@ -42,7 +42,7 @@
           )
         "
         class="tree__sub-add"
-        @click="$refs.createPageModal.show()"
+        @click="$refs.createPageModal?.show()"
       >
         <i class="tree__sub-add-icon iconoir-plus"></i>
         {{ $t('sidebarComponentBuilder.createPage') }}

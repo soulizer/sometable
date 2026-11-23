@@ -11,7 +11,7 @@
         class="api-docs__content"
       >
         <template #settingsLink>
-          <a @click.prevent="$refs.settingsModal.show('tokens')">{{
+          <a @click.prevent="$refs.settingsModal?.show('tokens')">{{
             $t('apiDocsAuth.settingsLink')
           }}</a>
         </template>

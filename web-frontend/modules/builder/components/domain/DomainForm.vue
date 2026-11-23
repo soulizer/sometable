@@ -94,7 +94,7 @@ export default {
       actionCreateDomain: 'domain/create',
     }),
     onSubmit() {
-      this.$refs.domainForm.submit()
+      this.$refs.domainForm?.submit()
     },
     async createDomain(data) {
       this.createLoading = true
@@ -115,8 +115,8 @@ export default {
     handleAnyError(error) {
       if (
         !this.$refs.domainForm ||
-        !this.$refs.domainForm.handleServerError ||
-        !this.$refs.domainForm.handleServerError(error)
+        !this.$refs.domainForm?.handleServerError ||
+        !this.$refs.domainForm?.handleServerError(error)
       ) {
         this.handleError(error)
       }

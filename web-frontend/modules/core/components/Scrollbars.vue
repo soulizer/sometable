@@ -145,7 +145,7 @@ export default {
     mouseDownVertical(event) {
       event.preventDefault()
       this.dragging = 'vertical'
-      this.elementStart = this.$refs.scrollbarVertical.offsetTop
+      this.elementStart = this.$refs.scrollbarVertical?.offsetTop
       this.mouseStart = event.clientY
     },
     /**
@@ -155,7 +155,7 @@ export default {
     mouseDownHorizontal(event) {
       event.preventDefault()
       this.dragging = 'horizontal'
-      this.elementStart = this.$refs.scrollbarHorizontal.offsetLeft
+      this.elementStart = this.$refs.scrollbarHorizontal?.offsetLeft
       this.mouseStart = event.clientX
     },
     /**

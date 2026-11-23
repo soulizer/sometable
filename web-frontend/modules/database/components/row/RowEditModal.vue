@@ -105,7 +105,7 @@
             tag="a"
             icon="iconoir-plus"
             @click="
-              $refs.createFieldContext.toggle($refs.createFieldContextLink)
+              $refs.createFieldContext?.toggle($refs.createFieldContextLink)
             "
           >
             {{ $t('rowEditModal.addField') }}

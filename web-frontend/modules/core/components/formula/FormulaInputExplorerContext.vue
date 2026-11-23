@@ -222,7 +222,7 @@ export default {
       verticalOffset = 0,
       horizontalOffset = 0
     ) {
-      return this.$refs.context.show(
+      return this.$refs.context?.show(
         targetElement,
         verticalPosition,
         horizontalPosition,
@@ -231,7 +231,7 @@ export default {
       )
     },
     hide() {
-      this.$refs.context.hide()
+      this.$refs.context?.hide()
     },
     getTabTitle(tabName) {
       const titleMap = {
@@ -270,7 +270,7 @@ export default {
       }
     },
     showAdvancedModeModal() {
-      this.$refs.advancedModeModal.show()
+      this.$refs.advancedModeModal?.show()
     },
     confirmModeChange() {
       this.$emit(

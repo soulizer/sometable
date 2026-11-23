@@ -59,7 +59,7 @@
           <Button
             type="secondary"
             size="small"
-            @click="$refs.feedbackContext.hide()"
+            @click="$refs.feedbackContext?.hide()"
           >
             {{ $t('action.cancel') }}
           </Button>
@@ -130,7 +130,7 @@ export default {
     handleThumbsDown() {
       if (
         this.message.human_sentiment !== 'DISLIKE' &&
-        !this.$refs.feedbackContext.isOpen()
+        !this.$refs.feedbackContext?.isOpen()
       ) {
         this.submitFeedback({
           messageId: this.message.id,
@@ -139,7 +139,7 @@ export default {
 
         this.feedbackText = ''
         // Open feedback context to enter text
-        this.$refs.feedbackContext.show(
+        this.$refs.feedbackContext?.show(
           this.$refs.thumbDownButton,
           'bottom',
           'left',
@@ -151,7 +151,7 @@ export default {
           messageId: this.message.id,
           sentiment: null,
         })
-        this.$refs.feedbackContext.hide()
+        this.$refs.feedbackContext?.hide()
       }
     },
 
@@ -174,7 +174,7 @@ export default {
         sentiment: 'DISLIKE',
         feedback: this.feedbackText.trim(),
       })
-      this.$refs.feedbackContext.hide()
+      this.$refs.feedbackContext?.hide()
     },
   },
 }

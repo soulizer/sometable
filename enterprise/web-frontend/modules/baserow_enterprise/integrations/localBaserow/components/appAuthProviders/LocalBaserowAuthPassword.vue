@@ -137,7 +137,7 @@ export default {
             this.values.password = ''
             this.v$.$reset()
             if (this.$refs?.passwordRef) {
-              this.$refs.passwordRef.focus()
+              this.$refs.passwordRef?.focus()
             }
 
             if (response.data?.error === 'ERROR_INVALID_CREDENTIALS') {

@@ -226,7 +226,7 @@ export default {
     shown() {
       this.query = ''
       this.$nextTick(() => {
-        this.$refs.search.focus()
+        this.$refs.search?.focus()
       })
     },
   },

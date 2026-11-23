@@ -101,7 +101,7 @@ export default {
       }
     },
     showDelete() {
-      this.$refs.deleteSnapshotModal.show()
+      this.$refs.deleteSnapshotModal?.show()
     },
     onJobFailed() {
       this.showError(

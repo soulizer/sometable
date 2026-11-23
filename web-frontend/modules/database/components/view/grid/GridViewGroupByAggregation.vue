@@ -6,7 +6,7 @@
     :class="{ 'read-only': !editable }"
     :title="titleText"
     @click.prevent="
-      editable && $refs.context.toggle($refs.anchor, 'top', 'right', 10)
+      editable && $refs.context?.toggle($refs.anchor, 'top', 'right', 10)
     "
   >
     <component
@@ -28,7 +28,7 @@
       class="grid-view-aggregation__empty grid-view__group-by-banner-aggregation-empty"
       :class="{
         'grid-view-aggregation__empty--active':
-          $refs.context && $refs.context.isOpen(),
+          $refs.context && $refs.context?.isOpen(),
       }"
     >
       <i class="grid-view-aggregation__empty-icon iconoir-plus"></i>
@@ -189,7 +189,7 @@ export default {
   },
   methods: {
     async selectAggregation(newType) {
-      this.$refs.context.hide()
+      this.$refs.context?.hide()
 
       const values = {
         aggregation_type: '',

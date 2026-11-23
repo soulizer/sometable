@@ -58,7 +58,7 @@
       <ButtonText
         v-if="canCopyConfiguration"
         icon="iconoir-copy"
-        @click.prevent="$refs.copyViewConfigurationModal.show(['filters'])"
+        @click.prevent="$refs.copyViewConfigurationModal?.show(['filters'])"
       >
         {{ $t('viewFilterContext.copyFromView') }}</ButtonText
       >

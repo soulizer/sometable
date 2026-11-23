@@ -26,7 +26,7 @@
         {{ $t('dataScanner.resultsTab') }}
       </template>
       <template #header-right-side>
-        <Button type="primary" size="large" @click="$refs.exportModal.show()">
+        <Button type="primary" size="large" @click="$refs.exportModal?.show()">
           {{ $t('dataScanner.exportToCsv') }}
         </Button>
       </template>

@@ -84,11 +84,11 @@ export default {
     resolveClipboardMarkdown: getRichTextClipboardContent,
     show() {
       this.$nextTick(() => {
-        this.$refs.editor.focus()
+        this.$refs.editor?.focus()
       })
     },
     isOpen() {
-      return this.$refs.modal.isOpen()
+      return this.$refs.modal?.isOpen()
     },
     // Editor is only mounted while open; guard for reactive validation during the transition.
     serializeToMarkdown() {

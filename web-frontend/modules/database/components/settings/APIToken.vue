@@ -20,7 +20,7 @@
             ref="contextLink"
             class="api-token__more"
             @click.prevent="
-              $refs.context.toggle($refs.contextLink, 'bottom', 'right', 4)
+              $refs.context?.toggle($refs.contextLink, 'bottom', 'right', 4)
             "
           >
             <i class="baserow-icon-more-horizontal"></i>
@@ -50,7 +50,7 @@
               <a
                 class="api-token__key-copy"
                 :title="$t('apiToken.copyToClipboard')"
-                @click=";[copyTokenToClipboard(), $refs.copied.show()]"
+                @click=";[copyTokenToClipboard(), $refs.copied?.show()]"
               >
                 <i class="iconoir-copy"></i>
                 <Copied ref="copied"></Copied>
@@ -287,8 +287,8 @@ export default {
       copyToClipboard(this.token.key)
     },
     enableRename() {
-      this.$refs.context.hide()
-      this.$refs.rename.edit()
+      this.$refs.context?.hide()
+      this.$refs.rename?.edit()
     },
     /**
      * Updates some token properties. If the request fails the changes are going to be
