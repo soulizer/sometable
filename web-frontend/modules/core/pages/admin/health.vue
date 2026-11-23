@@ -37,7 +37,7 @@
           >
             <div class="admin-health__check-item-label">
               <div class="admin-health__check-item-name">
-                {{ camelCaseToSpaceSeparated(checkName) }}
+                {{ healthCheckName(checkName) }}
               </div>
             </div>
             <div
@@ -55,7 +55,7 @@
                 v-if="status !== 'working'"
                 class="admin-health__check-item-description"
               >
-                {{ status }}
+                {{ healthCheckStatus(status) }}
               </div>
             </div>
           </div>
@@ -122,6 +122,30 @@ const celeryExportQueueSize = computed(
 )
 
 // Methods
+const healthCheckLabels = {
+  DatabaseBackend: 'databaseBackend',
+  'Cache backend: default': 'cacheBackendDefault',
+  'Cache backend: generated-models': 'cacheBackendGeneratedModels',
+  MigrationsHealthCheck: 'migrations',
+  RedisHealthCheck: 'redis',
+  CeleryPingHealthCheck: 'celeryPing',
+  DiskUsage: 'diskUsage',
+  MemoryUsage: 'memoryUsage',
+  S3Boto3StorageHealthCheck: 'objectStorage',
+  DebugModeHealthCheck: 'debugMode',
+  DefaultFileStorageHealthCheck: 'defaultFileStorage',
+  ChatRunsHealthCheck: 'chatRuns',
+}
+
+function healthCheckName(checkName) {
+  const key = healthCheckLabels[checkName]
+  return key ? $i18n.t(`health.checks.${key}`) : camelCaseToSpaceSeparated(checkName)
+}
+
+function healthCheckStatus(status) {
+  return status === 'working' ? $i18n.t('health.working') : status
+}
+
 function camelCaseToSpaceSeparated(str) {
   if (!str) return 'unknown'
   return str.toString().replace(/([A-Z])/g, ' $1')

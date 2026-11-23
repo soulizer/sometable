@@ -683,7 +683,22 @@
     "celeryQueueSize": "Celery queue size",
     "celeryExportQueueSize": "Celery export queue size",
     "errorTesterTitle": "Error tester",
-    "throwError": "Click to throw error"
+    "throwError": "Click to throw error",
+    "working": "working",
+    "checks": {
+      "databaseBackend": "Database",
+      "cacheBackendDefault": "Cache backend: default",
+      "cacheBackendGeneratedModels": "Cache backend: generated models",
+      "migrations": "Migrations",
+      "redis": "Redis",
+      "celeryPing": "Celery ping",
+      "diskUsage": "Disk usage",
+      "memoryUsage": "Memory usage",
+      "objectStorage": "Object storage",
+      "debugMode": "Debug mode",
+      "defaultFileStorage": "Default file storage",
+      "chatRuns": "Chat runs"
+    }
   },
   "emailTester": {
     "title": "Email tester",

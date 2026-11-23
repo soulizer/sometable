@@ -694,7 +694,22 @@
         "celeryQueueSize": "Celery 队列大小",
         "celeryExportQueueSize": "Celery 导出队列大小",
         "errorTesterTitle": "错误测试",
-        "throwError": "点击抛出错误"
+        "throwError": "点击抛出错误",
+        "working": "正常",
+        "checks": {
+            "databaseBackend": "数据库",
+            "cacheBackendDefault": "缓存（默认）",
+            "cacheBackendGeneratedModels": "缓存（生成模型）",
+            "migrations": "数据库迁移",
+            "redis": "Redis",
+            "celeryPing": "Celery Ping",
+            "diskUsage": "磁盘使用",
+            "memoryUsage": "内存使用",
+            "objectStorage": "对象存储",
+            "debugMode": "调试模式",
+            "defaultFileStorage": "默认文件存储",
+            "chatRuns": "聊天运行"
+        }
     },
     "emailTester": {
         "title": "邮件测试",
