@@ -687,7 +687,9 @@
         "deactivated": "企业版功能",
         "coBrandingLogo": "标识",
         "coBrandingLogoDescription": "用自定义标志（176x29）替换系统标志。设置后，所有邮件页脚中的说明文字也会一并移除。",
-        "uploadFileButton": "上传图片"
+        "uploadFileButton": "上传图片",
+        "favicon": "网站图标",
+        "faviconDescription": "显示在浏览器标签页和书签中，建议使用 32x32 或 192x192 的 PNG 或 ICO。"
     },
     "authFormElementForm": {
         "userSource": "用户源",

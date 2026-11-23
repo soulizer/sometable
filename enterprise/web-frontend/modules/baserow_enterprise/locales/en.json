@@ -687,7 +687,9 @@
     "deactivated": "Available in enterprise",
     "coBrandingLogo": "Logo",
     "coBrandingLogoDescription": "Replaces the SomeTable logo for a custom co-branded alternative (176x29). If set, it also removes the SomeTable description in the footer of all emails.",
-    "uploadFileButton": "Upload image"
+    "uploadFileButton": "Upload image",
+    "favicon": "Favicon",
+    "faviconDescription": "Shown in the browser tab and bookmarks. A 32x32 or 192x192 PNG or ICO is recommended."
   },
   "authFormElementForm": {
     "userSource": "User source",

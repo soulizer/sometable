@@ -38,7 +38,7 @@ export class RestrictedViewOwnershipType extends ViewOwnershipType {
   }
 
   getDeactivatedText() {
-    return this.app.i18n.t('enterprise.deactivated')
+    return this.app.$i18n.t('enterprise.deactivated')
   }
 
   getDeactivatedModal() {

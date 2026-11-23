@@ -194,6 +194,14 @@ class Settings(models.Model):
         related_name="+",
         help_text="Co-branding logo that's placed next to the Baserow logo (176x29).",
     )
+    favicon = models.ForeignKey(
+        UserFile,
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="Favicon of the instance. When empty, the default icon is used.",
+    )
     # TODO Remove null=True in a future release.
     email_verification = models.TextField(
         max_length=16,

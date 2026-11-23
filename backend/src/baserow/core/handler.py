@@ -216,7 +216,9 @@ class CoreHandler:
 
         try:
             instance = (
-                Settings.objects.all().select_related("co_branding_logo")[:1].get()
+                Settings.objects.all()
+                .select_related("co_branding_logo", "favicon")[:1]
+                .get()
             )
         except Settings.DoesNotExist:
             instance = Settings.objects.create()
@@ -256,6 +258,7 @@ class CoreHandler:
                 "track_workspace_usage",
                 "show_baserow_help_request",
                 "co_branding_logo",
+                "favicon",
                 "email_verification",
                 "verify_import_signature",
                 "allow_reporting_abuse",

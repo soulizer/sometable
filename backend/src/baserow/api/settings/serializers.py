@@ -13,6 +13,10 @@ class SettingsSerializer(serializers.ModelSerializer):
         required=False,
         help_text="Co-branding logo that's placed next to the Baserow logo (176x29).",
     )
+    favicon = UserFileField(
+        required=False,
+        help_text="Favicon of the instance. When empty, the default icon is used.",
+    )
     inbound_email_enabled = serializers.SerializerMethodField(
         help_text="Whether this instance is configured to receive inbound email "
         "for the automation email trigger. Derived from the instance's environment "
@@ -36,6 +40,7 @@ class SettingsSerializer(serializers.ModelSerializer):
             "track_workspace_usage",
             "show_baserow_help_request",
             "co_branding_logo",
+            "favicon",
             "email_verification",
             "verify_import_signature",
             "allow_reporting_abuse",

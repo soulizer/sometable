@@ -42,12 +42,46 @@
         />
       </div>
     </div>
+    <div class="admin-settings__item">
+      <div class="admin-settings__label">
+        <div class="admin-settings__name">
+          {{ $t('enterpriseSettings.favicon') }}
+        </div>
+        <div class="admin-settings__description">
+          {{ $t('enterpriseSettings.faviconDescription') }}
+        </div>
+      </div>
+      <div class="admin-settings__control">
+        <Button
+          v-if="settings.favicon === null"
+          @click="openFaviconUploadModal"
+        >
+          {{ $t('enterpriseSettings.uploadFileButton') }}
+        </Button>
+        <Thumbnail
+          v-else
+          removable
+          :src="settings.favicon.url"
+          class="enterprise-settings__favicon"
+          @remove="updateSettings({ favicon: null })"
+        />
+        <UserFilesModal
+          ref="faviconFilesModal"
+          :multiple-files="false"
+          :file-types-acceptable="FAVICON_IMAGE_FILE_TYPES"
+          @uploaded="faviconUploaded"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import { IMAGE_FILE_TYPES } from '@baserow/modules/core/enums'
+import {
+  FAVICON_IMAGE_FILE_TYPES,
+  IMAGE_FILE_TYPES,
+} from '@baserow/modules/core/enums'
 import { notifyIf } from '@baserow/modules/core/utils/error'
 import UserFilesModal from '@baserow/modules/core/components/files/UserFilesModal'
 import { UploadFileUserFileUploadType } from '@baserow/modules/core/userFileUploadTypes'
@@ -65,6 +99,9 @@ export default {
   computed: {
     IMAGE_FILE_TYPES() {
       return IMAGE_FILE_TYPES
+    },
+    FAVICON_IMAGE_FILE_TYPES() {
+      return FAVICON_IMAGE_FILE_TYPES
     },
     ENTERPRISE_SETTINGS() {
       return EnterpriseFeatures.ENTERPRISE_SETTINGS
@@ -91,6 +128,13 @@ export default {
     fileUploaded([file]) {
       this.updateSettings({ co_branding_logo: file })
       this.$refs.userFilesModal?.hide()
+    },
+    openFaviconUploadModal() {
+      this.$refs.faviconFilesModal?.show(UploadFileUserFileUploadType.getType())
+    },
+    faviconUploaded([file]) {
+      this.updateSettings({ favicon: file })
+      this.$refs.faviconFilesModal?.hide()
     },
   },
 }
