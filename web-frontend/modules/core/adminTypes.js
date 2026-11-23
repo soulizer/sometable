@@ -298,3 +298,26 @@ export class HealthCheckAdminType extends AdminType {
     return 10000
   }
 }
+
+export class BackupAdminType extends AdminType {
+  static getType() {
+    return 'backup'
+  }
+
+  getIconClass() {
+    return 'iconoir-archive'
+  }
+
+  getName() {
+    const { $i18n: i18n } = this.app
+    return i18n.t('adminType.backup')
+  }
+
+  getRouteName() {
+    return 'admin-backups'
+  }
+
+  getOrder() {
+    return 10001
+  }
+}

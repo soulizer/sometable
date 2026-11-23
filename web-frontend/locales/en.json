@@ -68,11 +68,13 @@
     "copyToClipboard": "Copy to clipboard",
     "reset": "Reset",
     "hide": "Hide",
-    "next": "Next"
+    "next": "Next",
+    "showSecret": "Show and edit secret"
   },
   "adminType": {
     "settings": "Settings",
-    "health": "Health"
+    "health": "Health",
+    "backup": "Backups"
   },
   "applicationType": {
     "database": "Database",
@@ -800,5 +802,51 @@
   "nodeExplorer": {
     "noResults": "No results found",
     "resetSearch": "Reset search"
+  },
+  "adminBackups": {
+    "title": "Backups",
+    "scheduleTitle": "Backup schedule",
+    "scopeLabel": "Scope",
+    "scopeDescription": "Choose what each backup includes.",
+    "scopeAll": "Everything",
+    "scopeDatabase": "Database only",
+    "scopeObjectStorage": "Object storage only",
+    "frequencyLabel": "Frequency",
+    "frequencyDescription": "Runs in server local time; you can also back up at any time.",
+    "frequencyDisabled": "Disabled",
+    "frequencyDaily": "Daily",
+    "frequencyWeekly": "Weekly",
+    "frequencyMonthly": "Monthly",
+    "hourLabel": "Hour",
+    "dowLabel": "Day of week",
+    "domLabel": "Day of month",
+    "keepLabel": "Keep",
+    "keepDescription": "Older backups beyond this number are deleted automatically.",
+    "save": "Save settings",
+    "saved": "Backup settings saved",
+    "saveError": "Could not save backup settings",
+    "listTitle": "Backups",
+    "listDescription": "Backups are stored on the server in /www/backups/sometable/. Restoring overwrites current data.",
+    "runNow": "Back up now",
+    "runOk": "Backup completed",
+    "runError": "Backup failed",
+    "tableTime": "Time",
+    "tableScope": "Scope",
+    "tableSize": "Size",
+    "tableContent": "Contents",
+    "tableActions": "Actions",
+    "contentDatabase": "Database",
+    "contentMedia": "Media",
+    "contentObjectStorage": "Object storage",
+    "restore": "Restore",
+    "restoreTitle": "Restore this backup",
+    "restoreDescription": "Restoring overwrites the current database and storage and cannot be undone.",
+    "cancel": "Cancel",
+    "restoreConfirm": "Restore",
+    "restoreOk": "Restore completed",
+    "restoreError": "Restore failed",
+    "empty": "No backups yet",
+    "days": "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday",
+    "runQueued": "Backup queued. It will appear in the list when ready."
   }
 }

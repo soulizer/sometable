@@ -61,6 +61,8 @@
       small-label
       :helper-text="hasPassword ? $t('smtpForm.passwordConfigured') : ''"
     >
+      <details class="sensitive-field">
+        <summary>{{ $t('action.showSecret') }}</summary>
       <FormInput
         v-model="values.password"
         type="password"
@@ -71,6 +73,8 @@
             : $t('smtpForm.passwordPlaceholder')
         "
       />
+    
+      </details>
     </FormGroup>
   </div>
 </template>

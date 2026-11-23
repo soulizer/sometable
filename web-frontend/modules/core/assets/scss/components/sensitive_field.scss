@@ -1,0 +1,16 @@
+.sensitive-field {
+  summary {
+    cursor: pointer;
+    color: $palette-neutral-800;
+    font-size: 13px;
+    user-select: none;
+
+    &:hover {
+      color: $palette-neutral-1000;
+    }
+  }
+
+  &[open] summary {
+    margin-bottom: 8px;
+  }
+}

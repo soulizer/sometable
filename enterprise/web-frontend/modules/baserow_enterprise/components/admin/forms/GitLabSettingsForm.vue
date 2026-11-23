@@ -15,7 +15,6 @@
         :placeholder="$t('oauthSettingsForm.providerNamePlaceholder')"
         @blur="v$.values.name.$touch"
       ></FormInput>
-
       <template #error>
         {{ v$.values.name.$errors[0]?.$message }}
       </template>
@@ -36,7 +35,6 @@
         :placeholder="$t('oauthSettingsForm.baseUrlPlaceholder')"
         @blur="v$.values.base_url.$touch"
       ></FormInput>
-
       <template #error>
         {{ v$.values.base_url.$errors[0]?.$message }}
       </template>
@@ -57,7 +55,6 @@
         :placeholder="$t('oauthSettingsForm.clientIdPlaceholder')"
         @blur="v$.values.client_id.$touch"
       ></FormInput>
-
       <template #error>
         {{ v$.values.client_id.$errors[0]?.$message }}
       </template>
@@ -70,6 +67,8 @@
       class="margin-bottom-2"
       required
     >
+      <details class="sensitive-field">
+        <summary>{{ $t('action.showSecret') }}</summary>
       <FormInput
         ref="secret"
         v-model="v$.values.secret.$model"
@@ -78,7 +77,7 @@
         :error="fieldHasErrors('secret')"
         @blur="v$.values.secret.$touch"
       ></FormInput>
-
+      </details>
       <template #error>
         {{ v$.values.secret.$errors[0]?.$message }}
       </template>

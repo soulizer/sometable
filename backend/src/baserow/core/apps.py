@@ -31,6 +31,7 @@ class CoreConfig(AppConfig):
 
         # Registers the check of the encryption keys.
         import baserow.core.encryption  # noqa: F401
+        import baserow.core.backup_tasks  # noqa: F401
         from baserow.core.action.registries import (
             action_scope_registry,
             action_type_registry,

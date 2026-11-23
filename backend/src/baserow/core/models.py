@@ -221,6 +221,41 @@ class Settings(models.Model):
         help_text="Indicates whether anonymous visitors can report publicly shared "
         "resources, like views and forms, for abuse.",
     )
+    backup_scope = models.CharField(
+        max_length=16,
+        choices=[
+            ("all", "all"),
+            ("database", "database"),
+            ("object_storage", "object_storage"),
+        ],
+        default="all",
+        db_default="all",
+        help_text="What the scheduled backups include.",
+    )
+    backup_frequency = models.CharField(
+        max_length=16,
+        choices=[
+            ("disabled", "disabled"),
+            ("daily", "daily"),
+            ("weekly", "weekly"),
+            ("monthly", "monthly"),
+        ],
+        default="daily",
+        db_default="daily",
+        help_text="How often scheduled backups run.",
+    )
+    backup_hour = models.PositiveSmallIntegerField(
+        default=3, db_default=3, help_text="Hour of day for scheduled backups."
+    )
+    backup_dow = models.PositiveSmallIntegerField(
+        default=0, db_default=0, help_text="Day of week for weekly backups."
+    )
+    backup_dom = models.PositiveSmallIntegerField(
+        default=1, db_default=1, help_text="Day of month for monthly backups."
+    )
+    backup_keep = models.PositiveSmallIntegerField(
+        default=7, db_default=7, help_text="Number of backups to keep."
+    )
     user_templates_require_approval = models.BooleanField(
         default=True,
         db_default=True,

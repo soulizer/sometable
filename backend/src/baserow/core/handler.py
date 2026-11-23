@@ -262,6 +262,12 @@ class CoreHandler:
                 "email_verification",
                 "verify_import_signature",
                 "allow_reporting_abuse",
+                "backup_scope",
+                "backup_frequency",
+                "backup_hour",
+                "backup_dow",
+                "backup_dom",
+                "backup_keep",
                 "user_templates_require_approval",
             ]
             if name in kwargs

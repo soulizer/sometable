@@ -36,6 +36,10 @@ def main():
             ("demo-2-orders", "/database/300/table/907"),
             ("demo-3-dashboard", "/dashboard/288"),
             ("demo-4-automation", "/automation/291/workflow/31"),
+            ("demo-5-project-workspace", "/workspace/179"),
+            ("demo-6-project-grid", "/database/301/table/909"),
+            ("demo-7-project-kanban", "/database/301/table/909/3850"),
+            ("demo-8-project-timeline", "/database/301/table/909/3852"),
         ]
         for name, path in targets:
             page.goto(path, wait_until="networkidle")
