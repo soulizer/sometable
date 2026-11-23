@@ -48,6 +48,16 @@ else
   fi
 fi
 
+# --- object storage -----------------------------------------------------
+mkdir -p /www/backups "$DEST"
+sudo -n chown -R 9999:9999 "$DEST" 2>/dev/null || true
+if ! sudo -n docker compose exec -T backend sh -c \
+  "OBJECT_STORAGE_BACKUP_MODE=backup OBJECT_STORAGE_BACKUP_DIR=/baserow/backups/sometable/$STAMP python /baserow/scripts/backup-object-storage.py"; then
+  echo "[$(date -Is)] ERROR: object storage backup failed" >&2
+  rm -rf "$DEST"
+  exit 1
+fi
+
 # --- manifest -------------------------------------------------------------
 VERSION="$(grep '^BASEROW_VERSION=' .env 2>/dev/null | cut -d= -f2-)"
 {

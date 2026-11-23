@@ -397,6 +397,8 @@ services:
     volumes:
       - media:/baserow/media
       - app_config:/baserow/config
+      - /www/backups:/baserow/backups
+      - /www/apps/sometable/docs/deployment/scripts:/baserow/scripts:ro
     networks:
       local:
 
