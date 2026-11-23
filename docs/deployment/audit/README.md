@@ -1,0 +1,15 @@
+# 全站功能审计（脚本与结果）
+
+运行方式（容器内已包含源码与依赖）：
+
+```bash
+cd /www/apps/sometable
+docker cp docs/deployment/audit/setup.py sometable-backend-1:/tmp/audit_setup.py
+sudo -n docker compose exec -T backend /baserow/backend/docker/docker-entrypoint.sh \
+  manage shell < /tmp/audit_setup.py
+```
+
+- `setup.py`：幂等创建审计用户与工作区（命名前缀 `审计-`），角色覆盖 admin/builder/editor/commenter/viewer/无权限。
+- 其余脚本按批次添加，命名 `b_*.py`（账号/工作区）、`c_*.py`（数据库/视图）、`d_*.py`（应用/自动化/仪表盘/AI）、`e_*.py`（权限/通知/安全）。
+- 邮件测试只发往 `access@126.com`。
+- 结果记录在本目录 `结果-*.md` 与 `docs/deployment/部署日志.md`。
