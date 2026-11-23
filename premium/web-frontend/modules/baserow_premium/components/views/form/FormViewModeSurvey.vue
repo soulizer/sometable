@@ -38,7 +38,7 @@
                   "
                   type="primary"
                   size="large"
-                  >Next</Button
+                  >{{ $t('action.next') }}</Button
                 >
 
                 <Button

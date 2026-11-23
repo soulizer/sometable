@@ -679,7 +679,11 @@
   },
   "health": {
     "title": "SomeTable health checks",
-    "description": "These checks show the current status of your SomeTable installation."
+    "description": "These checks show the current status of your SomeTable installation.",
+    "celeryQueueSize": "Celery queue size",
+    "celeryExportQueueSize": "Celery export queue size",
+    "errorTesterTitle": "Error tester",
+    "throwError": "Click to throw error"
   },
   "emailTester": {
     "title": "Email tester",

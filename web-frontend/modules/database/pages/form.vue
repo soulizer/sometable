@@ -5,10 +5,10 @@
       <div v-if="fields.length === 0" class="form-view__body">
         <div class="form-view__no-fields margin-bottom-4">
           <div class="form-view__no-fields-title">
-            This form doesn't have any fields
+            {{ $t('publicFormView.noFieldsTitle') }}
           </div>
           <div class="form-view__no-fields-content">
-            Use Baserow to add at least one field.
+            {{ $t('publicFormView.noFieldsContent') }}
           </div>
         </div>
         <FormViewFooterLinks

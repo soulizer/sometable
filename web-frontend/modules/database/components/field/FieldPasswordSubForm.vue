@@ -22,7 +22,7 @@
           hash:
             '#section-password-field-' + defaultValues.id + '-authentication',
         }"
-        >Open API documentation</nuxt-link
+        >{{ $t('fieldPasswordSubForm.openApiDocumentation') }}</nuxt-link
       >
     </div>
     <p style="width: 366px; white-space: initial">

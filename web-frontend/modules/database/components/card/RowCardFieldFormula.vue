@@ -6,7 +6,7 @@
     :field="field"
     :value="value"
   ></component>
-  <div v-else class="card-text">Unknown Field Type</div>
+  <div v-else class="card-text">{{ $t('unknownFieldType') }}</div>
 </template>
 
 <script>

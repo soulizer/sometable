@@ -12,7 +12,7 @@
       >
     </div>
     <div v-if="!required" class="margin-top-1">
-      <a @click=";[touch(), clear(value)]">clear value</a>
+      <a @click=";[touch(), clear(value)]">{{ $t('formViewField.clearValue') }}</a>
     </div>
     <div v-show="touched && !valid" class="error">
       {{ error }}

@@ -6,7 +6,7 @@
     :field="field"
     :value="value"
   ></component>
-  <div v-else class="grid-view__cell cell-error">Unknown Field Type</div>
+  <div v-else class="grid-view__cell cell-error">{{ $t('unknownFieldType') }}</div>
 </template>
 <script>
 import FunctionalGridViewFieldBoolean from '@baserow/modules/database/components/view/grid/fields/FunctionalGridViewFieldBoolean'

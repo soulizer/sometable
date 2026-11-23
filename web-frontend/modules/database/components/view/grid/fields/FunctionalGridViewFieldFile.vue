@@ -12,7 +12,7 @@
     >
       <div>
         <i class="grid-field-file__drop-icon iconoir-cloud-upload"></i>
-        Drop here
+        {{ $t('gridViewFieldFile.dropHere') }}
       </div>
     </div>
     <ul v-if="Array.isArray(value)" class="grid-field-file__list">

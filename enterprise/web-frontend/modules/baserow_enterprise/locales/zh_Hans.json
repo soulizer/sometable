@@ -471,11 +471,9 @@
         "noAccessSelectionDescription": "所选成员、团队或身份将不再拥有该{type}及其内部任何内容的访问权限，除非在其中被授予角色。|所选 {count} 个成员、团队或身份将不再拥有该{type}及其内部任何内容的访问权限，除非在其中被授予角色。",
         "noAccessConfirm": "设为无访问权限",
         "error": {
-            "title": "Could not fetch data",
-            "description": "An error occurred while fetching the member data."
-        },
-        "error.title": "无法获取数据",
-        "error.description": "获取成员数据时出错。"
+            "title": "无法获取数据",
+            "description": "获取成员数据时出错。"
+        }
     },
     "memberRolesDatabaseContexItem": {
         "label": "管理成员",

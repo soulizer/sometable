@@ -690,7 +690,11 @@
     },
     "health": {
         "title": "运行状况检查",
-        "description": "这些检查展示当前安装的运行状态。"
+        "description": "这些检查展示当前安装的运行状态。",
+        "celeryQueueSize": "Celery 队列大小",
+        "celeryExportQueueSize": "Celery 导出队列大小",
+        "errorTesterTitle": "错误测试",
+        "throwError": "点击抛出错误"
     },
     "emailTester": {
         "title": "邮件测试",

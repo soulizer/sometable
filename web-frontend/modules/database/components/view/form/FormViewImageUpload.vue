@@ -9,9 +9,9 @@
     }"
   >
     <slot></slot>
-    <div class="form-view__file-dragging">Drop here</div>
-    <div class="form-view__file-uploading">Uploading</div>
-    <div class="form-view__file-error">Not an image</div>
+    <div class="form-view__file-dragging">{{ $t('formViewImageUpload.dropHere') }}</div>
+    <div class="form-view__file-uploading">{{ $t('formViewImageUpload.uploading') }}</div>
+    <div class="form-view__file-error">{{ $t('formViewImageUpload.notAnImage') }}</div>
     <div
       v-if="uploading"
       class="form-view__file-progress"

@@ -62,10 +62,9 @@ class HealthCheckHandler:
         the default storage check.
         """
 
-        s3_enabled = (
-            settings.STORAGES["default"]["BACKEND"]
-            == "storages.backends.s3boto3.S3Boto3Storage"
-        )
+        from baserow.core.storage_config import load_storage_config
+
+        s3_enabled = load_storage_config()[0].get("type") == "s3"
         if s3_enabled:
             return isinstance(plugin, DefaultFileStorageHealthCheck)
         else:

@@ -61,7 +61,9 @@
           </div>
           <div class="admin-health__check-item">
             <div class="admin-health__check-item-label">
-              <div class="admin-health__check-item-name">Celery queue size</div>
+              <div class="admin-health__check-item-name">
+              {{ $t('health.celeryQueueSize') }}
+            </div>
             </div>
             <span v-skeleton="{ loading, width: '24px' }">{{
               celeryQueueSize
@@ -70,7 +72,7 @@
           <div class="admin-health__check-item">
             <div class="admin-health__check-item-label">
               <div class="admin-health__check-item-name">
-                Celery export queue size
+                {{ $t('health.celeryExportQueueSize') }}
               </div>
             </div>
             <span v-skeleton="{ loading, width: '24px' }">{{
@@ -83,8 +85,8 @@
         <EmailTester></EmailTester>
       </div>
       <div class="admin-health__group">
-        <h2>Error tester</h2>
-        <Button @click="error()">Click to throw error</Button>
+        <h2>{{ $t('health.errorTesterTitle') }}</h2>
+        <Button @click="error()">{{ $t('health.throwError') }}</Button>
       </div>
     </div>
   </div>

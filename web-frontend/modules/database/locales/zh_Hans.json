@@ -21,26 +21,20 @@
             "toast": {
                 "notFound": {
                     "next": {
-                        "title": "No more rows",
-                        "message": "There is no next row"
+                        "title": "没有更多行",
+                        "message": "没有下一行"
                     },
                     "previous": {
-                        "title": "No more rows",
-                        "message": "There is no previous row"
+                        "title": "没有更多行",
+                        "message": "没有上一行"
                     }
                 },
                 "error": {
-                    "title": "Error occurred",
-                    "message": "An error occurred while retrieving the adjacent row"
+                    "title": "发生错误",
+                    "message": "获取相邻行时发生错误"
                 }
             }
-        },
-        "adjacentRow.toast.notFound.next.title": "没有更多行",
-        "adjacentRow.toast.notFound.next.message": "没有下一行",
-        "adjacentRow.toast.notFound.previous.title": "没有更多行",
-        "adjacentRow.toast.notFound.previous.message": "没有上一行",
-        "adjacentRow.toast.error.title": "发生错误",
-        "adjacentRow.toast.error.message": "获取相邻行时发生错误"
+        }
     },
     "webhookModal": {
         "title": "{name} Webhooks",
@@ -836,7 +830,8 @@
         "showFieldAs": "字段显示为",
         "noSelectOptions": "没有可用的选项。",
         "noCollaboratorsAvailable": "没有可用的协作者。",
-        "cannotSumitValues": "该字段为只读，不会显示在表单中。"
+        "cannotSumitValues": "该字段为只读，不会显示在表单中。",
+        "clearValue": "清除值"
     },
     "duplicateFieldContext": {
         "duplicate": "创建副本字段",
@@ -1152,7 +1147,8 @@
     "fieldPasswordSubForm": {
         "allowEndpointAuthentication": "允许 API 接口身份验证",
         "allowEndpointAuthenticationHelp": "这会公开一个端点，用于检查行 ID 与密码是否正确，从而可将本工具用作认证后端。",
-        "description": "密码字段也可用于应用构建器中的用户身份验证。"
+        "description": "密码字段也可用于应用构建器中的用户身份验证。",
+        "openApiDocumentation": "打开 API 文档"
     },
     "rowEditFieldPassword": {
         "setPassword": "设置密码"
@@ -1453,5 +1449,18 @@
     },
     "lastViewedItemType": {
         "databaseView": "{name} 视图"
+    },
+    "unknownFieldType": "未知字段类型",
+    "formViewImageUpload": {
+        "dropHere": "放在这里",
+        "uploading": "正在上传…",
+        "notAnImage": "不是图片"
+    },
+    "publicFormView": {
+        "noFieldsTitle": "该表单还没有任何字段",
+        "noFieldsContent": "请在编辑器中添加至少一个字段。"
+    },
+    "apiDocs": {
+        "batchMode": "批量模式"
     }
 }

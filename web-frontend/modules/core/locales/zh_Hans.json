@@ -522,8 +522,8 @@
                     "text": "当用户已成为组中成员时，无法发送邀请."
                 },
                 "tooManyInvitations": {
-                    "title": "Too many invitations sent.",
-                    "text": "You have sent too many invitations. Please try again later."
+                    "title": "发送的邀请过多。",
+                    "text": "您发送的邀请过多，请稍后再试。"
                 }
             },
             "helpIconText": "所选角色将是此组中的用户的默认角色."
@@ -535,10 +535,10 @@
                 "email": "电子邮箱",
                 "role": "默认角色",
                 "name": "名字",
-                "highestRole": "Highest role",
-                "highestRoleHelpText": "The highest role this user assigned to them directly or from a team, on anything in this workspace",
-                "highestRoleInstanceHelpText": "The highest role this user has in the instance",
-                "2fa": "2FA"
+                "highestRole": "最高角色",
+                "highestRoleHelpText": "该用户在此工作区任意内容上直接或通过团队获得的最高角色",
+                "highestRoleInstanceHelpText": "该用户在实例中拥有的最高角色",
+                "2fa": "两步验证"
             },
             "actions": {
                 "remove": "从组中移除",
@@ -546,10 +546,10 @@
             },
             "title": "{userAmount} 成员在 {workspaceName}",
             "inviteMember": "邀请为成员",
-            "pendingInvitations": "Pending invitations ({count})",
-            "emptyTitle": "No members yet",
-            "emptyDescription": "Invite people to collaborate in this workspace. Choose a role for each person to control what they can view and edit.",
-            "search": "Search members"
+            "pendingInvitations": "待处理邀请（{count}）",
+            "emptyTitle": "还没有成员",
+            "emptyDescription": "邀请他人加入该工作区协作，为每个人选择角色以控制其可见与可操作范围。",
+            "search": "搜索成员"
         },
         "invitesTable": {
             "columns": {
@@ -563,17 +563,7 @@
             },
             "title": "{invitesAmount} 待定邀请在 {workspaceName}"
         },
-        "invitesTabTitle": "邀请",
-        "membersTable.pendingInvitations": "待处理邀请（{count}）",
-        "membersTable.emptyTitle": "还没有成员",
-        "membersTable.emptyDescription": "邀请他人加入该工作区协作，为每个人选择角色以控制其可见与可操作范围。",
-        "membersTable.columns.highestRole": "最高角色",
-        "membersTable.columns.highestRoleHelpText": "该用户在此工作区任意内容上直接或通过团队获得的最高角色",
-        "membersTable.columns.highestRoleInstanceHelpText": "该用户在实例中拥有的最高角色",
-        "membersTable.columns.2fa": "两步验证",
-        "membersTable.search": "搜索成员",
-        "membersInviteModal.errors.tooManyInvitations.title": "发送的邀请过多。",
-        "membersInviteModal.errors.tooManyInvitations.text": "您发送的邀请过多，请稍后再试。"
+        "invitesTabTitle": "邀请"
     },
     "UserSessionExpiredNotification": {
         "content": "由于您的认证令牌过期导致被强制注销. 请重新登录",

@@ -12,7 +12,7 @@
     </RadioGroup>
 
     <div v-if="!required" class="margin-top-1">
-      <a @click=";[touch(), updateValue(null, value)]">clear value</a>
+      <a @click=";[touch(), updateValue(null, value)]">{{ $t('formViewField.clearValue') }}</a>
     </div>
     <div v-show="touched && !valid" class="error">
       {{ error }}
