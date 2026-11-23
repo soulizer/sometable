@@ -113,10 +113,10 @@ from baserow.contrib.database.api.views.errors import (
 from baserow.contrib.database.db.functions import RandomUUID
 from baserow.contrib.database.export_serialized import DatabaseExportSerializedStructure
 from baserow.contrib.database.fields.chinese_validators import (
+    ID_CARD_VALIDATOR,
+    USCC_VALIDATOR,
     generate_id_card,
     generate_unified_social_credit_code,
-    validate_id_card,
-    validate_unified_social_credit_code,
 )
 from baserow.contrib.database.fields.exceptions import SelectOptionDoesNotBelongToField
 from baserow.contrib.database.fields.filter_support.formula import (
@@ -6706,10 +6706,7 @@ class IdCardFieldType(CollationSortMixin, CharFieldMatchingRegexFieldType):
 
     @property
     def validator(self):
-        def validate(value):
-            validate_id_card(value)
-
-        return validate
+        return ID_CARD_VALIDATOR
 
     def random_value(self, instance, fake, cache):
         return generate_id_card()
@@ -6740,10 +6737,7 @@ class UnifiedSocialCreditCodeFieldType(
 
     @property
     def validator(self):
-        def validate(value):
-            validate_unified_social_credit_code(value)
-
-        return validate
+        return USCC_VALIDATOR
 
     def random_value(self, instance, fake, cache):
         return generate_unified_social_credit_code()

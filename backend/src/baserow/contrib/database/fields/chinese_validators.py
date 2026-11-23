@@ -62,6 +62,22 @@ def validate_unified_social_credit_code(value) -> str:
     return code
 
 
+class IdCardValidator:
+    """Picklable validator instance used by Django model/serializer fields."""
+
+    def __call__(self, value) -> None:
+        validate_id_card(value)
+
+
+class UnifiedSocialCreditCodeValidator:
+    def __call__(self, value) -> None:
+        validate_unified_social_credit_code(value)
+
+
+ID_CARD_VALIDATOR = IdCardValidator()
+USCC_VALIDATOR = UnifiedSocialCreditCodeValidator()
+
+
 def generate_id_card() -> str:
     body = f"11010119900101{random.randint(0, 999):03d}"
     return body + id_card_check_digit(body)
