@@ -8,12 +8,14 @@ from baserow.contrib.database.fields.field_types import (
     DurationFieldType,
     EmailFieldType,
     FieldType,
+    IdCardFieldType,
     LongTextFieldType,
     NumberFieldType,
     RatingFieldType,
     SingleSelectFieldType,
     TextFieldType,
     URLFieldType,
+    UnifiedSocialCreditCodeFieldType,
 )
 from baserow.core.registry import Instance
 
