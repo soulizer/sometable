@@ -106,6 +106,12 @@
         </div>
       </div>
 
+      <StorageSettings
+        namespace="backupStorageSettings"
+        endpoint-base="/settings/backup-storage/"
+        :media-extras="false"
+      />
+
       <div class="admin-settings__group">
         <h2 class="admin-settings__group-title">
           {{ $t('adminBackups.listTitle') }}
@@ -130,6 +136,7 @@
               <th>{{ $t('adminBackups.tableScope') }}</th>
               <th>{{ $t('adminBackups.tableSize') }}</th>
               <th>{{ $t('adminBackups.tableContent') }}</th>
+              <th>{{ $t('adminBackups.tableRemote') }}</th>
               <th>{{ $t('adminBackups.tableActions') }}</th>
             </tr>
           </thead>
@@ -139,6 +146,13 @@
               <td>{{ scopeLabel(item.scope) }}</td>
               <td>{{ sizeLabel(item) }}</td>
               <td>{{ contentLabel(item) }}</td>
+              <td>
+                {{
+                  item.remote
+                    ? $t('adminBackups.remoteYes')
+                    : $t('adminBackups.remoteNo')
+                }}
+              </td>
               <td>
                 <Button
                   type="secondary"
@@ -151,7 +165,7 @@
               </td>
             </tr>
             <tr v-if="!backups.length">
-              <td colspan="5">{{ $t('adminBackups.empty') }}</td>
+              <td colspan="6">{{ $t('adminBackups.empty') }}</td>
             </tr>
           </tbody>
         </table>
@@ -177,6 +191,7 @@
 
 <script setup>
 import { computed, onMounted, reactive, ref } from 'vue'
+import StorageSettings from '@baserow/modules/core/components/settings/StorageSettings.vue'
 import { useHead } from '#imports'
 import { useNuxtApp } from '#app'
 import { useI18n } from 'vue-i18n'
@@ -246,6 +261,7 @@ function sizeLabel(item) {
   if (item.database) total += item.database.bytes || 0
   if (item.media) total += item.media.bytes || 0
   if (item.object_storage) total += item.object_storage.bytes || 0
+  if (!total && item.remote) total = item.remote.bytes || 0
   return `${(total / 1024 / 1024).toFixed(1)} MB`
 }
 

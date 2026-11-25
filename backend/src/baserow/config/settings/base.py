@@ -991,6 +991,11 @@ if AZURE_STORAGE_ENABLED:
 STORAGE_SETTINGS_FILE = os.getenv(
     "STORAGE_SETTINGS_FILE", "/baserow/config/storage.json"
 )
+# Separate credentials/bucket for uploading backup archives. Independent from
+# the media storage so backups can be kept in a different provider or account.
+BACKUP_STORAGE_SETTINGS_FILE = os.getenv(
+    "BACKUP_STORAGE_SETTINGS_FILE", "/baserow/config/backup-storage.json"
+)
 if not GOOGLE_STORAGE_ENABLED and not AZURE_STORAGE_ENABLED:
     BASE_FILE_STORAGE = "baserow.core.storage_config.ConfigurableStorage"
 

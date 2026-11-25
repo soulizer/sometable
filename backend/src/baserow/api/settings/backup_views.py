@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from baserow.api.schemas import get_error_schema
-from baserow.core.backup import list_backups, run_backup, restore_backup
+from baserow.core.backup import list_all_backups, restore_backup
 
 
 class BackupSettingsView(APIView):
@@ -17,7 +17,7 @@ class BackupSettingsView(APIView):
         responses={200: None},
     )
     def get(self, request):
-        return Response(list_backups())
+        return Response(list_all_backups())
 
     @extend_schema(
         tags=["Settings"],

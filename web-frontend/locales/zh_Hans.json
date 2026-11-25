@@ -855,7 +855,7 @@
         "saved": "备份设置已保存",
         "saveError": "无法保存备份设置",
         "listTitle": "备份列表",
-        "listDescription": "备份保存在服务器 /www/backups/sometable/；恢复会覆盖当前数据，请谨慎操作。",
+        "listDescription": "备份始终保存在服务器 /www/backups/sometable/；配置远端备份存储后会同时上传到对象存储。恢复会覆盖当前数据，请谨慎操作。",
         "runNow": "立即备份",
         "runOk": "备份完成",
         "runError": "备份失败",
@@ -876,6 +876,9 @@
         "restoreError": "恢复失败",
         "empty": "暂无备份",
         "days": "周一,周二,周三,周四,周五,周六,周日",
-        "runQueued": "已加入备份队列，完成后会出现在列表中。"
+        "runQueued": "已加入备份队列，完成后会出现在列表中。",
+        "tableRemote": "远端",
+        "remoteYes": "已上传",
+        "remoteNo": "仅本地"
     }
 }

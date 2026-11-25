@@ -1,20 +1,20 @@
 <template>
   <div class="admin-settings__group storage-settings">
     <h2 class="admin-settings__group-title">
-      {{ $t('storageSettings.title') }}
+      {{ tr('title') }}
     </h2>
 
     <Alert type="warning" class="margin-bottom-2">
-      {{ $t('storageSettings.switchWarning') }}
+      {{ tr('switchWarning') }}
     </Alert>
 
     <div class="admin-settings__item">
       <div class="admin-settings__label">
         <div class="admin-settings__name">
-          {{ $t('storageSettings.typeLabel') }}
+          {{ tr('typeLabel') }}
         </div>
         <div class="admin-settings__description">
-          {{ $t('storageSettings.typeDescription') }}
+          {{ tr('typeDescription') }}
         </div>
       </div>
       <div class="admin-settings__control">
@@ -22,7 +22,7 @@
           :value="form.type === 's3'"
           @input="form.type = $event ? 's3' : 'local'"
         >
-          {{ $t('storageSettings.useObjectStorage') }}
+          {{ tr('useObjectStorage') }}
         </SwitchInput>
       </div>
     </div>
@@ -31,10 +31,10 @@
       <div class="admin-settings__item">
         <div class="admin-settings__label">
           <div class="admin-settings__name">
-            {{ $t('storageSettings.endpointLabel') }}
+            {{ tr('endpointLabel') }}
           </div>
           <div class="admin-settings__description">
-            {{ $t('storageSettings.endpointDescription') }}
+            {{ tr('endpointDescription') }}
           </div>
         </div>
         <div class="admin-settings__control">
@@ -45,10 +45,10 @@
       <div class="admin-settings__item">
         <div class="admin-settings__label">
           <div class="admin-settings__name">
-            {{ $t('storageSettings.bucketLabel') }}
+            {{ tr('bucketLabel') }}
           </div>
           <div class="admin-settings__description">
-            {{ $t('storageSettings.bucketDescription') }}
+            {{ tr('bucketDescription') }}
           </div>
         </div>
         <div class="admin-settings__control">
@@ -59,10 +59,10 @@
       <div class="admin-settings__item">
         <div class="admin-settings__label">
           <div class="admin-settings__name">
-            {{ $t('storageSettings.regionLabel') }}
+            {{ tr('regionLabel') }}
           </div>
           <div class="admin-settings__description">
-            {{ $t('storageSettings.regionDescription') }}
+            {{ tr('regionDescription') }}
           </div>
         </div>
         <div class="admin-settings__control">
@@ -73,10 +73,10 @@
       <div class="admin-settings__item">
         <div class="admin-settings__label">
           <div class="admin-settings__name">
-            {{ $t('storageSettings.locationLabel') }}
+            {{ tr('locationLabel') }}
           </div>
           <div class="admin-settings__description">
-            {{ $t('storageSettings.locationDescription') }}
+            {{ tr('locationDescription') }}
           </div>
         </div>
         <div class="admin-settings__control">
@@ -87,10 +87,10 @@
       <div class="admin-settings__item">
         <div class="admin-settings__label">
           <div class="admin-settings__name">
-            {{ $t('storageSettings.accessKeyLabel') }}
+            {{ tr('accessKeyLabel') }}
           </div>
           <div class="admin-settings__description">
-            {{ $t('storageSettings.accessKeyDescription') }}
+            {{ tr('accessKeyDescription') }}
           </div>
         </div>
         <div class="admin-settings__control">
@@ -101,10 +101,10 @@
       <div class="admin-settings__item">
         <div class="admin-settings__label">
           <div class="admin-settings__name">
-            {{ $t('storageSettings.secretKeyLabel') }}
+            {{ tr('secretKeyLabel') }}
           </div>
           <div class="admin-settings__description">
-            {{ $t('storageSettings.secretKeyDescription') }}
+            {{ tr('secretKeyDescription') }}
           </div>
         </div>
         <div class="admin-settings__control">
@@ -116,13 +116,13 @@
         </div>
       </div>
 
-      <div class="admin-settings__item">
+      <div v-if="mediaExtras" class="admin-settings__item">
         <div class="admin-settings__label">
           <div class="admin-settings__name">
-            {{ $t('storageSettings.customDomainLabel') }}
+            {{ tr('customDomainLabel') }}
           </div>
           <div class="admin-settings__description">
-            {{ $t('storageSettings.customDomainDescription') }}
+            {{ tr('customDomainDescription') }}
           </div>
         </div>
         <div class="admin-settings__control">
@@ -130,18 +130,18 @@
         </div>
       </div>
 
-      <div class="admin-settings__item">
+      <div v-if="mediaExtras" class="admin-settings__item">
         <div class="admin-settings__label">
           <div class="admin-settings__name">
-            {{ $t('storageSettings.querystringAuthLabel') }}
+            {{ tr('querystringAuthLabel') }}
           </div>
           <div class="admin-settings__description">
-            {{ $t('storageSettings.querystringAuthDescription') }}
+            {{ tr('querystringAuthDescription') }}
           </div>
         </div>
         <div class="admin-settings__control">
           <SwitchInput v-model="form.querystring_auth">
-            {{ $t('storageSettings.enabled') }}
+            {{ tr('enabled') }}
           </SwitchInput>
         </div>
       </div>
@@ -149,10 +149,10 @@
       <div class="admin-settings__item">
         <div class="admin-settings__label">
           <div class="admin-settings__name">
-            {{ $t('storageSettings.addressingStyleLabel') }}
+            {{ tr('addressingStyleLabel') }}
           </div>
           <div class="admin-settings__description">
-            {{ $t('storageSettings.addressingStyleDescription') }}
+            {{ tr('addressingStyleDescription') }}
           </div>
         </div>
         <div class="admin-settings__control">
@@ -162,7 +162,7 @@
               form.addressing_style = $event ? 'path' : 'virtual'
             "
           >
-            {{ $t('storageSettings.pathStyle') }}
+            {{ tr('pathStyle') }}
           </SwitchInput>
         </div>
       </div>
@@ -171,7 +171,7 @@
     <div class="admin-settings__item">
       <div class="admin-settings__label">
         <div class="admin-settings__name">
-          {{ $t('storageSettings.currentStatus') }}
+          {{ tr('currentStatus') }}
         </div>
         <div class="admin-settings__description">{{ sourceText }}</div>
       </div>
@@ -187,7 +187,7 @@
         :disabled="saving"
         @click="testConnection"
       >
-        {{ $t('storageSettings.testConnection') }}
+        {{ tr('testConnection') }}
       </Button>
       <Button
         type="primary"
@@ -195,7 +195,7 @@
         :disabled="testing"
         @click="save"
       >
-        {{ $t('storageSettings.save') }}
+        {{ tr('save') }}
       </Button>
     </div>
 
@@ -212,6 +212,14 @@ import { useI18n } from 'vue-i18n'
 
 const { $client } = useNuxtApp()
 const { t } = useI18n()
+
+const props = defineProps({
+  endpointBase: { type: String, default: '/settings/storage/' },
+  namespace: { type: String, default: 'storageSettings' },
+  mediaExtras: { type: Boolean, default: true },
+})
+
+const tr = (key, values) => t(`${props.namespace}.${key}`, values)
 
 const form = reactive({
   type: 'local',
@@ -236,16 +244,16 @@ const messageType = ref('success')
 
 const statusText = computed(() => {
   if (form.type === 'local') {
-    return t('storageSettings.localStatus', { path: localPath.value })
+    return tr('localStatus', { path: localPath.value })
   }
-  return t('storageSettings.objectStatus', {
+  return tr('objectStatus', {
     bucket: form.bucket_name || '-',
     location: form.location || '-',
   })
 })
 
 const sourceText = computed(() => {
-  return t(`storageSettings.source_${source.value}`)
+  return tr(`source_${source.value}`)
 })
 
 function showMessage(text, type = 'success') {
@@ -274,24 +282,24 @@ function applyConfig(data) {
 
 async function load() {
   try {
-    const { data } = await $client.get('/settings/storage/')
+    const { data } = await $client.get(props.endpointBase)
     applyConfig(data)
   } catch {
-    showMessage(t('storageSettings.loadError'), 'error')
+    showMessage(tr('loadError'), 'error')
   }
 }
 
 function validate() {
   if (form.type !== 's3') return true
   if (!form.bucket_name.trim()) {
-    showMessage(t('storageSettings.bucketRequired'), 'error')
+    showMessage(tr('bucketRequired'), 'error')
     return false
   }
   if (
     !hasCredentials.value &&
     (!form.access_key_id.trim() || !form.secret_access_key)
   ) {
-    showMessage(t('storageSettings.credentialsRequired'), 'error')
+    showMessage(tr('credentialsRequired'), 'error')
     return false
   }
   return true
@@ -302,12 +310,12 @@ async function save() {
   saving.value = true
   message.value = ''
   try {
-    const { data } = await $client.put('/settings/storage/', { ...form })
+    const { data } = await $client.put(props.endpointBase, { ...form })
     applyConfig(data)
-    showMessage(t('storageSettings.saved'))
+    showMessage(tr('saved'))
   } catch (error) {
     showMessage(
-      error?.response?.data?.error || t('storageSettings.saveError'),
+      error?.response?.data?.error || tr('saveError'),
       'error'
     )
   } finally {
@@ -320,11 +328,11 @@ async function testConnection() {
   testing.value = true
   message.value = ''
   try {
-    await $client.post('/settings/storage/test/', { ...form })
-    showMessage(t('storageSettings.testSucceeded'))
+    await $client.post(`${props.endpointBase}test/`, { ...form })
+    showMessage(tr('testSucceeded'))
   } catch (error) {
     showMessage(
-      error?.response?.data?.error || t('storageSettings.testFailed'),
+      error?.response?.data?.error || tr('testFailed'),
       'error'
     )
   } finally {

@@ -1,8 +1,11 @@
 import json
+import logging
 import os
+import re
 import shutil
 import subprocess
 import tarfile
+import tempfile
 import time
 from dataclasses import dataclass
 from datetime import datetime, timedelta
@@ -11,7 +14,17 @@ from typing import Optional
 from django.conf import settings
 from django.db import connections
 
+from baserow.core.storage_config import (
+    build_s3_client,
+    load_backup_storage_config,
+    load_storage_config,
+)
+
+logger = logging.getLogger(__name__)
+
 DEFAULT_BACKUP_ROOT = "/baserow/backups/sometable"
+REMOTE_PREFIX = "sometable-backups"
+BACKUP_ID_PATTERN = re.compile(r"^\d{8}-\d{6}$")
 
 SCOPE_ALL = "all"
 SCOPE_DATABASE = "database"
@@ -78,49 +91,95 @@ def backup_media(dest: str) -> int:
     return os.path.getsize(target)
 
 
-def _object_storage_client():
-    import boto3
-    from botocore.client import Config
-
-    return boto3.client(
-        "s3",
-        endpoint_url=settings.AWS_S3_ENDPOINT_URL or None,
-        region_name=settings.AWS_S3_REGION_NAME or None,
-        aws_access_key_id=settings.AWS_ACCESS_KEY_ID or None,
-        aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY or None,
-        config=Config(
-            signature_version="s3v4",
-            s3={"addressing_style": settings.AWS_S3_ADDRESSING_STYLE or "auto"},
-        ),
-    )
+def _object_storage_config():
+    config, _ = load_storage_config()
+    return config if config.get("type") == "s3" else None
 
 
 def object_storage_enabled() -> bool:
-    return bool(getattr(settings, "AWS_STORAGE_BUCKET_NAME", ""))
+    """Media object storage, as configured in the admin UI or the environment."""
+
+    return _object_storage_config() is not None
 
 
 def backup_object_storage(dest: str) -> tuple[int, int]:
-    if not object_storage_enabled():
+    config = _object_storage_config()
+    if config is None:
         return 0, 0
-    s3 = _object_storage_client()
-    prefix = (settings.AWS_LOCATION or "").strip("/")
+    s3 = build_s3_client(config)
+    bucket = config["bucket_name"]
+    prefix = (config.get("location") or "").strip("/")
     storage_dir = os.path.join(dest, "object-storage")
     os.makedirs(storage_dir, exist_ok=True)
     count = 0
     total = 0
-    paginator = s3.get_paginator("paginate")
-    for page in paginator.paginate(
-        Bucket=settings.AWS_STORAGE_BUCKET_NAME, Prefix=prefix
-    ):
+    paginator = s3.get_paginator("list_objects_v2")
+    for page in paginator.paginate(Bucket=bucket, Prefix=prefix):
         for obj in page.get("Contents", []):
             key = obj["Key"]
-            rel = key[len(prefix) :].lstrip("/") if prefix else key
+            rel = key[len(prefix):].lstrip("/") if prefix else key
+            if not rel:
+                continue
             target = os.path.join(storage_dir, rel)
             os.makedirs(os.path.dirname(target), exist_ok=True)
-            s3.download_file(settings.AWS_STORAGE_BUCKET_NAME, key, target)
+            s3.download_file(bucket, key, target)
             count += 1
             total += os.path.getsize(target)
     return count, total
+
+
+def remote_backup_config():
+    """Returns the S3 config for backup archives, or None for local-only."""
+
+    config, _ = load_backup_storage_config()
+    return config if config.get("type") == "s3" else None
+
+
+def remote_key_prefix(config: dict) -> str:
+    location = (config.get("location") or "").strip("/")
+    return f"{location}/{REMOTE_PREFIX}" if location else REMOTE_PREFIX
+
+
+def remote_key(config: dict, stamp: str) -> str:
+    return f"{remote_key_prefix(config)}/{stamp}.tar.gz"
+
+
+def _write_manifest(path: str, manifest: dict) -> None:
+    with open(path, "w") as f:
+        json.dump(manifest, f, ensure_ascii=False, indent=2)
+
+
+def upload_backup_to_remote(stamp: str, dest: str, manifest: dict) -> None:
+    """Uploads the finished backup directory as one archive.
+
+    A remote failure is logged but never makes the local backup fail.
+    """
+
+    config = remote_backup_config()
+    if config is None:
+        return
+
+    fd, archive = tempfile.mkstemp(suffix=".tar.gz")
+    os.close(fd)
+    try:
+        with tarfile.open(archive, "w:gz") as tar:
+            tar.add(dest, arcname=stamp)
+        key = remote_key(config, stamp)
+        build_s3_client(config).upload_file(archive, config["bucket_name"], key)
+        manifest["remote"] = {
+            "bucket": config["bucket_name"],
+            "key": key,
+            "bytes": os.path.getsize(archive),
+            "uploaded_at": datetime.now().isoformat(),
+        }
+        _write_manifest(os.path.join(dest, "manifest.json"), manifest)
+    except Exception:  # noqa: BLE001 - remote storage must not break local backup
+        logger.exception('Failed to upload backup %s to remote storage', stamp)
+        manifest["remote_error"] = 'Upload failed; see backend logs.'
+        _write_manifest(os.path.join(dest, "manifest.json"), manifest)
+    finally:
+        if os.path.exists(archive):
+            os.unlink(archive)
 
 
 def run_backup(scope: str = SCOPE_ALL, keep: Optional[int] = None) -> dict:
@@ -147,15 +206,17 @@ def run_backup(scope: str = SCOPE_ALL, keep: Optional[int] = None) -> dict:
     if scope in (SCOPE_ALL, SCOPE_OBJECT_STORAGE):
         count, size = backup_object_storage(dest)
         manifest["object_storage"] = {"count": count, "bytes": size}
-    with open(os.path.join(dest, "manifest.json"), "w") as f:
-        json.dump(manifest, f, ensure_ascii=False, indent=2)
+    _write_manifest(os.path.join(dest, "manifest.json"), manifest)
+
+    upload_backup_to_remote(stamp, dest, manifest)
+
     if keep is None:
         keep = get_config().keep
     apply_retention(keep)
     return manifest
 
 
-def list_backups() -> list[dict]:
+def _local_backups() -> list[dict]:
     root = get_backup_root()
     items = []
     for name in sorted(os.listdir(root), reverse=True):
@@ -169,16 +230,95 @@ def list_backups() -> list[dict]:
         except (OSError, json.JSONDecodeError):
             continue
         manifest["id"] = name
-        manifest["path"] = path
+        manifest["local"] = True
+        manifest["_path"] = path
         items.append(manifest)
     return items
+
+
+def list_backups() -> list[dict]:
+    """Returns local backups only, without exposing server-side paths."""
+
+    return [
+        {k: v for k, v in item.items() if k != "_path"}
+        for item in _local_backups()
+    ]
+
+
+def list_remote_backups() -> list[dict]:
+    config = remote_backup_config()
+    if config is None:
+        return []
+    items = []
+    try:
+        client = build_s3_client(config)
+        paginator = client.get_paginator("list_objects_v2")
+        for page in paginator.paginate(
+            Bucket=config["bucket_name"], Prefix=remote_key_prefix(config) + "/"
+        ):
+            for obj in page.get("Contents", []):
+                key = obj["Key"]
+                stamp = os.path.basename(key).removesuffix(".tar.gz")
+                if not BACKUP_ID_PATTERN.fullmatch(stamp):
+                    continue
+                items.append(
+                    {
+                        "id": stamp,
+                        "created_at": datetime.strptime(
+                            stamp, "%Y%m%d-%H%M%S"
+                        ).isoformat(),
+                        "scope": None,
+                        "database": None,
+                        "media": None,
+                        "object_storage": None,
+                        "local": False,
+                        "remote": {
+                            "bucket": config["bucket_name"],
+                            "key": key,
+                            "bytes": obj.get("Size", 0),
+                        },
+                    }
+                )
+    except Exception:  # noqa: BLE001 - listing must not break the backup page
+        logger.exception('Failed to list remote backups')
+    return sorted(items, key=lambda item: item["id"], reverse=True)
+
+
+def list_all_backups() -> list[dict]:
+    """Merges local and remote backups, preferring the richer local manifest."""
+
+    local = list_backups()
+    local_ids = {item["id"] for item in local}
+    return local + [
+        item for item in list_remote_backups() if item["id"] not in local_ids
+    ]
 
 
 def apply_retention(keep: int) -> None:
     if keep <= 0:
         return
-    for item in list_backups()[keep:]:
-        shutil.rmtree(item["path"], ignore_errors=True)
+    for item in _local_backups()[keep:]:
+        shutil.rmtree(item["_path"], ignore_errors=True)
+
+    config = remote_backup_config()
+    if config is None:
+        return
+    try:
+        client = build_s3_client(config)
+        paginator = client.get_paginator("list_objects_v2")
+        keys = []
+        for page in paginator.paginate(
+            Bucket=config["bucket_name"], Prefix=remote_key_prefix(config) + "/"
+        ):
+            for obj in page.get("Contents", []):
+                key = obj["Key"]
+                stamp = os.path.basename(key).removesuffix(".tar.gz")
+                if BACKUP_ID_PATTERN.fullmatch(stamp):
+                    keys.append(key)
+        for key in sorted(keys, reverse=True)[keep:]:
+            client.delete_object(Bucket=config["bucket_name"], Key=key)
+    except Exception:  # noqa: BLE001 - retention must not break local backup
+        logger.exception('Failed to apply remote backup retention')
 
 
 def is_due(config: BackupConfig, now: Optional[datetime] = None) -> bool:
@@ -187,7 +327,7 @@ def is_due(config: BackupConfig, now: Optional[datetime] = None) -> bool:
     if config.frequency == "disabled":
         return False
     now = now or datetime.now()
-    backups = list_backups()
+    backups = list_all_backups()
     last = None
     if backups:
         try:
@@ -235,11 +375,36 @@ def get_config() -> BackupConfig:
     )
 
 
+def _download_remote_backup(backup_id: str) -> None:
+    config = remote_backup_config()
+    if config is None:
+        raise FileNotFoundError(backup_id)
+    fd, archive = tempfile.mkstemp(suffix=".tar.gz")
+    os.close(fd)
+    try:
+        build_s3_client(config).download_file(
+            config["bucket_name"], remote_key(config, backup_id), archive
+        )
+        with tarfile.open(archive) as tar:
+            tar.extractall(path=get_backup_root(), filter="data")
+    except Exception:
+        logger.exception('Failed to download backup %s from remote', backup_id)
+        raise FileNotFoundError(backup_id) from None
+    finally:
+        if os.path.exists(archive):
+            os.unlink(archive)
+
+
 def restore_backup(backup_id: str) -> None:
     """从备份目录恢复数据库与对象存储/媒体。"""
 
+    if not BACKUP_ID_PATTERN.fullmatch(backup_id):
+        raise FileNotFoundError(backup_id)
+
     path = os.path.join(get_backup_root(), backup_id)
     manifest_path = os.path.join(path, "manifest.json")
+    if not os.path.exists(manifest_path):
+        _download_remote_backup(backup_id)
     if not os.path.exists(manifest_path):
         raise FileNotFoundError(backup_id)
     with open(manifest_path) as f:
@@ -274,9 +439,11 @@ def restore_backup(backup_id: str) -> None:
         with tarfile.open(os.path.join(path, manifest["media"]["file"])) as tar:
             tar.extractall(path=os.path.dirname(media_root), filter="data")
 
-    if manifest.get("object_storage") and object_storage_enabled():
-        s3 = _object_storage_client()
-        prefix = (settings.AWS_LOCATION or "").strip("/")
+    config = _object_storage_config()
+    if manifest.get("object_storage") and config is not None:
+        s3 = build_s3_client(config)
+        bucket = config["bucket_name"]
+        prefix = (config.get("location") or "").strip("/")
         storage_dir = os.path.join(path, "object-storage")
         for root, _, files in os.walk(storage_dir):
             for name in files:
@@ -285,7 +452,7 @@ def restore_backup(backup_id: str) -> None:
                 key = f"{prefix}/{rel}" if prefix else rel
                 s3.upload_file(
                     full,
-                    settings.AWS_STORAGE_BUCKET_NAME,
+                    bucket,
                     key,
                     ExtraArgs={"CacheControl": "max-age=86400"},
                 )

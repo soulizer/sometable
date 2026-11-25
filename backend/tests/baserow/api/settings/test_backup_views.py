@@ -31,7 +31,7 @@ def test_backup_settings_list_and_queue(api_client, data_fixture):
     assert response.status_code == HTTP_200_OK
     assert response.json() == []
 
-    with patch("baserow.api.settings.backup_views.run_backup_now") as mock_task:
+    with patch("baserow.core.backup_tasks.run_backup_now") as mock_task:
         response = api_client.post(
             reverse("api:settings:backups"),
             {"scope": "database"},

@@ -840,7 +840,7 @@
     "saved": "Backup settings saved",
     "saveError": "Could not save backup settings",
     "listTitle": "Backups",
-    "listDescription": "Backups are stored on the server in /www/backups/sometable/. Restoring overwrites current data.",
+    "listDescription": "Backups are always kept locally in /www/backups/sometable/ and are also uploaded to object storage when remote backup storage is configured. Restoring overwrites current data.",
     "runNow": "Back up now",
     "runOk": "Backup completed",
     "runError": "Backup failed",
@@ -861,6 +861,9 @@
     "restoreError": "Restore failed",
     "empty": "No backups yet",
     "days": "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday",
-    "runQueued": "Backup queued. It will appear in the list when ready."
+    "runQueued": "Backup queued. It will appear in the list when ready.",
+    "tableRemote": "Remote",
+    "remoteYes": "Yes",
+    "remoteNo": "Local only"
   }
 }

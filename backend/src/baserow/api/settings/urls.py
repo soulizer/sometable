@@ -1,5 +1,6 @@
 from django.urls import re_path
 
+from .backup_storage_views import BackupStorageSettingsView, BackupStorageTestView
 from .backup_views import BackupRestoreView, BackupSettingsView
 from .storage_views import StorageSettingsTestView, StorageSettingsView
 from .views import SettingsView, UpdateSettingsView
@@ -19,6 +20,16 @@ urlpatterns = [
         r"^backups/restore/$",
         BackupRestoreView.as_view(),
         name="backups_restore",
+    ),
+    re_path(
+        r"^backup-storage/$",
+        BackupStorageSettingsView.as_view(),
+        name="backup_storage",
+    ),
+    re_path(
+        r"^backup-storage/test/$",
+        BackupStorageTestView.as_view(),
+        name="backup_storage_test",
     ),
     re_path(r"^$", SettingsView.as_view(), name="get"),
 ]

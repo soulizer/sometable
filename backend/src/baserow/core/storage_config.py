@@ -11,6 +11,7 @@ from django.utils.module_loading import import_string
 # Where the admin-managed storage settings are persisted. The file lives on a
 # dedicated Docker volume so it is independent of the configured storage backend.
 DEFAULT_STORAGE_SETTINGS_FILE = "/baserow/config/storage.json"
+DEFAULT_BACKUP_STORAGE_SETTINGS_FILE = "/baserow/config/backup-storage.json"
 
 _lock = threading.Lock()
 
@@ -22,6 +23,16 @@ class InvalidStorageConfig(Exception):
 def get_settings_file() -> str:
     return getattr(
         settings, "STORAGE_SETTINGS_FILE", DEFAULT_STORAGE_SETTINGS_FILE
+    )
+
+
+def get_backup_storage_settings_file() -> str:
+    """Backup storage has its own credentials and bucket, independent of media."""
+
+    return getattr(
+        settings,
+        "BACKUP_STORAGE_SETTINGS_FILE",
+        DEFAULT_BACKUP_STORAGE_SETTINGS_FILE,
     )
 
 
@@ -52,6 +63,24 @@ def _env_config() -> dict[str, Any]:
     }
 
 
+def _load_config(path: str, env_config: dict[str, Any]) -> tuple[dict[str, Any], str]:
+    try:
+        with open(path) as f:
+            data = json.load(f)
+        if isinstance(data, dict) and data.get("type") in {"local", "s3"}:
+            if data.get("type") == "local":
+                return {"type": "local"}, "file"
+            # Secrets are never returned to the API, but they are needed to
+            # build the storage backend.
+            merged = dict(env_config)
+            merged.update(data)
+            return merged, "file"
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        pass
+
+    return env_config, ("env" if env_config["type"] == "s3" else "default")
+
+
 def load_storage_config() -> tuple[dict[str, Any], str]:
     """
     Loads the effective storage configuration.
@@ -61,23 +90,15 @@ def load_storage_config() -> tuple[dict[str, Any], str]:
         environment variables) or `default` (local file system).
     """
 
-    path = get_settings_file()
-    try:
-        with open(path) as f:
-            data = json.load(f)
-        if isinstance(data, dict) and data.get("type") in {"local", "s3"}:
-            if data.get("type") == "local":
-                return {"type": "local"}, "file"
-            # Secrets are never returned to the API, but they are needed to
-            # build the storage backend.
-            merged = _env_config()
-            merged.update(data)
-            return merged, "file"
-    except (FileNotFoundError, json.JSONDecodeError, OSError):
-        pass
+    return _load_config(get_settings_file(), _env_config())
 
-    config = _env_config()
-    return config, ("env" if config["type"] == "s3" else "default")
+
+def load_backup_storage_config() -> tuple[dict[str, Any], str]:
+    """Loads the optional remote storage used to upload backup archives."""
+
+    return _load_config(
+        get_backup_storage_settings_file(), {"type": "local"}
+    )
 
 
 def validate_storage_config(config: dict[str, Any]) -> dict[str, Any]:
@@ -132,14 +153,16 @@ def validate_storage_config(config: dict[str, Any]) -> dict[str, Any]:
     return cleaned
 
 
-def save_storage_config(config: dict[str, Any]) -> dict[str, Any]:
+def save_storage_config(
+    config: dict[str, Any], path: str | None = None
+) -> dict[str, Any]:
     """
     Persists the storage configuration atomically. The secret is stored in the
     file with restrictive permissions and is never exposed through the API.
     """
 
     cleaned = validate_storage_config(config)
-    path = get_settings_file()
+    path = path or get_settings_file()
     os.makedirs(os.path.dirname(path), exist_ok=True)
 
     with _lock:
@@ -156,6 +179,69 @@ def save_storage_config(config: dict[str, Any]) -> dict[str, Any]:
                 os.unlink(tmp_path)
 
     return cleaned
+
+
+def save_backup_storage_config(config: dict[str, Any]) -> dict[str, Any]:
+    return save_storage_config(config, get_backup_storage_settings_file())
+
+
+def build_s3_client(config: dict[str, Any]):
+    """Low-level boto3 client shared by media and backup storage operations."""
+
+    import boto3
+    from botocore.client import Config
+
+    return boto3.client(
+        "s3",
+        endpoint_url=config.get("endpoint_url") or None,
+        region_name=config.get("region_name") or None,
+        aws_access_key_id=config.get("access_key_id") or None,
+        aws_secret_access_key=config.get("secret_access_key") or None,
+        config=Config(
+            signature_version="s3v4",
+            s3={
+                "addressing_style": config.get("addressing_style") or "path"
+            },
+        ),
+    )
+
+
+def public_config(
+    config: dict[str, Any], source: str, local_path: str | None = None
+) -> dict[str, Any]:
+    """Serializes a configuration without ever returning secrets."""
+
+    return {
+        "type": config.get("type", "local"),
+        "source": source,
+        "bucket_name": config.get("bucket_name", ""),
+        "endpoint_url": config.get("endpoint_url", ""),
+        "region_name": config.get("region_name", ""),
+        "location": config.get("location", ""),
+        "custom_domain": config.get("custom_domain", ""),
+        "addressing_style": config.get("addressing_style", "path"),
+        "querystring_auth": bool(config.get("querystring_auth", True)),
+        "has_credentials": bool(
+            config.get("access_key_id") and config.get("secret_access_key")
+        ),
+        "local_path": local_path or settings.MEDIA_ROOT,
+    }
+
+
+def merged_config(data: dict[str, Any], loader=load_storage_config):
+    """Keeps stored credentials when the user leaves the secret fields blank."""
+
+    current, _ = loader()
+    merged = dict(data)
+    if merged.get("type") == "s3":
+        if not merged.get("access_key_id"):
+            merged["access_key_id"] = current.get("access_key_id", "")
+        if not merged.get("secret_access_key"):
+            merged["secret_access_key"] = current.get("secret_access_key", "")
+        for key in ("querystring_expire", "default_acl"):
+            if merged.get(key) is None and current.get(key) is not None:
+                merged[key] = current[key]
+    return merged
 
 
 def build_storage(config: dict[str, Any]) -> Storage:
