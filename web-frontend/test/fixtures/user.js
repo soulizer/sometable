@@ -14,6 +14,7 @@ export function aUser({
   isActive = true,
   isStaff = true,
   twoFactorAuth = null,
+  emailVerified = true,
 }) {
   return {
     id,
@@ -25,6 +26,7 @@ export function aUser({
     is_active: isActive,
     is_staff: isStaff,
     two_factor_auth: twoFactorAuth,
+    email_verified: emailVerified,
   }
 }
 
