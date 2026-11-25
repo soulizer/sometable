@@ -4664,7 +4664,7 @@ export class IdCardFieldType extends FieldType {
   }
 
   static getIconClass() {
-    return 'iconoir-fingerprint'
+    return 'iconoir-verified-user'
   }
 
   getName() {
