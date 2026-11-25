@@ -678,3 +678,26 @@ class RowHistorySerializer(serializers.ModelSerializer):
             "after",
             "fields_metadata",
         ]
+
+
+class DeduplicatePreviewSerializer(serializers.Serializer):
+    field_ids = serializers.ListField(
+        child=serializers.IntegerField(),
+        min_length=1,
+        max_length=10,
+    )
+    offset = serializers.IntegerField(required=False, default=0, min_value=0)
+    limit = serializers.IntegerField(required=False, default=50, min_value=1)
+
+
+class DeduplicateRowsSerializer(serializers.Serializer):
+    field_ids = serializers.ListField(
+        child=serializers.IntegerField(),
+        min_length=1,
+        max_length=10,
+    )
+    rule = serializers.ChoiceField(
+        choices=("oldest", "newest", "manual"), default="oldest"
+    )
+    keep_row_ids = serializers.DictField(required=False, default=dict)
+    backup = serializers.BooleanField(required=False, default=False)

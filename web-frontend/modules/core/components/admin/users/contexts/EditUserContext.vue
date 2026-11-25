@@ -42,6 +42,26 @@
             {{ $t('action.activate') }}
           </a>
         </li>
+        <li class="context__menu-item">
+          <a
+            v-if="user.email_verified"
+            class="context__menu-item-link"
+            :class="{ 'context__menu-item-link--loading': loading }"
+            @click.prevent="changeEmailVerified(false)"
+          >
+            <i class="context__menu-item-icon iconoir-cancel"></i>
+            {{ $t('editUserContext.unverifyEmail') }}
+          </a>
+          <a
+            v-else
+            class="context__menu-item-link"
+            :class="{ 'context__menu-item-link--loading': loading }"
+            @click.prevent="changeEmailVerified(true)"
+          >
+            <i class="context__menu-item-icon iconoir-check"></i>
+            {{ $t('editUserContext.verifyEmail') }}
+          </a>
+        </li>
         <li
           v-if="user.id !== userId && !user.is_staff"
           class="context__menu-item"
@@ -161,6 +181,23 @@ export default {
     },
     async deactivate() {
       await this.changeIsActive(false)
+    },
+    async changeEmailVerified(emailVerified) {
+      try {
+        this.loading = true
+        const { data: newUser } = await UserAdminService(this.$client).update(
+          this.user.id,
+          { email_verified: emailVerified }
+        )
+        if (newUser.id === this.userId) {
+          this.$store.dispatch('auth/forceUpdateUserData', { user: newUser })
+        }
+        this.hide()
+        this.$emit('update', newUser)
+      } catch (error) {
+        notifyIf(error, 'settings')
+      }
+      this.loading = false
     },
     impersonate() {
       if (!this.user.is_active) {

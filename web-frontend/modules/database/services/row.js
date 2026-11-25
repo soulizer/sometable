@@ -197,6 +197,18 @@ export default (client) => {
         config
       )
     },
+    deduplicatePreview(tableId, values) {
+      return client.post(
+        `/database/rows/table/${tableId}/deduplicate/preview/`,
+        values
+      )
+    },
+    deduplicate(tableId, values) {
+      return client.post(
+        `/database/rows/table/${tableId}/deduplicate/`,
+        values
+      )
+    },
     getAdjacent({
       tableId,
       rowId,

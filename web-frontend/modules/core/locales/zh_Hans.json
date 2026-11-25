@@ -651,12 +651,16 @@
         "lastLogin": "上次登录",
         "dateJoined": "注册",
         "active": "活跃的",
-        "twoFactorAuth": "两步验证"
+        "twoFactorAuth": "两步验证",
+        "createUser": "新增用户",
+        "emailVerified": "邮箱已验证"
     },
     "editUserContext": {
         "changePassword": "更改密码",
         "delete": "永久删除",
-        "impersonate": "扮演"
+        "impersonate": "扮演",
+        "verifyEmail": "标记邮箱为已验证",
+        "unverifyEmail": "取消邮箱验证"
     },
     "changePasswordForm": {
         "newPassword": "新密码",
@@ -2213,5 +2217,9 @@
         "testFailed": "无法连接对象存储，请检查配置。",
         "bucketRequired": "请填写存储桶名称。",
         "credentialsRequired": "请填写访问密钥 ID 和访问密钥。"
+    },
+    "createUserModal": {
+        "title": "新增用户",
+        "create": "创建用户"
     }
 }

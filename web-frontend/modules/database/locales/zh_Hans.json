@@ -1462,5 +1462,24 @@
     },
     "apiDocs": {
         "batchMode": "批量模式"
+    },
+    "deduplicateRowsModal": {
+        "title": "去除重复行",
+        "description": "选择用于判断重复的字段，预览分组后删除多余的行。",
+        "stepFields": "1. 选择判重字段",
+        "stepPreview": "2. 预览重复分组",
+        "stepRule": "3. 选择保留规则",
+        "preview": "预览重复项",
+        "noDuplicates": "未发现重复行。",
+        "rowCount": "共 {count} 行",
+        "ruleOldest": "保留最早一条",
+        "ruleNewest": "保留最新一条",
+        "ruleManual": "手动指定",
+        "backupBefore": "删除前自动创建数据库备份",
+        "continue": "继续",
+        "warning": "将把 {count} 行移到回收站。清空回收站后无法在此处撤销。",
+        "confirmDelete": "删除 {count} 行重复数据",
+        "doneTitle": "去重完成",
+        "doneMessage": "已删除 {count} 行重复数据。"
     }
 }

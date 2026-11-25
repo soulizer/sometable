@@ -63,7 +63,7 @@ class UsersAdminView(AdminListingView):
     }
 
     def get_queryset(self, request):
-        return User.objects.prefetch_related(
+        return User.objects.select_related("profile").prefetch_related(
             "workspaceuser_set",
             "workspaceuser_set__workspace",
             Prefetch(

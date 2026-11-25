@@ -111,6 +111,7 @@ def test_admin_can_see_admin_users_endpoint(api_client, data_fixture):
                 "is_active": True,
                 "last_login": None,
                 "two_factor_auth": None,
+                "email_verified": False,
             }
         ],
     }
@@ -249,6 +250,7 @@ def test_admin_can_search_users(api_client, data_fixture):
                 "is_active": True,
                 "last_login": None,
                 "two_factor_auth": None,
+                "email_verified": False,
             }
         ],
     }
@@ -291,6 +293,7 @@ def test_admin_can_sort_users(api_client, data_fixture):
                 "is_active": True,
                 "last_login": None,
                 "two_factor_auth": None,
+                "email_verified": False,
             }
         ],
     }
@@ -582,6 +585,7 @@ def test_admin_can_create_user(api_client, data_fixture):
             "is_active": True,
             "last_login": None,
             "two_factor_auth": None,
+            "email_verified": True,
         }
 
     response = api_client.post(
@@ -692,6 +696,7 @@ def test_admin_can_patch_user(api_client, data_fixture):
         "is_active": True,
         "last_login": None,
         "two_factor_auth": None,
+        "email_verified": False,
     }
 
 
@@ -726,6 +731,7 @@ def test_admin_can_patch_user_without_providing_password(api_client, data_fixtur
         "is_active": True,
         "last_login": None,
         "two_factor_auth": None,
+        "email_verified": False,
     }
 
 
@@ -1325,3 +1331,52 @@ def test_admin_impersonate_tokens_are_marked_and_stay_marked_after_refresh(
     # The user's own tokens carry no such claim.
     own = str(RefreshToken.for_user(user_to_impersonate).access_token)
     assert IMPERSONATED_BY_CLAIM not in AccessToken(own)
+
+
+@pytest.mark.django_db
+def test_admin_can_set_email_verified_when_creating(api_client, data_fixture):
+    _, token = data_fixture.create_user_and_token(is_staff=True)
+    response = api_client.post(
+        reverse("api:admin:users:list"),
+        {
+            "username": "verified@test.nl",
+            "password": "Test1234",
+            "name": "Verified",
+            "email_verified": True,
+        },
+        format="json",
+        HTTP_AUTHORIZATION=f"JWT {token}",
+    )
+    assert response.status_code == HTTP_200_OK
+    assert response.json()["email_verified"] is True
+    from django.contrib.auth import get_user_model
+
+    user = get_user_model().objects.get(username="verified@test.nl")
+    assert user.profile.email_verified is True
+
+
+@pytest.mark.django_db
+def test_admin_can_change_own_email_verification(api_client, data_fixture):
+    user, token = data_fixture.create_user_and_token(is_staff=True)
+    assert user.profile.email_verified is False
+
+    response = api_client.patch(
+        reverse("api:admin:users:edit", kwargs={"user_id": user.id}),
+        {"email_verified": True},
+        format="json",
+        HTTP_AUTHORIZATION=f"JWT {token}",
+    )
+    assert response.status_code == HTTP_200_OK
+    assert response.json()["email_verified"] is True
+    user.profile.refresh_from_db()
+    assert user.profile.email_verified is True
+
+    response = api_client.patch(
+        reverse("api:admin:users:edit", kwargs={"user_id": user.id}),
+        {"email_verified": False},
+        format="json",
+        HTTP_AUTHORIZATION=f"JWT {token}",
+    )
+    assert response.status_code == HTTP_200_OK
+    user.profile.refresh_from_db()
+    assert user.profile.email_verified is False

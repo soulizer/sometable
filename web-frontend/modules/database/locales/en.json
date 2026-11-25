@@ -1406,5 +1406,24 @@
     },
     "apiDocs": {
         "batchMode": "batch mode"
+    },
+    "deduplicateRowsModal": {
+        "title": "Deduplicate rows",
+        "description": "Select the fields that identify a duplicate, preview the groups, then remove the extra rows.",
+        "stepFields": "1. Choose key fields",
+        "stepPreview": "2. Preview duplicate groups",
+        "stepRule": "3. Choose which row to keep",
+        "preview": "Preview duplicates",
+        "noDuplicates": "No duplicates found.",
+        "rowCount": "{count} rows",
+        "ruleOldest": "Keep the oldest row",
+        "ruleNewest": "Keep the newest row",
+        "ruleManual": "Choose manually",
+        "backupBefore": "Create a database backup before deleting",
+        "continue": "Continue",
+        "warning": "This will move {count} rows to the trash. This cannot be undone from here once the trash is emptied.",
+        "confirmDelete": "Delete {count} duplicate rows",
+        "doneTitle": "Deduplication complete",
+        "doneMessage": "{count} duplicate rows were removed."
     }
 }

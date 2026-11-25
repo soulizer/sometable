@@ -69,6 +69,9 @@ class UserAdminResponseSerializer(ModelSerializer):
     username = EmailField()
     workspaces = UserAdminWorkspacesSerializer(source="workspaceuser_set", many=True)
     two_factor_auth = serializers.SerializerMethodField()
+    email_verified = serializers.BooleanField(
+        source="profile.email_verified", read_only=True
+    )
 
     class Meta:
         model = User
@@ -82,6 +85,7 @@ class UserAdminResponseSerializer(ModelSerializer):
             "is_active",
             "is_staff",
             "two_factor_auth",
+            "email_verified",
         )
         extra_kwargs = _USER_ADMIN_SERIALIZER_API_DOC_KWARGS
 
@@ -115,10 +119,18 @@ class UserAdminCreateSerializer(
     )
     username = EmailField(required=True)
     password = CharField(validators=[password_validation], required=True)
+    email_verified = serializers.BooleanField(required=False, default=True)
 
     class Meta:
         model = User
-        fields = ("username", "name", "is_active", "is_staff", "password")
+        fields = (
+            "username",
+            "name",
+            "is_active",
+            "is_staff",
+            "password",
+            "email_verified",
+        )
         extra_kwargs = {
             **_USER_ADMIN_SERIALIZER_API_DOC_KWARGS,
         }
@@ -141,10 +153,18 @@ class UserAdminUpdateSerializer(
     )
     username = EmailField(required=False)
     password = CharField(validators=[password_validation], required=False)
+    email_verified = serializers.BooleanField(required=False)
 
     class Meta:
         model = User
-        fields = ("username", "name", "is_active", "is_staff", "password")
+        fields = (
+            "username",
+            "name",
+            "is_active",
+            "is_staff",
+            "password",
+            "email_verified",
+        )
         extra_kwargs = {
             **_USER_ADMIN_SERIALIZER_API_DOC_KWARGS,
         }

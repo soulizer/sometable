@@ -2,6 +2,9 @@ import baseService from '@baserow/modules/core/crudTable/baseService'
 
 export default (client) => {
   return Object.assign(baseService(client, '/admin/users/'), {
+    create(values) {
+      return client.post('/admin/users/', values)
+    },
     update(userId, values) {
       return client.patch(`/admin/users/${userId}/`, values)
     },

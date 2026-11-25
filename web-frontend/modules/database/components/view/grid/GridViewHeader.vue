@@ -1,5 +1,16 @@
 <template>
   <ul class="header__filter header__filter--full-width">
+    <li v-if="canDeduplicate" class="header__filter-item">
+      <a class="header__filter-link" @click="$refs.deduplicateModal?.show()">
+        <i class="header__filter-icon iconoir-filter-alt"></i>
+        {{ $t('deduplicateRowsModal.title') }}
+      </a>
+      <DeduplicateRowsModal
+        ref="deduplicateModal"
+        :fields="fields"
+        @deduplicated="onDeduplicated"
+      ></DeduplicateRowsModal>
+    </li>
     <li class="header__filter-item">
       <GridViewHide
         :database="database"
@@ -50,6 +61,7 @@
 </template>
 
 <script>
+import DeduplicateRowsModal from '@baserow/modules/database/components/view/grid/DeduplicateRowsModal'
 import GridViewRowHeight from '@baserow/modules/database/components/view/grid/GridViewRowHeight'
 import GridViewHide from '@baserow/modules/database/components/view/grid/GridViewHide'
 import PresenceBar from '@baserow/modules/core/components/presence/PresenceBar'
@@ -62,6 +74,7 @@ import {
 export default {
   name: 'GridViewHeader',
   components: {
+    DeduplicateRowsModal,
     GridViewRowHeight,
     GridViewHide,
     PresenceBar,
@@ -109,6 +122,31 @@ export default {
     },
     fieldsAllowedToBeHidden() {
       return this.fields.filter((field) => !field.primary)
+    },
+    canDeduplicate() {
+      if (this.readOnly || !this.database || !this.database.workspace) {
+        return false
+      }
+      const table = this.$store.state.table.selected
+      if (!table || table.data_sync) return false
+      return this.$hasPermission(
+        'database.table.delete_row',
+        table,
+        this.database.workspace.id
+      )
+    },
+  },
+  methods: {
+    onDeduplicated(result) {
+      this.$emit('refresh')
+      if (result?.deleted_count) {
+        this.$store.dispatch('toast/success', {
+          title: this.$t('deduplicateRowsModal.doneTitle'),
+          message: this.$t('deduplicateRowsModal.doneMessage', {
+            count: result.deleted_count,
+          }),
+        })
+      }
     },
   },
 }

@@ -42,3 +42,19 @@ ERROR_LINKED_ROWS_NOT_VISIBLE_IN_VIEW = (
     HTTP_401_UNAUTHORIZED,
     "Some of the linked rows don't exist or aren't visible in the view.",
 )
+
+ERROR_INVALID_DEDUPE_FIELDS = (
+    "ERROR_INVALID_DEDUPE_FIELDS",
+    HTTP_400_BAD_REQUEST,
+    "The selected fields cannot be used as deduplication keys.",
+)
+ERROR_INVALID_DEDUPE_RULE = (
+    "ERROR_INVALID_DEDUPE_RULE",
+    HTTP_400_BAD_REQUEST,
+    "Unknown deduplication rule.",
+)
+ERROR_DEDUPE_MANUAL_KEEP_MISSING = (
+    "ERROR_DEDUPE_MANUAL_KEEP_MISSING",
+    HTTP_400_BAD_REQUEST,
+    "Each duplicate group must have a manually selected row to keep.",
+)

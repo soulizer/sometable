@@ -48,6 +48,9 @@ from baserow.contrib.database.api.fields.errors import (
 from baserow.contrib.database.api.rows.errors import (
     ERROR_CANNOT_CREATE_ROWS_IN_TABLE,
     ERROR_CANNOT_DELETE_ROWS_IN_TABLE,
+    ERROR_DEDUPE_MANUAL_KEEP_MISSING,
+    ERROR_INVALID_DEDUPE_FIELDS,
+    ERROR_INVALID_DEDUPE_RULE,
     ERROR_INVALID_JOIN_PARAMETER,
     ERROR_ROW_DOES_NOT_EXIST,
     ERROR_ROW_IDS_NOT_UNIQUE,
@@ -57,6 +60,8 @@ from baserow.contrib.database.api.rows.exceptions import (
     row_values_validation_error,
 )
 from baserow.contrib.database.api.rows.serializers import (
+    DeduplicatePreviewSerializer,
+    DeduplicateRowsSerializer,
     GetRowAdjacentSerializer,
     GetRowQueryParamsSerializer,
 )
@@ -91,6 +96,15 @@ from baserow.contrib.database.fields.exceptions import (
     OrderByFieldNotPossible,
 )
 from baserow.contrib.database.fields.models import Field
+from baserow.contrib.database.rows.deduplication import (
+    InvalidDedupeFields,
+    InvalidDedupeRule,
+    ManualKeepMissing,
+    delete_duplicate_rows,
+    get_duplicate_groups,
+    plan_deletions,
+    serialize_groups,
+)
 from baserow.contrib.database.rows.actions import (
     CreateRowActionType,
     CreateRowsActionType,
@@ -136,6 +150,7 @@ from baserow.contrib.database.views.operations import (
     ReadAdjacentViewRowOperationType,
 )
 from baserow.core.action.registries import action_type_registry
+from baserow.core.backup import run_backup
 from baserow.core.db import atomic_with_retry_on_deadlock
 from baserow.core.exceptions import DeadlockException, UserNotInWorkspace
 from baserow.core.handler import CoreHandler
@@ -2071,4 +2086,90 @@ class RowHistoryView(APIView):
 
         return paginator.get_paginated_response(
             RowHistorySerializer(page, many=True).data
+        )
+
+
+class RowDeduplicatePreviewView(APIView):
+    authentication_classes = APIView.authentication_classes + [TokenAuthentication]
+    permission_classes = (IsAuthenticated,)
+
+    @extend_schema(
+        tags=["Database table rows"],
+        operation_id="preview_deduplicate_database_table_rows",
+        request=DeduplicatePreviewSerializer,
+        description="Previews duplicate groups for the provided key fields.",
+    )
+    @validate_body(DeduplicatePreviewSerializer)
+    @map_exceptions(
+        {
+            UserNotInWorkspace: ERROR_USER_NOT_IN_GROUP,
+            InvalidDedupeFields: ERROR_INVALID_DEDUPE_FIELDS,
+        }
+    )
+    def post(self, request, table_id, data):
+        table = TableHandler().get_table(table_id)
+        TokenHandler().check_table_permissions(request, "read", table, False)
+
+        groups, total = get_duplicate_groups(
+            table,
+            data["field_ids"],
+            limit=data.get("limit", 50),
+            offset=data.get("offset", 0),
+        )
+        return Response(
+            {
+                "groups": serialize_groups(groups, data["field_ids"]),
+                "total_groups": total,
+            }
+        )
+
+
+class RowDeduplicateView(APIView):
+    authentication_classes = APIView.authentication_classes + [TokenAuthentication]
+    permission_classes = (IsAuthenticated,)
+
+    @extend_schema(
+        tags=["Database table rows"],
+        operation_id="deduplicate_database_table_rows",
+        request=DeduplicateRowsSerializer,
+        description="Deletes duplicate rows, keeping one row per group.",
+    )
+    @validate_body(DeduplicateRowsSerializer)
+    @map_exceptions(
+        {
+            UserNotInWorkspace: ERROR_USER_NOT_IN_GROUP,
+            InvalidDedupeFields: ERROR_INVALID_DEDUPE_FIELDS,
+            InvalidDedupeRule: ERROR_INVALID_DEDUPE_RULE,
+            ManualKeepMissing: ERROR_DEDUPE_MANUAL_KEEP_MISSING,
+            CannotDeleteAlreadyDeletedItem: ERROR_CANNOT_DELETE_ALREADY_DELETED_ITEM,
+        }
+    )
+    @atomic_with_retry_on_deadlock()
+    def post(self, request, table_id, data):
+        table = TableHandler().get_table(table_id)
+        TokenHandler().check_table_permissions(request, "delete", table, False)
+
+        backup_created = False
+        if data.get("backup"):
+            # A full database backup is taken before any row is removed so the
+            # operation can be undone even after the trash is emptied.
+            run_backup(scope="database")
+            backup_created = True
+
+        to_delete, total_groups = plan_deletions(
+            table,
+            data["field_ids"],
+            data["rule"],
+            data.get("keep_row_ids"),
+        )
+        deleted_count = delete_duplicate_rows(
+            request.user, table, to_delete
+        )
+
+        return Response(
+            {
+                "deleted_count": deleted_count,
+                "total_groups": total_groups,
+                "backup_created": backup_created,
+            }
         )

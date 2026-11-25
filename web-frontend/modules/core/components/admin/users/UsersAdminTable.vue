@@ -1,24 +1,41 @@
 <template>
-  <CrudTable
-    :columns="columns"
-    :service="service"
-    row-id-key="id"
-    :default-search="defaultSearch"
-    @row-context="onRowContext"
-  >
-    <template #title>
-      {{ $t('usersAdminTable.allUsers') }}
-    </template>
-    <template #menus="slotProps">
+  <div>
+    <CrudTable
+      ref="crudTable"
+      :columns="columns"
+      :service="service"
+      row-id-key="id"
+      :default-search="defaultSearch"
+      @row-context="onRowContext"
+    >
+      <template #title>
+        {{ $t('usersAdminTable.allUsers') }}
+      </template>
+      <template #primary-action>
+        <Button
+          type="primary"
+          size="large"
+          icon="iconoir-plus"
+          @click="$refs.createUserModal?.show()"
+        >
+          {{ $t('usersAdminTable.createUser') }}
+        </Button>
+      </template>
+      <template #menus="slotProps">
       <EditUserContext
         ref="editUserContext"
         :user="editUser"
         @delete-user="slotProps.deleteRow"
         @update="slotProps.updateRow"
       >
-      </EditUserContext>
-    </template>
-  </CrudTable>
+        </EditUserContext>
+      </template>
+    </CrudTable>
+    <CreateUserModal
+      ref="createUserModal"
+      @created="onUserCreated"
+    ></CreateUserModal>
+  </div>
 </template>
 
 <script>
@@ -32,6 +49,8 @@ import ActiveField from '@baserow/modules/core/components/admin/users/fields/Act
 import TwoFactorAuthField from '@baserow/modules/core/components/crudTable/fields/TwoFactorAuthField'
 import MoreField from '@baserow/modules/core/components/crudTable/fields/MoreField'
 import EditUserContext from '@baserow/modules/core/components/admin/users/contexts/EditUserContext'
+import CreateUserModal from '@baserow/modules/core/components/admin/users/modals/CreateUserModal'
+import BooleanIconField from '@baserow/modules/core/components/crudTable/fields/BooleanIconField'
 import CrudTableColumn from '@baserow/modules/core/crudTable/crudTableColumn'
 
 export default {
@@ -39,6 +58,7 @@ export default {
   components: {
     CrudTable,
     EditUserContext,
+    CreateUserModal,
   },
   data() {
     this.service = UserAdminService(this.$client)
@@ -97,6 +117,18 @@ export default {
           () => this.$t('usersAdminTable.twoFactorAuth'),
           TwoFactorAuthField
         ),
+        new CrudTableColumn(
+          'email_verified',
+          () => this.$t('usersAdminTable.emailVerified'),
+          BooleanIconField,
+          false,
+          false,
+          false,
+          {
+            icon: 'iconoir-check',
+            title: this.$t('usersAdminTable.emailVerified'),
+          }
+        ),
         new CrudTableColumn('more', '', MoreField, false, false, true),
       ]
       for (const plugin of this.membersPagePlugins) {
@@ -110,6 +142,9 @@ export default {
     },
   },
   methods: {
+    onUserCreated() {
+      this.$refs.crudTable?.refresh()
+    },
     onRowContext({ row, event, target }) {
       event.preventDefault()
       if (target === undefined) {

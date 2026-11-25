@@ -1614,7 +1614,9 @@
     "lastLogin": "Last login",
     "dateJoined": "Signed up",
     "active": "Active",
-    "twoFactorAuth": "2FA"
+    "twoFactorAuth": "2FA",
+    "createUser": "Create user",
+    "emailVerified": "Email verified"
   },
   "templatesAdmin": {
     "title": "Templates",
@@ -1680,7 +1682,9 @@
   "editUserContext": {
     "changePassword": "Change password",
     "delete": "Permanently delete",
-    "impersonate": "Impersonate"
+    "impersonate": "Impersonate",
+    "verifyEmail": "Mark email as verified",
+    "unverifyEmail": "Remove email verification"
   },
   "changePasswordForm": {
     "newPassword": "New password",
@@ -2085,5 +2089,9 @@
     "testFailed": "Could not reach the object storage. Check the configuration.",
     "bucketRequired": "Enter a bucket name.",
     "credentialsRequired": "Enter the access key ID and secret access key."
+  },
+  "createUserModal": {
+    "title": "Create user",
+    "create": "Create user"
   }
 }

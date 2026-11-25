@@ -32,6 +32,7 @@ class UserAdminHandler:
         password: str,
         is_active: bool = True,
         is_staff: bool = False,
+        email_verified: bool = True,
     ):
         """
         Creates a new user with the provided values if the requesting user has admin
@@ -55,6 +56,10 @@ class UserAdminHandler:
             is_staff=is_staff,
             is_active=is_active,
         )
+        if email_verified:
+            profile = user.profile
+            profile.email_verified = True
+            profile.save(update_fields=["email_verified"])
 
         return user
 
@@ -67,6 +72,7 @@ class UserAdminHandler:
         password: Optional[str] = None,
         is_active: Optional[bool] = None,
         is_staff: Optional[bool] = None,
+        email_verified: Optional[bool] = None,
     ):
         """
         Updates a specified user with new attribute values. Will raise an exception
@@ -124,6 +130,11 @@ class UserAdminHandler:
             user.username = email
 
         user.save()
+
+        if email_verified is not None:
+            profile = user.profile
+            profile.email_verified = email_verified
+            profile.save(update_fields=["email_verified"])
 
         if password is not None:
             # An admin changing their own password keeps the tab they did it from

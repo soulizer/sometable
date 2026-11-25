@@ -1,0 +1,56 @@
+.deduplicate {
+  &__description {
+    margin-bottom: 16px;
+  }
+
+  &__section {
+    margin-bottom: 20px;
+  }
+
+  &__section-title {
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  &__fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    margin-bottom: 12px;
+  }
+
+  &__field,
+  &__row,
+  &__options label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+
+  &__group {
+    border-bottom: 1px solid $palette-neutral-200;
+    padding: 8px 0;
+  }
+
+  &__group-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  &__group-rows {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__empty {
+    color: $palette-neutral-1000;
+  }
+
+  &__warning {
+    margin-bottom: 16px;
+  }
+}

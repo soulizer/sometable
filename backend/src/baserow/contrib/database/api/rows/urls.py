@@ -8,6 +8,8 @@ from .views import (
     RowMoveView,
     RowNamesView,
     RowsView,
+    RowDeduplicatePreviewView,
+    RowDeduplicateView,
     RowView,
 )
 
@@ -34,6 +36,16 @@ urlpatterns = [
         r"table/(?P<table_id>[0-9]+)/batch-delete/$",
         BatchDeleteRowsView.as_view(),
         name="batch-delete",
+    ),
+    re_path(
+        r"table/(?P<table_id>[0-9]+)/deduplicate/preview/$",
+        RowDeduplicatePreviewView.as_view(),
+        name="deduplicate-preview",
+    ),
+    re_path(
+        r"table/(?P<table_id>[0-9]+)/deduplicate/$",
+        RowDeduplicateView.as_view(),
+        name="deduplicate",
     ),
     re_path(
         r"table/(?P<table_id>[0-9]+)/(?P<row_id>[0-9]+)/move/$",
