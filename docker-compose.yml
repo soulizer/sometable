@@ -500,6 +500,7 @@ services:
     volumes:
       - media:/baserow/media
       - app_config:/baserow/config
+      - /www/backups:/baserow/backups
     networks:
       local:
 
@@ -525,6 +526,7 @@ services:
     volumes:
       - media:/baserow/media
       - app_config:/baserow/config
+      - /www/backups:/baserow/backups
     networks:
       local:
 
@@ -551,6 +553,7 @@ services:
     volumes:
       - media:/baserow/media
       - app_config:/baserow/config
+      - /www/backups:/baserow/backups
     networks:
       local:
 
@@ -642,6 +645,7 @@ services:
     volumes:
       - media:/baserow/media
       - app_config:/baserow/config
+      - /www/backups:/baserow/backups
     networks:
       local:
 

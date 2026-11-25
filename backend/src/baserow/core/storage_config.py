@@ -233,14 +233,26 @@ def merged_config(data: dict[str, Any], loader=load_storage_config):
 
     current, _ = loader()
     merged = dict(data)
+    # Keep settings the caller omitted (e.g. a connection test that only sends
+    # the bucket). An explicit empty string is still respected.
+    for key in (
+        "endpoint_url",
+        "region_name",
+        "location",
+        "custom_domain",
+        "addressing_style",
+        "querystring_auth",
+        "querystring_expire",
+        "default_acl",
+    ):
+        if key not in merged and key in current:
+            merged[key] = current[key]
     if merged.get("type") == "s3":
+        # Empty secret fields mean "keep the stored value", never "clear it".
         if not merged.get("access_key_id"):
             merged["access_key_id"] = current.get("access_key_id", "")
         if not merged.get("secret_access_key"):
             merged["secret_access_key"] = current.get("secret_access_key", "")
-        for key in ("querystring_expire", "default_acl"):
-            if merged.get(key) is None and current.get(key) is not None:
-                merged[key] = current[key]
     return merged
 
 
