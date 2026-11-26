@@ -4,6 +4,18 @@
  */
 export function getDownloadHref(url, filename) {
   const href = new URL(url)
+  // A signed object storage URL covers its query string in the signature.
+  // Adding the `dl` parameter here changes that string and makes S3 reject the
+  // request with SignatureDoesNotMatch. Those storages already respond with an
+  // attachment disposition, so keep the URL untouched.
+  if (
+    href.searchParams.has('X-Amz-Signature') ||
+    href.searchParams.has('X-Amz-Credential') ||
+    href.searchParams.has('Signature') ||
+    href.searchParams.has('AWSAccessKeyId')
+  ) {
+    return href.toString()
+  }
   href.searchParams.set('dl', filename)
   return href.toString()
 }
