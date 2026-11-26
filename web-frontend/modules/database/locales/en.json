@@ -811,6 +811,7 @@
         "rowsDeletedTitle": "Rows deleted",
         "rowsDeletedMessage": "{count} row(s) were moved to the trash.",
         "selectedRows": "{count} selected",
+        "selectAllRows": "Select all loaded rows",
         "clearSelection": "Clear selection"
     },
     "gridViewFieldFile": {

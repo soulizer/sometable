@@ -959,7 +959,10 @@
         "noNotificationTitle": "您没有任何通知",
         "noNotification": "重要更新以及有人提到你时，我们会在此通知你。",
         "newNotificationsAvailable": "有新通知",
-        "refresh": "刷新"
+        "refresh": "刷新",
+        "loadErrorTitle": "无法加载通知",
+        "loadErrorText": "请检查网络连接后重试。",
+        "retry": "重试"
     },
     "clearAllNotificationsConfirmModal": {
         "title": "确认清除所有通知？",

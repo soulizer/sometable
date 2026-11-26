@@ -6680,6 +6680,21 @@ export const actions = {
       })
     }
   },
+  selectAllCheckboxRows({ commit, dispatch, getters }) {
+    const { $config } = this
+    const rows = getters.getAllRows
+    if (rows.length === 0) {
+      return
+    }
+    const limit = Number($config.public.baserowRowPageSizeLimit) || rows.length
+    dispatch('setSelectionType', {
+      selectionType: GRID_VIEW_MULTI_SELECT_CHECKBOX,
+    })
+    commit('CLEAR_CHECKBOX_SELECTED_ROWS')
+    rows.slice(0, limit).forEach((row) => {
+      commit('ADD_CHECKBOX_SELECTED_ROW', row.id)
+    })
+  },
   setSelectionType({ commit, dispatch, getters }, { selectionType }) {
     const { $registry, $client, $i18n, $config } = this
     commit('SET_SELECTION_TYPE', selectionType)

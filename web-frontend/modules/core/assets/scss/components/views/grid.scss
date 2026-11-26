@@ -194,6 +194,18 @@
   overflow: visible;
 }
 
+.grid-view__head-row-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+  padding-left: 16px;
+}
+
+.grid-view__head-checkbox {
+  flex: 0 0 auto;
+}
+
 .grid-view__head-row-identifier {
   @include flex-align-items;
 

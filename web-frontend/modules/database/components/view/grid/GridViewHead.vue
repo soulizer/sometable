@@ -18,18 +18,29 @@
       class="grid-view__column grid-view__column--no-border-right"
       :style="{ width: gridViewRowDetailsWidth + 'px' }"
     >
-      <GridViewRowIdentifierDropdown
-        v-if="
-          !readOnly &&
-          $hasPermission(
-            'database.table.view.update',
-            view,
-            database.workspace.id
-          )
-        "
-        :row-identifier-type-selected="view.row_identifier_type"
-        @change="onChangeIdentifierDropdown"
-      ></GridViewRowIdentifierDropdown>
+      <div class="grid-view__head-row-info">
+        <Checkbox
+          class="grid-view__head-checkbox"
+          :checked="allRowsSelected"
+          :indeterminate="someRowsSelected && !allRowsSelected"
+          :disabled="!rows.length"
+          size="small"
+          :aria-label="$t('gridView.selectAllRows')"
+          @input="toggleAllRows"
+        ></Checkbox>
+        <GridViewRowIdentifierDropdown
+          v-if="
+            !readOnly &&
+            $hasPermission(
+              'database.table.view.update',
+              view,
+              database.workspace.id
+            )
+          "
+          :row-identifier-type-selected="view.row_identifier_type"
+          @change="onChangeIdentifierDropdown"
+        ></GridViewRowIdentifierDropdown>
+      </div>
     </div>
     <GridViewFieldType
       v-for="field in visibleFields"
@@ -90,10 +101,12 @@ import GridViewFieldType from '@baserow/modules/database/components/view/grid/Gr
 import gridViewHelpers from '@baserow/modules/database/mixins/gridViewHelpers'
 import viewHelpers from '@baserow/modules/database/mixins/viewHelpers'
 import GridViewRowIdentifierDropdown from '@baserow/modules/database/components/view/grid/GridViewRowIdentifierDropdown'
+import Checkbox from '@baserow/modules/core/components/Checkbox'
 
 export default {
   name: 'GridViewHead',
   components: {
+    Checkbox,
     GridViewRowIdentifierDropdown,
     GridViewFieldType,
     CreateFieldContext,
@@ -156,7 +169,35 @@ export default {
     },
   },
   emits: ['dragging', 'field-created', 'refresh'],
+  computed: {
+    gridState() {
+      return this.$store.state[this.storePrefix + 'view/grid']
+    },
+    rows() {
+      return this.$store.getters[this.storePrefix + 'view/grid/getAllRows']
+    },
+    selectedRows() {
+      return this.gridState.checkboxSelectedRows
+    },
+    allRowsSelected() {
+      return (
+        this.rows.length > 0 &&
+        this.rows.every((row) => this.selectedRows.includes(row.id))
+      )
+    },
+    someRowsSelected() {
+      return this.rows.some((row) => this.selectedRows.includes(row.id))
+    },
+  },
   methods: {
+    toggleAllRows(value) {
+      const gridStore = this.storePrefix + 'view/grid'
+      if (value) {
+        this.$store.dispatch(`${gridStore}/selectAllCheckboxRows`)
+      } else {
+        this.$store.dispatch(`${gridStore}/clearAndDisableMultiSelect`)
+      }
+    },
     /**
      * After newField is created pressing "insert left" or "insert right" button,
      * we need to move the newField into the correct order position.

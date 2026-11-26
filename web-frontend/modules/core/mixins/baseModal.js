@@ -28,6 +28,7 @@ export default {
       downElement: null,
       isModal: true,
       children: [],
+      previousActiveElement: null,
     }
   },
   props: {
@@ -76,9 +77,13 @@ export default {
      * Show the modal.
      */
     show() {
+      this.previousActiveElement = document.activeElement
       this.open = true
       this.$emit('show')
+      window.removeEventListener('keyup', this.keyup)
       window.addEventListener('keyup', this.keyup)
+      document.removeEventListener('keydown', this.keydown, true)
+      document.addEventListener('keydown', this.keydown, true)
       document.body.classList.add('prevent-scroll')
       const mouseDownEvent = (event) => {
         this.downElement = event.target
@@ -87,6 +92,8 @@ export default {
 
       // store the handler for later removal
       this.mouseDownEvent = mouseDownEvent
+
+      this.$nextTick(() => this.focusFirstElement())
     },
     /**
      * Hide the modal.
@@ -123,9 +130,70 @@ export default {
       }
       document.body.classList.remove('prevent-scroll')
       window.removeEventListener('keyup', this.keyup)
+      document.removeEventListener('keydown', this.keydown, true)
 
       if (emit) {
         this.$emit('hidden')
+      }
+
+      this.$nextTick(() => {
+        const previous = this.previousActiveElement
+        this.previousActiveElement = null
+        if (previous && typeof previous.focus === 'function') {
+          previous.focus()
+        }
+      })
+    },
+    getFocusableElements() {
+      const root = this.$refs.modalEl
+      if (!root) {
+        return []
+      }
+      return [
+        ...root.querySelectorAll(
+          'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        ),
+      ].filter(
+        (element) =>
+          element.getClientRects().length > 0 &&
+          getComputedStyle(element).visibility !== 'hidden'
+      )
+    },
+    focusFirstElement() {
+      if (!this.open || this.children.some((child) => child.open === true)) {
+        return
+      }
+      const root = this.$refs.modalEl
+      if (root && root.contains(document.activeElement)) {
+        return
+      }
+      const focusable = this.getFocusableElements()
+      if (focusable.length > 0) {
+        focusable[0].focus()
+      } else {
+        root?.querySelector('.modal__box')?.focus()
+      }
+    },
+    keydown(event) {
+      if (!this.open || event.key !== 'Tab') {
+        return
+      }
+      if (this.children.some((child) => child.open === true)) {
+        return
+      }
+      const focusable = this.getFocusableElements()
+      if (focusable.length === 0) {
+        event.preventDefault()
+        return
+      }
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first.focus()
       }
     },
     registerChild(child) {

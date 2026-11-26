@@ -188,7 +188,7 @@
       @scroll="scroll($event.pixelY, $event.pixelX)"
     ></GridViewRowDragging>
     <Context ref="rowContext" overflow-scroll max-height-if-outside-viewport>
-      <ul v-show="isMultiSelectActive" class="context__menu">
+      <ul v-show="showMultiSelectContext" class="context__menu">
         <component
           :is="contextItemComponent"
           v-for="(contextItemComponent, index) in getMultiSelectContextItems()"
@@ -245,7 +245,7 @@
         </li>
       </ul>
       <GridRowContextItems
-        v-show="!isMultiSelectActive"
+        v-show="!showMultiSelectContext"
         :row="selectedRow"
         :read-only="readOnly"
         :can-create-row="canCreateRow"
@@ -440,6 +440,7 @@ export default {
     return {
       lastHoveredRow: null,
       selectedRow: null,
+      showMultiSelectContext: false,
       deletingRow: false,
       showHiddenFieldsInRowModal: false,
       // Whether the frozen columns fit in the viewport with enough remaining
@@ -1431,6 +1432,17 @@ export default {
     },
     showRowContext(event, row) {
       this.selectedRow = row
+      const gridStore = this.storePrefix + 'view/grid'
+      const selectionType = this.$store.getters[`${gridStore}/getSelectionType`]
+      const checkboxSelectedRows =
+        this.$store.state[gridStore]?.checkboxSelectedRows || []
+      // Only show the bulk menu when the right clicked row is part of the
+      // checkbox selection. Right clicking another row keeps the single row
+      // actions available instead of hiding them behind an unrelated bulk menu.
+      this.showMultiSelectContext =
+        this.isMultiSelectActive &&
+        (selectionType !== GRID_VIEW_MULTI_SELECT_CHECKBOX ||
+          checkboxSelectedRows.includes(row.id))
       this.$refs.rowContext?.toggleNextToMouse(event)
     },
     /**

@@ -10,6 +10,7 @@ export const state = () => ({
   totalCount: 0,
   currentCount: 0,
   items: [],
+  error: false,
 })
 
 function anyUnreadInOtherWorkspaces(state) {
@@ -90,6 +91,9 @@ export const mutations = {
   SET_LOADED(state, loaded) {
     state.loaded = loaded
   },
+  SET_ERROR(state, error) {
+    state.error = error
+  },
   SET_TOTAL_COUNT(state, totalCount) {
     state.totalCount = totalCount
   },
@@ -159,6 +163,7 @@ export const actions = {
   async fetchAll({ commit, state }, { workspaceId }) {
     const { $registry, $i18n, $client, $config } = this
     commit('SET_LOADED', false)
+    commit('SET_ERROR', false)
     commit('SET_LOADING', true)
     try {
       const { data } = await notificationService($client).fetchAll(
@@ -169,6 +174,7 @@ export const actions = {
       commit('SET_LOADED', true)
     } catch (error) {
       commit('SET', { notifications: [] })
+      commit('SET_ERROR', true)
       throw error
     } finally {
       commit('SET_LOADING', false)
@@ -347,6 +353,9 @@ export const getters = {
   },
   getLoaded(state) {
     return state.loaded
+  },
+  getError(state) {
+    return state.error
   },
   userHasUnread(state) {
     return state.userUnreadCount > 0

@@ -5,6 +5,7 @@
       v-bind="$attrs"
       class="notification-panel"
       :class="{ 'visibility-hidden': !open }"
+      tabindex="-1"
       ph-autocapture="notifications"
     >
       <div class="notification-panel__head">
@@ -28,6 +29,18 @@
         </div>
       </div>
       <div v-if="!loaded && loading" class="loading-absolute-center"></div>
+      <div v-else-if="error" class="notification-panel__empty">
+        <i class="notification-panel__empty-icon iconoir-warning-triangle"></i>
+        <div class="notification-panel__empty-title">
+          {{ $t('notificationPanel.loadErrorTitle') }}
+        </div>
+        <div class="notification-panel__empty-text">
+          {{ $t('notificationPanel.loadErrorText') }}
+        </div>
+        <Button type="secondary" @click="initialLoad">
+          {{ $t('notificationPanel.retry') }}
+        </Button>
+      </div>
       <div v-else-if="totalCount === 0" class="notification-panel__empty">
         <i class="notification-panel__empty-icon iconoir-bell-off"></i>
         <div class="notification-panel__empty-title">
@@ -148,6 +161,7 @@ export default {
       needRefresh: false,
       removeOnClickOutsideHandler: null,
       children: [],
+      previousActiveElement: null,
     }
   },
   computed: {
@@ -159,6 +173,7 @@ export default {
       unreadCount: 'notification/getUnreadCount',
       currentCount: 'notification/getCurrentCount',
       totalCount: 'notification/getTotalCount',
+      error: 'notification/getError',
     }),
     workspace() {
       return this.$store.getters['workspace/get'](this.workspaceId)
@@ -202,6 +217,7 @@ export default {
       if (!this.loaded && !this.loading) {
         this.initialLoad()
       }
+      this.previousActiveElement = document.activeElement
       this.open = true
       const opener = target
       this.removeOnClickOutsideHandler = onClickOutside(
@@ -221,18 +237,32 @@ export default {
         }
       )
       this.$emit('shown')
+      this.$nextTick(() => this.$refs.panelEl?.focus())
     },
     registerChild(child) {
       this.children.push(child)
     },
     hide() {
       this.open = false
-      this.opener = null
       if (this.removeOnClickOutsideHandler) {
         this.removeOnClickOutsideHandler()
         this.removeOnClickOutsideHandler = null
       }
+      const previous = this.previousActiveElement
+      this.previousActiveElement = null
+      this.$nextTick(() => previous?.focus())
       this.$emit('hidden')
+    },
+    keydown(event) {
+      if (
+        !this.open ||
+        event.key !== 'Escape' ||
+        this.children.some((child) => child.open === true)
+      ) {
+        return
+      }
+      event.preventDefault()
+      this.hide()
     },
     toggle(target) {
       if (this.open) {

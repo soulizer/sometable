@@ -9,6 +9,7 @@
       :checked="currentValue"
       :disabled="disabled"
       :aria-checked="indeterminate ? 'mixed' : undefined"
+      :aria-label="ariaLabel || undefined"
       @change="onChange"
     />
     <div class="checkbox__button">
@@ -123,6 +124,14 @@ export default {
       validator(value) {
         return ['small', 'regular'].includes(value)
       },
+    },
+    /**
+     * Accessible name for checkboxes that don't render a visible text slot.
+     */
+    ariaLabel: {
+      required: false,
+      type: String,
+      default: '',
     },
   },
   emits: ['update:modelValue', 'input'],

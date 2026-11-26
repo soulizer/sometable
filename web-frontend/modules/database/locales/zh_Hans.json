@@ -689,6 +689,7 @@
         "rowsDeletedTitle": "已删除行",
         "rowsDeletedMessage": "{count} 行已移入回收站。",
         "selectedRows": "已选择 {count} 行",
+        "selectAllRows": "选中已加载的全部行",
         "clearSelection": "取消选择"
     },
     "gridViewFieldFile": {

@@ -12,6 +12,7 @@
         class="modal__box"
         role="dialog"
         aria-modal="true"
+        tabindex="-1"
         :class="{
           'modal__box--full-height': fullHeight,
           'modal__box--full-max-height': !fullHeight && contentScrollable,
