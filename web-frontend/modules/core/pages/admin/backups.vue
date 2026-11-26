@@ -128,7 +128,9 @@
             </Button>
           </div>
         </div>
-        <div v-if="message" class="alert" :class="messageType">{{ message }}</div>
+        <Alert v-if="message" :type="messageType" class="margin-bottom-2">
+          {{ message }}
+        </Alert>
         <table class="admin-backups__table">
           <thead>
             <tr>
@@ -176,13 +178,19 @@
         <p class="margin-bottom-2">
           {{ $t('adminBackups.restoreDescription') }}
         </p>
-        <div class="modal__actions">
-          <Button @click="$refs.restoreModal.hide()">
-            {{ $t('adminBackups.cancel') }}
-          </Button>
-          <Button type="danger" :loading="restoringId !== null" @click="restore">
-            {{ $t('adminBackups.restoreConfirm') }}
-          </Button>
+        <div class="actions">
+          <div class="align-right">
+            <Button @click="$refs.restoreModal?.hide()">
+              {{ $t('adminBackups.cancel') }}
+            </Button>
+            <Button
+              type="danger"
+              :loading="restoringId !== null"
+              @click="restore"
+            >
+              {{ $t('adminBackups.restoreConfirm') }}
+            </Button>
+          </div>
         </div>
       </Modal>
     </div>
