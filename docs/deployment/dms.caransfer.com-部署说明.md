@@ -11,7 +11,7 @@
 | 管理员邮箱 | `admin@dms.caransfer.com` |
 | 管理员初始密码 | 见服务器 `/root/.sometable-admin-password`（首次登录后请修改） |
 | 源码/部署目录 | `/www/apps/sometable` |
-| 镜像标签 | `local-20261126-r3b31` |
+| 镜像标签 | `local-20261126-r3b33` |
 | 本地备份目录 | `/www/backups/sometable` |
 
 ## 运行架构
