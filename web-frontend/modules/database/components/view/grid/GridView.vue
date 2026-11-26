@@ -1760,13 +1760,71 @@ export default {
     },
     async keyDownEvent(event) {
       const arrowKeys = ['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown']
+      const { key, shiftKey, altKey } = event
+      const target = event.target
+      const isEditable =
+        target?.isContentEditable ||
+        ['INPUT', 'TEXTAREA', 'SELECT'].includes(target?.tagName)
+      const modifier = event.ctrlKey || event.metaKey
+      const gridStore = this.storePrefix + 'view/grid'
+
+      // Common grid shortcuts. They must not hijack typing in cell editors or
+      // other form fields.
+      if (!isEditable && modifier && !shiftKey && !altKey) {
+        if (key.toLowerCase() === 'f') {
+          // Focus/opening the view search is more useful inside the grid than
+          // the browser's find bar.
+          event.preventDefault()
+          this.$priorityBus.$emit('start-search', { event })
+          return
+        }
+
+        if (key.toLowerCase() === 'a' && !this.readOnly) {
+          const activeElement = document.activeElement
+          const gridElement = this.$refs.gridView
+          const gridIsFocused =
+            !activeElement ||
+            activeElement === document.body ||
+            gridElement?.contains(activeElement)
+          const rows = this.$store.getters[`${gridStore}/getAllRows`]
+
+          if (gridIsFocused && rows.length > 0) {
+            event.preventDefault()
+            const limit =
+              Number(this.$config.public.baserowRowPageSizeLimit) ||
+              rows.length
+            await this.$store.dispatch(`${gridStore}/setSelectionType`, {
+              selectionType: GRID_VIEW_MULTI_SELECT_CHECKBOX,
+            })
+            this.$store.commit(`${gridStore}/CLEAR_CHECKBOX_SELECTED_ROWS`)
+            rows.slice(0, limit).forEach((row) => {
+              this.$store.commit(
+                `${gridStore}/ADD_CHECKBOX_SELECTED_ROW`,
+                row.id
+              )
+            })
+            return
+          }
+        }
+      }
+
+      if (
+        !isEditable &&
+        !this.readOnly &&
+        (key === 'Delete' || key === 'Backspace') &&
+        this.$store.getters[`${gridStore}/getSelectionType`] ===
+          GRID_VIEW_MULTI_SELECT_CHECKBOX
+      ) {
+        event.preventDefault()
+        await this.deleteRowsFromMultipleCellSelection()
+        return
+      }
       const arrowShiftKeysMapping = {
         ArrowLeft: 'previous',
         ArrowRight: 'next',
         ArrowUp: 'above',
         ArrowDown: 'below',
       }
-      const { key, shiftKey } = event
       if (
         arrowKeys.includes(key) &&
         shiftKey &&
