@@ -3,8 +3,15 @@ from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from loguru import logger
+
 from baserow.api.schemas import get_error_schema
-from baserow.core.backup import list_all_backups, restore_backup
+from baserow.core.backup import (
+    SCOPE_ALL,
+    list_all_backups,
+    restore_backup,
+    run_backup,
+)
 
 
 class BackupSettingsView(APIView):
@@ -50,6 +57,22 @@ class BackupRestoreView(APIView):
         backup_id = request.data.get("id")
         if not backup_id:
             return Response({"error": "Missing backup id."}, status=400)
+        if request.data.get("confirm") != backup_id:
+            return Response(
+                {"error": "The backup id confirmation does not match."}, status=400
+            )
+
+        # Always keep a copy of the current state before overwriting it. Retention
+        # is skipped so the safety copy cannot delete the backup being restored.
+        try:
+            run_backup(scope=SCOPE_ALL, keep=0)
+        except Exception:
+            logger.exception("Failed to create the safety backup before a restore")
+            return Response(
+                {"error": "Could not create a safety backup; restore cancelled."},
+                status=500,
+            )
+
         try:
             restore_backup(backup_id)
         except FileNotFoundError:

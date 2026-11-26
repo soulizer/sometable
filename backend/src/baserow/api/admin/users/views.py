@@ -53,6 +53,11 @@ class UsersAdminView(AdminListingView):
     serializer_class = UserAdminResponseSerializer
     pagination_class = PageNumberPaginationWithApproximateCount
     search_fields = ["id", "username", "first_name"]
+    filters_field_mapping = {
+        "is_active": "is_active",
+        "is_staff": "is_staff",
+        "email_verified": "profile__email_verified",
+    }
     sort_field_mapping = {
         "id": "id",
         "is_active": "is_active",
@@ -61,6 +66,14 @@ class UsersAdminView(AdminListingView):
         "date_joined": "date_joined",
         "last_login": "last_login",
     }
+
+    def apply_filters(self, query_params, queryset):
+        for param, field in self.filters_field_mapping.items():
+            value = query_params.get(param)
+            if value not in ("true", "false"):
+                continue
+            queryset = queryset.filter(**{field: value == "true"})
+        return queryset
 
     def get_queryset(self, request):
         return User.objects.select_related("profile").prefetch_related(

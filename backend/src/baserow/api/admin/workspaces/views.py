@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from baserow.api.admin.views import AdminListingView, APIListingView
-from baserow.api.decorators import map_exceptions
+from baserow.api.decorators import map_exceptions, validate_body
 from baserow.api.errors import ERROR_GROUP_DOES_NOT_EXIST
 from baserow.api.pagination import PageNumberPaginationWithApproximateCount
 from baserow.api.schemas import get_error_schema
@@ -22,6 +22,7 @@ from baserow.core.usage.handler import UsageHandler
 from .errors import ERROR_CANNOT_DELETE_A_TEMPLATE_GROUP
 from .serializers import (
     AdminWorkspaceOptionsSerializer,
+    AdminWorkspaceUpdateSerializer,
     WorkspacesAdminResponseSerializer,
 )
 
@@ -96,6 +97,37 @@ class WorkspaceOptionsAdminView(APIListingView):
 
 class WorkspaceAdminView(APIView):
     permission_classes = (IsAdminUser,)
+
+    @extend_schema(
+        tags=["Admin"],
+        operation_id="admin_update_workspace",
+        request=AdminWorkspaceUpdateSerializer,
+        description="Renames the specified workspace if the requesting user is staff.",
+        parameters=[
+            OpenApiParameter(
+                name="workspace_id",
+                location=OpenApiParameter.PATH,
+                type=OpenApiTypes.INT,
+                description="The id of the workspace to update",
+            ),
+        ],
+        responses={
+            200: AdminWorkspaceOptionsSerializer(),
+            400: get_error_schema(["ERROR_GROUP_DOES_NOT_EXIST"]),
+            401: None,
+        },
+    )
+    @validate_body(AdminWorkspaceUpdateSerializer)
+    @map_exceptions({WorkspaceDoesNotExist: ERROR_GROUP_DOES_NOT_EXIST})
+    @transaction.atomic
+    def patch(self, request, workspace_id, data):
+        """Renames the specified workspace."""
+
+        workspace = CoreHandler().get_workspace(workspace_id)
+        workspace = WorkspacesAdminHandler().rename_workspace(
+            request.user, workspace, data["name"]
+        )
+        return Response({"id": workspace.id, "name": workspace.name})
 
     @extend_schema(
         tags=["Admin"],

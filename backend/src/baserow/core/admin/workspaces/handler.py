@@ -5,6 +5,20 @@ from baserow.core.trash.handler import TrashHandler
 
 
 class WorkspacesAdminHandler:
+    def rename_workspace(self, user, workspace, name):
+        """
+        Renames a workspace if the requesting user is staff.
+
+        :raises IsNotAdminError: If the user is not admin or staff.
+        """
+
+        if not user.is_staff:
+            raise IsNotAdminError()
+
+        workspace.name = name
+        workspace.save(update_fields=["name"])
+        return workspace
+
     def delete_workspace(self, user, workspace):
         """
         Deletes an existing workspace and related applications if the user is staff.

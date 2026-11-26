@@ -55,6 +55,10 @@ class WorkspacesAdminResponseSerializer(ModelSerializer):
         )
 
 
+class AdminWorkspaceUpdateSerializer(serializers.Serializer):
+    name = serializers.CharField(max_length=160)
+
+
 class AdminWorkspaceOptionsSerializer(serializers.ModelSerializer):
     value = serializers.CharField(source="name")
 
