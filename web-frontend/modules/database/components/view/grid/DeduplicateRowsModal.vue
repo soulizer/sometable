@@ -79,28 +79,32 @@
       </div>
     </div>
 
-    <div v-if="confirming" class="alert alert--error deduplicate__warning">
+    <Alert v-if="confirming" type="warning" class="margin-top-2">
       {{ $t('deduplicateRowsModal.warning', { count: deleteCount }) }}
-    </div>
+    </Alert>
 
-    <div class="modal__actions">
-      <Button @click="hide">{{ $t('action.cancel') }}</Button>
-      <Button
-        v-if="previewed && groups.length && !confirming"
-        type="danger"
-        :disabled="!canProceed"
-        @click="confirming = true"
-      >
-        {{ $t('deduplicateRowsModal.continue') }}
-      </Button>
-      <Button
-        v-if="confirming"
-        type="danger"
-        :loading="deleting"
-        @click="remove"
-      >
-        {{ $t('deduplicateRowsModal.confirmDelete', { count: deleteCount }) }}
-      </Button>
+    <div class="actions deduplicate__actions">
+      <div class="align-right">
+        <Button :disabled="deleting" @click="onCancel">
+          {{ $t('action.cancel') }}
+        </Button>
+        <Button
+          v-if="previewed && groups.length && !confirming"
+          type="danger"
+          :disabled="!canProceed"
+          @click="confirming = true"
+        >
+          {{ $t('deduplicateRowsModal.continue') }}
+        </Button>
+        <Button
+          v-if="confirming"
+          type="danger"
+          :loading="deleting"
+          @click="remove"
+        >
+          {{ $t('deduplicateRowsModal.confirmDelete', { count: deleteCount }) }}
+        </Button>
+      </div>
     </div>
   </Modal>
 </template>
@@ -166,6 +170,13 @@ export default {
     },
   },
   methods: {
+    onCancel() {
+      if (this.confirming && !this.deleting) {
+        this.confirming = false
+        return
+      }
+      this.hide()
+    },
     reset() {
       this.selectedFieldIds = []
       this.groups = []

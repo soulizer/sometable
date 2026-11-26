@@ -34,6 +34,7 @@ BASEROW_ENABLE_SECURE_PROXY_SSL_HEADER=${BASEROW_ENABLE_SECURE_PROXY_SSL_HEADER:
 
 BASEROW_AMOUNT_OF_WORKERS=${BASEROW_AMOUNT_OF_WORKERS:-}
 BASEROW_AMOUNT_OF_GUNICORN_WORKERS=${BASEROW_AMOUNT_OF_GUNICORN_WORKERS:-3}
+BASEROW_GUNICORN_TIMEOUT=${BASEROW_GUNICORN_TIMEOUT:-30}
 
 # Celery related variables
 BASEROW_RUN_MINIMAL=${BASEROW_RUN_MINIMAL:-}
@@ -257,6 +258,7 @@ run_backend_server(){
   # 2. Log to stdout
   # 3. Log requests to stdout
   exec gunicorn --workers="$BASEROW_AMOUNT_OF_GUNICORN_WORKERS" \
+    --timeout "$BASEROW_GUNICORN_TIMEOUT" \
     --worker-tmp-dir "${TMPDIR:-/dev/shm}" \
     --log-file=- \
     --access-logfile=- \
