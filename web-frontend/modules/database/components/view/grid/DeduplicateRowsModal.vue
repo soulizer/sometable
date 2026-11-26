@@ -47,15 +47,13 @@
         <div class="deduplicate__group-header">
           <strong>{{ group.values.join(' / ') || '—' }}</strong>
           <span>
-            {{ $t('deduplicateRowsModal.rowCount', { count: group.row_count }) }}
+            {{
+              $t('deduplicateRowsModal.rowCount', { count: group.row_count })
+            }}
           </span>
         </div>
         <div v-if="rule === 'manual'" class="deduplicate__group-rows">
-          <div
-            v-for="row in group.rows"
-            :key="row.id"
-            class="deduplicate__row"
-          >
+          <div v-for="row in group.rows" :key="row.id" class="deduplicate__row">
             <Radio
               :value="row.id"
               :model-value="keepMap[group.key]"
@@ -80,8 +78,24 @@
       </div>
     </div>
 
+    <Alert
+      v-if="previewed && previewTruncated && !confirming"
+      type="warning"
+      class="margin-top-2"
+    >
+      {{
+        $t('deduplicateRowsModal.truncatedWarning', {
+          preview: groups.length,
+          total: totalGroups,
+        })
+      }}
+    </Alert>
     <Alert v-if="confirming" type="warning" class="margin-top-2">
-      {{ $t('deduplicateRowsModal.warning', { count: deleteCount }) }}
+      {{
+        previewTruncated
+          ? $t('deduplicateRowsModal.warningPartial', { count: deleteCount })
+          : $t('deduplicateRowsModal.warning', { count: deleteCount })
+      }}
     </Alert>
 
     <div class="actions deduplicate__actions">
@@ -103,7 +117,15 @@
           :loading="deleting"
           @click="remove"
         >
-          {{ $t('deduplicateRowsModal.confirmDelete', { count: deleteCount }) }}
+          {{
+            previewTruncated
+              ? $t('deduplicateRowsModal.confirmDeletePartial', {
+                  count: deleteCount,
+                })
+              : $t('deduplicateRowsModal.confirmDelete', {
+                  count: deleteCount,
+                })
+          }}
         </Button>
       </div>
     </div>
@@ -152,12 +174,19 @@ export default {
           !['link_row', 'multiple_collaborators'].includes(field.type)
       )
     },
+    previewTruncated() {
+      return this.totalGroups > this.groups.length
+    },
     ruleOptions() {
-      return [
+      const options = [
         { value: 'oldest', label: this.$t('deduplicateRowsModal.ruleOldest') },
         { value: 'newest', label: this.$t('deduplicateRowsModal.ruleNewest') },
         { value: 'manual', label: this.$t('deduplicateRowsModal.ruleManual') },
       ]
+      // Manual mode needs a preview of every group to choose a row for each.
+      return this.previewTruncated
+        ? options.filter((option) => option.value !== 'manual')
+        : options
     },
     deleteCount() {
       return this.groups.reduce(
@@ -192,7 +221,9 @@ export default {
       if (checked && !this.selectedFieldIds.includes(id)) {
         this.selectedFieldIds.push(id)
       } else if (!checked) {
-        this.selectedFieldIds = this.selectedFieldIds.filter((item) => item !== id)
+        this.selectedFieldIds = this.selectedFieldIds.filter(
+          (item) => item !== id
+        )
       }
       this.previewed = false
     },
@@ -202,11 +233,14 @@ export default {
       try {
         const { data } = await RowAdminService(this.$client).deduplicatePreview(
           this.table.id,
-          { field_ids: this.selectedFieldIds, limit: 50 }
+          { field_ids: this.selectedFieldIds, limit: 100 }
         )
         this.groups = data.groups
         this.totalGroups = data.total_groups
         this.previewed = true
+        if (this.previewTruncated && this.rule === 'manual') {
+          this.rule = 'oldest'
+        }
         this.keepMap = {}
         for (const group of this.groups) {
           this.keepMap[group.key] = group.rows[0]?.id

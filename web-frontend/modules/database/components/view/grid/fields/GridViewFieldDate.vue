@@ -2,7 +2,7 @@
   <div
     ref="cell"
     class="grid-view__cell active"
-    :class="{ editing: editing }"
+    :class="{ editing: editing, invalid: editing && !isValid() }"
     @contextmenu="stopContextIfEditing($event)"
   >
     <div class="grid-field-date">
@@ -68,6 +68,9 @@
           />
         </template>
       </template>
+      <div v-if="editing && !isValid()" class="grid-view__cell-error">
+        {{ $t('gridView.invalidDate') }}
+      </div>
       <div v-if="field.date_show_tzinfo" class="grid-field-date__tzinfo">
         {{ getCellTimezoneAbbr(field, value, { force: editing }) }}
       </div>
@@ -95,6 +98,9 @@ export default {
     }
   },
   methods: {
+    isValid() {
+      return !this.dateInvalid && !this.timeInvalid
+    },
     /**
      * When the user initializes the editing state we automatically want to focus on
      * the date or the time field. In almost all cases we start by focusing on the
@@ -102,6 +108,8 @@ export default {
      * one.
      */
     afterEdit(event) {
+      this.dateInvalid = false
+      this.timeInvalid = false
       this.$nextTick(() => {
         const input =
           event !== null &&

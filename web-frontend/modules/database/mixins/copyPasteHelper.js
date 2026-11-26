@@ -199,11 +199,13 @@ export default {
             htmlData ? new Blob([htmlData], { type: 'text/html' }) : null
           ),
         })
-        navigator.clipboard.write([clipboardItem])
+        navigator.clipboard
+          .write([clipboardItem])
+          .catch(() => this.showCopyClipboardError())
       } else if (typeof navigator.clipboard?.writeText !== 'undefined') {
-        navigator.clipboard.writeText(
-          Promise.resolve(dataPromise).then(({ tsvData }) => tsvData)
-        )
+        Promise.resolve(dataPromise)
+          .then(({ tsvData }) => navigator.clipboard.writeText(tsvData))
+          .catch(() => this.showCopyClipboardError())
       } else {
         const richClipboardConfig = {
           'text/plain': Promise.resolve(dataPromise).then(

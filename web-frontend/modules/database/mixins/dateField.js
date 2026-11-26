@@ -21,6 +21,8 @@ export default {
       pickerDate: '',
       time: '',
       momentDate: null,
+      dateInvalid: false,
+      timeInvalid: false,
     }
   },
   computed: {
@@ -78,6 +80,14 @@ export default {
      * value that is actually going to be saved.
      */
     updateDate(field, value) {
+      if (value.trim() === '') {
+        // Clearing the input is a deliberate way to clear the date value, unlike
+        // an unparsable value which must not discard the previous date.
+        this.dateInvalid = false
+        this.updateCopy(field, null)
+        return
+      }
+
       const dateFormats = [DATE_PICKER_FORMAT, this.fieldDateFormat]
       const newDate = moment.utc(value, dateFormats, true)
       const timezone = getFieldTimezone(field)
@@ -88,6 +98,8 @@ export default {
         newDate.tz(timezone, true)
         now.tz(timezone)
       }
+
+      this.dateInvalid = !newDate.isValid()
 
       if (newDate.isValid()) {
         const momentDate = this.momentDate || now
@@ -105,8 +117,6 @@ export default {
 
         this.updateCopy(field, newDate)
         this.updateFormattedDateValue()
-      } else {
-        this.updateCopy(field, null)
       }
     },
     /**
@@ -121,6 +131,8 @@ export default {
       if (timezone !== null) {
         newTime.tz(timezone, true)
       }
+
+      this.timeInvalid = !newTime.isValid()
 
       if (newTime.isValid()) {
         if (this.momentDate !== null) {
@@ -139,8 +151,6 @@ export default {
 
         this.updateCopy(field, newTime)
         this.updateFormattedTimeValue()
-      } else {
-        this.time = value
       }
     },
     /**
@@ -187,6 +197,9 @@ export default {
      * Updates the date and time data by converting the value to the correct formats.
      */
     setDateAndTime(field, value) {
+      this.dateInvalid = false
+      this.timeInvalid = false
+
       if (value === null) {
         this.momentDate = null
         this.date = this.time = this.pickerDate = ''

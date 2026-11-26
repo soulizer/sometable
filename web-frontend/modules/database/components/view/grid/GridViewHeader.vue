@@ -1,5 +1,32 @@
 <template>
   <ul class="header__filter header__filter--full-width">
+    <li v-if="isSelectionActive" class="header__filter-item">
+      <span class="header__filter-link header__filter-link--disabled">
+        <i class="iconoir-check-square header__filter-icon"></i>
+        <span class="header__filter-name header__filter-name--forced">
+          {{ $t('gridView.selectedRows', { count: selectionCount }) }}
+        </span>
+      </span>
+      <a
+        v-if="canDeleteSelected"
+        class="header__filter-link"
+        :aria-label="$t('gridView.deleteRows')"
+        @click="askDeleteSelectedRows"
+      >
+        <i class="iconoir-bin header__filter-icon"></i>
+        <span class="header__filter-name">{{ $t('gridView.deleteRows') }}</span>
+      </a>
+      <a
+        class="header__filter-link"
+        :aria-label="$t('gridView.clearSelection')"
+        @click="clearSelection"
+      >
+        <i class="iconoir-cancel header__filter-icon"></i>
+        <span class="header__filter-name">{{
+          $t('gridView.clearSelection')
+        }}</span>
+      </a>
+    </li>
     <li v-if="canDeduplicate" class="header__filter-item">
       <a class="header__filter-link" @click="$refs.deduplicateModal?.show()">
         <i class="header__filter-icon iconoir-filter-alt"></i>
@@ -58,18 +85,34 @@
       ></ViewSearch>
     </li>
   </ul>
+  <ConfirmModal
+    ref="deleteRowsConfirmModal"
+    :title="$t('gridView.deleteSelectedRowsTitle')"
+    :message="
+      $t('gridView.deleteSelectedRowsMessage', { count: selectionCount })
+    "
+    :confirm-label="$t('gridView.deleteRows')"
+    danger
+    @confirm="confirmDeleteSelectedRows"
+  />
 </template>
 
 <script>
+import { notifyIf } from '@baserow/modules/core/utils/error'
 import DeduplicateRowsModal from '@baserow/modules/database/components/view/grid/DeduplicateRowsModal'
 import GridViewRowHeight from '@baserow/modules/database/components/view/grid/GridViewRowHeight'
 import GridViewHide from '@baserow/modules/database/components/view/grid/GridViewHide'
 import PresenceBar from '@baserow/modules/core/components/presence/PresenceBar'
+import ConfirmModal from '@baserow/modules/core/components/modals/ConfirmModal'
 import ViewSearch from '@baserow/modules/database/components/view/ViewSearch'
 import {
   isUserPresenceEnabled,
   tablePresenceSpaceName,
 } from '@baserow/modules/database/utils/presence'
+import {
+  GRID_VIEW_MULTI_SELECT_AREA,
+  GRID_VIEW_MULTI_SELECT_CHECKBOX,
+} from '@baserow/modules/database/constants'
 
 export default {
   name: 'GridViewHeader',
@@ -79,6 +122,7 @@ export default {
     GridViewHide,
     PresenceBar,
     ViewSearch,
+    ConfirmModal,
   },
   props: {
     database: {
@@ -104,6 +148,55 @@ export default {
   },
   emits: ['refresh'],
   computed: {
+    gridStore() {
+      return this.storePrefix + 'view/grid'
+    },
+    table() {
+      return this.$store.state.table.selected
+    },
+    selectionType() {
+      return this.$store.getters[`${this.gridStore}/getSelectionType`]
+    },
+    selectionCount() {
+      if (this.selectionType === GRID_VIEW_MULTI_SELECT_CHECKBOX) {
+        return this.$store.getters[
+          `${this.gridStore}/getCheckboxSelectedRowsIds`
+        ].length
+      }
+      if (this.selectionType === GRID_VIEW_MULTI_SELECT_AREA) {
+        const [min, max] =
+          this.$store.getters[
+            `${this.gridStore}/getMultiSelectRowIndexSorted`
+          ] || []
+        return Math.max(0, (max ?? -1) - (min ?? 0) + 1)
+      }
+      return 0
+    },
+    isSelectionActive() {
+      return this.selectionCount > 0
+    },
+    canDeleteSelected() {
+      if (
+        this.readOnly ||
+        !this.table ||
+        !this.database?.workspace ||
+        (this.table.data_sync && !this.table.data_sync.two_way_sync)
+      ) {
+        return false
+      }
+      return (
+        this.$hasPermission(
+          'database.table.delete_row',
+          this.table,
+          this.database.workspace.id
+        ) ||
+        this.$hasPermission(
+          'database.table.view.delete_row',
+          this.view,
+          this.database.workspace.id
+        )
+      )
+    },
     presenceEnabled() {
       return isUserPresenceEnabled(this)
     },
@@ -137,6 +230,34 @@ export default {
     },
   },
   methods: {
+    askDeleteSelectedRows() {
+      this.$refs.deleteRowsConfirmModal?.show()
+    },
+    async confirmDeleteSelectedRows() {
+      this.$refs.deleteRowsConfirmModal?.hide()
+      const count = this.selectionCount
+      try {
+        await this.$store.dispatch(`${this.gridStore}/deleteSelectedRows`, {
+          table: this.table,
+          view: this.view,
+          fields: this.fields,
+          getScrollTop: () => 0,
+        })
+        if (count > 0) {
+          this.$store.dispatch('toast/success', {
+            title: this.$t('gridView.rowsDeletedTitle'),
+            message: this.$t('gridView.rowsDeletedMessage', { count }),
+          })
+        }
+      } catch (error) {
+        notifyIf(error, 'view')
+      }
+    },
+    clearSelection() {
+      this.$store.dispatch(`${this.gridStore}/clearAndDisableMultiSelect`, {
+        view: this.view,
+      })
+    },
     onDeduplicated(result) {
       this.$emit('refresh')
       if (result?.deleted_count) {

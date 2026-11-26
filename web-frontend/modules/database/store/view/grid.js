@@ -6186,8 +6186,12 @@ export const actions = {
     const { $registry, $client, $i18n, $config } = this
     const selectionType = getters.getSelectionType
     let rowsToDelete = []
+    let rowIdsToDelete = []
 
     if (selectionType === GRID_VIEW_MULTI_SELECT_CHECKBOX) {
+      // Use the selected ids instead of the loaded row objects, otherwise
+      // selections that scrolled out of the row buffer are silently skipped.
+      rowIdsToDelete = [...getters.getCheckboxSelectedRowsIds]
       rowsToDelete = getters.getCheckboxSelectedRows
     } else if (selectionType === GRID_VIEW_MULTI_SELECT_AREA) {
       if (getters.areMultiSelectRowsWithinBuffer) {
@@ -6201,13 +6205,13 @@ export const actions = {
           includeFields: fields,
         })
       }
+      rowIdsToDelete = rowsToDelete.map((row) => row.id)
     }
 
-    if (rowsToDelete.length === 0) {
-      return
+    if (rowIdsToDelete.length === 0) {
+      return 0
     }
 
-    const rowIdsToDelete = rowsToDelete.map((r) => r.id)
     await RowService($client).batchDelete(
       table.id,
       rowIdsToDelete,
@@ -6243,6 +6247,7 @@ export const actions = {
         : null,
       clearGroupByAggregationLoadingPaths: true,
     })
+    return rowIdsToDelete.length
   },
   /**
    * Called after an existing row has been deleted, which could be by the user or

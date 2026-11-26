@@ -237,7 +237,7 @@
           <a
             class="context__menu-item-link"
             :class="{ 'context__menu-item-link--loading': deletingRow }"
-            @click.stop="deleteRowsFromMultipleCellSelection()"
+            @click.stop="askDeleteSelectedRows()"
           >
             <i class="context__menu-item-icon iconoir-bin"></i>
             {{ $t('gridView.deleteRows') }}
@@ -338,6 +338,18 @@
       @navigate-next="$emit('navigate-next', $event, activeSearchTerm)"
       @refresh-row="refreshRow"
     ></RowEditModal>
+    <ConfirmModal
+      ref="deleteRowsConfirmModal"
+      :title="$t('gridView.deleteSelectedRowsTitle')"
+      :message="
+        $t('gridView.deleteSelectedRowsMessage', {
+          count: deleteSelectedRowsCount,
+        })
+      "
+      :confirm-label="$t('gridView.deleteRows')"
+      danger
+      @confirm="confirmDeleteSelectedRows"
+    />
   </div>
 </template>
 
@@ -351,6 +363,7 @@ import GridViewFreezeHandle from '@baserow/modules/database/components/view/grid
 import GridViewRowDragging from '@baserow/modules/database/components/view/grid/GridViewRowDragging'
 import RowEditModal from '@baserow/modules/database/components/row/RowEditModal'
 import RowCreateModal from '@baserow/modules/database/components/row/RowCreateModal'
+import ConfirmModal from '@baserow/modules/core/components/modals/ConfirmModal'
 import gridViewHelpers from '@baserow/modules/database/mixins/gridViewHelpers'
 import {
   canRowsBeOptimisticallyUpdatedInView,
@@ -389,6 +402,7 @@ const GRID_VIEW_MIN_DATA_SECTION_WIDTH = 300
 export default {
   name: 'GridView',
   components: {
+    ConfirmModal,
     GridViewFieldDragging,
     GridViewFreezeHandle,
     GridViewRowsAddContext,
@@ -452,6 +466,20 @@ export default {
     ...mapGetters({
       row: 'rowModalNavigation/getRow',
     }),
+    deleteSelectedRowsCount() {
+      const gridStore = this.storePrefix + 'view/grid'
+      const selectionType = this.$store.getters[`${gridStore}/getSelectionType`]
+      if (selectionType === GRID_VIEW_MULTI_SELECT_CHECKBOX) {
+        return this.$store.getters[`${gridStore}/getCheckboxSelectedRowsIds`]
+          .length
+      }
+      if (selectionType === GRID_VIEW_MULTI_SELECT_AREA) {
+        const [min, max] =
+          this.$store.getters[`${gridStore}/getMultiSelectRowIndexSorted`] || []
+        return Math.max(0, (max ?? -1) - (min ?? 0) + 1)
+      }
+      return 0
+    },
     focusEntriesByCell() {
       if (!this.presenceSpaceName) return new Map()
       return this.$store.getters['presence/getFocusEntriesByCell'](
@@ -1758,7 +1786,28 @@ export default {
         )
       }
     },
+    hasOpenModal() {
+      return Array.from(document.querySelectorAll('.modal__wrapper')).some(
+        (element) =>
+          element.style.display !== 'none' &&
+          window.getComputedStyle(element).display !== 'none'
+      )
+    },
+    isEditableOrOverlayEvent(event) {
+      const target = event?.target
+      if (
+        target?.isContentEditable ||
+        ['INPUT', 'TEXTAREA', 'SELECT'].includes(target?.tagName)
+      ) {
+        return true
+      }
+      return this.hasOpenModal()
+    },
     async keyDownEvent(event) {
+      if (this.hasOpenModal()) {
+        return
+      }
+
       const arrowKeys = ['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown']
       const { key, shiftKey, altKey } = event
       const target = event.target
@@ -1791,8 +1840,7 @@ export default {
           if (gridIsFocused && rows.length > 0) {
             event.preventDefault()
             const limit =
-              Number(this.$config.public.baserowRowPageSizeLimit) ||
-              rows.length
+              Number(this.$config.public.baserowRowPageSizeLimit) || rows.length
             await this.$store.dispatch(`${gridStore}/setSelectionType`, {
               selectionType: GRID_VIEW_MULTI_SELECT_CHECKBOX,
             })
@@ -1811,12 +1859,13 @@ export default {
       if (
         !isEditable &&
         !this.readOnly &&
+        (!this.table.data_sync || this.table.data_sync.two_way_sync) &&
         (key === 'Delete' || key === 'Backspace') &&
         this.$store.getters[`${gridStore}/getSelectionType`] ===
           GRID_VIEW_MULTI_SELECT_CHECKBOX
       ) {
         event.preventDefault()
-        await this.deleteRowsFromMultipleCellSelection()
+        this.askDeleteSelectedRows()
         return
       }
       const arrowShiftKeysMapping = {
@@ -1945,6 +1994,9 @@ export default {
      * formatted as TSV
      */
     copySelection(event, includeHeader = false) {
+      if (this.isEditableOrOverlayEvent(event)) {
+        return
+      }
       const gridStore = this.storePrefix + 'view/grid'
       if (!this.$store.getters[`${gridStore}/isMultiSelectActive`]) {
         return
@@ -1980,7 +2032,7 @@ export default {
      * cells we can paste the data.
      */
     async pasteFromMultipleCellSelection(event) {
-      if (!this.isMultiSelectActive) {
+      if (this.isEditableOrOverlayEvent(event) || !this.isMultiSelectActive) {
         return
       }
 
@@ -2052,12 +2104,23 @@ export default {
       this.$store.dispatch('toast/setPasting', false)
       return true
     },
+    askDeleteSelectedRows() {
+      if (this.deleteSelectedRowsCount === 0) {
+        return
+      }
+      this.$refs.deleteRowsConfirmModal?.show()
+    },
+    confirmDeleteSelectedRows() {
+      this.$refs.deleteRowsConfirmModal?.hide()
+      this.deleteRowsFromMultipleCellSelection()
+    },
     /**
      * Called when the delete option is selected in
      * the context menu. Attempts to delete all the
      * selected rows and scrolls the view accordingly.
      */
     async deleteRowsFromMultipleCellSelection() {
+      const deletedCount = this.deleteSelectedRowsCount
       this.deletingRow = true
       try {
         await this.$store.dispatch(
@@ -2070,6 +2133,14 @@ export default {
           }
         )
         this.$refs.rowContext?.hide()
+        if (deletedCount > 0) {
+          this.$store.dispatch('toast/success', {
+            title: this.$t('gridView.rowsDeletedTitle'),
+            message: this.$t('gridView.rowsDeletedMessage', {
+              count: deletedCount,
+            }),
+          })
+        }
       } catch (error) {
         notifyIf(error)
       }

@@ -804,7 +804,14 @@
         "tooManyItemsTitle": "Too many items",
         "tooManyItemsDescription": "It's not possible to update more than {limit} rows at once, so we've only updated the first.",
         "AIValuesGenerationErrorTitle": "AI value generation failed",
-        "AIValuesGenerationErrorMessage": "Please check your API_KEY and verify the selected model."
+        "AIValuesGenerationErrorMessage": "Please check your API_KEY and verify the selected model.",
+        "invalidDate": "Invalid date or time",
+        "deleteSelectedRowsTitle": "Delete selected rows?",
+        "deleteSelectedRowsMessage": "{count} selected row(s) will be moved to the trash. You can undo this with Ctrl/Cmd+Z.",
+        "rowsDeletedTitle": "Rows deleted",
+        "rowsDeletedMessage": "{count} row(s) were moved to the trash.",
+        "selectedRows": "{count} selected",
+        "clearSelection": "Clear selection"
     },
     "gridViewFieldFile": {
         "dropHere": "Drop here",
@@ -970,7 +977,8 @@
         "noSelectOptions": "There are no select options available.",
         "noCollaboratorsAvailable": "There are no collaborators available.",
         "cannotSumitValues": "This field is read-only and won't be displayed in the form.",
-        "clearValue": "Clear value"
+        "clearValue": "Clear value",
+        "removeField": "Remove field"
     },
     "duplicateFieldContext": {
         "duplicate": "Duplicate field",
@@ -1430,6 +1438,9 @@
         "warning": "This will move {count} rows to the trash. This cannot be undone from here once the trash is emptied.",
         "confirmDelete": "Delete {count} duplicate rows",
         "doneTitle": "Deduplication complete",
-        "doneMessage": "{count} duplicate rows were removed."
+        "doneMessage": "{count} duplicate rows were removed.",
+        "truncatedWarning": "Only the first {preview} of {total} duplicate groups are shown. Manual keep mode is disabled; deletion still applies to every duplicate group.",
+        "warningPartial": "This will move at least {count} rows (only previewed groups are counted) to the trash.",
+        "confirmDeletePartial": "Delete duplicate rows (at least {count})"
     }
 }

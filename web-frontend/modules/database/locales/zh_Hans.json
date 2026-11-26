@@ -682,7 +682,14 @@
         "tooManyItemsTitle": "条目过多",
         "tooManyItemsDescription": "一次最多更新 {limit} 行，因此只更新了前 {limit} 行。",
         "AIValuesGenerationErrorTitle": "AI 值生成失败",
-        "AIValuesGenerationErrorMessage": "请检查 API_KEY 并确认所选模型可用。"
+        "AIValuesGenerationErrorMessage": "请检查 API_KEY 并确认所选模型可用。",
+        "invalidDate": "日期或时间格式不正确",
+        "deleteSelectedRowsTitle": "删除选中的行？",
+        "deleteSelectedRowsMessage": "选中的 {count} 行将移入回收站，可使用 Ctrl/Cmd+Z 撤销。",
+        "rowsDeletedTitle": "已删除行",
+        "rowsDeletedMessage": "{count} 行已移入回收站。",
+        "selectedRows": "已选择 {count} 行",
+        "clearSelection": "取消选择"
     },
     "gridViewFieldFile": {
         "dropHere": "放在这里",
@@ -837,7 +844,8 @@
         "noSelectOptions": "没有可用的选项。",
         "noCollaboratorsAvailable": "没有可用的协作者。",
         "cannotSumitValues": "该字段为只读，不会显示在表单中。",
-        "clearValue": "清除值"
+        "clearValue": "清除值",
+        "removeField": "移除字段"
     },
     "duplicateFieldContext": {
         "duplicate": "创建副本字段",
@@ -1486,6 +1494,9 @@
         "warning": "将把 {count} 行移到回收站。清空回收站后无法在此处撤销。",
         "confirmDelete": "删除 {count} 行重复数据",
         "doneTitle": "去重完成",
-        "doneMessage": "已删除 {count} 行重复数据。"
+        "doneMessage": "已删除 {count} 行重复数据。",
+        "truncatedWarning": "共 {total} 组重复，仅显示前 {preview} 组。为保证安全，手动保留模式已禁用；删除仍会处理全部重复组。",
+        "warningPartial": "将至少删除 {count} 行（仅统计已预览的重复组）并移入回收站。",
+        "confirmDeletePartial": "删除重复行（至少 {count} 行）"
     }
 }
