@@ -9,6 +9,8 @@ ARG GID="9999"
 # =============================================================================
 FROM debian:trixie-slim AS tool-builder
 
+ARG GITHUB_PROXY=""
+
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 ENV SU_EXEC_VERSION=212b75144bbc06722fbd7661f651390dc47a43d1 \
@@ -17,9 +19,10 @@ ENV SU_EXEC_VERSION=212b75144bbc06722fbd7661f651390dc47a43d1 \
 # hadolint ignore=DL3008
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    sed -i 's|deb.debian.org|mirrors.tuna.tsinghua.edu.cn|g; s|security.debian.org|mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list /etc/apt/sources.list.d/*.sources 2>/dev/null || true; \
     apt-get update && \
     apt-get install -y --no-install-recommends ca-certificates curl build-essential dos2unix tini && \
-    curl -fsSL -o /usr/local/bin/su-exec.c "https://github.com/ncopa/su-exec/raw/${SU_EXEC_VERSION}/su-exec.c" && \
+    curl -fsSL --retry 5 --retry-delay 3 --connect-timeout 20 -o /usr/local/bin/su-exec.c "${GITHUB_PROXY}https://github.com/ncopa/su-exec/raw/${SU_EXEC_VERSION}/su-exec.c" && \
     echo "${SU_EXEC_SHA256}  /usr/local/bin/su-exec.c" | sha256sum -c - && \
     gcc -Wall -Werror -static -o /usr/local/bin/su-exec /usr/local/bin/su-exec.c && \
     chmod 0755 /usr/local/bin/su-exec
@@ -46,7 +49,7 @@ WORKDIR /baserow/web-frontend
 RUN --mount=type=cache,target=$YARN_CACHE_FOLDER,uid=$UID,gid=$GID,sharing=locked \
     --mount=type=bind,source=web-frontend/package.json,target=/baserow/web-frontend/package.json \
     --mount=type=bind,source=web-frontend/yarn.lock,target=/baserow/web-frontend/yarn.lock \
-    yarn install --pure-lockfile --cache-folder $YARN_CACHE_FOLDER
+    yarn install --pure-lockfile --registry https://registry.npmmirror.com --cache-folder $YARN_CACHE_FOLDER
 
 
 # =============================================================================
@@ -107,7 +110,7 @@ ARG GID
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Upgrade OS packages to patch CVEs in base image
-RUN apt-get update && apt-get upgrade -y --no-install-recommends \
+RUN sed -i 's|deb.debian.org|mirrors.tuna.tsinghua.edu.cn|g; s|security.debian.org|mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list /etc/apt/sources.list.d/*.sources 2>/dev/null || true; apt-get update && apt-get upgrade -y --no-install-recommends \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV DOCKER_USER=baserow_docker_user \
@@ -165,6 +168,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # hadolint ignore=DL3008
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    sed -i 's|deb.debian.org|mirrors.tuna.tsinghua.edu.cn|g; s|security.debian.org|mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list /etc/apt/sources.list.d/*.sources 2>/dev/null || true; \
     apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
@@ -236,7 +240,7 @@ RUN mkdir -p /baserow/web-frontend/.nuxt /baserow/web-frontend/.cache /baserow/w
 
 # Install dependencies (including dev)
 RUN --mount=type=cache,target=$YARN_CACHE_FOLDER,uid=$UID,gid=$GID,sharing=locked \
-    yarn install --pure-lockfile --cache-folder $YARN_CACHE_FOLDER
+    yarn install --pure-lockfile --registry https://registry.npmmirror.com --cache-folder $YARN_CACHE_FOLDER
 
 ENTRYPOINT ["/usr/bin/tini", "--", "/bin/bash", "/baserow/web-frontend/docker/docker-entrypoint.sh"]
 HEALTHCHECK --interval=60s CMD wget -q -O /dev/null http://localhost:3000/_health/ || exit 1
@@ -263,7 +267,7 @@ COPY --from=tool-builder /usr/bin/tini /usr/bin/tini
 COPY --from=busybox-helper /bin/wget /usr/local/bin/wget
 
 # Upgrade OS packages to patch CVEs in base image
-RUN apt-get update && apt-get upgrade -y --no-install-recommends \
+RUN sed -i 's|deb.debian.org|mirrors.tuna.tsinghua.edu.cn|g; s|security.debian.org|mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list /etc/apt/sources.list.d/*.sources 2>/dev/null || true; apt-get update && apt-get upgrade -y --no-install-recommends \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Remove npm (not needed at runtime) to eliminate CVEs in its bundled deps (minimatch, glob, etc.)

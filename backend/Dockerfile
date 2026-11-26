@@ -9,6 +9,8 @@ ARG GID="9999"
 # =============================================================================
 FROM debian:trixie-slim AS tool-builder
 
+ARG GITHUB_PROXY=""
+
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 ENV SU_EXEC_VERSION=212b75144bbc06722fbd7661f651390dc47a43d1 \
@@ -17,10 +19,11 @@ ENV SU_EXEC_VERSION=212b75144bbc06722fbd7661f651390dc47a43d1 \
 # hadolint ignore=DL3008
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    sed -i 's|deb.debian.org|mirrors.tuna.tsinghua.edu.cn|g; s|security.debian.org|mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list /etc/apt/sources.list.d/*.sources 2>/dev/null || true; \
     apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends ca-certificates curl build-essential dos2unix tini && \
-    curl -fsSL -o /usr/local/bin/su-exec.c "https://github.com/ncopa/su-exec/raw/${SU_EXEC_VERSION}/su-exec.c" && \
+    curl -fsSL --retry 5 --retry-delay 3 --connect-timeout 20 -o /usr/local/bin/su-exec.c "${GITHUB_PROXY}https://github.com/ncopa/su-exec/raw/${SU_EXEC_VERSION}/su-exec.c" && \
     echo "${SU_EXEC_SHA256}  /usr/local/bin/su-exec.c" | sha256sum -c - && \
     gcc -Wall -Werror -static -o /usr/local/bin/su-exec /usr/local/bin/su-exec.c && \
     chmod 0755 /usr/local/bin/su-exec
@@ -31,6 +34,7 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
 # =============================================================================
 FROM debian:trixie-slim AS wasmtime-builder
 ARG TARGETARCH
+ARG GITHUB_PROXY=""
 # Stay on an LTS line (versions divisible by 12): only those get security fixes for 24 months.
 ARG WASMTIME_VERSION=48.0.5
 ARG WASMTIME_SHA256_AMD64=f533a0fb3eca20aee34d69192f214839c5227a507fff2ecb3070ae1a37f0c40d
@@ -41,6 +45,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # hadolint ignore=DL3008
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    sed -i 's|deb.debian.org|mirrors.tuna.tsinghua.edu.cn|g; s|security.debian.org|mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list /etc/apt/sources.list.d/*.sources 2>/dev/null || true; \
     apt-get update && \
     apt-get install -y --no-install-recommends ca-certificates curl xz-utils && \
     case "${TARGETARCH}" in \
@@ -48,8 +53,8 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
         arm64) WASMTIME_ARCH="aarch64-linux" WASMTIME_SHA256="${WASMTIME_SHA256_ARM64}" ;; \
         *) echo "Unsupported architecture: ${TARGETARCH}" && exit 1 ;; \
     esac && \
-    curl -fsSL \
-        "https://github.com/bytecodealliance/wasmtime/releases/download/v${WASMTIME_VERSION}/wasmtime-v${WASMTIME_VERSION}-${WASMTIME_ARCH}.tar.xz" \
+    curl -fsSL --retry 5 --retry-delay 3 --connect-timeout 20 \
+        "${GITHUB_PROXY}https://github.com/bytecodealliance/wasmtime/releases/download/v${WASMTIME_VERSION}/wasmtime-v${WASMTIME_VERSION}-${WASMTIME_ARCH}.tar.xz" \
         -o /tmp/wasmtime.tar.xz && \
     echo "${WASMTIME_SHA256}  /tmp/wasmtime.tar.xz" | sha256sum -c - && \
     tar -xJf /tmp/wasmtime.tar.xz -C /tmp && \
@@ -62,6 +67,7 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
 # =============================================================================
 FROM golang:1.27-trixie AS mox-builder
 ARG MOX_VERSION=v0.0.17
+ENV GOPROXY=https://goproxy.cn,direct
 # mox v0.0.17 pins vulnerable x/crypto v0.55.0 and x/net v0.58.0; drop once a mox release bumps them.
 ARG MOX_X_CRYPTO_VERSION=v0.57.0
 ARG MOX_X_NET_VERSION=v0.60.0
@@ -83,6 +89,7 @@ RUN go mod download "github.com/mjl-/mox@${MOX_VERSION}" && \
 # =============================================================================
 FROM debian:trixie-slim AS quickjs-wasi-builder
 ARG TARGETARCH
+ARG GITHUB_PROXY=""
 ARG QUICKJS_NG_VERSION=0.15.0
 ARG WASI_SDK_VERSION=27
 
@@ -91,6 +98,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # hadolint ignore=DL3008
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    sed -i 's|deb.debian.org|mirrors.tuna.tsinghua.edu.cn|g; s|security.debian.org|mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list /etc/apt/sources.list.d/*.sources 2>/dev/null || true; \
     apt-get update && \
     apt-get install -y --no-install-recommends ca-certificates cmake curl make tar && \
     case "${TARGETARCH}" in \
@@ -98,13 +106,13 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
         arm64) WASI_SDK_ARCH="arm64" ;; \
         *) echo "Unsupported architecture: ${TARGETARCH}" && exit 1 ;; \
     esac && \
-    curl -fsSL \
-        "https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-${WASI_SDK_VERSION}/wasi-sdk-${WASI_SDK_VERSION}.0-${WASI_SDK_ARCH}-linux.tar.gz" \
+    curl -fsSL --retry 5 --retry-delay 3 --connect-timeout 20 \
+        "${GITHUB_PROXY}https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-${WASI_SDK_VERSION}/wasi-sdk-${WASI_SDK_VERSION}.0-${WASI_SDK_ARCH}-linux.tar.gz" \
         -o /tmp/wasi-sdk.tar.gz && \
     tar -xzf /tmp/wasi-sdk.tar.gz -C /opt && \
     mv "/opt/wasi-sdk-${WASI_SDK_VERSION}.0-${WASI_SDK_ARCH}-linux" /opt/wasi-sdk && \
-    curl -fsSL \
-        "https://github.com/quickjs-ng/quickjs/archive/refs/tags/v${QUICKJS_NG_VERSION}.tar.gz" \
+    curl -fsSL --retry 5 --retry-delay 3 --connect-timeout 20 \
+        "${GITHUB_PROXY}https://github.com/quickjs-ng/quickjs/archive/refs/tags/v${QUICKJS_NG_VERSION}.tar.gz" \
         -o /tmp/quickjs-ng.tar.gz && \
     mkdir -p /tmp/quickjs-ng && \
     tar -xzf /tmp/quickjs-ng.tar.gz -C /tmp/quickjs-ng --strip-components=1 && \
@@ -142,6 +150,7 @@ ARG GID
 # Runtime dependencies only - this layer is always cached
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    sed -i 's|deb.debian.org|mirrors.tuna.tsinghua.edu.cn|g; s|security.debian.org|mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list /etc/apt/sources.list.d/*.sources 2>/dev/null || true; \
     apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
@@ -149,6 +158,10 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     libpq-dev
 
 ENV UV_PYTHON_DOWNLOADS=0 \
+    UV_DEFAULT_INDEX=https://mirrors.cloud.tencent.com/pypi/simple \
+    UV_HTTP_TIMEOUT=600 \
+    UV_HTTP_RETRIES=5 \
+    UV_NO_CACHE=1 \
     UV_COMPILE_BYTECODE=1 \
     UV_LINK_MODE=copy \
     UV_PROJECT_ENVIRONMENT=/baserow/venv \
@@ -158,8 +171,8 @@ ENV UV_PYTHON_DOWNLOADS=0 \
     PATH="/baserow/venv/bin:$PATH" \
     PYTHONPATH="/baserow/backend/src:/baserow/premium/backend/src:/baserow/enterprise/backend/src"
 
-# hadolint ignore=DL3022
-COPY --from=ghcr.io/astral-sh/uv:0.12.24 /uv /uvx /bin/
+# Install uv from PyPI (mirror-friendly, avoids ghcr.io dependency)
+RUN pip install --no-cache-dir --index-url https://mirrors.cloud.tencent.com/pypi/simple uv==0.12.24
 
 # Create baserow directory structure (including subdirs for COPY targets)
 RUN mkdir -p /baserow/ && chown -R $UID:$GID /baserow/
@@ -167,15 +180,11 @@ RUN mkdir -p /baserow/ && chown -R $UID:$GID /baserow/
 USER $UID:$GID
 WORKDIR /baserow/backend
 
-RUN --mount=type=cache,target=$UV_CACHE_DIR,sharing=locked,uid=$UID,gid=$GID \
-    --mount=type=bind,source=LICENSE,target=/baserow/LICENSE \
-    --mount=type=bind,source=backend/uv.lock,target=/baserow/backend/uv.lock \
-    --mount=type=bind,source=backend/pyproject.toml,target=/baserow/backend/pyproject.toml \
-    --mount=type=bind,source=premium/LICENSE,target=/baserow/premium/LICENSE \
-    --mount=type=bind,source=premium/backend/pyproject.toml,target=/baserow/premium/backend/pyproject.toml \
-    --mount=type=bind,source=enterprise/LICENSE,target=/baserow/enterprise/LICENSE \
-    --mount=type=bind,source=enterprise/backend/pyproject.toml,target=/baserow/enterprise/backend/pyproject.toml \
-    uv sync --frozen --no-dev --no-install-workspace --no-install-project \
+RUN --mount=type=bind,source=backend/uv-export-prod.txt,target=/baserow/backend/requirements.txt \
+    python3 -m venv /baserow/venv \
+    && /baserow/venv/bin/pip install --no-cache-dir --disable-pip-version-check \
+        --index-url https://mirrors.cloud.tencent.com/pypi/simple \
+        -r /baserow/backend/requirements.txt \
     && find /baserow/venv -type f \( -name "*.c" -o -name "*.h" \) -not -path "*/autobahn/*" -delete \
     # Strip test/doc directories from site-packages (keep django/drf tests - used at runtime)
     # Keep botocore/docs and boto3/docs - they're imported at runtime
@@ -267,9 +276,7 @@ RUN dos2unix /baserow/backend/docker/docker-entrypoint.sh \
     && chmod a+x /baserow/backend/docker/docker-entrypoint.sh
 
 # Install the project with premium and enterprise workspaces
-RUN --mount=type=cache,target=$UV_CACHE_DIR,sharing=locked,uid=$UID,gid=$GID \
-    uv sync --frozen --no-dev \
-    && find /baserow/venv -type f \( -name "*.c" -o -name "*.h" \) -not -path "*/autobahn/*" -delete \
+RUN find /baserow/venv -type f \( -name "*.c" -o -name "*.h" \) -not -path "*/autobahn/*" -delete \
     # Strip test/doc directories from site-packages (keep django/drf tests - used at runtime)
     # Keep botocore/docs and boto3/docs - they're imported at runtime
     && (find /baserow/venv/lib -type d \( -name "test" -o -name "tests" \) \
@@ -285,7 +292,7 @@ FROM ${PYTHON_BASE_IMAGE} AS ci
 ARG UID
 ARG GID
 
-RUN apt-get update && \
+RUN sed -i 's|deb.debian.org|mirrors.tuna.tsinghua.edu.cn|g; s|security.debian.org|mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list /etc/apt/sources.list.d/*.sources 2>/dev/null || true; apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
     gettext \
@@ -310,8 +317,8 @@ COPY --from=tool-builder /usr/bin/tini /usr/bin/tini
 COPY --from=wasmtime-builder /usr/local/bin/wasmtime /usr/local/bin/wasmtime
 COPY --from=mox-builder /usr/local/bin/mox /usr/local/bin/mox
 COPY --from=quickjs-wasi-builder /usr/local/lib/baserow/qjs.wasm /usr/local/lib/baserow/qjs.wasm
-# hadolint ignore=DL3022
-COPY --from=ghcr.io/astral-sh/uv:0.12.24 /uv /uvx /bin/
+# Install uv from PyPI (mirror-friendly, avoids ghcr.io dependency)
+RUN pip install --no-cache-dir --index-url https://mirrors.cloud.tencent.com/pypi/simple uv==0.12.24
 
 # Create baserow directory structure (including subdirs for COPY targets)
 RUN mkdir -p /baserow/backend/reports /baserow/premium/backend /baserow/enterprise/backend /baserow/media && \
@@ -341,11 +348,13 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # Build dependencies - this layer is always cached
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    sed -i 's|deb.debian.org|mirrors.tuna.tsinghua.edu.cn|g; s|security.debian.org|mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list /etc/apt/sources.list.d/*.sources 2>/dev/null || true; \
     apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends curl ca-certificates \
-    && curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc -o /usr/share/keyrings/pgdg.asc \
+    && curl -fsSL --retry 5 --retry-delay 3 --connect-timeout 20 https://www.postgresql.org/media/keys/ACCC4CF8.asc -o /usr/share/keyrings/pgdg.asc \
     && echo "deb [signed-by=/usr/share/keyrings/pgdg.asc] https://apt.postgresql.org/pub/repos/apt trixie-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
+    && (sed -i 's|deb.debian.org|mirrors.tuna.tsinghua.edu.cn|g; s|security.debian.org|mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list /etc/apt/sources.list.d/*.sources 2>/dev/null || true) \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
     build-essential \
@@ -385,8 +394,8 @@ COPY --from=tool-builder /usr/bin/dos2unix /usr/local/bin/dos2unix
 COPY --from=wasmtime-builder /usr/local/bin/wasmtime /usr/local/bin/wasmtime
 COPY --from=mox-builder /usr/local/bin/mox /usr/local/bin/mox
 COPY --from=quickjs-wasi-builder /usr/local/lib/baserow/qjs.wasm /usr/local/lib/baserow/qjs.wasm
-# hadolint ignore=DL3022
-COPY --from=ghcr.io/astral-sh/uv:0.12.24 /uv /uvx /bin/
+# Install uv from PyPI (mirror-friendly, avoids ghcr.io dependency)
+RUN pip install --no-cache-dir --index-url https://mirrors.cloud.tencent.com/pypi/simple uv==0.12.24
 
 # Create directory structure to install dependencies
 RUN mkdir -p /baserow/backend/docker /baserow/premium/ /baserow/enterprise/ /baserow/media && \
@@ -450,11 +459,12 @@ ENV POSTGRES_VERSION=15 \
     DJANGO_SETTINGS_MODULE='baserow.config.settings.base'
 
 # Runtime dependencies only
-RUN apt-get update && \
+RUN sed -i 's|deb.debian.org|mirrors.tuna.tsinghua.edu.cn|g; s|security.debian.org|mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list /etc/apt/sources.list.d/*.sources 2>/dev/null || true; apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends curl ca-certificates \
-    && curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc -o /usr/share/keyrings/pgdg.asc \
+    && curl -fsSL --retry 5 --retry-delay 3 --connect-timeout 20 https://www.postgresql.org/media/keys/ACCC4CF8.asc -o /usr/share/keyrings/pgdg.asc \
     && echo "deb [signed-by=/usr/share/keyrings/pgdg.asc] https://apt.postgresql.org/pub/repos/apt trixie-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
+    && (sed -i 's|deb.debian.org|mirrors.tuna.tsinghua.edu.cn|g; s|security.debian.org|mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list /etc/apt/sources.list.d/*.sources 2>/dev/null || true) \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
     xmlsec1 \
