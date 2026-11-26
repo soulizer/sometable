@@ -3,7 +3,6 @@
     ref="modal"
     :right-sidebar="true"
     :right-sidebar-scrollable="true"
-    :close-button="false"
     :can-close="!uploadingBeforeJobCreated"
     @show="onShow"
   >
@@ -16,7 +15,6 @@
             })
           }}
         </h2>
-        <div class="modal__actions"></div>
       </div>
 
       <div class="control margin-bottom-2">
@@ -206,11 +204,6 @@
             {{ $t('importFileModal.selectImportMessage') }}
           </div>
         </div>
-      </div>
-      <div v-if="!uploadingBeforeJobCreated" class="modal__actions">
-        <a class="modal__close" @click="hide()">
-          <i class="iconoir-cancel"></i>
-        </a>
       </div>
     </template>
   </Modal>

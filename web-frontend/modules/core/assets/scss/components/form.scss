@@ -154,6 +154,13 @@
     width: 100%;
   }
 
+  // Keep multiple action buttons evenly spaced across every form/modal.
+  > .align-right {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+
   &.actions--right {
     justify-content: right;
   }
