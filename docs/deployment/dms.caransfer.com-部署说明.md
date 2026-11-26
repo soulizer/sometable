@@ -1,7 +1,7 @@
 # dms.caransfer.com 部署说明
 
 > 本文件仅针对 `dms.caransfer.com` 这台服务器的实例，不涉及 sometable.com 生产环境。
-> 部署日期：2026-11-25（最新源码：`develop` @ `ca8d9b3`，r3b25）
+> 部署日期：2026-11-25（最新源码：`develop` @ `ca8d9b3` + 本地修复，r3b26）
 
 ## 访问信息
 
@@ -11,7 +11,7 @@
 | 管理员邮箱 | `admin@dms.caransfer.com` |
 | 管理员初始密码 | 见服务器 `/root/.sometable-admin-password`（首次登录后请修改） |
 | 源码/部署目录 | `/www/apps/sometable` |
-| 镜像标签 | `local-20261126-r3b25` |
+| 镜像标签 | `local-20261126-r3b26` |
 | 本地备份目录 | `/www/backups/sometable` |
 
 ## 运行架构
@@ -47,6 +47,17 @@ Caddy 的 8088/8443 只绑定 `127.0.0.1`，不直接暴露公网。
 - `/baserow/config/backup-storage.json`：远端备份存储
 
 界面路径：管理员设置 → 文件存储 / 备份 → 远端备份存储。
+
+## 表格快捷键
+
+- `Ctrl/Cmd + F`：打开当前视图搜索
+- `Ctrl/Cmd + A`：用复选框选中当前已加载的行
+- `Delete / Backspace`：删除复选框选中的行（移入回收站）
+
+## 导出下载
+
+- 对象存储的预签名 URL 不再追加 `dl` 参数，避免签名失效导致 `SignatureDoesNotMatch`。
+- 导出进度中的状态文案已翻译为「等待中 / 正在导出… / 已完成」等。
 
 ## 表格去重
 
