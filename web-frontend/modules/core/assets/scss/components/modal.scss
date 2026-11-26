@@ -56,6 +56,18 @@
     padding: 0;
   }
 
+  // Keep the bottom inset equal to the horizontal inset. Modals whose action
+  // row is the last element should not add an extra bottom margin on top of it.
+  &:not(.modal__box--with-sidebar):not(.modal__box--tiny):not(
+      .modal__box--no-padding
+    ) {
+    padding-bottom: 40px;
+  }
+
+  .actions {
+    margin-bottom: 0;
+  }
+
   &.modal__box--right {
     margin-right: 20px;
 
@@ -109,7 +121,13 @@
   }
 
   &:not(.modal__box-content-no-padding) {
-    padding: 32px 40px;
+    padding: 32px 40px 40px;
+
+    // Settings-like sidebar modals use the same 40px bottom inset as the right
+    // side so footer buttons don't float above a larger empty area.
+    .actions {
+      margin-bottom: 0;
+    }
   }
 }
 

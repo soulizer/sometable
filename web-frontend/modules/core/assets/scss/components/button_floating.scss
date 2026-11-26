@@ -62,5 +62,5 @@
 .button-floating--secondary {
   border: 1px solid $palette-neutral-200;
 
-  @include elevation($elevation-medium);
+  @include elevation($elevation-low);
 }

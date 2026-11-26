@@ -46,7 +46,13 @@
             </div>
           </div>
           <div class="admin-settings__control">
-            <FormInput v-model="form.hour" type="number" size="large" min="0" max="23" />
+            <FormInput
+              v-model="form.hour"
+              type="number"
+              size="large"
+              min="0"
+              max="23"
+            />
           </div>
         </div>
         <div v-if="form.frequency === 'weekly'" class="admin-settings__item">
@@ -175,9 +181,9 @@
 
       <Modal ref="restoreModal">
         <h2 class="box__title">{{ $t('adminBackups.restoreTitle') }}</h2>
-        <p class="margin-bottom-2">
+        <Alert type="warning" class="margin-bottom-2">
           {{ $t('adminBackups.restoreDescription') }}
-        </p>
+        </Alert>
         <div class="actions">
           <div class="align-right">
             <Button @click="$refs.restoreModal?.hide()">

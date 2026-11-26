@@ -8,7 +8,7 @@
     <CrudTable
       :columns="columns"
       :filters="filters"
-      :default-column-sorts="[{ key: 'timestamp', direction: 'asc' }]"
+      :default-column-sorts="[{ key: 'timestamp', direction: 'desc' }]"
       :service="service"
       :enable-search="false"
       row-id-key="id"
@@ -161,7 +161,7 @@ if (workspaceId) {
   if (!$hasFeature(EnterpriseFeatures.AUDIT_LOG, workspaceId)) {
     throw createError({
       statusCode: 401,
-      message: 'Available in the advanced/enterprise version',
+      message: $t('auditLog.featureUnavailable'),
       data: {
         report: false,
       },
@@ -176,7 +176,7 @@ if (workspaceId) {
   ) {
     throw createError({
       statusCode: 404,
-      message: 'Page not found',
+      message: $t('auditLog.pageNotFound'),
       data: {
         report: false,
       },
@@ -186,7 +186,7 @@ if (workspaceId) {
 } else if (!$hasFeature(EnterpriseFeatures.AUDIT_LOG)) {
   throw createError({
     statusCode: 401,
-    message: 'Available in the advanced/enterprise version',
+    message: $t('auditLog.featureUnavailable'),
     data: {
       report: false,
     },
@@ -195,7 +195,7 @@ if (workspaceId) {
 } else if (!store.getters['auth/isStaff']) {
   throw createError({
     statusCode: 403,
-    message: 'Forbidden.',
+    message: $t('auditLog.forbidden'),
     data: {
       report: false,
     },

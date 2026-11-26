@@ -275,14 +275,19 @@
         "identitiesSection": "身份",
         "allWorkspaces": "全部工作区",
         "allActionTypes": "全部事件类型",
-        "actorDisplay": "{name}（{id}）"
+        "actorDisplay": "{name}（{id}）",
+        "featureUnavailable": "当前实例未开放此功能。",
+        "pageNotFound": "页面不存在。",
+        "forbidden": "你没有权限查看此页面。"
     },
     "auditLogExportModal": {
         "title": "导出为 CSV",
         "exportFilename": "管理审计日志导出 - {date}",
         "exportWorkspaceFilename": " 工作区（{workspaceId}）审计日志导出 - {date}",
         "cancelledTitle": "导出失败",
-        "cancelledDescription": "导出审计日志时出现问题，请重试。"
+        "cancelledDescription": "导出审计日志时出现问题，请重试。",
+        "failedTitle": "导出失败",
+        "failedDescription": "导出审计日志时出现问题，请重试。"
     },
     "authProviders": {
         "title": "身份验证提供者",

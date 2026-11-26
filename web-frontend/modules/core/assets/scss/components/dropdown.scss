@@ -3,7 +3,7 @@
   background-color: $white;
 
   @include elevation($elevation-low);
-  @include rounded($rounded);
+  @include rounded($rounded-md);
 }
 
 .dropdown__selected {
@@ -16,7 +16,7 @@
   color: $palette-neutral-1200;
 
   @include fixed-height(36px, 13px);
-  @include rounded($rounded);
+  @include rounded($rounded-md);
   @include flex-align-items(4px);
 
   &:hover {
@@ -82,7 +82,7 @@
   z-index: $z-index-dropdown-items;
 
   @include absolute(0, 0, auto, 0);
-  @include rounded($rounded);
+  @include rounded($rounded-md);
   @include elevation($elevation-medium);
 
   &.dropdown__items--fixed {

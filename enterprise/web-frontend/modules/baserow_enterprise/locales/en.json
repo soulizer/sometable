@@ -275,14 +275,19 @@
     "identitiesSection": "Identities",
     "allWorkspaces": "All Workspaces",
     "allActionTypes": "All Event Types",
-    "actorDisplay": "{name} ({id})"
+    "actorDisplay": "{name} ({id})",
+    "featureUnavailable": "This feature is not available on this instance.",
+    "pageNotFound": "Page not found.",
+    "forbidden": "You do not have permission to view this page."
   },
   "auditLogExportModal": {
     "title": "Export to CSV",
     "exportFilename": "Admin Audit Log Export - {date}",
     "exportWorkspaceFilename": " Workspace ({workspaceId}) Audit Log Export - {date}",
     "cancelledTitle": "Export failed",
-    "cancelledDescription": "Something went wrong while exporting the audit log. Please try again."
+    "cancelledDescription": "Something went wrong while exporting the audit log. Please try again.",
+    "failedTitle": "Export failed",
+    "failedDescription": "Something went wrong while exporting the audit log. Please try again."
   },
   "authProviders": {
     "title": "Authentication Providers",
