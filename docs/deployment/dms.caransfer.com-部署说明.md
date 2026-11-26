@@ -90,3 +90,11 @@ docker compose exec backend /baserow/backend/docker/docker-entrypoint.sh manage 
 
 - 证书：`/www/server/panel/vhost/cert/dms.caransfer.com/`
 - acme.sh 自动续期（宝塔已有 acme.sh cron），续期后自动 `nginx -s reload`。
+
+## 源码与发布
+
+- GitHub 仓库：`soulizer/sometable`
+- 部署分支：`deploy/dms-caransfer`（基于 `develop`）
+- 服务器 SSH 别名：`github-sometable`，deploy key 位于 `/root/.ssh/sometable_deploy`
+- 后续在本机的修改先提交到该分支再推送；`.env`、Docker 卷和运行数据不进入仓库。
+- 回滚镜像：`baserow/backend:local-20261125-r3b23`、`baserow/web-frontend:local-20261125-r3b23`
