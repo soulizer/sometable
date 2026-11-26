@@ -12,7 +12,7 @@
         {{ $t('deduplicateRowsModal.stepFields') }}
       </h3>
       <div class="deduplicate__fields">
-        <label
+        <div
           v-for="field in selectableFields"
           :key="field.id"
           class="deduplicate__field"
@@ -20,9 +20,10 @@
           <Checkbox
             :model-value="selectedFieldIds.includes(field.id)"
             @update:model-value="toggleField(field.id, $event)"
-          />
-          <span>{{ field.name }}</span>
-        </label>
+          >
+            {{ field.name }}
+          </Checkbox>
+        </div>
       </div>
       <Button
         type="secondary"
@@ -50,7 +51,7 @@
           </span>
         </div>
         <div v-if="rule === 'manual'" class="deduplicate__group-rows">
-          <label
+          <div
             v-for="row in group.rows"
             :key="row.id"
             class="deduplicate__row"
@@ -59,9 +60,10 @@
               :value="row.id"
               :model-value="keepMap[group.key]"
               @input="keepMap[group.key] = $event"
-            />
-            <span>#{{ row.id }} — {{ row.values.join(' / ') }}</span>
-          </label>
+            >
+              #{{ row.id }} — {{ row.values.join(' / ') }}
+            </Radio>
+          </div>
         </div>
       </div>
     </div>
@@ -72,10 +74,9 @@
       </h3>
       <RadioGroup v-model="rule" :options="ruleOptions" />
       <div class="deduplicate__options">
-        <label>
-          <Checkbox v-model="backup" />
-          <span>{{ $t('deduplicateRowsModal.backupBefore') }}</span>
-        </label>
+        <Checkbox v-model="backup">
+          {{ $t('deduplicateRowsModal.backupBefore') }}
+        </Checkbox>
       </div>
     </div>
 
