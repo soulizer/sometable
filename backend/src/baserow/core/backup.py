@@ -145,6 +145,13 @@ def remote_key(config: dict, stamp: str) -> str:
     return f"{prefix}/{stamp}.tar.gz" if prefix else f"{stamp}.tar.gz"
 
 
+def remote_key_prefix_with_slash(config: dict) -> str:
+    """Prefix used for S3 listing, without producing a leading slash."""
+
+    prefix = remote_key_prefix(config)
+    return f"{prefix}/" if prefix else ""
+
+
 def _write_manifest(path: str, manifest: dict) -> None:
     with open(path, "w") as f:
         json.dump(manifest, f, ensure_ascii=False, indent=2)
@@ -255,7 +262,8 @@ def list_remote_backups() -> list[dict]:
         client = build_s3_client(config)
         paginator = client.get_paginator("list_objects_v2")
         for page in paginator.paginate(
-            Bucket=config["bucket_name"], Prefix=remote_key_prefix(config) + "/"
+            Bucket=config["bucket_name"],
+            Prefix=remote_key_prefix_with_slash(config),
         ):
             for obj in page.get("Contents", []):
                 key = obj["Key"]
@@ -309,7 +317,8 @@ def apply_retention(keep: int) -> None:
         paginator = client.get_paginator("list_objects_v2")
         keys = []
         for page in paginator.paginate(
-            Bucket=config["bucket_name"], Prefix=remote_key_prefix(config) + "/"
+            Bucket=config["bucket_name"],
+            Prefix=remote_key_prefix_with_slash(config),
         ):
             for obj in page.get("Contents", []):
                 key = obj["Key"]
