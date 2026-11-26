@@ -604,10 +604,10 @@
         "additionalRoles": "附加角色"
     },
     "user": {
-        "isStaff": "工作人员与否",
-        "isWorkspaceAdmin": "组管理员与否",
-        "active": "生效的",
-        "deactivated": "停用的"
+        "isStaff": "管理员",
+        "isWorkspaceAdmin": "工作区管理员",
+        "active": "启用",
+        "deactivated": "停用"
     },
     "adminType": {
         "dashboard": "仪表盘",
@@ -647,10 +647,10 @@
         "id": "",
         "username": "用户名",
         "name": "名字",
-        "workspaces": "集体",
+        "workspaces": "工作区",
         "lastLogin": "上次登录",
-        "dateJoined": "注册",
-        "active": "活跃的",
+        "dateJoined": "注册时间",
+        "active": "启用",
         "twoFactorAuth": "两步验证",
         "createUser": "新增用户",
         "emailVerified": "邮箱已验证"
@@ -671,13 +671,13 @@
         }
     },
     "userForm": {
-        "fullName": "全名",
+        "fullName": "姓名",
         "email": "邮箱",
-        "isActive": "活动状态",
+        "isActive": "启用账号",
         "warning": {
             "changeEmail": "更改此用户的电子邮件地址意味着当他们登录时,必须使用新的电子邮件地址.这必须与该用户进行沟通.",
-            "inactiveUser": "当用户被标记为非活跃时,他们将无法登录.",
-            "userStaff": "让用户成为员工可以让他们对所有用户,所有组进行管理访问,并可以撤销您自己的员工权限."
+            "inactiveUser": "停用后该用户将无法登录。",
+            "userStaff": "管理员可以访问所有工作区和后台管理功能，请谨慎授予。"
         },
         "error": {
             "invalidName": "请输入有效的全名,其长度必须大于2个字符,小于150个字符.",
