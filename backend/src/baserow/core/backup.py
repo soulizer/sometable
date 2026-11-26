@@ -23,7 +23,7 @@ from baserow.core.storage_config import (
 logger = logging.getLogger(__name__)
 
 DEFAULT_BACKUP_ROOT = "/baserow/backups/sometable"
-REMOTE_PREFIX = "sometable-backups"
+REMOTE_PREFIX = os.getenv("BACKUP_REMOTE_PREFIX", "").strip("/")
 BACKUP_ID_PATTERN = re.compile(r"^\d{8}-\d{6}$")
 
 SCOPE_ALL = "all"
@@ -137,11 +137,12 @@ def remote_backup_config():
 
 def remote_key_prefix(config: dict) -> str:
     location = (config.get("location") or "").strip("/")
-    return f"{location}/{REMOTE_PREFIX}" if location else REMOTE_PREFIX
+    return "/".join(part for part in (location, REMOTE_PREFIX) if part)
 
 
 def remote_key(config: dict, stamp: str) -> str:
-    return f"{remote_key_prefix(config)}/{stamp}.tar.gz"
+    prefix = remote_key_prefix(config)
+    return f"{prefix}/{stamp}.tar.gz" if prefix else f"{stamp}.tar.gz"
 
 
 def _write_manifest(path: str, manifest: dict) -> None:

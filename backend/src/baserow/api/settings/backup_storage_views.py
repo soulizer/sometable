@@ -3,7 +3,7 @@ from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from baserow.core.backup import get_backup_root
+from baserow.core.backup import get_backup_root, remote_key_prefix
 from baserow.core.storage_config import (
     InvalidStorageConfig,
     build_s3_client,
@@ -13,9 +13,6 @@ from baserow.core.storage_config import (
     save_backup_storage_config,
     validate_storage_config,
 )
-
-REMOTE_PREFIX = 'sometable-backups'
-
 
 class BackupStorageSettingsView(APIView):
     permission_classes = (IsAdminUser,)
@@ -72,8 +69,8 @@ class BackupStorageTestView(APIView):
 
         try:
             client = build_s3_client(config)
-            prefix = config.get("location", "").strip("/")
-            key_prefix = f"{prefix}/{REMOTE_PREFIX}/" if prefix else f"{REMOTE_PREFIX}/"
+            key_prefix = remote_key_prefix(config)
+            key_prefix = f"{key_prefix}/" if key_prefix else ""
             client.list_objects_v2(
                 Bucket=config["bucket_name"],
                 Prefix=key_prefix,
