@@ -853,7 +853,13 @@
     },
     "exportTableLoadingBar": {
         "export": "Export",
-        "download": "Download"
+        "download": "Download",
+        "pending": "Pending",
+        "exporting": "Exporting…",
+        "finished": "Finished",
+        "failed": "Failed",
+        "cancelled": "Cancelled",
+        "expired": "Expired"
     },
     "exportTableDropdown": {
         "exportEntireTable": "Export entire table"

@@ -1,7 +1,7 @@
 <template>
   <div class="modal-progress__actions">
     <template v-if="job !== null">
-      <ProgressBar :value="job.progress_percentage" :status="job.state" />
+      <ProgressBar :value="job.progress_percentage" :status="statusLabel" />
     </template>
 
     <Button
@@ -34,6 +34,20 @@
 <script>
 export default {
   name: 'ExportLoadingBar',
+  computed: {
+    statusLabel() {
+      const state = this.job?.state
+      const keys = {
+        pending: 'exportTableLoadingBar.pending',
+        exporting: 'exportTableLoadingBar.exporting',
+        finished: 'exportTableLoadingBar.finished',
+        failed: 'exportTableLoadingBar.failed',
+        cancelled: 'exportTableLoadingBar.cancelled',
+        expired: 'exportTableLoadingBar.expired',
+      }
+      return state && keys[state] ? this.$t(keys[state]) : ''
+    },
+  },
   props: {
     filename: {
       type: String,
