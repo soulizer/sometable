@@ -109,10 +109,7 @@ import {
   isUserPresenceEnabled,
   tablePresenceSpaceName,
 } from '@baserow/modules/database/utils/presence'
-import {
-  GRID_VIEW_MULTI_SELECT_AREA,
-  GRID_VIEW_MULTI_SELECT_CHECKBOX,
-} from '@baserow/modules/database/constants'
+import { GRID_VIEW_MULTI_SELECT_CHECKBOX } from '@baserow/modules/database/constants'
 
 export default {
   name: 'GridViewHeader',
@@ -158,22 +155,21 @@ export default {
       return this.$store.getters[`${this.gridStore}/getSelectionType`]
     },
     selectionCount() {
-      if (this.selectionType === GRID_VIEW_MULTI_SELECT_CHECKBOX) {
-        return this.$store.getters[
-          `${this.gridStore}/getCheckboxSelectedRowsIds`
-        ].length
+      // This toolbar is for checkbox row selection only. A single cell click
+      // also activates the area multi-select, but that must not turn into a
+      // row-selection toolbar at the top of the grid.
+      if (this.selectionType !== GRID_VIEW_MULTI_SELECT_CHECKBOX) {
+        return 0
       }
-      if (this.selectionType === GRID_VIEW_MULTI_SELECT_AREA) {
-        const [min, max] =
-          this.$store.getters[
-            `${this.gridStore}/getMultiSelectRowIndexSorted`
-          ] || []
-        return Math.max(0, (max ?? -1) - (min ?? 0) + 1)
-      }
-      return 0
+      return this.$store.getters[
+        `${this.gridStore}/getCheckboxSelectedRowsIds`
+      ].length
     },
     isSelectionActive() {
-      return this.selectionCount > 0
+      return (
+        this.selectionType === GRID_VIEW_MULTI_SELECT_CHECKBOX &&
+        this.selectionCount > 0
+      )
     },
     canDeleteSelected() {
       if (
