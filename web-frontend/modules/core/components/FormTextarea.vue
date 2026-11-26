@@ -5,8 +5,10 @@
     :value="fromValue(currentValue)"
     class="form-textarea"
     :rows="autoExpandable ? minRows : rows"
+    :id="forInput"
     :placeholder="placeholder"
     :disabled="disabled"
+    :aria-invalid="error ? 'true' : undefined"
     :maxlength="maxlength"
     :class="{
       'form-textarea--error': error,
@@ -27,6 +29,7 @@
 </template>
 
 <script>
+import { inject } from 'vue'
 import preHydrationInput from '@baserow/modules/core/directives/preHydrationInput'
 
 export default {
@@ -134,6 +137,9 @@ export default {
     },
   },
   emits: ['blur', 'focus', 'keyup', 'keydown', 'input', 'update:modelValue'],
+  setup() {
+    return { forInput: inject('forInput', null) }
+  },
   data() {
     return {
       numTextAreaLines: this.minRows,

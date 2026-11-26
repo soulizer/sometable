@@ -43,7 +43,7 @@ export const mutations = {
       )
       if (existingIndex >= 0) {
         // Prevent duplicates by just replacing them inline
-        state.items.splice(existingIndex, 0, notification)
+        state.items.splice(existingIndex, 1, notification)
       } else {
         state.items.unshift(notification)
       }

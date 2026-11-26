@@ -153,7 +153,7 @@
             database.workspace.id
           )
         "
-        class="context__menu-item context-menu-item--with-separator"
+        class="context__menu-item context__menu-item--with-separator"
       >
         <a
           class="context__menu-item-link context__menu-item-link--delete"

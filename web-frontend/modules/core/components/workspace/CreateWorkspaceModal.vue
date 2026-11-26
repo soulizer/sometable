@@ -72,23 +72,20 @@ export default {
         const workspace = await this.$store.dispatch('workspace/create', values)
         await this.$store.dispatch('workspace/select', workspace)
         this.loading = false
+        this.$emit('created', workspace)
         if (!this.navigate) {
           this.hide()
-          this.$emit('created', workspace)
           return
         }
-        this.$emit('created', workspace)
         await this.$router.push({
           name: 'workspace',
           params: { workspaceId: workspace.id },
         })
         await pageFinished(this.nuxtApp)
         await nextTick()
-        this.$emit('created')
         this.hide()
       } catch (error) {
         this.loading = false
-        this.handleError(error, 'workspace')
         this.handleError(error, 'workspace', {
           PERMISSION_DENIED: new ResponseErrorMessage(
             this.$t('createWorkspaceModal.permissionDeniedTitle'),

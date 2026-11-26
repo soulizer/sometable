@@ -21,7 +21,7 @@
         <div class="form-view__field-head-name">{{ field.name }}</div>
         <a
           v-if="!readOnly"
-          v-tooltip="'Remove field'"
+          v-tooltip="$t('formViewField.removeField')"
           class="form-view__field-head-hide"
           @click="$emit('hide', field)"
         >

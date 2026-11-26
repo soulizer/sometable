@@ -82,6 +82,9 @@ export default {
     },
   },
   mounted() {
+    this.headerSearchTerm =
+      this.$store.getters[`${this.storePrefix}view/grid/getActiveSearchTerm`] ||
+      ''
     this.$priorityBus.$on(
       'start-search',
       this.$priorityBus.level.LOW,

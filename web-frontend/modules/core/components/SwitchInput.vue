@@ -1,5 +1,21 @@
 <template>
-  <div class="switch" :class="classNames" @click="click">
+  <div
+    class="switch"
+    :class="classNames"
+    role="switch"
+    tabindex="0"
+    :aria-checked="
+      currentValue === true
+        ? 'true'
+        : currentValue === false
+          ? 'false'
+          : 'mixed'
+    "
+    :aria-disabled="disabled ? 'true' : undefined"
+    @click="click"
+    @keydown.enter.prevent="click"
+    @keydown.space.prevent="click"
+  >
     <div v-if="hasSlot" class="switch__label"><slot></slot></div>
   </div>
 </template>

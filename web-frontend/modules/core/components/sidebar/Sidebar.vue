@@ -34,10 +34,7 @@
         >
           <i class="iconoir-nav-arrow-left"></i>
         </nuxt-link>
-        <a
-          class="sidebar__workspaces-selector-link"
-          @click="openUserContext"
-        >
+        <a class="sidebar__workspaces-selector-link" @click="openUserContext">
           <Avatar
             :initials="
               $filters.nameAbbreviation(selectedWorkspace.name || name)
@@ -148,7 +145,7 @@ export default {
   emits: ['open-workspace-search', 'set-col1-width'],
   data() {
     return {
-      showAdmin: false,
+      adminOverride: null,
     }
   },
 
@@ -164,22 +161,25 @@ export default {
     hasSelectedWorkspace() {
       return Object.prototype.hasOwnProperty.call(this.selectedWorkspace, 'id')
     },
+    isAdminRoute() {
+      return Object.values(this.$registry.getAll('admin')).some((adminType) =>
+        this.$route.matched.some(({ name }) => name === adminType.routeName)
+      )
+    },
+    showAdmin() {
+      return this.adminOverride ?? this.isAdminRoute
+    },
     ...mapGetters({
       name: 'auth/getName',
       unreadNotificationsInOtherWorkspaces:
         'notification/anyOtherWorkspaceWithUnread',
     }),
   },
-  created() {
-    // Checks whether the rendered page is an admin page. If so, switch the left sidebar
-    // navigation to the admin.
-    this.showAdmin = Object.values(this.$registry.getAll('admin')).some(
-      (adminType) => {
-        return this.$route.matched.some(
-          ({ name }) => name === adminType.routeName
-        )
-      }
-    )
+  watch: {
+    // A manual switch only lasts until the route changes.
+    $route() {
+      this.adminOverride = null
+    },
   },
   methods: {
     openUserContext() {
@@ -191,8 +191,7 @@ export default {
       context.toggle(anchor, 'bottom', 'left', 4, 16)
     },
     setShowAdmin(value) {
-      this.showAdmin = value
-      this.$forceUpdate()
+      this.adminOverride = value
     },
     /**
      * If no workspace is selected, for example when an admin page was loaded

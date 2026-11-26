@@ -10,6 +10,8 @@
     >
       <div
         class="modal__box"
+        role="dialog"
+        aria-modal="true"
         :class="{
           'modal__box--full-height': fullHeight,
           'modal__box--full-max-height': !fullHeight && contentScrollable,

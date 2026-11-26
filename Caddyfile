@@ -39,6 +39,11 @@
         on_demand
     }
 
+    # Nuxt/Vite emits content-hashed asset paths. Cache them for a year so repeat
+    # visits don't re-download the whole bundle. HTML remains uncached.
+    @immutable_assets path /_nuxt/*
+    header @immutable_assets >Cache-Control "public, max-age=31536000, immutable"
+
     @is_baserow_tool {
         expression `
             "{$BASEROW_PUBLIC_URL}".contains({http.request.host}) ||

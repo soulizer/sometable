@@ -40,6 +40,7 @@
         :step="type === 'number' && step > -1 ? parseFloat(step) : false"
         :placeholder="placeholder"
         :required="required"
+        :aria-invalid="error ? 'true' : undefined"
         :autocomplete="autocomplete"
         :maxlength="maxlength"
         @blur="onBlur"
