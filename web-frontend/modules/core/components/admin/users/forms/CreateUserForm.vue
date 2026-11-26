@@ -90,16 +90,24 @@
       </template>
     </FormGroup>
 
-    <FormGroup small-label :label="$t('userForm.isActive')">
-      <Checkbox v-model="values.is_active" :disabled="loading" />
-    </FormGroup>
-
-    <FormGroup small-label :label="$t('user.isStaff')">
-      <Checkbox v-model="values.is_staff" :disabled="loading" />
-    </FormGroup>
-
-    <FormGroup small-label :label="$t('usersAdminTable.emailVerified')">
-      <Checkbox v-model="values.email_verified" :disabled="loading" />
+    <FormGroup class="margin-bottom-2">
+      <Checkbox
+        v-model="values.is_active"
+        :disabled="loading"
+        class="margin-bottom-2"
+      >
+        {{ $t('userForm.isActive') }}
+      </Checkbox>
+      <Checkbox
+        v-model="values.is_staff"
+        :disabled="loading"
+        class="margin-bottom-2"
+      >
+        {{ $t('user.isStaff') }}
+      </Checkbox>
+      <Checkbox v-model="values.email_verified" :disabled="loading">
+        {{ $t('usersAdminTable.emailVerified') }}
+      </Checkbox>
     </FormGroup>
 
     <div class="actions">
@@ -120,7 +128,13 @@
 <script>
 import { useVuelidate } from '@vuelidate/core'
 import { reactive, computed } from 'vue'
-import { email, maxLength, minLength, required, sameAs } from '@vuelidate/validators'
+import {
+  email,
+  maxLength,
+  minLength,
+  required,
+  sameAs,
+} from '@vuelidate/validators'
 import PasswordInput from '@baserow/modules/core/components/helpers/PasswordInput'
 import {
   nameContainsNoSpam,

@@ -22,6 +22,14 @@
   border-bottom: 1px solid $palette-neutral-200;
 
   @include flex-align-items;
+
+  // The search input is a text field, so browsers always match :focus-visible
+  // when it is focused. The global outline is too heavy inside a dropdown, so
+  // the whole search row shows the focus state instead.
+  &:focus-within {
+    border-bottom-color: $palette-blue-500;
+    background-color: $palette-neutral-25;
+  }
 }
 
 .select__search-input {
@@ -29,6 +37,7 @@
   width: 100%;
   border: none;
   padding: 0 12px 0 0;
+  outline: none;
 
   @include rounded($rounded);
   @include fixed-height(36px, 12px);

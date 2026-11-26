@@ -74,16 +74,10 @@
       </template>
     </FormGroup>
 
-    <FormGroup
-      small-label
-      :label="$t('userForm.isActive')"
-      required
-      class="margin-bottom-2"
-    >
-      <Checkbox
-        v-model="v$.values.is_active.$model"
-        :disabled="loading"
-      ></Checkbox>
+    <FormGroup class="margin-bottom-2">
+      <Checkbox v-model="v$.values.is_active.$model" :disabled="loading">
+        {{ $t('userForm.isActive') }}
+      </Checkbox>
 
       <template #warning>
         <span v-show="!values.is_active">
@@ -92,11 +86,10 @@
       </template>
     </FormGroup>
 
-    <FormGroup small-label :label="$t('user.isStaff')" required>
-      <Checkbox
-        v-model="v$.values.is_staff.$model"
-        :disabled="loading"
-      ></Checkbox>
+    <FormGroup>
+      <Checkbox v-model="v$.values.is_staff.$model" :disabled="loading">
+        {{ $t('user.isStaff') }}
+      </Checkbox>
 
       <template #warning>
         <span v-show="values.is_staff">
