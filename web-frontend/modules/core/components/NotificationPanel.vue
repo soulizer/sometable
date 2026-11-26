@@ -136,6 +136,12 @@ export default {
   },
   inheritAttrs: false,
   emits: ['hidden', 'shown'],
+  mounted() {
+    document.addEventListener('keydown', this.keydown)
+  },
+  beforeUnmount() {
+    document.removeEventListener('keydown', this.keydown)
+  },
   data() {
     return {
       open: false,

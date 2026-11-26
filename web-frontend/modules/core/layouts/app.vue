@@ -101,6 +101,7 @@ const { $registry, $priorityBus, $realtime, $bus } = useNuxtApp()
 
 const col1Width = ref(240)
 const col3Width = ref(400)
+const layoutWidthRestored = ref(false)
 const col3Visible = ref(false)
 const app = ref()
 
@@ -214,7 +215,29 @@ function keyDown(event) {
   keyboardShortcutsToPriorityEventBus(event, $priorityBus)
 }
 
+watch([col1Width, col3Width], ([left, right]) => {
+  if (!layoutWidthRestored.value) {
+    return
+  }
+  localStorage.setItem('baserow.leftSidebarWidth', String(left))
+  localStorage.setItem('baserow.rightSidebarWidth', String(right))
+})
+
 onMounted(() => {
+  const storedLeft = Number(localStorage.getItem('baserow.leftSidebarWidth'))
+  const storedRight = Number(localStorage.getItem('baserow.rightSidebarWidth'))
+  if (storedLeft >= 52 && storedLeft <= 600) {
+    col1Width.value = storedLeft
+  }
+  if (storedRight >= 240 && storedRight <= 900) {
+    col3Width.value = storedRight
+  }
+  const storedRightSidebar = localStorage.getItem('baserow.rightSidebarOpen')
+  if (storedRightSidebar !== null) {
+    col3Visible.value = storedRightSidebar === 'true'
+  }
+  layoutWidthRestored.value = true
+
   $realtime.connect()
 
   const handler = (e) => keyDown(e)

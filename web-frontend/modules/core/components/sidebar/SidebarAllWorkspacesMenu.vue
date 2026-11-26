@@ -51,7 +51,7 @@
 
       <li class="tree__item">
         <div class="tree__action sidebar__action">
-          <a class="tree__link" @click="$refs.templateModal?.show()">
+          <a class="tree__link" @click="openTemplateModal">
             <i class="tree__icon iconoir-page"></i>
             <span class="tree__link-text">
               <span class="sidebar__item-name">{{
@@ -59,7 +59,10 @@
               }}</span>
             </span>
           </a>
-          <TemplateModal ref="templateModal"></TemplateModal>
+          <TemplateModal
+            v-if="templateModalMounted"
+            ref="templateModal"
+          ></TemplateModal>
         </div>
       </li>
 
@@ -93,6 +96,18 @@ export default {
   components: {
     TrashModal,
     TemplateModal,
+  },
+  data() {
+    return {
+      templateModalMounted: false,
+    }
+  },
+  methods: {
+    async openTemplateModal() {
+      this.templateModalMounted = true
+      await this.$nextTick()
+      this.$refs.templateModal?.show()
+    },
   },
   computed: {
     sidebarAllWorkspacesComponents() {
