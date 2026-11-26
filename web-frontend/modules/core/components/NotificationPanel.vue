@@ -217,7 +217,7 @@ export default {
       if (!this.loaded && !this.loading) {
         this.initialLoad()
       }
-      this.previousActiveElement = document.activeElement
+      this.previousActiveElement = target || document.activeElement
       this.open = true
       const opener = target
       this.removeOnClickOutsideHandler = onClickOutside(

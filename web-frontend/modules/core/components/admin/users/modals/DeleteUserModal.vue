@@ -14,13 +14,24 @@
       <p>
         {{ $t('deleteUserModal.comment2') }}
       </p>
+      <FormGroup
+        :label="$t('deleteUserModal.confirmLabel')"
+        :helper-text="$t('deleteUserModal.confirmHelp')"
+        class="margin-bottom-2"
+      >
+        <FormInput
+          v-model="confirmation"
+          :placeholder="user.username"
+          size="large"
+        />
+      </FormGroup>
       <div class="actions">
         <div class="align-right">
           <Button
             type="danger"
             size="large"
             full-width
-            :disabled="loading"
+            :disabled="loading || confirmation !== user.username"
             :loading="loading"
             @click.prevent="deleteUser()"
           >
@@ -50,9 +61,14 @@ export default {
   data() {
     return {
       loading: false,
+      confirmation: '',
     }
   },
   methods: {
+    show() {
+      this.confirmation = ''
+      return modal.methods.show.call(this)
+    },
     async deleteUser() {
       this.hideError()
       this.loading = true

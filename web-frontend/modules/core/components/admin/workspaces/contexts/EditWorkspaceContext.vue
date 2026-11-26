@@ -5,6 +5,12 @@
         {{ workspace.name }} ({{ workspace.id }})
       </div>
       <ul class="context__menu">
+        <li class="context__menu-item">
+          <a class="context__menu-item-link" @click.prevent="showRenameModal">
+            <i class="context__menu-item-icon iconoir-edit-pencil"></i>
+            {{ $t('editWorkspaceContext.rename') }}
+          </a>
+        </li>
         <li class="context__menu-item context__menu-item--with-separator">
           <a
             class="context__menu-item-link context__menu-item-link--delete"
@@ -15,6 +21,11 @@
           </a>
         </li>
       </ul>
+      <RenameWorkspaceModal
+        ref="renameWorkspaceModal"
+        :workspace="workspace"
+        @updated="$emit('workspace-updated', $event)"
+      ></RenameWorkspaceModal>
       <DeleteWorkspaceModal
         ref="deleteWorkspaceModal"
         :workspace="workspace"
@@ -27,10 +38,11 @@
 <script>
 import context from '@baserow/modules/core/mixins/context'
 import DeleteWorkspaceModal from '@baserow/modules/core/components/admin/workspaces/modals/DeleteWorkspaceModal'
+import RenameWorkspaceModal from '@baserow/modules/core/components/admin/workspaces/modals/RenameWorkspaceModal'
 
 export default {
   name: 'EditWorkspaceContext',
-  components: { DeleteWorkspaceModal },
+  components: { DeleteWorkspaceModal, RenameWorkspaceModal },
   mixins: [context],
   props: {
     workspace: {
@@ -38,8 +50,12 @@ export default {
       type: Object,
     },
   },
-  emits: ['workspace-deleted'],
+  emits: ['workspace-deleted', 'workspace-updated'],
   methods: {
+    showRenameModal() {
+      this.hide()
+      this.$refs.renameWorkspaceModal?.show()
+    },
     showDeleteModal() {
       this.hide()
       this.$refs.deleteWorkspaceModal?.show()

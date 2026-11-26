@@ -13,6 +13,9 @@ export const fetchWorkspaceOptions = (client, page, search) =>
 
 export default (client) => {
   return Object.assign(baseService(client, '/admin/workspaces/'), {
+    update(workspaceId, values) {
+      return client.patch(`/admin/workspaces/${workspaceId}/`, values)
+    },
     delete(workspaceId) {
       return client.delete(`/admin/workspaces/${workspaceId}/`)
     },

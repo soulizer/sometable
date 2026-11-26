@@ -45,7 +45,15 @@
         <div class="tree__action tree__action--has-counter">
           <a
             class="tree__link"
+            role="button"
+            tabindex="0"
             @click="$refs.notificationPanel?.toggle($event.currentTarget)"
+            @keydown.enter.prevent="
+              $refs.notificationPanel?.toggle($event.currentTarget)
+            "
+            @keydown.space.prevent="
+              $refs.notificationPanel?.toggle($event.currentTarget)
+            "
           >
             <i class="tree__icon tree__icon--type iconoir-bell"></i>
             <span class="tree__link-text">{{

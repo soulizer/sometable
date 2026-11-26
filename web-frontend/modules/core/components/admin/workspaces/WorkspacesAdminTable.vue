@@ -14,6 +14,7 @@
         ref="editWorkspaceContext"
         :workspace="editWorkspace"
         @workspace-deleted="slotProps.deleteRow"
+        @workspace-updated="slotProps.updateRow"
       >
       </EditWorkspaceContext>
     </template>

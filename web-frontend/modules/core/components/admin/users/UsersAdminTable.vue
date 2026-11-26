@@ -5,6 +5,7 @@
       :columns="columns"
       :service="service"
       row-id-key="id"
+      :filters="filters"
       :default-search="defaultSearch"
       @row-context="onRowContext"
     >
@@ -21,13 +22,80 @@
           {{ $t('usersAdminTable.createUser') }}
         </Button>
       </template>
+      <template #header-filters>
+        <div class="data-table__filters">
+          <Dropdown
+            :model-value="statusFilter"
+            :show-search="false"
+            @update:model-value="statusFilter = $event"
+          >
+            <template #selectedValue>
+              <span class="dropdown__selected-text">{{ statusLabel }}</span>
+            </template>
+            <template #defaultValue>
+              <span class="dropdown__selected-text">{{ statusLabel }}</span>
+            </template>
+            <DropdownItem :name="$t('usersAdminTable.allStatuses')" value="" />
+            <DropdownItem
+              :name="$t('usersAdminTable.onlyActive')"
+              value="true"
+            />
+            <DropdownItem
+              :name="$t('usersAdminTable.onlyInactive')"
+              value="false"
+            />
+          </Dropdown>
+          <Dropdown
+            :model-value="roleFilter"
+            :show-search="false"
+            @update:model-value="roleFilter = $event"
+          >
+            <template #selectedValue>
+              <span class="dropdown__selected-text">{{ roleLabel }}</span>
+            </template>
+            <template #defaultValue>
+              <span class="dropdown__selected-text">{{ roleLabel }}</span>
+            </template>
+            <DropdownItem :name="$t('usersAdminTable.allRoles')" value="" />
+            <DropdownItem
+              :name="$t('usersAdminTable.onlyAdmins')"
+              value="true"
+            />
+            <DropdownItem
+              :name="$t('usersAdminTable.onlyRegular')"
+              value="false"
+            />
+          </Dropdown>
+          <Dropdown
+            :model-value="verifiedFilter"
+            :show-search="false"
+            @update:model-value="verifiedFilter = $event"
+          >
+            <template #selectedValue>
+              <span class="dropdown__selected-text">{{ verifiedLabel }}</span>
+            </template>
+            <template #defaultValue>
+              <span class="dropdown__selected-text">{{ verifiedLabel }}</span>
+            </template>
+            <DropdownItem :name="$t('usersAdminTable.allEmails')" value="" />
+            <DropdownItem
+              :name="$t('usersAdminTable.onlyVerified')"
+              value="true"
+            />
+            <DropdownItem
+              :name="$t('usersAdminTable.onlyUnverified')"
+              value="false"
+            />
+          </Dropdown>
+        </div>
+      </template>
       <template #menus="slotProps">
-      <EditUserContext
-        ref="editUserContext"
-        :user="editUser"
-        @delete-user="slotProps.deleteRow"
-        @update="slotProps.updateRow"
-      >
+        <EditUserContext
+          ref="editUserContext"
+          :user="editUser"
+          @delete-user="slotProps.deleteRow"
+          @update="slotProps.updateRow"
+        >
         </EditUserContext>
       </template>
     </CrudTable>
@@ -52,6 +120,8 @@ import EditUserContext from '@baserow/modules/core/components/admin/users/contex
 import CreateUserModal from '@baserow/modules/core/components/admin/users/modals/CreateUserModal'
 import BooleanIconField from '@baserow/modules/core/components/crudTable/fields/BooleanIconField'
 import CrudTableColumn from '@baserow/modules/core/crudTable/crudTableColumn'
+import Dropdown from '@baserow/modules/core/components/Dropdown'
+import DropdownItem from '@baserow/modules/core/components/DropdownItem'
 
 export default {
   name: 'UsersAdminTable',
@@ -59,14 +129,50 @@ export default {
     CrudTable,
     EditUserContext,
     CreateUserModal,
+    Dropdown,
+    DropdownItem,
   },
   data() {
     this.service = UserAdminService(this.$client)
     return {
       editUser: {},
+      statusFilter: '',
+      roleFilter: '',
+      verifiedFilter: '',
     }
   },
   computed: {
+    filters() {
+      const filters = {}
+      if (this.statusFilter) filters.is_active = this.statusFilter
+      if (this.roleFilter) filters.is_staff = this.roleFilter
+      if (this.verifiedFilter) filters.email_verified = this.verifiedFilter
+      return filters
+    },
+    statusLabel() {
+      if (this.statusFilter === 'true')
+        return this.$t('usersAdminTable.onlyActive')
+      if (this.statusFilter === 'false') {
+        return this.$t('usersAdminTable.onlyInactive')
+      }
+      return this.$t('usersAdminTable.allStatuses')
+    },
+    roleLabel() {
+      if (this.roleFilter === 'true')
+        return this.$t('usersAdminTable.onlyAdmins')
+      if (this.roleFilter === 'false')
+        return this.$t('usersAdminTable.onlyRegular')
+      return this.$t('usersAdminTable.allRoles')
+    },
+    verifiedLabel() {
+      if (this.verifiedFilter === 'true') {
+        return this.$t('usersAdminTable.onlyVerified')
+      }
+      if (this.verifiedFilter === 'false') {
+        return this.$t('usersAdminTable.onlyUnverified')
+      }
+      return this.$t('usersAdminTable.allEmails')
+    },
     defaultSearch() {
       const { search } = this.$route.query
       return search ? String(search) : null

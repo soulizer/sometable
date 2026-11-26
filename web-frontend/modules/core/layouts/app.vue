@@ -71,6 +71,7 @@
     </div>
 
     <WorkspaceSearchModal ref="workspaceSearchModal" />
+    <GlobalCommandPalette ref="globalCommandPalette" />
   </div>
 </template>
 
@@ -84,6 +85,7 @@ import SidebarAllWorkspaces from '@baserow/modules/core/components/sidebar/Sideb
 import RightSidebar from '@baserow/modules/core/components/sidebar/RightSidebar.vue'
 import HorizontalResize from '@baserow/modules/core/components/HorizontalResize.vue'
 import WorkspaceSearchModal from '@baserow/modules/core/components/workspace/WorkspaceSearchModal.vue'
+import GlobalCommandPalette from '@baserow/modules/core/components/GlobalCommandPalette.vue'
 import {
   CORE_ACTION_SCOPES,
   getSidebarActionScopes,
@@ -106,6 +108,7 @@ const col3Visible = ref(false)
 const app = ref()
 
 const workspaceSearchModal = ref(null)
+const globalCommandPalette = ref(null)
 
 const workspaces = computed(() => store.getters['workspace/getAll'])
 const selectedWorkspace = computed(() => store.getters['workspace/getSelected'])
@@ -175,8 +178,18 @@ if (route.query.token) {
 }
 
 function openWorkspaceSearch() {
+  // The all workspaces page has its own inline search and handles Ctrl+K.
+  if (route.name === 'all-workspaces') {
+    return
+  }
+  if (route.path.startsWith('/admin')) {
+    globalCommandPalette.value?.show()
+    return
+  }
   if (selectedWorkspace.value?.id && workspaceSearchModal.value) {
     workspaceSearchModal.value.show()
+  } else {
+    globalCommandPalette.value?.show()
   }
 }
 

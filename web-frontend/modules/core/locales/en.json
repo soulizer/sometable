@@ -1597,7 +1597,12 @@
     "usageHelpText": "Calculated nightly when the track workspace usage setting is enabled"
   },
   "editWorkspaceContext": {
+    "rename": "Rename workspace",
     "delete": "Permanently delete"
+  },
+  "renameWorkspaceModal": {
+    "title": "Rename workspace",
+    "name": "Workspace name"
   },
   "deleteWorkspaceModal": {
     "title": "Delete {name}",
@@ -1609,6 +1614,10 @@
     "newUsers": "New users",
     "activeUsers": "Active users"
   },
+  "commandPalette": {
+    "placeholder": "Search actions and workspaces...",
+    "workspaces": "Workspace"
+  },
   "usersAdminTable": {
     "allUsers": "All users",
     "username": "Username",
@@ -1619,7 +1628,16 @@
     "active": "Active",
     "twoFactorAuth": "2FA",
     "createUser": "Create user",
-    "emailVerified": "Email verified"
+    "emailVerified": "Email verified",
+    "allStatuses": "All statuses",
+    "onlyActive": "Active",
+    "onlyInactive": "Inactive",
+    "allRoles": "All roles",
+    "onlyAdmins": "Admins",
+    "onlyRegular": "Regular users",
+    "allEmails": "Any verification",
+    "onlyVerified": "Verified",
+    "onlyUnverified": "Unverified"
   },
   "templatesAdmin": {
     "title": "Templates",
@@ -1721,7 +1739,9 @@
     "confirmation": "Are you sure you want to delete the user: {name}?",
     "comment1": "The user account will be deleted, however the workspaces that user is a member of will continue existing. The users workspace will not be deleted, even if this user is the last user in the workspace. Deleting the last user in a workspace prevents anyone being able to access that workspace.",
     "comment2": "After deleting a user it is possible for a new user to sign up again using the deleted users email address. To ensure they cannot sign up again instead deactivate the user and do not delete them.",
-    "delete": "Delete user {username}"
+    "delete": "Delete user {username}",
+    "confirmLabel": "Type the username to confirm",
+    "confirmHelp": "Enter the exact email address of the user to enable deletion."
   },
   "disableTwoFactorAuthModal": {
     "title": "Remove two-factor authentication",

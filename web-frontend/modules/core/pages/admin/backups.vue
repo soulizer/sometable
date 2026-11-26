@@ -184,6 +184,17 @@
         <Alert type="warning" class="margin-bottom-2">
           {{ $t('adminBackups.restoreDescription') }}
         </Alert>
+        <FormGroup
+          :label="$t('adminBackups.restoreConfirmLabel')"
+          :helper-text="$t('adminBackups.restoreConfirmHelp')"
+          class="margin-bottom-2"
+        >
+          <FormInput
+            v-model="restoreConfirm"
+            :placeholder="pendingRestore ? pendingRestore.id : ''"
+            size="large"
+          />
+        </FormGroup>
         <div class="actions">
           <div class="align-right">
             <Button @click="$refs.restoreModal?.hide()">
@@ -192,6 +203,9 @@
             <Button
               type="danger"
               :loading="restoringId !== null"
+              :disabled="
+                !pendingRestore || restoreConfirm !== pendingRestore.id
+              "
               @click="restore"
             >
               {{ $t('adminBackups.restoreConfirm') }}
@@ -227,6 +241,8 @@ const restoreModal = ref(null)
 const message = ref('')
 const messageType = ref('success')
 const pendingRestore = ref(null)
+const restoreConfirm = ref('')
+const savedScope = ref('all')
 
 const form = reactive({
   scope: 'all',
@@ -267,7 +283,13 @@ function scopeLabel(scope) {
 }
 
 function formatTime(value) {
-  return new Date(value).toLocaleString()
+  return new Intl.DateTimeFormat(undefined, {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+  }).format(new Date(value))
 }
 
 function sizeLabel(item) {
@@ -276,7 +298,12 @@ function sizeLabel(item) {
   if (item.media) total += item.media.bytes || 0
   if (item.object_storage) total += item.object_storage.bytes || 0
   if (!total && item.remote) total = item.remote.bytes || 0
-  return `${(total / 1024 / 1024).toFixed(1)} MB`
+  if (total < 1024) return `${total} B`
+  if (total < 1024 * 1024) return `${(total / 1024).toFixed(1)} KB`
+  if (total < 1024 * 1024 * 1024) {
+    return `${(total / 1024 / 1024).toFixed(1)} MB`
+  }
+  return `${(total / 1024 / 1024 / 1024).toFixed(2)} GB`
 }
 
 function contentLabel(item) {
@@ -309,6 +336,7 @@ async function loadSettings() {
   form.day_of_week = String(data.backup_dow)
   form.day_of_month = String(data.backup_dom)
   form.keep = Number(data.backup_keep)
+  savedScope.value = data.backup_scope
 }
 
 async function save() {
@@ -322,6 +350,7 @@ async function save() {
       backup_dom: form.day_of_month,
       backup_keep: form.keep,
     })
+    savedScope.value = form.scope
     showMessage(t('adminBackups.saved'))
   } catch (error) {
     showMessage(
@@ -336,7 +365,7 @@ async function save() {
 async function runNow() {
   running.value = true
   try {
-    await $client.post('/settings/backups/', { scope: form.scope })
+    await $client.post('/settings/backups/', { scope: savedScope.value })
     showMessage(t('adminBackups.runQueued'))
     setTimeout(load, 4000)
   } catch (error) {
@@ -351,15 +380,18 @@ async function runNow() {
 
 function askRestore(item) {
   pendingRestore.value = item
+  restoreConfirm.value = ''
   restoreModal.value.show()
 }
 
 async function restore() {
   if (!pendingRestore.value) return
+  if (restoreConfirm.value !== pendingRestore.value.id) return
   restoringId.value = pendingRestore.value.id
   try {
     await $client.post('/settings/backups/restore/', {
       id: pendingRestore.value.id,
+      confirm: restoreConfirm.value,
     })
     restoreModal.value.hide()
     showMessage(t('adminBackups.restoreOk'))

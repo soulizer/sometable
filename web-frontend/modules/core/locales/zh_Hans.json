@@ -630,7 +630,12 @@
         "usageHelpText": "启用“统计工作区用量”设置后每晚计算"
     },
     "editWorkspaceContext": {
+        "rename": "重命名工作区",
         "delete": "永久删除"
+    },
+    "renameWorkspaceModal": {
+        "title": "重命名工作区",
+        "name": "工作区名称"
     },
     "deleteWorkspaceModal": {
         "title": "删除 {name}",
@@ -641,6 +646,10 @@
     "activeUsers": {
         "newUsers": "新用户",
         "activeUsers": "活跃用户"
+    },
+    "commandPalette": {
+        "placeholder": "搜索操作和工作区…",
+        "workspaces": "工作区"
     },
     "usersAdminTable": {
         "allUsers": "所有用户",
@@ -653,7 +662,16 @@
         "active": "启用",
         "twoFactorAuth": "两步验证",
         "createUser": "新增用户",
-        "emailVerified": "邮箱已验证"
+        "emailVerified": "邮箱已验证",
+        "allStatuses": "全部状态",
+        "onlyActive": "已启用",
+        "onlyInactive": "已停用",
+        "allRoles": "全部角色",
+        "onlyAdmins": "管理员",
+        "onlyRegular": "普通用户",
+        "allEmails": "全部邮箱",
+        "onlyVerified": "已验证",
+        "onlyUnverified": "未验证"
     },
     "editUserContext": {
         "changePassword": "更改密码",
@@ -694,7 +712,9 @@
         "confirmation": "你确定要删除这个用户：{name}？",
         "comment1": "用户帐户将被删除,但用户所属的组将继续存在.即使此用户是组中的最后一个用户,也不会删除用户组.删除组中的最后一个用户将阻止任何人访问该组.",
         "comment2": "删除用户后,新用户可以使用删除的用户电子邮件地址再次注册.为了确保他们不能再次注册,请禁用用户并不要删除他们.",
-        "delete": "删除用户{username}"
+        "delete": "删除用户{username}",
+        "confirmLabel": "输入用户名以确认",
+        "confirmHelp": "请输入该用户的完整邮箱地址后才能删除。"
     },
     "editUserModal": {
         "delete": "删除用户",
