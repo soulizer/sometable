@@ -71,62 +71,6 @@
         <NotificationPanel ref="notificationPanel" />
       </li>
 
-      <li v-if="exportJobs.length > 0" class="tree__item">
-        <div class="tree__action tree__action--has-counter">
-          <a
-            ref="exportJobsLink"
-            class="tree__link"
-            role="button"
-            tabindex="0"
-            @click="$refs.exportJobsContext?.toggle($refs.exportJobsLink)"
-            @keydown.enter.prevent="
-              $refs.exportJobsContext?.toggle($refs.exportJobsLink)
-            "
-            @keydown.space.prevent="
-              $refs.exportJobsContext?.toggle($refs.exportJobsLink)
-            "
-          >
-            <i class="tree__icon tree__icon--type iconoir-download"></i>
-            <span class="tree__link-text">
-              {{ $t('globalExports.title') }}
-            </span>
-          </a>
-          <BadgeCounter
-            v-show="unfinishedExportCount > 0"
-            class="tree__counter"
-            :count="unfinishedExportCount"
-            :limit="10"
-          >
-          </BadgeCounter>
-        </div>
-        <Context ref="exportJobsContext" overflow-scroll>
-          <ul class="context__menu">
-            <li
-              v-for="exportJob in exportJobs"
-              :key="'export-job-' + exportJob.id"
-              class="context__menu-item"
-            >
-              <DownloadLink
-                v-if="exportJob.state === 'finished' && exportJob.url"
-                class="context__menu-item-link"
-                :url="exportJob.url"
-                :filename="exportJob.exported_file_name"
-                loading-class="button--loading"
-                @click="$refs.exportJobsContext?.hide()"
-              >
-                <i class="context__menu-item-icon iconoir-download"></i>
-                {{ exportWorkspaceName(exportJob) }}
-              </DownloadLink>
-              <span v-else class="context__menu-item-link">
-                <i class="context__menu-item-icon iconoir-clock"></i>
-                {{ exportWorkspaceName(exportJob) }} ·
-                {{ exportProgressLabel(exportJob) }}
-              </span>
-            </li>
-          </ul>
-        </Context>
-      </li>
-
       <nuxt-link
         v-if="
           $hasPermission(
@@ -279,42 +223,11 @@ export default {
     },
     ...mapGetters({
       unreadNotificationCount: 'notification/getUnreadCount',
-      allJobs: 'job/getAll',
     }),
-    exportJobs() {
-      return this.allJobs
-        .filter((job) => job.type === 'export_applications')
-        .slice()
-        .reverse()
-        .slice(0, 6)
-    },
-    unfinishedExportCount() {
-      return this.exportJobs.filter((job) =>
-        ['pending', 'started'].includes(job.state)
-      ).length
-    },
   },
   methods: {
     openWorkspaceSearch() {
       this.$emit('open-workspace-search')
-    },
-    exportWorkspaceName(job) {
-      const workspace = this.$store.getters['workspace/get'](job.workspace_id)
-      return workspace ? workspace.name : this.$t('globalExports.workspace')
-    },
-    exportProgressLabel(job) {
-      if (job.state === 'finished') {
-        return this.$t('globalExports.ready')
-      }
-      if (job.state === 'failed') {
-        return this.$t('globalExports.failed')
-      }
-      if (job.state === 'cancelled') {
-        return this.$t('globalExports.cancelled')
-      }
-      return this.$t('globalExports.progress', {
-        progress: job.progress_percentage || 0,
-      })
     },
   },
 }
