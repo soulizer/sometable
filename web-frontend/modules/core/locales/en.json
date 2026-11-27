@@ -1,4 +1,6 @@
 {
+  "appName": "Workspace",
+  "titleTemplate": "%s | Workspace",
   "untrustedContentReviewModal": {
     "title": "Review imported content",
     "publishBlocked": "Review and trust the imported content before publishing.",
@@ -1598,7 +1600,9 @@
   },
   "editWorkspaceContext": {
     "rename": "Rename workspace",
-    "delete": "Permanently delete"
+    "delete": "Permanently delete",
+    "members": "Members",
+    "export": "Export workspace"
   },
   "renameWorkspaceModal": {
     "title": "Rename workspace",
@@ -1646,7 +1650,25 @@
     "onlyRegular": "Regular users",
     "allEmails": "Any verification",
     "onlyVerified": "Verified",
-    "onlyUnverified": "Unverified"
+    "onlyUnverified": "Unverified",
+    "selectUser": "Select {username}",
+    "selectAllOnPage": "Select all on this page",
+    "clearSelection": "Clear selection",
+    "selectedCount": "Selected {count}",
+    "bulkActions": "Bulk actions",
+    "bulkActivate": "Activate users",
+    "bulkDeactivate": "Deactivate users",
+    "bulkMakeStaff": "Make admins",
+    "bulkRemoveStaff": "Remove admin rights",
+    "bulkDelete": "Delete users",
+    "bulkDeleteTitle": "Delete selected users",
+    "bulkDeleteMessage": "Permanently delete {count} selected users? This cannot be undone. Memberships and personal data will be removed.",
+    "bulkSkippedSelfTitle": "Current user skipped",
+    "bulkSkippedSelf": "Skipped the current signed-in user ({count}).",
+    "bulkSuccessTitle": "Users updated",
+    "bulkSuccessMessage": "Completed for {count} users.",
+    "bulkPartialTitle": "Batch partially completed",
+    "bulkPartialMessage": "Succeeded: {success}. Failed: {failed}."
   },
   "templatesAdmin": {
     "title": "Templates",
@@ -2125,5 +2147,16 @@
   "createUserModal": {
     "title": "Create user",
     "create": "Create user"
+  },
+  "adminWorkspaceMembers": {
+    "title": "Members of {workspace}",
+    "email": "Email",
+    "role": "Role",
+    "joined": "Joined",
+    "adminRole": "Admin",
+    "memberRole": "Member",
+    "makeAdmin": "Make workspace admin",
+    "makeMember": "Make workspace member",
+    "removeMember": "Remove from workspace"
   }
 }

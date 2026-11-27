@@ -47,6 +47,7 @@
 </template>
 
 <script setup>
+import '@baserow/modules/core/assets/scss/api-docs.scss'
 import { computed } from 'vue'
 import { useHead } from '#imports'
 import { usePageAsyncData } from '@baserow/modules/core/composables/usePageAsyncData'

@@ -39,6 +39,21 @@ ERROR_VIEW_FILTER_GROUP_DOES_NOT_EXIST = (
     HTTP_404_NOT_FOUND,
     "The view filter group does not exist.",
 )
+ERROR_VIEW_FILTER_GROUP_NOT_IN_VIEW = (
+    "ERROR_VIEW_FILTER_GROUP_NOT_IN_VIEW",
+    HTTP_400_BAD_REQUEST,
+    "The view filter group {e.filter_group_id} does not belong to view {e.view_id}.",
+)
+ERROR_VIEW_FILTER_GROUP_INVALID_ANCESTRY = (
+    "ERROR_VIEW_FILTER_GROUP_INVALID_ANCESTRY",
+    HTTP_400_BAD_REQUEST,
+    "The view filter group parent chain is invalid or cyclic.",
+)
+ERROR_VIEW_FILTER_GROUP_DEPTH_EXCEEDED = (
+    "ERROR_VIEW_FILTER_GROUP_DEPTH_EXCEEDED",
+    HTTP_400_BAD_REQUEST,
+    "Filter groups cannot be nested deeper than {e.max_depth} levels.",
+)
 ERROR_VIEW_SORT_DOES_NOT_EXIST = (
     "ERROR_VIEW_SORT_DOES_NOT_EXIST",
     HTTP_404_NOT_FOUND,

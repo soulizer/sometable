@@ -1,7 +1,41 @@
+.user-admin-select {
+  display: flex;
+  align-items: center;
+  min-height: 32px;
+}
+
 .user-admin-username {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+}
+
+.users-admin-bulk {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.users-admin-bulk__count {
+  color: $palette-neutral-900;
+  font-size: 13px;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.users-admin-bulk__clear {
+  padding: 4px 0;
+  border: 0;
+  background: transparent;
+  color: $color-primary-500;
+  font-size: 13px;
+  line-height: 20px;
+  cursor: pointer;
+
+  &:disabled {
+    color: $palette-neutral-600;
+    cursor: default;
+  }
 }
 
 .user-admin-username__avatar {

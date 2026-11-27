@@ -19,6 +19,14 @@ export default {
   // dedupes `link` tags by `key`.
   link: [
     {
+      rel: 'preload',
+      as: 'font',
+      type: 'font/woff2',
+      href: '/fonts/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2',
+      crossorigin: 'anonymous',
+      key: 'inter-latin-preload',
+    },
+    {
       rel: 'icon',
       type: 'image/png',
       href: '/img/favicon_16.png',

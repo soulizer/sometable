@@ -33,6 +33,8 @@
 </template>
 
 <script setup>
+import '@baserow/modules/core/assets/scss/settings.scss'
+import '@baserow/modules/core/assets/scss/mcp.scss'
 import { useHead } from '#imports'
 import { getFallbackSettingsRoute } from '@baserow/modules/core/workspaceSettingsPageTypes'
 

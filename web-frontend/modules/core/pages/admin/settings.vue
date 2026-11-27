@@ -255,13 +255,8 @@
   </div>
 </template>
 <script setup>
-import {
-  reactive,
-  computed,
-  watch,
-  getCurrentInstance,
-  onMounted,
-} from 'vue'
+import '@baserow/modules/core/assets/scss/admin.scss'
+import { reactive, computed, watch, getCurrentInstance, onMounted } from 'vue'
 import { useNuxtApp, useHead } from '#app'
 import { useStore } from 'vuex'
 import { useVuelidate } from '@vuelidate/core'

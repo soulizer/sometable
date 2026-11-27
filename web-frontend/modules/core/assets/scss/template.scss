@@ -1,0 +1,4 @@
+// Styles for the legacy public template page only. The shared template modal
+// styles stay in the global bundle because the workspace sidebar uses them.
+@import 'split-foundation';
+@import 'components/legacy_templates';

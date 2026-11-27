@@ -1,0 +1,9 @@
+{
+    "type": "feature",
+    "message": "Admins can inspect and change workspace member roles, remove members and export workspaces from the admin workspace page.",
+    "issue_origin": "github",
+    "issue_number": 9006,
+    "domain": "admin",
+    "bullet_points": [],
+    "created_at": "2026-11-27"
+}

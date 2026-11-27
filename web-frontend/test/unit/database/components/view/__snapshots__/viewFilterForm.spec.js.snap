@@ -1181,7 +1181,10 @@ exports[`ViewFilterForm match snapshots > Full view filter component 1`] = `
       class="margin-left-auto"
     >
       <div
+        aria-checked="false"
         class="switch switch--small switch--color-green"
+        role="switch"
+        tabindex="0"
       >
         <div
           class="switch__label"
@@ -1688,7 +1691,10 @@ exports[`ViewFilterForm match snapshots > rating filter 1`] = `
       class="margin-left-auto"
     >
       <div
+        aria-checked="false"
         class="switch switch--small switch--color-green"
+        role="switch"
+        tabindex="0"
       >
         <div
           class="switch__label"

@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import '@baserow/modules/core/assets/scss/admin.scss'
+import '@baserow/modules/core/assets/scss/grid.scss'
 import { useHead } from '#imports'
 import ViewsAdminTable from '@baserow/modules/database/components/admin/views/ViewsAdminTable'
 

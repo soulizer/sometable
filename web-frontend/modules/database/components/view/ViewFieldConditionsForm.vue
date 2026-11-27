@@ -63,6 +63,7 @@
         :fields="fields"
         :view="view"
         :can-add-filter-groups="canAddFilterGroups"
+        :level="2"
         :add-condition-string="addConditionString"
         :add-condition-group-string="addConditionGroupString"
         @add-filter="$emit('addFilter', $event)"

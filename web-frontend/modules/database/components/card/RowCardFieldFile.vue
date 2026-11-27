@@ -10,6 +10,8 @@
           v-if="file.is_image && file.thumbnails?.tiny?.url"
           class="card-file__image"
           :src="file.thumbnails.tiny.url"
+          loading="lazy"
+          alt=""
         />
         <i
           v-else

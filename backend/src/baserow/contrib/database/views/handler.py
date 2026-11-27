@@ -140,7 +140,7 @@ from baserow.core.utils import (
     split_attrs_and_m2m_fields,
 )
 
-from .constants import GROUP_BY_DATA_DEFAULT_LIMIT
+from .constants import GROUP_BY_DATA_DEFAULT_LIMIT, MAX_FILTER_GROUP_DEPTH
 from .exceptions import (
     CannotCopyViewConfigurationToSameView,
     CannotShareViewTypeError,
@@ -156,7 +156,10 @@ from .exceptions import (
     ViewDoesNotSupportFieldOptions,
     ViewDoesNotSupportListingRows,
     ViewFilterDoesNotExist,
+    ViewFilterGroupDepthExceeded,
     ViewFilterGroupDoesNotExist,
+    ViewFilterGroupInvalidAncestry,
+    ViewFilterGroupNotInView,
     ViewFilterNotSupported,
     ViewFilterTypeNotAllowedForField,
     ViewGroupByDoesNotExist,
@@ -1425,6 +1428,7 @@ class ViewHandler:
             "public_view_password",
             "show_logo",
             "allow_public_export",
+            "locked",
         ] + view_type.allowed_fields
 
         changed_allowed_keys = set(extract_allowed(view_values, allowed_fields).keys())
@@ -2094,7 +2098,9 @@ class ViewHandler:
             )
 
         if filter_group_id is not None:
-            self.get_filter_group(user, filter_group_id)
+            group = self.get_filter_group(user, filter_group_id)
+            if group.view_id != view.id:
+                raise ViewFilterGroupNotInView(filter_group_id, view.id)
 
         self._check_can_read_linked_table_of_filter(
             user, view_filter_type, field, value
@@ -2292,6 +2298,36 @@ class ViewHandler:
 
         return filter_group
 
+    def _validate_filter_group_parent(
+        self,
+        user: AbstractUser,
+        view: View,
+        parent_group_id: int,
+        current_primary_key: Optional[int] = None,
+    ) -> None:
+        """
+        Validates that the parent group belongs to the same view and that its ancestry
+        is not cyclic or deeper than the supported user-visible depth.
+        """
+
+        visited = set()
+        depth = 0
+        current_id = parent_group_id
+        while current_id is not None:
+            if current_id in visited or current_id == current_primary_key:
+                raise ViewFilterGroupInvalidAncestry()
+            visited.add(current_id)
+
+            parent_group = self.get_filter_group(user, current_id)
+            if parent_group.view_id != view.id:
+                raise ViewFilterGroupNotInView(current_id, view.id)
+
+            depth += 1
+            current_id = parent_group.parent_group_id
+
+        if current_primary_key is None and depth >= MAX_FILTER_GROUP_DEPTH:
+            raise ViewFilterGroupDepthExceeded(MAX_FILTER_GROUP_DEPTH)
+
     def create_filter_group(
         self,
         user: AbstractUser,
@@ -2307,6 +2343,8 @@ class ViewHandler:
         :param view: The view for which the filter group needs to be created.
         :param filter_type: The filter type, allowed values are the types in the
             view_group_type_registry `and`, `or`.
+        :param parent_group_id: An optional parent group id, allowing arbitrarily
+            nested filter groups.
         :param primary_key: An optional primary key to give to the new view
             filter group. Useful to recreate a deleted view filter group with
             the previous pk.
@@ -2325,6 +2363,9 @@ class ViewHandler:
         if filter_type is not None:
             attrs["filter_type"] = filter_type
         if parent_group_id is not None:
+            self._validate_filter_group_parent(
+                user, view, parent_group_id, primary_key
+            )
             attrs["parent_group_id"] = parent_group_id
 
         filter_group = ViewFilterGroup.objects.create(

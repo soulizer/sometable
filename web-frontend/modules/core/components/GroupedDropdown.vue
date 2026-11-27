@@ -22,6 +22,7 @@
           class="dropdown__selected-image"
           :src="selectedImage"
           :alt="selectedLabel"
+          loading="lazy"
         />
         <i
           v-else-if="selectedIcon"

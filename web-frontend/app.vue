@@ -9,9 +9,11 @@
 import { computed } from 'vue'
 import { useHead } from '#imports'
 import { useStore } from 'vuex'
+import { useI18n } from 'vue-i18n'
 import head from '@baserow/modules/core/head'
 
 const store = useStore()
+const { t } = useI18n()
 
 // Instance level favicon. The keys match the defaults in `core/head.js`, so
 // unhead replaces them. A builder application can still override them with its
@@ -31,5 +33,11 @@ const faviconLinks = computed(() => {
     }))
 })
 
-useHead(computed(() => ({ link: faviconLinks.value })))
+useHead(
+  computed(() => ({
+    title: t('appName'),
+    titleTemplate: t('titleTemplate'),
+    link: faviconLinks.value,
+  }))
+)
 </script>

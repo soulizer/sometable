@@ -99,6 +99,7 @@
 </template>
 
 <script>
+import '@baserow/modules/core/assets/scss/admin.scss'
 import { useHead } from '#imports'
 import { useNuxtApp } from '#app'
 

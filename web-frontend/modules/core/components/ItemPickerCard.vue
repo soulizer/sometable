@@ -13,7 +13,7 @@
     @click.stop="select"
   >
     <span class="item-picker-card__image">
-      <img :src="image" alt="" />
+      <img :src="image" alt="" loading="lazy" />
     </span>
     <span class="item-picker-card__label">
       <span v-if="loading" class="loading" />

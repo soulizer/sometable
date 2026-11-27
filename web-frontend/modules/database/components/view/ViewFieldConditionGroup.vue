@@ -7,7 +7,7 @@
         :key="`filter-${filter.id}`"
         class="filters__item-wrapper"
       >
-        <div class="filters__item filters__item--level-2">
+        <div class="filters__item" :class="`filters__item--level-${level}`">
           <ViewFilterFormOperator
             :index="filterIndex"
             :filter-type="groupNode.group.filter_type"
@@ -45,6 +45,7 @@
       v-for="(subGroupNode, subGroupIndex) in groupNode.children"
       :key="`group-${subGroupNode.group.id}`"
       class="filters__group-item-wrapper filters__group-item-wrapper--inner"
+      :class="`filters__group-item-wrapper--level-${level + 1}`"
     >
       <ViewFilterFormOperator
         :index="groupNode.filters.length + subGroupIndex"
@@ -65,7 +66,8 @@
         :read-only="readOnly"
         :fields="fields"
         :view="view"
-        :can-add-filter-groups="false"
+        :can-add-filter-groups="canAddFilterGroups"
+        :level="level + 1"
         :add-condition-string="addConditionString"
         :add-condition-group-string="addConditionGroupString"
         @add-filter="$emit('addFilter', $event)"
@@ -170,6 +172,11 @@ export default {
       type: Boolean,
       required: false,
       default: true,
+    },
+    level: {
+      type: Number,
+      required: false,
+      default: 2,
     },
   },
   emits: [

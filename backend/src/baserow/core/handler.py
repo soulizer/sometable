@@ -354,7 +354,20 @@ class CoreHandler:
         """
 
         result = {}
-        undetermined_checks = set(checks)
+        locked_view_checks = {
+            check
+            for check in checks
+            if self._raise_if_locked_view_write(
+                check.actor, check.operation_name, check.context, False
+            )
+        }
+        for check in locked_view_checks:
+            result[check] = (
+                PermissionDenied(check.actor)
+                if (return_permissions_exceptions or raise_exception)
+                else False
+            )
+        undetermined_checks = set(checks) - locked_view_checks
         load_user_types(check.actor for check in checks)
 
         for permission_manager_name in settings.PERMISSION_MANAGERS:
@@ -433,6 +446,75 @@ class CoreHandler:
 
         return [actor for (actor, _, _), result in checked.items() if result is True]
 
+    # A locked view is read-only for everyone except its owner and instance staff.
+    # Read-ish operations keep working so the view and its rows can still be used.
+    LOCKED_VIEW_READ_OPERATION_PARTS = (
+        ".read",
+        ".list",
+        "read_",
+        "list_",
+        "can_receive_notification",
+    )
+
+    @classmethod
+    def _get_locked_view_from_context(cls, context) -> Optional[Any]:
+        """Returns the locked view related to a permission context, if any."""
+
+        if context is None:
+            return None
+
+        # The context itself is often the view (row operations and view updates).
+        if getattr(context, "locked", False) and hasattr(context, "table"):
+            return context
+
+        # Filters, sorts, group-bys and decorations expose their parent view.
+        view = getattr(context, "view", None)
+        if view is not None and getattr(view, "locked", False):
+            return view
+        return None
+
+    @classmethod
+    def _is_locked_view_read_operation(cls, operation_name: str) -> bool:
+        return any(
+            part in operation_name for part in cls.LOCKED_VIEW_READ_OPERATION_PARTS
+        )
+
+    @staticmethod
+    def _can_bypass_locked_view(actor: Actor, view: Any) -> bool:
+        if getattr(actor, "is_staff", False):
+            return True
+        owner_id = getattr(view, "owned_by_id", None)
+        return owner_id is not None and owner_id == getattr(actor, "id", None)
+
+    def _raise_if_locked_view_write(
+        self,
+        actor: Actor,
+        operation_name: str,
+        context: Optional[ContextObject],
+        raise_permission_exceptions: bool,
+    ) -> bool:
+        """Returns True when the operation must be denied because the view is locked."""
+
+        if not operation_name.startswith("database.table.view."):
+            return False
+        if self._is_locked_view_read_operation(operation_name):
+            return False
+
+        view = self._get_locked_view_from_context(context)
+        if view is None or self._can_bypass_locked_view(actor, view):
+            return False
+
+        if raise_permission_exceptions:
+            raise PermissionDenied(actor=actor)
+        return True
+
+    def check_locked_view_write(
+        self, actor: Actor, operation_name: str, view: Any
+    ) -> None:
+        """Raises PermissionDenied if a locked view rejects this write operation."""
+
+        self._raise_if_locked_view_write(actor, operation_name, view, True)
+
     @baserow_trace(tracer, allow_nested=True)
     def check_permissions(
         self,
@@ -476,6 +558,11 @@ class CoreHandler:
 
         if settings.DEBUG or settings.TESTS:
             self._ensure_context_matches_operation(context, operation_name)
+
+        if self._raise_if_locked_view_write(
+            actor, operation_name, context, raise_permission_exceptions
+        ):
+            return False
 
         check = PermissionCheck(actor, operation_name, context)
 

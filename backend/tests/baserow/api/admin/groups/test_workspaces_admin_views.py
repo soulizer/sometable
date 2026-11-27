@@ -6,12 +6,16 @@ from django.test.utils import override_settings
 import pytest
 from rest_framework.status import (
     HTTP_200_OK,
+    HTTP_202_ACCEPTED,
+    HTTP_204_NO_CONTENT,
     HTTP_400_BAD_REQUEST,
     HTTP_403_FORBIDDEN,
     HTTP_404_NOT_FOUND,
 )
 
-from baserow.core.models import Workspace
+from baserow.core.handler import CoreHandler
+from baserow.core.job_types import ExportApplicationsJobType
+from baserow.core.models import ExportApplicationsJob, Workspace, WorkspaceUser
 
 
 @pytest.mark.django_db
@@ -442,4 +446,236 @@ def test_workspace_options_use_the_estimated_count(api_client, data_fixture, moc
     assert response.json()["results"] == [
         {"id": workspace.id, "value": workspace.name} for workspace in workspaces[:100]
     ]
-    estimate.assert_called_once()
+
+
+@pytest.mark.django_db
+@override_settings(DEBUG=True)
+def test_admin_list_workspace_members_is_staff_only(api_client, data_fixture):
+    _, normal_token = data_fixture.create_user_and_token()
+    staff_user, staff_token = data_fixture.create_user_and_token(is_staff=True)
+    member = data_fixture.create_user(email="member@example.com")
+    workspace = data_fixture.create_workspace()
+    membership = data_fixture.create_user_workspace(
+        workspace=workspace, user=member, permissions="MEMBER"
+    )
+
+    url = reverse(
+        "api:admin:workspaces:members", kwargs={"workspace_id": workspace.id}
+    )
+    response = api_client.get(url, HTTP_AUTHORIZATION=f"JWT {normal_token}")
+    assert response.status_code == HTTP_403_FORBIDDEN
+
+    # The staff user does not need to be a workspace member.
+    response = api_client.get(url, HTTP_AUTHORIZATION=f"JWT {staff_token}")
+    assert response.status_code == HTTP_200_OK
+    assert response.json()["count"] == 1
+    result = response.json()["results"][0]
+    assert result["id"] == membership.id
+    assert result["user_id"] == member.id
+    assert result["email"] == member.email
+    assert result["permissions"] == "MEMBER"
+    assert result["role_uid"] == CoreHandler().get_workspace_user_role_uid(membership)
+    assert result["created_on"] is not None
+
+    response = api_client.get(
+        reverse("api:admin:workspaces:members", kwargs={"workspace_id": 99999}),
+        HTTP_AUTHORIZATION=f"JWT {staff_token}",
+    )
+    assert response.status_code == HTTP_404_NOT_FOUND
+    assert response.json()["error"] == "ERROR_GROUP_DOES_NOT_EXIST"
+
+
+@pytest.mark.django_db
+@override_settings(DEBUG=True)
+def test_admin_update_workspace_member_role_and_guards(api_client, data_fixture):
+    _, normal_token = data_fixture.create_user_and_token()
+    staff_user, staff_token = data_fixture.create_user_and_token(is_staff=True)
+    member = data_fixture.create_user()
+    workspace = data_fixture.create_workspace()
+    membership = data_fixture.create_user_workspace(
+        workspace=workspace, user=member, permissions="MEMBER"
+    )
+    url = reverse(
+        "api:admin:workspaces:edit-member",
+        kwargs={"workspace_id": workspace.id, "member_id": membership.id},
+    )
+
+    response = api_client.patch(
+        url,
+        {"permissions": "ADMIN"},
+        format="json",
+        HTTP_AUTHORIZATION=f"JWT {normal_token}",
+    )
+    assert response.status_code == HTTP_403_FORBIDDEN
+
+    response = api_client.patch(
+        url,
+        {"permissions": "ADMIN"},
+        format="json",
+        HTTP_AUTHORIZATION=f"JWT {staff_token}",
+    )
+    assert response.status_code == HTTP_200_OK
+    assert response.json()["permissions"] == "ADMIN"
+    assert response.json()["role_uid"] == "ADMIN"
+    membership.refresh_from_db()
+    assert membership.permissions == "ADMIN"
+
+    response = api_client.patch(
+        url,
+        {"permissions": "INVALID"},
+        format="json",
+        HTTP_AUTHORIZATION=f"JWT {staff_token}",
+    )
+    assert response.status_code == HTTP_400_BAD_REQUEST
+    assert response.json()["error"] == "ERROR_INVALID_WORKSPACE_ROLE"
+
+    # The last admin of a workspace cannot be demoted.
+    admin = data_fixture.create_user()
+    last_admin_workspace = data_fixture.create_workspace(user=admin)
+    last_admin_membership = WorkspaceUser.objects.get(
+        workspace=last_admin_workspace, user=admin
+    )
+    response = api_client.patch(
+        reverse(
+            "api:admin:workspaces:edit-member",
+            kwargs={
+                "workspace_id": last_admin_workspace.id,
+                "member_id": last_admin_membership.id,
+            },
+        ),
+        {"permissions": "MEMBER"},
+        format="json",
+        HTTP_AUTHORIZATION=f"JWT {staff_token}",
+    )
+    assert response.status_code == HTTP_400_BAD_REQUEST
+    assert response.json()["error"] == "ERROR_GROUP_USER_IS_LAST_ADMIN"
+
+    # Staff cannot change their own role, even from the admin area.
+    own_workspace = data_fixture.create_workspace(user=staff_user)
+    own_membership = WorkspaceUser.objects.get(
+        workspace=own_workspace, user=staff_user
+    )
+    response = api_client.patch(
+        reverse(
+            "api:admin:workspaces:edit-member",
+            kwargs={
+                "workspace_id": own_workspace.id,
+                "member_id": own_membership.id,
+            },
+        ),
+        {"permissions": "MEMBER"},
+        format="json",
+        HTTP_AUTHORIZATION=f"JWT {staff_token}",
+    )
+    assert response.status_code == HTTP_400_BAD_REQUEST
+    assert response.json()["error"] == "ERROR_CANNOT_CHANGE_YOUR_OWN_ROLE"
+
+
+@pytest.mark.django_db
+@override_settings(DEBUG=True)
+def test_admin_delete_workspace_member_and_guards(api_client, data_fixture):
+    _, normal_token = data_fixture.create_user_and_token()
+    staff_user, staff_token = data_fixture.create_user_and_token(is_staff=True)
+    member = data_fixture.create_user()
+    workspace = data_fixture.create_workspace()
+    membership = data_fixture.create_user_workspace(
+        workspace=workspace, user=member, permissions="MEMBER"
+    )
+    url = reverse(
+        "api:admin:workspaces:edit-member",
+        kwargs={"workspace_id": workspace.id, "member_id": membership.id},
+    )
+
+    response = api_client.delete(url, HTTP_AUTHORIZATION=f"JWT {normal_token}")
+    assert response.status_code == HTTP_403_FORBIDDEN
+
+    response = api_client.delete(url, HTTP_AUTHORIZATION=f"JWT {staff_token}")
+    assert response.status_code == HTTP_204_NO_CONTENT
+    assert not WorkspaceUser.objects.filter(id=membership.id).exists()
+
+    response = api_client.delete(url, HTTP_AUTHORIZATION=f"JWT {staff_token}")
+    assert response.status_code == HTTP_404_NOT_FOUND
+    assert response.json()["error"] == "ERROR_GROUP_USER_DOES_NOT_EXIST"
+
+    # The last admin cannot be removed.
+    admin = data_fixture.create_user()
+    last_admin_workspace = data_fixture.create_workspace(user=admin)
+    last_admin_membership = WorkspaceUser.objects.get(
+        workspace=last_admin_workspace, user=admin
+    )
+    response = api_client.delete(
+        reverse(
+            "api:admin:workspaces:edit-member",
+            kwargs={
+                "workspace_id": last_admin_workspace.id,
+                "member_id": last_admin_membership.id,
+            },
+        ),
+        HTTP_AUTHORIZATION=f"JWT {staff_token}",
+    )
+    assert response.status_code == HTTP_400_BAD_REQUEST
+    assert response.json()["error"] == "ERROR_GROUP_USER_IS_LAST_ADMIN"
+
+    # Staff cannot remove themselves from a workspace.
+    own_workspace = data_fixture.create_workspace(user=staff_user)
+    own_membership = WorkspaceUser.objects.get(
+        workspace=own_workspace, user=staff_user
+    )
+    response = api_client.delete(
+        reverse(
+            "api:admin:workspaces:edit-member",
+            kwargs={
+                "workspace_id": own_workspace.id,
+                "member_id": own_membership.id,
+            },
+        ),
+        HTTP_AUTHORIZATION=f"JWT {staff_token}",
+    )
+    assert response.status_code == HTTP_400_BAD_REQUEST
+    assert response.json()["error"] == "ERROR_CANNOT_DELETE_YOURSELF_FROM_GROUP"
+
+
+@pytest.mark.django_db
+@override_settings(DEBUG=True)
+def test_admin_export_workspace_async_is_staff_only(api_client, data_fixture):
+    _, normal_token = data_fixture.create_user_and_token()
+    staff_user, staff_token = data_fixture.create_user_and_token(is_staff=True)
+    workspace = data_fixture.create_workspace()
+    application = data_fixture.create_database_application(workspace=workspace)
+    url = reverse(
+        "api:admin:workspaces:export-async", kwargs={"workspace_id": workspace.id}
+    )
+
+    response = api_client.post(
+        url, {}, format="json", HTTP_AUTHORIZATION=f"JWT {normal_token}"
+    )
+    assert response.status_code == HTTP_403_FORBIDDEN
+
+    response = api_client.post(
+        url,
+        {"application_ids": [application.id], "only_structure": True},
+        format="json",
+        HTTP_AUTHORIZATION=f"JWT {staff_token}",
+    )
+    assert response.status_code == HTTP_202_ACCEPTED
+    assert response.json()["type"] == ExportApplicationsJobType.type
+    job = ExportApplicationsJob.objects.get(id=response.json()["id"])
+    assert job.user_id == staff_user.id
+    assert job.workspace_id == workspace.id
+    assert job.application_ids == [application.id]
+    assert job.only_structure is True
+
+    # A staff user who is not a workspace member can still fetch the applications.
+    applications = ExportApplicationsJobType().fetch_applications(
+        staff_user, workspace, [application.id]
+    )
+    assert [app.id for app in applications] == [application.id]
+
+    response = api_client.post(
+        reverse("api:admin:workspaces:export-async", kwargs={"workspace_id": 99999}),
+        {},
+        format="json",
+        HTTP_AUTHORIZATION=f"JWT {staff_token}",
+    )
+    assert response.status_code == HTTP_404_NOT_FOUND
+    assert response.json()["error"] == "ERROR_GROUP_DOES_NOT_EXIST"

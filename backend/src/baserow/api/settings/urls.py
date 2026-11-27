@@ -1,7 +1,11 @@
 from django.urls import re_path
 
 from .backup_storage_views import BackupStorageSettingsView, BackupStorageTestView
-from .backup_views import BackupRestoreView, BackupSettingsView
+from .backup_views import (
+    BackupRestoreStatusView,
+    BackupRestoreView,
+    BackupSettingsView,
+)
 from .storage_views import StorageSettingsTestView, StorageSettingsView
 from .views import SettingsView, UpdateSettingsView
 
@@ -20,6 +24,11 @@ urlpatterns = [
         r"^backups/restore/$",
         BackupRestoreView.as_view(),
         name="backups_restore",
+    ),
+    re_path(
+        r"^backups/restore/(?P<token>[A-Za-z0-9_-]+)/status/$",
+        BackupRestoreStatusView.as_view(),
+        name="backups_restore_status",
     ),
     re_path(
         r"^backup-storage/$",

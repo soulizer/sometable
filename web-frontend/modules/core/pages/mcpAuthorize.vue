@@ -124,6 +124,7 @@
 </template>
 
 <script setup>
+import '@baserow/modules/core/assets/scss/mcp.scss'
 import { computed, ref, watch } from 'vue'
 import McpToolPicker from '@baserow/modules/core/components/mcp/McpToolPicker'
 import MCPOAuthService from '@baserow/modules/core/services/mcpOAuth'

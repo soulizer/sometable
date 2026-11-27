@@ -1,0 +1,13 @@
+// Styles for the instance admin pages. Imported by the admin route pages only,
+// so the editor, grid and public pages don't have to download them.
+@import 'split-foundation';
+@import 'components/data_table';
+@import 'components/admin_settings';
+@import 'components/ai_provider_admin';
+@import 'components/admin_health';
+@import 'components/admin_dashboard';
+@import 'components/user_admin';
+@import 'components/group_admin';
+@import 'components/templates_admin';
+@import 'components/template_import_item';
+@import 'components/email_tester';

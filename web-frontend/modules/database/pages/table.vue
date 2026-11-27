@@ -31,6 +31,9 @@
 </template>
 
 <script setup>
+import '@baserow/modules/core/assets/scss/editor.scss'
+import '@baserow/modules/core/assets/scss/grid.scss'
+import '@baserow/modules/core/assets/scss/form-view.scss'
 import { ref, computed, watch, onBeforeUnmount } from 'vue'
 import { onBeforeRouteLeave, useRoute, useRouter } from 'vue-router'
 import { useHead } from '#imports'

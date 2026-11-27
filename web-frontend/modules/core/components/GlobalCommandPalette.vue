@@ -63,6 +63,26 @@
                   >
                     {{ item.subtitle }}
                   </div>
+                  <div
+                    v-if="
+                      item.descriptionSegments &&
+                      item.descriptionSegments.length
+                    "
+                    class="workspace-search__result-description"
+                  >
+                    <span
+                      v-for="(
+                        segment, segmentIndex
+                      ) in item.descriptionSegments"
+                      :key="segmentIndex"
+                      :class="{
+                        'workspace-search__result-highlight':
+                          segment.highlighted,
+                      }"
+                    >
+                      {{ segment.text }}
+                    </span>
+                  </div>
                 </div>
                 <div
                   v-if="activeIndex === index"
@@ -71,6 +91,14 @@
                   <kbd class="workspace-search__keys"> ↵ </kbd>
                 </div>
               </div>
+            </div>
+          </div>
+          <div v-else-if="isGlobalSearching" class="workspace-search__loading">
+            <div class="workspace-search__loading-spinner">
+              <div class="loading"></div>
+            </div>
+            <div class="workspace-search__loading-text">
+              {{ $t('workspaceSearch.searching') }}
             </div>
           </div>
           <div v-else class="workspace-search__empty">
@@ -113,18 +141,30 @@
 </template>
 
 <script>
+import debounce from 'lodash/debounce'
 import { mapGetters } from 'vuex'
+import { searchTypeRegistry } from '@baserow/modules/core/search/types/registry'
+import { notifyIf } from '@baserow/modules/core/utils/error'
+import { fetchWorkspacesAndApplications } from '@baserow/modules/core/utils/workspace'
 import modal from '@baserow/modules/core/mixins/modal'
 
 export default {
   name: 'GlobalCommandPalette',
   mixins: [modal],
+  setup() {
+    const nuxtApp = useNuxtApp()
+    return { nuxtApp }
+  },
   data() {
     return {
       searchTerm: '',
       activeIndex: 0,
       focusInput: false,
       isKeyboardNavigating: false,
+      globalSearchDebounce: null,
+      globalSearchController: null,
+      globalSearchRequestId: 0,
+      isGlobalSearching: false,
     }
   },
   computed: {
@@ -132,6 +172,7 @@ export default {
       workspaces: 'workspace/getAllSorted',
       isStaff: 'auth/isStaff',
     }),
+    ...mapGetters('workspaceSearch', ['globalResults']),
     actions() {
       const actions = [
         {
@@ -195,6 +236,34 @@ export default {
       }
       return actions
     },
+    remoteItems() {
+      const query = this.searchTerm.trim()
+      if (!query || !this.globalResults.length) {
+        return []
+      }
+
+      return this.globalResults.map((result, index) => {
+        const context = { searchTerm: query, store: this.$store }
+        const display = this.formatGlobalResult(result, context)
+        const workspaceId = result.metadata?.workspace_id || null
+        const workspace = this.workspaces.find((w) => w.id === workspaceId)
+        const subtitle = [workspace?.name, display.subtitle]
+          .filter(Boolean)
+          .join(' · ')
+
+        return {
+          key: `global-${result.type}-${result.id}-${
+            workspaceId || 'unknown'
+          }-${index}`,
+          title: display.title || result.title,
+          subtitle,
+          descriptionSegments: display.descriptionSegments || [],
+          icon: searchTypeRegistry.getIcon(result.type),
+          workspaceId,
+          result,
+        }
+      })
+    },
     items() {
       const query = this.searchTerm.trim().toLowerCase()
       const matches = (value) => value.toLowerCase().includes(query)
@@ -211,18 +280,90 @@ export default {
             params: { workspaceId: workspace.id },
           },
         }))
-      return [...actionItems, ...workspaceItems]
+      return [...actionItems, ...workspaceItems, ...this.remoteItems]
     },
   },
   watch: {
     searchTerm() {
       this.activeIndex = 0
+      if (this.globalSearchDebounce) {
+        this.globalSearchDebounce.cancel()
+      }
+      const query = this.searchTerm.trim()
+      if (!query) {
+        this.cancelGlobalSearch()
+        return
+      }
+      this.globalSearchDebounce = debounce(
+        () => this.runGlobalSearch(query),
+        250
+      )
+      this.globalSearchDebounce()
     },
   },
+  beforeUnmount() {
+    if (this.globalSearchDebounce) {
+      this.globalSearchDebounce.cancel()
+    }
+    this.cancelGlobalSearch()
+  },
   methods: {
+    formatGlobalResult(result, context) {
+      try {
+        return searchTypeRegistry.formatResultDisplay(
+          result.type,
+          result,
+          context
+        )
+      } catch {
+        return { title: result.title, subtitle: null, descriptionSegments: [] }
+      }
+    },
+    isCancelledError(error) {
+      return error?.name === 'CanceledError' || error?.code === 'ERR_CANCELED'
+    },
+    cancelGlobalSearch() {
+      if (this.globalSearchController) {
+        this.globalSearchController.abort()
+        this.globalSearchController = null
+      }
+      this.globalSearchRequestId += 1
+      this.isGlobalSearching = false
+      this.$store.dispatch('workspaceSearch/clearGlobalSearch')
+    },
+    async runGlobalSearch(query) {
+      this.cancelGlobalSearch()
+      const controller =
+        typeof AbortController === 'undefined' ? null : new AbortController()
+      this.globalSearchController = controller
+      const requestId = this.globalSearchRequestId
+      this.isGlobalSearching = true
+
+      try {
+        await this.$store.dispatch('workspaceSearch/searchGlobal', {
+          searchTerm: query,
+          limit: 20,
+          signal: controller ? controller.signal : null,
+          requestId,
+        })
+      } catch (error) {
+        // Remote results are optional, local actions and workspaces stay usable.
+        if (
+          !this.isCancelledError(error) &&
+          requestId === this.globalSearchRequestId
+        ) {
+          this.isGlobalSearching = false
+        }
+      } finally {
+        if (requestId === this.globalSearchRequestId) {
+          this.isGlobalSearching = false
+        }
+      }
+    },
     onShow() {
       this.searchTerm = ''
       this.activeIndex = 0
+      this.cancelGlobalSearch()
       this.$nextTick(() => this.$refs.searchInput?.focus())
     },
     onMouseMove(event) {
@@ -265,10 +406,46 @@ export default {
         })
       })
     },
-    selectItem(item) {
+    async selectItem(item) {
+      if (item.result) {
+        await this.selectGlobalResult(item)
+        return
+      }
       if (!item.route) return
       this.hide()
       this.$router.push(item.route)
+    },
+    async selectGlobalResult(item) {
+      this.cancelGlobalSearch()
+      try {
+        await fetchWorkspacesAndApplications(this.nuxtApp, item.workspaceId)
+        await this.$store.dispatch('workspace/selectById', item.workspaceId)
+
+        const context = {
+          searchTerm: this.searchTerm.trim(),
+          store: this.$store,
+        }
+        if (
+          !searchTypeRegistry.isNavigable(
+            item.result.type,
+            item.result,
+            context
+          )
+        ) {
+          return
+        }
+        const route = searchTypeRegistry.buildUrl(
+          item.result.type,
+          item.result,
+          context
+        )
+        if (!route) return
+
+        this.hide()
+        await this.$router.push(route)
+      } catch (error) {
+        notifyIf(error)
+      }
     },
   },
 }

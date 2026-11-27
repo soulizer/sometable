@@ -62,8 +62,8 @@
           <div class="admin-health__check-item">
             <div class="admin-health__check-item-label">
               <div class="admin-health__check-item-name">
-              {{ $t('health.celeryQueueSize') }}
-            </div>
+                {{ $t('health.celeryQueueSize') }}
+              </div>
             </div>
             <span v-skeleton="{ loading, width: '24px' }">{{
               celeryQueueSize
@@ -93,6 +93,7 @@
 </template>
 
 <script setup>
+import '@baserow/modules/core/assets/scss/admin.scss'
 import { computed } from 'vue'
 import { useHead } from '#imports'
 import { usePageAsyncData } from '@baserow/modules/core/composables/usePageAsyncData'
@@ -139,7 +140,9 @@ const healthCheckLabels = {
 
 function healthCheckName(checkName) {
   const key = healthCheckLabels[checkName]
-  return key ? $i18n.t(`health.checks.${key}`) : camelCaseToSpaceSeparated(checkName)
+  return key
+    ? $i18n.t(`health.checks.${key}`)
+    : camelCaseToSpaceSeparated(checkName)
 }
 
 function healthCheckStatus(status) {

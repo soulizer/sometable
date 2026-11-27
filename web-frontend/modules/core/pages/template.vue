@@ -4,6 +4,7 @@
 </template>
 
 <script setup>
+import '@baserow/modules/core/assets/scss/template.scss'
 // TODO: render only `TemplatePage` once the `user_templates` feature flag is removed.
 import { FF_USER_TEMPLATES } from '@baserow/modules/core/plugins/featureFlags'
 import TemplatePage from '@baserow/modules/core/components/template/TemplatePage'

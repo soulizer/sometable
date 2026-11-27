@@ -7,6 +7,8 @@
             v-if="value.is_image"
             class="card-file__image"
             :src="value.thumbnails?.tiny?.url"
+            loading="lazy"
+            alt=""
           />
           <i
             v-else

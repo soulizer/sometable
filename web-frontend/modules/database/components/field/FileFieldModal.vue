@@ -80,6 +80,8 @@
                   v-if="file.is_image"
                   :src="file.thumbnails.small.url"
                   class="file-field-modal__nav-image"
+                  loading="lazy"
+                  alt=""
                 />
                 <i
                   v-else
@@ -209,9 +211,10 @@ export default {
           this.$refs.modalEl
         )
 
+      const modalPreviewChildren = this.$refs.modalPreview?.$el?.children
       const protectedElements = [
         this.$refs.rename?.$el,
-        ...this.$refs.modalPreview?.$el.children,
+        ...(modalPreviewChildren ? Array.from(modalPreviewChildren) : []),
       ]
       const isProtectedElement = () =>
         protectedElements.some((element) => isElement(element, event.target))

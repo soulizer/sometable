@@ -51,3 +51,18 @@ class WorkspaceSearchResponseSerializer(serializers.Serializer):
     has_more = serializers.BooleanField(
         help_text="Whether there are more results available for pagination"
     )
+
+
+class GlobalSearchResponseSerializer(serializers.Serializer):
+    """Serializer for the aggregated cross-workspace search response."""
+
+    count = serializers.IntegerField(
+        help_text="Number of results returned in this response"
+    )
+    results = serializers.ListField(
+        child=SearchResultSerializer(),
+        help_text="Aggregated search results from all accessible workspaces",
+    )
+    has_more = serializers.BooleanField(
+        help_text="Whether at least one workspace has more results available"
+    )

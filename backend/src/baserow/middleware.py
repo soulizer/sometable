@@ -8,6 +8,7 @@ from django.utils.cache import patch_vary_headers
 from rest_framework import status
 
 from baserow.config.db_routers import clear_db_state
+from baserow.core.backup_status import is_maintenance_mode_enabled
 from baserow.core.handler import CoreHandler
 
 
@@ -128,3 +129,58 @@ class ClearDBStateMiddleware:
         response = self.get_response(request)
         clear_db_state()
         return response
+
+
+class MaintenanceModeMiddleware:
+    """
+    Blocks normal requests while an asynchronous backup restore is running.
+
+    The flag lives in Redis, not in the database, because pg_restore --clean can
+    drop the settings table while the restore is in progress. Health checks,
+    static assets and the staff routes used to follow the restore stay available.
+    """
+
+    HEALTH_PREFIXES = ("/api/_health/", "/_health/")
+    STAFF_PATH_PREFIXES = ("/api/settings/backups/", "/api/admin/")
+    STATIC_PREFIXES = ("/_nuxt/",)
+
+    def __init__(self, get_response: Callable[[HttpRequest], HttpResponse]):
+        self.get_response = get_response
+
+    def __call__(self, request: HttpRequest) -> HttpResponse:
+        if is_maintenance_mode_enabled() and not self._is_allowed(request):
+            return JsonResponse(
+                {
+                    "error": "ERROR_MAINTENANCE_MODE",
+                    "detail": (
+                        "The service is temporarily unavailable while a backup "
+                        "restore is in progress."
+                    ),
+                },
+                status=status.HTTP_503_SERVICE_UNAVAILABLE,
+            )
+        return self.get_response(request)
+
+    def _is_allowed(self, request: HttpRequest) -> bool:
+        path = request.path_info
+        if path.startswith(self.HEALTH_PREFIXES):
+            return True
+
+        static_url = getattr(settings, "STATIC_URL", "/static/") or "/static/"
+        if path.startswith((static_url, *self.STATIC_PREFIXES)):
+            return True
+        if path in ("/favicon.ico", "/robots.txt"):
+            return True
+
+        if path.startswith(self.STAFF_PATH_PREFIXES) and self._is_staff(request):
+            return True
+        return False
+
+    @staticmethod
+    def _is_staff(request: HttpRequest) -> bool:
+        user = getattr(request, "user", None)
+        return bool(
+            user
+            and getattr(user, "is_authenticated", False)
+            and getattr(user, "is_staff", False)
+        )

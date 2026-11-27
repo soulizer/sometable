@@ -15,7 +15,9 @@
 @import 'ab_radio';
 @import 'ab_image';
 @import 'ab_table';
-@import 'ab_datetime_picker';
+
+// `ab_datetime_picker` extends iconoir classes from the global `vendors.scss`
+// entry, so it is imported by the global bundle instead of this route entry.
 @import 'ab_file_input';
 @import 'ab_presentation';
 @import 'ab_avatar';

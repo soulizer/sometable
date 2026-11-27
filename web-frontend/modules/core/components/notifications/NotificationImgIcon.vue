@@ -1,5 +1,5 @@
 <template>
-  <img :src="icon" />
+  <img :src="icon" loading="lazy" alt="" />
 </template>
 
 <script>

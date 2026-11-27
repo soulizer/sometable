@@ -9,7 +9,13 @@
     }"
   >
     <i v-if="icon" :class="icon" class="avatar__icon" />
-    <img v-if="image" :src="image" class="avatar__image" />
+    <img
+      v-if="image"
+      :src="image"
+      class="avatar__image"
+      loading="lazy"
+      alt=""
+    />
     <span v-if="initials && !image" class="avatar__initials">{{
       initials
     }}</span>

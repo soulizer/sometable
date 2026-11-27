@@ -8,6 +8,7 @@
 </template>
 
 <script setup>
+import '@baserow/modules/core/assets/scss/editor.scss'
 import { useHead } from '#imports'
 import { usePageAsyncData } from '@baserow/modules/core/composables/usePageAsyncData'
 import { ref } from 'vue'

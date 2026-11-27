@@ -118,6 +118,10 @@ def check_permissions_with_view_fallback(
 
     from baserow.contrib.database.views.registries import view_ownership_type_registry
 
+    # A locked view is read-only for everyone except its owner and instance staff,
+    # even when the user also has table-level write access.
+    CoreHandler().check_locked_view_write(user, view_operation, view)
+
     table_check = PermissionCheck(
         user,
         table_operation,

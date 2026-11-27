@@ -129,6 +129,12 @@ class View(
         db_default=False,
         help_text="Indicates whether it's allowed to export a publicly shared view.",
     )
+    locked = models.BooleanField(
+        default=False,
+        db_default=False,
+        help_text="When locked, only the view owner or an instance staff member can "
+        "change the view configuration or its rows.",
+    )
     owned_by = models.ForeignKey(
         User,
         null=True,

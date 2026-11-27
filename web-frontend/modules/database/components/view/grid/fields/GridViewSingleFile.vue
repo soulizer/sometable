@@ -6,6 +6,8 @@
           v-if="value.is_image"
           class="grid-field-file__image"
           :src="value?.thumbnails?.tiny?.url"
+          loading="lazy"
+          alt=""
         />
         <i
           v-else

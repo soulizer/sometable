@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.utils.translation import get_language
 
 from .registries import EmailContextType
 
@@ -11,7 +12,10 @@ class CoreEmailContextType(EmailContextType):
     type = "core"
 
     def get_context(self):
+        language = (get_language() or "").lower().replace("_", "-")
+        instance_name = "工作台" if language.startswith("zh") else "Workspace"
         return {
+            "instance_name": instance_name,
             "public_backend_hostname": settings.PUBLIC_BACKEND_HOSTNAME,
             "public_backend_url": settings.PUBLIC_BACKEND_URL,
             "public_web_frontend_hostname": settings.PUBLIC_WEB_FRONTEND_HOSTNAME,

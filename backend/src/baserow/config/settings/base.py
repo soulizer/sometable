@@ -122,6 +122,7 @@ MIDDLEWARE = [
     "django.middleware.csrf.CsrfViewMiddleware",
     "baserow.core.cache.LocalCacheMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "baserow.middleware.MaintenanceModeMiddleware",
     "baserow.api.user_sources.middleware.AddUserSourceUserMiddleware",
     "baserow.api.templates.middleware.TemplatePrivateLinkMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",

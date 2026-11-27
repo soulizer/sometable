@@ -618,6 +618,8 @@
     "viewContext": {
         "exportView": "导出视图",
         "duplicateView": "创建副本视图",
+        "lockView": "锁定视图",
+        "unlockView": "解锁视图",
         "renameView": "重命名视图",
         "webhooks": "Webhook",
         "importFile": "导入文件",

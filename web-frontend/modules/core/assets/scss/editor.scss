@@ -1,0 +1,31 @@
+// Editor-only styles: page/application builders, automations, formula and code
+// editors, service forms and data-source configuration. These are only needed
+// on the editor routes and on database tables where field editors can open.
+@import 'split-foundation';
+
+// Placeholder used by the formula field and input context partials.
+@import 'components/context';
+@import 'components/builder/all';
+@import 'components/automation/all';
+@import 'components/formula_field';
+@import 'components/formula_input_field';
+@import 'components/formula_input_explorer_context';
+@import 'components/formula_input_error_context';
+@import 'components/get_formula_component';
+@import 'components/function_formula_component';
+@import 'components/operator_formula_component';
+@import 'components/node_help_tooltip';
+@import 'components/node_explorer/node_explorer';
+@import 'components/node_explorer/node_explorer_content';
+@import 'components/integrations/all';
+@import 'components/services/service_form';
+@import 'components/services/webhook_service_form';
+@import 'components/services/inbound_email_trigger_service_form';
+@import 'components/services/http_data_source_service_form';
+@import 'components/services/http_response_picker';
+@import 'components/webhook';
+@import 'components/data_sync_runs';
+@import 'components/sample_data_modal';
+@import 'components/sample_data_viewer';
+@import 'components/field_constraints';
+@import 'components/code_editor';

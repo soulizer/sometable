@@ -80,6 +80,21 @@
   }
 }
 
+.filters__group-item-wrapper--level-3 > .filters__group-item {
+  border-color: $palette-neutral-300;
+  background-color: $palette-neutral-100;
+}
+
+.filters__group-item-wrapper--level-4 > .filters__group-item {
+  border-color: $palette-neutral-400;
+  background-color: $palette-neutral-200;
+}
+
+.filters__group-item-wrapper--level-5 > .filters__group-item {
+  border-color: $palette-neutral-500;
+  background-color: $palette-neutral-300;
+}
+
 .filters__group-item-filters {
   min-height: 20px;
   display: flex;

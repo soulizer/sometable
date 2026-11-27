@@ -8,6 +8,8 @@
         v-if="value.is_image"
         class="array-field__file-image"
         :src="value.thumbnails?.tiny?.url"
+        loading="lazy"
+        alt=""
       />
       <i
         v-else

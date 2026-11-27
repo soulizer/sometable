@@ -1,0 +1,9 @@
+{
+    "type": "feature",
+    "message": "Backup restores now run asynchronously with progress reporting, a maintenance mode that keeps health and staff status routes available, and the existing safety backup.",
+    "issue_origin": "github",
+    "issue_number": 9005,
+    "domain": "admin",
+    "bullet_points": [],
+    "created_at": "2026-11-27"
+}

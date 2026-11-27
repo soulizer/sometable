@@ -179,6 +179,7 @@
 </template>
 
 <script setup>
+import '@baserow/modules/core/assets/scss/api-docs.scss'
 import { isElement } from '@baserow/modules/core/utils/dom'
 import APIDocsSelectDatabase from '@baserow/modules/database/components/docs/APIDocsSelectDatabase'
 import { DatabaseApplicationType } from '@baserow/modules/database/applicationTypes'

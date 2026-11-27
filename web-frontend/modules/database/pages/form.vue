@@ -42,6 +42,7 @@
 </template>
 
 <script setup>
+import '@baserow/modules/core/assets/scss/form-view.scss'
 import { computed, ref } from 'vue'
 import { useAsyncData } from '#app'
 import { useHead } from '#imports'

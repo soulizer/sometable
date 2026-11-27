@@ -1,0 +1,9 @@
+{
+    "type": "feature",
+    "message": "Styles are split by route so login, public and all-workspace pages no longer download database, editor and admin-only CSS.",
+    "issue_origin": "github",
+    "issue_number": 9007,
+    "domain": "core",
+    "bullet_points": [],
+    "created_at": "2026-11-27"
+}

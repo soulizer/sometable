@@ -34,6 +34,8 @@
               v-if="selectedImage"
               class="dropdown__selected-image"
               :src="selectedImage"
+              loading="lazy"
+              alt=""
             />
             <span class="dropdown__selected-text" :title="selectedName">{{
               selectedName

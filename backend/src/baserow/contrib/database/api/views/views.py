@@ -115,7 +115,10 @@ from baserow.contrib.database.views.exceptions import (
     ViewDoesNotSupportFieldOptions,
     ViewDoesNotSupportListingRows,
     ViewFilterDoesNotExist,
+    ViewFilterGroupDepthExceeded,
     ViewFilterGroupDoesNotExist,
+    ViewFilterGroupInvalidAncestry,
+    ViewFilterGroupNotInView,
     ViewFilterNotSupported,
     ViewFilterTypeNotAllowedForField,
     ViewGroupByDoesNotExist,
@@ -168,7 +171,10 @@ from .errors import (
     ERROR_VIEW_DOES_NOT_SUPPORT_FIELD_OPTIONS,
     ERROR_VIEW_DOES_NOT_SUPPORT_LISTING_ROWS,
     ERROR_VIEW_FILTER_DOES_NOT_EXIST,
+    ERROR_VIEW_FILTER_GROUP_DEPTH_EXCEEDED,
     ERROR_VIEW_FILTER_GROUP_DOES_NOT_EXIST,
+    ERROR_VIEW_FILTER_GROUP_INVALID_ANCESTRY,
+    ERROR_VIEW_FILTER_GROUP_NOT_IN_VIEW,
     ERROR_VIEW_FILTER_NOT_SUPPORTED,
     ERROR_VIEW_FILTER_TYPE_UNSUPPORTED_FIELD,
     ERROR_VIEW_GROUP_BY_DOES_NOT_EXIST,
@@ -951,6 +957,9 @@ class ViewFiltersView(APIView):
                     "ERROR_FIELD_NOT_IN_TABLE",
                     "ERROR_VIEW_FILTER_NOT_SUPPORTED",
                     "ERROR_VIEW_FILTER_TYPE_UNSUPPORTED_FIELD",
+                    "ERROR_VIEW_FILTER_GROUP_NOT_IN_VIEW",
+                    "ERROR_VIEW_FILTER_GROUP_INVALID_ANCESTRY",
+                    "ERROR_VIEW_FILTER_GROUP_DEPTH_EXCEEDED",
                 ]
             ),
             404: get_error_schema(
@@ -968,6 +977,9 @@ class ViewFiltersView(APIView):
             ViewFilterNotSupported: ERROR_VIEW_FILTER_NOT_SUPPORTED,
             ViewFilterTypeNotAllowedForField: ERROR_VIEW_FILTER_TYPE_UNSUPPORTED_FIELD,
             ViewFilterGroupDoesNotExist: ERROR_VIEW_FILTER_GROUP_DOES_NOT_EXIST,
+            ViewFilterGroupNotInView: ERROR_VIEW_FILTER_GROUP_NOT_IN_VIEW,
+            ViewFilterGroupInvalidAncestry: ERROR_VIEW_FILTER_GROUP_INVALID_ANCESTRY,
+            ViewFilterGroupDepthExceeded: ERROR_VIEW_FILTER_GROUP_DEPTH_EXCEEDED,
         }
     )
     def post(self, request, data, view_id):
@@ -1157,9 +1169,17 @@ class ViewFilterGroupsView(APIView):
         responses={
             200: ViewFilterGroupSerializer(),
             400: get_error_schema(
-                ["ERROR_USER_NOT_IN_GROUP", "ERROR_REQUEST_BODY_VALIDATION"]
+                [
+                    "ERROR_USER_NOT_IN_GROUP",
+                    "ERROR_REQUEST_BODY_VALIDATION",
+                    "ERROR_VIEW_FILTER_GROUP_NOT_IN_VIEW",
+                    "ERROR_VIEW_FILTER_GROUP_INVALID_ANCESTRY",
+                    "ERROR_VIEW_FILTER_GROUP_DEPTH_EXCEEDED",
+                ]
             ),
-            404: get_error_schema(["ERROR_VIEW_DOES_NOT_EXIST"]),
+            404: get_error_schema(
+                ["ERROR_VIEW_DOES_NOT_EXIST", "ERROR_VIEW_FILTER_GROUP_DOES_NOT_EXIST"]
+            ),
         },
     )
     @transaction.atomic
@@ -1167,6 +1187,10 @@ class ViewFilterGroupsView(APIView):
         {
             ViewDoesNotExist: ERROR_VIEW_DOES_NOT_EXIST,
             UserNotInWorkspace: ERROR_USER_NOT_IN_GROUP,
+            ViewFilterGroupDoesNotExist: ERROR_VIEW_FILTER_GROUP_DOES_NOT_EXIST,
+            ViewFilterGroupNotInView: ERROR_VIEW_FILTER_GROUP_NOT_IN_VIEW,
+            ViewFilterGroupInvalidAncestry: ERROR_VIEW_FILTER_GROUP_INVALID_ANCESTRY,
+            ViewFilterGroupDepthExceeded: ERROR_VIEW_FILTER_GROUP_DEPTH_EXCEEDED,
         }
     )
     @validate_body(CreateViewFilterGroupSerializer)

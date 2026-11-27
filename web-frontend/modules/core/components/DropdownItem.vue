@@ -29,7 +29,13 @@
             class="select__item-icon"
             :class="icon"
           />
-          <img v-if="image" class="select__item-image" :src="image" />
+          <img
+            v-if="image"
+            class="select__item-image"
+            :src="image"
+            loading="lazy"
+            alt=""
+          />
           <span
             class="select__item-name-text"
             :class="{ 'select__item-name-text--forced-height': !name }"

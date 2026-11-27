@@ -559,6 +559,47 @@ describe('ViewFilterForm can add/update/remove filters and filter groups', () =>
     expect(wrapper.emitted('changed')).toBeTruthy()
   })
 
+  test('can add a filter group inside a nested group', async () => {
+    const app = testApp.getApp()
+    const view = app.$store.getters['view/get'](viewId)
+
+    const wrapper = await testApp.mount(ViewFilterForm, {
+      propsData: { ...basePropsData, view },
+    })
+
+    await testApp.store.dispatch('view/forceCreateFilterGroup', {
+      view,
+      values: { id: 90, filter_type: 'AND', parent_group: null },
+    })
+    await testApp.store.dispatch('view/forceCreateFilterGroup', {
+      view,
+      values: { id: 91, filter_type: 'OR', parent_group: 90 },
+    })
+    await testApp.store.dispatch('view/forceCreateFilter', {
+      view,
+      values: { id: 100, field: 10, type: 'equal', value: '', group: 91 },
+    })
+
+    mockServer.mock
+      .onPost(`/database/views/${viewId}/filter-groups/`)
+      .reply((config) => [200, { ...config.data, view: viewId, id: 92 }])
+    mockServer.mock
+      .onPost(`/database/views/${viewId}/filters/`)
+      .reply((config) => [200, { ...config.data, view: viewId, id: 102 }])
+
+    await wrapper
+      .findAllComponents({ name: 'ViewFieldConditionGroup' })
+      .at(1)
+      .find('.filters__group-item-action--add-filter-group')
+      .trigger('click')
+    await flushPromises()
+
+    expect(view.filter_groups.length).toBe(3)
+    expect(view.filter_groups[2].id).toBe(92)
+    expect(view.filter_groups[2].parent_group).toBe(91)
+    expect(view.filters[1].group).toBe(92)
+  })
+
   test('deleting the last condition delete the outermost condition group', async () => {
     const app = testApp.getApp()
     const view = app.$store.getters['view/get'](viewId)

@@ -1,0 +1,10 @@
+// Shared Sass context for the route-specific stylesheet entries. Values that
+// only declare variables, placeholders and mixins produce no CSS; helpers.scss
+// also provides the placeholder utilities (`%ellipsis`, `%px-12`, ...) that the
+// component partials below extend.
+@import 'colors';
+@import 'variables';
+@import 'placeholders';
+@import 'mixins/all';
+@import 'helpers';
+@import 'abstracts/all';

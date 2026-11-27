@@ -1,0 +1,57 @@
+// Grid, gallery and table view styles. Imported by the database table routes
+// and the public grid view, not by login, all-workspaces or editor-only pages.
+@import 'split-foundation';
+
+// Placeholder definitions used by the view partials. These files also emit a
+// few small utility rules; keeping the same partials here preserves the exact
+// generated selectors when compiling this entry on its own.
+@import 'components/fields/long_text';
+@import 'components/rich_text_editor';
+@import 'components/card/file';
+@import 'components/modal';
+@import 'components/box';
+@import 'components/views/grid';
+@import 'components/views/grid/presence_highlight';
+@import 'components/views/grid/presence_badge';
+@import 'components/views/grid/button';
+@import 'components/views/grid/text';
+@import 'components/views/grid/long_text';
+@import 'components/views/grid/rich_text';
+@import 'components/views/grid/number';
+@import 'components/views/grid/rating';
+@import 'components/views/grid/boolean';
+@import 'components/views/grid/date';
+@import 'components/views/grid/link_row';
+@import 'components/views/grid/file';
+@import 'components/views/grid/single_select';
+@import 'components/views/grid/multiple_select';
+@import 'components/views/grid/many_to_many';
+@import 'components/views/grid/array';
+@import 'components/views/grid/aggregation';
+@import 'components/views/grid/simple_grid';
+@import 'components/views/grid/duration';
+@import 'components/views/grid/password';
+@import 'components/views/gallery';
+@import 'components/views/public';
+@import 'components/view_ownership_select';
+@import 'components/decorator/list';
+@import 'components/decorator/item';
+@import 'components/decorator/context';
+@import 'components/decorator/value_provider_list';
+@import 'components/decorator/value_provider_item';
+@import 'components/array_field';
+@import 'components/row_modal';
+@import 'components/select_row_modal';
+@import 'components/sortings';
+@import 'components/hidings';
+@import 'components/choice_items';
+@import 'components/grid';
+@import 'components/group_bys';
+@import 'components/row_edit_modal';
+@import 'components/row_edit_modal_sidebar';
+@import 'components/row_history';
+@import 'components/row_history_entry';
+@import 'components/row_history_field_boolean';
+@import 'components/row_history_field_multiple_collaborators';
+@import 'components/row_history_field_select_options';
+@import 'components/data_table';

@@ -2,7 +2,12 @@
   <div class="upload-files__file-in-progress">
     <div class="field-file__preview">
       <a class="field-file__icon field-file__icon--static">
-        <img v-if="file.is_image" :src="file.thumbnails.small.url" />
+        <img
+          v-if="file.is_image"
+          :src="file.thumbnails.small.url"
+          loading="lazy"
+          alt=""
+        />
         <i v-else :class="iconClass"></i>
       </a>
     </div>

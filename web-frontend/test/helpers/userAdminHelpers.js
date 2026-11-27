@@ -13,7 +13,7 @@ export default class UserAdminUserHelpers {
     this.c = userAdminComponent
   }
 
-  findCells(numCellsExpected = 9) {
+  findCells(numCellsExpected = 11) {
     const cells = this.c.findAll('tbody .data-table__table-cell-content')
     expect(cells.length).toBe(numCellsExpected)
     return cells
@@ -22,11 +22,11 @@ export default class UserAdminUserHelpers {
   findUsernameColumnCellsText() {
     const cells = this.c.findAll('tbody .data-table__table-cell-content')
     const usernameCells = []
-    const numRows = cells.length / 9
+    const numRows = cells.length / 11
     for (let i = 0; i < numRows; i++) {
       usernameCells.push(
         cells
-          .at(i * 8 + 0)
+          .at(i * 11 + 1)
           .find('.user-admin-username__name')
           .text()
       )
@@ -35,17 +35,19 @@ export default class UserAdminUserHelpers {
   }
 
   getRow(cells, rowNumber) {
-    const offset = rowNumber * 9
+    const offset = rowNumber * 11
     return {
-      usernameCell: cells.at(offset),
-      nameCell: cells.at(offset + 1),
-      workspacesCell: cells.at(offset + 2),
-      lastLoginCell: cells.at(offset + 3),
-      signedUpCell: cells.at(offset + 4),
-      isActiveCell: cells.at(offset + 5),
-      twoFactorAuthCell: cells.at(offset + 6),
-      emailVerifiedCell: cells.at(offset + 7),
-      moreCell: cells.at(offset + 8),
+      selectCell: cells.at(offset),
+      usernameCell: cells.at(offset + 1),
+      nameCell: cells.at(offset + 2),
+      workspacesCell: cells.at(offset + 3),
+      lastLoginCell: cells.at(offset + 4),
+      signedUpCell: cells.at(offset + 5),
+      isActiveCell: cells.at(offset + 6),
+      twoFactorAuthCell: cells.at(offset + 7),
+      emailVerifiedCell: cells.at(offset + 8),
+      highestRoleCell: cells.at(offset + 9),
+      moreCell: cells.at(offset + 10),
     }
   }
 
@@ -53,6 +55,23 @@ export default class UserAdminUserHelpers {
     const cells = this.findCells()
     const { usernameCell } = this.getRow(cells, 0)
     return usernameCell.text()
+  }
+
+  async selectUserRow(rowNumber) {
+    const cells = this.findCells()
+    const { selectCell } = this.getRow(cells, rowNumber)
+    const input = selectCell.find('input[type="checkbox"]')
+    input.element.checked = true
+    await input.trigger('change')
+  }
+
+  async toggleSelectAllOnPage() {
+    const checkbox = this.c
+      .findAll('.data-table__filters .checkbox')
+      .at(0)
+      .find('input[type="checkbox"]')
+    checkbox.element.checked = true
+    await checkbox.trigger('change')
   }
 
   getUsernameInitials(usernameCell) {

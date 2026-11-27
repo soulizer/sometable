@@ -39,6 +39,7 @@
             class="menu-list__item-image"
             :src="item.image"
             :alt="item.label"
+            loading="lazy"
           />
           <i
             v-else-if="item.icon"

@@ -11,6 +11,16 @@ export default (client) => {
     delete(userId) {
       return client.delete(`/admin/users/${userId}/`)
     },
+    bulkUpdate(userIds, values) {
+      return Promise.allSettled(
+        userIds.map((userId) => client.patch(`/admin/users/${userId}/`, values))
+      )
+    },
+    bulkDelete(userIds) {
+      return Promise.allSettled(
+        userIds.map((userId) => client.delete(`/admin/users/${userId}/`))
+      )
+    },
     disableTwoFactorAuth(userId) {
       return client.delete(`/admin/users/${userId}/two-factor-auth/`)
     },

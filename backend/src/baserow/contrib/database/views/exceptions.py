@@ -70,6 +70,36 @@ class ViewFilterGroupDoesNotExist(Exception):
     """Raised when trying to get a view filter that does not exist."""
 
 
+class ViewFilterGroupNotInView(Exception):
+    """Raised when a filter group belongs to a different view."""
+
+    def __init__(self, filter_group_id=None, view_id=None, *args, **kwargs):
+        self.filter_group_id = filter_group_id
+        self.view_id = view_id
+        super().__init__(
+            f"The view filter group {filter_group_id} does not belong to view "
+            f"{view_id}.",
+            *args,
+            **kwargs,
+        )
+
+
+class ViewFilterGroupInvalidAncestry(Exception):
+    """Raised when a filter group has a missing or cyclic parent chain."""
+
+
+class ViewFilterGroupDepthExceeded(Exception):
+    """Raised when a filter group would exceed the supported nesting depth."""
+
+    def __init__(self, max_depth=None, *args, **kwargs):
+        self.max_depth = max_depth
+        super().__init__(
+            f"Filter groups cannot be nested deeper than {max_depth} levels.",
+            *args,
+            **kwargs,
+        )
+
+
 class ViewFilterNotSupported(Exception):
     """Raised when the view type does not support filters."""
 

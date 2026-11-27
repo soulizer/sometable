@@ -1,0 +1,9 @@
+{
+    "type": "feature",
+    "message": "Admins can select multiple users and activate, deactivate, promote, demote or delete them in bulk.",
+    "issue_origin": "github",
+    "issue_number": 9002,
+    "domain": "admin",
+    "bullet_points": [],
+    "created_at": "2026-11-27"
+}

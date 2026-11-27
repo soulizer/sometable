@@ -184,6 +184,12 @@
         <Alert type="warning" class="margin-bottom-2">
           {{ $t('adminBackups.restoreDescription') }}
         </Alert>
+        <div v-if="restoringId !== null" class="margin-bottom-2">
+          <ProgressBar :value="restoreProgress" :status="restoreStatusLabel" />
+        </div>
+        <Alert v-if="restoreError" type="error" class="margin-bottom-2">
+          {{ restoreError }}
+        </Alert>
         <FormGroup
           :label="$t('adminBackups.restoreConfirmLabel')"
           :helper-text="$t('adminBackups.restoreConfirmHelp')"
@@ -197,14 +203,19 @@
         </FormGroup>
         <div class="actions">
           <div class="align-right">
-            <Button @click="$refs.restoreModal?.hide()">
+            <Button
+              :disabled="restoringId !== null"
+              @click="$refs.restoreModal?.hide()"
+            >
               {{ $t('adminBackups.cancel') }}
             </Button>
             <Button
               type="danger"
               :loading="restoringId !== null"
               :disabled="
-                !pendingRestore || restoreConfirm !== pendingRestore.id
+                restoringId !== null ||
+                !pendingRestore ||
+                restoreConfirm !== pendingRestore.id
               "
               @click="restore"
             >
@@ -218,11 +229,14 @@
 </template>
 
 <script setup>
-import { computed, onMounted, reactive, ref } from 'vue'
+import { computed, onMounted, onUnmounted, reactive, ref } from 'vue'
 import StorageSettings from '@baserow/modules/core/components/settings/StorageSettings.vue'
+import SettingsService from '@baserow/modules/core/services/settings'
 import { useHead } from '#imports'
 import { useNuxtApp } from '#app'
 import { useI18n } from 'vue-i18n'
+
+const RESTORE_POLL_INTERVAL = 2000
 
 definePageMeta({
   layout: 'app',
@@ -242,7 +256,11 @@ const message = ref('')
 const messageType = ref('success')
 const pendingRestore = ref(null)
 const restoreConfirm = ref('')
+const restoreProgress = ref(0)
+const restoreStatus = ref('')
+const restoreError = ref('')
 const savedScope = ref('all')
+let restorePollTimer = null
 
 const form = reactive({
   scope: 'all',
@@ -264,6 +282,16 @@ const scopeLabels = computed(() => ({
 const scopeOptions = computed(() =>
   Object.entries(scopeLabels.value).map(([value, label]) => ({ value, label }))
 )
+
+const restoreStatusLabel = computed(() => {
+  if (restoreStatus.value === 'pending') {
+    return t('adminBackups.restoreQueued')
+  }
+  if (restoreStatus.value === 'running') {
+    return t('adminBackups.restoreRunning')
+  }
+  return ''
+})
 
 const frequencyOptions = computed(() => [
   { value: 'disabled', label: t('adminBackups.frequencyDisabled') },
@@ -381,32 +409,84 @@ async function runNow() {
 function askRestore(item) {
   pendingRestore.value = item
   restoreConfirm.value = ''
+  restoreProgress.value = 0
+  restoreStatus.value = ''
+  restoreError.value = ''
   restoreModal.value.show()
+}
+
+function stopRestorePolling() {
+  if (restorePollTimer !== null) {
+    clearTimeout(restorePollTimer)
+    restorePollTimer = null
+  }
+}
+
+function finishRestore(success, detail = '') {
+  stopRestorePolling()
+  pendingRestore.value = null
+  restoringId.value = null
+  restoreStatus.value = ''
+  restoreError.value = success ? '' : detail || t('adminBackups.restoreError')
+  if (success) {
+    restoreModal.value?.hide()
+    showMessage(t('adminBackups.restoreOk'))
+    load()
+  } else {
+    showMessage(restoreError.value, 'error')
+  }
+}
+
+async function pollRestoreStatus(token) {
+  try {
+    const { data } =
+      await SettingsService($client).getBackupRestoreStatus(token)
+    restoreProgress.value = Number(data.progress) || 0
+    restoreStatus.value = data.status
+    if (data.status === 'success') {
+      finishRestore(true)
+    } else if (data.status === 'failed') {
+      finishRestore(false, data.message || t('adminBackups.restoreError'))
+    } else {
+      restorePollTimer = setTimeout(
+        () => pollRestoreStatus(token),
+        RESTORE_POLL_INTERVAL
+      )
+    }
+  } catch (error) {
+    finishRestore(
+      false,
+      error?.response?.data?.message ||
+        error?.response?.data?.error ||
+        t('adminBackups.restoreError')
+    )
+  }
 }
 
 async function restore() {
   if (!pendingRestore.value) return
   if (restoreConfirm.value !== pendingRestore.value.id) return
   restoringId.value = pendingRestore.value.id
+  restoreError.value = ''
+  restoreProgress.value = 0
+  restoreStatus.value = 'pending'
   try {
-    await $client.post('/settings/backups/restore/', {
-      id: pendingRestore.value.id,
-      confirm: restoreConfirm.value,
-    })
-    restoreModal.value.hide()
-    showMessage(t('adminBackups.restoreOk'))
-  } catch (error) {
-    showMessage(
-      error?.response?.data?.error || t('adminBackups.restoreError'),
-      'error'
+    const { data } = await SettingsService($client).restoreBackup(
+      pendingRestore.value.id,
+      restoreConfirm.value
     )
-  } finally {
-    restoringId.value = null
-    pendingRestore.value = null
+    await pollRestoreStatus(data.token)
+  } catch (error) {
+    finishRestore(
+      false,
+      error?.response?.data?.error || t('adminBackups.restoreError')
+    )
   }
 }
 
 onMounted(async () => {
   await Promise.all([loadSettings(), load()])
 })
+
+onUnmounted(stopRestorePolling)
 </script>

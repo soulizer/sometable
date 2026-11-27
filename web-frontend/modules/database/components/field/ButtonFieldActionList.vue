@@ -81,6 +81,8 @@
                   v-if="actionType.image"
                   class="select__item-image"
                   :src="actionType.image"
+                  loading="lazy"
+                  alt=""
                 />
                 <span
                   class="select__item-name-text"

@@ -725,6 +725,8 @@
     "viewContext": {
         "exportView": "Export view",
         "duplicateView": "Duplicate view",
+        "lockView": "Lock view",
+        "unlockView": "Unlock view",
         "copyConfiguration": "Copy configuration from view",
         "defaultRowValues": "Default row values",
         "renameView": "Rename view",

@@ -1,6 +1,6 @@
 <template>
   <div class="thumbnail">
-    <img v-bind="$attrs" class="thumbnail__image" :src="src" />
+    <img v-bind="$attrs" class="thumbnail__image" :src="src" loading="lazy" />
     <a v-if="removable" class="thumbnail__remove" @click="$emit('remove')">
       <i class="iconoir-cancel"></i>
       {{ $t('action.remove') }}

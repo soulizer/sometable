@@ -1,0 +1,9 @@
+{
+    "type": "feature",
+    "message": "The command palette can search rows, tables, views and other content across every workspace the user can access, while respecting workspace permissions.",
+    "issue_origin": "github",
+    "issue_number": 9004,
+    "domain": "core",
+    "bullet_points": [],
+    "created_at": "2026-11-27"
+}

@@ -11,6 +11,7 @@
 </template>
 
 <script setup>
+import '@baserow/modules/core/assets/scss/editor.scss'
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 import {

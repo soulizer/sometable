@@ -5,9 +5,28 @@ from drf_spectacular.utils import extend_schema_field
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
+from baserow.core.handler import CoreHandler
 from baserow.core.models import Workspace, WorkspaceUser
 
 User = get_user_model()
+
+
+class AdminWorkspaceMemberSerializer(ModelSerializer):
+    user_id = serializers.IntegerField(read_only=True)
+    email = serializers.CharField(source="user.email", read_only=True)
+    role_uid = serializers.SerializerMethodField()
+
+    class Meta:
+        model = WorkspaceUser
+        fields = ("id", "user_id", "email", "permissions", "role_uid", "created_on")
+
+    @extend_schema_field(OpenApiTypes.STR)
+    def get_role_uid(self, instance):
+        return CoreHandler().get_workspace_user_role_uid(instance)
+
+
+class AdminWorkspaceMemberUpdateSerializer(serializers.Serializer):
+    permissions = serializers.CharField(max_length=32)
 
 
 class WorkspaceAdminUsersSerializer(ModelSerializer):

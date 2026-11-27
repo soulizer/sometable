@@ -17,6 +17,7 @@
 </template>
 
 <script setup>
+import '@baserow/modules/core/assets/scss/grid.scss'
 import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import { useRoute } from 'vue-router'
 import { useAsyncData, useNuxtApp, useState } from '#app'

@@ -1,0 +1,4 @@
+// Public and editable form views. Kept separate from the grid entry so a form
+// link doesn't download the grid stylesheet.
+@import 'split-foundation';
+@import 'components/views/form';

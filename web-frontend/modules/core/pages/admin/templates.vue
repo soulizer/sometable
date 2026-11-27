@@ -3,6 +3,7 @@
 </template>
 
 <script setup>
+import '@baserow/modules/core/assets/scss/admin.scss'
 import { useHead } from '#imports'
 import { FF_USER_TEMPLATES } from '@baserow/modules/core/plugins/featureFlags'
 import TemplatesAdminTable from '@baserow/modules/core/components/admin/templates/TemplatesAdminTable'

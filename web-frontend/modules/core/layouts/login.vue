@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import '@baserow/modules/core/assets/scss/auth.scss'
 import { useHead } from '#imports'
 import Toasts from '@baserow/modules/core/components/toasts/Toasts'
 

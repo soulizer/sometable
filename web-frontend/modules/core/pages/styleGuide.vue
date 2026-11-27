@@ -2060,6 +2060,7 @@
 </template>
 
 <script>
+import '@baserow/modules/core/assets/scss/editor.scss'
 import { useHead } from '#app'
 import Toasts from '@baserow/modules/core/components/toasts/Toasts'
 import BaserowIcon from '@baserow/modules/core/static/img/logoOnly.svg?url'

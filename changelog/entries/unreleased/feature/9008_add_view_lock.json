@@ -1,0 +1,9 @@
+{
+    "type": "feature",
+    "message": "Views can be locked so only their owner or an instance staff member can change the configuration or rows.",
+    "issue_origin": "github",
+    "issue_number": 9008,
+    "domain": "database",
+    "bullet_points": [],
+    "created_at": "2026-11-27"
+}

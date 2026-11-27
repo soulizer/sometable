@@ -170,6 +170,8 @@
               srcset="
                 @baserow/modules/core/assets/images/empty_workspace_illustration@2x.png 2x
               "
+              loading="lazy"
+              alt=""
             />
             <h4>{{ $t('dashboard.emptyWorkspace') }}</h4>
             <p v-if="canCreateCreateApplication">

@@ -458,6 +458,7 @@ class ViewSerializer(serializers.ModelSerializer):
             "public_view_has_password",
             "show_logo",
             "allow_public_export",
+            "locked",
             "ownership_type",
             "owned_by_id",
         )
@@ -607,12 +608,14 @@ class UpdateViewSerializer(serializers.ModelSerializer):
             "filter_type",
             "filters_disabled",
             "public_view_password",
+            "locked",
             "ownership_type",
         )
         extra_kwargs = {
             "name": {"required": False},
             "filter_type": {"required": False},
             "filters_disabled": {"required": False},
+            "locked": {"required": False},
         }
 
 

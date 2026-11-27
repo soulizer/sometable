@@ -166,6 +166,16 @@
   font-weight: 500;
 }
 
+.workspace-search__result-description {
+  @extend %ellipsis;
+
+  font-size: 11px;
+  color: $palette-neutral-900;
+  line-height: 16px;
+  margin-top: 0;
+  font-weight: 400;
+}
+
 .workspace-search__loading-more {
   display: flex;
   flex-direction: column;

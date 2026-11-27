@@ -1,505 +1,931 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`User Admin Component Tests > A users attributes will be displayed 1`] = `
-"<div class="data-table">
-  <header class="data-table__header">
-    <div class="data-table__heading">
-      <h1 class="data-table__title">usersAdminTable.allUsers</h1>
-      <!--v-if-->
-    </div>
-    <div class="data-table__actions">
-      <form class="data-table__search">
-        <div class="form-input form-input--icon-left"><i class="form-input__icon form-input__icon-left iconoir-search"></i>
-          <div class="form-input__wrapper"><input class="form-input__input" type="text" min="false" max="false" step="false" placeholder="crudTableSearch.search" autocomplete="" value="">
-            <!--v-if-->
+"<div>
+  <div class="data-table">
+    <header class="data-table__header">
+      <div class="data-table__heading">
+        <h1 class="data-table__title">usersAdminTable.allUsers</h1>
+        <!--v-if-->
+      </div>
+      <div class="data-table__actions">
+        <form class="data-table__search">
+          <div class="form-input form-input--icon-left"><i class="form-input__icon form-input__icon-left iconoir-search"></i>
+            <div class="form-input__wrapper"><input class="form-input__input" type="text" min="false" max="false" step="false" placeholder="crudTableSearch.search" autocomplete="" value="">
+              <!--v-if-->
+              <!--v-if-->
+            </div>
             <!--v-if-->
           </div>
+        </form><button class="button button--large"><i class="button__icon iconoir-plus"></i><span class="button__label">usersAdminTable.createUser</span>
+          <!--v-if-->
+        </button>
+      </div>
+    </header>
+    <div class="data-table__filters"><label class="checkbox checkbox--small"><input id="checkboxv-0-0-0" class="checkbox__native" type="checkbox" aria-label="usersAdminTable.selectAllOnPage">
+        <div class="checkbox__button"><svg class="checkbox__tick" xmlns="http://www.w3.org/2000/svg" width="9" height="8" viewBox="0 0 9 8" fill="none" style="display: none;">
+            <g clip-path="url(#clipv-0-0-0)">
+              <path d="M1.5179 4.4821L3.18211 6.18211L7.42475 2.15368" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+            <defs>
+              <clipPath id="clipv-0-0-0">
+                <rect width="8" height="8" fill="white" transform="translate(0.5)"></rect>
+              </clipPath>
+            </defs>
+          </svg><svg class="checkbox__tick-indeterminate" xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" style="display: none;">
+            <path d="M1.5 4L6.5 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg></div><span class="checkbox__label"><span>usersAdminTable.selectAllOnPage</span></span>
+      </label>
+      <!--v-if-->
+      <div class="dropdown" tabindex="0" role="list"><a class="dropdown__selected"><span class="dropdown__selected-text">usersAdminTable.allStatuses</span><i class="dropdown__toggle-icon iconoir-nav-arrow-down"></i></a>
+        <div class="dropdown__items hidden">
+          <!--v-if-->
+          <ul class="select__items prevent-scroll" tabindex="-1">
+            <li class="select__item select__item--no-options visible active" role="listitem"><a class="select__item-link">
+                <div class="select__item-name">
+                  <!--v-if-->
+                  <!--v-if-->
+                  <!--v-if--><span class="select__item-name-text" title="usersAdminTable.allStatuses">usersAdminTable.allStatuses</span>
+                </div>
+                <!--v-if-->
+              </a><i class="select__item-active-icon iconoir-check"></i></li>
+            <li class="select__item select__item--no-options visible" role="listitem"><a class="select__item-link">
+                <div class="select__item-name">
+                  <!--v-if-->
+                  <!--v-if-->
+                  <!--v-if--><span class="select__item-name-text" title="usersAdminTable.onlyActive">usersAdminTable.onlyActive</span>
+                </div>
+                <!--v-if-->
+              </a><i class="select__item-active-icon iconoir-check"></i></li>
+            <li class="select__item select__item--no-options visible" role="listitem"><a class="select__item-link">
+                <div class="select__item-name">
+                  <!--v-if-->
+                  <!--v-if-->
+                  <!--v-if--><span class="select__item-name-text" title="usersAdminTable.onlyInactive">usersAdminTable.onlyInactive</span>
+                </div>
+                <!--v-if-->
+              </a><i class="select__item-active-icon iconoir-check"></i></li>
+          </ul>
+          <!--v-if-->
           <!--v-if-->
         </div>
-      </form>
-    </div>
-  </header>
-  <div class="data-table__body">
-    <table class="data-table__table" aria-busy="false">
-      <!--v-if-->
-      <thead>
-        <tr class="data-table__table-row">
-          <th style="" class="data-table__table-cell data-table__table-cell--header data-table__table-cell--sticky-left">
-            <div class="data-table__table-cell-head">
-              <div class="data-table__table-cell-head-title"><button type="button" class="data-table__table-cell-head-link">usersAdminTable.username</button>
-                <!--v-if-->
-              </div>
-              <div class="data-table__table-cell-head-sort-icon">
-                <!--v-if-->
-              </div>
-            </div>
-          </th>
-          <th style="" class="data-table__table-cell data-table__table-cell--header">
-            <div class="data-table__table-cell-head">
-              <div class="data-table__table-cell-head-title"><button type="button" class="data-table__table-cell-head-link">usersAdminTable.name</button>
-                <!--v-if-->
-              </div>
-              <div class="data-table__table-cell-head-sort-icon">
-                <!--v-if-->
-              </div>
-            </div>
-          </th>
-          <th style="" class="data-table__table-cell data-table__table-cell--header">
-            <div class="data-table__table-cell-head">
-              <div class="data-table__table-cell-head-title">usersAdminTable.workspaces
-                <!--v-if-->
-              </div>
-            </div>
-          </th>
-          <th style="" class="data-table__table-cell data-table__table-cell--header">
-            <div class="data-table__table-cell-head">
-              <div class="data-table__table-cell-head-title"><button type="button" class="data-table__table-cell-head-link">usersAdminTable.lastLogin</button>
-                <!--v-if-->
-              </div>
-              <div class="data-table__table-cell-head-sort-icon">
-                <!--v-if-->
-              </div>
-            </div>
-          </th>
-          <th style="" class="data-table__table-cell data-table__table-cell--header">
-            <div class="data-table__table-cell-head">
-              <div class="data-table__table-cell-head-title"><button type="button" class="data-table__table-cell-head-link">usersAdminTable.dateJoined</button>
-                <!--v-if-->
-              </div>
-              <div class="data-table__table-cell-head-sort-icon">
-                <!--v-if-->
-              </div>
-            </div>
-          </th>
-          <th style="" class="data-table__table-cell data-table__table-cell--header">
-            <div class="data-table__table-cell-head">
-              <div class="data-table__table-cell-head-title"><button type="button" class="data-table__table-cell-head-link">user.active</button>
-                <!--v-if-->
-              </div>
-              <div class="data-table__table-cell-head-sort-icon">
-                <!--v-if-->
-              </div>
-            </div>
-          </th>
-          <th style="" class="data-table__table-cell data-table__table-cell--header">
-            <div class="data-table__table-cell-head">
-              <div class="data-table__table-cell-head-title">usersAdminTable.twoFactorAuth
-                <!--v-if-->
-              </div>
-            </div>
-          </th>
-          <th style="" class="data-table__table-cell data-table__table-cell--header data-table__table-cell--sticky-right">
-            <div class="data-table__table-cell-head">
-              <div class="data-table__table-cell-head-title">
-                <!--v-if-->
-              </div>
-            </div>
-          </th>
-        </tr>
-      </thead>
-      <tbody class="data-table__row-group">
-        <tr class="data-table__table-row">
-          <td class="data-table__table-cell data-table__table-cell--sticky-left data-table__table-cell--username">
-            <div class="data-table__table-cell-content">
-              <div class="user-admin-username" column="[object Object]">
-                <div class="avatar avatar--rounded avatar--large avatar--blue user-admin-username__avatar">
+      </div>
+      <div class="dropdown" tabindex="0" role="list"><a class="dropdown__selected"><span class="dropdown__selected-text">usersAdminTable.allRoles</span><i class="dropdown__toggle-icon iconoir-nav-arrow-down"></i></a>
+        <div class="dropdown__items hidden">
+          <!--v-if-->
+          <ul class="select__items prevent-scroll" tabindex="-1">
+            <li class="select__item select__item--no-options visible active" role="listitem"><a class="select__item-link">
+                <div class="select__item-name">
                   <!--v-if-->
-                  <!--v-if--><span class="avatar__initials">UN</span>
+                  <!--v-if-->
+                  <!--v-if--><span class="select__item-name-text" title="usersAdminTable.allRoles">usersAdminTable.allRoles</span>
                 </div>
-                <div class="user-admin-username__name" title="user@baserow.io">user@baserow.io</div><i class="user-admin-username__icon iconoir-user-crown"></i>
-              </div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--name">
-            <div class="data-table__table-cell-content">
-              <div class="data-table__text-field" title="user name">user name</div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--workspaces">
-            <div class="data-table__table-cell-content">
-              <div class="expand-overflow-list">
-                <div class="expand-overflow-list__container">
-                  <!--v-if--><span class="expand-overflow-list__empty-item"></span><span class="expand-overflow-list__item" style="order: 0;">users's workspace<i class="user-admin-group__icon iconoir-user-crown"></i></span><span class="expand-overflow-list__item" style="order: 1;">other_workspace</span><a class="expand-overflow-list__expand" style="order: 1; display: none;">+0</a>
-                  <teleport-stub to="body">
-                    <div class="context visibility-hidden context--overflow-scroll">
-                      <!--v-if-->
-                    </div>
-                  </teleport-stub>
+                <!--v-if-->
+              </a><i class="select__item-active-icon iconoir-check"></i></li>
+            <li class="select__item select__item--no-options visible" role="listitem"><a class="select__item-link">
+                <div class="select__item-name">
+                  <!--v-if-->
+                  <!--v-if-->
+                  <!--v-if--><span class="select__item-name-text" title="usersAdminTable.onlyAdmins">usersAdminTable.onlyAdmins</span>
                 </div>
-              </div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--last_login">
-            <div class="data-table__table-cell-content">
-              <div>04/26/2021 7:50 AM</div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--date_joined">
-            <div class="data-table__table-cell-content">
-              <div>04/21/2021 12:04 PM</div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--is_active">
-            <div class="data-table__table-cell-content">
-              <div class="user-admin-active"><i class="iconoir-check user-admin-active__icon user-admin-active__icon--activated"></i></div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--two_factor_auth">
-            <div class="data-table__table-cell-content">
-              <div class="badge badge--neutral badge--regular badge--rounded">
-                <!--v-if--><span class="badge__label"><span>twoFactorAuthField.disabled</span></span>
-              </div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--sticky-right data-table__table-cell--more">
-            <div class="data-table__table-cell-content">
-              <div class="data-table__more-wrapper" column="[object Object]"><button type="button" class="data-table__more" aria-label="crudTable.rowActions" aria-haspopup="menu"><i class="data-table__more-icon baserow-icon-more-vertical" aria-hidden="true"></i></button></div>
-              <!--v-if-->
-            </div>
-          </td>
-        </tr>
-      </tbody>
-      <!--v-if-->
-    </table>
-  </div>
-  <div class="data-table__footer">
-    <div class="paginator"><a class="paginator__button paginator__button--disabled"><i class="iconoir-nav-arrow-left"></i></a>
-      <div class="paginator__content"><span>paginator.page</span><input type="text" class="paginator__content-input" required="" size="1" value="1"><span>paginator.of</span></div><a class="paginator__button paginator__button--disabled"><i class="iconoir-nav-arrow-right"></i></a>
+                <!--v-if-->
+              </a><i class="select__item-active-icon iconoir-check"></i></li>
+            <li class="select__item select__item--no-options visible" role="listitem"><a class="select__item-link">
+                <div class="select__item-name">
+                  <!--v-if-->
+                  <!--v-if-->
+                  <!--v-if--><span class="select__item-name-text" title="usersAdminTable.onlyRegular">usersAdminTable.onlyRegular</span>
+                </div>
+                <!--v-if-->
+              </a><i class="select__item-active-icon iconoir-check"></i></li>
+          </ul>
+          <!--v-if-->
+          <!--v-if-->
+        </div>
+      </div>
+      <div class="dropdown" tabindex="0" role="list"><a class="dropdown__selected"><span class="dropdown__selected-text">usersAdminTable.allEmails</span><i class="dropdown__toggle-icon iconoir-nav-arrow-down"></i></a>
+        <div class="dropdown__items hidden">
+          <!--v-if-->
+          <ul class="select__items prevent-scroll" tabindex="-1">
+            <li class="select__item select__item--no-options visible active" role="listitem"><a class="select__item-link">
+                <div class="select__item-name">
+                  <!--v-if-->
+                  <!--v-if-->
+                  <!--v-if--><span class="select__item-name-text" title="usersAdminTable.allEmails">usersAdminTable.allEmails</span>
+                </div>
+                <!--v-if-->
+              </a><i class="select__item-active-icon iconoir-check"></i></li>
+            <li class="select__item select__item--no-options visible" role="listitem"><a class="select__item-link">
+                <div class="select__item-name">
+                  <!--v-if-->
+                  <!--v-if-->
+                  <!--v-if--><span class="select__item-name-text" title="usersAdminTable.onlyVerified">usersAdminTable.onlyVerified</span>
+                </div>
+                <!--v-if-->
+              </a><i class="select__item-active-icon iconoir-check"></i></li>
+            <li class="select__item select__item--no-options visible" role="listitem"><a class="select__item-link">
+                <div class="select__item-name">
+                  <!--v-if-->
+                  <!--v-if-->
+                  <!--v-if--><span class="select__item-name-text" title="usersAdminTable.onlyUnverified">usersAdminTable.onlyUnverified</span>
+                </div>
+                <!--v-if-->
+              </a><i class="select__item-active-icon iconoir-check"></i></li>
+          </ul>
+          <!--v-if-->
+          <!--v-if-->
+        </div>
+      </div>
     </div>
+    <div class="data-table__body">
+      <table class="data-table__table" aria-busy="false">
+        <!--v-if-->
+        <thead>
+          <tr class="data-table__table-row">
+            <th style="" class="data-table__table-cell data-table__table-cell--header data-table__table-cell--sticky-left">
+              <div class="data-table__table-cell-head">
+                <div class="data-table__table-cell-head-title">
+                  <!--v-if-->
+                </div>
+              </div>
+            </th>
+            <th style="" class="data-table__table-cell data-table__table-cell--header data-table__table-cell--sticky-left">
+              <div class="data-table__table-cell-head">
+                <div class="data-table__table-cell-head-title"><button type="button" class="data-table__table-cell-head-link">usersAdminTable.username</button>
+                  <!--v-if-->
+                </div>
+                <div class="data-table__table-cell-head-sort-icon">
+                  <!--v-if-->
+                </div>
+              </div>
+            </th>
+            <th style="" class="data-table__table-cell data-table__table-cell--header">
+              <div class="data-table__table-cell-head">
+                <div class="data-table__table-cell-head-title"><button type="button" class="data-table__table-cell-head-link">usersAdminTable.name</button>
+                  <!--v-if-->
+                </div>
+                <div class="data-table__table-cell-head-sort-icon">
+                  <!--v-if-->
+                </div>
+              </div>
+            </th>
+            <th style="" class="data-table__table-cell data-table__table-cell--header">
+              <div class="data-table__table-cell-head">
+                <div class="data-table__table-cell-head-title">usersAdminTable.workspaces
+                  <!--v-if-->
+                </div>
+              </div>
+            </th>
+            <th style="" class="data-table__table-cell data-table__table-cell--header">
+              <div class="data-table__table-cell-head">
+                <div class="data-table__table-cell-head-title"><button type="button" class="data-table__table-cell-head-link">usersAdminTable.lastLogin</button>
+                  <!--v-if-->
+                </div>
+                <div class="data-table__table-cell-head-sort-icon">
+                  <!--v-if-->
+                </div>
+              </div>
+            </th>
+            <th style="" class="data-table__table-cell data-table__table-cell--header">
+              <div class="data-table__table-cell-head">
+                <div class="data-table__table-cell-head-title"><button type="button" class="data-table__table-cell-head-link">usersAdminTable.dateJoined</button>
+                  <!--v-if-->
+                </div>
+                <div class="data-table__table-cell-head-sort-icon">
+                  <!--v-if-->
+                </div>
+              </div>
+            </th>
+            <th style="" class="data-table__table-cell data-table__table-cell--header">
+              <div class="data-table__table-cell-head">
+                <div class="data-table__table-cell-head-title"><button type="button" class="data-table__table-cell-head-link">user.active</button>
+                  <!--v-if-->
+                </div>
+                <div class="data-table__table-cell-head-sort-icon">
+                  <!--v-if-->
+                </div>
+              </div>
+            </th>
+            <th style="" class="data-table__table-cell data-table__table-cell--header">
+              <div class="data-table__table-cell-head">
+                <div class="data-table__table-cell-head-title">usersAdminTable.twoFactorAuth
+                  <!--v-if-->
+                </div>
+              </div>
+            </th>
+            <th style="" class="data-table__table-cell data-table__table-cell--header">
+              <div class="data-table__table-cell-head">
+                <div class="data-table__table-cell-head-title">usersAdminTable.emailVerified
+                  <!--v-if-->
+                </div>
+              </div>
+            </th>
+            <th style="--width: 20%;" class="data-table__table-cell data-table__table-cell--header">
+              <div class="data-table__table-cell-head">
+                <div class="data-table__table-cell-head-title">membersSettings.membersTable.columns.highestRole <i class="help-icon iconoir-chat-bubble-question"></i></div>
+              </div>
+            </th>
+            <th style="" class="data-table__table-cell data-table__table-cell--header data-table__table-cell--sticky-right">
+              <div class="data-table__table-cell-head">
+                <div class="data-table__table-cell-head-title">
+                  <!--v-if-->
+                </div>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="data-table__row-group">
+          <tr class="data-table__table-row">
+            <td class="data-table__table-cell data-table__table-cell--sticky-left data-table__table-cell--select">
+              <div class="data-table__table-cell-content">
+                <div class="user-admin-select" column="[object Object]"><label class="checkbox checkbox--small"><input id="checkboxv-0-0-2" class="checkbox__native" type="checkbox" aria-label="usersAdminTable.selectUser">
+                    <div class="checkbox__button"><svg class="checkbox__tick" xmlns="http://www.w3.org/2000/svg" width="9" height="8" viewBox="0 0 9 8" fill="none" style="display: none;">
+                        <g clip-path="url(#clipv-0-0-2)">
+                          <path d="M1.5179 4.4821L3.18211 6.18211L7.42475 2.15368" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                        <defs>
+                          <clipPath id="clipv-0-0-2">
+                            <rect width="8" height="8" fill="white" transform="translate(0.5)"></rect>
+                          </clipPath>
+                        </defs>
+                      </svg><svg class="checkbox__tick-indeterminate" xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" style="display: none;">
+                        <path d="M1.5 4L6.5 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg></div>
+                    <!--v-if-->
+                  </label></div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--sticky-left data-table__table-cell--username">
+              <div class="data-table__table-cell-content">
+                <div class="user-admin-username" column="[object Object]" selected-user-ids="">
+                  <div class="avatar avatar--rounded avatar--large avatar--blue user-admin-username__avatar">
+                    <!--v-if-->
+                    <!--v-if--><span class="avatar__initials">UN</span>
+                  </div>
+                  <div class="user-admin-username__name" title="user@baserow.io">user@baserow.io</div><i class="user-admin-username__icon iconoir-user-crown"></i>
+                </div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--name">
+              <div class="data-table__table-cell-content">
+                <div class="data-table__text-field" title="user name" selected-user-ids="">user name</div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--workspaces">
+              <div class="data-table__table-cell-content">
+                <div class="expand-overflow-list" selected-user-ids="">
+                  <div class="expand-overflow-list__container">
+                    <!--v-if--><span class="expand-overflow-list__empty-item"></span><span class="expand-overflow-list__item" style="order: 0;">users's workspace<i class="user-admin-group__icon iconoir-user-crown"></i></span><span class="expand-overflow-list__item" style="order: 1;">other_workspace</span><a class="expand-overflow-list__expand" style="order: 1; display: none;">+0</a>
+                    <teleport-stub to="body">
+                      <div class="context visibility-hidden context--overflow-scroll">
+                        <!--v-if-->
+                      </div>
+                    </teleport-stub>
+                  </div>
+                </div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--last_login">
+              <div class="data-table__table-cell-content">
+                <div selected-user-ids="">04/26/2021 7:50 AM</div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--date_joined">
+              <div class="data-table__table-cell-content">
+                <div selected-user-ids="">04/21/2021 12:04 PM</div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--is_active">
+              <div class="data-table__table-cell-content">
+                <div class="user-admin-active" selected-user-ids=""><i class="iconoir-check user-admin-active__icon user-admin-active__icon--activated"></i></div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--two_factor_auth">
+              <div class="data-table__table-cell-content">
+                <div class="badge badge--neutral badge--regular badge--rounded" selected-user-ids="">
+                  <!--v-if--><span class="badge__label"><span>twoFactorAuthField.disabled</span></span>
+                </div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--email_verified">
+              <div class="data-table__table-cell-content">
+                <div selected-user-ids=""><i class="iconoir-check" title="usersAdminTable.emailVerified"></i></div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--highest_role_uid">
+              <div class="data-table__table-cell-content">
+                <!--v-if-->
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--sticky-right data-table__table-cell--more">
+              <div class="data-table__table-cell-content">
+                <div class="data-table__more-wrapper" column="[object Object]" selected-user-ids=""><button type="button" class="data-table__more" aria-label="crudTable.rowActions" aria-haspopup="menu"><i class="data-table__more-icon baserow-icon-more-vertical" aria-hidden="true"></i></button></div>
+                <!--v-if-->
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <!--v-if-->
+      </table>
+    </div>
+    <div class="data-table__footer">
+      <div class="paginator"><a class="paginator__button paginator__button--disabled"><i class="iconoir-nav-arrow-left"></i></a>
+        <div class="paginator__content"><span>paginator.page</span><input type="text" class="paginator__content-input" required="" size="1" value="1"><span>paginator.of</span></div><a class="paginator__button paginator__button--disabled"><i class="iconoir-nav-arrow-right"></i></a>
+      </div>
+    </div>
+    <teleport-stub to="body">
+      <div class="context visibility-hidden context--overflow-scroll">
+        <!--v-if-->
+      </div>
+    </teleport-stub>
+    <teleport-stub to="body">
+      <div class="context visibility-hidden context--overflow-scroll">
+        <!--v-if-->
+      </div>
+    </teleport-stub>
   </div>
   <teleport-stub to="body">
-    <div class="context visibility-hidden context--overflow-scroll">
-      <!--v-if-->
-    </div>
+    <!--v-if-->
+  </teleport-stub>
+  <teleport-stub to="body">
+    <!--v-if-->
   </teleport-stub>
 </div>"
 `;
 
 exports[`User Admin Component Tests > you can sort by multiple columns which will pass the sorts to the server 1`] = `
-"<div class="data-table">
-  <header class="data-table__header">
-    <div class="data-table__heading">
-      <h1 class="data-table__title">usersAdminTable.allUsers</h1>
-      <!--v-if-->
-    </div>
-    <div class="data-table__actions">
-      <form class="data-table__search">
-        <div class="form-input form-input--icon-left"><i class="form-input__icon form-input__icon-left iconoir-search"></i>
-          <div class="form-input__wrapper"><input class="form-input__input" type="text" min="false" max="false" step="false" placeholder="crudTableSearch.search" autocomplete="" value="">
-            <!--v-if-->
+"<div>
+  <div class="data-table">
+    <header class="data-table__header">
+      <div class="data-table__heading">
+        <h1 class="data-table__title">usersAdminTable.allUsers</h1>
+        <!--v-if-->
+      </div>
+      <div class="data-table__actions">
+        <form class="data-table__search">
+          <div class="form-input form-input--icon-left"><i class="form-input__icon form-input__icon-left iconoir-search"></i>
+            <div class="form-input__wrapper"><input class="form-input__input" type="text" min="false" max="false" step="false" placeholder="crudTableSearch.search" autocomplete="" value="">
+              <!--v-if-->
+              <!--v-if-->
+            </div>
             <!--v-if-->
           </div>
+        </form><button class="button button--large"><i class="button__icon iconoir-plus"></i><span class="button__label">usersAdminTable.createUser</span>
+          <!--v-if-->
+        </button>
+      </div>
+    </header>
+    <div class="data-table__filters"><label class="checkbox checkbox--small"><input id="checkboxv-0-0-0" class="checkbox__native" type="checkbox" aria-label="usersAdminTable.selectAllOnPage">
+        <div class="checkbox__button"><svg class="checkbox__tick" xmlns="http://www.w3.org/2000/svg" width="9" height="8" viewBox="0 0 9 8" fill="none" style="display: none;">
+            <g clip-path="url(#clipv-0-0-0)">
+              <path d="M1.5179 4.4821L3.18211 6.18211L7.42475 2.15368" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+            <defs>
+              <clipPath id="clipv-0-0-0">
+                <rect width="8" height="8" fill="white" transform="translate(0.5)"></rect>
+              </clipPath>
+            </defs>
+          </svg><svg class="checkbox__tick-indeterminate" xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" style="display: none;">
+            <path d="M1.5 4L6.5 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg></div><span class="checkbox__label"><span>usersAdminTable.selectAllOnPage</span></span>
+      </label>
+      <!--v-if-->
+      <div class="dropdown" tabindex="0" role="list"><a class="dropdown__selected"><span class="dropdown__selected-text">usersAdminTable.allStatuses</span><i class="dropdown__toggle-icon iconoir-nav-arrow-down"></i></a>
+        <div class="dropdown__items hidden">
+          <!--v-if-->
+          <ul class="select__items prevent-scroll" tabindex="-1">
+            <li class="select__item select__item--no-options visible active" role="listitem"><a class="select__item-link">
+                <div class="select__item-name">
+                  <!--v-if-->
+                  <!--v-if-->
+                  <!--v-if--><span class="select__item-name-text" title="usersAdminTable.allStatuses">usersAdminTable.allStatuses</span>
+                </div>
+                <!--v-if-->
+              </a><i class="select__item-active-icon iconoir-check"></i></li>
+            <li class="select__item select__item--no-options visible" role="listitem"><a class="select__item-link">
+                <div class="select__item-name">
+                  <!--v-if-->
+                  <!--v-if-->
+                  <!--v-if--><span class="select__item-name-text" title="usersAdminTable.onlyActive">usersAdminTable.onlyActive</span>
+                </div>
+                <!--v-if-->
+              </a><i class="select__item-active-icon iconoir-check"></i></li>
+            <li class="select__item select__item--no-options visible" role="listitem"><a class="select__item-link">
+                <div class="select__item-name">
+                  <!--v-if-->
+                  <!--v-if-->
+                  <!--v-if--><span class="select__item-name-text" title="usersAdminTable.onlyInactive">usersAdminTable.onlyInactive</span>
+                </div>
+                <!--v-if-->
+              </a><i class="select__item-active-icon iconoir-check"></i></li>
+          </ul>
+          <!--v-if-->
           <!--v-if-->
         </div>
-      </form>
+      </div>
+      <div class="dropdown" tabindex="0" role="list"><a class="dropdown__selected"><span class="dropdown__selected-text">usersAdminTable.allRoles</span><i class="dropdown__toggle-icon iconoir-nav-arrow-down"></i></a>
+        <div class="dropdown__items hidden">
+          <!--v-if-->
+          <ul class="select__items prevent-scroll" tabindex="-1">
+            <li class="select__item select__item--no-options visible active" role="listitem"><a class="select__item-link">
+                <div class="select__item-name">
+                  <!--v-if-->
+                  <!--v-if-->
+                  <!--v-if--><span class="select__item-name-text" title="usersAdminTable.allRoles">usersAdminTable.allRoles</span>
+                </div>
+                <!--v-if-->
+              </a><i class="select__item-active-icon iconoir-check"></i></li>
+            <li class="select__item select__item--no-options visible" role="listitem"><a class="select__item-link">
+                <div class="select__item-name">
+                  <!--v-if-->
+                  <!--v-if-->
+                  <!--v-if--><span class="select__item-name-text" title="usersAdminTable.onlyAdmins">usersAdminTable.onlyAdmins</span>
+                </div>
+                <!--v-if-->
+              </a><i class="select__item-active-icon iconoir-check"></i></li>
+            <li class="select__item select__item--no-options visible" role="listitem"><a class="select__item-link">
+                <div class="select__item-name">
+                  <!--v-if-->
+                  <!--v-if-->
+                  <!--v-if--><span class="select__item-name-text" title="usersAdminTable.onlyRegular">usersAdminTable.onlyRegular</span>
+                </div>
+                <!--v-if-->
+              </a><i class="select__item-active-icon iconoir-check"></i></li>
+          </ul>
+          <!--v-if-->
+          <!--v-if-->
+        </div>
+      </div>
+      <div class="dropdown" tabindex="0" role="list"><a class="dropdown__selected"><span class="dropdown__selected-text">usersAdminTable.allEmails</span><i class="dropdown__toggle-icon iconoir-nav-arrow-down"></i></a>
+        <div class="dropdown__items hidden">
+          <!--v-if-->
+          <ul class="select__items prevent-scroll" tabindex="-1">
+            <li class="select__item select__item--no-options visible active" role="listitem"><a class="select__item-link">
+                <div class="select__item-name">
+                  <!--v-if-->
+                  <!--v-if-->
+                  <!--v-if--><span class="select__item-name-text" title="usersAdminTable.allEmails">usersAdminTable.allEmails</span>
+                </div>
+                <!--v-if-->
+              </a><i class="select__item-active-icon iconoir-check"></i></li>
+            <li class="select__item select__item--no-options visible" role="listitem"><a class="select__item-link">
+                <div class="select__item-name">
+                  <!--v-if-->
+                  <!--v-if-->
+                  <!--v-if--><span class="select__item-name-text" title="usersAdminTable.onlyVerified">usersAdminTable.onlyVerified</span>
+                </div>
+                <!--v-if-->
+              </a><i class="select__item-active-icon iconoir-check"></i></li>
+            <li class="select__item select__item--no-options visible" role="listitem"><a class="select__item-link">
+                <div class="select__item-name">
+                  <!--v-if-->
+                  <!--v-if-->
+                  <!--v-if--><span class="select__item-name-text" title="usersAdminTable.onlyUnverified">usersAdminTable.onlyUnverified</span>
+                </div>
+                <!--v-if-->
+              </a><i class="select__item-active-icon iconoir-check"></i></li>
+          </ul>
+          <!--v-if-->
+          <!--v-if-->
+        </div>
+      </div>
     </div>
-  </header>
-  <div class="data-table__body">
-    <table class="data-table__table" aria-busy="false">
-      <!--v-if-->
-      <thead>
-        <tr class="data-table__table-row">
-          <th style="" class="data-table__table-cell data-table__table-cell--header data-table__table-cell--sticky-left">
-            <div class="data-table__table-cell-head">
-              <div class="data-table__table-cell-head-title"><button type="button" class="data-table__table-cell-head-link">usersAdminTable.username</button>
-                <!--v-if-->
-              </div>
-              <div class="data-table__table-cell-head-sort-icon">
-                <!--v-if-->
-              </div>
-            </div>
-          </th>
-          <th style="" class="data-table__table-cell data-table__table-cell--header">
-            <div class="data-table__table-cell-head">
-              <div class="data-table__table-cell-head-title"><button type="button" class="data-table__table-cell-head-link">usersAdminTable.name</button>
-                <!--v-if-->
-              </div>
-              <div class="data-table__table-cell-head-sort-icon">
-                <!--v-if-->
-              </div>
-            </div>
-          </th>
-          <th style="" class="data-table__table-cell data-table__table-cell--header">
-            <div class="data-table__table-cell-head">
-              <div class="data-table__table-cell-head-title">usersAdminTable.workspaces
-                <!--v-if-->
-              </div>
-            </div>
-          </th>
-          <th style="" class="data-table__table-cell data-table__table-cell--header">
-            <div class="data-table__table-cell-head">
-              <div class="data-table__table-cell-head-title"><button type="button" class="data-table__table-cell-head-link">usersAdminTable.lastLogin</button>
-                <!--v-if-->
-              </div>
-              <div class="data-table__table-cell-head-sort-icon">
-                <!--v-if-->
-              </div>
-            </div>
-          </th>
-          <th style="" class="data-table__table-cell data-table__table-cell--header">
-            <div class="data-table__table-cell-head">
-              <div class="data-table__table-cell-head-title"><button type="button" class="data-table__table-cell-head-link">usersAdminTable.dateJoined</button>
-                <!--v-if-->
-              </div>
-              <div class="data-table__table-cell-head-sort-icon">
-                <!--v-if-->
-              </div>
-            </div>
-          </th>
-          <th style="" class="data-table__table-cell data-table__table-cell--header">
-            <div class="data-table__table-cell-head">
-              <div class="data-table__table-cell-head-title"><button type="button" class="data-table__table-cell-head-link">user.active</button>
-                <!--v-if-->
-              </div>
-              <div class="data-table__table-cell-head-sort-icon">
-                <!--v-if-->
-              </div>
-            </div>
-          </th>
-          <th style="" class="data-table__table-cell data-table__table-cell--header">
-            <div class="data-table__table-cell-head">
-              <div class="data-table__table-cell-head-title">usersAdminTable.twoFactorAuth
-                <!--v-if-->
-              </div>
-            </div>
-          </th>
-          <th style="" class="data-table__table-cell data-table__table-cell--header data-table__table-cell--sticky-right">
-            <div class="data-table__table-cell-head">
-              <div class="data-table__table-cell-head-title">
-                <!--v-if-->
-              </div>
-            </div>
-          </th>
-        </tr>
-      </thead>
-      <tbody class="data-table__row-group">
-        <tr class="data-table__table-row">
-          <td class="data-table__table-cell data-table__table-cell--sticky-left data-table__table-cell--username">
-            <div class="data-table__table-cell-content">
-              <div class="user-admin-username" column="[object Object]">
-                <div class="avatar avatar--rounded avatar--large avatar--blue user-admin-username__avatar">
+    <div class="data-table__body">
+      <table class="data-table__table" aria-busy="false">
+        <!--v-if-->
+        <thead>
+          <tr class="data-table__table-row">
+            <th style="" class="data-table__table-cell data-table__table-cell--header data-table__table-cell--sticky-left">
+              <div class="data-table__table-cell-head">
+                <div class="data-table__table-cell-head-title">
                   <!--v-if-->
-                  <!--v-if--><span class="avatar__initials">U</span>
-                </div>
-                <div class="user-admin-username__name" title="firstUser@example.com">firstUser@example.com</div><i class="user-admin-username__icon iconoir-user-crown"></i>
-              </div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--name">
-            <div class="data-table__table-cell-content">
-              <div class="data-table__text-field" title="user_name">user_name</div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--workspaces">
-            <div class="data-table__table-cell-content">
-              <div class="expand-overflow-list">
-                <div class="expand-overflow-list__container">
-                  <!--v-if--><span class="expand-overflow-list__empty-item"></span><span class="expand-overflow-list__item" style="order: 0;">some_workspace<i class="user-admin-group__icon iconoir-user-crown"></i></span><a class="expand-overflow-list__expand" style="order: 0; display: none;">+0</a>
-                  <teleport-stub to="body">
-                    <div class="context visibility-hidden context--overflow-scroll">
-                      <!--v-if-->
-                    </div>
-                  </teleport-stub>
                 </div>
               </div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--last_login">
-            <div class="data-table__table-cell-content">
-              <div>26-04-2021 07:50</div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--date_joined">
-            <div class="data-table__table-cell-content">
-              <div>21-04-2021 12:04</div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--is_active">
-            <div class="data-table__table-cell-content">
-              <div class="user-admin-active"><i class="iconoir-check user-admin-active__icon user-admin-active__icon--activated"></i></div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--two_factor_auth">
-            <div class="data-table__table-cell-content">
-              <div class="badge badge--neutral badge--regular badge--rounded">
-                <!--v-if--><span class="badge__label"><span>twoFactorAuthField.disabled</span></span>
-              </div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--sticky-right data-table__table-cell--more">
-            <div class="data-table__table-cell-content">
-              <div class="data-table__more-wrapper" column="[object Object]"><button type="button" class="data-table__more" aria-label="crudTable.rowActions" aria-haspopup="menu"><i class="data-table__more-icon baserow-icon-more-vertical" aria-hidden="true"></i></button></div>
-              <!--v-if-->
-            </div>
-          </td>
-        </tr>
-      </tbody>
-      <!--v-if-->
-      <tbody class="data-table__row-group">
-        <tr class="data-table__table-row">
-          <td class="data-table__table-cell data-table__table-cell--sticky-left data-table__table-cell--username">
-            <div class="data-table__table-cell-content">
-              <div class="user-admin-username" column="[object Object]">
-                <div class="avatar avatar--rounded avatar--large avatar--blue user-admin-username__avatar">
+            </th>
+            <th style="" class="data-table__table-cell data-table__table-cell--header data-table__table-cell--sticky-left">
+              <div class="data-table__table-cell-head">
+                <div class="data-table__table-cell-head-title"><button type="button" class="data-table__table-cell-head-link">usersAdminTable.username</button>
                   <!--v-if-->
-                  <!--v-if--><span class="avatar__initials">U</span>
                 </div>
-                <div class="user-admin-username__name" title="secondUser@example.com">secondUser@example.com</div><i class="user-admin-username__icon iconoir-user-crown"></i>
-              </div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--name">
-            <div class="data-table__table-cell-content">
-              <div class="data-table__text-field" title="user_name">user_name</div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--workspaces">
-            <div class="data-table__table-cell-content">
-              <div class="expand-overflow-list">
-                <div class="expand-overflow-list__container">
-                  <!--v-if--><span class="expand-overflow-list__empty-item"></span><span class="expand-overflow-list__item" style="order: 0;">some_workspace<i class="user-admin-group__icon iconoir-user-crown"></i></span><a class="expand-overflow-list__expand" style="order: 0; display: none;">+0</a>
-                  <teleport-stub to="body">
-                    <div class="context visibility-hidden context--overflow-scroll">
-                      <!--v-if-->
-                    </div>
-                  </teleport-stub>
-                </div>
-              </div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--last_login">
-            <div class="data-table__table-cell-content">
-              <div>26-04-2021 07:50</div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--date_joined">
-            <div class="data-table__table-cell-content">
-              <div>21-04-2021 12:04</div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--is_active">
-            <div class="data-table__table-cell-content">
-              <div class="user-admin-active"><i class="iconoir-check user-admin-active__icon user-admin-active__icon--activated"></i></div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--two_factor_auth">
-            <div class="data-table__table-cell-content">
-              <div class="badge badge--neutral badge--regular badge--rounded">
-                <!--v-if--><span class="badge__label"><span>twoFactorAuthField.disabled</span></span>
-              </div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--sticky-right data-table__table-cell--more">
-            <div class="data-table__table-cell-content">
-              <div class="data-table__more-wrapper" column="[object Object]"><button type="button" class="data-table__more" aria-label="crudTable.rowActions" aria-haspopup="menu"><i class="data-table__more-icon baserow-icon-more-vertical" aria-hidden="true"></i></button></div>
-              <!--v-if-->
-            </div>
-          </td>
-        </tr>
-      </tbody>
-      <!--v-if-->
-      <tbody class="data-table__row-group">
-        <tr class="data-table__table-row">
-          <td class="data-table__table-cell data-table__table-cell--sticky-left data-table__table-cell--username">
-            <div class="data-table__table-cell-content">
-              <div class="user-admin-username" column="[object Object]">
-                <div class="avatar avatar--rounded avatar--large avatar--blue user-admin-username__avatar">
+                <div class="data-table__table-cell-head-sort-icon">
                   <!--v-if-->
-                  <!--v-if--><span class="avatar__initials">U</span>
-                </div>
-                <div class="user-admin-username__name" title="thirdUser@example.com">thirdUser@example.com</div><i class="user-admin-username__icon iconoir-user-crown"></i>
-              </div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--name">
-            <div class="data-table__table-cell-content">
-              <div class="data-table__text-field" title="user_name">user_name</div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--workspaces">
-            <div class="data-table__table-cell-content">
-              <div class="expand-overflow-list">
-                <div class="expand-overflow-list__container">
-                  <!--v-if--><span class="expand-overflow-list__empty-item"></span><span class="expand-overflow-list__item" style="order: 0;">some_workspace<i class="user-admin-group__icon iconoir-user-crown"></i></span><a class="expand-overflow-list__expand" style="order: 0; display: none;">+0</a>
-                  <teleport-stub to="body">
-                    <div class="context visibility-hidden context--overflow-scroll">
-                      <!--v-if-->
-                    </div>
-                  </teleport-stub>
                 </div>
               </div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--last_login">
-            <div class="data-table__table-cell-content">
-              <div>26-04-2021 07:50</div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--date_joined">
-            <div class="data-table__table-cell-content">
-              <div>21-04-2021 12:04</div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--is_active">
-            <div class="data-table__table-cell-content">
-              <div class="user-admin-active"><i class="iconoir-check user-admin-active__icon user-admin-active__icon--activated"></i></div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--two_factor_auth">
-            <div class="data-table__table-cell-content">
-              <div class="badge badge--neutral badge--regular badge--rounded">
-                <!--v-if--><span class="badge__label"><span>twoFactorAuthField.disabled</span></span>
+            </th>
+            <th style="" class="data-table__table-cell data-table__table-cell--header">
+              <div class="data-table__table-cell-head">
+                <div class="data-table__table-cell-head-title"><button type="button" class="data-table__table-cell-head-link">usersAdminTable.name</button>
+                  <!--v-if-->
+                </div>
+                <div class="data-table__table-cell-head-sort-icon">
+                  <!--v-if-->
+                </div>
               </div>
-              <!--v-if-->
-            </div>
-          </td>
-          <td class="data-table__table-cell data-table__table-cell--sticky-right data-table__table-cell--more">
-            <div class="data-table__table-cell-content">
-              <div class="data-table__more-wrapper" column="[object Object]"><button type="button" class="data-table__more" aria-label="crudTable.rowActions" aria-haspopup="menu"><i class="data-table__more-icon baserow-icon-more-vertical" aria-hidden="true"></i></button></div>
-              <!--v-if-->
-            </div>
-          </td>
-        </tr>
-      </tbody>
-      <!--v-if-->
-    </table>
-  </div>
-  <div class="data-table__footer">
-    <div class="paginator"><a class="paginator__button paginator__button--disabled"><i class="iconoir-nav-arrow-left"></i></a>
-      <div class="paginator__content"><span>paginator.page</span><input type="text" class="paginator__content-input" required="" size="1" value="1"><span>paginator.of</span></div><a class="paginator__button paginator__button--disabled"><i class="iconoir-nav-arrow-right"></i></a>
+            </th>
+            <th style="" class="data-table__table-cell data-table__table-cell--header">
+              <div class="data-table__table-cell-head">
+                <div class="data-table__table-cell-head-title">usersAdminTable.workspaces
+                  <!--v-if-->
+                </div>
+              </div>
+            </th>
+            <th style="" class="data-table__table-cell data-table__table-cell--header">
+              <div class="data-table__table-cell-head">
+                <div class="data-table__table-cell-head-title"><button type="button" class="data-table__table-cell-head-link">usersAdminTable.lastLogin</button>
+                  <!--v-if-->
+                </div>
+                <div class="data-table__table-cell-head-sort-icon">
+                  <!--v-if-->
+                </div>
+              </div>
+            </th>
+            <th style="" class="data-table__table-cell data-table__table-cell--header">
+              <div class="data-table__table-cell-head">
+                <div class="data-table__table-cell-head-title"><button type="button" class="data-table__table-cell-head-link">usersAdminTable.dateJoined</button>
+                  <!--v-if-->
+                </div>
+                <div class="data-table__table-cell-head-sort-icon">
+                  <!--v-if-->
+                </div>
+              </div>
+            </th>
+            <th style="" class="data-table__table-cell data-table__table-cell--header">
+              <div class="data-table__table-cell-head">
+                <div class="data-table__table-cell-head-title"><button type="button" class="data-table__table-cell-head-link">user.active</button>
+                  <!--v-if-->
+                </div>
+                <div class="data-table__table-cell-head-sort-icon">
+                  <!--v-if-->
+                </div>
+              </div>
+            </th>
+            <th style="" class="data-table__table-cell data-table__table-cell--header">
+              <div class="data-table__table-cell-head">
+                <div class="data-table__table-cell-head-title">usersAdminTable.twoFactorAuth
+                  <!--v-if-->
+                </div>
+              </div>
+            </th>
+            <th style="" class="data-table__table-cell data-table__table-cell--header">
+              <div class="data-table__table-cell-head">
+                <div class="data-table__table-cell-head-title">usersAdminTable.emailVerified
+                  <!--v-if-->
+                </div>
+              </div>
+            </th>
+            <th style="--width: 20%;" class="data-table__table-cell data-table__table-cell--header">
+              <div class="data-table__table-cell-head">
+                <div class="data-table__table-cell-head-title">membersSettings.membersTable.columns.highestRole <i class="help-icon iconoir-chat-bubble-question"></i></div>
+              </div>
+            </th>
+            <th style="" class="data-table__table-cell data-table__table-cell--header data-table__table-cell--sticky-right">
+              <div class="data-table__table-cell-head">
+                <div class="data-table__table-cell-head-title">
+                  <!--v-if-->
+                </div>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="data-table__row-group">
+          <tr class="data-table__table-row">
+            <td class="data-table__table-cell data-table__table-cell--sticky-left data-table__table-cell--select">
+              <div class="data-table__table-cell-content">
+                <div class="user-admin-select" column="[object Object]"><label class="checkbox checkbox--small"><input id="checkboxv-0-0-2" class="checkbox__native" type="checkbox" aria-label="usersAdminTable.selectUser">
+                    <div class="checkbox__button"><svg class="checkbox__tick" xmlns="http://www.w3.org/2000/svg" width="9" height="8" viewBox="0 0 9 8" fill="none" style="display: none;">
+                        <g clip-path="url(#clipv-0-0-2)">
+                          <path d="M1.5179 4.4821L3.18211 6.18211L7.42475 2.15368" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                        <defs>
+                          <clipPath id="clipv-0-0-2">
+                            <rect width="8" height="8" fill="white" transform="translate(0.5)"></rect>
+                          </clipPath>
+                        </defs>
+                      </svg><svg class="checkbox__tick-indeterminate" xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" style="display: none;">
+                        <path d="M1.5 4L6.5 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg></div>
+                    <!--v-if-->
+                  </label></div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--sticky-left data-table__table-cell--username">
+              <div class="data-table__table-cell-content">
+                <div class="user-admin-username" column="[object Object]" selected-user-ids="">
+                  <div class="avatar avatar--rounded avatar--large avatar--blue user-admin-username__avatar">
+                    <!--v-if-->
+                    <!--v-if--><span class="avatar__initials">U</span>
+                  </div>
+                  <div class="user-admin-username__name" title="firstUser@example.com">firstUser@example.com</div><i class="user-admin-username__icon iconoir-user-crown"></i>
+                </div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--name">
+              <div class="data-table__table-cell-content">
+                <div class="data-table__text-field" title="user_name" selected-user-ids="">user_name</div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--workspaces">
+              <div class="data-table__table-cell-content">
+                <div class="expand-overflow-list" selected-user-ids="">
+                  <div class="expand-overflow-list__container">
+                    <!--v-if--><span class="expand-overflow-list__empty-item"></span><span class="expand-overflow-list__item" style="order: 0;">some_workspace<i class="user-admin-group__icon iconoir-user-crown"></i></span><a class="expand-overflow-list__expand" style="order: 0; display: none;">+0</a>
+                    <teleport-stub to="body">
+                      <div class="context visibility-hidden context--overflow-scroll">
+                        <!--v-if-->
+                      </div>
+                    </teleport-stub>
+                  </div>
+                </div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--last_login">
+              <div class="data-table__table-cell-content">
+                <div selected-user-ids="">26-04-2021 07:50</div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--date_joined">
+              <div class="data-table__table-cell-content">
+                <div selected-user-ids="">21-04-2021 12:04</div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--is_active">
+              <div class="data-table__table-cell-content">
+                <div class="user-admin-active" selected-user-ids=""><i class="iconoir-check user-admin-active__icon user-admin-active__icon--activated"></i></div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--two_factor_auth">
+              <div class="data-table__table-cell-content">
+                <div class="badge badge--neutral badge--regular badge--rounded" selected-user-ids="">
+                  <!--v-if--><span class="badge__label"><span>twoFactorAuthField.disabled</span></span>
+                </div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--email_verified">
+              <div class="data-table__table-cell-content">
+                <div selected-user-ids=""><i class="iconoir-check" title="usersAdminTable.emailVerified"></i></div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--highest_role_uid">
+              <div class="data-table__table-cell-content">
+                <!--v-if-->
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--sticky-right data-table__table-cell--more">
+              <div class="data-table__table-cell-content">
+                <div class="data-table__more-wrapper" column="[object Object]" selected-user-ids=""><button type="button" class="data-table__more" aria-label="crudTable.rowActions" aria-haspopup="menu"><i class="data-table__more-icon baserow-icon-more-vertical" aria-hidden="true"></i></button></div>
+                <!--v-if-->
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <!--v-if-->
+        <tbody class="data-table__row-group">
+          <tr class="data-table__table-row">
+            <td class="data-table__table-cell data-table__table-cell--sticky-left data-table__table-cell--select">
+              <div class="data-table__table-cell-content">
+                <div class="user-admin-select" column="[object Object]"><label class="checkbox checkbox--small"><input id="checkboxv-0-0-4" class="checkbox__native" type="checkbox" aria-label="usersAdminTable.selectUser">
+                    <div class="checkbox__button"><svg class="checkbox__tick" xmlns="http://www.w3.org/2000/svg" width="9" height="8" viewBox="0 0 9 8" fill="none" style="display: none;">
+                        <g clip-path="url(#clipv-0-0-4)">
+                          <path d="M1.5179 4.4821L3.18211 6.18211L7.42475 2.15368" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                        <defs>
+                          <clipPath id="clipv-0-0-4">
+                            <rect width="8" height="8" fill="white" transform="translate(0.5)"></rect>
+                          </clipPath>
+                        </defs>
+                      </svg><svg class="checkbox__tick-indeterminate" xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" style="display: none;">
+                        <path d="M1.5 4L6.5 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg></div>
+                    <!--v-if-->
+                  </label></div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--sticky-left data-table__table-cell--username">
+              <div class="data-table__table-cell-content">
+                <div class="user-admin-username" column="[object Object]" selected-user-ids="">
+                  <div class="avatar avatar--rounded avatar--large avatar--blue user-admin-username__avatar">
+                    <!--v-if-->
+                    <!--v-if--><span class="avatar__initials">U</span>
+                  </div>
+                  <div class="user-admin-username__name" title="secondUser@example.com">secondUser@example.com</div><i class="user-admin-username__icon iconoir-user-crown"></i>
+                </div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--name">
+              <div class="data-table__table-cell-content">
+                <div class="data-table__text-field" title="user_name" selected-user-ids="">user_name</div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--workspaces">
+              <div class="data-table__table-cell-content">
+                <div class="expand-overflow-list" selected-user-ids="">
+                  <div class="expand-overflow-list__container">
+                    <!--v-if--><span class="expand-overflow-list__empty-item"></span><span class="expand-overflow-list__item" style="order: 0;">some_workspace<i class="user-admin-group__icon iconoir-user-crown"></i></span><a class="expand-overflow-list__expand" style="order: 0; display: none;">+0</a>
+                    <teleport-stub to="body">
+                      <div class="context visibility-hidden context--overflow-scroll">
+                        <!--v-if-->
+                      </div>
+                    </teleport-stub>
+                  </div>
+                </div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--last_login">
+              <div class="data-table__table-cell-content">
+                <div selected-user-ids="">26-04-2021 07:50</div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--date_joined">
+              <div class="data-table__table-cell-content">
+                <div selected-user-ids="">21-04-2021 12:04</div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--is_active">
+              <div class="data-table__table-cell-content">
+                <div class="user-admin-active" selected-user-ids=""><i class="iconoir-check user-admin-active__icon user-admin-active__icon--activated"></i></div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--two_factor_auth">
+              <div class="data-table__table-cell-content">
+                <div class="badge badge--neutral badge--regular badge--rounded" selected-user-ids="">
+                  <!--v-if--><span class="badge__label"><span>twoFactorAuthField.disabled</span></span>
+                </div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--email_verified">
+              <div class="data-table__table-cell-content">
+                <div selected-user-ids=""><i class="iconoir-check" title="usersAdminTable.emailVerified"></i></div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--highest_role_uid">
+              <div class="data-table__table-cell-content">
+                <!--v-if-->
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--sticky-right data-table__table-cell--more">
+              <div class="data-table__table-cell-content">
+                <div class="data-table__more-wrapper" column="[object Object]" selected-user-ids=""><button type="button" class="data-table__more" aria-label="crudTable.rowActions" aria-haspopup="menu"><i class="data-table__more-icon baserow-icon-more-vertical" aria-hidden="true"></i></button></div>
+                <!--v-if-->
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <!--v-if-->
+        <tbody class="data-table__row-group">
+          <tr class="data-table__table-row">
+            <td class="data-table__table-cell data-table__table-cell--sticky-left data-table__table-cell--select">
+              <div class="data-table__table-cell-content">
+                <div class="user-admin-select" column="[object Object]"><label class="checkbox checkbox--small"><input id="checkboxv-0-0-6" class="checkbox__native" type="checkbox" aria-label="usersAdminTable.selectUser">
+                    <div class="checkbox__button"><svg class="checkbox__tick" xmlns="http://www.w3.org/2000/svg" width="9" height="8" viewBox="0 0 9 8" fill="none" style="display: none;">
+                        <g clip-path="url(#clipv-0-0-6)">
+                          <path d="M1.5179 4.4821L3.18211 6.18211L7.42475 2.15368" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                        <defs>
+                          <clipPath id="clipv-0-0-6">
+                            <rect width="8" height="8" fill="white" transform="translate(0.5)"></rect>
+                          </clipPath>
+                        </defs>
+                      </svg><svg class="checkbox__tick-indeterminate" xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" style="display: none;">
+                        <path d="M1.5 4L6.5 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg></div>
+                    <!--v-if-->
+                  </label></div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--sticky-left data-table__table-cell--username">
+              <div class="data-table__table-cell-content">
+                <div class="user-admin-username" column="[object Object]" selected-user-ids="">
+                  <div class="avatar avatar--rounded avatar--large avatar--blue user-admin-username__avatar">
+                    <!--v-if-->
+                    <!--v-if--><span class="avatar__initials">U</span>
+                  </div>
+                  <div class="user-admin-username__name" title="thirdUser@example.com">thirdUser@example.com</div><i class="user-admin-username__icon iconoir-user-crown"></i>
+                </div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--name">
+              <div class="data-table__table-cell-content">
+                <div class="data-table__text-field" title="user_name" selected-user-ids="">user_name</div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--workspaces">
+              <div class="data-table__table-cell-content">
+                <div class="expand-overflow-list" selected-user-ids="">
+                  <div class="expand-overflow-list__container">
+                    <!--v-if--><span class="expand-overflow-list__empty-item"></span><span class="expand-overflow-list__item" style="order: 0;">some_workspace<i class="user-admin-group__icon iconoir-user-crown"></i></span><a class="expand-overflow-list__expand" style="order: 0; display: none;">+0</a>
+                    <teleport-stub to="body">
+                      <div class="context visibility-hidden context--overflow-scroll">
+                        <!--v-if-->
+                      </div>
+                    </teleport-stub>
+                  </div>
+                </div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--last_login">
+              <div class="data-table__table-cell-content">
+                <div selected-user-ids="">26-04-2021 07:50</div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--date_joined">
+              <div class="data-table__table-cell-content">
+                <div selected-user-ids="">21-04-2021 12:04</div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--is_active">
+              <div class="data-table__table-cell-content">
+                <div class="user-admin-active" selected-user-ids=""><i class="iconoir-check user-admin-active__icon user-admin-active__icon--activated"></i></div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--two_factor_auth">
+              <div class="data-table__table-cell-content">
+                <div class="badge badge--neutral badge--regular badge--rounded" selected-user-ids="">
+                  <!--v-if--><span class="badge__label"><span>twoFactorAuthField.disabled</span></span>
+                </div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--email_verified">
+              <div class="data-table__table-cell-content">
+                <div selected-user-ids=""><i class="iconoir-check" title="usersAdminTable.emailVerified"></i></div>
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--highest_role_uid">
+              <div class="data-table__table-cell-content">
+                <!--v-if-->
+                <!--v-if-->
+              </div>
+            </td>
+            <td class="data-table__table-cell data-table__table-cell--sticky-right data-table__table-cell--more">
+              <div class="data-table__table-cell-content">
+                <div class="data-table__more-wrapper" column="[object Object]" selected-user-ids=""><button type="button" class="data-table__more" aria-label="crudTable.rowActions" aria-haspopup="menu"><i class="data-table__more-icon baserow-icon-more-vertical" aria-hidden="true"></i></button></div>
+                <!--v-if-->
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <!--v-if-->
+      </table>
     </div>
+    <div class="data-table__footer">
+      <div class="paginator"><a class="paginator__button paginator__button--disabled"><i class="iconoir-nav-arrow-left"></i></a>
+        <div class="paginator__content"><span>paginator.page</span><input type="text" class="paginator__content-input" required="" size="1" value="1"><span>paginator.of</span></div><a class="paginator__button paginator__button--disabled"><i class="iconoir-nav-arrow-right"></i></a>
+      </div>
+    </div>
+    <teleport-stub to="body">
+      <div class="context visibility-hidden context--overflow-scroll">
+        <!--v-if-->
+      </div>
+    </teleport-stub>
+    <teleport-stub to="body">
+      <div class="context visibility-hidden context--overflow-scroll">
+        <!--v-if-->
+      </div>
+    </teleport-stub>
   </div>
   <teleport-stub to="body">
-    <div class="context visibility-hidden context--overflow-scroll">
-      <!--v-if-->
-    </div>
+    <!--v-if-->
+  </teleport-stub>
+  <teleport-stub to="body">
+    <!--v-if-->
   </teleport-stub>
 </div>"
 `;

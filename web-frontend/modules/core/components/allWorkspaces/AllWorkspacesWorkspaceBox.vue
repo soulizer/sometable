@@ -163,6 +163,8 @@
           srcset="
             @baserow/modules/core/assets/images/empty_workspace_illustration@2x.png 2x
           "
+          loading="lazy"
+          alt=""
         />
         <div class="workspace-box__empty-title">
           {{ $t('allWorkspaces.noApplications') }}

@@ -55,6 +55,34 @@ def get_q_from_view_filter(
     )
 
 
+def sort_filter_groups_parent_first(groups):
+    """
+    Returns the groups in parent-before-child order. `AdvancedFilterBuilder` assumes
+    this order when reconstructing the tree, but database ordering alone cannot
+    guarantee it for restored or imported groups.
+    """
+
+    groups = list(groups)
+    groups_by_id = {group.id: group for group in groups}
+
+    def depth(group):
+        visited = set()
+        current = group
+        group_depth = 0
+        while current.parent_group_id is not None:
+            if (
+                current.parent_group_id in visited
+                or current.parent_group_id not in groups_by_id
+            ):
+                break
+            visited.add(current.parent_group_id)
+            group_depth += 1
+            current = groups_by_id[current.parent_group_id]
+        return group_depth
+
+    return sorted(groups, key=lambda group: (depth(group), group.id or 0))
+
+
 class ViewGroupedFiltersAdapter(GroupedFiltersAdapter):
     def __init__(self, instance: View, model: GeneratedTableModel, **kwargs):
         super().__init__(instance, model)
@@ -65,7 +93,7 @@ class ViewGroupedFiltersAdapter(GroupedFiltersAdapter):
 
     @property
     def groups(self):
-        return self.instance.filter_groups.all()
+        return sort_filter_groups_parent_first(self.instance.filter_groups.all())
 
     def get_q_from_filter(self, _filter) -> Union[Q, AnnotatedQ]:
         return get_q_from_view_filter(_filter, self.model)

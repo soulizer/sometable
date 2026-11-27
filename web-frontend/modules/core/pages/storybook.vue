@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import '@baserow/modules/core/assets/scss/grid.scss'
 import { useHead } from '#app'
 import SimpleGrid from '@baserow/modules/database/components/view/grid/SimpleGrid'
 

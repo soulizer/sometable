@@ -105,6 +105,8 @@ const col1Width = ref(240)
 const col3Width = ref(400)
 const layoutWidthRestored = ref(false)
 const col3Visible = ref(false)
+const narrowViewport = ref(false)
+let widthBeforeNarrow = 240
 const app = ref()
 
 const workspaceSearchModal = ref(null)
@@ -200,6 +202,22 @@ function resizeCol3(v) {
   col3Width.value = v
 }
 
+// On narrow screens the fixed sidebar would leave too little room for the
+// content tables. Collapse it automatically without overwriting the saved
+// desktop width, and restore the preference when the viewport grows again.
+function applyResponsiveSidebar() {
+  const shouldNarrow = window.innerWidth <= 768
+  if (shouldNarrow && !narrowViewport.value) {
+    widthBeforeNarrow = col1Width.value
+    narrowViewport.value = true
+    col3Visible.value = false
+    col1Width.value = 52
+  } else if (!shouldNarrow && narrowViewport.value) {
+    narrowViewport.value = false
+    col1Width.value = widthBeforeNarrow
+  }
+}
+
 function toggleRightSidebar(value = !col3Visible.value) {
   col3Visible.value = value
   localStorage.setItem('baserow.rightSidebarOpen', col3Visible.value)
@@ -229,7 +247,7 @@ function keyDown(event) {
 }
 
 watch([col1Width, col3Width], ([left, right]) => {
-  if (!layoutWidthRestored.value) {
+  if (!layoutWidthRestored.value || narrowViewport.value) {
     return
   }
   localStorage.setItem('baserow.leftSidebarWidth', String(left))
@@ -250,6 +268,8 @@ onMounted(() => {
     col3Visible.value = storedRightSidebar === 'true'
   }
   layoutWidthRestored.value = true
+  applyResponsiveSidebar()
+  window.addEventListener('resize', applyResponsiveSidebar)
 
   $realtime.connect()
 
@@ -271,6 +291,7 @@ onBeforeUnmount(() => {
   if (app.value?.keydownEvent) {
     document.body.removeEventListener('keydown', app.value?.keydownEvent)
   }
+  window.removeEventListener('resize', applyResponsiveSidebar)
 
   store.dispatch(
     'undoRedo/updateCurrentScopeSet',

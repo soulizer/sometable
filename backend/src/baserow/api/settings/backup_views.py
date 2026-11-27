@@ -1,16 +1,17 @@
+import secrets
+
 from drf_spectacular.utils import extend_schema
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from loguru import logger
-
 from baserow.api.schemas import get_error_schema
-from baserow.core.backup import (
-    SCOPE_ALL,
-    list_all_backups,
-    restore_backup,
-    run_backup,
+from baserow.core.backup import list_all_backups
+from baserow.core.backup_status import (
+    RESTORE_FAILED,
+    RESTORE_PENDING,
+    get_restore_status,
+    set_restore_status,
 )
 
 
@@ -46,10 +47,11 @@ class BackupRestoreView(APIView):
     @extend_schema(
         tags=["Settings"],
         operation_id="restore_backup",
-        description="Restores a backup. This overwrites current data. Only staff "
-        "users can request it.",
+        description="Queues a restore of a backup. The safety backup and the actual "
+        "restore run asynchronously; poll the returned token's status endpoint. "
+        "Only staff users can request it.",
         responses={
-            200: None,
+            202: None,
             400: get_error_schema(["ERROR_PERMISSION_DENIED"]),
         },
     )
@@ -62,19 +64,32 @@ class BackupRestoreView(APIView):
                 {"error": "The backup id confirmation does not match."}, status=400
             )
 
-        # Always keep a copy of the current state before overwriting it. Retention
-        # is skipped so the safety copy cannot delete the backup being restored.
-        try:
-            run_backup(scope=SCOPE_ALL, keep=0)
-        except Exception:
-            logger.exception("Failed to create the safety backup before a restore")
-            return Response(
-                {"error": "Could not create a safety backup; restore cancelled."},
-                status=500,
-            )
+        from baserow.core.backup_tasks import restore_backup_task
 
+        token = secrets.token_urlsafe(16)
+        set_restore_status(token, RESTORE_PENDING, 0, "Restore queued.")
         try:
-            restore_backup(backup_id)
-        except FileNotFoundError:
-            return Response({"error": "Backup not found."}, status=404)
-        return Response({"ok": True})
+            restore_backup_task.delay(token, backup_id)
+        except Exception:
+            set_restore_status(
+                token, RESTORE_FAILED, 0, "Could not queue the restore task."
+            )
+            return Response({"error": "Could not queue the restore task."}, status=500)
+        return Response({"ok": True, "token": token}, status=202)
+
+
+class BackupRestoreStatusView(APIView):
+    permission_classes = (IsAdminUser,)
+
+    @extend_schema(
+        tags=["Settings"],
+        operation_id="restore_backup_status",
+        description="Returns the progress of an asynchronous restore. Only staff "
+        "users can request it.",
+        responses={200: None, 404: None},
+    )
+    def get(self, request, token):
+        status = get_restore_status(token)
+        if status is None:
+            return Response({"error": "Unknown restore token."}, status=404)
+        return Response(status)

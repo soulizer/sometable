@@ -1,6 +1,11 @@
 <template>
   <div class="decorator-item">
-    <img class="decorator-item__image" :src="decoratorType.getImage()" />
+    <img
+      class="decorator-item__image"
+      :src="decoratorType.getImage()"
+      loading="lazy"
+      alt=""
+    />
     <div class="decorator-item__content">
       <div class="decorator-item__title">
         {{ decoratorType.getName() }}

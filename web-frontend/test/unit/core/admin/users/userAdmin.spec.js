@@ -50,7 +50,7 @@ describe('User Admin Component Tests', () => {
     expect(userAdmin.html()).toMatchSnapshot()
 
     const cells = ui.findCells()
-    expect(cells.length).toBe(8)
+    expect(cells.length).toBe(11)
     const {
       usernameCell,
       nameCell,
@@ -197,7 +197,7 @@ describe('User Admin Component Tests', () => {
     await flushPromises()
 
     const cells = ui.findCells()
-    expect(cells.length).toBe(8)
+    expect(cells.length).toBe(11)
     const { usernameCell, workspacesCell } = ui.getRow(cells, 0)
 
     expect(usernameCell.text()).toContain(user.username)
@@ -375,7 +375,9 @@ describe('User Admin Component Tests', () => {
 
     await flushPromises()
 
-    expect(ui.getErrorText(modal)).toBe('clientHandler.notCompletedDescription')
+    expect(ui.getErrorText(modal)).toContain(
+      'clientHandler.notCompletedDescription'
+    )
   })
 
   test('a users full name can be changed', async () => {
@@ -415,7 +417,9 @@ describe('User Admin Component Tests', () => {
 
     await flushPromises()
 
-    expect(ui.getErrorText(modal)).toBe('clientHandler.notCompletedDescription')
+    expect(ui.getErrorText(modal)).toContain(
+      'clientHandler.notCompletedDescription'
+    )
   })
 
   test.each([
@@ -587,7 +591,7 @@ describe('User Admin Component Tests', () => {
     const userAdmin = await testApp.mount(UsersAdminTable, {})
     const ui = new UserAdminUserHelpers(userAdmin)
 
-    const cells = ui.findCells(16)
+    const cells = ui.findCells(22)
     const { usernameCell: firstUsernameCell } = ui.getRow(cells, 0)
     expect(firstUsernameCell.text()).toContain('firstUser@example.com')
     const { usernameCell: secondUsernameCell } = ui.getRow(cells, 1)
@@ -618,7 +622,7 @@ describe('User Admin Component Tests', () => {
     const userAdmin = await testApp.mount(UsersAdminTable, {})
     const ui = new UserAdminUserHelpers(userAdmin)
 
-    const cells = ui.findCells(16)
+    const cells = ui.findCells(22)
     const { usernameCell: firstUsernameCell } = ui.getRow(cells, 0)
     expect(firstUsernameCell.text()).toContain('firstUser@example.com')
     const { usernameCell: secondUsernameCell } = ui.getRow(cells, 1)
@@ -760,6 +764,46 @@ describe('User Admin Component Tests', () => {
         .exists()
     ).toBe(true)
   }
+
+  test('bulk actions apply to selected users', async () => {
+    const user = mockServer.aUser({
+      id: 2,
+      username: 'bulk@example.com',
+      name: 'bulk user',
+      isActive: true,
+    })
+    mockServer.thereAreUsers([user], 1)
+    mockServer.expectUserUpdated(user, { is_active: false })
+
+    const userAdmin = await testApp.mount(UsersAdminTable, {})
+    const ui = new UserAdminUserHelpers(userAdmin)
+
+    await ui.selectUserRow(0)
+    expect(userAdmin.vm.selectedUserIds).toEqual([user.id])
+
+    await userAdmin.vm.bulkUpdate({ is_active: false })
+    await flushPromises()
+
+    const patch = testApp.mock.history.patch.find(
+      (request) => request.url === `/admin/users/${user.id}/`
+    )
+    expect(patch).toBeDefined()
+    expect(JSON.parse(patch.data)).toEqual({ is_active: false })
+  })
+
+  test('bulk selection can be cleared', async () => {
+    const user = mockServer.aUser({ id: 2 })
+    mockServer.thereAreUsers([user], 1)
+
+    const userAdmin = await testApp.mount(UsersAdminTable, {})
+    const ui = new UserAdminUserHelpers(userAdmin)
+
+    await ui.toggleSelectAllOnPage()
+    expect(userAdmin.vm.selectedUserIds).toEqual([user.id])
+
+    await userAdmin.vm.clearSelection()
+    expect(userAdmin.vm.selectedUserIds).toEqual([])
+  })
 
   /**
    * Spies on the store's dispatch so logging in doesn't need a backend, while

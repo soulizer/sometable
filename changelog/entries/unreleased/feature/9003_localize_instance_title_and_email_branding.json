@@ -1,0 +1,9 @@
+{
+    "type": "feature",
+    "message": "The instance title and email branding follow the active language, showing Workspace in English and 工作台 in Simplified Chinese.",
+    "issue_origin": "github",
+    "issue_number": 9003,
+    "domain": "general",
+    "bullet_points": [],
+    "created_at": "2026-11-27"
+}

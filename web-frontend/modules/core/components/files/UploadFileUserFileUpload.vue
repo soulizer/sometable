@@ -12,7 +12,12 @@
         <div class="upload-files__preview">
           <div class="upload-files__icon">
             <i v-if="!file.isImage" :class="file.iconClass"></i>
-            <img v-if="file.isImage" :ref="'file-image-' + file.id" />
+            <img
+              v-if="file.isImage"
+              :ref="'file-image-' + file.id"
+              loading="lazy"
+              alt=""
+            />
           </div>
         </div>
         <div class="upload-files__description">

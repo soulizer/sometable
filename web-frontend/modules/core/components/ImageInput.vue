@@ -1,7 +1,12 @@
 <template>
   <div class="image-input image-input--with-image">
     <div v-if="imageUrl" class="image-input__image-placeholder">
-      <img class="image-input__image-placeholder-img" :src="imageUrl" />
+      <img
+        class="image-input__image-placeholder-img"
+        :src="imageUrl"
+        loading="lazy"
+        alt=""
+      />
     </div>
     <div class="image-input__image-upload">
       <template v-if="!hasImage">

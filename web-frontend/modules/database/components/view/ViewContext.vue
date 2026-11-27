@@ -64,6 +64,33 @@
       </li>
       <li
         v-if="
+          canManageLockedView &&
+          $hasPermission(
+            'database.table.view.update',
+            view,
+            database.workspace.id
+          )
+        "
+        class="context__menu-item"
+      >
+        <a
+          class="context__menu-item-link"
+          :class="{ 'context__menu-item-link--loading': lockLoading }"
+          @click="toggleLock()"
+        >
+          <i
+            class="context__menu-item-icon"
+            :class="view.locked ? 'iconoir-lock-open' : 'iconoir-lock'"
+          ></i>
+          {{
+            view.locked
+              ? $t('viewContext.unlockView')
+              : $t('viewContext.lockView')
+          }}
+        </a>
+      </li>
+      <li
+        v-if="
           canCopyConfiguration &&
           $hasPermission(
             'database.table.view.update',
@@ -239,9 +266,19 @@ export default {
     return {
       duplicateLoading: false,
       deleteLoading: false,
+      lockLoading: false,
     }
   },
   computed: {
+    ...mapGetters({
+      fields: 'field/getAll',
+      allViews: 'view/getAll',
+      currentUserId: 'auth/getUserId',
+      isStaff: 'auth/isStaff',
+    }),
+    canManageLockedView() {
+      return this.isStaff || this.view.owned_by_id === this.currentUserId
+    },
     hasValidExporter() {
       return viewTypeHasExporterTypes(this.view.type, this.$registry)
     },
@@ -249,10 +286,6 @@ export default {
       const viewType = this.$registry.get('view', this.view.type)
       return viewType.canSetDefaultValues
     },
-    ...mapGetters({
-      fields: 'field/getAll',
-      allViews: 'view/getAll',
-    }),
     canCopyConfiguration() {
       // Without a compatible source view, a form view or a table with a
       // single view for example, the copy configuration modal would be a dead
@@ -313,6 +346,21 @@ export default {
       }
 
       this.deleteLoading = false
+    },
+    async toggleLock() {
+      if (this.lockLoading) return
+      this.lockLoading = true
+      try {
+        await this.$store.dispatch('view/update', {
+          view: this.view,
+          values: { locked: !this.view.locked },
+        })
+        this.$refs.context?.hide()
+      } catch (error) {
+        notifyIf(error, 'view')
+      } finally {
+        this.lockLoading = false
+      }
     },
     async duplicateView() {
       this.duplicateLoading = true

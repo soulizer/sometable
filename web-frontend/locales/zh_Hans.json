@@ -881,6 +881,8 @@
         "runQueued": "已加入备份队列，完成后会出现在列表中。",
         "tableRemote": "远端",
         "remoteYes": "已上传",
-        "remoteNo": "仅本地"
+        "remoteNo": "仅本地",
+        "restoreQueued": "恢复任务已排队，正在等待后台执行。",
+        "restoreRunning": "正在恢复备份，请保持页面打开。"
     }
 }

@@ -1,0 +1,9 @@
+{
+    "type": "feature",
+    "message": "View filter groups can be nested at any depth, with depth-aware styling and safer parent validation.",
+    "issue_origin": "github",
+    "issue_number": 9001,
+    "domain": "database",
+    "bullet_points": [],
+    "created_at": "2026-11-27"
+}

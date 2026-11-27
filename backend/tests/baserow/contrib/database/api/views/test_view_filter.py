@@ -702,6 +702,49 @@ def test_view_filter_group_can_be_nested(api_client, data_fixture):
 
 
 @pytest.mark.django_db
+def test_view_filter_group_can_be_nested_multiple_levels(api_client, data_fixture):
+    user, token = data_fixture.create_user_and_token()
+    table = data_fixture.create_database_table(user=user)
+    view = data_fixture.create_grid_view(table=table)
+    parent_group = data_fixture.create_view_filter_group(user=user, view=view)
+    child_group = data_fixture.create_view_filter_group(
+        user=user, view=view, parent_group=parent_group
+    )
+
+    response = api_client.post(
+        reverse("api:database:views:list_filter_groups", kwargs={"view_id": view.id}),
+        {"filter_type": "AND", "parent_group": child_group.id},
+        format="json",
+        HTTP_AUTHORIZATION=f"JWT {token}",
+    )
+
+    assert response.status_code == HTTP_200_OK
+    grandchild = ViewFilterGroup.objects.get(id=response.json()["id"])
+    assert grandchild.parent_group_id == child_group.id
+    assert grandchild.parent_group.parent_group_id == parent_group.id
+
+
+@pytest.mark.django_db
+def test_view_filter_group_parent_from_other_view_is_rejected(api_client, data_fixture):
+    user, token = data_fixture.create_user_and_token()
+    table_1 = data_fixture.create_database_table(user=user)
+    table_2 = data_fixture.create_database_table(user=user)
+    view_1 = data_fixture.create_grid_view(table=table_1)
+    view_2 = data_fixture.create_grid_view(table=table_2)
+    other_group = data_fixture.create_view_filter_group(user=user, view=view_2)
+
+    response = api_client.post(
+        reverse("api:database:views:list_filter_groups", kwargs={"view_id": view_1.id}),
+        {"filter_type": "OR", "parent_group": other_group.id},
+        format="json",
+        HTTP_AUTHORIZATION=f"JWT {token}",
+    )
+
+    assert response.status_code == HTTP_400_BAD_REQUEST
+    assert response.json()["error"] == "ERROR_VIEW_FILTER_GROUP_NOT_IN_VIEW"
+
+
+@pytest.mark.django_db
 def test_view_filter_group_delete_all_nested_children(api_client, data_fixture):
     user, token = data_fixture.create_user_and_token()
     table = data_fixture.create_database_table(user=user)

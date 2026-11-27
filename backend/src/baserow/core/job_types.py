@@ -449,12 +449,15 @@ class ExportApplicationsJobType(JobType):
             the applications.
         """
 
-        CoreHandler().check_permissions(
-            user,
-            ExportWorkspaceOperationType.type,
-            workspace=workspace,
-            context=workspace,
-        )
+        # Instance staff can export a workspace from the admin area without being a
+        # member of it. This bypass is intentionally limited to this export job.
+        if not user.is_staff:
+            CoreHandler().check_permissions(
+                user,
+                ExportWorkspaceOperationType.type,
+                workspace=workspace,
+                context=workspace,
+            )
 
         applications = Application.objects.filter(
             workspace=workspace, workspace__trashed=False
@@ -462,12 +465,15 @@ class ExportApplicationsJobType(JobType):
         if application_ids:
             applications = applications.filter(id__in=application_ids)
 
-        applications = CoreHandler().filter_queryset(
-            user,
-            ListApplicationsWorkspaceOperationType.type,
-            applications,
-            workspace=workspace,
-        )
+        # The membership based filtering would otherwise hide every application from
+        # staff who are not a member of the workspace being exported.
+        if not user.is_staff:
+            applications = CoreHandler().filter_queryset(
+                user,
+                ListApplicationsWorkspaceOperationType.type,
+                applications,
+                workspace=workspace,
+            )
 
         if application_ids and len(application_ids) != len(applications):
             raise PermissionDenied(

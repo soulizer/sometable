@@ -9,6 +9,7 @@
 </template>
 
 <script setup>
+import '@baserow/modules/core/assets/scss/editor.scss'
 import { ref, computed } from 'vue'
 import { usePageAsyncData } from '@baserow/modules/core/composables/usePageAsyncData'
 import { onBeforeRouteUpdate, onBeforeRouteLeave } from 'vue-router'

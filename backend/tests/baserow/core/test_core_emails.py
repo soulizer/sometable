@@ -1,4 +1,5 @@
 from django.template.exceptions import TemplateDoesNotExist
+from django.utils import translation
 
 import pytest
 
@@ -44,3 +45,14 @@ def test_base_email_message():
     assert "baserow_embedded_share_hostname" in context
     assert email.get_from_email() == "no-reply@localhost"
     assert email.get_subject() == "Reset password"
+
+
+@pytest.mark.django_db
+def test_email_instance_name_follows_active_language():
+    email = SimpleResetPasswordEmail(["test@baserow.io"])
+
+    with translation.override("en"):
+        assert email.get_context()["instance_name"] == "Workspace"
+
+    with translation.override("zh-hans"):
+        assert email.get_context()["instance_name"] == "工作台"
