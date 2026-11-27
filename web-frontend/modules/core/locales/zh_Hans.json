@@ -647,6 +647,15 @@
         "newUsers": "新用户",
         "activeUsers": "活跃用户"
     },
+    "globalExports": {
+        "title": "导出任务",
+        "workspace": "工作区",
+        "download": "下载",
+        "ready": "可下载",
+        "failed": "导出失败",
+        "cancelled": "导出已取消",
+        "progress": "正在导出 {progress}%"
+    },
     "commandPalette": {
         "placeholder": "搜索操作和工作区…",
         "workspaces": "工作区"

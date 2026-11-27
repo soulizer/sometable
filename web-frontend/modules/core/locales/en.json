@@ -1614,6 +1614,15 @@
     "newUsers": "New users",
     "activeUsers": "Active users"
   },
+  "globalExports": {
+    "title": "Exports",
+    "workspace": "Workspace",
+    "download": "Download",
+    "ready": "Ready to download",
+    "failed": "Export failed",
+    "cancelled": "Export cancelled",
+    "progress": "Exporting {progress}%"
+  },
   "commandPalette": {
     "placeholder": "Search actions and workspaces...",
     "workspaces": "Workspace"

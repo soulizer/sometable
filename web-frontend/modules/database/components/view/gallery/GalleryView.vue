@@ -74,6 +74,7 @@
           "
           @mousemove="rowMoveOver($event, slot.item)"
           @mouseenter="rowMoveOver($event, slot.item)"
+          @row-context="showRowContext"
         ></RowCard>
       </div>
     </div>
@@ -109,6 +110,18 @@
       @field-updated="$emit('refresh', $event)"
       @field-deleted="$emit('refresh')"
     ></RowCreateModal>
+    <Context ref="rowContext" overflow-scroll max-height-if-outside-viewport>
+      <GridRowContextItems
+        :row="selectedRow"
+        :read-only="readOnly"
+        :can-create-row="false"
+        :can-delete-row="canDeleteRow"
+        :can-select-row="false"
+        @copy-row-url="copyRowLink"
+        @open-row-modal="rowClick"
+        @delete-row="deleteRow"
+      />
+    </Context>
     <RowEditModal
       ref="rowEditModal"
       enable-navigation
@@ -171,6 +184,9 @@ import {
 import RowCard from '@baserow/modules/database/components/card/RowCard'
 import RowCreateModal from '@baserow/modules/database/components/row/RowCreateModal'
 import RowEditModal from '@baserow/modules/database/components/row/RowEditModal'
+import GridRowContextItems from '@baserow/modules/database/components/view/grid/GridRowContextItems'
+import RowService from '@baserow/modules/database/services/row'
+import { copyToClipboard } from '@baserow/modules/core/utils/clipboard'
 import bufferedRowsDragAndDrop from '@baserow/modules/database/mixins/bufferedRowsDragAndDrop'
 import viewHelpers from '@baserow/modules/database/mixins/viewHelpers'
 import viewDecoration from '@baserow/modules/database/mixins/viewDecoration'
@@ -179,7 +195,12 @@ import { clone } from '@baserow/modules/core/utils/object'
 
 export default {
   name: 'GalleryView',
-  components: { RowCard, RowCreateModal, RowEditModal },
+  components: {
+    RowCard,
+    RowCreateModal,
+    RowEditModal,
+    GridRowContextItems,
+  },
   mixins: [viewHelpers, bufferedRowsDragAndDrop, viewDecoration],
   props: {
     fields: {
@@ -220,6 +241,7 @@ export default {
       // Event handler and observer references for cleanup
       scrollEvent: null,
       resizeObserver: null,
+      selectedRow: null,
     }
   },
   computed: {
@@ -236,6 +258,22 @@ export default {
     },
     firstRows() {
       return this.allRows.slice(0, 200)
+    },
+    canDeleteRow() {
+      return (
+        !this.readOnly &&
+        (!this.table.data_sync || this.table.data_sync.two_way_sync) &&
+        (this.$hasPermission(
+          'database.table.delete_row',
+          this.table,
+          this.database.workspace.id
+        ) ||
+          this.$hasPermission(
+            'database.table.view.delete_row',
+            this.view,
+            this.database.workspace.id
+          ))
+      )
     },
     /**
      * In order for the virtual scrolling to work, we need to know what the height of
@@ -488,11 +526,50 @@ export default {
         notifyIf(error, 'field')
       }
     },
+    showRowContext({ row, event }) {
+      this.selectedRow = row
+      this.$refs.rowContext?.toggleNextToMouse(event)
+    },
+    copyRowLink() {
+      const url =
+        this.$config.public.baserowEmbeddedShareUrl +
+        this.$router.resolve({
+          name: 'database-table-row',
+          params: { ...this.$route.params, rowId: this.selectedRow.id },
+        }).href
+      copyToClipboard(url)
+      this.$store.dispatch('toast/info', {
+        title: this.$t('gridView.copiedRowURL'),
+        message: this.$t('gridView.copiedRowURLMessage', {
+          id: this.selectedRow.id,
+        }),
+      })
+      this.$refs.rowContext?.hide()
+    },
+    async deleteRow(row) {
+      this.$refs.rowContext?.hide()
+      try {
+        await RowService(this.$client).delete(
+          this.table.id,
+          row.id,
+          this.view.id
+        )
+        await this.$store.dispatch('toast/restore', {
+          trash_item_type: 'row',
+          parent_trash_item_id: this.table.id,
+          trash_item_id: row.id,
+        })
+        this.$emit('refresh')
+      } catch (error) {
+        notifyIf(error, 'row')
+      }
+    },
     /**
      * Is called when the user clicks on the card but did not move it to another
      * position.
      */
     rowClick(row) {
+      this.$refs.rowContext?.hide()
       this.$refs.rowEditModal?.show(row.id)
       this.$emit('selected-row', row)
     },
