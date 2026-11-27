@@ -149,32 +149,41 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in backups" :key="item.id">
-              <td>{{ formatTime(item.created_at) }}</td>
-              <td>{{ scopeLabel(item.scope) }}</td>
-              <td>{{ sizeLabel(item) }}</td>
-              <td>{{ contentLabel(item) }}</td>
-              <td>
-                {{
-                  item.remote
-                    ? $t('adminBackups.remoteYes')
-                    : $t('adminBackups.remoteNo')
-                }}
-              </td>
-              <td>
-                <Button
-                  type="secondary"
-                  size="small"
-                  :loading="restoringId === item.id"
-                  @click="askRestore(item)"
-                >
-                  {{ $t('adminBackups.restore') }}
-                </Button>
+            <tr v-if="loadingBackups">
+              <td colspan="6">
+                <div class="admin-backups__loading">
+                  {{ $t('adminBackups.loading') }}
+                </div>
               </td>
             </tr>
-            <tr v-if="!backups.length">
-              <td colspan="6">{{ $t('adminBackups.empty') }}</td>
-            </tr>
+            <template v-else>
+              <tr v-for="item in backups" :key="item.id">
+                <td>{{ formatTime(item.created_at) }}</td>
+                <td>{{ scopeLabel(item.scope) }}</td>
+                <td>{{ sizeLabel(item) }}</td>
+                <td>{{ contentLabel(item) }}</td>
+                <td>
+                  {{
+                    item.remote
+                      ? $t('adminBackups.remoteYes')
+                      : $t('adminBackups.remoteNo')
+                  }}
+                </td>
+                <td>
+                  <Button
+                    type="secondary"
+                    size="small"
+                    :loading="restoringId === item.id"
+                    @click="askRestore(item)"
+                  >
+                    {{ $t('adminBackups.restore') }}
+                  </Button>
+                </td>
+              </tr>
+              <tr v-if="!backups.length">
+                <td colspan="6">{{ $t('adminBackups.empty') }}</td>
+              </tr>
+            </template>
           </tbody>
         </table>
       </div>
@@ -248,6 +257,7 @@ const { t } = useI18n()
 
 const settings = ref({})
 const backups = ref([])
+const loadingBackups = ref(true)
 const saving = ref(false)
 const running = ref(false)
 const restoringId = ref(null)
@@ -351,8 +361,18 @@ function showMessage(text, type = 'success') {
 }
 
 async function load() {
-  const { data } = await $client.get('/settings/backups/')
-  backups.value = data
+  loadingBackups.value = true
+  try {
+    const { data } = await $client.get('/settings/backups/')
+    backups.value = data
+  } catch (error) {
+    showMessage(
+      error?.response?.data?.error || t('adminBackups.loadError'),
+      'error'
+    )
+  } finally {
+    loadingBackups.value = false
+  }
 }
 
 async function loadSettings() {

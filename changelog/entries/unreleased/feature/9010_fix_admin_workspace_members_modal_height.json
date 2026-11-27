@@ -1,0 +1,9 @@
+{
+    "type": "bug",
+    "message": "The admin workspace members modal now gets a real table height instead of collapsing to an empty dialog.",
+    "issue_origin": "github",
+    "issue_number": 9010,
+    "domain": "workspaces",
+    "bullet_points": [],
+    "created_at": "2026-11-27"
+}

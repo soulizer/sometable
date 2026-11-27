@@ -1,0 +1,9 @@
+{
+    "type": "bug",
+    "message": "The backup list now shows a loading state and caches remote listings with short S3 timeouts instead of blocking the page for minutes.",
+    "issue_origin": "github",
+    "issue_number": 9011,
+    "domain": "settings",
+    "bullet_points": [],
+    "created_at": "2026-11-27"
+}

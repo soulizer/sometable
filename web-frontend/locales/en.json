@@ -861,6 +861,8 @@
     "restoreConfirmHelp": "A safety backup is created first. Restoring can take several minutes; keep this page open.",
     "restoreOk": "Restore completed",
     "restoreError": "Restore failed",
+    "loadError": "Could not load backups",
+    "loading": "Loading backups...",
     "empty": "No backups yet",
     "days": "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday",
     "runQueued": "Backup queued. It will appear in the list when ready.",

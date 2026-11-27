@@ -1,16 +1,7 @@
-.admin-backups__table {
-  width: 100%;
-  border-collapse: collapse;
+.admin-backups__loading {
+  @include loading-spinner($palette-neutral-500);
 
-  th,
-  td {
-    text-align: left;
-    padding: 8px 12px;
-    border-bottom: 1px solid $palette-neutral-200;
-  }
-
-  th {
-    color: $palette-neutral-700;
-    font-weight: 600;
-  }
+  padding: 36px 0;
+  color: $palette-neutral-600;
+  text-align: center;
 }

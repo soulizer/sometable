@@ -1,0 +1,14 @@
+.workspace-members-modal {
+  display: flex;
+  flex-direction: column;
+  // The modal box has no intrinsic table height, so give the table area a
+  // viewport-aware height; otherwise the body collapses and the members are
+  // invisible even though the API returned them.
+  height: clamp(320px, calc(100vh - 220px), 680px);
+  min-width: 0;
+
+  .data-table {
+    flex: 1;
+    min-height: 0;
+  }
+}

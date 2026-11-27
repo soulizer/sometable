@@ -185,7 +185,12 @@ def save_backup_storage_config(config: dict[str, Any]) -> dict[str, Any]:
     return save_storage_config(config, get_backup_storage_settings_file())
 
 
-def build_s3_client(config: dict[str, Any]):
+def build_s3_client(
+    config: dict[str, Any],
+    connect_timeout: int = 10,
+    read_timeout: int = 60,
+    max_attempts: int = 2,
+):
     """Low-level boto3 client shared by media and backup storage operations."""
 
     import boto3
@@ -199,6 +204,9 @@ def build_s3_client(config: dict[str, Any]):
         aws_secret_access_key=config.get("secret_access_key") or None,
         config=Config(
             signature_version="s3v4",
+            connect_timeout=connect_timeout,
+            read_timeout=read_timeout,
+            retries={"max_attempts": max_attempts},
             s3={
                 "addressing_style": config.get("addressing_style") or "path"
             },

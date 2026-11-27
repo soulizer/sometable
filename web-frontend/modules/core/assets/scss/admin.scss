@@ -2,6 +2,7 @@
 // so the editor, grid and public pages don't have to download them.
 @import 'split-foundation';
 @import 'components/data_table';
+@import 'components/admin_backups';
 @import 'components/admin_settings';
 @import 'components/ai_provider_admin';
 @import 'components/admin_health';
@@ -11,3 +12,4 @@
 @import 'components/templates_admin';
 @import 'components/template_import_item';
 @import 'components/email_tester';
+@import 'components/admin/workspaces/modals/workspace_members_modal';

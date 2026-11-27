@@ -876,6 +876,8 @@
         "restoreConfirmHelp": "系统会先创建一次当前状态的安全备份。恢复可能需要数分钟，请保持页面打开。",
         "restoreOk": "恢复完成",
         "restoreError": "恢复失败",
+        "loadError": "无法加载备份列表",
+        "loading": "正在加载备份…",
         "empty": "暂无备份",
         "days": "周一,周二,周三,周四,周五,周六,周日",
         "runQueued": "已加入备份队列，完成后会出现在列表中。",

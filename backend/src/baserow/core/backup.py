@@ -12,6 +12,7 @@ from datetime import datetime, timedelta
 from typing import Optional
 
 from django.conf import settings
+from django.core.cache import cache
 from django.db import connections
 
 from baserow.core.storage_config import (
@@ -25,6 +26,7 @@ logger = logging.getLogger(__name__)
 DEFAULT_BACKUP_ROOT = "/baserow/backups/sometable"
 REMOTE_PREFIX = os.getenv("BACKUP_REMOTE_PREFIX", "").strip("/")
 BACKUP_ID_PATTERN = re.compile(r"^\d{8}-\d{6}$")
+REMOTE_BACKUPS_CACHE_TTL = 120
 
 SCOPE_ALL = "all"
 SCOPE_DATABASE = "database"
@@ -181,6 +183,7 @@ def upload_backup_to_remote(stamp: str, dest: str, manifest: dict) -> None:
             "uploaded_at": datetime.now().isoformat(),
         }
         _write_manifest(os.path.join(dest, "manifest.json"), manifest)
+        invalidate_remote_backups_cache(config)
     except Exception:  # noqa: BLE001 - remote storage must not break local backup
         logger.exception('Failed to upload backup %s to remote storage', stamp)
         manifest["remote_error"] = 'Upload failed; see backend logs.'
@@ -253,13 +256,39 @@ def list_backups() -> list[dict]:
     ]
 
 
+def _remote_backups_cache_key(config: dict) -> str:
+    return "baserow:backup-remote-list:{bucket}:{location}:{endpoint}".format(
+        bucket=config.get("bucket_name", ""),
+        location=config.get("location", ""),
+        endpoint=config.get("endpoint_url", ""),
+    )
+
+
+def invalidate_remote_backups_cache(config: Optional[dict] = None) -> None:
+    if config is None:
+        config = remote_backup_config()
+        if config is None:
+            return
+    cache.delete(_remote_backups_cache_key(config))
+
+
 def list_remote_backups() -> list[dict]:
     config = remote_backup_config()
     if config is None:
         return []
+
+    cache_key = _remote_backups_cache_key(config)
+    cached = cache.get(cache_key)
+    if cached is not None:
+        return cached
+
     items = []
     try:
-        client = build_s3_client(config)
+        # Remote listings are on the page load path. Keep the timeouts short so an
+        # unreachable object store cannot block the backups page for minutes.
+        client = build_s3_client(
+            config, connect_timeout=3, read_timeout=8, max_attempts=1
+        )
         paginator = client.get_paginator("list_objects_v2")
         for page in paginator.paginate(
             Bucket=config["bucket_name"],
@@ -290,7 +319,12 @@ def list_remote_backups() -> list[dict]:
                 )
     except Exception:  # noqa: BLE001 - listing must not break the backup page
         logger.exception('Failed to list remote backups')
-    return sorted(items, key=lambda item: item["id"], reverse=True)
+
+    items = sorted(items, key=lambda item: item["id"], reverse=True)
+    # Cache failures too, so a broken endpoint is retried at most every two
+    # minutes instead of on every page load.
+    cache.set(cache_key, items, timeout=REMOTE_BACKUPS_CACHE_TTL)
+    return items
 
 
 def list_all_backups() -> list[dict]:
@@ -327,6 +361,7 @@ def apply_retention(keep: int) -> None:
                     keys.append(key)
         for key in sorted(keys, reverse=True)[keep:]:
             client.delete_object(Bucket=config["bucket_name"], Key=key)
+        invalidate_remote_backups_cache(config)
     except Exception:  # noqa: BLE001 - retention must not break local backup
         logger.exception('Failed to apply remote backup retention')
 

@@ -1,26 +1,28 @@
 <template>
   <Modal ref="modal" wide>
-    <h2 class="box__title">
-      {{ $t('adminWorkspaceMembers.title', { workspace: workspace.name }) }}
-    </h2>
-    <CrudTable
-      ref="crudTable"
-      :columns="columns"
-      :service="service"
-      row-id-key="id"
-      @row-context="onRowContext"
-    >
-      <template #menus>
-        <EditWorkspaceMemberContext
-          ref="editMemberContext"
-          :member="editMember"
-          :user-id="userId"
-          :loading="loading"
-          @update-role="updateRole"
-          @delete-member="deleteMember"
-        ></EditWorkspaceMemberContext>
-      </template>
-    </CrudTable>
+    <div class="workspace-members-modal">
+      <h2 class="box__title">
+        {{ $t('adminWorkspaceMembers.title', { workspace: workspace.name }) }}
+      </h2>
+      <CrudTable
+        ref="crudTable"
+        :columns="columns"
+        :service="service"
+        row-id-key="id"
+        @row-context="onRowContext"
+      >
+        <template #menus>
+          <EditWorkspaceMemberContext
+            ref="editMemberContext"
+            :member="editMember"
+            :user-id="userId"
+            :loading="loading"
+            @update-role="updateRole"
+            @delete-member="deleteMember"
+          ></EditWorkspaceMemberContext>
+        </template>
+      </CrudTable>
+    </div>
   </Modal>
 </template>
 
