@@ -1,0 +1,9 @@
+{
+    "type": "bug",
+    "message": "Workspace member lists and admin user payloads no longer fail with a 500 when no enterprise license is active.",
+    "issue_origin": "github",
+    "issue_number": 9009,
+    "domain": "workspaces",
+    "bullet_points": [],
+    "created_at": "2026-11-27"
+}

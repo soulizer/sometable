@@ -77,10 +77,12 @@ class EnterpriseRolesDataType(MemberDataType):
         license_plugin = plugin_registry.get_by_type(PremiumPlugin).get_license_plugin()
 
         usage = license_plugin.get_seat_usage_for_workspace(workspace)
-        if usage:
-            highest_role_per_user = usage.highest_role_per_user_id
-        else:
-            highest_role_per_user = None
+        # A self-hosted instance without an active license returns None here.
+        # Fall back to an empty mapping so member payloads still expose their
+        # workspace-level role instead of failing the whole list request.
+        highest_role_per_user = getattr(
+            usage, "highest_role_per_user_id", None
+        ) or {}
 
         for member in serialized_data:
             role = RoleAssignmentHandler().get_role_by_uid(
@@ -108,10 +110,11 @@ class EnterpriseRolesDataType(MemberDataType):
         license_plugin = plugin_registry.get_by_type(PremiumPlugin).get_license_plugin()
 
         usage = license_plugin.get_seat_usage_for_specific_users(user_ids)
-        if usage:
-            highest_role_per_user = usage.highest_role_per_user_id
-            for user in serialized_data:
-                user["highest_role_uid"] = highest_role_per_user.get(user["id"], None)
+        highest_role_per_user = getattr(
+            usage, "highest_role_per_user_id", None
+        ) or {}
+        for user in serialized_data:
+            user["highest_role_uid"] = highest_role_per_user.get(user["id"], None)
 
         return serialized_data
 

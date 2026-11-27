@@ -7,6 +7,7 @@ from baserow_enterprise_tests.role.test_role_permission_manager import (
 )
 
 from baserow.core.models import WorkspaceUser
+from baserow.core.registries import plugin_registry
 from baserow_enterprise.role.handler import RoleAssignmentHandler
 from baserow_enterprise.role.member_data_types import EnterpriseRolesDataType
 
@@ -258,3 +259,74 @@ def test_roles_member_data_type_doesnt_expose_to_users_without_read_role(
         viewer,
     )
     assert result == serialized_users_pre_annotation
+
+
+@pytest.mark.django_db
+@override_settings(
+    PERMISSION_MANAGERS=["core", "staff", "member", "basic", "role"],
+)
+def test_roles_member_data_type_handles_missing_seat_usage(
+    data_fixture, mocker, synced_roles
+):
+    """A self-hosted instance without active licenses must still list members."""
+
+    admin = data_fixture.create_user()
+    member = data_fixture.create_user()
+    workspace = data_fixture.create_workspace(user=admin)
+    data_fixture.create_user_workspace(
+        workspace=workspace, user=member, permissions="MEMBER"
+    )
+
+    license_plugin = mocker.Mock()
+    license_plugin.get_seat_usage_for_workspace.return_value = None
+    premium_plugin = mocker.Mock()
+    premium_plugin.get_license_plugin.return_value = license_plugin
+    mocker.patch.object(
+        plugin_registry, "get_by_type", return_value=premium_plugin
+    )
+
+    result = EnterpriseRolesDataType().annotate_serialized_workspace_members_data(
+        workspace,
+        [
+            {"user_id": admin.id, "permissions": "ADMIN"},
+            {"user_id": member.id, "permissions": "MEMBER"},
+        ],
+        admin,
+    )
+
+    assert [entry["highest_role_uid"] for entry in result] == [None, None]
+    assert [entry["role_uid"] for entry in result] == ["ADMIN", "BUILDER"]
+    assert license_plugin.get_seat_usage_for_workspace.called
+
+
+@pytest.mark.django_db
+@override_settings(
+    PERMISSION_MANAGERS=["core", "staff", "member", "basic", "role"],
+)
+def test_roles_admin_users_data_type_handles_missing_seat_usage(
+    data_fixture, mocker, synced_roles
+):
+    """Admin user payloads also tolerate a missing seat usage summary."""
+
+    admin = data_fixture.create_user()
+    other = data_fixture.create_user()
+    workspace = data_fixture.create_workspace(user=admin)
+    data_fixture.create_user_workspace(
+        workspace=workspace, user=other, permissions="MEMBER"
+    )
+
+    license_plugin = mocker.Mock()
+    license_plugin.get_seat_usage_for_specific_users.return_value = None
+    premium_plugin = mocker.Mock()
+    premium_plugin.get_license_plugin.return_value = license_plugin
+    mocker.patch.object(
+        plugin_registry, "get_by_type", return_value=premium_plugin
+    )
+
+    result = EnterpriseRolesDataType().annotate_serialized_admin_users_data(
+        [admin.id, other.id],
+        [{"id": admin.id}, {"id": other.id}],
+        admin,
+    )
+
+    assert [entry["highest_role_uid"] for entry in result] == [None, None]
